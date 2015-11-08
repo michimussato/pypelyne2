@@ -1,7 +1,7 @@
 import os
 import json
 import logging
-import src.modules.plugin
+import src.modules.plugin.plugin as class_plugin
 import src.conf.SETTINGS as SETTINGS
 
 # plugin_dir = os.path.join(SETTINGS.PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
@@ -118,7 +118,7 @@ def get_plugins():
     plugin_objects = []
     plugins = parse_plugins()
     for plugin in plugins:
-        new_plugin_object = src.modules.plugin.PlugIn(plugin)
+        new_plugin_object = class_plugin.PlugIn(plugin)
         plugin_objects.append(new_plugin_object)
 
     return plugin_objects
