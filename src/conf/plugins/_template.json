@@ -6,7 +6,7 @@
   "releases": [
     {
       "release_number": "1.2.3",
-      "icon": "" or null,
+      "icon": "icon123.png" or null,
       "release_extension": ".ext",
       "project_template": "null_familyfoundation_family_123.template" or null,
       "project_workspace_template": "null_familyfoundation_family_123.workspace" or null,
@@ -52,7 +52,7 @@
     },
     {
       "release_number": "4.5.6",
-      "icon": "" or null,
+      "icon": "icon456.png" or null,
       "release_extension": ".ext",
       "project_template": "null_familyfoundation_family_456.template" or null,
       "project_workspace_template": "null_familyfoundation_family_456.workspace" or null,

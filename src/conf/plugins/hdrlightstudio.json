@@ -6,7 +6,7 @@
   "releases": [
     {
       "release_number": "4",
-      "icon": null,
+      "icon": "icon_lightmap_hdrlightstudio_4.png",
       "release_extension": null,
       "project_template": null,
       "project_workspace_template": null,

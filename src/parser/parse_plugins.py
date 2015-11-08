@@ -4,19 +4,14 @@ import logging
 import src.modules.plugin.plugin as class_plugin
 import src.conf.SETTINGS as SETTINGS
 
-# plugin_dir = os.path.join(SETTINGS.PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
-# plugin_files = [x
-#                 for x in os.listdir(plugin_dir)
-#                 if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
-
 
 def parse_plugins():
     plugin_list = []
 
-    for plugin_file in SETTINGS.PLUGIN_FILES:
+    for plugin_file in SETTINGS.PLUGINS_FILES:
 
         logging.info('processing source file: %s' % plugin_file)
-        with open(os.path.join(SETTINGS.PLUGIN_DIR, plugin_file), 'r') as f:
+        with open(os.path.join(SETTINGS.PLUGINS_DIR, plugin_file), 'r') as f:
             json_object = json.load(f)
         f.close()
 
@@ -73,6 +68,8 @@ def parse_plugins():
                         json_object[u'abbreviation']
                     plugin_dict[u'release_number'] = \
                         release[u'release_number']
+                    plugin_dict[u'icon'] = \
+                        release[u'icon']
                     plugin_dict[u'release_extension'] = \
                         release[u'release_extension']
                     plugin_dict[u'project_template'] = \
@@ -99,7 +96,6 @@ def parse_plugins():
                         platform_item[SETTINGS.OPERATING_SYSTEM][u'project_workspace_parent_directory_level']
                     plugin_dict[u'project_file_flag'] = \
                         platform_item[SETTINGS.OPERATING_SYSTEM][u'project_file_flag']
-
                     if executable_x32 in executable_list:
                         plugin_dict[u'executable_x32'] = executable_x32
                     else:

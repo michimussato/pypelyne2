@@ -6,7 +6,7 @@
   "releases": [
     {
       "release_number": "7.0v8",
-      "icon": null,
+      "icon": "icon_thefoundry_nukex_708.png",
       "release_extension": ".nk",
       "project_template": "null_thefoundry_nukex_708.nk",
       "project_workspace_template": null,

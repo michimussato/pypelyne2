@@ -16,7 +16,7 @@ elif sys.maxsize > 2**32:
 
 script_dir = os.path.dirname(os.path.realpath(__file__))
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(script_dir))
-PLUGIN_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
-PLUGIN_FILES = [x
-                for x in os.listdir(PLUGIN_DIR)
-                if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
+PLUGINS_FILES = [x for x in os.listdir(PLUGINS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+TASKS_FILE = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks', 'tasks.json')
+# TASKS_FILE = [x for x in os.listdir(TASKS_DIR) if x.endswith('.json')]

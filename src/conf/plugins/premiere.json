@@ -51,7 +51,7 @@
     },
     {
       "release_number": "CC12",
-      "icon": null,
+      "icon": "icon_adobe_premiere_CC12.png",
       "release_extension": ".prproj",
       "project_template": "null_adobe_premiere_CC12.prproj",
       "project_workspace_template": null,

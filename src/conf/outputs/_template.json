@@ -1,0 +1,23 @@
+[
+  {
+    "output_enable": true,
+    "output": "model",
+    "abbreviation": "MDL",
+    "color": "#B38B8B",
+    "mime": []
+  },
+  {
+    "output_enable": true,
+    "output": "file sequence",
+    "abbreviation": "SEQ",
+    "color": "#93A477",
+    "mime": []
+  },
+  {
+    "output_enable": true,
+    "output": "playblast",
+    "abbreviation": "PLB",
+    "color": "#B3B3B3",
+    "mime": []
+  }
+]

@@ -96,7 +96,7 @@
     },
     {
       "release_number": "R 15",
-      "icon": null,
+      "icon": "icon_maxon_cinema4d_r15.png",
       "release_extension": ".c4d",
       "project_template": "null_maxon_cinema4d_r15.c4d",
       "project_workspace_template": null,

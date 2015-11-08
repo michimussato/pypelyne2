@@ -6,7 +6,7 @@
   "releases": [
     {
       "release_number": "13.0.314",
-      "icon": null,
+      "icon": "icon_sidefx_houdini_130260.png",
       "release_extension": ".hip",
       "project_template": "null_sidefx_houdini_130260.hip",
       "project_workspace_template": null,

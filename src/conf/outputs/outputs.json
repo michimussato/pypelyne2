@@ -1,0 +1,93 @@
+[
+  {
+    "output_enable": true,
+    "output": "model",
+    "abbreviation": "MDL",
+    "color": "#B38B8B",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "file sequence",
+    "abbreviation": "SEQ",
+    "color": "#93A477",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "playblast",
+    "abbreviation": "PLB",
+    "color": "#B3B3B3",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "camera",
+    "abbreviation": "CAM",
+    "color": "#898BB3",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "texture",
+    "abbreviation": "TEX",
+    "color": "#8297B3",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "cache",
+    "abbreviation": "CCH",
+    "color": "#B3A78B",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "shader",
+    "abbreviation": "SHD",
+    "color": "#8C7FB2",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "rig",
+    "abbreviation": "RIG",
+    "color": "#B3B17B",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "fur groom",
+    "abbreviation": "FUR",
+    "color": "#B286A4",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "alembic",
+    "abbreviation": "ABC",
+    "color": "#7FA9A7",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "light setup",
+    "abbreviation": "LIT",
+    "color": "#77A483",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "zbrush tool",
+    "abbreviation": "ZBR",
+    "color": "#79A491",
+    "formats": []
+  },
+  {
+    "output_enable": true,
+    "output": "script",
+    "abbreviation": "SCR",
+    "color": "#9279A4",
+    "formats": []
+  }
+]

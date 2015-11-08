@@ -51,7 +51,7 @@
     },
     {
       "release_number": "CC12",
-      "icon": null,
+      "icon": "icon_adobe_indesign_CC12.png",
       "release_extension": ".indd",
       "project_template": "null_adobe_indesign_CC12.indd",
       "project_workspace_template": null,

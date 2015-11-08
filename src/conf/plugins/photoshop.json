@@ -51,7 +51,7 @@
     },
     {
       "release_number": "CC12",
-      "icon": null,
+      "icon": "icon_adobe_photoshop_CC12.png",
       "release_extension": ".psd",
       "project_template": "null_adobe_photoshop_CC12.psd",
       "project_workspace_template": null,
