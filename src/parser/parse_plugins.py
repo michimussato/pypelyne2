@@ -1,26 +1,22 @@
 import os
-# import sys
-# import platform
 import json
 import logging
 import src.modules.plugin
 import src.conf.SETTINGS as SETTINGS
 
-script_dir = os.path.dirname(os.path.realpath(__file__))
-src_dir = os.path.dirname(script_dir)
-plugin_dir = os.path.join(src_dir, 'conf', 'plugins')
-plugin_files = [x
-                for x in os.listdir(plugin_dir)
-                if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+# plugin_dir = os.path.join(SETTINGS.PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
+# plugin_files = [x
+#                 for x in os.listdir(plugin_dir)
+#                 if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
 
 
 def parse_plugins():
     plugin_list = []
 
-    for plugin_file in plugin_files:
+    for plugin_file in SETTINGS.PLUGIN_FILES:
 
         logging.info('processing source file: %s' % plugin_file)
-        with open(os.path.join(plugin_dir, plugin_file), 'r') as f:
+        with open(os.path.join(SETTINGS.PLUGIN_DIR, plugin_file), 'r') as f:
             json_object = json.load(f)
         f.close()
 
