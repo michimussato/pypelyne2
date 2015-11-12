@@ -1,4 +1,5 @@
 import logging
+import socket
 import sys
 import os
 import platform
@@ -20,3 +21,13 @@ PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
 PLUGINS_FILES = [x for x in os.listdir(PLUGINS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
 TASKS_FILE = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks', 'tasks.json')
 # TASKS_FILE = [x for x in os.listdir(TASKS_DIR) if x.endswith('.json')]
+
+try:
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    s.connect(('8.8.8.8', 80))
+    ip = s.getsockname()[0]
+    s.close()
+except Exception, e:
+    print 'could not get local ip: %s' % e
+SERVER_IP = ip or '192.168.32.32'
+SERVER_PORT = 5678
