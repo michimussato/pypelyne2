@@ -84,30 +84,34 @@ class Server:
         # print arg
         while sock:
 
-            response = sock.recv(1024)
+            try:
+                response = sock.recv(1024)
 
-            print response
+                print response
 
-            if response == 'shake_hands_hello':
-                logging.info('client %s:%s sent hello' % (addr[0], addr[1]))
-                self.send_string(sock, addr, 'hello')
-                # self.sockets.remove(sock)
-                # sock.close()
-                # logging.info('%s connections left open' % (len(self.sockets)))
-                # break
+                if response == 'shake_hands_hello':
+                    logging.info('client %s:%s sent hello' % (addr[0], addr[1]))
+                    self.send_string(sock, addr, 'hello')
+                    # self.sockets.remove(sock)
+                    # sock.close()
+                    # logging.info('%s connections left open' % (len(self.sockets)))
+                    # break
 
-            elif response == 'shake_hands_goodbye':
-                logging.info('client %s:%s sent bye bye' % (addr[0], addr[1]))
+                elif response == 'shake_hands_goodbye':
+                    logging.info('client %s:%s sent bye bye' % (addr[0], addr[1]))
+                    self.sockets.remove(sock)
+                    sock.close()
+                    logging.info('%s connections left open' % (len(self.sockets)))
+                    break
+
+                # if response == 'bye':
+                #     # self.sendSerialized(socket, response)
+                #     # logging.info('client %s:%s sent bye bye' % (addr[0], addr[1]))
+                #     # self.sendList(sock, 'bye', None)
+                #     self.sockets.remove(sock)
+                #     sock.close()
+                #     logging.info('%s connections left open' % (len(self.sockets)))
+                #     break
+            except Exception, e:
+                print 'connection error: %s' % e
                 self.sockets.remove(sock)
-                sock.close()
-                logging.info('%s connections left open' % (len(self.sockets)))
-                break
-
-            # if response == 'bye':
-            #     # self.sendSerialized(socket, response)
-            #     # logging.info('client %s:%s sent bye bye' % (addr[0], addr[1]))
-            #     # self.sendList(sock, 'bye', None)
-            #     self.sockets.remove(sock)
-            #     sock.close()
-            #     logging.info('%s connections left open' % (len(self.sockets)))
-            #     break
