@@ -29,6 +29,7 @@ class Client:
                     self.socket.connect((SETTINGS.SERVER_IP, SETTINGS.SERVER_PORT))
                     logging.info('connection to server successful')
                     self.socket.sendall('shake_hands_hello')
+
                     response = self.receive_serialized(self.socket)
                     print response
                     logging.info('server %s says %s' % (SETTINGS.SERVER_IP, response))
@@ -38,6 +39,9 @@ class Client:
                     logging.info('connection failed: %s' % e)
 
     def receive_serialized(self, sock):
+
+        print sock
+
         # read the length of the data, letter by letter until we reach EOL
         length_str = ''
         char = sock.recv(1)
@@ -57,9 +61,11 @@ class Client:
             next_offset += recv_size
         try:
             deserialized = json.loads(view.tobytes())
-            return deserialized
+            # return deserialized
         # except (TypeError, ValueError), e:
         except Exception, e:
             # raise Exception('Data received was not in JSON format')
             logging.error('Data received was not in JSON format: %s' % e)
-            return 1
+            # return 1
+
+        return deserialized

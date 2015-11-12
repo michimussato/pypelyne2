@@ -90,6 +90,7 @@ class Server:
                 print response
 
                 if response == 'shake_hands_hello':
+                    print 'sending back hello'
                     logging.info('client %s:%s sent hello' % (addr[0], addr[1]))
                     self.send_string(sock, addr, 'hello')
                     # self.sockets.remove(sock)
