@@ -1,171 +1,123 @@
 import socket
-from logging import *
+import logging
 import os
 import json
 import sys
 import src.conf.SETTINGS as SETTINGS
 
 
-class client():
-    def __init__( self, host='127.0.0.1', port=50001):
-        # basicConfig( level = debugLevel )
+class Client:
+    def __init__(self, host=SETTINGS.SERVER_IP, port=SETTINGS.SERVER_PORT):
         self.host = host
         self.port = port
 
         self.main()
 
-    def recvList( self, sock ):
+    @staticmethod
+    def receive_list(sock):
         try:
             # read the length of the data, letter by letter until we reach EOL
             length_str = ''
-            #char = sock.recv( 32768 )
-            char = sock.recv( 1 )
-
-            #print char
+            char = sock.recv(1)
 
             while char != '\n':
                 length_str += char
-                #warning( 'till here' )
-                #char = sock.recv( 32768 )
-                char = sock.recv( 1 )
+                char = sock.recv(1)
 
-            total = int( length_str )
-            # use a memoryview to receive the data chunk by chunk efficiently
-            view = memoryview( bytearray( total ) )
+            total = int(length_str)
+            # use a memory view to receive the data chunk by chunk efficiently
+            view = memoryview(bytearray(total))
             next_offset = 0
         
             while total - next_offset > 0:
-                recv_size = sock.recv_into( view[ next_offset: ], total - next_offset )
-                next_offset += recv_size
-        #try:
+                receive_size = sock.recv_into(view[next_offset:], total - next_offset)
+                next_offset += receive_size
 
-            data = json.loads( view.tobytes() )
-            info( 'JSON serialized data successfully received' )
-        #except ( TypeError, ValueError ), e:
-        except:
+            data = json.loads(view.tobytes())
+            logging.info('JSON serialized data successfully received')
+
+        except Exception, e:
+            print e
             try:
-                data = sock.recv( 4096 )
-                info( 'non serialized data successfully received (type: %s, data: %s)' %( type( dataRecv ), data ) )
-                logging.info( 'server response of type %s::%s' %( type( dataRecv ), data ) )
+                data = sock.recv(4096)
+                logging.info('non serialized data successfully received (type: %s, data: %s)' % (type(data), data))
+                logging.info('server response of type %s::%s' % (type(data), data))
                 
-                if  type( data ) == str:
+                if type(data) == str:
                     print 'doing str stuff'
                     pass
-                elif  type( data ) == list:
+                elif type(data) == list:
                     print 'doing list stuff'
                     pass
-            except:
-                warning( 'data could not be received. don\'t know how to handle yet.' )
+            except Exception, e:
+                logging.warning('data could not be received. %s' % e)
                 return 0
-                #raise Exception( 'Data received was not in JSON format' )
+                # raise Exception( 'Data received was not in JSON format' )
         return data
 
-
-
-    def main( self ):
-
-        sock = socket.socket( socket.AF_INET, socket.SOCK_STREAM )
-        #s.setsockopt( socket.SOL_SOCKET, socket.SO_REUSEADDR, 1 )
+    def main(self):
+        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         try:
-            sock.connect( ( self.host, self.port ) )
-            info( 'connection to server successful' )
+            sock.connect((self.host, self.port))
+            logging.info('connection to server successful')
         except socket.error:
-            warning( 'server not reachable on port %s' %( self.port ) )
+            logging.warning('server not reachable on port %s' % self.port)
             sys.exit()
-        #s.setblocking( 0 )
-        #info( 'connection to server successful' )
-        #s.connect( ( host, port ) )
 
         while True:
+            data = raw_input('path: ')
 
-            #path = None
-
-            #for path in range( 300 ):
-
-            data = raw_input( 'path: ' )
-
-            #if not data.endswith( os.sep ):
-            #    data = data + os.sep
-
-            #print type( data )
-
-            if not str( data ).lower() == 'q' and not str( data ).lower() == 'quit':
-                if not data.endswith( os.sep ):
+            if not str(data).lower() == 'q' and not str(data).lower() == 'quit':
+                if not data.endswith(os.sep):
                     pass
-                    #data = data + os.sep
 
-                data = str( data )
+                data = str(data)
 
                 try:
-
-                    #s = socket.socket()
-                    #s.bind( ( '', port ) )
                     try:
-                        
-                        #info( 'connection to server successful' )
+                        sock.sendall(data)
+                        logging.info('string sent to server: %s' % data)
 
-                        sock.sendall( data )
-                        info( 'string sent to server: %s' %( data ) )
+                        data_recv = self.receive_list(sock)
 
-                        dataRecv = self.recvList( sock )
+                        path = data_recv['path_queried']
+                        is_path = data_recv['path_has_valid_format']
+                        path_exists = data_recv['path_exists']
+                        content = data_recv['content']
 
-                        path = dataRecv[ 0 ]
-                        isPath = dataRecv[ 1 ]
-                        pathExists = dataRecv[ 2 ]
-                        content = dataRecv[ 3 ]
-
-                        #print dataRecv[ 0 ]
-                        #print type( dataRecv )
-
-                        #for i in dataRecv:
-                        #    print i
-                        #info( 'server response of type %s::%s' %( type( dataRecv ), dataRecv ) )
-                        
-                        # syntax: ( socket, isPath, pathExists, content, receiver )
-                        if isPath == 'True' and pathExists == 'True':
-                            #path exists on server
-                            info( 'full response of server:%s' %( dataRecv ) )
-                            info( 'content of %s on server:%s' %( path, content ) )
+                        if is_path and path_exists:
+                            # path exists on server
+                            logging.info('full response of server:%s' % data_recv)
+                            logging.info('content of %s on server:%s' % (path, content))
                             for item in content:
-                                info( 'content on server: %s' %( os.path.join( path, item ) ) )
+                                logging.info('content on server: %s' % os.path.join(path, item))
 
-                        elif isPath == 'True' and pathExists == 'False':
-                            #path does not exist, although it is in the correct format
-                            warning( 'folder %s not found on server' %( path ) )
+                        elif is_path and not path_exists:
+                            # path does not exist, although it is in the correct format
+                            logging.warning('folder %s not found on server' % path)
 
-                        elif isPath == 'False' and pathExists == 'False':
-                            #wrong path format (ie no leading / on unix)
-                            warning( '%s is not a path format, you idiot' %( data ) )
+                        elif not is_path and not path_exists:
+                            # wrong path format (ie no leading / on unix)
+                            logging.warning('%s is not a path format, you idiot' % data)
 
                         else:
-                            warning( '%s ??????????????????' %( data ) )
-
-                        '''
-                        if  type( dataRecv ) == str:
-                            #print 'doing str stuff'
-                            pass
-                        elif  type( dataRecv ) == list:
-                            #print 'doing list stuff'
-                            pass
-                        '''
+                            logging.warning('%s ??????????????????' % data)
 
                     except socket.error:
-                        warning( 'server available but could not connect' )
-
-
+                        logging.warning('server available but could not connect')
 
                 except socket.error:
-                    warning( 'server %s not available.' %( host ) )
+                    logging.warning('server %s not available.' % self.host)
                     continue
             else:
-                info( 'exitting' )
-                #sock.close()
+                logging.info('exitting')
+                # could also be commented out. no difference.
+                sock.close()
                 break
 
-        #info( 'connection closed by client' )
-        #sock.close()
+        # info( 'connection closed by client' )
+        # sock.close()
 
 
 if __name__ == '__main__':
-    # client = client( host = '192.168.0.17', port = 50505, debugLevel = INFO )
-    client = client(host=SETTINGS.SERVER_IP)
+    client = Client()
