@@ -33,6 +33,9 @@ SERVER_IP = ip or '192.168.32.32'
 SERVER_PORT = 5678
 
 # ScreenGrabber:
-FPS = 2
-PADDING = 4
+FPS = 1
+PADDING = 10
 SCALE_FACTOR = 0.5
+GRABBER_FORMAT = 'PNG'
+# min 0, max 100, default -1
+GRABBER_QUALITY = 0
