@@ -7,7 +7,7 @@ import PyQt4.QtGui as QtGui
 # app = QtGui.QApplication(sys.argv)
 
 grabber = screengrabber.ScreenGrabber()
-grabber.start()
+grabber.run()
 
 time.sleep(60)
 

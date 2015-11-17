@@ -34,5 +34,5 @@ SERVER_PORT = 5678
 
 # ScreenGrabber:
 FPS = 2
-PADDING = 10
+PADDING = 4
 SCALE_FACTOR = 0.5
