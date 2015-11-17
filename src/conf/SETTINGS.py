@@ -31,3 +31,8 @@ except Exception, e:
     print 'could not get local ip: %s' % e
 SERVER_IP = ip or '192.168.32.32'
 SERVER_PORT = 5678
+
+# ScreenGrabber:
+FPS = 2
+PADDING = 10
+SCALE_FACTOR = 0.5
