@@ -1,0 +1,20 @@
+
+There are more python example plugins than you find in this folder.
+
+
+On Subnmission plugins:
+  Execute via:    rrSubmitter, right side, middle column.
+  Edit via:       rrSubmitter menu
+  File Location:  [RR]\plugins\submitter_onsubmission
+
+
+Job Commands:
+  Execute via:    rrControl, job table, right click, submenu "Commands"
+  Edit via:       rrControl, job  table, right click, submenu "Commands"
+  File Location:  [RR]\plugins\control_job
+
+
+Client Commands:
+  Execute via:    rrControl, client table, right click, submenu "Other"
+  Edit via:       rrControl, client table, right click, submenu "Other"
+  File Location:  [RR]\plugins\control_client

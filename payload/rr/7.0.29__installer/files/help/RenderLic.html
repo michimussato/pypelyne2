@@ -1,0 +1,91 @@
+﻿<html>
+	
+<head>
+	<title>Render Lic.</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("RenderLic");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Render Lic.</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrConfig.html">rrConfig</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrConfig.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ClientGroups.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Images.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">Often you have more machines than licenses.</span></p>
+<p class="rvps3"><span class="rvts8">With this feature you can tell RR how many licenses it should use.</span></p>
+<p class="rvps3"><span class="rvts8">This can be used for the pre-defined applications with their renderer.</span></p>
+<p class="rvps3"><span class="rvts8">But you can also add your own render licenses.</span></p>
+<p class="rvps3"><span class="rvts8">For example Realsmart or Furnace licenses.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The render licenses a job needs are displayed at the rrSubmitter in the Scene Information box.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Temporal reduction of licenses:</span></p>
+<p class="rvps3"><span class="rvts8">If the client finds a license error message in the render log, then the server reduces the render licenses for this application for one hour.</span></p>
+<p class="rvps3"><span class="rvts8">In case you are using one license interactively.</span></p>
+<p class="rvps3"><span class="rvts8">Each hour the server tries to resend a job to check if the license is available again.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Manual reduction of licenses:</span></p>
+<p class="rvps3"><span class="rvts8">If an artist requires a license for work, you can manually reduce the number of render licenses.</span></p>
+<p class="rvps3"><span class="rvts8">The commands are available via rrControl page "global info".</span></p>
+<p class="rvps3"><span class="rvts8">You can either manually return the license, otherwise it follows the rules of the automatic temporal reduction as described above.</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

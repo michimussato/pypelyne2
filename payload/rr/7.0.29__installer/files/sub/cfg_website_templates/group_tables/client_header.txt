@@ -1,0 +1,11 @@
+
+<table border="0" CELLSPACING="1" CELLPADDING="0" >
+<tr>
+<td>&nbsp;</td>
+<td bgcolor="#000000"><font color="FFFFFF">&nbsp;Client</font></td>
+<td bgcolor="#000000"><font color="FFFFFF">&nbsp;Status</font></td>
+<td bgcolor="#000000"><font color="FFFFFF">&nbsp;&nbsp;&nbsp;Job</font></td>
+<td bgcolor="#000000"><font color="FFFFFF">Frames</font></td>
+<td bgcolor="#000000"><font color="FFFFFF">Cpu</font></td>
+<td bgcolor="#000000"><font color="FFFFFF">Memory</font></td>
+</tr>

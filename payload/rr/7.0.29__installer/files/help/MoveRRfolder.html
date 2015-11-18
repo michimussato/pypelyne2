@@ -1,0 +1,101 @@
+﻿<html>
+	
+<head>
+	<title>Move RR folder</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("MoveRRfolder");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Move RR folder</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; <a href="AdditionalInfo.html">Additional Info</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="AdditionalInfo.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="AdditionalInfo.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="MultipleNetworks.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This descriptions shows you how you can move the whole RR Root folder.</span></p>
+<p class="rvps3"><span class="rvts8">The network folder that includes all RR application files and config files.</span></p>
+<p class="rvps3"><span class="rvts15">This is</span><span class="rvts16"> NOT</span><span class="rvts15"> a description if you want to execute the rrServer on a different machine.</span><br/><span class="rvts15">This description requires that your old RR installation runs with all clients connected.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts24">RR Program Files:</span><br/><span class="rvts8">If you want to keep your configuration, then copy all files from the old directory to the new directory.</span><br/><span class="rvts8">Otherwise, do a clean install into the new folder.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts24">Startup scripts</span><span class="rvts8">:</span><br/><span class="rvts8">The startup scripts are all win_*.bat (windows) and all ls_*.sh (linux) files in the base of the RR folder.</span><br/><span class="rvts8">If you have done a clean install:</span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Copy all startup script files from the </span><span class="rvts15">new </span><span class="rvts8">installation to the </span><span class="rvts15">old</span><span class="rvts8"> one.</span><br/><span class="rvts8">If you have copied the old folder:</span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">You have to edit all startup script files in the existing RR root folder with any text editor. </span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Change the path after RR_ROOT to the new path.</span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Inside the ..rrWorkstation_installer file, change the path after RR_ROOT_INSTALLER. This one is the most important startup script.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts24">Access rights:</span><br/><span class="rvts8">Check if the access rights are right. See </span><a class="rvts20" href="Permanentbackgroundservicemode.html">File Access Rights</a><span class="rvts8">.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts24">rrServer:</span><br/><span class="rvts8">Reinstall the rrServer Service via rrWorkstationInstaller.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts24">rrWorkstationInstaller step I: &nbsp; Setup service installer:</span><br/><span class="rvts8">Start the </span><span class="rvts15">new </span><span class="rvts8">rrWorkstationInstaller on one client and reinstall it.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts24">rrWorkstationInstaller step II: &nbsp; &nbsp;Distribute to all clients:</span><br/><span class="rvts8">Start rrControl and create a new command job via the menu "clients". </span><br/><span class="rvts8">Choose "Reinstall ALL (...)"</span><br/><span class="rvts8">Enable the job. </span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Relink old RR folder:</span></p>
+<p class="rvps3"><span class="rvts8">You can install a config relink in case there are machines, that you cannot update right now with the rrWorkstationInstaller.</span></p>
+<p class="rvps3"><span class="rvts8">Perhaps they are offline at the moment.</span></p>
+<p class="rvps3"><span class="rvts8">These machines will still start the executables from the old RR share, but load the config of the new one.</span></p>
+<p class="rvps3"><span class="rvts8">Inside the old RR share, create the files</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\sub\cfg_global\relink_win.cfg</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\sub\cfg_global\relink_lx.cfg</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\sub\cfg_global\relink_mac.cfg</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Inside these files, write one line Root= which points to the new location, e.g.</span></p>
+<p class="rvps3"><span class="rvts8">Root=\\redhat\renderfarm\rr6\</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: if you have created the batch file to re-install the service, then they will catch the job once they get online. </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,20 @@
+<tr <%HTMLBGRowColor%> >
+<td nowrap bgcolor="#<%JobColor%>">&nbsp;<%CMDJob_Ico_Enable%>&nbsp;<%CMDJob_Ico_DisableAbort%>&nbsp;<%CMDJob_Ico_Check%>&nbsp;<%CMDJob_Ico_Delete%>&nbsp;<a href="../<%JobHtmlDir%>/rrview_globals.rrc"><img SRC="../_layout/icon_job_view_s.png"  border="0" align="absmiddle"></a>&nbsp;</td>
+<td bgcolor="#<%JobColor%>"><%JobID%></td>
+<td nowrap><font color="#<%JobStatusColor%>"><%JobUserOrProject%></font></td>
+<td nowrap><font color="#<%JobStatusColor%>"><%JobCustomScene%>-<%JobCustomShot%>-<%JobCustomVersion%></font></td>
+<td nowrap><font color="#<%JobStatusColor%>"><%JobRenderApp%></font></td>
+<td nowrap>&nbsp;<img SRC="../_layout/<%JobErrorImg%>.png">&nbsp;<img SRC="../_layout/<%JobSeqcheckImg%>.png">&nbsp;<img SRC="../_layout/<%JobApprovedImg%>.png">&nbsp;</td>
+<td nowrap><a href="../<%JobHtmlDir%>/index.htm"  target="job"><font color="#<%JobStatusColorR%>"><%JobScene%></font></a></td>	
+<td nowrap><font color="#<%JobStatusColorR%>"><%JobLayer%></a></td>
+<td nowrap><font color="#<%JobStatusColorR%>"><%JobCamera%></a></td>
+<td nowrap align="right"><font color="#<%JobStatusColorR%>"><%JobFrames%></font></td>
+<td align="right"><font color="#<%JobStatusColorR%>"><%JobFramesDone%></font></td>
+<td nowrap align="right"><font color="#<%JobStatusColorR%>"><%JobFramesLeft%></font>&nbsp;<img SRC="../_layout/<%JobframesLeftImg%>.gif"></td>
+<td><font color="#<%JobStatusColorR%>"><%JobTillNow%></font></td>
+<td bgcolor="#EEEEEE"><font color="#<%JobStatusColorR%>"><%JobRemain%></font></td>
+<td align="right"><font color="#<%JobStatusColor%>"><%JobAvFrameTime%></font></td>
+<td bgcolor="#DDDDDD"><font color="#<%JobStatusColor%>"><%JobPriority%></font></td>
+<td nowrap><font color="#<%JobStatusColor%>"><%JobStatus%></font></td>
+<td nowrap align="right"><font color="#<%JobStatusColorR%>"><%JobClients%></font></td>
+</tr>

@@ -1,0 +1,97 @@
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=ISO-8859-15" />
+    <link rel="stylesheet" href="../_layout/content_job.css">
+    </head>
+<body>
+<table CELLSPACING="7" CELLPADDING="0" border="1" frame="void" ><tr>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_Enable%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_Disable%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_DisableAbort%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_Reset%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_ResetDelete%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_Check%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_Delete%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_Approve%>&nbsp;&nbsp;</td>
+<td bgcolor="#CCCCCC" nowrap height="19px" >&nbsp;<%CMDJob_IcoText_DisApprove%>&nbsp;&nbsp;</td>
+</tr></table>
+<br>
+<table width="100%" border="0"><tr><td align="left"><font size="+1">Job ID: <%JobID%> </font></td>
+<td align="middle"><%UpdateTime%> </td> 
+<td align="middle">Auto check interval: <%JobCheckInterval%> </td> 
+<td>Assumed RRServer-Fileserver difference: <%JobFileserverTimeDifference%></td>
+<td align="right"><%rrVersion%></td></tr></table>
+
+<br>
+<table CELLSPACING="0" CELLPADDING="0" COLS="2" width="100%">
+<tr bgcolor="#666666" height="25"><td WIDTH="175" nowrap><b><font color="#FFFFFF">&nbsp;&nbsp;Scene information</font></b></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Job Name</td>
+    <td><%JobCustomScene%>-<%JobCustomShot%>-<%JobCustomVersion%></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Render App</td>
+    <td><%JobRenderApp%>  <%JobRenderAppType%> <%JobRenderAppVersion%> <%JobRenderAppBit%></td></tr>
+<tr><td valign="top">&nbsp;&nbsp;&nbsp;Output File</td>
+    <td>
+    <%JobOutputLinkWin%><%JobOutputLinkLx%><%JobOutputLinkMac%>
+    
+    <table CELLSPACING="2" CELLPADDING="0" border="1" frame="void" ><tr>
+    <td bgcolor="#CCCCCC" nowrap height="18px">&nbsp;<a href="rrview_globals.rrc">View</a>&nbsp;</td>
+    <td bgcolor="#CCCCCC" nowrap height="18px">&nbsp;<a href="rrview_globals_flip.rrc">Play</a>&nbsp;</td>
+    <td bgcolor="#CCCCCC" nowrap height="18px">&nbsp;<a href="<%JobSceneFileName%>_<%JobLayer%>_<%JobID_nob%>_s.mov"><b><font color="#0099FF">Q</font></b></a>&nbsp;</td>
+    </tr></table>
+
+    </td></tr>
+</table><br>
+
+<table CELLSPACING="0" CELLPADDING="0" COLS="2" width="100%">
+<tr height="25"><td WIDTH="175" nowrap bgcolor="#<%JobStatusColor%>"><b><font color="#FFFFFF">&nbsp;&nbsp;Render information</font></b></td><td bgcolor="#<%JobStatusColorR%>"></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;<font color="#<%JobStatusColor%>">Status</font></td>
+    <td><%JobStatus%></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Frame Range</td>
+    <td><%JobFrames%></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Done</td>
+    <td><%JobFramesDone%> / <%JobFramesTotal%></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp; Average Numer of Clients</td>
+    <td><%JobClientsAverage%></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Average Time per Frame</td>
+    <td><%JobFrameAverage%></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Frame Progress</td>
+    <td><img src="framebar.png" alt="" border="0"></td></tr>
+</table><br>
+
+<table CELLSPACING="0" CELLPADDING="0" COLS="2" width="100%">
+<tr bgcolor="#666666" height="25"><td WIDTH="175" nowrap><b><font color="#FFFFFF">&nbsp;&nbsp;Log</font></b></td><td></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Log Files</td>
+    <td><a href="log_index.htm"><b>&gt;&gt;&gt;Job log and render log files</b></a></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;Errors</td>
+    <td><%JobErrorTable%></td></tr>
+<tr><td>&nbsp;&nbsp;&nbsp;</td>
+    <td>
+    <table CELLSPACING="0" CELLPADDING="0" border="1" frame="void" ><tr><td bgcolor="#CCCCCC" nowrap height="18px">&nbsp;&nbsp;&nbsp;<%CMDJob_Text_ClearErrorMessages%>&nbsp;&nbsp;</td></tr></table>
+    </td></tr>
+</table><br>
+
+
+<table CELLSPACING="0" CELLPADDING="0" COLS="2" width="100%">
+<tr bgcolor="#666666" height="25"><td WIDTH="175" nowrap><b><font color="#FFFFFF">&nbsp;&nbsp;Preview</font></b></td><td></td></tr>
+<%JobPreviewTable%>
+</table><br>
+
+<table CELLSPACING="0" CELLPADDING="0" width="100%" height="25"><tr bgcolor="#666666">
+<td><font color="#FFFFFF"><b>&nbsp;&nbsp;Assigned clients</b></font></td>
+</tr></table>
+<%JobClientTable%>
+<%CMDJob_Text_ChangeClients%>
+<table CELLSPACING="0" CELLPADDING="0" width="100%" height="25"><tr bgcolor="#666666">
+<td><font color="#FFFFFF"><b>&nbsp;&nbsp;Change Settings</b></font></td>
+</tr></table>
+<%CMDJob_Text_ChangeSettings%>
+
+<table CELLSPACING="0" CELLPADDING="0" COLS="2" width="100%">
+<tr bgcolor="#666666" height="25"><td WIDTH="175" nowrap><b><font color="#FFFFFF">&nbsp;&nbsp;Stats</font></b></td><td></td></tr>
+</table><br>
+<td><img src="stat.png" border="0"></td></tr>
+
+
+
+</body>
+</html>

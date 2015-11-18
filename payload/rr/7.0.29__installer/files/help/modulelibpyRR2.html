@@ -1,0 +1,853 @@
+﻿<html>
+	
+<head>
+	<title>module libpyRR2</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("modulelibpyRR2");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">module libpyRR2</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; <a href="Pythonreference.html">Python reference</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Pythonreference.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="modulerrJob.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="AddtionalInformation.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts28">The module libpyRR2 is an external module.</span></p>
+<p class="rvps3"><span class="rvts28">You can load/import it into any Python environment, e.g. Houdini or rrPythonconsole.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Class _rrTCP</span></span></h1>
+<p class="rvps3"><span class="rvts42"><br/></span></p>
+<p class="rvps3"><span class="rvts42">Class _rrTCP parameter:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 237px;"><p class="rvps3"><span class="rvts42">Return type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 376px;"><p class="rvps3"><span class="rvts42">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 133px;"><p class="rvps3"><span class="rvts42">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 237px;"><p class="rvps3"><span class="rvts28">_rrTCPjobList</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 376px;"><p class="rvps3"><span class="rvts63">jobs</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 133px;"><p class="rvps3"><span class="rvts28">Requires to call any </span><span class="rvts63">jobGet..() function.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 237px;"><p class="rvps3"><span class="rvts28">_rrTCPclientList</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 376px;"><p class="rvps3"><span class="rvts63">clients</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 133px;"><p class="rvps3"><span class="rvts28">Requires to call &nbsp;</span><span class="rvts63">clientGetList() first</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 237px;"><p class="rvps3"><span class="rvts28">_rrTCPuser</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 376px;"><p class="rvps3"><span class="rvts63">users</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 133px;"><p class="rvps3"><span class="rvts28">Requires to call </span><span class="rvts63">userGet() first</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts42"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts42">Class _rrTCP functions:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts42">Return type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts42">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts42">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">_rrTCP</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts28">_rrTCP("") </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">Creates a _rrTCP instance. You should not create multiple _rrTCP instances (there are exceptions if you know what you do).</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">string</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">getRRServer()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">This function tries to get the rrServer name or IP from the RR folder in your company.</span></p>
+<p class="rvps3"><span class="rvts28">It uses the RR_ROOT environment variable installed by rrWorkstationInstaller.</span></p>
+<p class="rvps3"><span class="rvts28">Therefore it does only work in your company.</span></p>
+<p class="rvps3"><span class="rvts28">If you want to connect from outside your company, you have to use a DynDNS service.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">setServer (string server, int serverPort)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">Sets the server IP or name for all TCP connections.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">setLogin (string user, string password)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">Sets the login to retrieve any data from the rrServer. </span><br/><span class="rvts28">This is not required if you have setup a Intranet Whitelist in rrConfig, tab rrLogins</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">string</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">errorMessage()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">If there was any error, then this function will return a non-empty string</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">jobSetFilter ([string user], [string project], [string renderApp], [string contains], [int filter])</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">jobSetFilter() controls which jobs are send from the rrServer. You should always use is if you have a lot of jobs in the queue to reduce network traffic, &nbsp;rrServer workload and python memory usage.</span><br/><span class="rvts63">Filter is a bit mask of </span><a class="rvts86" href="modulelibpyRR2.html#enum_filterIDs">enumeration _filterIDs</a><span class="rvts63"> values. Use &nbsp;| &nbsp; to combine multiple filters. (+ is possible, but | works fine even if you combine the same value multiple times)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">jobGetInfoBasic (UInt64 jobID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">You should call jobSetFilter() first to get only jobs with that you need to reduce network traffic.</span></p>
+<p class="rvps3"><span class="rvts63"></span><br/><span class="rvts63">1.Retrieves the job info of job with {ID} jobID.</span></p>
+<p class="rvps3"><span class="rvts63">If jobID is 0, then it updates all jobs that match the filter.</span></p>
+<p class="rvps3"><span class="rvts63"> &nbsp; </span></p>
+<p class="rvps3"><span class="rvts63">2. Retrieves _MinInfo of all jobs.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">jobGetInfoSend (UInt64 jobID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">You should call jobSetFilter() first to get only jobs with that you need to reduce network traffic.</span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63">1.Retrieves the job detail of job with {ID} jobID.</span></p>
+<p class="rvps3"><span class="rvts63">If jobID is 0, then it updates all jobs that match the filter.</span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63">2. Retrieves _MinInfo of all jobs. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">jobSendCommand (list&lt;UInt64&gt; jobIDs,</span><a class="rvts86" href="modulerrJob.html"> rrJob._logMessage</a><span class="rvts63"> commandID, int64 parameter )</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">jobIDs is a list with JobIDs of jobs that you want to send a command to.</span></p>
+<p class="rvps3"><span class="rvts63">Please check errorMessage() if the function returns false.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">jobModify (list&lt;UInt64&gt; jobID, _SettingsOnly settings, _SettingsOnly changeFlags)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">jobIDs is a list with JobIDs of jobs that you want to change.</span></p>
+<p class="rvps3"><span class="rvts63">You need to call rrJob.getClass_SettingsOnly() to get a _SettingsOnly class.</span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63">This function uses two _SettingsOnly classes. The settings parameter is the one with all the new values you want to set.</span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63">The changeFlags tells RR which parameters you want to change. E.g. if you want to change the user name for all jobs, but all jobs should keep their sequence start-end.</span></p>
+<p class="rvps3"><span class="rvts63">To let RR know that you want to change this value, just set them to anything. </span></p>
+<p class="rvps3"><span class="rvts63">(bool values to true, integer to 1, strings to anything non empty.)</span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63">If the function returns false, then please check errorMessage().</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">jobSubmitNew(_JobBasics newJob, string overrideParameter)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">Submits a new job to the rrServer.</span></p>
+<p class="rvps3"><span class="rvts28">We recommend that you use .xml files and use the rrSubmitterconsole.</span></p>
+<p class="rvps3"><span class="rvts28">As the rrSubmitterconsole does many checks and conversions.</span></p>
+<p class="rvps3"><span class="rvts28">Use this function only if you know all required settings for your jobs (e.g. </span><span class="rvts87">imageFileNameVariables</span><span class="rvts8"> for Maya jobs</span><span class="rvts28">) </span></p>
+<p class="rvps3"><span class="rvts28">See RR/SDK/external/submit.py for an example script.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">clientGetList ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">Gets all Clients. The result is put into the .</span><span class="rvts63">clients parameter.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">clientSendCommand (list&lt;bool&gt; clientArray, </span><span class="rvts28">_ClientCommand ID, </span><span class="rvts63">[string param])</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">Sends a command to rrClients.</span></p>
+<p class="rvps3"><span class="rvts63">clientArray is a list with client IDs. If the list has only one element and the ID is -1, then the command is applied to all clients.</span></p>
+<p class="rvps3"><span class="rvts63">param is an optional string parameter. It can be used to send commandlines to the client with the commandID </span><span class="rvts28">_rrTCP._ClientCommand.cCommandLine</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts63">If the function returns false, then please check errorMessage().</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">userGet ([string user])</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts63">Gets all or only a specified user.</span></p>
+<p class="rvps3"><span class="rvts63">The result of this request is filled into the .user parameter.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">userModify (_rrUserSettings user)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">After you retrieved a _rrTCPuser class and changed a few values, you have to send that user back to the rrServer/rrConfig. </span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">If the password is empty, then it will not be changed by the rrServer.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Returns false</span><span class="rvts63"> if there was an error.</span></p>
+<p class="rvps3"><span class="rvts63">Use userWasPartialFail() to know if all settings have been applied.</span></p>
+<p class="rvps3"><span class="rvts63">The rrServer sends the user class back with the current values.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">userNew (_rrUserSettings user)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">After you got a new user via </span><span class="rvts63">getNewUserPreset(), you have to send it to the rrServer/rrConfig.</span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Returns false</span><span class="rvts63"> if there was an error.</span></p>
+<p class="rvps3"><span class="rvts63">Use userWasPartialFail() to know if all settings have been applied.</span></p>
+<p class="rvps3"><span class="rvts63">The rrServer sends the user class back with the current values.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">userWasPartialFail()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">In case userNew or userModify has not been able to set all setting.</span></p>
+<p class="rvps3"><span class="rvts28">E.g. a user can change its own PW, but he is not able to change his rights if he is not an admin.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+<p class="rvps3"><span class="rvts63"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">infoGetGlobalInfo ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">int</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">getMemUsage ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28">Returns the current memory usage of _rrTCP</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts28">string</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 531px;"><p class="rvps3"><span class="rvts63">connectionStats ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 942px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Class _rrTCPuser</span></span></h1>
+<p class="rvps3"><span class="rvts42">Class _rrTCPuser functions:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts42">Return type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts42">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 625px;"><p class="rvps3"><span class="rvts42">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_rrUserSettings</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts63">at (int userID )</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 625px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_rrUserSettings</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts63">getNewUserPreset ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 625px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_rrUserSettings</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts63">getAnonymous ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 625px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_rrUserSettings</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts63">getOurUser ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 625px;"><p class="rvps3"><span class="rvts28">Requires to call setLogin() and any userGet("someuser") &nbsp;call before.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts28">int</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts63">count()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 625px;"><p class="rvps3"><span class="rvts28">Number of users in this class.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts63">Note: The rrServer will NOT send any passwords.</span></p>
+<p class="rvps3"><span class="rvts63">As there is no need that any external app is able to decode passwords of all users.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Class _rrUserSettings</span></span></h1>
+<p class="rvps3"><span class="rvts42">Class _rrUserSettings parameter:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts42">Return type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 246px;"><p class="rvps3"><span class="rvts42">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1149px;"><p class="rvps3"><span class="rvts42">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">rrString</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 246px;"><p class="rvps3"><span class="rvts63">name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1149px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">rrString8</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 246px;"><p class="rvps3"><span class="rvts63">emailAddress</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1149px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">rrString</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 246px;"><p class="rvps3"><span class="rvts63">userGroup</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1149px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 246px;"><p class="rvps3"><span class="rvts63">emailStatus</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1149px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts28">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 246px;"><p class="rvps3"><span class="rvts63">emailError</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1149px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts28">rrTime</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 246px;"><p class="rvps3"><span class="rvts63">userAdded</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1149px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Class _rrTCPjobList</span></span></h1>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">_rrTCPjobList holds an array of jobs that you have requested via jobGetInfo...()</span></p>
+<p class="rvps3"><span class="rvts28">There are 4 possible data classes for jobs. You can check it with getJobDataType().</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts28">jlNone</span><br/><span class="rvts28">You have never called jobGetInfo...(). Or the job was submitted after you have called jobGetInfo...().</span></li>
+<li class="rvps3"><span class="rvts28">jlMinInfo</span><br/><span class="rvts28">You have called jobGetInfo...(), but jobSetFilter() excluded it.</span><br/><span class="rvts28">jlBasic</span><br/><span class="rvts28">You have called jobGetInfoBasic() and jobSetFilter() included it.</span></li>
+<li class="rvps3"><span class="rvts28">jlSend</span><br/><span class="rvts28">You have called jobGetInfoSend() and jobSetFilter() included it.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Example:</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps17"><span class="rvts88">print(tcp.jobs.getJobDataType(xxxxxxx))</span><span class="rvts88"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts21">returns jlNone for all jobs.</span></p>
+<p class="rvps17"><span class="rvts88"><br/></span></p>
+<p class="rvps17"><span class="rvts88">tcp.jobSetFilter("UserX","","","",rrLib._filterIDs.isAll); </span></p>
+<p class="rvps17"><span class="rvts88">tcp.jobGetInfoBasic():</span></p>
+<p class="rvps17"><span class="rvts88">print(tcp.jobs.getJobDataType(xxxxxxx))</span><span class="rvts88"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts21">returns jlBasic for all jobs of UserX. jlMinInfo for all other jobs.</span></p>
+<p class="rvps17"><span class="rvts88"><br/></span></p>
+<p class="rvps17"><span class="rvts88">tcp.jobSetFilter("UserAAA","","","",rrLib._filterIDs.isAll); </span></p>
+<p class="rvps17"><span class="rvts88">tcp.jobGetInfoSend():</span></p>
+<p class="rvps17"><span class="rvts88">print(tcp.jobs.getJobDataType(xxxxxxx))</span><span class="rvts88"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts21">returns jlSend for all jobs of UserAAA. jlBasic for all jobs of UserX, but the data is old. &nbsp;jlMinInfo for all other jobs.</span></p>
+<p class="rvps17"><span class="rvts88"></span><br/><span class="rvts88">tcp.jobSetFilter("UserWWW","","","",rrLib._filterIDs.isAll); </span></p>
+<p class="rvps17"><span class="rvts88">tcp.jobGetInfoBasic():</span></p>
+<p class="rvps17"><span class="rvts88">print(tcp.jobs.getJobDataType(xxxxxxx))</span><span class="rvts21"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts21">returns jlBasic for all jobs of UserWWW. &nbsp;jlSend for all jobs of UserAAA, but the data is old. jlBasic for all jobs of UserX, but the data is old. &nbsp;jlMinInfo for all other jobs.</span></p>
+<p class="rvps17"><span class="rvts88"><br/></span></p>
+<p class="rvps17"><span class="rvts88"><br/></span></p>
+<p class="rvps3"><span class="rvts42"><br/></span></p>
+<p class="rvps3"><span class="rvts42">Class _rrTCPjobList functions:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts42">Return type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts42">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts42">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">sort (</span><span class="rvts28">_sortIDs sortID</span><span class="rvts63">)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts28">Sorts all jobs in your filtered list.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts28">_dataIDs</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getJobDataType (UInt64 jobID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts63">Tells you which data class is currently available for that job.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_JobMinInfo</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getJobMinInfo (UInt64 jobID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_JobBasics</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getJobBasic (UInt64 jobID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts63">If there is no _JobBasics for this job, then an empty job is returned. It has some fields like scene name set to ??..</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_JobSend</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getJobSend (UInt64 jobID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts63">If there is no _JobSend for this job, then it returns getJobBasic()</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts28">int</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getMaxJobs ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts28">Total number of jobs in RR</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_JobMinInfo</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getJobMinInfo_queue (int ID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts63">for a loop with &nbsp;getMaxJobs(), returns NULL if queueID is invalid</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts28">int</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getMaxJobsFiltered ()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts28">Total number of jobs in your filtered list</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">_JobMinInfo</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 236px;"><p class="rvps3"><span class="rvts63">getJobMinInfo_filterQueue (int ID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1103px;"><p class="rvps3"><span class="rvts63">for a loop with &nbsp;getMaxJobsFiltered()</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><a name="enum_dataIDs"></a>
+<span class="rvts0"><span class="rvts33">enumeration _dataIDs</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<div class="rvps3"><table width="200" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">jlNone</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">0</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">jlMinInfo</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">1</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">jlBasic</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">2</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">jlSend</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">3</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><a name="enum_filterIDs"></a>
+<span class="rvts0"><span class="rvts33">enumeration _filterIDs</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<div class="rvps3"><table width="300" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 66px;"><p class="rvps3"><span class="rvts28">bit value</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 64px;"><p class="rvps3"><span class="rvts28">hex value</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts28">isIdle</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 66px;"><p class="rvps3"><span class="rvts28">00000001</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 64px;"><p class="rvps3"><span class="rvts87">0x01</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts28">isRendering</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 66px;"><p class="rvps3"><span class="rvts28">00000010</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 64px;"><p class="rvps3"><span class="rvts87">0x02</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts28">isDisabled</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 66px;"><p class="rvps3"><span class="rvts28">00000100</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 64px;"><p class="rvps3"><span class="rvts87">0x04</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts28">isWaitFor</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 66px;"><p class="rvps3"><span class="rvts28">00001000</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 64px;"><p class="rvps3"><span class="rvts87">0x08</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts28">isFinished</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 66px;"><p class="rvps3"><span class="rvts28">00010000</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 64px;"><p class="rvps3"><span class="rvts87">0x10</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts28">isAll</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 66px;"><p class="rvps3"><span class="rvts28">11111111</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 64px;"><p class="rvps3"><span class="rvts87">0xFF</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33">enumeration _sortIDs</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<div class="rvps3"><table width="200" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sQueue</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">0</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sUser</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">1</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sDateSend</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">2</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sPriority</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">3</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sProject</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">4</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sCustomName</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">5</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sRenderApp</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">6</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sApproved</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">7</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sFramesLeft</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">8</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sFramesDone</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">9</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sTimeRemaining</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">10</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sStatus</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">11</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sScene</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">12</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sLayer</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">13</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sCamera</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">14</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 137px;"><p class="rvps3"><span class="rvts28">sFrameTime</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 49px;"><p class="rvps3"><span class="rvts28">15</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Class _rrTCPclientList</span></span></h1>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts42">Class _rrTCP functions:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 123px;"><p class="rvps3"><span class="rvts42">Return type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts42">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 584px;"><p class="rvps3"><span class="rvts42">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 123px;"><p class="rvps3"><span class="rvts28">int</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">count()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 584px;"><p class="rvps3"><span class="rvts28">Total number of clients in RR</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 123px;"><p class="rvps3"><span class="rvts28">string</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">clientStatus(int clientID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 584px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 123px;"><p class="rvps3"><span class="rvts63">_ClientStatus</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 179px;"><p class="rvps3"><span class="rvts63">at(int clientID)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 584px;"><p class="rvps3"><span class="rvts28"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Enumerations</span></span></h1>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Example:</span></span></h1>
+<p class="rvps3"><span class="rvts28">Please see [RR]/SDK/External/Python/rrControl.py for an example file.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

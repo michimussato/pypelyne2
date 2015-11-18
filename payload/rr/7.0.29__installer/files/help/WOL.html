@@ -1,0 +1,111 @@
+﻿<html>
+	
+<head>
+	<title>WOL</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("WOL");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">WOL</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; <a href="Troubleshooting.html">Troubleshooting</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Troubleshooting.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Troubleshooting.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Firewall.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">WOL does not work</span></span></h2>
+<p class="rvps3"><span class="rvts8">You right-click on an offline client in rrControl and send a WOL command.</span></p>
+<p class="rvps3"><span class="rvts8">But the machine does not turn on. (check the machine itself, perhaps WOL works, but it is not able to start the client).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">TCP subnet mask:</span></p>
+<p class="rvps3"><span class="rvts8">If your TCP subnet mask is not 255.255.255.0 , then you have to change it in rrConfig, tab Clients global (enable "show advanced settings").</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Some things to check:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Check the next chapter with the arp -a command to re-check for the right MAC addresses to use. </span></li>
+<li class="rvps3"><span class="rvts15">RR settings - Client MAC address</span><br/><span class="rvts8">If you have multiple network cards in the machine, then it can be that the wrong one is entered in the client config.</span><br/><span class="rvts8">On windows, open console with start/cmd.exe.</span><br/><span class="rvts8">Enter ipconfig /all</span><br/><span class="rvts8">It shows you the "Physical Address" of all adapters. </span></li>
+<li class="rvps3"><span class="rvts15">Network card driver - update</span><span class="rvts8"> </span><br/><span class="rvts8">Install latest drivers for network card (not using Windows check, manually searching and installing from manufacturers driver downloads)</span></li>
+<li class="rvps3"><span class="rvts15">Network card driver - settings</span><br/><span class="rvts8">Check if WOL is enabled in the hardware device manager of the client.</span><br/><span class="rvts8">Windows: Open the Device Manager, choose the right network card, tab "Advanced".</span><br/><span class="rvts8">Search for WOL or Wake Up. It has to be set to "Magic packet" or "Both".</span><br/><span class="rvts8">If there is a Wake from Shutdown, enable that setting. </span></li>
+<li class="rvps3"><span class="rvts15">Windows Power Management setting</span><br/><span class="rvts8">Open the Device Manager, choose the right network card, tab "Power Management".</span><br/><span class="rvts8">Allow this device to wake the computer via magic packets.</span></li>
+<li class="rvps3"><span class="rvts15">BIOS</span><br/><span class="rvts8">Note: Depending on your BIOS, you might have one or multiple of these settings</span></li>
+<ul style="text-indent: 0px; margin-left: 48px; list-style-position: outside; list-style-type: circle;">
+<li class="rvps13" style="margin-left: 0px"><span class="rvts8">Power Management section: disable Deep Sleep.</span></li>
+<li class="rvps13" style="margin-left: 0px"><span class="rvts8">Power Tab, APM configuration screen, Power On By PCIE Devices needs to be enabled.</span></li>
+<li class="rvps13" style="margin-left: 0px"><span class="rvts8">Advanced tab, Chipset screen, South Bridge screen, enable &nbsp;"Wake on LAN from S5" (AMI/ American Megatrends BIOS)</span></li>
+<li class="rvps13" style="margin-left: 0px"><span class="rvts8">Power &nbsp;Management Screen, Enable WOL from Soft Off (Biostar BIOS)</span></li>
+<li class="rvps13" style="margin-left: 0px"><span class="rvts8">Power screen, Hardware Power Management screen, &nbsp;enable "S5 Wake on LAN" (HP Bios)</span><br/><span class="rvts8"><br/></span></li>
+</ul>
+<li class="rvps3"><span class="rvts15">RR settings - global WOL settings</span><br/><span class="rvts8">Open rrConfig, tab "Clients (global)", enable "Show advanced settings" at the bottom.</span><br/><span class="rvts8">Check if the subnet mask matches the settings in your network configuration of the system.</span><br/><span class="rvts8">You can try to change the WOL port to 80. (port 80 is used for the http:// internet. It might be that a device in your company blocks every other port for security reasons)</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Windows: &nbsp;Test WOL command transmission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can test if the WOL command send by RR is at least transmitted to your machine.</span><br/><span class="rvts8"></span><br/><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Download this application:</span><br/><a class="rvts20" href="http://www.depicus.com/wake-on-lan/wake-on-lan-monitor.aspx">http://www.depicus.com/wake-on-lan/wake-on-lan-monitor.aspx</a></li>
+<li class="rvps3"><span class="rvts8">Execute it on the machine with the WOL problem (no need to install)</span></li>
+<li class="rvps3"><span class="rvts8">By default, RR uses the port 2304 for WOL. Enter this into UDP port.</span></li>
+<li class="rvps3"><span class="rvts8">Send a WOL command to the machine with the WOL problem.</span></li>
+<li class="rvps3"><span class="rvts8">If the monitor app catches the WOL command, then everything is right within your network.</span><br/><span class="rvts8">So the issue is the computer (BIOS, network card, settings)</span><br/><span class="rvts8">If nothing is received, then the issue is either a firewall at your rrServer, a network switch or network router.</span><br/><span class="rvts8"></span><br/><span class="rvts8"></span><br/><span class="rvts8"></span><br/><span class="rvts8"></span><br/><span class="rvts8"><br/></span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

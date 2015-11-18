@@ -1,0 +1,110 @@
+﻿<html>
+	
+<head>
+	<title>No-frame Jobs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("NoframeJobs");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">No-frame Jobs</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="KnowledgebaseHiddenFeatures.html">Knowledgebase/Hidden Features</a> &rsaquo;&rsaquo; <a href="Rendering.html">Rendering</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Rendering.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Nukepostscript.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Customtilerender.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Simulation - with cache file</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have a simulation job that outputs a single cache file or multiple cache files per frame, then you can just send it like every other job that renders images.</span></p>
+<p class="rvps3"><span class="rvts8">For the rrServer it does not matter if the output file of an job is an image file or a cache file.</span></p>
+<p class="rvps3"><span class="rvts8">In Houdini, you could also add a small mantra render after the cache and submit it as a default render and have a few preview images.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Once machine only:</span></p>
+<p class="rvps3"><span class="rvts8">You should set "Max clients at a a time" to 1 and disable "Render Preview First".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">All frames at once:</span></p>
+<p class="rvps3"><span class="rvts8">Some simulations require that the whole frame range is simulated in one continuous execution.</span></p>
+<p class="rvps3"><span class="rvts8">You have to enable Sequence Divide and set the Sequence Divide - Min to 0 for these simulations.</span></p>
+<p class="rvps3"><span class="rvts8">It will render on one machine only.</span></p>
+<p class="rvps3"><span class="rvts8">If a render aborts/crashes, it starts at the first frame again.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Simulation - no cache file</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You sometimes need to simulate some stuff which does not output a cache file per frame OR a cache file for the whole sequence (=job).</span></p>
+<p class="rvps3"><span class="rvts8">In this case you have two choices:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">1.</span></p>
+<p class="rvps3"><span class="rvts8">Enable the option "Do not check for frames" for the job.</span></p>
+<p class="rvps3"><span class="rvts8">The server sends the job to clients, but each frame only once.</span></p>
+<p class="rvps3"><span class="rvts8">It does not care if your simulation has written the cache or not.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">2.</span></p>
+<p class="rvps3"><span class="rvts8">If you use your own script to do this simulation, you can just write a "fake" output file at the end of your simulation function (it has to be at least 1024 bytes).</span></p>
+<p class="rvps3"><span class="rvts8">So you have a proof that your simulation function was running until the end and the server finds "frame" files to count.</span></p>
+<p class="rvps3"><span class="rvts8">You can use the executable rrCreatePlaceholderFile to create a 1024byte file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">3.</span></p>
+<p class="rvps3"><span class="rvts8">Note: If all frames have to be rendered in a row by one machine, please set sequence divide to 0.</span></p>
+<p class="rvps3"><span class="rvts8">If you set Sequence Divide Min to 0, then the sequence is not divided.</span></p>
+<p class="rvps3"><span class="rvts8">All frames are send at once to one client.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

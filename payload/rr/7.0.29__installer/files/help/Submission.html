@@ -1,0 +1,186 @@
+﻿<html>
+	
+<head>
+	<title>Submission</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Submission");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Submission</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Usage.html">Usage</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Usage.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Usage.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="JobSettings.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Submitter</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The submitter is used to setup</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Basic Scene Information (Scene name, Camera, Sequence length, Image File )</span></li>
+<li class="rvps3"><span class="rvts8">Render parameter (Verbose, Quality )</span></li>
+<li class="rvps3"><span class="rvts8">Royal Render options (Which client, Job Priority, Scripts to execute, Notification ) </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">After everything is set up, the scene is send to the server.</span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Get Basic Scene Information</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Here are two ways to get scene data into the submitter:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 167px;"><p class="rvps3"><span class="rvts8">Scene Parser</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1310px;"><p class="rvps3"><span class="rvts8">You start the rrSubmitter manually, then you use the Load button to load a scene file.</span></p>
+<p class="rvps3"><span class="rvts8">After you have selected a scene file, a Scene Parser Plugin loads all Basic Scene Information (Scene name, Camera, Sequence length, Image File ) from the scene file.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 167px;"><p class="rvps3"><span class="rvts8">via Plugin (recommended)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1310px;"><p class="rvps3"><span class="rvts8">RR offers plugins for most of the 3D and compositing applications. (See Renderer if there is a plugin for your application)</span></p>
+<p class="rvps3"><span class="rvts8">The plugin starts the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">Some of the plugins are reading all Basic Scene Information (Scene name, Camera, Sequence length, Image File ) from the scene you are working in, and send this data via a .xml file to the rrSubmitter.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can then select select each layer in the left layer table and check the scene information.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts37">See Pink?</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you have selected multiple Layers,</span></p>
+<p class="rvps3"><span class="rvts8">then the submitter shows you differences between the selected Layer in pink.</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/pink.png"/></p>
+<p class="rvps3"><span class="rvts29"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33">Choose Layer to Render</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">After all scene information is in the submitter, you have to choose which Layer you want to render.</span></p>
+<p class="rvps3"><span class="rvts28">Just check the layers you want to render</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts28">.</span><img alt="" style="padding : 1px;" src="lib/layer_to_render.png"/></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33">Choose Clients for Rendering</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts28">You sometimes want that only some of your clients should render a job.</span></p>
+<p class="rvps3"><span class="rvts28">For example if only a few machines have enough memory or have a special plugin installed.</span></p>
+<p class="rvps3"><span class="rvts28">(If you need selections of clients more often, you can create groups in rrConfig).</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Just select a group or multiple clients and hit "Assign, only".</span></p>
+<p class="rvps3"><span class="rvts28">This assigns the selection and deassigns all other clients.</span></p>
+<p class="rvps3"><span class="rvts28">The first column shows you the assignment,</span></p>
+<p class="rvps3"><span class="rvts39">green = assigned</span></p>
+<p class="rvps3"><span class="rvts40">orange = deassigned</span><span class="rvts31"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/clients_for_rendering.png"/><span class="rvts31"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts31"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Client Groups can be set in </span><a class="rvts20" href="rrConfig.html">rrConfig</a></p>
+<p class="rvps3"><span class="rvts30"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33">Submit</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Of course, you have to submit the job to the server.</span></p>
+<p class="rvps3"><span class="rvts28"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/submit_jobs.png"/></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33"> D</span></span><span class="rvts0"><span class="rvts13">e</span></span><span class="rvts0"><span class="rvts33">tails</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">For a detailed description of the Submitter, check the </span><a class="rvts20" href="rrSubmitter.html">rrSubmitter</a><span class="rvts28"> help.</span></p>
+<p class="rvps3"><span class="rvts28">For a description of the settings, check </span><a class="rvts20" href="JobSettings.html">Job Settings</a><span class="rvts32">.</span></p>
+<p class="rvps3"><span class="rvts32"><br/></span></p>
+<p class="rvps3"><span class="rvts32"><br/></span></p>
+<p class="rvps3"><span class="rvts32"><br/></span></p>
+<p class="rvps3"><span class="rvts32"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts34">Commandline rrSubmitter</span></span></h1>
+<p class="rvps3"><span class="rvts35">You can submit jobs to the server via the rrSubmitterconsole.</span></p>
+<p class="rvps3"><span class="rvts35">The commandline submitter works the same as the UI Submitter (even the same commandline flags), but you cannot change anything via the UI.</span></p>
+<p class="rvps3"><span class="rvts35">Jobs are directly send to the server without any user interaction.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">All basic scene information is either set via a scene parser plugin or via commandline flags.</span></p>
+<p class="rvps3"><span class="rvts35">See</span><span class="rvts32"> </span><a class="rvts20" href="rrSubmitterConsole.html">rrSubmitterconsole</a><span class="rvts35"> for all flags and usage.</span></p>
+<p class="rvps3"><span class="rvts35"> </span><span class="rvts35"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">RR submission job files</span></span></h1>
+<p class="rvps3"><span class="rvts28">RR submission job files are .XML files with all information required for a job.</span></p>
+<p class="rvps3"><span class="rvts28">Please read </span><a class="rvts38" href="rrJobsubmitxmlfile.html">rrJob submit xml file</a><span class="rvts28">.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Default job settings</span></span></h1>
+<p class="rvps3"><span class="rvts28">The job render parameter (Priority, Verbose, Quality ) and Royal Render options (Which client, Post-scripts, Notification ) are (usually) not set by a submission job file.</span></p>
+<p class="rvps3"><span class="rvts28">If you want to change these options for a submission, you have to change the submitter default settings.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">This can be done</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts28">in the </span><a class="rvts20" href="SubmitterDefaults.html">Submitter defaults files</a><span class="rvts28"> (change via the rrSubmitter menu).</span></li>
+<li class="rvps3"><span class="rvts28">via</span><span class="rvts32"> </span><a class="rvts20" href="rrSubmitterConsole.html">commandline</a><span class="rvts28">.</span></li>
+<li class="rvps3"><span class="rvts28">xml parameters</span><br/><span class="rvts28">add a global xml node and include the same parameter as you would in a commandline.</span><br/><span class="rvts28">For example an .xml file could start like this:</span><br/><span class="rvts28">&lt;rrJob_submitFile syntax_version="6.0"&gt;</span><br/><span class="rvts28"> &nbsp; &nbsp;&lt;DeleteXML&gt;1&lt;/DeleteXML&gt;</span><br/><span class="rvts28"> &nbsp; &nbsp;&lt;SubmitterParameter&gt; RenderPreviewFirst=1~0 &lt;/SubmitterParameter&gt;</span><br/><span class="rvts28"> &nbsp; &nbsp;&lt;SubmitterParameter&gt; "CustomSeQName=1~345" "CustomSHotName= 1~17a" &lt;/SubmitterParameter&gt;</span><br/><span class="rvts28"> &nbsp; &nbsp;&lt;Job&gt;</span><br/><span class="rvts28"> &nbsp; &nbsp;.</span><br/><span class="rvts28"> &nbsp; &nbsp;.</span><br/><span class="rvts28"> &nbsp;&nbsp;</span><a class="rvts20" href="ExamplerrJob_submitFilewithoptio.html"> Example Submitter file with RR settings</a><br/><span class="rvts28"><br/></span></li>
+</ul>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">All available options can be seen via the </span><a class="rvts20" href="SubmitterDefaults.html">rrSubmitter defaults editor</a><span class="rvts32">.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

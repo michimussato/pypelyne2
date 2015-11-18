@@ -1,0 +1,276 @@
+﻿<html>
+	
+<head>
+	<title>GPU render</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("GPUrender");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">GPU render</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="InfosrrTerms.html">Infos/rrTerms</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="InfosrrTerms.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="CrossOSrender.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="LocalDataFolder.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RR has a job flag "GPU required".</span></p>
+<p class="rvps3"><span class="rvts8">This flag has no influence on the rendering or render application.</span></p>
+<p class="rvps3"><span class="rvts8">It only tells tells the rrServer if a job can be send to a client.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 461px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 824px;"><p class="rvps3"><span class="rvts8">Is the job send to a client?</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 461px;"><p class="rvps3"><span class="rvts8">Job GPU Flag Disabled</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 824px;"><p class="rvps3"><span class="rvts8">The job is send to all assigned clients. Just as every other job.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 461px;"><p class="rvps3"><span class="rvts8">Job GPU Flag Enabled, &nbsp; &nbsp;Client running as service/deamon</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 824px;"><p class="rvps3"><span class="rvts8">Client config requires to have "GPU available within service" enabled. </span><br/><span class="rvts8">Otherwise the job is not send.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 461px;"><p class="rvps3"><span class="rvts8">Job GPU Flag Enabled, &nbsp; Client started in application mode (via autostart or manually)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 824px;"><p class="rvps3"><span class="rvts8">Client config requires to have nothing set in "GPU requires this user".</span></p>
+<p class="rvps3"><span class="rvts8">Or the user "GPU requires this user" needs be be logged in.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Windows</span></span></h1>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">This whole section is for Windows only</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Windows does NOT allow any background service to access the graphic card.</span></p>
+<p class="rvps3"><span class="rvts8">In the eyes of Microsoft a graphic card is only for the person sitting in front of the machine.</span></p>
+<p class="rvps3"><span class="rvts8">The only "workaround" from Microsoft is a new function that a service can display a message box on the artists screen...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Therefore you cannot run the client as service if you want to use GPU rendering.</span></p>
+<p class="rvps3"><span class="rvts8">You have to login and start the rrClient manually (or via an autostart/startup link).</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Windows user switching:</span></p>
+<p class="rvps3"><span class="rvts8">We have also done some tests with two users logged into a workstation.</span></p>
+<p class="rvps3"><span class="rvts8">We have logged in a renderfarm user and then used the Windows user switching to login the artist as well.</span></p>
+<p class="rvps3"><span class="rvts8">The test result was the same, the renderer of the user in the background was not able to use the GPU.</span></p>
+<p class="rvps3"><span class="rvts8">Note: This was a one-time test only, which is not representative.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Therfore, if you want to render with a GPU on windows, you have these solutions:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 300px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Geforce (not Titan)</span></li>
+<li class="rvps3"><span class="rvts8">Geforce Titan &nbsp;"Graphic card mode"</span></li>
+<li class="rvps3"><span class="rvts8">Quadro &nbsp; "Graphic card mode"</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1339px;"><p class="rvps3"><span class="rvts8">The Client has to run in </span><a class="rvts20" href="BasicTestinstallApplicationmode.html">Application Mode.</a><br/><span class="rvts8">You have two choices:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Start the client manually. If you log off or start the machine, you have no client running.</span></li>
+<li class="rvps3"><span class="rvts8">Dual Mode: Background service and application client when you login. (see bottom of this page)</span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 220px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Geforce Titan &nbsp;"TCC mode"</span></li>
+<li class="rvps3"><span class="rvts8">Quadro &nbsp; "TCC mode" &nbsp;</span></li>
+<li class="rvps3"><span class="rvts8">Tesla Card</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1339px;"><p class="rvps3"><span class="rvts8">The Client can run in any way. &nbsp;(Application and Service mode)</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">rrClient running as service? &nbsp; &nbsp; </span></span><br/><span class="rvts0"><span class="rvts14">Nvidia TCC mode!</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Important Note:</span></p>
+<p class="rvps3"><span class="rvts15">Do not forget to enable "GPU available within service" in the client config if you use the TCC mode.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The only solution with a service is so far to use a processing card (TCC= Tesla Compute Cluster).</span></p>
+<p class="rvps3"><span class="rvts8">Use a cheap graphics card for the UI display and a second processing card for your GPU renderer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Nvidia offers a TCC driver for its </span><span class="rvts15">Tesla, </span><span class="rvts8">some</span><span class="rvts15"> Quadro </span><span class="rvts8">and</span><span class="rvts15"> Geforce Titan</span><span class="rvts8"> (Titan requires driver R352+).</span></p>
+<p class="rvps3"><span class="rvts8">This is a computation driver and not a graphics driver. Therefore it can be used by a windows service.</span></p>
+<p class="rvps3"><span class="rvts8">You cannot use the card to connect it to a monitor any more!</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Change Quadro/Titan card mode:</span></p>
+<p class="rvps3"><span class="rvts8">You can change the TCC mode with the C:\Program Files\NVIDIA Corporation\NVSMI\nvidia-smi.exe application.</span></p>
+<div class="rvps3"><table width="60%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 220px;"><p class="rvps3"><span class="rvts8">nvidia-smi.exe</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 642px;"><p class="rvps3"><span class="rvts8">Get information about installed cards</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 220px;"><p class="rvps3"><span class="rvts8">nvidia-smi.exe -L</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 642px;"><p class="rvps3"><span class="rvts8">List installed cards with GPU ID and name.</span></p>
+<p class="rvps3"><span class="rvts8">You need the GPU ID to change the mode.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 220px;"><p class="rvps3"><span class="rvts8">nvidia-smi.exe -h</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 642px;"><p class="rvps3"><span class="rvts8">Display help. It also shows "Supported products".</span></p>
+<p class="rvps3"><span class="rvts8">Driver Version: 306.97 printed:</span></p>
+<p class="rvps3"><span class="rvts8">Supported products: Tesla: S1070, S2050, C1060, C2050/70/75, M2050/70/75/90, X2070/90, Gemini</span></p>
+<p class="rvps3"><span class="rvts8">Quadro: 4000, 5000, 6000, 7000, 600, 2000, 3000M and 410</span></p>
+<p class="rvps3"><span class="rvts8">Other: All other products are unsupported</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 220px;"><p class="rvps3"><span class="rvts8">nvidia-smi.exe -dm &lt;GPU_ID&gt; -i 1</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 642px;"><p class="rvps3"><span class="rvts8">Change Graphic card into TCC mode</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24">Step by step - change GPU mode :</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Open a command prompt as an administrator. You can do that by typing ‘cmd’ on the start menu, right clicking it from the list and “run as administrator”</span></li>
+<li class="rvps3"><span class="rvts8">cd \Program Files\NVIDIA Corporation\NVSMI</span></li>
+<li class="rvps3"><span class="rvts8">Type nvidia-smi.exe. It will list your GPUs. Find your Titan (or Quadro/Tesla) that’s not connected to a monitor in that list. Let’s say it’s device #3. </span></li>
+<li class="rvps3"><span class="rvts8">Type nvidia-smi -i 3 -dm 1. This means “put device 3 into TCC mode”. If you used -dm 0, this means “put it in WDDM mode” (so it can render the desktop etc).</span></li>
+<li class="rvps3"><span class="rvts8">Reboot</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Dual Mode: &nbsp;service + &nbsp;interactive application mode</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you do not have a second GPU card, then you have to start the rrClient manually in your interactive session (Application Mode).</span></p>
+<p class="rvps3"><span class="rvts8">To start the client in interactive mode, you can just add a link to the win_rrClient.bat file in the RR &nbsp;Root and place it into your "Startup" start-menu folder.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The disadvantage of an interactive mode is that you have to login on the machine. </span></p>
+<p class="rvps3"><span class="rvts8">And if you have not setup an (plain password) auto-login, then your rrClient is not running if you startup the machine.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore you can run two clients.</span></p>
+<p class="rvps3"><span class="rvts8">Keep the service running as usual.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Create a link to RR/win_rrClient.bat (via right-click in windows explorer).</span></p>
+<p class="rvps3"><span class="rvts8">Edit the properties and add the commandline flag </span><span class="rvts57">-UITakeOverService</span></p>
+<p class="rvps3"><span class="rvts8">The interactive client will start and stays in an invisible mode.</span></p>
+<p class="rvps3"><span class="rvts8">The service will disable itself, but it does NOT abort a render that is in progress.</span></p>
+<p class="rvps3"><span class="rvts8">Once the service is disabled, the service puts itself into invisible mode.</span></p>
+<p class="rvps3"><span class="rvts8">And the interactive client takes over.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You might want to use additional commandline flags like:</span></p>
+<div class="rvps3"><table width="650" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-IgnoreWorkingHours</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">Do not disable the interactive client during working hours</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-ShutdownEvenIfLoggedIn</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">Temporally enables the setting "Shutdown even if a user is logged in"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-MapGlobalDrives</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">Map the drives set in rrConfig at startup.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-NoPassOnClose</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">The Client does not ask for a password if you try to close it.</span></p>
+<p class="rvps3"><span class="rvts8">(Overrides the setting rrConfig,Tab Logins "Lock with rrAdmin password")</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Change user account</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The rrClient will run with the rights of the user logged in.</span></p>
+<p class="rvps3"><span class="rvts8">It is possible to start the rrClient with the user account of the </span><a class="rvts20" href="UserforrrService.html">rrService user</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please execute</span></p>
+<p class="rvps3"><span class="rvts8">RR/bin/win/rrStartLocal -serviceuser -localTempPath C:\temp &nbsp; &nbsp;rrClient -UITakeOverService ....</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

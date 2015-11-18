@@ -1,0 +1,10 @@
+<tr <%HTMLBGRowColor%> >
+    <td bgcolor="#CCCCCC" nowrap>&nbsp;<%CMDClient_Ico_Enable%>&nbsp;<%CMDClient_Ico_Disable%>&nbsp;<%CMDClient_Ico_Abort%>&nbsp;<%CMDClient_Ico_WOL%></td>
+    <td nowrap><font color="#<%ClientStatusColor%>"><%ClientName%></font></td>
+    <td nowrap><font color="#<%ClientStatusColor%>"><%ClientStatus%></font></td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><img SRC="../_layout/cpu<%ClientCPUImgNumber%>.gif"></td>
+    <td nowrap><img SRC="../_layout/mem<%ClientMemoryImgNumber%>.gif">&nbsp;<%ClientMemory%></td>
+</tr>
+

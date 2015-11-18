@@ -1,0 +1,161 @@
+﻿<html>
+	
+<head>
+	<title>User for rrService</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("UserforrrService");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">User for rrService</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Installation.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Permanentbackgroundservicemode.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="WindowsNotes.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">What is the rrService user?</span></span></h2>
+<p class="rvps10"><span class="rvts23"><br/></span></p>
+<p class="rvps10"><span class="rvts25">If you install the rrClient or rrServer as service, then the service starts the rrClient/rrServer with a different user account.</span></p>
+<p class="rvps10"><span class="rvts25">The user change is required as the local root/system account is usually not able to access the fileserver.</span></p>
+<p class="rvps10"><span class="rvts25"><br/></span></p>
+<p class="rvps10"><span class="rvts23"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Requirements for the rrService user</span></span></h2>
+<p class="rvps10"><span class="rvts23"><br/></span></p>
+<p class="rvps10"><span class="rvts23">In a nutshell, the rrService User has to be able to</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Login at the local workstation.</span></li>
+<li class="rvps3"><span class="rvts8">Access to the fileserver share with the RR folder.</span></li>
+<li class="rvps3"><span class="rvts8">Access to the fileserver share with your scene/project data.</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Explanation:</span></p>
+<p class="rvps3"><span class="rvts8">The rrClient needs to have access to the files on your fileserver.</span></p>
+<p class="rvps3"><span class="rvts8">And for any file access to a different machine you need to have a user name and password.</span></p>
+<p class="rvps3"><span class="rvts8">So the service starts the client with the login of a "rrService User".</span></p>
+<p class="rvps3"><span class="rvts8">The rrService User can be any user login in your company.</span></p>
+<p class="rvps3"><span class="rvts8">Any user, that is able to access all required data on your fileserver.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Is user XXX the right user?</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you login on your workstation with user XXX and you can access all project data </span><span class="rvts15">(!!without entering any further password!!)</span><span class="rvts8">, you can use user XXX.</span></p>
+<p class="rvps3"><span class="rvts8">Some companies prefer to create a new user YYY only for RRender (so they can track file access at the file server).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Test if user XXX is right (Description is for windows):</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Login with the user XXX.</span></li>
+<li class="rvps3"><span class="rvts8">Open the Windows Explorer.</span></li>
+<li class="rvps3"><span class="rvts8">If there are any mapped drives to the fileserver, hold the ALT-key and choose "Disconnect Network Drive..." to disconnect all cached connections, then logoff again an start at 1.</span></li>
+<li class="rvps3"><span class="rvts8">Open the Windows Explorer. Hold the ALT-key and choose "Map Network Drive...".</span></li>
+<li class="rvps3"><span class="rvts8">Enter the UNC path to your RR share and any drive letter.</span></li>
+<li class="rvps3"><span class="rvts8">Check "Connect using a different user/credentials".</span></li>
+<li class="rvps3"><span class="rvts8">Hit ok.</span></li>
+<li class="rvps3"><span class="rvts8">The map function asks your for a user/password. If it asks you for a password only, then choose the second item to specify user and pass.</span></li>
+<li class="rvps3"><span class="rvts8">Enter User and Password that you want to use for the rrService. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Windows Notes</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Internal/Real User Name:</span></p>
+<p class="rvps3"><span class="rvts8">If you have renamed the display name of you user, then windows still uses the original user name internally.</span></p>
+<p class="rvps3"><span class="rvts8">To check the user name, please right-click on the computer icon (desktop or start menu) and choose "Manage".</span></p>
+<p class="rvps3"><span class="rvts8">Select "Local Users and Groups".</span></p>
+<p class="rvps3"><span class="rvts8">You have listed all users with a "Name" and a descriptive "Full Name".</span></p>
+<p class="rvps3"><span class="rvts8">RR requires you to use the "Name".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Local Admin / Privileges</span><span class="rvts8"> (this does not apply for the rrServer)</span><span class="rvts15">:</span></p>
+<p class="rvps3"><span class="rvts8">The User needs to be either</span></p>
+<p class="rvps11"><span class="rvts15">a) </span><span class="rvts8">(recommended) in the local group "Administrators" .</span></p>
+<p class="rvps11"><span class="rvts8">(it is not required to be a domain admin, it only needs to be a local admin on the workstation)</span></p>
+<p class="rvps3"><span class="rvts8">OR</span></p>
+<p class="rvps11"><span class="rvts15">b)</span><span class="rvts8"> (not recommended) the user has to be in the group "Performance Monitor" ,</span></p>
+<p class="rvps11"><span class="rvts8">and it requires at least the local privilege "Debug Programs", "Create global objects" and "Replace a process level token".</span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">(you can change privileges via the tool Control Panel / Administrative Tools / Local Security Policy. In that program "Local Policies/ User Rights Assignment")</span></p>
+<p class="rvps11"><span class="rvts8">Note: You probably need to add additional privileges, otherwise the client can not execute functions like "Shutdown Machine" or "Sync time with server".</span></p>
+<p class="rvps12"><img alt="" style="padding : 1px;" src="lib/privileges.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24">These rights are required for:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Check the render process tree</span></li>
+<li class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Rendering with After Effects (a bug in afx, it reports that it cannot access the preferences)</span></li>
+<li class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Install any applications by RRender</span></li>
+<li class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Update the rrService</span></li>
+<li class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Check who is logged in</span></li>
+<li class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Create a connection to ClientWatch</span></li>
+<li class="rvps3"><span class="rvts8"> &nbsp; &nbsp;(shutdown machine/change system time) </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Local or Domain User?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Are you in a domain and it is a domain user? Then you have to enter the domain name at the installer.</span></p>
+<p class="rvps3"><span class="rvts8">If not, then the "domain" edit line has to be empty.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you are not in a domain, then you have to manually create the user on each workstation.</span></p>
+<p class="rvps3"><span class="rvts8">If you create a user, check "password never expires" and UN-check "user has to change password on first login".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please try to login with that user on the workstation after you created the user.</span></p>
+<p class="rvps3"><span class="rvts8">Cause windows could tell you more detailed information if there is a problem.</span></p>
+<p class="rvps3"><span class="rvts8">And it creates user preferences which are required for some renderer or plugins.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

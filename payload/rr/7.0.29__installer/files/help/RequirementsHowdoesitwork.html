@@ -1,0 +1,110 @@
+﻿<html>
+	
+<head>
+	<title>Requirements/ How does it work</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("RequirementsHowdoesitwork");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Requirements/ How does it work</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Installation.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Installation.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="BasicTestinstallApplicationmode.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Hardware Requirements </span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Basic requirements for network rendering</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts15">Fileserver/NAS for project data:</span><br/><span class="rvts8">If you want to render on multiple machine, then you have do work on a fileserver. All project data (scene files, textures, output images) has to be saved on the fileserver. </span><br/><span class="rvts8">You can NOT use any files that are on your local harddrive. &nbsp;Because the other machines do not have these files on their local drive. (Exception: You work/access your local drive via a network share name) </span><br/><span class="rvts8">Note Microsoft Windows Limitation: You cannot use Windows XP/Vista/7 for a fileserver if you are using more than 4 clients. You have to use at least Microsoft Server foundation (which is not much more expensive than win7) &nbsp;</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">For Royal Render you need</span></span></h2>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts15">rrServer machine: </span><br/><span class="rvts8">1 Windows or Linux machine for the rrServer (win XP, Win 2k, Win server). </span><br/><span class="rvts8">OS: Windows (2k, XP, 7, Server...) or Linux (CentOS, Fedora, Mandrake...) </span><br/><span class="rvts8">Ram: 1GB+ CPU: 2,5 Ghz single core, dual core recommended (as the server is multi-threaded) </span><br/><span class="rvts8">Can be the fileserver</span></li>
+<li class="rvps3"><span class="rvts15">Fileserver/NAS for the RR applications: </span><br/><span class="rvts8">1 fileserver which holds all RRender application files.</span><br/><span class="rvts8">It can be the same as the rrServer server and/or the same as the project fileserver. </span><br/><span class="rvts8">You require a network share (or directory on an existing share), which is accessable by everyone. This folder has all client and submitter executables and all config files.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/requirements_smaller_02.jpg"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/requirements_large_01.jpg"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">How does it work</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Save Scene: </span><br/><span class="rvts8">The artist has created a scene file. The scene file with all textures and source files is saved on the fileserver.</span><br/><span class="rvts8">The data has to be on a fileserver as all machines need to access the files.</span><br/><span class="rvts8">E.g. the folder C:\MySceneData is not located on each machine.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">Submit Job:</span><br/><span class="rvts8">The artist starts the rrSubmitter via a plugin in the menu in the 3D/comp application.</span><br/><span class="rvts8">The plugin will read all required information from the scene and sends it to the rrServer.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">Send Job:</span><br/><span class="rvts8">The rrServer sends frames of each job to rrClients. The rrClients are either workstations or pure render farm machines.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">Load Scene:</span><br/><span class="rvts8">The rrClient starts the 3D/comp application and loads the scene file from the fileserver.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">Write Frames:</span><br/><span class="rvts8">The rrClient renders the frame numbers it has got from the rrServer.</span><br/><span class="rvts8">Then it checks the frames and writes them to the fileserver.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">Check Job and Frames:</span><br/><span class="rvts8">The artist checks the progress of the job via RR. </span><br/><span class="rvts8">And the artist checks the rendered frames either via RR or loads them directly from the fileserver.</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img width="607" height="353" alt="" style="padding : 1px;" src="lib/HowItWorks_1.jpg"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

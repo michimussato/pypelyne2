@@ -1,0 +1,88 @@
+﻿<html>
+	
+<head>
+	<title>Submission</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Submission2");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Submission</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Usage.html">Usage</a> &rsaquo;&rsaquo; <a href="Troubleshooting1.html">Troubleshooting</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Troubleshooting1.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Troubleshooting1.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Render.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14"> &nbsp; I do not see any clients in the list</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have all your scene data in the submitter (either via plugin or via loading the scene file).</span></p>
+<p class="rvps3"><span class="rvts8">But there are no or not all clients in the client table.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitter shows the clients which have the render application of the active jobs installed.</span></p>
+<p class="rvps3"><span class="rvts8">If clients are not listed, then the render application is not set in their configuration.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have two options:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Open the configuration at the client.</span><br/><span class="rvts8">On the second tab you can either manually or automatically (via the button on the bottom) add the render application.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">If you have any clients, you probably do not want to login and add the application at every clients.</span><br/><span class="rvts8">So if the automated way with the button in 1. works, you can send that command to all clients.</span><br/><span class="rvts8">Open rrControl, select all clients and choose "Config"/"Rescan for installed software" as client command.</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

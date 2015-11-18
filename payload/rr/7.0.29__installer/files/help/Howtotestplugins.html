@@ -1,0 +1,106 @@
+﻿<html>
+	
+<head>
+	<title>How to test plugins</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Howtotestplugins");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">How to test plugins</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Plugins.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Pluginnaming.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Authorization.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Python:</span></p>
+<p class="rvps3"><span class="rvts8">Use the application &nbsp;RR/bin/[os]/rrTestplugin to test your plugins.</span></p>
+<p class="rvps3"><span class="rvts8">Or you can write and test your server plugins as per-job commands in via rrControl.</span></p>
+<p class="rvps3"><span class="rvts8">Note: rrControl supports UI widgets like a progressbar. These commands are not available as server plugin.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">C++:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">Server plugin</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1383px;"><p class="rvps3"><span class="rvts8">RR applications are getting a list of plugins at startup.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore it is save to place the plugin into [RR]\plugins\server_....\</span></p>
+<p class="rvps3"><span class="rvts8">Then use the RR/bin/[os]/rrTestplugin application.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">Image Plugin</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1383px;"><p class="rvps3"><span class="rvts8">They can be directly tested with the rrViewer</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px; height: 14px;"><p class="rvps3"><span class="rvts8">Scene Parser Plugins</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1383px; height: 14px;"><p class="rvps3"><span class="rvts8">Directly use the rrSubmitter.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

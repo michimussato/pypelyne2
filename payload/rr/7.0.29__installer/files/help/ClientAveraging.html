@@ -1,0 +1,138 @@
+﻿<html>
+	
+<head>
+	<title>Client Averaging</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ClientAveraging");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Client Averaging</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="InfosrrTerms.html">Infos/rrTerms</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="InfosrrTerms.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="InfosrrTerms.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="CrossOSrender.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Client Averaging</span></span></h2>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">How does "Average clients between users" work?</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">At first it will only work, if the jobs are send by different Users/Company Projects (depends on your RR config).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">A little example:</span></p>
+<p class="rvps3"><span class="rvts8">- You have 9 clients in your farm (PC1 to PC9)</span></p>
+<p class="rvps3"><span class="rvts8">- Three users have send a job. User A, B and C at the </span><span class="rvts15">same time</span><span class="rvts8">. They choose all the clients to render.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If all clients have the same PS (processor speed), the server tries to reach</span></p>
+<p class="rvps3"><span class="rvts8">PC 1, PC 2, PC 3 : Job A</span></p>
+<p class="rvps3"><span class="rvts8">PC 4, PC 5, PC 6 : Job B</span></p>
+<p class="rvps3"><span class="rvts8">PC 7, PC 8, PC 9 : Job C</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It won't be this case all the time, cause the server is only able to influence the job of a client if the client asks for a new job.</span></p>
+<p class="rvps3"><span class="rvts8">The more frequently the clients are asking for a new job, the better the server is able to arrange the clients.</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Worst case:</span></p>
+<p class="rvps3"><span class="rvts8">Job A was send at first to the server, there is no other job at the server at this time. It is a very complex rendering e.g. 500 frames with 30 minutes per frame. It would take whole a day on all of your 9 machines. The server will send this job to all clients, cause there is no other job to render.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then you send job B and C.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Without sequence divide:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; Cause the clients are rendering job A, they won't ask for a new job until they finished job A.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; The farm is rendering the whole day (and night) on Job A.</span></p>
+<p class="rvps3"><span class="rvts8">With sequence divide:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; Job A was send with sequence divide (max 10 frames). The clients will render one chunk after an other.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; One chunk takes 10 frames x 30 minutes = 5 hours.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; The clients will ask every 5 hours for a new job.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; = &gt; After 5 hours the server is able to average the clients between jobs A, B and C.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">With "Allow server to abort jobs for better averaging":</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; Every 6 hours the server analyses a list how many clients all users take.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; If one user has many more than the average number of clients, the server aborts some clients with jobs of this user.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If Job B or C are a very important job, you have to set it to ultimate priority and enable "abort lower jobs" (while submitting).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Debugging</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you think that the averaging does not work right, there is a way to debug for issues.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can see more information why a job was send.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Check the value for "Allow Server to abort clients for averaging" in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8">If it is every 3 hours, then the server executes it at 3:00, 6:00, 9:00....</span></p>
+<p class="rvps3"><span class="rvts8">If it is every 5 hours, then the server executes it at 5:00, 10:00, 15:00....</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">A few minutes after that time, please check if the clients are spread evenly across the user/projects.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For example:</span></p>
+<p class="rvps3"><span class="rvts8">UserA has 15 clients.</span></p>
+<p class="rvps3"><span class="rvts8">UserB has 3 clients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Open rrControl.</span></p>
+<p class="rvps3"><span class="rvts8">- Select the job of UserA with the most clients rendering.</span></p>
+<p class="rvps3"><span class="rvts8">- Right-click on the job and choose "select clients rendering selected job"</span></p>
+<p class="rvps3"><span class="rvts8">- Strg-click on a job of UserB.</span></p>
+<p class="rvps3"><span class="rvts8">- Choose "show send job to client decision" via the menu "Debug".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: You can select up to 5 different jobs.</span></p>
+<p class="rvps3"><span class="rvts8">The important information in this case is the "send" or "NOT send".</span></p>
+<p class="rvps3"><span class="rvts8">If all are "send", then compare the numbers, the higher the number, the earlier the job is send.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

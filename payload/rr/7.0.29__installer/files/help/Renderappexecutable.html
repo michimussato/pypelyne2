@@ -1,0 +1,113 @@
+﻿<html>
+	
+<head>
+	<title>Render app executable</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Renderappexecutable");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Render app executable</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; <a href="RenderApplications.html">Render Applications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="RenderApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Renderapppreferences.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Renderapplicenses.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Renderer Executable - Shared</span></span></h2>
+<p class="rvps3"><span class="rvts15">Location: </span><span class="rvts81">[RR]\render_apps\renderer_exe</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Some renderer does not require to be installed on every workstation.</span></p>
+<p class="rvps3"><span class="rvts8">For example Lightwave, Renderman Studio or Mental Ray.</span></p>
+<p class="rvps3"><span class="rvts8">Instead of installing it on every workstation, you can copy the application folder into [RR]\render_apps\renderer_exe\...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You just have to do one installation, one copy, a small config change and you are ready to render with these applications on ALLl clients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If the application is shipped with an installer, install it once on a machine.</span></li>
+<li class="rvps3"><span class="rvts8">The application was installed for example in in C:\programs\Vendor\myApp_10.3\.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Copy the installation folder into [RR]\render_apps\renderer_exe\&lt;RenderAppName&gt;\&lt;OS&gt;\myApp_10.3\</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;&lt;RenderAppName&gt; is the Name set in the render config.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;&lt;OS&gt; can be win_x64, lx_x64, mac_x64</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Edit the render config.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Add these lines:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;ExeCopyFromDir = &lt;rrSharedExeDir&gt;</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;ExeCopyToDir = &lt;rrLocalExeDir&gt;</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;ExeCopiedWin= &lt;rrLocalExeDir&gt;\myApp_*\bin\batchExe.exe</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;ExeCopiedLX= &lt;rrLocalExeDir&gt;/myApp_*/bin/batchExe</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;ExeCopiedMac= &lt;rrLocalExeDir&gt;/myApp_*/bin/batchExe </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Examples:</span></p>
+<p class="rvps3"><span class="rvts8">By default, the render config files of Lightwave, rib/renderman, mentalRay StandAlone, Arnold Standalone, and Shake are setup for shared executables.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Important Note:</span></p>
+<p class="rvps3"><span class="rvts8">If you copy an application folder into [RR]\render_apps\renderer_exe\..., then try to remove all unnecessary files.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. Remove all help folders, .htm files, .pdf files...</span></p>
+<p class="rvps3"><span class="rvts8">Everything to keep the filecount and size lower.</span></p>
+<p class="rvps3"><span class="rvts8">For some applications you can also delete executables that are not required. E.g. the modeler.exe in Lightwave.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note:</span></p>
+<p class="rvps3"><span class="rvts8">It is not required to have the executable in [RR]\render_apps\renderer_exe, you can use a different base path in the render config.</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

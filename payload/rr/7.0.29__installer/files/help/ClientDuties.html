@@ -1,0 +1,134 @@
+﻿<html>
+	
+<head>
+	<title>Client Duties</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ClientDuties");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Client Duties</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Usage.html">Usage</a> &rsaquo;&rsaquo; <a href="WatchJobs.html">Watch Jobs</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="WatchJobs.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ServerDuties.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="ControlJobs.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Render</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Yes, of course it starts to render.</span></p>
+<p class="rvps3"><span class="rvts8">When the client gets a job, then it</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Find the right render config for the commandlines.</span></li>
+<li class="rvps3"><span class="rvts8">If it is a rrSharedExe render config (e.g. renderman by default), then it copies the RenderMan Exe folder to the local hard drive.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;(of course only changes, you can see the copy result in every render log at the top)</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">It finds the right executable version for the job. (If you render parallel with Softimage 7.0, 7.5, 2010 and 2010_sp1, you only have to specify one of them in the client config)</span></li>
+<li class="rvps3"><span class="rvts8">Creates a Batch file based on the render config. The Batch file that sets RR environments, executes the setenv for the render application and executes the render config commandlines.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Monitor</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">While a job is running, the rrClient watches all render processes (+child processes).</span></p>
+<p class="rvps3"><span class="rvts8">It measures the CPU usage and memory usage of each process.</span></p>
+<p class="rvps3"><span class="rvts8">If all render processes are not using that much CPU power for a longer time, then the render probably freezed.</span></p>
+<p class="rvps3"><span class="rvts8">It also sends the memory usage of the job to the Server, so you can see it the statistics of the job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Image Analysis</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This section does only apply if you have enabled "Local Render Out" for a job.</span></p>
+<p class="rvps3"><span class="rvts8">After an frame is rendered, the client copies the frame to the right location on your fileserver.</span></p>
+<p class="rvps3"><span class="rvts8">During this copy the client a) checks the image for errors and b) creates a cache file for the rrViewer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">a) If the image file itself is broken, then the client renames it as "broken_...".</span></p>
+<p class="rvps3"><span class="rvts8">(You can enable/disable this behavior in rrConfig.)</span></p>
+<p class="rvps3"><span class="rvts8">The image is not counted as finished and will therefore be re-rendered.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The client does also a visual error analysis.</span></p>
+<p class="rvps3"><span class="rvts8">For example if there are render tiles missing or you have small black NaN-pixels.</span></p>
+<p class="rvps3"><span class="rvts8">The image is not re-rendered, it is marked with an error/warning/info flag.</span></p>
+<p class="rvps3"><span class="rvts8">See rrViewer help for details.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">b)</span></p>
+<p class="rvps3"><span class="rvts8">The cache file is a small thumbnail of the frame.</span></p>
+<p class="rvps3"><span class="rvts8">It includes the result flag of the error analysis, the client name and the render time of the frame (not exact).</span></p>
+<p class="rvps3"><span class="rvts8">If you start the rrViewer, then the cache files are loaded.</span></p>
+<p class="rvps3"><span class="rvts8">This way you have a very fast view of your complete rendering to check for errors, you can load a complete HD rendering in a few seconds. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Result</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Each program sets a return code when it finishes (or crashes).</span></p>
+<p class="rvps3"><span class="rvts8">When a render application has finished its execution, the rrClient gets the return code to check if the render process has crashed.</span></p>
+<p class="rvps3"><span class="rvts8">When it has crashed, the rrClient sends a message to the rrServer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Log</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">After a job has finished, the rrClient searches the render log files for messages.</span></p>
+<p class="rvps3"><span class="rvts8">There are many errors that produce wrong results or should count as an unsuccessful rendering, but the render application itself has finished successfully.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For example the message "This scene was created by a newer version". This tells the rrServer that this client does not get the job again.</span></p>
+<p class="rvps3"><span class="rvts8">Then the message "No license for renderer X available" tells the rrServer to reduce the number of available licenses for this render application.</span></p>
+<p class="rvps3"><span class="rvts8">You can even set any custom error line in the render config like "shader not found" or "object not loaded".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

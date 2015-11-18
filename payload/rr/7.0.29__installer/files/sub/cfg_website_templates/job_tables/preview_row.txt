@@ -1,0 +1,2 @@
+<td align=right> <%CurrentRowNumber%><a href="p<%CurrentRowNumberPadded%>.htm"><img SRC="p<%CurrentRowNumberPadded%>_t.jpg" NOSAVE border="0" align="middle"></a></td>
+<%HTMLNewRowOnRow4%>

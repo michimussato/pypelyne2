@@ -1,0 +1,10 @@
+<tr>
+<td>&nbsp;</td>
+<td bgcolor="#000000"><font color="FFFFFF">&nbsp;<%CurrentRowNumber%></font></td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+
+</table>

@@ -1,0 +1,165 @@
+﻿<html>
+	
+<head>
+	<title>Nuke</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Nuke");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Nuke</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="Compositing.html">Compositing</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Compositing.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Fusion.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Shake.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Setup</span></span></h1>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">Note: Nuke PLE is not supported.</span></p>
+<p class="rvps3"><span class="rvts8">The scene parser is not able to read the scene information as Nuke encodes the PLE files. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> Interactive Licenses</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use interactive licenses for Nuke, then you have to either change the render config or add the flag to the client config.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Render Config:</span><br/><span class="rvts8">If you change it via the render config, then the interactive license is used for all rrClients.</span><br/><span class="rvts8">Edit the file RR\render_apps\_config\C13__Nuke5.cfg</span><br/><span class="rvts8">Add an -i after the -f of the render commandline.</span></li>
+<li class="rvps3"><span class="rvts8">Client config:</span><br/><span class="rvts8">Open rrConfig, tab client config, tab render applications.</span><br/><span class="rvts8">At the end of the line with Nuke, add the -i flag to the additional parameter.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> Plugins</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have plugins you need to use with Nuke, then you can place them into the folder</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\renderer_plugins\nuke\win_x64\6\</span></p>
+<p class="rvps3"><span class="rvts8">(of course you have to change the os and nuke version in the path)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">init.py:</span></p>
+<p class="rvps3"><span class="rvts8">You can also place a file named init.py in that folder.</span></p>
+<p class="rvps3"><span class="rvts8">Inside this python script, you can define plugin paths like (and print the path to check if everything is right):</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts26">nuke.pluginAppendPath('//grey09/rugbybugs/Production/Scripts/deploy/scripts')</span></p>
+<p class="rvps3"><span class="rvts26">nuke.pluginAppendPath('//grey09/rugbybugs/Production/Scripts/deploy'/nuke/gizmos')</span></p>
+<p class="rvps3"><span class="rvts26">nuke.tprint('')</span></p>
+<p class="rvps3"><span class="rvts26">nuke.tprint('OUR FARM ENV')</span></p>
+<p class="rvps3"><span class="rvts26">nuke.tprint(nuke.pluginPath())</span></p>
+<p class="rvps3"><span class="rvts26">nuke.tprint('')</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Submission</span></span></h1>
+<p class="rvps3"><span class="rvts8">Please execute the rrWorkstationInstaller install the submission plugin.</span></p>
+<p class="rvps3"><span class="rvts8">In Nuke, you have to run the script as shown in the screenshot.</span></p>
+<p class="rvps3"><span class="rvts8">It will read all comp settings and send them to the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: You can also start the rrSubmitter manually and load (multiple) scene files.</span></p>
+<p class="rvps3"><span class="rvts8">BUT loading the comp file directly into the rrSubmtter can not evaluate scripted file names in your write nodes.</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/nuke_plugin.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Infos</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Local Render Out</span></span></h2>
+<p class="rvps3"><span class="rvts8">With Local Render Out Nuke will write to the </span><a class="rvts20" href="LocalDataFolder.html">Local Data Folder</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">So you do not have an enduring file connection to your fileserver. The output files are copied at once when they are finished.</span></p>
+<p class="rvps3"><span class="rvts8"></span><br/><span class="rvts8">To use Local Render Out with Nuke, you have to have Local Scene Copy as &nbsp;well.</span></p>
+<p class="rvps3"><span class="rvts8">The rrClient runs a pre-script to replace all paths for read and write nodes (scripted filenames are resolved).</span></p>
+<p class="rvps3"><span class="rvts8">Then it saves the new nuke composite locally.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Render one view</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you want to render one view, then please enter --view myview to the Additional commandline flags at the rrSubmitter</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Errors</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">License failure</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">The error looks like this:</span></p>
+<p class="rvps3"><span class="rvts26">License failure:</span></p>
+<p class="rvps3"><span class="rvts26">License server machine is down or not responding.</span></p>
+<p class="rvps3"><span class="rvts26">See the system adminstrator about starting the license server system, or</span></p>
+<p class="rvps3"><span class="rvts26">make sure you're referring to the right host (see LM_LICENSE_FILE).</span></p>
+<p class="rvps3"><span class="rvts26">Feature: nuke_r</span></p>
+<p class="rvps3"><span class="rvts26">Hostname: bmd.nas.com</span></p>
+<p class="rvps3"><span class="rvts26">License path: C:\ProgramData\The Foundry\FLEXlm\example.lic;C:\Program Files\The Foundry -</span></p>
+<p class="rvps3"><span class="rvts26">\FLEXlm\*.lic</span></p>
+<p class="rvps3"><span class="rvts26">FLEXnet Licensing error:-96,7. System Error: 11004 "WinSock: Valid name, but no record (NO_ADDRESS)"</span></p>
+<p class="rvps3"><span class="rvts26">For further information, refer to the FLEXnet Licensing End User Guide,</span></p>
+<p class="rvps3"><span class="rvts26">available at "www.macrovision.com".</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Solutions with an environment variable:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If you have defined the license location via the environment variable FOUNDRY_LICENSE_FILE on your work-/render-stations, then make sure you have set it as global system variable. (requires a system restart)</span></li>
+<li class="rvps3"><span class="rvts8">Otherwise, you can also edit the</span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm"> Setenv file for Nuke</a><span class="rvts8">, remove the comment from the set variable FOUNDRY_LICENSE_FILE and place it there.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;(no restart required) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please refer to your Nuke documentation what you have to set as value for the env variable. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">3rd party</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Shotgun write nodes</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you use Shotgun nodes, then you have to convert your Nuke files:</span></p>
+<p class="rvps3"><a class="rvts20" href="https://toolkit.shotgunsoftware.com/entries/23481723-Write-Node#Render%2520Farm%2520Integration%25202" target="_blank">https://toolkit.shotgunsoftware.com/entries/23481723-Write-Node#Render%20Farm%20Integration%202</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RR has prepared a render config for such comp files.</span></p>
+<p class="rvps3"><span class="rvts8">They will be converted at rendering.</span></p>
+<p class="rvps3"><span class="rvts8">You need to have Local Scene Copy enabled for the job.</span></p>
+<p class="rvps3"><span class="rvts8">And the shotgun toolkit (sgtk) module needs to be copied into [RR]/plugins/python_modules/ </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

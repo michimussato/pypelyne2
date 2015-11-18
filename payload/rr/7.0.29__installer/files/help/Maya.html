@@ -1,0 +1,163 @@
+﻿<html>
+	
+<head>
+	<title>Maya</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Maya");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Maya</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3D.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Lightwave.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Errors1.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Setup</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RRender has pre-defined folders for 3rd party plugins and Mental Ray shaders.</span></p>
+<p class="rvps3"><span class="rvts8">They are located in (of course you have to replace the maya version with the one you use):</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2014\scripts\</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2014\modules\</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2014\plug-ins\</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2014\rendererDesc\</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2014\mentalray\</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you already have your own plugin paths, then you have to change Maya's Setenv File.</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\_setenv\win\maya.bat</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">maya.env:</span></p>
+<p class="rvps3"><span class="rvts8">If you have a maya.env file, you can place it into the folder</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2024\</span></p>
+<p class="rvps3"><span class="rvts8">Note: If you define one of the above defined folders (PLUG_IN, SCRIPT, MODULE, MI_CUSTOM_SHADER) in your maya.env, then you have to remove the corresponding line from the setenv file.</span></p>
+<p class="rvps3"><span class="rvts8">Variables set in the maya.bat overwrite maya.env values. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have two ways to submit Maya scenes.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts15">Via rrSubmitter</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8">If you load a Maya scene into the submitter, the submitter asks you if it should start maya batch to read all scene values.</span></p>
+<p class="rvps3"><span class="rvts8">Note: By default Maya creates a project structure if there is none.</span></p>
+<p class="rvps3"><span class="rvts8">It creates a file named workspace.mel and folders like /scenes.If there is a workspace.mel file, then no folder is created</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts15">Via Maya plugin</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;You have to run the rrWorkstationInstaller at least once to install the RR_ROOT environment variable.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;It could be that you have to restart the machine for the environment to take effect.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Then you can load the Maya plugin as seen on this screenshot:</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/maya_plugin1.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Disable Maya Crash Reports</span></span></h2>
+<p class="rvps3"><span class="rvts8"></span><br/><span class="rvts8">There are some known cases in which the Maya crash reports stay open after a render crashed.</span></p>
+<p class="rvps3"><span class="rvts8">You can disable the crash reports by deleting the file Maya/bin/senddmp.exe</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Customizations</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Execute custom commandline for all render</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Question:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Maya 2014 changes by default the sampling when opening a 2012 scene:</span></p>
+<p class="rvps3"><span class="rvts30"><br/></span></p>
+<p class="rvps3"><span class="rvts30">Unified Sampling is enabled unexpectedly when bringing legacy scenes into 2014</span></p>
+<p class="rvps3"><span class="rvts30">In Maya 2014, if you open a scene from a previous version of Maya that renders using the mental ray for Maya renderer, your sampling settings are changed to use Unified Sampling. Some features, such as contour rendering, are not supported with Unified Sampling.</span></p>
+<p class="rvps3"><span class="rvts30">To render such scenes with their previously-saved legacy sampling settings, choose Legacy Sampling Mode in the mental ray Render Settings, Quality tab. The commands: setAttr "miDefaultOptions.miRenderUsing" 2;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">is there a way to set the sampling to Legacy mode for my 2014 clients via royal render?</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Answer:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RR uses the render scripts made by Autodesk.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">In your case:</span></p>
+<p class="rvps3"><span class="rvts8">c:\Program Files\Autodesk\Maya2014\bin\rendererDesc\mrRenderer.xml</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You rename it to mymrRenderer.xml any place it to</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2014\rendererDesc\mymrRenderer.xml</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then dublicate [RR]\render_apps\_config\3D02__Maya2008__Mray.cfg to 3D02__Maya2008__MyMray.cfg</span></p>
+<p class="rvps3"><span class="rvts8">In the file, change</span></p>
+<p class="rvps3"><span class="rvts8">rendererName= mentalRay</span></p>
+<p class="rvps3"><span class="rvts8">to</span></p>
+<p class="rvps3"><span class="rvts8">rendererName= myMentalRay</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">and all lines with</span></p>
+<p class="rvps3"><span class="rvts8">-r mr</span></p>
+<p class="rvps3"><span class="rvts8">to</span></p>
+<p class="rvps3"><span class="rvts8">-r mymr</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">At last, you have to edit the file</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2014\rendererDesc\mymrRenderer.xml</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Add your mel line before mayaBatchRenderProcedure .</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

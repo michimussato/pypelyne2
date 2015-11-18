@@ -1,0 +1,151 @@
+﻿<html>
+	
+<head>
+	<title>AfterFx</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("AfterFx");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">AfterFx</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="Compositing.html">Compositing</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Compositing.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Compositing.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Fusion.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Setup</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">First AFX should be registered/licensed.</span></p>
+<p class="rvps3"><span class="rvts8">You have to login with the same name as the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Renderer/Compositing/AfterFX/AfterFX.htm">user you use for the client / client service</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">Start AFX once to create the afx preferences and license afx.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Some companies have reported there have been issues fixed with this step:</span></p>
+<p class="rvps3"><span class="rvts8">Win XP:</span></p>
+<p class="rvps3"><span class="rvts8">Take ownership of the "c:\Documents and Settings\&lt;yourLoginName&gt;\Application Data" folder.</span></p>
+<p class="rvps3"><span class="rvts8">Win Vista / Win7:</span></p>
+<p class="rvps3"><span class="rvts8">Take ownership of the "c:\users\&lt;yourLoginName&gt;\Application Data" folder.</span></p>
+<p class="rvps3"><span class="rvts8">Disable windows UAC. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to run the rrWorkstationInstaller install the submission plugin.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">In Afx, you have to run the script as shown in the screenshot.</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/afx_plugin.jpg"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Project File Settings</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to enable:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/compframenumber.png"/></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Each comp ONCE in your render queue:</span></p>
+<p class="rvps3"><span class="rvts8">You have to add each composite to your render queue to define the render and output settings for each composite.</span></p>
+<p class="rvps3"><span class="rvts8">You can only have each composite</span><span class="rvts15"> once</span><span class="rvts8"> in your render quque. It is not possible to render multiple render queue items of one composite. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Infos</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Skip Existing Frames</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It is possible to render Afx projects with skip existing frames (RR Sequence Divide disabled).</span></p>
+<p class="rvps3"><span class="rvts8">This way all clients get the full range of frames and afx distributes the frames.</span></p>
+<p class="rvps3"><span class="rvts8">The computation power of your clients is better used.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Edit the file RR\render_apps\_config\C12__Afx.cfg</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Change the line</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; </span><span class="rvts26">SequenceDivide= 0~1</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;to</span></p>
+<p class="rvps3"><span class="rvts26"> &nbsp; &nbsp; SequenceDivide= 1~0</span></p>
+<p class="rvps3"><span class="rvts8">2. &nbsp; &nbsp;In your render queue settings:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; Disable "Use Storage overflow"</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; Enable "Skip existing files"</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; You have to use this in EVERY composition.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; If you can not/want not enable it in your afx comp, then you</span><span class="rvts15"> HAVE TO</span><span class="rvts8"> enable Sequence Divide at the rrSubmitter for this comp file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Errors</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Cropped Exr</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Afx has a bug in the EXR loader and is not able to load cropped EXR files.</span></p>
+<p class="rvps3"><span class="rvts8">You can download a new EXR loader to fix this.</span></p>
+<p class="rvps3"><span class="rvts8">See Job Option "</span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Renderer/Compositing/AfterFX/AfterFX.htm">Crop Exr</a><span class="rvts8">". </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Unable to load .ini file</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">We have several reports about AFX not wanting to render.</span></p>
+<p class="rvps3"><span class="rvts8">It printed the message "Error accesing ini file".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">First definately need to follow the steps in </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Renderer/Compositing/AfterFX/AfterFX.htm#Setup">AfterFx/Setup</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">XP machines:</span></p>
+<p class="rvps3"><span class="rvts8">The solution was that the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Renderer/Compositing/AfterFX/AfterFX.htm">rrService user</a><span class="rvts8"> was not in the local admin group.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Windows7 machines:</span></p>
+<p class="rvps3"><span class="rvts8">UAC was enabled.</span></p>
+<p class="rvps3"><span class="rvts8">The solution so far was to disable UAC. Then AFX rendered fine.</span></p>
+<p class="rvps3"><span class="rvts8">If it still does not work, please check that the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Renderer/Compositing/AfterFX/%25LINK%254500_rrTerms/User%2520for%2520rrService/User%2520for%2520rrService.htm%25">rrService user</a><span class="rvts8"> is in the local admin group (a domain admin does not seem to be enough)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

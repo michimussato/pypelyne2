@@ -1,0 +1,119 @@
+﻿<html>
+	
+<head>
+	<title>rrVerifyExrModes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrVerifyExrModes");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrVerifyExrModes</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrToolsPostScript.html">rrTools/Post-Script</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrToolsPostScript.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrStartLocal.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrWait.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">rrVerifyExrModes shows informations about .exr files.</span></p>
+<p class="rvps3"><span class="rvts8">And it is possible to delete exr files that do not match your choice.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Commandline Flags</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">rrVerifyExrModes &nbsp;filename#.ext &nbsp; [options] </span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-seq [start] [end] [step] [offset]</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Restrict sequence</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-del </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">delete files that do no match your choices)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-requireMultiLayer</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Exr files require to have multiple layers (1 main RGBA+ more channels/elements/aovs)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-requireMultipart</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Exr files require to have multiple parts (Exr 2.0 feature)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-noMultipart </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Exr files should not contain multiple parts (Exr 2.0 feature).</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-showChannel</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">prints all channel names, grouped into exr parts</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

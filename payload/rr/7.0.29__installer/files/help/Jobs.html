@@ -1,0 +1,362 @@
+﻿<html>
+	
+<head>
+	<title>Jobs</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Jobs");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Jobs</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrConfig.html">rrConfig</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrConfig.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrConfig.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Pathsanddrives.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Render Order</span></span></h1>
+<p class="rvps3"><span class="rvts8">The settings in this section influence the decision which job is send to a client first.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Exclusive Priority</span></span></h2>
+<p class="rvps3"><span class="rvts8">Projects with Exclusive Priority will be send first, no matter the jobs priority itself.</span></p>
+<p class="rvps3"><span class="rvts8">You can limit the number of clients. If this project/user/app has reached this many clients, then it does not have any further Exclusive Priority on the other clients.</span></p>
+<p class="rvps3"><span class="rvts8">But this is not a limitation, on all further clients the other settings like Averaging or the jobs priority take effect. </span></p>
+<p class="rvps3"><span class="rvts8">So this project/user/app can get more clients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Abort jobs on privileged clients</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you have set a project/user/app as privileged in the configuration of the client, then a client will take this kind of job first.</span></p>
+<p class="rvps3"><span class="rvts8">But only the next time the client ask for a job.</span></p>
+<p class="rvps3"><span class="rvts8">If you enable this setting, then the rrServer will abort any non-privileged jobs on that client if you send a new privileged job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Privilege jobs of artist/user logged in</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you enable this setting, then you automatically add the name of the user logged in on a workstation to the privileged jobs of that client.</span></p>
+<p class="rvps3"><span class="rvts8">This mean as long as user X is logged in on the client, the client will take jobs of user X first.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Distribute Clients, Average Level A + B</span></span></h2>
+<p class="rvps3"><span class="rvts8">You can average all clients between projects, users or render applications.</span></p>
+<p class="rvps3"><span class="rvts8">Each project/user/app will get the same amount of clients.</span></p>
+<p class="rvps3"><span class="rvts8">You can set priority limits for the averaging, an upper and a lower limit.</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 159px;"><p class="rvps3"><span class="rvts8">Upper Priority &nbsp; &nbsp;81-99</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1314px;"><p class="rvps3"><span class="rvts8">If you have a very important job that should take all clients, give this job a priority higher than the upper limit. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 159px;"><p class="rvps3"><span class="rvts8">Averaging Priority 21-80</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1314px;"><p class="rvps3"><span class="rvts8">If jobs have their priority inside this range, then the clients are averaged between the project/user/app.</span></p>
+<p class="rvps3"><span class="rvts8">As long as they are in this range, a project/user/app can set any priority.</span></p>
+<p class="rvps3"><span class="rvts8">This priority will only have an effect between jobs of this project/user/app.</span></p>
+<p class="rvps3"><span class="rvts8">For example Project A has set all jobs to priority 75, Project B has set all jobs to priority 50. Both projects get the same amount of client as all jobs are in the averaging priority range.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 159px;"><p class="rvps3"><span class="rvts8">Lower Priority &nbsp; 0-20</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1314px;"><p class="rvps3"><span class="rvts8">These are jobs that are not important. E.g. if an artists wants to do some personal tests.</span></p>
+<p class="rvps3"><span class="rvts8">If he would have set the jobs priority inside the Averaging Priority range then we would get the same amount of clients as the other projects.</span></p>
+<p class="rvps3"><span class="rvts8">But as this is an unimportant job that should render after all other projects have rendered their jobs.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">If jobs are equal after step 5</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">After all clients have been averaged between projects/users/apps, you can decide how clients should be distributed between the jobs of one project/user/app.</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 153px;"><p class="rvps3"><span class="rvts8">First In - First Out</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1320px;"><p class="rvps3"><span class="rvts8">The first job that you have send gets all clients</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 153px;"><p class="rvps3"><span class="rvts8">Average between jobs</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1320px;"><p class="rvps3"><span class="rvts8">If you have multiple jobs with the same priority, then all jobs get the same amount of clients.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Reduction factor if a job crashed (all clients of the job):</span></span></h3>
+<p class="rvps3"><span class="rvts8">If a job crashed on any client, it will get a slightly lower priority for each crash.</span></p>
+<p class="rvps3"><span class="rvts8">This affects all clients that are assigned to the job</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Reduction factor if a job crashed (only for the client that crashed):</span></span></h3>
+<p class="rvps3"><span class="rvts8">If a job crashed on client X, then the job will get a slightly lower priority if client X asks for a job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Render order modifier</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Av. level A/B Allow Server to abort clients to average them every</span></span></h3>
+<p class="rvps3"><span class="rvts8">The server can only influence the client averaging if a client asks for a job.</span></p>
+<p class="rvps3"><span class="rvts8">This means the client has to finish its current segment of frames it got.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts16">Example without abort:</span><span class="rvts24"> </span><span class="rvts8">Project A has high render times, 5h per frame. The farm is empty.</span></p>
+<p class="rvps3"><span class="rvts8">The project has send a job in the morning. All clients take this job and get 2 frames to render.</span></p>
+<p class="rvps3"><span class="rvts8">After lunch Project B sends some jobs. But all clients are busy rendering 2 frames in 10h. </span></p>
+<p class="rvps3"><span class="rvts8">They will not ask for a new job before they are not finished with these 2 frames.</span></p>
+<p class="rvps3"><span class="rvts8">Project B does not get any client until the evening.</span></p>
+<p class="rvps3"><span class="rvts16">With abort:</span></p>
+<p class="rvps3"><span class="rvts8">Same example as above, but you have set the abort to every 3 hours.</span></p>
+<p class="rvps3"><span class="rvts8">Project Bs jobs have been send after lunch, so the next 3 hour step is at 15:00. </span></p>
+<p class="rvps3"><span class="rvts8">At 15:00 the server recognizes that Project B should have the same amount of clients as Project A.</span></p>
+<p class="rvps3"><span class="rvts8">The server aborts half of the clients. (You loose some render time on these clients)</span></p>
+<p class="rvps3"><span class="rvts8">The free clients ask for a new job and get the job of Project B.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Avoid high render times:</span></p>
+<p class="rvps3"><span class="rvts8">As you can see very high render times are not very good for averaging. </span></p>
+<p class="rvps3"><span class="rvts8">As you either loose render time or the other projects have to wait long.</span></p>
+<p class="rvps3"><span class="rvts8">You might want to use the Tile Frame job option if you have very high render times.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Priority boost of Preview Render status</span></span></h3>
+<p class="rvps3"><span class="rvts8">If a job is in Preview state, then it has a slightly higher priority.</span></p>
+<p class="rvps3"><span class="rvts8">This is required as the artist should get some previews of all jobs very fast before all jobs render.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="PreviewRender.html">Preview Render</a><span class="rvts8"> for more information</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Priority boost of pre/ post/ finished scripts</span></span></h3>
+<p class="rvps3"><span class="rvts8">If a job is in and of the script states (pre, post or finished) state, then it has a slightly higher priority.</span></p>
+<p class="rvps3"><span class="rvts8">The script execution is usually fast and should be done right after e.g. a job was approved.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Get job settings based on job files</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Get Company Project name from</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Usually you have multiple XSI databases + maya projects + compositing files +...+...+... that rely to one of your projects at your company.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">And usally you have a folder structure on your fileserver which reflects the project names.</span></p>
+<p class="rvps3"><span class="rvts8">E.g.:</span></p>
+<p class="rvps3"><span class="rvts8">//fileserver/projects/018_Commercial_NewShoes/...</span></p>
+<p class="rvps3"><span class="rvts8">//fileserver/projects/019_Commercial_Chocolate/...</span></p>
+<p class="rvps3"><span class="rvts8">//fileserver/projects/MyAnimShort/...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Use this config setting to tell RR how to find your company project name.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This Name is needed if you want to use the History Database.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Get Sequence - Shot - Version from</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmitter is able to read the sequence, shot and version from your scene file.</span></p>
+<p class="rvps3"><span class="rvts8">Each part has three settings.</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">A start string</span><br/><span class="rvts8">The sequence name that the rrSubmitter should read starts directly after this string</span><br/><span class="rvts8">If nothing is set, it starts with the first letter of the scene file name.</span></li>
+<li class="rvps3"><span class="rvts8">An optional length value ###</span><br/><span class="rvts8">The length of the sequence name.</span><br/><span class="rvts8">If nothing is set, the sequence name stops at setting 3. or at the next point . or underscore _</span></li>
+<li class="rvps3"><span class="rvts8">An optional end string</span><br/><span class="rvts8">The sequence name ends before this string</span><br/><span class="rvts8">If nothing is set, the sequence name stops at the next point . or underscore _</span><br/><span class="rvts8"><br/></span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Examples:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 371px;"><p class="rvps3"><span class="rvts8">sA043_sh34_v54.scn</span></p>
+<p class="rvps3"><span class="rvts8">Sequence= A43 , Shot=34, Version=54</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 97px;"><p class="rvps3"><span class="rvts8">Sequence:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">s</span></li>
+</ol>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts8">Shot:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">_sh</span></li>
+</ol>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 447px;"><p class="rvps3"><span class="rvts8">Version:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">_v</span></li>
+</ol>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 371px;"><p class="rvps3"><span class="rvts8">MAN_TR7_0270_light_CHR_np_v0011.Alpha.1001.exr</span></p>
+<p class="rvps3"><span class="rvts8">Sequence= 7 , Shot=0270, Version=0011</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 97px;"><p class="rvps3"><span class="rvts8">Sequence:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">_TR</span></li>
+</ol>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts8">Shot:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">_</span></li>
+</ol>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 447px;"><p class="rvps3"><span class="rvts8">Version:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">_v</span></li>
+</ol>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 371px;"><p class="rvps3"><span class="rvts8">A043sh34_v54.scn</span></p>
+<p class="rvps3"><span class="rvts8">Sequence= A43 , Shot=34, Version=54</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 97px;"><p class="rvps3"><span class="rvts8">Sequence:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">(nothing)</span></li>
+</ol>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts8">Shot:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">sh</span></li>
+</ol>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 447px;"><p class="rvps3"><span class="rvts8">Version:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">_v</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Enable wait for approval</span></span></h1>
+<p class="rvps3"><span class="rvts8">The job approval can be used differently:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 230px;"><p class="rvps3"><span class="rvts8">1. No effect on RR behaviour (default) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">You can decide how you want to use the job approval. Some are setting a job to approved if the preview frames are ok, some artists set a job to approved if all frames are done and checked. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 230px;"><p class="rvps3"><span class="rvts8">2. "Approve after preview" enabled</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">If your company has set this configuration, then a job is disabled after it has rendered the preview frames. The job will not start rendering all frames if you do not approve it. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 230px;"><p class="rvps3"><span class="rvts8">3." Approve after render" enabled</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">If your company has set this configuration, then a job is disabled after it has rendered all frames AND the post-script was executed. After you have approved the job, it will start done- scripts (e.g. copy all frames on your Avid) and sets the job to finished. </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Sequence Divide</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you have a lot of jobs to render, then it is better that the rrServer send larger chunks to the clients.</span></p>
+<p class="rvps3"><span class="rvts8">If you do not have many jobs or just want that the first job in the queue finished faster, then change this setting.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Behavior of the job setting "Do not check for frames" </span></span></h1>
+<p class="rvps3"><span class="rvts8">This changes the behavior of the job setting "Do not check for frames".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Delete Jobs</span></span></h1>
+<p class="rvps3"><span class="rvts8">The server will automatically delete jobs based on these settings.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">History Database</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">All jobs that are finished and then deleted will be exported into the History Database.</span></p>
+<p class="rvps3"><span class="rvts8">You can view render times, frame ranges and all other information about a job.</span></p>
+<p class="rvps3"><span class="rvts8">And you can also resubmit a job. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Misc</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Start to render in the middle of a sequence ( highly recommended)</span></span></h2>
+<p class="rvps3"><span class="rvts8">After the preview render, the server will send 1-2 packets of frames from the middle of the seqeunce to the clients first. This results in a better "average frame time" and has therefore positive effects on the total render time displayed. It has also an positive effect on on the automatic Sequence Divide Min/Max function of the server.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Wait X seconds between sending jobs</span></span></h2>
+<p class="rvps3"><span class="rvts8">If a lot of clients get a job at the same time, then it could happen that your fileserver and/or network is on the limit.There have even been cases in which the fileserver crashed if you had 40 clients reading the same 200 textures at the same time.With this delay you can prevent clients from starting jobs at the same time.After a client got a job, the server waits until the next client can get a job.</span></p>
+<p class="rvps3"><span class="rvts8">If you do not have any problems, then you can keep this value at the default of 0.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Deassign client after x crashes</span></span></h2>
+<p class="rvps3"><span class="rvts8">The server will automatically deassign a clients from a job if it crashed to often.</span></p>
+<p class="rvps3"><span class="rvts8">If the crashes of all clients are higher than the job setting "Max Crashes" then the complete job is disabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Deassign client after x times a limit was reached</span></span></h2>
+<p class="rvps3"><span class="rvts8">The server will automatically deassign a clients from a job if it has reached a limit to often.</span></p>
+<p class="rvps3"><span class="rvts8">Limits are reached if either</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">a client renders more time than job setting "Max Render time".</span></li>
+<li class="rvps3"><span class="rvts8">the job takes more memory than the machine has. The clients aborts the job because of its config setting "Abort if system memory gets low".</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8">If the number of limits reached of all clients are higher than the job setting "Max Limits" &nbsp;then the complete job is disabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">rrJob Data Location</span></span></h1>
+<p class="rvps3"><span class="rvts8">The job data contains</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Preview Images</span></li>
+<li class="rvps3"><span class="rvts8">rrViewer caches</span></li>
+<li class="rvps3"><span class="rvts8">Frames rendered table</span></li>
+<li class="rvps3"><span class="rvts8">Render log files</span></li>
+<li class="rvps3"><span class="rvts8">Framebar image</span></li>
+<li class="rvps3"><span class="rvts8">Stats image</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

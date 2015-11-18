@@ -1,0 +1,106 @@
+﻿<html>
+	
+<head>
+	<title>Clients do not connect</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Clientsdonotconnect");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Clients do not connect</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; <a href="Troubleshooting.html">Troubleshooting</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Troubleshooting.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="AnrrApplicationdoesnotstartwork.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="WindowsrrSubmitterdoesnotstart.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts15">Description of the problem:</span></p>
+<p class="rvps3"><span class="rvts8">The client is listed in rrControl.</span></p>
+<p class="rvps3"><span class="rvts8">But it is shown grey (not connected).</span></p>
+<p class="rvps3"><span class="rvts8">You have restarted the machine but it does still not help.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The first place you should look are the rrApplication Log Files.</span></p>
+<p class="rvps3"><span class="rvts8">To check if the client starts at all.</span></p>
+<p class="rvps3"><span class="rvts8">Is there any information in the log from the current date?</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">rrClient started manually</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1422px;"><p class="rvps3"><span class="rvts8">Checking the Application Log File should show you at least one error. </span></p>
+<p class="rvps3"><span class="rvts8">If not, try to start the application directly vai the RR/bin/... folder</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">rrClient running as service</span></p>
+<p class="rvps3"><span class="rvts8">in the background</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1422px;"><p class="rvps3"><span class="rvts8">If you have an entry in the Application Log File from the last time you restarted the machine/service, </span></p>
+<p class="rvps3"><span class="rvts8">then at least the client application startup was successfull.</span></p>
+<p class="rvps3"><span class="rvts8">This means that the issue is probably not the service.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have nothing in the Application Log File, then you should check the Service Log Files</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

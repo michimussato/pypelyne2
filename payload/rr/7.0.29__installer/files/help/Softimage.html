@@ -1,0 +1,320 @@
+﻿<html>
+	
+<head>
+	<title>Softimage</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Softimage");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Softimage</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3D.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Rhino.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="3rdPartyRenderer1.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Setup</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Shader Workgroup</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Artist workgroup:</span></p>
+<p class="rvps3"><span class="rvts8">If you are using 3rd party shaders or plugins, you should to setup an SI workgroup in your company.</span></p>
+<p class="rvps3"><span class="rvts8">If you have never used a SI Workgroup, open SI, start the Plugin Manager from the file menu, choose the workgroup tab and click "connect to workgroup".</span></p>
+<p class="rvps3"><span class="rvts8">Select the folder you want to use as a workgroup path. Install all addons, shaders and plugins into the workgroup.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Renderfarm Workgroup:</span></p>
+<p class="rvps3"><span class="rvts8">By default RR uses the path is %rrPluginsNoOS%workgroup_%rrExeVersionMajor%, which is resolved to a path inside the RR folder.</span></p>
+<p class="rvps3"><span class="rvts8">To get the exact folder, just take a look into a render log file of an Softimage job.</span></p>
+<p class="rvps3"><span class="rvts8">It looks like this:</span></p>
+<p class="rvps3"><span class="rvts8">S 24| &gt;set "WorkgroupPath=\\fileserver\Share\RR\render_apps\renderer_plugins\softimage\workgroup_2014"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Set a different workgroup path for the rrClients:</span></p>
+<p class="rvps3"><span class="rvts8">You have to change SIs setenv file.</span></p>
+<p class="rvps3"><span class="rvts8">The setenv file for Softimage is [RR]\render_apps\_setenv\win\softimage.bat.</span></p>
+<p class="rvps3"><span class="rvts8">The setenv file contains more information about how you can set seperate workgroup paths for each Softimage version.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">In that file you have a switch</span></p>
+<p class="rvps3"><span class="rvts8">goto %rrExeVersionMajor%</span></p>
+<p class="rvps3"><span class="rvts8">that jumps to the XSI version you are using, e.g.</span></p>
+<p class="rvps3"><span class="rvts8">:2010</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then it sets the workgroup path Set "WorkgroupPath=</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Change the path after Set "WorkgroupPath= to your workgroup path.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">An edited setenv can look like this one:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">@echo on</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Set "XSI_USERHOME=%rrLocalPrefs%%rrExeVersion%"</span></p>
+<p class="rvps3"><span class="rvts8">set XSI_LOG_LOAD_TIME=1</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">%rrBin%rrCopy -oo -os -d %rrPrefs%%rrExeVersionMajor% %rrLocalPrefs%%rrExeVersionMajor%</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">@echo Set Workgroup path:</span></p>
+<p class="rvps3"><span class="rvts8">goto %rrExeVersionMajor%</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Set "WorkgroupPath=%rrPluginsNoOS%workgroup_%rrExeVersionMajor%"</span></p>
+<p class="rvps3"><span class="rvts8">goto done</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">:2012</span></p>
+<p class="rvps3"><span class="rvts8">Set "WorkgroupPath=\\Smaug\shader\WG_XSI_2012"</span></p>
+<p class="rvps3"><span class="rvts8">goto done</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">:2013</span></p>
+<p class="rvps3"><span class="rvts8">Set "WorkgroupPath=\\Smaug\shader\WG_XSI_2013"</span></p>
+<p class="rvps3"><span class="rvts8">goto done</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">:done</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24"><br/></span></p>
+<p class="rvps3"><span class="rvts16">Notes:</span></p>
+<p class="rvps3"><span class="rvts15">Softimage version:</span></p>
+<p class="rvps3"><span class="rvts8">You should always create a new Workgroup for every major XSI version (one for XSI 7.x, one for XSI 2010...)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;A lot of plugins are written for one version only. E.g. Custom renderer or even mental Ray shaders.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;You cannot install both versions in one workgroup.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Even if the old version of the plugin can be loaded by an newer XSI version, they can be instable. (I know that at least from my MRay shaders, at some point that can crash)</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;A workgroup increases with the years. You often have plugins/scripts installed that you do not need any more in the new version of XSI.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;A new workgroup is the best way to clean the workgroup. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Linux, Windows:</span></p>
+<p class="rvps3"><span class="rvts8">You can use the same workgroup for Linux and Windows. Windows uses .dll, Linux .so files. Scripts should run on both platforms.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">32bit, 64bit:</span></p>
+<p class="rvps3"><span class="rvts8">You can use the same workgroup for different bit versions.</span></p>
+<p class="rvps3"><span class="rvts8">Shaders are always installed in seperate \x86 and \x86-64 folders.</span></p>
+<p class="rvps3"><span class="rvts8">Plugins should be in the folders:</span></p>
+<p class="rvps3"><span class="rvts8">\Application\bin\nt-x86\MyLib.dll</span></p>
+<p class="rvps3"><span class="rvts8">\Application\bin\nt-x86-64\MyLib.dll</span></p>
+<p class="rvps3"><span class="rvts8">\Application\bin\linux-x86\MyLib.so</span></p>
+<p class="rvps3"><span class="rvts8">\Application\bin\linux-x64\MyLib.so</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Multiple Workgroups:</span></p>
+<p class="rvps3"><span class="rvts8">If you want to set multipe workgroups, please define them in one line, seperated by an ;</span></p>
+<p class="rvps3"><span class="rvts8">E.g.</span></p>
+<p class="rvps3"><span class="rvts8">Set "WorkgroupPath=\\server\share\workgroupAAA_%rrExeVersionMajor%;\\server\share\XSI\workgroupBBB_%rrExeVersionMajor%"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Different Workgroups per scene:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts15">&lt;CustomWG&gt;:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;If you submit from inside XSI via the RR plugin, then you can change that plugin.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Add a new parameter to the XML export &lt;CustomWG&gt; Set your workgroup in there.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Then change the render config files, e.g. \render_apps\_config\3D01__Softimage__2011.cfg</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;After &lt;SetEnvSoft&gt; add a line</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;CommandLine_Win=Set "WorkgroupPath=&lt;CustomWG&gt;"</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;or for Linux:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;CommandLine_Lx=setenv WorkgroupPath "&lt;CustomWG&gt;"</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts15">Project/Scene based path</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;If your workgroups are project-based, then they are probably always in the same folder?</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;So you can set them via \\Fileserver\Share\Projects\%rrJobProject%\MyWorkgroup</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Or relative to the scene file/database &lt;Database&gt;&lt;../&gt;&lt;../&gt;&lt;../&gt;MyWorkgroup</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts15">Multiple render config files:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;If you use for example Arnold 3.6 and 4.1, you can edit some files to use different workgroups for your scenes.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;1. Dublicate the render config RR\render_apps\_config\3D01__Softimage__Arnold_2011.cfg for softimage and change the renderer name to Arnold Render 4 for example.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;In the file, replace the "%WorkgroupPath%" by "%WorkgroupPath_A%".</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;2. Edit the file RR\render_apps\_setenv\win\softimage.bat and dublicate the workgroup lines and change it to "%WorkgroupPath_A%".</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;You can now select the Arnold version as renderer at the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;3. At last, you can edit the submission plugin RR\render_apps\_submitplugins\rrSubmit_Softimage_6.0+.js</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Add a switch for the renderer version. There are some uncommented lines at the end of the the function RRgetPassesInfo(sceneInfo):</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;if (passes.p[passes.max-1].renderer=="Arnold Render") {</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;if (UseArnold41()) {</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;passes.p[passes.max-1].renderer=="Arnold Render 41"</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;}}</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Uncomment them and replace the UseArnold41() function/condition with your own function to determine if the scene should use Arnold 4.1. </span></p>
+<p class="rvps3"><span class="rvts8"> </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">3rd Party Shaders / Plugins</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There are three locations to install plugins/shaders in Softimage:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;</span><span class="rvts15">Factory:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;The files are installed on the local harddrive. In your SI installation. No matter which user starts SI, he will have the shaders.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;</span><span class="rvts15">User:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;The files are installed in the local user home folder. On Windows usually C:\Users\....</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;If you login with a different user, you have nothing installed. (So if the rrClient runs as different user in the background, it will not find any shader)</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;</span><span class="rvts15">Workgroup:</span></p>
+<p class="rvps3"><span class="rvts15"> &nbsp;&nbsp;</span><span class="rvts8"> The files are installed in a network path. Every user that has configured SI to connect to this workgroup will have all shaders/plugins.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;If one user adds a shader, all users on all machines will get the new shader immidiately.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;For a render farm, you should use a workgroup as it is easier to maintain. </span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Other Preferences</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Usually it should </span><span class="rvts15">not</span><span class="rvts8"> be required to set other XSI preferences.RUsally all prefs are saved in the scene (e.g. frame rate, gamma is usally checked in the pass, resolution is set in the scene render prefs...).</span></p>
+<p class="rvps3"><span class="rvts8">But in the rare event that you require a preference, which is not saved in the scene,</span></p>
+<p class="rvps3"><span class="rvts8">this is the description how you can apply your prefs.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">In such an case, you have to edit/create the XSI preference file.</span></p>
+<p class="rvps3"><span class="rvts8">RR has setup a sample preference file:</span></p>
+<p class="rvps3"><span class="rvts8">\render_apps\renderer_prefs\softimage\win_x64\2010.1\Data\Preferences\default.xsipref</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To create your own, please follow these steps.</span></p>
+<p class="rvps3"><span class="rvts8">1. Create a folder like the one above but with the right version and OS.</span></p>
+<p class="rvps3"><span class="rvts8">You can check the render log of a test render job to find the right version and OS. See line 16 "rrExeVersion" and line 46 "rrPrefs"</span></p>
+<p class="rvps3"><span class="rvts8">2. Start your XSI and setup the prefs like you want to have it.</span></p>
+<p class="rvps3"><span class="rvts8">3. Open the plugin manager and check the path of your user root (right-click, "Explore").</span></p>
+<p class="rvps3"><span class="rvts8">4. Copy the default.xsipref from your user preferences into the RR folder.</span></p>
+<p class="rvps3"><span class="rvts8">5. Replace the line data_management.workgroup_appl_path in your preference file with the one in the sample file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Enable the preference copy:</span></p>
+<p class="rvps3"><span class="rvts8">Edit the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Config_files/Config_files.htm">render config files</a><span class="rvts8"> for Softimage.</span></p>
+<p class="rvps3"><span class="rvts8">Replace the line</span></p>
+<p class="rvps3"><span class="rvts26">&lt;rrBin&gt;rrCopy -oa &lt;rrPrefs&gt;default.xsipref "%XSI_USERHOME%\Data\Preferences\default.xsipref"</span></p>
+<p class="rvps3"><span class="rvts26">with</span></p>
+<p class="rvps3"><span class="rvts26">&lt;rrBin&gt;rrCopy -oo -os -d &lt;rrPrefs&gt;&lt;rrExeVersion&gt; "%XSI_USERHOME%"</span></p>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<p class="rvps3"><span class="rvts26">and the line</span></p>
+<p class="rvps3"><span class="rvts26">&lt;rrBin&gt;rrCopy -oa &lt;rrPrefs&gt;default.xsipref "${XSI_USERHOME}\Data\Preferences\default.xsipref"</span></p>
+<p class="rvps3"><span class="rvts26">with</span></p>
+<p class="rvps3"><span class="rvts26">&lt;rrBin&gt;rrCopy -oo -os -d &lt;rrPrefs&gt;&lt;rrExeVersion&gt; "${XSI_USERHOME}"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">via Plugin</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">You have to run the rrWorkstationInstaller install the submission plugin.</span></p>
+<p class="rvps3"><span class="rvts8">In XSI, you have a new menu entry in the render menu.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/plugin.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Workgroup installation:</span></p>
+<p class="rvps3"><span class="rvts8">Instead of installing the plugin on every machine, just install it once on any machine.</span></p>
+<p class="rvps3"><span class="rvts8">Then move the plugin from your XSI folder [C:\Softimage]\Application\plugins\rrSubmit_Softimage_6.0+.js to[YourWorkgroup]\Application\plugins\rrSubmit_Softimage_6.0+..</span></p>
+<p class="rvps3"><span class="rvts8">To stop the the rrWorkstationInstaller from installing the XSI plugins any more to the local C:\ drive, remove the file &lt;i&gt;[RR]\render_apps\_submitplugins\rrSubmit_Softimage_6.0+.js; </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">via Plugin - Types</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There are multiple types of submission:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 136px;"><p class="rvps3"><span class="rvts8">Submit Scene...</span></p>
+</td>
+<td style="width: 1155px;"><p class="rvps3"><span class="rvts8">Default Submission</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 136px;"><p class="rvps3"><span class="rvts8">Submit Scene - Select Camera...</span></p>
+</td>
+<td style="width: 1155px;"><p class="rvps3"><span class="rvts8">You can specify which pass you want to render with which camera. And even submit one pass with multiple cameras</span></p>
+<p class="rvps3"><span class="rvts8">The plugin collects all paths to your textures and model files used.Then it tells the client to locally cache these texture files.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 136px;"><p class="rvps3"><span class="rvts8">Submit Scene - Local Textures</span></p>
+</td>
+<td style="width: 1155px;"><p class="rvps3"><span class="rvts8">Then it tells the client to locally cache these texture files.</span></p>
+<p class="rvps3"><span class="rvts8">See Local Texture Copies.</span></p>
+<p class="rvps3"><span class="rvts8">Note: This implementation is an example how to use Local Texture Copies. It has some limitations, for example it does not replace textures inside your model (as it is not possible for the rrClient to edit .emdl files, but it copies the textures nevertheless). </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">via Submitter</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to submit without any UI, then you have to start the rrSubmitter manually.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Load the .scntoc file (not the .scn file!) into the Submitter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">You can load multiple .scntoc at once.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Infos</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49"> .scntoc</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to enable .scntoc files in your Softimage preferences if you want to use:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;</span><span class="rvts15">Standalone Submission:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If you submit without the Softimage plugin, then the rrSubmitter reads all scene information from the .scntoc file</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp;</span><span class="rvts15"> &nbsp; &nbsp;Cross-platform rendering:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If you have created a scene on Windows and want to render it on Linux (or vice versa), then the texture conversion is done via the .scntoc file. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

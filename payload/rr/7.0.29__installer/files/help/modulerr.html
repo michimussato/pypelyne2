@@ -1,0 +1,324 @@
+﻿<html>
+	
+<head>
+	<title>module rr</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("modulerr");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">module rr</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; <a href="Pythonreference.html">Python reference</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Pythonreference.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="class_RenderAppBasic.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="modulerrGlobal.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">The module rr is available for all python scripts in RR applications.</span></p>
+<p class="rvps3"><span class="rvts8">It is already loaded/imported.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Each RR application has a different rr module, but the function names are kept the same.</span></p>
+<p class="rvps3"><span class="rvts8">Some functions are not available in all RR applications.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Functions - Commands</span></span></h1>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">bool &nbsp; &nbsp;jobModify(</span></span><span class="rvts0"><span class="rvts84">list&lt;UInt64&gt; jobIDs</span></span><span class="rvts0"><span class="rvts49">, &nbsp;_SettingsOnly settings, &nbsp;_SettingsOnly change)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Send a Change Settings command to the rrServer (like rrControl tab Job Settings).</span></p>
+<p class="rvps3"><span class="rvts8">jobIDs is a list with JobIDs of jobs that you want to change.</span></p>
+<p class="rvps3"><span class="rvts8">You need to call rrJob.getClass_SettingsOnly() to get a _SettingsOnly class instance.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This function uses two _SettingsOnly classes. The settings parameter is the one with all the new values you want to set.</span></p>
+<p class="rvps3"><span class="rvts8">The changeFlags tells RR which parameters you want to change. E.g. if you want to change the user name for all jobs, but all jobs should keep their sequence start-end.</span></p>
+<p class="rvps3"><span class="rvts8">To let RR know that you want to change this value, just set them to anything non-null. (bool values to true, integer to 1, strings to e.g. "1".)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note:</span></p>
+<p class="rvps3"><span class="rvts8">The job table display does not update until the next refresh. But the job itself will be changed (you can verify it if you re-select the job and check the Job Settings page in rrControl)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">bool &nbsp; &nbsp;jobSendCommand(</span></span><span class="rvts0"><span class="rvts84">list&lt;UInt64&gt; jobIDs, &nbsp;</span></span><span class="rvts0"><span class="rvts49">_LogMessage commandID, </span></span><span class="rvts0"><span class="rvts84">UInt64</span></span><span class="rvts0"><span class="rvts49"> commandParam)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Send a Change Settings command to the rrServer.</span></p>
+<p class="rvps3"><span class="rvts8">jobIDs is a list with JobIDs of jobs that you want to send a command to.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note:</span></p>
+<p class="rvps3"><span class="rvts8">The job in rrControl will not update until rrControl gets an update from the rrServer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">bool &nbsp; &nbsp;clientSendCommand(const bp::list clients, quint8 commandID, PyObject* param);</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts63">Sends a command to rrClients.</span></p>
+<p class="rvps3"><span class="rvts63">clientArray is a list with client IDs. If the list has only one element and the ID is -1, then the command is applied to all clients.</span></p>
+<p class="rvps3"><span class="rvts63">param is an optional string parameter. It can be used to send commandlines to the client with the commandID "</span><span class="rvts28">rrGlobal._ClientCommand.cCommandLine"</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Functions - Data access </span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Clients</span></span></h2>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; clientAll_count</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl client - perClient </span></li>
+<li class="rvps3"><span class="rvts8">rrControl client - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Gets the number of clients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">_Client &nbsp; clientAll_get(int clientID)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl client - perClient </span></li>
+<li class="rvps3"><span class="rvts8">rrControl client - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Gets a client by its index.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">_Client &nbsp; getClient()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl client - perClient </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Gets the current client.</span></p>
+<p class="rvps3"><span class="rvts8">Note: perClient plugins are called once for each selected client. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; perClientCurrent()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perClient </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description</span><span class="rvts8">:</span></p>
+<p class="rvps3"><span class="rvts8">Note: perClient plugins are called once for each selected Client.</span></p>
+<p class="rvps3"><span class="rvts8">This gets the number of the current client in the execution list.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; &nbsp;perClientMax()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perClient</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Note: perClient plugins are called once for each selected client.</span></p>
+<p class="rvps3"><span class="rvts8">This gets the number of all clients in the execution list.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Current Job</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you create a script that is executed "Per Job", then the script is executed multiple times.</span></p>
+<p class="rvps3"><span class="rvts8">For each selected job once. The current job is the job the script should be executed for.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">_JobSend/_JobSubmitter &nbsp; &nbsp;getJob()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrServer </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Gets the current job.</span></p>
+<p class="rvps3"><span class="rvts8">Note: perJob plugins are called once for each selected/checked job. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; &nbsp;perJobCurrent()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description</span><span class="rvts8">:</span></p>
+<p class="rvps3"><span class="rvts8">Note: perJob plugins are called once for each selected job.</span></p>
+<p class="rvps3"><span class="rvts8">This gets the number of the current job in the execution list.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; &nbsp;perJobMax()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Note: perJob plugins are called once for each selected job.</span></p>
+<p class="rvps3"><span class="rvts8">This gets the number of all jobs in the execution list.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">setJob(_JobSubmitter job)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Overwrites the job in the rrSubmitter with your job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">All Jobs</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; jobAll_count</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrControl job - once</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns the number of all jobs available in this RR application.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">_JobSend/_JobSubmitter &nbsp; &nbsp; jobAll_get(int index)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrControl job - once</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns a copy of a job by its index. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">jobAll_set(int index, _JobSubmitter job)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Overwrites the job in the rrSubmitter with your job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; jobVisible_count()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrControl job - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns the number of all jobs that are currently visible in rrControl.</span></p>
+<p class="rvps3"><span class="rvts8">Jobs that does not match your rrControl UI filter are not listed.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">_JobSend &nbsp; jobVisible_get(int index)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrControl job - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns </span><span class="rvts15">a copy</span><span class="rvts8"> of a visible job by its index.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Selected/Submitted Jobs</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">int &nbsp; &nbsp;jobSelected_count()</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrControl job - once</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">rrControl: Returns the number of all selected jobs.</span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitter: Returns the number of all checked jobs.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">_JobSend/_JobSubmitter &nbsp; &nbsp; jobSelected_get(int index)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl job - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrControl job - once</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns </span><span class="rvts15">a copy</span><span class="rvts8"> of a selected job by its index.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">jobSelected_set(int index, _JobSubmitter job)</span></span></h3>
+<p class="rvps3"><span class="rvts15">Available in:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - perJob</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter onSubmission - once </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Overwrites the job in the rrSubmitter with your job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,111 @@
+﻿<html>
+	
+<head>
+	<title>Run on artists workstation</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Runonartistsworkstation");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Run on artists workstation</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrClient.html">rrClient</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrClient.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrClient.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrClientWatch.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">You have two ways to run the client on an artists workstation: </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Working hours</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can set your working hours in the configuration of the client.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. from Monday to Friday, each day from 9am to 8pm.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">During that time the Client is completely disabled. It would not take any jobs.</span></p>
+<p class="rvps3"><span class="rvts8">The client only renders at night and weekend.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">User is logged out:</span></p>
+<p class="rvps3"><span class="rvts8">If the user is logged out, the client starts to render. So if the artist leaves the company early or is not working on this day, the client renders.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Disadvantages of working hours:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">The client do not take a job at all during the working hours.</span></li>
+<li class="rvps3"><span class="rvts8">Some artist do not log out if they leave. The client stays disabled even if the artist do not come in the next day.</span></li>
+<li class="rvps3"><span class="rvts8">Your workstations usually have multiple cores. Most of the Artists do not use multiple cores. So you have a lot of unused CPUs. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Enabled by default</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The client is enabled by default and will get jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Of course you can disable the client.</span></p>
+<p class="rvps3"><span class="rvts24"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts24">High CPU usage:</span><br/><span class="rvts8">If a high CPU usage was found, the client does not take a job. So if you start a simulation or any other processing on the machine, it will not get a job.</span><br/><span class="rvts8">If the client is already rendering and the Artists takes a high CPU usage for multiplte minutes, the job is aborted.</span></li>
+<li class="rvps3"><span class="rvts24">Enable after x minutes of low CPU usage:</span><br/><span class="rvts8">If you have manually disabled the client, then the client still checks for the CPU usage of the machine. If it is very low for 40 minutes, then it re-enables itself.</span><br/><span class="rvts8">So artists cannot forget to turn the client back on if they leave the company.</span></li>
+<li class="rvps3"><span class="rvts24">Reserve CPUs for Interactive User:</span><br/><span class="rvts8">You usally do not use all of your 4 (or 8, 16...) cores for work, most of the time maximal one CPU. So why keep the other CPUs unused?</span><br/><span class="rvts8">The client offer a switch to keep one CPU from rendering. And of course the other CPUs still run with low/idle priority, so if you need more power, you get more.</span><br/><span class="rvts8">By default, the reserve CPU option is used as long as somebody is logged in. (You can change that it is only enabled during working hours if someone is logged OR that it is always enabled during working hours, no matter if someone is logged in or</span><br/><span class="rvts8">not. Please see rrClient Configuration help)</span><br/><span class="rvts8">Note: This feature can not controll the network access. So if you compose and load a lot of files or if the client starts to render a compositing, then the network can get slower for other processes on that machine. You can set the number of cores in the client config. </span><br/><span class="rvts8">Note: If you have hyperthreading enabled in your system and your task manager shows 16 cores, then you only have 8 real physical cores. Each core gets two tasks at the same time. So if you render with 8 threads, then all cores are used. So the value should be higher than on systems without Hyperthreading enabled.</span></li>
+<li class="rvps3"><span class="rvts24">Background Render Jobs:</span><br/><span class="rvts8">If you submit a job with the option "Little job", then the client takes this job even if the client is disabled. This should only be used for jobs, that do not require to load big meshes, a lot of textures or a lot of memory. Jobs that only need the CPU. Cause the CPU is the only part of the render that can be controlled to run with low/idle priority. The artist on the workstation should not even notice that something is rendering cause he still gets everything he requires to work (memory, network access, CPU). </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

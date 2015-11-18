@@ -1,0 +1,656 @@
+﻿<html>
+	
+<head>
+	<title>module rrGlobal</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("modulerrGlobal");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">module rrGlobal</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; <a href="Pythonreference.html">Python reference</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Pythonreference.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="modulerr.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="modulerrJob.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The module rr is available for all python scripts in RR applications.</span></p>
+<p class="rvps3"><span class="rvts8">It is already loaded/imported.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> function debugEn/Disable</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">void debugEnable()</span></p>
+<p class="rvps3"><span class="rvts8">void debugDisable()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Enable or disable the debug mode for log messages.</span></p>
+<p class="rvps3"><span class="rvts8">If enabled, debug messages are shown. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function getGenericUI</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">_pythonGenericUI getGenericUI()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">returns a new </span><a class="rvts20" href="class_pythonGenericUI.html">_pythonGenericUI</a><span class="rvts8"> class. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function messageBox</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">int messageBox(int rrLog_level, PyObject* msg, PyObject* btn1, PyObject* btn2, bool showCancel, int waitTime )</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Parameters:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="70%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 186px; height: 49px;"><p class="rvps3"><span class="rvts8">logLvL rrLog_level</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1099px; height: 49px;"><p class="rvps3"><span class="rvts8">Log levels, see help section Enumeration logLvl</span></p>
+<p class="rvps3"><span class="rvts8">info will display a question dialog and progress and default dialog.</span></p>
+<p class="rvps3"><span class="rvts8">debug will display a message box no matter if the application is running is debug mode or not </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 186px;"><p class="rvps3"><span class="rvts8">PyObject* msg</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1099px;"><p class="rvps3"><span class="rvts8">error_msg can be string, unicode, integer or float</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 186px;"><p class="rvps3"><span class="rvts8">PyObject* btn1</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1099px;"><p class="rvps3"><span class="rvts8">Label on the first button. (string, unicode, integer or float)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 186px;"><p class="rvps3"><span class="rvts8">PyObject* btn2</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1099px;"><p class="rvps3"><span class="rvts8">Optional: Label on the second button. If an empty string is set, the button is not shown. (string, unicode, integer or float)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 186px;"><p class="rvps3"><span class="rvts8">bool showCancel</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1099px;"><p class="rvps3"><span class="rvts8">If true, the message box displays a cancel button. And it is able to return -1.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 186px;"><p class="rvps3"><span class="rvts8">int waitTime</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1099px;"><p class="rvps3"><span class="rvts8">Countdown how long the message box should be displayed.</span></p>
+<p class="rvps3"><span class="rvts8">An artist who left the workstation should not always be responsible that the script cannot continue.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Displays a message box for the user. (rrClient and rrServer will not display any message box)</span></p>
+<p class="rvps3"><span class="rvts8">It also writes the text into the RR log file/window.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Return Value:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table width="30%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 68px;"><p class="rvps3"><span class="rvts8">1</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 306px;"><p class="rvps3"><span class="rvts8">Button 1 was clicked.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 68px;"><p class="rvps3"><span class="rvts8">0</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 306px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">showCancel true:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Button 2 was clicked.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">showCancel false:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Button 2 was clicked OR dialog was closed. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 68px;"><p class="rvps3"><span class="rvts8">-1</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 306px;"><p class="rvps3"><span class="rvts8">showCancel true:</span></p>
+<p class="rvps3"><span class="rvts8">"cancel" was clicked or dialog was closed.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function progress_CancelPressed</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">bool progress_CancelPressed()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Return Value:</span></p>
+<p class="rvps3"><span class="rvts8">If the cancel button was pressed, then this function returns true.</span></p>
+<p class="rvps3"><span class="rvts8">NOTE: The cancel status is kept for all jobs executed during a perJob script execution. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function progress_CancelReset</span></span></h2>
+<p class="rvps3"><span class="rvts8">progress_CancelReset()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Resets the CancelPressed status to False.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function progress_CancelShow/Hide</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">progress_CancelShow()</span></p>
+<p class="rvps3"><span class="rvts8">progress_CancelHide()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Show/hide the cancel button.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp; </span></span><span class="rvts0"><span class="rvts13">function progress_HideA</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">progress_HideA()</span></p>
+<p class="rvps3"><span class="rvts8">progress_HideB()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Hides the first/second progress bar.</span></p>
+<p class="rvps3"><span class="rvts8">If you assign a value to the progress bar, it is shown again.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp;</span></span><span class="rvts0"><span class="rvts13"> function progress_SetInfo</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">progress_SetInfo( PyObject* text)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Parameters:</span></p>
+<p class="rvps3"><span class="rvts8">text</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The text to be shown (string, unicode, integer or float)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Shows an information label on the dialog.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp; </span></span><span class="rvts0"><span class="rvts85">function progress_SetMaxA</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">progress_SetMaxA(int maxValue)</span></p>
+<p class="rvps3"><span class="rvts8">progress_SetMaxB(int maxValue)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Parameters:</span></p>
+<p class="rvps3"><span class="rvts8">maxValue</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">the new maximum value</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Sets the maximum value for the first/second progress bar.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp; </span></span><span class="rvts0"><span class="rvts13">function progress_SetProgressA</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">progress_SetProgressA(int value)</span></p>
+<p class="rvps3"><span class="rvts8">progress_SetProgressB(int value)</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Parameters:</span></p>
+<p class="rvps3"><span class="rvts8">value</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The current value of the progress</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Sets the current value for the first/second progress bar.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp; </span></span><span class="rvts0"><span class="rvts13">function progress_SetProgressLabelA</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">progress_SetProgressLabelA( int value, PyObject * label)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Parameters:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table width="30%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><span class="rvts8">value</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 576px;"><p class="rvps3"><span class="rvts8">The current value of the progress</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><span class="rvts8">label</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 576px;"><p class="rvps3"><span class="rvts8">The text to be shown (string, unicode, integer or float)</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Sets the current value for the first/second progress bar.</span></p>
+<p class="rvps3"><span class="rvts8">As well as a text inside the progress bar.</span><span class="rvts15"> </span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function progress_Show/Hide</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">progress_Show()</span></p>
+<p class="rvps3"><span class="rvts8">progress_Hide()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Shows/Hides the progress dialog.</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function refreshUI</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">refreshUI()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">While python functions are running, the process (rrControl, rrSubmitter) is not able to refresh the UI ( The main ui as well as e.g. the python progress bar).</span></p>
+<p class="rvps3"><span class="rvts8">You probably know this from freezed applications, they do not redraw the UI.</span></p>
+<p class="rvps3"><span class="rvts8">And after some time windows reports that the application might have freezed.</span></p>
+<p class="rvps3"><span class="rvts8">Calling this function gives the UI some time to redraw if necessary. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">function rrBinPath</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrString rrBinPath()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns the [RR]/bin/os/ path for the current OS.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp; </span></span><span class="rvts0"><span class="rvts13">function rrRootPath</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrString rrRootPath()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns the root path of the share RR folder.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp; </span></span><span class="rvts0"><span class="rvts13">function rrServer</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrString rrServer()</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Returns the rrServer name or IP.</span></p>
+<p class="rvps3"><span class="rvts8">Can be used for TCP connections to the rrServer</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> &nbsp; </span></span><span class="rvts0"><span class="rvts13">function writeLog</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">void writeLog(logLvL rrLog_level, PyObject* message, PyObject* location)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Parameters:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 162px;"><p class="rvps3"><span class="rvts8">logLvL rrLog_level</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 472px;"><p class="rvps3"><span class="rvts8">Log levels, see help section </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/SDK/Plugins/Python/module_rrGlobal/module_rrGlobal.htm#enumeration_logLvL">Enumeration logLvl</a></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 162px;"><p class="rvps3"><span class="rvts8">PyObject* message</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 472px;"><p class="rvps3"><span class="rvts8">The message itself.</span></p>
+<p class="rvps3"><span class="rvts8">message can be string, unicode, integer or float</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 162px;"><p class="rvps3"><span class="rvts8">PyObject* location</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 472px;"><p class="rvps3"><span class="rvts8">Descriptive string of the function/script that has called this function.</span></p>
+<p class="rvps3"><span class="rvts8">e.g. "myScript-init()"</span></p>
+<p class="rvps3"><span class="rvts8">location can be string, unicode, integer or float</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">Writes an information to the RR log file/window. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">enumeration logLvL</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts28">You can use a number instead of the enumeration.</span></p>
+<p class="rvps3"><span class="rvts28">The IDs will not change with any RR update.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 125px;"><p class="rvps3"><span class="rvts8">RR internal: (critical)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1160px;"><p class="rvps3"><span class="rvts8">Critical messages will force the RR application to restart or terminate themselves.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 125px;"><p class="rvps3"><span class="rvts8">RR internal: (error)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1160px;"><p class="rvps3"><span class="rvts8">Error messages are important for the execution of RR and should never fail.</span></p>
+<p class="rvps3"><span class="rvts8">All RR error messages are collected in a seperate error log RR/sub/log/_ERROR.txt for the rrAdmin and/or rrSupport to fix issues.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 125px;"><p class="rvps3"><span class="rvts8">warning</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1160px;"><p class="rvps3"><span class="rvts8">Warning messages will have a "WRN - " in front to identify them faster in logfiles.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 125px;"><p class="rvps3"><span class="rvts8">info</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1160px;"><p class="rvps3"><span class="rvts8">default messages (At the moment there is no difference to "progress" besides for the message box)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 125px;"><p class="rvps3"><span class="rvts8">progress</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1160px;"><p class="rvps3"><span class="rvts8">default messages (At the moment there is no difference to "info" besides for the message box)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 125px;"><p class="rvps3"><span class="rvts8">debug</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1160px;"><p class="rvps3"><span class="rvts8">Debug messages are ignored by default.</span></p>
+<p class="rvps3"><span class="rvts8">They are shown if</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">You have called debugEnable()</span></li>
+<li class="rvps3"><span class="rvts8">The RR application is not running in debug mode.</span></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33">enumeration _ClientCommand</span></span></h2>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">You can use a number instead of the enumeration.</span></p>
+<p class="rvps3"><span class="rvts28">The IDs will not change with any RR update.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cAbortUNKNOWN</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cEnable</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cDisable</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cAllowLittle</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cForbitLittle</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cUseWorking</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cIgnoreWorking</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cRestartClientExe</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cWOL</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cRestartMachine</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cRestartMachineForce</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cShutdownMachine</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cShutdownMachineForce</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cAbortDisable</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cIgnoreCPU</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cReserveCPUInteractive</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cUseCPUInteractive</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cShutdownClientAndService</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cReloadClientConfig</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cReloadUserConfig</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cReloadGlobalConfig</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cReloadAllConfig</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cUpdateServiceCfg</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cConfigSearchForApplications</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px; height: 12px;"><p class="rvps3"><span class="rvts28">cConfigSearchForApplicationsDeleteOld</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px; height: 12px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cShutdownClient</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cTimeSync</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cShowProcessTree</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cAbortAfterFrame</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cAbortAfterFrameDisable</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cDoSpeedTest</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cCommandLine</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><p class="rvps3"><span class="rvts8">Requires to set the param string of the clientSendCommand function.</span></p>
+<p class="rvps3"><span class="rvts8">The client will create a batch file RR_LocalData/_command.bat.</span></p>
+<p class="rvps3"><span class="rvts8">It executes the command and writes the output into RR_LocalData/_command.txt.</span></p>
+<p class="rvps3"><span class="rvts8">If you want to keep your log output, you should redirect it into a file via your commandline.</span></p>
+<p class="rvps3"><span class="rvts8">For example: </span></p>
+<p class="rvps3"><span class="rvts8">myCommand 1&gt;/fileserver/share/MyCommand_&lt;LocalHost&gt;.txt &nbsp; 2&gt;/fileserver/share/MyCommand_&lt;LocalHost&gt;_error.txt</span></p>
+<p class="rvps3"><span class="rvts8">myCommand 1&gt;/fileserver/share/MyCommand_&lt;LocalHost&gt;.txt &nbsp; 2&gt;&amp;1</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can use all variables (like &lt;LocalHost&gt;) from &nbsp;</span><a class="rvts20" href="Renderconfigfiles.html">render configs</a><span class="rvts8">, as long as they are not job specific.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The command buffer can only take up to 500 letters.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cResetIdleTime</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 238px;"><p class="rvps3"><span class="rvts28">cDevDebug</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1343px;"><br/>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

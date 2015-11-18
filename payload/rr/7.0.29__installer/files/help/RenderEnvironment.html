@@ -1,0 +1,142 @@
+﻿<html>
+	
+<head>
+	<title>Render Environment</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("RenderEnvironment");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Render Environment</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Customization.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Customization.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="PrePreviewDoneFinishedScripts.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">Your render environment is different from the environment of your user.</span></p>
+<p class="rvps3"><span class="rvts8">There are multiple levels of environment configurations.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 183px;"><p class="rvps3"><span class="rvts8">System/OS enviroment</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1294px;"><p class="rvps3"><span class="rvts8">Of course you have all system environment variables.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 183px;"><p class="rvps3"><span class="rvts8">Setenv file - global</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1294px;"><p class="rvps3"><span class="rvts8">There is a file RR\render_apps\_setenv\win\_global.bat which you can use to set environment variables for all kind of jobs.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 183px;"><p class="rvps3"><span class="rvts8">Setenv file - software specific</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1294px;"><p class="rvps3"><span class="rvts8">There is a file RR\render_apps\_setenv\win\app.bat or app_renderer.bat which you can use to set environment variables for all kind of jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Please see </span><a class="rvts20" href="SetenvFiles.html">Setenv Files</a><span class="rvts8"> for more information</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 183px;"><p class="rvps3"><span class="rvts8">rrEnvFile</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1294px;"><p class="rvps3"><span class="rvts8">Each job can have a filename parameter "rrEnvFile".</span></p>
+<p class="rvps3"><span class="rvts8">If this file is found, it is converted into environment variables.</span></p>
+<p class="rvps3"><span class="rvts15">How to create an rrEnvFile:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">You can create these rrEnvFiles with the rrSubmitter, top area "Scene Settings", "Edit rrEnvFile".</span></li>
+<li class="rvps3"><span class="rvts8">Or you can create them with any text editor or script. (Just create one file with the rrSubmitter first and check its format.)</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Set rrEnvFile for a job:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If you use the rrSubmitter UI, you can set them via "Edit rrEnvFile".</span><span class="rvts15"> </span></li>
+<li class="rvps3"><span class="rvts8">If you use a submission xml, you can add a line &lt;rrEnvFile&gt; per job.</span></li>
+<li class="rvps3"><span class="rvts8">Commandline: add a flag "OverrideRREnvFile=0~//fileserver/share/myfile.rrenv"</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter default files: </span><br/><span class="rvts8">This way you can set a rrEnv File for all jobs of e.g a project, user or machine (as there is one submitter defaults file for each project, user or machine).</span><br/><span class="rvts8">Edit the default file of the project/user/machine via the rrSubmitter menu and change/add the line OverrideRREnvFile=0~//fileserver/share/myfile.rrenv</span><br/><span class="rvts8">or edit the submitter defaults file "First" and add the line OverrideRREnvFile=0~&lt;CompanyProjectRootFolder&gt;renderfarm.rrEnv.</span><br/><span class="rvts8">This way RR will automatically use the rrEnv file in your project root folder.</span></li>
+<li class="rvps3"><span class="rvts8">Render config files:</span><br/><span class="rvts8">Add the line </span><br/><span class="rvts8"> &nbsp; &nbsp;OverrideRREnvFile=0~&lt;CompanyProjectRootFolder&gt;Softimage.rrEnv</span><br/><span class="rvts8">or OverrideRREnvFile=0~//fileserver/share/Softimage.rrEnv</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 183px;"><p class="rvps3"><span class="rvts80">rrEnvLine</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1294px;"><p class="rvps3"><span class="rvts8">You can set a custom variable </span><span class="rvts80">rrEnvLine with all your enviroment variables. </span></p>
+<p class="rvps3"><span class="rvts8">Each job can have a filename parameter "rrEnvLine". If this file is found, it is converted into environment variables.</span></p>
+<p class="rvps3"><span class="rvts15"></span><br/><span class="rvts15">rrEnvLine format:</span></p>
+<p class="rvps3"><span class="rvts8">The format of the line is &nbsp; VariableA=ValueA%%VariableB=ValueB%%VariableC=ValueC</span></p>
+<p class="rvps3"><span class="rvts8">or with optional spaces &nbsp; &nbsp;VariableA=ValueA &nbsp; %% &nbsp; VariableB=ValueB &nbsp;%% &nbsp; &nbsp; VariableC=ValueC</span></p>
+<p class="rvps3"><span class="rvts8">Note: Do not use spaces for variable names or values, but you can use spaces between variable definitions.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Set rrEnvLine:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If you use a submission xml, you can add a line &lt;rrEnvLine&gt; per job.</span></li>
+<li class="rvps3"><span class="rvts8">Commandline: add a flag "OverrideRREnvLine=0~myRes=highres"</span></li>
+<li class="rvps3"><span class="rvts8">rrSubmitter default files: This way you can set a rrEnv File for all jobs of a project. Edit the default file via the rrSubmitter menu and change/add the line OverrideRREnvLine=0~myRes=highres</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

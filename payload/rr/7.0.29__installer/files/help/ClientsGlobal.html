@@ -1,0 +1,161 @@
+﻿<html>
+	
+<head>
+	<title>Clients / Global</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ClientsGlobal");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Clients / Global</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrConfig.html">rrConfig</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrConfig.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Pathsanddrives.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="ClientsConfig.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Sort Client List</span></span></h1>
+<p class="rvps3"><span class="rvts8">You can sort and remove clients from the list via this table.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Important:</span></p>
+<p class="rvps3"><span class="rvts8">If a client starts, then it adds itself to the list.</span></p>
+<p class="rvps3"><span class="rvts8">So if you want to delete a client, then you have to be sure the client is not running any more.</span></p>
+<p class="rvps3"><span class="rvts8">Deinstall the service/deamon on the machine and shut it down if it is running via its menu.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Local Textures</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">See</span><a class="rvts20" href="LocalDataFolder.html"> rrTerms/Local_Data_Folder</a><span class="rvts8"> for a description of Local Textures.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">With these settings you can control how many days the textures are cached and how many free drive space should be kept (for rendering, the artist logged in and for new software installations). </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Wake on Lan</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 223px;"><p class="rvps3"><span class="rvts8">Wait x seconds between WOL</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1062px;"><p class="rvps3"><span class="rvts8">The Server has a delay between auto-WOL of Clients. Waking up all clients at the same time can be a problem with the power supply architecture.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 223px;"><p class="rvps3"><span class="rvts8">WOL if more than x clients needed</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1062px;"><p class="rvps3"><span class="rvts8">The server will wake up new clients if the current jobs require more than x clients to finish. See current WOL client need on the rrWebsite (client table) or in rrControl (global info tab)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 223px;"><p class="rvps3"><span class="rvts8">WOL port</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1062px;"><p class="rvps3"><span class="rvts8">You sometimes require to change the WOL port that your switches send them to all other machines. If WOL is not working, try port 80.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 223px;"><p class="rvps3"><span class="rvts8">Subnet mask</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1062px;"><p class="rvps3"><span class="rvts8">The subnet mask of your network. It has to be the same as in your machines TCP/IP config</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Network</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 335px;"><p class="rvps3"><span class="rvts8">Use Server IP for connection (instead of Server Name)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1138px;"><p class="rvps3"><span class="rvts8">You can decide how the rr Applications try to connect to the rrServer. This can be either via</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">IP:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;This is the better method. But your rrServer requires to have a fixed IP. (not a dynamic DHCP IP)</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Name:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The name needs to be resolved into an IP. If the client fails to resolve the name into an IP, then it cannot connect to the server.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 335px;"><p class="rvps3"><span class="rvts8">A client connects every x sec. to Server</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1138px;"><p class="rvps3"><span class="rvts8">Each client connects to the server in invervals. You can set the delay time via this setting.</span></p>
+<p class="rvps3"><span class="rvts8">A client can get commands/jobs only at the time it connects to the server.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 335px;"><p class="rvps3"><span class="rvts8">Server TCP/IP Port</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1138px;"><p class="rvps3"><span class="rvts8">Port used for all RR communication.</span></p>
+<p class="rvps3"><span class="rvts8">If you use a firewall inside your network, please open this port. (of course this port should be closed at your firewall to the internet)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 335px;"><p class="rvps3"><span class="rvts8">Network adapter to listen for connections</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1138px;"><p class="rvps3"><span class="rvts8">By default the rrServer asks the system to get all TCP connections with the RR port on any network adapter it has installed.</span></p>
+<p class="rvps3"><span class="rvts8">You can restrict the network adapter in case you want to restrict the rrServer to one network.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

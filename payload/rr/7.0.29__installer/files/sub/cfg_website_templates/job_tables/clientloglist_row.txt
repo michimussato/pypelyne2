@@ -1,0 +1,1 @@
+<a href="log/<%JobClientLogFileName%>"  target="log"><font color="#<%JobClientLogColor%>"> <%JobClientLogDisplayName%></font></a><br>

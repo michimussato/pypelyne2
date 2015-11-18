@@ -1,0 +1,133 @@
+﻿<html>
+	
+<head>
+	<title>Cross OS render</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("CrossOSrender");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Cross OS render</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="InfosrrTerms.html">Infos/rrTerms</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="InfosrrTerms.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ClientAveraging.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="GPUrender.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">RR is able to render one scene on multiple OS at the same time.</span></p>
+<p class="rvps3"><span class="rvts8">Note: This does not work with every renderer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Before you submit any job, you have to setup a OS conversion table in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8">Otherwise the rrServer, rrControl or rrClient cannot find any files.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There are three ways to cross-OS render a scene with RR:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 244px;"><p class="rvps3"><span class="rvts8">Relative paths</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1041px;"><p class="rvps3"><span class="rvts8">Many render applications allow to use paths relative to the scene file/project database.</span></p>
+<p class="rvps3"><span class="rvts8">(For Example: Maya, Softimage, Modo, Cinema4D, After FX, )</span></p>
+<p class="rvps3"><span class="rvts8">If you use relative paths, then you have to disable the job option "Allow Local Scene Copy".</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 244px;"><p class="rvps3"><span class="rvts8">Environment Variables</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1041px;"><p class="rvps3"><span class="rvts8">Many applications allow the use of environment variables.</span></p>
+<p class="rvps3"><span class="rvts8">If they allow it:</span></p>
+<p class="rvps3"><span class="rvts8">You can define any base path to your fileserver share and use this variable in your scene file.</span></p>
+<p class="rvps3"><span class="rvts8">You can use the [RR]/render_apps/setenv/[os]/global file to add any environment variables.</span></p>
+<p class="rvps3"><span class="rvts8">This works with any scene, including all reference models.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 244px;"><p class="rvps3"><span class="rvts8">RR file replacement: Local scene</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1041px;"><p class="rvps3"><span class="rvts8">If you have enabled "Allow Local Scene Copy", then the rrClient copies the scene file to the local drive.</span></p>
+<p class="rvps3"><span class="rvts8">Then it applies a replacement function to the file which replaces all paths you have setup in rrConfig in the local file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have use relative paths in your scene file, then these will not work as RR copies the scene file to a different location.</span></p>
+<p class="rvps3"><span class="rvts8">(Except Softimage, the paths are relative to the project folder, not the scene file)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you use reference models or any other external files, then the paths are not replaced. RR converts the main scene file only.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 244px;"><p class="rvps3"><span class="rvts8">RR file replacement: Multi-OS scenes</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1041px;"><p class="rvps3"><span class="rvts8">If you have disabled "Allow Local Scene Copy" and submit a job to clients of different OS, then the rrSubmitter creates a copy of the scene file with _win, _lx, or _osx in its filename. Then it replaces all paths in these scene files.</span></p>
+<p class="rvps3"><span class="rvts8">Relative paths still work.</span></p>
+<p class="rvps3"><span class="rvts8">If you use reference models or any other external files, then the paths are not replaced. RR converts the main scene file only.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 244px;"><p class="rvps3"><span class="rvts8">User file replacement: Multi-OS scenes </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1041px;"><p class="rvps3"><span class="rvts8">Instead of letting the rrSubmitter convert a scene file, you can create multiple OS scenes yourself.</span></p>
+<p class="rvps3"><span class="rvts8">You submit the main file as usual. For example your scene file is myScene.scn.</span></p>
+<p class="rvps3"><span class="rvts8">Then you need to provide scene files for the other OS. myScene_lx.scn, myScene_osx.scn and/or myScene_win.scn.</span></p>
+<p class="rvps3"><span class="rvts8">Enable "Multi OS Scenes" for the job.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

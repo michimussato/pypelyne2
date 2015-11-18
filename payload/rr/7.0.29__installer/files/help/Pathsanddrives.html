@@ -1,0 +1,94 @@
+﻿<html>
+	
+<head>
+	<title>Paths and drives</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Pathsanddrives");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Paths and drives</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrConfig.html">rrConfig</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrConfig.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Jobs.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="ClientsGlobal.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Drive Mappings</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you are working with windows, then you probably use drive mappings (H:, P:,...) to access your fileserver.</span></p>
+<p class="rvps3"><span class="rvts8">And not UNC paths (\\fileserver\share\...).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to tell RR to map these drives.</span></p>
+<p class="rvps3"><span class="rvts8">If the rrClient and rrServer are running as service, then they are separate from the user logged in.</span></p>
+<p class="rvps3"><span class="rvts8">Services have to map their drives on their own. It does not matter if someone is logged in, who is logged in and what drives the user has mapped.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">OS Conversion</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use multiple OS for rendering/submission, then you have to enter your project shares in this table.</span></p>
+<p class="rvps3"><span class="rvts8">Each OS has a different path to access the same file on your fileserver.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. Your window path is \\\\Fileserver\\Share\\projects. On linux, the same path would probably me /mnt/share/projects.</span></p>
+<p class="rvps3"><span class="rvts8">If you send a scene from windows, the linux client requires to convert the path to linux before rendering.</span></p>
+<p class="rvps3"><span class="rvts8">If your Server runs on windows, but you submit and render on Linux, then the server has to convert paths. Otherwise it does not find rendered images.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Important Note:</span></p>
+<p class="rvps3"><span class="rvts8">Local Scene Copy has to be enabled for the job. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

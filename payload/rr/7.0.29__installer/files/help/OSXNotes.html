@@ -1,0 +1,134 @@
+﻿<html>
+	
+<head>
+	<title>OSX Notes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("OSXNotes");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">OSX Notes</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Installation.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="LinuxNotes.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Troubleshooting.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Auto-Mount</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You need to auto-mount the RR share at startup.</span></p>
+<p class="rvps3"><span class="rvts8">The same for all your mounts to your project data.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Important:</span></p>
+<p class="rvps3"><span class="rvts8">Most auto-mount tutorials tell you to add the mount into System Preferences/Accounts/Login Items.</span></p>
+<p class="rvps3"><span class="rvts8">But these are only executed if you login with that user.</span></p>
+<p class="rvps3"><span class="rvts8">And the files are only accessible by that user.</span></p>
+<p class="rvps3"><span class="rvts8">So if your daemon uses a different user name, it can NOT access the date!</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">1) NFS shares:</span></p>
+<p class="rvps3"><span class="rvts8">If your filserver can be accessed via an NFS share, then use the application Utilities/Directory Utility to mount the share.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">2) Samba shares:</span></p>
+<p class="rvps3"><span class="rvts8">Apple does not like samba and therefore does not support auto-mounting of samba Shares well.</span></p>
+<p class="rvps3"><span class="rvts8">All solutions so far are not very good.</span></p>
+<p class="rvps3"><span class="rvts8">This is a collection of "solutions" so far:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">2a) Samba, Mount via /etc/fstab:</span></p>
+<p class="rvps3"><span class="rvts8">If you are using a samba share (windows), then follow these steps:</span></p>
+<p class="rvps3"><span class="rvts8">Please create a file named /etc/fstab and add a line for each mount.</span></p>
+<p class="rvps3"><span class="rvts8">A line should look like this:</span></p>
+<p class="rvps3"><span class="rvts8">YourFileServer:/YourShare /Volumes/YourShare url automounted,url==cifs://SmbUserName:SmbPasswd@YourFileServer/YourShare 0 0</span></p>
+<p class="rvps3"><span class="rvts8">(You have to replace YourFileServer, YourShare, SmbUserName, SmbPasswd.)</span></p>
+<p class="rvps3"><span class="rvts8">Note: I have testes this way and I still have the issue that the file permissions are not set for all users.</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">2b) Samba, Mount via auto.smb:</span></p>
+<p class="rvps3"><span class="rvts8">http://www.stress-free.co.nz/automounting_samba_shares_in_leopard</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">2c) Samba, Mount via script:</span></p>
+<p class="rvps3"><span class="rvts8">The mount_samba command has an option for file and directory mode. Probably writing a shell script with that command is the best alternative.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">2d) Samba, NFS from windows:</span></p>
+<p class="rvps3"><span class="rvts8">So far the best solution is to install for example "Windows Services for UNIX" on the windows machine to create NFS shares.</span></p>
+<p class="rvps3"><span class="rvts8">Then mount them via the application Utilities/Directory Utility.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">csh</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Your mac requires to have the csh shell installed.</span></p>
+<p class="rvps3"><span class="rvts8">It should be installed by default.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you do not have it installed, then you see in your render log following messages:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">setenv: command not found</span></p>
+<p class="rvps3"><span class="rvts8">...</span></p>
+<p class="rvps3"><span class="rvts8">setenv: command not found</span></p>
+<p class="rvps3"><span class="rvts8">...</span></p>
+<p class="rvps3"><span class="rvts8">setenv: command not found</span></p>
+<p class="rvps3"><span class="rvts8">...</span></p>
+<p class="rvps3"><span class="rvts8">setenv: command not found</span></p>
+<p class="rvps3"><span class="rvts8">...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

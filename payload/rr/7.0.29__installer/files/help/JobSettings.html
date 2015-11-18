@@ -1,0 +1,576 @@
+﻿<html>
+	
+<head>
+	<title>Job Settings</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("JobSettings");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Job Settings</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Usage.html">Usage</a> &rsaquo;&rsaquo; <a href="Submission.html">Submission</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Submission.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Submission.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="WatchJobs.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Scene Settings</span></span></h1>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Scene settings are the basic settings you need for every job.</span></p>
+<p class="rvps3"><span class="rvts28">They include settings like</span></p>
+<p class="rvps3"><span class="rvts28">- scene name</span></p>
+<p class="rvps3"><span class="rvts28">- sequence start - end, step</span></p>
+<p class="rvps3"><span class="rvts28">- database name</span></p>
+<p class="rvps3"><span class="rvts28">- output image</span></p>
+<p class="rvps3"><span class="rvts28">- image width + height</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">The basic scene settings are usally set by Submission Plugins or Scene Parsers.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts36">Render Settings</span></span></h1>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Priority</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Jobs with higher priority are usually send first.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">There are some exceptions (see rrConfig, tab Jobs):</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts28">You can setup RR to average clients between projects, so each project gets the same amount of render power, no matter if one project uses priority 60 and the other project uses priority 50 for all its jobs.</span></li>
+<li class="rvps3"><span class="rvts28">The preview rendering stage of a job has a +20 higher priority.</span></li>
+<li class="rvps3"><span class="rvts28">You can tell a client to prefer e.g. Nuke jobs, no matter if Softimage jobs have a higher priority.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts30"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Abort Jobs with lower priority</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">After the rrServer receives the new job, it will abort all jobs that are rendering on the assigned clients and that have a lower priority than the new job.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Render Preview First</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Before RR renders all frames, it will render a few frames of each job first.</span></p>
+<p class="rvps3"><span class="rvts28">See </span><a class="rvts38" href="PreviewRender.html">Preview Render</a></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Do Not Check For Frames</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Usually the rrServer checks each job and counts the frames done.</span></p>
+<p class="rvps3"><span class="rvts28">If there is a frame missing, the server tries to render it.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">There are some jobs that do not produce output images or it is not possible to tell RR the right image name.</span></p>
+<p class="rvps3"><span class="rvts28">Then you can enable this setting.</span></p>
+<p class="rvps3"><span class="rvts28">Each frame of the job is send once. The server does not check if there is a frame missing.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Little Job</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Little jobs are send to clients even if the client is disabled.</span></p>
+<p class="rvps3"><span class="rvts28">They will use less CPUs if the client is disabled.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Start Multiple Instances</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">A client can start multiple instances of the same render.</span></p>
+<p class="rvps3"><span class="rvts28">E.g. if it receives the frame frame 1-8, then it can start 4 render instances, each render instance will render 2 frames (1-2, 3-4, 5-6, 7-8 ).</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">This is sometimes required if your render application does not use all CPUs.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">You can change the number of instances in the configuration of each client.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">GPU required</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Not all machines are able to process GPU rendering.</span></p>
+<p class="rvps3"><span class="rvts42">Even if you can login on the machine and use the GPU, it might not work with RR.</span></p>
+<p class="rvps3"><span class="rvts28">Please see rrHelp section </span><a class="rvts20" href="GPUrender.html">Infos/GPU rendering.</a></p>
+<p class="rvps3"><span class="rvts38"><br/></span></p>
+<p class="rvps3"><span class="rvts28">The only function of this switch is to tell the rrServer NOT to send this job to machines that have not GPU setup that works for RR.</span></p>
+<p class="rvps3"><span class="rvts28">Each Client has a config setting "GPU available if client runs as service" and "GPU requires user X to be logged in". </span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Number of Preview Frames</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">Sets the number of preview frames shown on the job information page at rrControl/rrWebsite.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts41">Sequence Divide</span></span></h3>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">See</span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Usage/Submission/Job_Settings/Render_Settings/Render_Settings.htm"> rrTerms/ Sequence Divide</a><span class="rvts32">. </span></p>
+<p class="rvps3"><span class="rvts32"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Max Clients at a time</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">You can limit the maximum number of clients that should render at the same time for a job.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Note: Do not use this if you have not enough licenses for your render application.</span></p>
+<p class="rvps3"><span class="rvts35">Set the number of render licenses in rrConfig</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Required Memory GB</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Set the minimum amount of RAM required for the job.</span></p>
+<p class="rvps3"><span class="rvts35">If a client does not have that much available memory, then job is not send to the client.</span></p>
+<p class="rvps3"><span class="rvts35">If a client has multiple job threads running, then the server takes care that the summed "Required Memory GB" will not be higher than the clients available memory.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Auto-get Required Memory</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The server collects the job memory usage of all clients while they render.</span></p>
+<p class="rvps3"><span class="rvts35">If the memory usage is higher than "Required Memory GB", then "Required Memory GB" is increased.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Min file size KB</span></span></h3>
+<p class="rvps3"><span class="rvts35">If the rendered file is smaller than this setting, then RR will rename the file and re-render it.</span></p>
+<p class="rvps3"><span class="rvts35">If you have not set any value (=0), then RR calculates a value based on the image verification settings in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts35">If you do not want RR to automatically set this value, then set it to e.g. 1KB for this job &nbsp; or &nbsp; set the size value in rrConfig for the image type you use to 0.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Max frame time</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The client is able to abort renderings if the render time is too long.</span></p>
+<p class="rvps3"><span class="rvts35">The value is in minutes per frame.</span></p>
+<p class="rvps3"><span class="rvts35">The value has to be set higher than 1 to have an effect.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Note:</span></p>
+<p class="rvps3"><span class="rvts35">For now, the client is only able to check the time for the whole sequence it got.</span></p>
+<p class="rvps3"><span class="rvts35">For example the client got frame 20-24 to render (5 frames). You have set the max frame time is set to 10 minutes.</span></p>
+<p class="rvps3"><span class="rvts35">If the client takes more than 5*10=50 minutes to render these frames, it will abort it and log an error message. .</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Max crashes</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">If the job crashes this often, the rrServer disables the job.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Max limits</span></span></h3>
+<p class="rvps3"><span class="rvts8">Limits are reached if either</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">a client renders more time than job setting "Max Render time".</span></li>
+<li class="rvps3"><span class="rvts8">the job takes more memory than the machine has. The clients aborts the job because of its config setting "Abort if system memory gets low".</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8">If the number of limits reached of all clients are higher than the job setting "Max Limits" &nbsp;then the complete job is disabled.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts34">Override</span></span></h1>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">You can override settings like verbose messages, image size or render quality (AntiAliasing).</span></p>
+<p class="rvps3"><span class="rvts35">It will trigger different commandline flags that are set in the render config of the render application you use.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">So you can have for example set a resoltion of FULL HD (1920x1080) in your scene, but render a small PAL quicktime version of it.</span></p>
+<p class="rvps3"><span class="rvts35">(Or render both without changing anything in your scene)</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts34">Commandline</span></span></h1>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Parameter</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">You can enter commandline flags which will be added to the commandline.</span></p>
+<p class="rvps3"><span class="rvts35">Please see your renderers documentation for a list of all available flags.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">User Defined</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">If you want to use a commandline flag more often, you can add a new switch for the commandline flag in the render config.</span></p>
+<p class="rvps3"><span class="rvts35">You can add any commandline flag with checkbox and up to two numberical values.</span></p>
+<p class="rvps3"><span class="rvts35">See </span><a class="rvts20" href="Renderconfigfiles.html">Custom submitter options</a></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts34">Scripts</span></span></h1>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Scripts are commandlines or python scripts that are executed before/after an event.</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #c0c0c0; width: 117px;"><p class="rvps3"><span class="rvts8">Event</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; background-color: #c0c0c0; width: 613px;"><p class="rvps3"><span class="rvts8">Description</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; background-color: #c0c0c0;"><p class="rvps3"><span class="rvts8">Format</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; background-color: #c0c0c0;"><p class="rvps3"><span class="rvts8">Location</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 117px;"><p class="rvps3"><span class="rvts8">On Submission</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 613px;"><p class="rvps3"><span class="rvts8">The python scripts are called right before the jobs are send to the rrServer</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Python</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Access/Edit/Create via rrSubmitter menu Scripts</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\plugins\submitter_onsubmission</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 117px;"><p class="rvps3"><span class="rvts8">Pre</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 613px;"><p class="rvps3"><span class="rvts8">These commandlines are executed on one client before any frame is rendered.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Commandline</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">[RR]\render_apps\_prepost_scripts</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 117px;"><p class="rvps3"><span class="rvts8">Preview</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 613px;"><p class="rvps3"><span class="rvts8">Executed after the job has rendered the Preview Frames.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Commandline</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">[RR]\render_apps\_prepost_scripts</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 117px;"><p class="rvps3"><span class="rvts8">Post</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 613px;"><p class="rvps3"><span class="rvts8">Executed after all frames are rendered.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Commandline</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">[RR]\render_apps\_prepost_scripts</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 117px;"><p class="rvps3"><span class="rvts8">Finished</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 613px;"><p class="rvps3"><span class="rvts8">This is almost the same as "Post". The only difference is that the "Wait for Job Approval" is between these two script. The approval has to be enabled in rrConfig for all jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Then a job waits after the Post-script for an approval by an user. After the job was approved, the Finished-Script is executed.</span></p>
+<p class="rvps3"><span class="rvts8">If you have not enabled approval, then Finished-Scripts are the same as Post-Scripts.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Commandline</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">[RR]\render_apps\_prepost_scripts</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">There are some script available by default with RR:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">hello_job</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">This is an example python script. It has no use.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Sequence Check</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Executes </span><a class="rvts20" href="rrSequenceCheck.html">rrSequenceCheck</a><span class="rvts8">. rrSequencecheck checks for broken images, crops exr files and creates cache files for the rrViewer. If this was not already done at render time by the rrClient.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Create Full Video</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Creates a Quicktime of the rendered image sequence in full resolution.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="rrCreateVideo.html">rrCreateVideo</a><span class="rvts8"> for options you can change.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Create Small Video</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Creates a Quicktime of the rendered image sequence in a smaller resolution.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="rrCreateVideo.html">rrCreateVideo</a><span class="rvts8"> for options you can change.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Job-MakeVideo-proreshq</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">This is an example post-script that sends a new job based on the output of this job.</span></p>
+<p class="rvps3"><span class="rvts8">The new job is a conversion job that converts the output of this job into a quicktime.</span></p>
+<p class="rvps3"><span class="rvts8">The reason the conversion is not done in this post-script is that the qtTools used to create the quicktime are only available on OSX, but this job could be a Linux or Windows job. Therefore a new job is send to OSX clients only.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Delete broken</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">If the Client or rrSequenceCheck finds broken images, then these images are renamed "broken_..". Just in case you are using a special image format that is not known to RR. This script deletes these "broken_" images.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Delete Job</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">The commandline calls a Python script that sends the rrServer a command to delete this job.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts34">RR options</span></span></h1>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Ignore Crashes</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Clients are not deassigned after x crashes, a job is not disabled after x crashes.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Auto Approve Job</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">If you have enabled job approval, then a job has to wait for an users approval.</span></p>
+<p class="rvps3"><span class="rvts35">With this setting the job does not wait for any user approval. It is approved by the rrServer.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Do Not Show Preview Jpegs</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Does not show images on the rrWebsite or rrControl for the job.</span></p>
+<p class="rvps3"><span class="rvts35">Note: If the reason for using this setting is that you have confidential renders that should not be seen by a different department, then you could remove users the right to view jobs of others instead.</span></p>
+<p class="rvps3"><span class="rvts35">And enable the setting to encode preview images (Both via rrConfig, tab rrLogins).</span></p>
+<p class="rvps3"><span class="rvts35">So any artist gets his preview images, but only for his own jobs.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Keep Scene Open</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The KSO mode is a new mode introduced in RR 7.0.</span></p>
+<p class="rvps3"><span class="rvts35">The scene file is kept open in case the same scene has more frames to render.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts45">Default non-KSO mode behavior:</span></p>
+<p class="rvps3"><span class="rvts35">The scene is loaded and closed for every frame segment of a job.</span></p>
+<p class="rvps3"><span class="rvts35">If 50 frames are send to a client with Sequence Divide 10/10, the client loads and closes the scene 5 times.</span></p>
+<p class="rvps3"><span class="rvts35">Example:</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts35">The client gets a job: Scene X123 frame 10-19.</span></li>
+<li class="rvps3"><span class="rvts35">Client starts Softimage, loads Scene X123 and renders 10 frames.</span></li>
+<li class="rvps3"><span class="rvts35">Softimage closes after the frames are done.</span></li>
+<li class="rvps3"><span class="rvts35">The client gets a job: Scene X123 frame 20-29. </span></li>
+<li class="rvps3"><span class="rvts35"></span></li>
+<li class="rvps3"><span class="rvts35">Client starts Softimage, loads Scene X123 and renders 10 frames.</span></li>
+<li class="rvps3"><span class="rvts35">Softimage closes after the frames are done.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts45">KSO mode behavior:</span></p>
+<p class="rvps3"><span class="rvts35">The scene is loaded and closed once (at best).</span></p>
+<p class="rvps3"><span class="rvts35">If 50 frames are send to a client, the client loads and closes the scene 1 time (no matter the Sequence Divide setting).</span></p>
+<p class="rvps3"><span class="rvts35">The scene is closed if a different job is send.</span></p>
+<p class="rvps3"><span class="rvts35">Example:</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts35">The client gets a job: Scene X123 frame 10-19.</span></li>
+<li class="rvps3"><span class="rvts35">Client starts Softimage, loads Scene X123</span></li>
+<li class="rvps3"><span class="rvts35">Client tells Softimage to rendr render 10 frames.</span></li>
+<li class="rvps3"><span class="rvts35">Softimage is NOT closed, the scene is still loaded.</span></li>
+<li class="rvps3"><span class="rvts35">The client gets a job: Scene X123 frame 20-29. </span></li>
+<li class="rvps3"><span class="rvts35"></span></li>
+<li class="rvps3"><span class="rvts35">Client tells Softimage to render 10 frames.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;. </span></li>
+<li class="rvps3"><span class="rvts35"></span></li>
+<li class="rvps3"><span class="rvts35">The client gets a job: Scene Y983.</span></li>
+<li class="rvps3"><span class="rvts35">The job is different, Scene X123 is closed.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;.</span></li>
+<li class="rvps3"><span class="rvts35"> &nbsp; &nbsp;. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Allow Local Scene Copy</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The client is allowed to cache the scene file locally.</span></p>
+<p class="rvps3"><span class="rvts35">See </span><a class="rvts20" href="LocalDataFolder.html">Local Data Folder</a><a class="rvts20" href="LocalDataFolder.html">.</a><span class="rvts35"> </span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Allow Texture Replacement</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The client is allowed to replace texture paths inside the scene file (Local Scene Copy required).</span></p>
+<p class="rvps3"><span class="rvts35">This setting is required for Cross OS rendering and the</span><a class="rvts44" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Usage/Submission/Job_Settings/RR_options/RR_options.htm"> </a><a class="rvts20" href="LocalDataFolder.html">Local Texture Feature.</a><span class="rvts35"> </span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Allow Local Render Out</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">See help files about the </span><a class="rvts20" href="LocalDataFolder.html">Local Data Folder.</a><span class="rvts35"> </span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Preview Gamma 2.2</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">All images shown in the job preview or in rrViewer are corrected with a gamma 2.2. </span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">CropEXR</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">CropEXR has 3 advantages:</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">1. CropEXR save EXR files that are cropped to the data.</span></p>
+<p class="rvps3"><span class="rvts35">You often render a small object separately on a black background.</span></p>
+<p class="rvps3"><span class="rvts35">Saving all these empty black pixels is a waste of file space.</span></p>
+<p class="rvps3"><span class="rvts35">Cropped EXR are smaller and therefore load way faster in your compositing.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">2. The files are converted into scanline files, which are faster to load in compositing applications.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">3. If you use Nuke 8, then enable "Convert to EXR 2.0 Multi-Part images" in rrConfig, tab Image.</span><br/><span class="rvts35">This has an huge effect if you render Exr files with many render layers/elements (e.g. beauty, AO, &nbsp;specular, ...)</span></p>
+<p class="rvps3"><span class="rvts35">If you load one layer/element from an Exr v1.0 files in Nuke, then Nuke has to load all layers, it loads the whole file.</span></p>
+<p class="rvps3"><span class="rvts35">If you load one layer/element from an Exr v2.0 files in Nuke, then Nuke loads only the required layer.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">CropEXR runs in two stages.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">1. The client checks the main render output of the job and does the crop for the frames it has just rendered. If local render out is active, then it is done while the image file is copied to your fileserver.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">2. The rrSequenceCheck runs as post-script on all output files of all channels and crops them.</span></p>
+<p class="rvps3"><span class="rvts35">So no matter if a client was able to crop the channel, it is cropped now.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts45"><br/></span></p>
+<p class="rvps3"><span class="rvts45">Important - Adobe - old versions:</span></p>
+<p class="rvps3"><span class="rvts35">Adobe has a bug in their old applications (before CreativeCloud was released).</span></p>
+<p class="rvps3"><span class="rvts35">They do not recognize cropped EXR files.</span></p>
+<p class="rvps3"><span class="rvts35">There is a free plugin for AFX which is able to load these EXR files.</span></p>
+<p class="rvps3"><span class="rvts35">http://www.fnordware.com/OpenEXR/</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Multi OS Scenes</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">This tells RR that the scene file you submit is either a scene that works on all OS or that you have prepared multiple scenes for each OS.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts45">Create multiple scenes per OS:</span></p>
+<p class="rvps3"><span class="rvts35">If you want to create a scene per OS, then you have to follow a few naming rules.</span></p>
+<p class="rvps3"><span class="rvts35">For Example: You submit from windows and want to render on Windows and Linux.</span></p>
+<p class="rvps3"><span class="rvts35">Then you submit your Windows scene file with the default scene name you use, in this example MyScene.scn.</span></p>
+<p class="rvps3"><span class="rvts35">As you submit from Windows, MyScene.scn has to be the Windows scene.</span></p>
+<p class="rvps3"><span class="rvts35">For Linux, you need to create a scene file MyScene_lx.scn. (The strings you have to add for the different OS are "_win", "_lx" and "_mac").</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts45">rrSubmitter creates scenes per OS automatically:</span></p>
+<p class="rvps3"><span class="rvts35">If you have not enabled this "Multi OS Scenes" setting, but you have submitted a scene from windows and assigned Linux Clients, then RR tries to create a scene file for the other OS.</span></p>
+<p class="rvps3"><span class="rvts35">The way depends on the "Allow Local Scene Copy" setting.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts35">"Allow Local Scene Copy" enabled:</span><br/><span class="rvts35">The rrClient copies the scene file at render time.</span><br/><span class="rvts35">All texture paths in the scene file are then converted to the OS.</span></li>
+<li class="rvps3"><span class="rvts35">"Allow Local Scene Copy" disabled:</span><br/><span class="rvts35">At submission, the rrSubmitter creates MyScene_win.scn, MyScene_lx.scn or MyScene_mac.scn scene files. </span><br/><span class="rvts35">It replaces the paths in each scene file.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Note: This (texture) path replacement is available for all render applications. You have to submit a test job to check if all works with your render application.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">No Process Tree Check</span></span></h3>
+<p class="rvps3"><span class="rvts35"></span><br/><span class="rvts35">By default, the rrClient checks all processes that are started by the render application.</span></p>
+<p class="rvps3"><span class="rvts35">As long as one of the processes is running, the Client will wait until it finished its execution.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">If you enable this setting, then the client executes the render config and waits until these commandlines have been executed.</span></p>
+<p class="rvps3"><span class="rvts35">But if these commandlines start an external application which do not halt the render config execution, then the client does not wait for these processes.</span><br/><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Overwrite Existing Files</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">This settings should not be set by an artist.</span></p>
+<p class="rvps3"><span class="rvts35">It is set by the rrSubmitter question "Render Output files found, would you like to keep, delete or overwrite the images".</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">No Freeze Detection</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The rrClient has functions to realize if a render application has frozen.</span></p>
+<p class="rvps3"><span class="rvts35">If you enable this setting, the client will not abort frozen renderer.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Distribute start to end</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">This setting should only be enabled for simulation jobs that have to be rendered one after another.</span></p>
+<p class="rvps3"><span class="rvts35">It should not be enabled for default render jobs.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Send Disabled</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The job is in the state "disabled".</span></p>
+<p class="rvps3"><span class="rvts35">It has to be enabled manually in rrControl/rrWebsite to be rendered. </span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Tile Frame</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Each frame is tiled into multiple slices.</span></p>
+<p class="rvps3"><span class="rvts35">Then each client gets a slice of the image to render.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">After all images are rendered, a post-script rrAssembletiles creates the full images.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Color</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Sets a color for the job to visualize it in rrControl/rrWebsite.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Scene/Shot/Version</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">You can set a custom Scene, Shot or Version number for your rendering.</span></p>
+<p class="rvps3"><span class="rvts35">It is displayed at the job table to identify the job better.</span></p>
+<p class="rvps3"><span class="rvts35">You can use these settings e.g. for the display in the Quicktime generation or to switch environment variables. </span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Company Project</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Usually set automatically by the function you choose in rrConfig. </span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">User Name</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Name of the user that has send the job.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">User Info</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">You can enter any notice you want to display with the job.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts34">Notify</span></span></h1>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Email</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The Email plugin will compare the user and company project of the job with the names in rrConfig/Logins.</span></p>
+<p class="rvps3"><span class="rvts35">If a match is found, the plugin sends an email to the address you have set for the login.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">WinMessage</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The artist on a machine will get a message that the job is done.</span></p>
+<p class="rvps3"><span class="rvts35">As it does not work if nobody is logged in, nor if the machine is off, nor on linux, using the rrMessage notification is recommended.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">rrMessage</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The artist on a machine will get a message that the job is done.</span></p>
+<p class="rvps3"><span class="rvts35">See help section</span><a class="rvts44" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/rrApplications/rrControl/Menu/Client_Commands/Client_Commands.htm#Other_-_rrMessage"> rrControl/</a><a class="rvts20" href="rrControl.html">rrMessage</a></p>
+<p class="rvps3"><span class="rvts32"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Machine</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">Some notification plugins require to set a machine as target for the notification.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts34">Wait</span></span></h1>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43">Start After</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">You can start a job after a specific time.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts43"> Wait for Job</span></span></h3>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p class="rvps3"><span class="rvts35">The job will wait for other jobs before it is started.</span></p>
+<p class="rvps3"><span class="rvts35">If the other job waits for an Approval, this job does not start.</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

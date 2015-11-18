@@ -1,0 +1,495 @@
+﻿<html>
+	
+<head>
+	<title>Clients / Config</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ClientsConfig");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Clients / Config</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrConfig.html">rrConfig</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrConfig.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ClientsGlobal.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="RenderApps.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Client Info</span></span></h1>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 145px;"><p class="rvps3"><span class="rvts8">RR Processor speed</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1328px;"><p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="rrProcSpeedPS.html">rrTerms/rrProcSpeed</a></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 145px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Ghz</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1328px;"><p class="rvps3"><span class="rvts8">If you do not have enabled Hyperthreading in your BIOS, then the summed Ghz is simply [Number of Cores] * [Core Ghz].</span></p>
+<p class="rvps3"><span class="rvts8">Hyperthreading boosts your speed by 33%. With Hyperthreading the calculation is [Number of Cores] * [Core Ghz] * 1.3</span></p>
+<p class="rvps3"><span class="rvts8">Note: Newer machines are faster even if they have the same summed Ghz as old machines.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore the PS test.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 145px;"><p class="rvps3"><span class="rvts8">Description/Info</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1328px;"><p class="rvps3"><span class="rvts8">This description is shown in rrControl, client table.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Enable/Disable</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 224px;"><p class="rvps3"><span class="rvts8">Disable/Abort if CPU usage is high</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">If the client is not rendering or if the client finished a task:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;If the CPU usage of the artist is higher than xx % for 15 seconds, then the client will not accept new jobs. xx can be set with the "CPU usage Limits".</span></p>
+<p class="rvps3"><span class="rvts8">If the client is rendering:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;It will abort jobs if the CPU usage of the artist is higher than 85% within 4 minutes.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; (It does not have to be 85% all the time, but at least at the beginning and end of the 4 min check range).</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 224px;"><p class="rvps3"><span class="rvts8">Disable if available memory is low</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">If the free/available memory of the system is lower than x GB, then the client will not accept new jobs.</span></p>
+<p class="rvps3"><span class="rvts8">If the client is already rendering, then it will </span><span class="rvts15">NOT</span><span class="rvts8"> abort jobs.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 224px; height: 63px;"><p class="rvps3"><span class="rvts8">Abort job if system memory is low (recommended for stability)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px; height: 63px;"><p class="rvps3"><span class="rvts8">If the client is rendering and the system memory gets low, then the client will abort the rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Windows: The system cache is lower than 75MB and the free memory lower than 500 MB OR system cache+ free memory is lower than 125 MB.</span></p>
+<p class="rvps3"><span class="rvts8">Linux, Mac: The free memory lower than 50 MB.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 224px;"><p class="rvps3"><span class="rvts8">Enable after low CPU usage for x minutes</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">If an artist is logged in, then the artist can disable the client (Because the artist has to work). </span></p>
+<p class="rvps3"><span class="rvts8">But artists tend to forget to re-enable the client. </span></p>
+<p class="rvps3"><span class="rvts8">Therefore the client re-enabled itself if the CPU usage is lower than yy % for more than x minutes.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 224px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Allow Little Jobs</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">You can mark jobs as "Little Jobs" at submission. These jobs will render on a client even if the client was disabled by the Artist.</span></p>
+<p class="rvps3"><span class="rvts8">As the render process is running with low priority, the artist logged in should not be disturbed by the CPU usage itself (He can be disturbed by memory usage and network load).</span></p>
+<p class="rvps3"><span class="rvts8">This feature can be used for jobs that use a small amount of memory and do not require to load big scenes or textures, but still have a high render time. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 224px;"><p class="rvps3"><span class="rvts8">Reserve cores if user is logged in.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">You usually do not use all of your 4 (8, 16, ...128) cores for work, most of the time maximal one core.</span></p>
+<p class="rvps3"><span class="rvts8">So why keep the other cores unused?</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The client offer a switch to keep core free from RR renderings. And of course the other cores still run with low/idle priority, so if you need more power, you get more.</span></p>
+<p class="rvps3"><span class="rvts8">By default, the reserve core option is used as long as somebody is logged in. &nbsp;(You can change that it is only enabled during working hours if someone is logged OR that it is always enabled during working hours, no matter if someone is logged in or not.)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: </span></p>
+<p class="rvps3"><span class="rvts8">This feature can not control the network access. So if you do compositing or simulations and these load a lot of files, then the network can get slower for other processes on that machine. </span></p>
+<p class="rvps3"><span class="rvts8">This is the same for the installed RAM of your machine. If the RAM is heavily used, the artist will notice that the client is rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: </span></p>
+<p class="rvps3"><span class="rvts8">If you have hyper-threading enabled in your system and your task manager shows 16 cores, then you only have 8 real physical cores. Each core gets two tasks at the same time. So if you render with 8 threads, then all cores are used. So the value should be higher than on systems without hyper-threading enabled.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 224px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Disable if processes found.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1061px;"><p class="rvps3"><span class="rvts8">You can enter multiple process names separated with a ; </span></p>
+<p class="rvps3"><span class="rvts8">If the client finds this process, then it aborts all jobs and disables itself.</span></p>
+<p class="rvps3"><span class="rvts8">Note: On Linux, the symbolic links to executable are resolved. For example if you start python, the executable is python2.6, not python.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Jobs</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 257px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Multi-Instance Jobs: x instances</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1028px;"><p class="rvps3"><span class="rvts8">If you enable Multiple Instances for a job, then this client can start x instances of the render.</span></p>
+<p class="rvps3"><span class="rvts8">This requires that the client gets enough frames for a job (Sequence Divide - Min). If the client gets only one frame to render, then it cannot start multiple instances. </span></p>
+<p class="rvps3"><span class="rvts8">Note: You need to enable it per job.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="JobSettings.html">Multiple Instances</a><span class="rvts8"> for more information. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 257px;"><p class="rvps3"><span class="rvts8">Abort jobs with low CPU after x Minutes (frozen)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1028px;"><p class="rvps3"><span class="rvts8">A render application can sometimes freeze. It just sits idle and does nothing. It does not continue to render nor does it exit.</span></p>
+<p class="rvps3"><span class="rvts8">If the client recognizes that the render application did not had y% CPU usage for x minutes, then it aborts the render as "freezed".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">% CPU limit:</span></p>
+<p class="rvps3"><span class="rvts8">The % CPU limit is set in the client config, group "CPU usage limits", "Low". &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">But most render applications override this setting in the render config.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 257px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Privilege for Jobs of</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1028px;"><p class="rvps3"><span class="rvts8">Jobs with this user/project/renderApp name have the highest priority on this client.</span></p>
+<p class="rvps3"><span class="rvts8">The client will render other jobs, but only if there is no active job of this user/project/renderApp.</span></p>
+<p class="rvps3"><span class="rvts8">If the client is rendering an other job and you send a job of the privileged user/project/renderApp, then the rrServer will abort the other job on this client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 257px;"><p class="rvps3"><span class="rvts8">Pre/Post/Finished Scripts</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1028px;"><p class="rvps3"><span class="rvts8">By default, a client does take jobs it is assigned to. For the render and for the pre/preview/post/finished scripts.</span></p>
+<p class="rvps3"><span class="rvts8">If you enable this option, this client takes all or no scripts jobs.</span></p>
+<p class="rvps3"><span class="rvts8">No matter if it is assigned or not for the job.</span></p>
+<p class="rvps3"><span class="rvts8">Hint:</span></p>
+<p class="rvps3"><span class="rvts8">You can use older machines as script-only machines.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">c</span></span></h1>
+<div class="rvps3"><table width="30%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 31px;"><p class="rvps3"><span class="rvts8">High</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 341px;"><p class="rvps3"><span class="rvts8">Used for "Disable if high CPU"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 31px;"><p class="rvps3"><span class="rvts8">Low</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 341px;"><p class="rvps3"><span class="rvts8">Used for "Enable after low CPU usage" and "Job frozen"</span></p>
+<p class="rvps3"><span class="rvts8">Note: Most render applications override the cpu limit for the freeze detection in its render config.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Execute Once a Day</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 198px;"><p class="rvps3"><span class="rvts8">Clear temp directory</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1087px;"><p class="rvps3"><span class="rvts8">Clears the temp folder of the machine.</span></p>
+<p class="rvps3"><span class="rvts8">This is NOT the temp folder of the client renders (as they are written to the Local Data Folder).</span></p>
+<p class="rvps3"><span class="rvts8">On Mac/Linux, this is /tmp.</span></p>
+<p class="rvps3"><span class="rvts8">On windows, it is by default the temp folder in "Documents &amp; Settings/...."</span></p>
+<p class="rvps3"><span class="rvts8">But some companies use a system-wide option to set the temp folder for all users to e.g. C.\temp.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 198px;"><p class="rvps3"><span class="rvts8">Synchronize time with rrServer (windows only)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1087px;"><p class="rvps3"><span class="rvts8">The client synchronizes its system time with the time of the rrServer.</span></p>
+<p class="rvps3"><span class="rvts8">This should not be required in domains, as Windows has already a function for time synchronization. (Please ask your domain admin, if you are the admin, ask google :-)</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Internals</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 143px;"><p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">Startup wait time</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 491px;"><p class="rvps3"><span class="rvts8">After the rrClient application is started, it waits x seconds before it receives jobs.</span></p>
+<p class="rvps3"><span class="rvts8">So the system has time to startup.</span></p>
+<p class="rvps3"><span class="rvts8">This setting does only influence if the client is started as service/deamon.</span></p>
+<p class="rvps3"><span class="rvts8">On windows: And it has only an effect if windows was just booted up.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 143px;"><p class="rvps3"><span class="rvts8">Local Copy slowdown</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 491px;"><p class="rvps3"><span class="rvts8">Some fileserver return data filled with zeros if the fileserver is exhausted.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore the rrClient adds a small delay to the copy function.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">GPU rendering</span></span></h1>
+<p class="rvps3"><span class="rvts8">These settings affect the decision of the rrServer if it should send jobs with the </span><a class="rvts20" href="JobSettings.html">"GPU required"</a><span class="rvts8"> flag to a client.</span></p>
+<p class="rvps3"><span class="rvts8">Please see </span><a class="rvts20" href="GPUrender.html">GPU rendering</a><span class="rvts8"> as well.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 240px;"><p class="rvps3"><span class="rvts8">GPU available if running as service</span></p>
+<p class="rvps3"><span class="rvts8">(Win: 2nd GPU in TCC-mode required)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 489px;"><p class="rvps3"><span class="rvts8">This setting has an effect if the client is running as service/deamon.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">As you cannot use the main graphic card within a service on windows, RR needs to know if the client is able to render with a GPU if the client is running as service/deamon. If not, the rrServer will not send GPU jobs to that client as long as it is in service mode.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 240px;"><p class="rvps3"><span class="rvts8">GPU requires this user logged in</span></p>
+<p class="rvps3"><span class="rvts8">(if not service)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 489px;"><p class="rvps3"><span class="rvts8">This setting has an effect if the client was started via a startup script or manually.</span></p>
+<p class="rvps3"><span class="rvts8">And is NOT running as service/deamon.</span><br/><span class="rvts8"></span><br/><span class="rvts8">Some companies have setup a render user account. E.g. An artist logs in and requires the GPU. Therefore the client should not render. After the artist are done in the evening, they login with the render user. Which tells RR that is can send GPU jobs to that client.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Working hours of the artist</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"Working Hours" define the typical times when the artist is working on the machine.</span></p>
+<p class="rvps3"><span class="rvts8">(Is is "Working Hours" of the Artist, NOT "Working Hours" of the client).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 373px;"><p class="rvps3"><span class="rvts8">Working hours: &nbsp;from ... to</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 912px;"><p class="rvps3"><span class="rvts8">Sets the working hours of the artist.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 373px;"><p class="rvps3"><span class="rvts8">Disable Client during Working Hours</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 912px;"><p class="rvps3"><span class="rvts8">The Client will not accept any job and it will abort all jobs during the Working Hours.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 373px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Ignore Working Hours if logged off</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 912px;"><p class="rvps3"><span class="rvts8">If an artist is logs in, then the rrClient will disable itself and abort any jobs that are rendering.</span></p>
+<p class="rvps3"><span class="rvts8">If the artists logs out, the rrClient enables itself again.</span></p>
+<p class="rvps3"><span class="rvts8">So if an artist is not at the company (e.g. vacation, sick), the client is fully used for rendering.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 373px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"Reserve Cpu" during Working Hours only</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 912px;"><p class="rvps3"><span class="rvts8">By default "Reserve Cpu for Interactive user" will be enabled as long as an artist is logged in. But there are some Arists that do not log off in the evening. So "Reserve Cpu for Interactive user" would be enabled the whole time.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you enable this option, the "Reserve Cpu for Interactive user" will NOT be used out of working hours</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 373px;"><p class="rvps3"><span class="rvts8">"Reserve Cpu" during working hours even if nobody is logged in</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 912px;"><p class="rvps3"><span class="rvts8">By default "Reserve Cpu for Interactive user" will be disabled as long as nobody is logged in.</span></p>
+<p class="rvps3"><span class="rvts8">If you enable this option, the "Reserve Cpu for Interactive user" will be used no matter if someone is logged in or not.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 373px;"><p class="rvps3"><span class="rvts8">During WH: accept jobs of</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 912px;"><p class="rvps3"><span class="rvts8">You can add an exception for special jobs which should be allowed to render while the artist is working.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. If you have a renderer that does not load many files and does not use a lot of RAM, add it. The artist will not notice these kind of renderings as all jobs run with low CPU usage.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Wake On LAN</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you setup WOL (Wake On LAN), then you (manually, via rrControl) and the rrServer (for a job) can start machines if they are shut down.</span></p>
+<p class="rvps3"><span class="rvts8">If WOL does not work, please see the </span><a class="rvts20" href="Troubleshooting.html">Troubleshooting</a><span class="rvts8"> section.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The idea is to use "Auto Shutdown" if there are no jobs to render and WOL if you send jobs.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">MAC address</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">The MAC address of the machines network card. If the machine has multiple network cards, please be sure it uses the right one. </span></p>
+<p class="rvps3"><span class="rvts8">If the MAC address is not set, then the client tries to find the right MAC address. At first it will check for active ones and then compares the IP with the rrServer IP.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">IP Range</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">The first three numbers of the IP address of the machine. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">WOL is supported by this client</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">Enable this option if the machine supports WOL. RR uses the WOL method "Magic Packet". </span></p>
+<p class="rvps3"><span class="rvts8">Be sure it is enabled in the BIOS of the machine and/or in the system settings of the OS.</span></p>
+<p class="rvps3"><span class="rvts8">for </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">Auto WOL for render jobs</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">If the server receives new jobs and requires more clients, then it will wake up this client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">Auto WOL before working hours</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">Some artist does not like that their machine was shutdowned during the night. So enable this option and their workstation will be active when they arrive.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">No WOL during</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">You can tell the rrServer not to WOL clients during this time</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Auto Shutdown</span></span></h1>
+<div class="rvps3"><table border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">Shutdown if idle for x min.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">If the client did not got anything to render for x minutes, then it will shutdown itself.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">Force Shutdown (kills apps) </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">Windows: If enabled, then Windows will kill all applications that refuse to close on shutdown.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px; height: 33px;"><p class="rvps3"><span class="rvts8">even if a user is logged in</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px; height: 33px;"><p class="rvps3"><span class="rvts8">The client shuts down even if someone is logged in. You should not do this at an artist workstation as it will close all applications he has opened.</span></p>
+<p class="rvps3"><span class="rvts8">This option should be used with "Force Shutdown".</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 324px;"><p class="rvps3"><span class="rvts8">Disallow auto shutdown by time:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 954px;"><p class="rvps3"><span class="rvts8">A time table to define when a client is allowed to shutdown itself.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">The "Auto Shutdown" works in conjunction with "Auto WOL for render jobs".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Multiple Client Threads</span></span></h1>
+<p class="rvps3"><span class="rvts8">The client can start multiple independent threads.</span></p>
+<p class="rvps3"><span class="rvts8">Each virtual client take its own job as if it is a separate client machine.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 323px;"><p class="rvps3"><span class="rvts8">Number of client threads</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1150px;"><p class="rvps3"><span class="rvts8">Sets the number of independent job threads at the client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 323px;"><p class="rvps3"><span class="rvts8">Wait x sec after a new job before requesting a new one</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1150px;"><p class="rvps3"><span class="rvts8">If one thread has got a job, you can tell the client to wait x seconds before any of the other threads gets a job.</span></p>
+<p class="rvps3"><span class="rvts8">This is required for </span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Some applications do not support that they start multiple instances simultaneously.</span><br/><span class="rvts8">E.g. After Effects closes with some error if you start two instances at the same time.</span></li>
+<li class="rvps3"><span class="rvts8">Starting an application and loading the scene takes a lot of the capacity of the harddrive and the network.</span><br/><span class="rvts8">E.g. if two applications try to take all capacity they can get from a harddrive at the same time, they do not get 50% each, they get about 35% of the harddrives speed. (The missing 30% is just lost)</span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 323px;"><p class="rvps3"><span class="rvts8">Allow job - Thread A,B,C</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1150px;"><p class="rvps3"><span class="rvts8">You can choose which application are allowed to be started on </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

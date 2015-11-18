@@ -1,0 +1,94 @@
+﻿<html>
+	
+<head>
+	<title>External scripts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Externalscripts");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">External scripts</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="SDK.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="SDK.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Plugins.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">External scripts scripts are not a plugin file.</span></p>
+<p class="rvps3"><span class="rvts8">They are scripts that are executed in any environment (e.g. Houdini) and on any machine.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Off-side location:</span></p>
+<p class="rvps3"><span class="rvts8">RR does not need to be installed on the machine, nor do you need access to the RR applications folder in your company.</span></p>
+<p class="rvps3"><span class="rvts8">You just need to have a few libraries from RR/bin (see below).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">And you need to have access via a TCP port to the rrServer.</span></p>
+<p class="rvps3"><span class="rvts8">For example you can open the port in your companies router and execute the script on any webserver, notebook, ...</span></p>
+<p class="rvps3"><span class="rvts8">You can use a DynDNS service to get your companies router IP to connect to your rrServer.</span></p>
+<p class="rvps3"><span class="rvts8">The connection can be setup to be password-protected and all data send is then encrypted.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"></span><br/><span class="rvts15">Off-side Library Requirements:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">libpyRR2 </span></li>
+<li class="rvps3"><span class="rvts8">python27</span></li>
+<li class="rvps3"><span class="rvts8">QtCore4</span></li>
+<li class="rvps3"><span class="rvts8">rrShared</span></li>
+<li class="rvps3"><span class="rvts8">Windows only:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;If you have not installed the Microsoft VS Redistributable Package 2008 32/64bit, then the files Microsoft.VC90.CRT.manifest, msvcp90.dll, msvcr90.dll.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

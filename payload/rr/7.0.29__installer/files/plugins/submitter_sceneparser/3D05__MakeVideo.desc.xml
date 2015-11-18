@@ -1,0 +1,12 @@
+<RR_Job_File syntax_version="6.0">
+<Job>
+    <IsActive>   	1   		</IsActive>
+    <Software>		MakeVideo	</Software>
+    <Renderer>		rr_MJpeg   	</Renderer>
+    <ImageDir>		&lt;SceneFolder&gt; 	</ImageDir>
+    <ImageFilename>	&lt;SceneFilename&gt;.mov	</ImageFilename>
+    <ImageSingleOutputFile>		true 	</ImageSingleOutputFile>
+    <SeqStart>                1                    </SeqStart>
+    <SeqEnd>                  1                    </SeqEnd>
+</Job>
+</RR_Job_File>

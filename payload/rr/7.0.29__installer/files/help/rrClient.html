@@ -1,0 +1,183 @@
+﻿<html>
+	
+<head>
+	<title>rrClient</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrClient");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrClient</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrWriteFile.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Runonartistsworkstation.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">GPU render - dual mode</span></span></h1>
+<p class="rvps3"><span class="rvts8">Please see the </span><a class="rvts20" href="GPUrender.html">GPU render </a><span class="rvts8">help topic. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">User Interface</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Icon Colors</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The RR logo and the Tray icon of the rrClient can have following colors:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 63px;"><p class="rvps3"><span class="rvts15">Black</span></p>
+</td>
+<td style="width: 75px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/StatusIcon0.png"/></p>
+</td>
+<td style="width: 498px;"><p class="rvps3"><span class="rvts8">The client does nothing. It is waiting for new jobs.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 63px;"><p class="rvps3"><span class="rvts40">Orange</span></p>
+</td>
+<td style="width: 75px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/StatusIcon2.png"/></p>
+</td>
+<td style="width: 498px;"><p class="rvps3"><span class="rvts8">The client is disabled. It does not receive jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Exception: Jobs marked with the "background render" flag. The client does not use all CPUs to render these jobs.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 63px;"><p class="rvps3"><span class="rvts39">Green</span></p>
+</td>
+<td style="width: 75px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/StatusIcon1.png"/></p>
+</td>
+<td style="width: 498px;"><p class="rvps3"><span class="rvts8">The Client is rendering a job</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 63px; height: 15px;"><p class="rvps3"><span class="rvts64">Red</span></p>
+</td>
+<td style="width: 75px; height: 15px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/StatusIcon3.png"/></p>
+</td>
+<td style="width: 498px; height: 15px;"><p class="rvps3"><span class="rvts8">The client is not able to connect to the server</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">System Load</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Every few seconds the client checks for the CPU and memory usage.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="30%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 308px;"><p class="rvps3"><span class="rvts8">The CPU usage is shown in Processors.</span></p>
+<p class="rvps3"><span class="rvts8">A value of 1.0 means one CPU is completely in use.</span></p>
+<p class="rvps3"><span class="rvts8">A value of 3.5 means 3 and a half CPU is used.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The memory usage is shown in MB.</span></p>
+</td>
+<td style="width: 72px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/CpuMemUsage.png"/></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The CPU and memory usage is divided into 3 parts from top to bottom:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Free</span></li>
+<li class="rvps3"><span class="rvts8">Usage of the Render processes</span></li>
+<li class="rvps3"><span class="rvts8">Other System Usage</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Commandline Flags</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="650" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-disabled</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">Start the client disabled</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-UITakeOverService</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">Please see </span><a class="rvts20" href="GPUrender.html">GPU render</a><span class="rvts8">.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-ignoreWorkingHours</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">Do not disable the interactive client during working hours</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 171px;"><p class="rvps3"><span class="rvts8">-shutdownEvenIfLoggedIn</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 515px;"><p class="rvps3"><span class="rvts8">Temporally enables the setting "Shutdown even if a user is logged in"</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

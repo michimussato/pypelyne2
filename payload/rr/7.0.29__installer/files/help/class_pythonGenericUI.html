@@ -1,0 +1,278 @@
+﻿<html>
+	
+<head>
+	<title>class _pythonGenericUI</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("class_pythonGenericUI");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">class _pythonGenericUI</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; <a href="Pythonreference.html">Python reference</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Pythonreference.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="class_ClientHardware.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="class_SettingsOnly.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Description:</span></p>
+<p class="rvps3"><span class="rvts8">_pythonGenericUI is a class to create a dialog window.</span></p>
+<p class="rvps3"><span class="rvts8">You can add buttons, checkBoxes, lineEdits,....</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/pythonGenericUI.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: The blue boxes (Layouts) and springs (Spacers) are not visible in your dialog.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Usage Example:</span></p>
+<p class="rvps3"><span class="rvts27">myDialog= rrGlobal.getGenericUI()</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.addItem(rrGlobal.genUIType.label,"infoLabel","")</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.setText("infoLabel","Hello!\n This is a test UI.\n")</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.addItem(rrGlobal.genUIType.lineEdit,"myEdit","")</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.setText("myEdit","Preset Text")</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.addItem(rrGlobal.genUIType.layoutH,"btnLayout","")</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.addItem(rrGlobal.genUIType.closeButton,"Ok","btnLayout")</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.addItem(rrGlobal.genUIType.closeButton,"Abort","btnLayout")</span></p>
+<p class="rvps3"><span class="rvts27">myDialog.execute()</span></p>
+<p class="rvps3"><span class="rvts27"><br/></span></p>
+<p class="rvps3"><span class="rvts27">editText=myDialog.text("myEdit");</span></p>
+<p class="rvps3"><span class="rvts27">print("The text is "+editText)</span></p>
+<p class="rvps3"><span class="rvts27">if (myDialog.value("Ok")==1):</span></p>
+<p class="rvps3"><span class="rvts27"> &nbsp; &nbsp;print("OK was pressed")</span></p>
+<p class="rvps3"><span class="rvts27">if (myDialog.value("Abort")==1):</span></p>
+<p class="rvps3"><span class="rvts27"> &nbsp; &nbsp;print("Abort was pressed")</span></p>
+<p class="rvps3"><span class="rvts27"><br/></span></p>
+<p class="rvps3"><span class="rvts27">del myDialog</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">enumeration rrGlobal.genUIType:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table width="60%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">button</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A default button. After the dialog is closed, you can check if the button was pressed.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">closeButton</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">Same as button, but it closes the dialog as well.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">lineEdit</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A line editor.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">checkBox</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A check Box.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">spin</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A spin box to enter numbers.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">browseFile</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A generic browse file dialog.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">browseDir</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A generic browse directory dialog.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">label</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A text label.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">dropdown</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">A Dropdown list/ Combo Box.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">layoutH</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">Horizontal Layout</span></p>
+<p class="rvps3"><span class="rvts8">Layouts are used to group multiple objects. (blue boxes in example screenshot)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">layoutV</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">Vertical Layout</span></p>
+<p class="rvps3"><span class="rvts8">Layouts are used to group multiple objects. (blue boxes in example screenshot)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">spacerH</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">Horizontal Spacer.</span></p>
+<p class="rvps3"><span class="rvts8">A spacer is used to move everything else in a layout aside. (blue springs in example screenshot)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 128px;"><p class="rvps3"><span class="rvts8">spacerV</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 636px;"><p class="rvps3"><span class="rvts8">Vertical Spacer.</span></p>
+<p class="rvps3"><span class="rvts8">A spacer is used to move everything else in a layout aside. (blue springs in example screenshot)</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Class _pythonGenericUI functions:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table width="60%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts15">Return Type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 313px;"><p class="rvps3"><span class="rvts15">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 529px;"><p class="rvps3"><span class="rvts15">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><br/>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 313px;"><p class="rvps3"><span class="rvts8">addItem(const int &amp;type, char * name, char * layout)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">setText(char * name, char * text)</span><br/><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 529px;"><p class="rvps3"><span class="rvts8">Adds a new item. All items are identified by name.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">name is used as display text as well if you do not overwrite it with setText()</span></p>
+<p class="rvps3"><span class="rvts8">If you have created a layout, you can add this item to the layout by its layout name.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts8">QString</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 313px;"><p class="rvps3"><span class="rvts8">text(char * name)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">addText(char * name, char * text)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">setValueMin(char * name, int value)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">setValueMax(char * name, int value)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">setValue(char * name, int value)</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 529px;"><p class="rvps3"><span class="rvts8">Get the text/caption/label of the item name. Probably used for lineEdits and dropDowns</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">dropdown only. Adds new text items to the list. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">spin only. Changes the allowed range for the spinbox.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">spin only. Changes the allowed range for the spinbox.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">spin: sets the value.</span></p>
+<p class="rvps3"><span class="rvts8">button: 0: unpress button. 1: press button. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 81px;"><p class="rvps3"><span class="rvts8">int</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 313px;"><p class="rvps3"><span class="rvts8">value(char * name)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">execute()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 529px;"><p class="rvps3"><span class="rvts8">spin: get the current value</span></p>
+<p class="rvps3"><span class="rvts8">button: 0: button was not pressed. 1: button was pressed.</span></p>
+<p class="rvps3"><span class="rvts8">browse...: The user pressed the "browse" button. Note: The user can still have edited the filename without "browse".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Displays the dialog until a close button was pressed or the window was closed [X].</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

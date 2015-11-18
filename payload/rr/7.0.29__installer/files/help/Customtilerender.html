@@ -1,0 +1,116 @@
+﻿<html>
+	
+<head>
+	<title>Custom tile render</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Customtilerender");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Custom tile render</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="KnowledgebaseHiddenFeatures.html">Knowledgebase/Hidden Features</a> &rsaquo;&rsaquo; <a href="Rendering.html">Rendering</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Rendering.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="NoframeJobs.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Customization1.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This is an outline to render </span><span class="rvts15">single frames</span><span class="rvts8"> as tiles with Softimage - Mental Ray. &nbsp;</span><span class="rvts15">IF</span><span class="rvts8"> you cannot use the default RR tiling for some reason.</span></p>
+<p class="rvps3"><span class="rvts8">In this example we are using the frame number of the job to specify the tile number.</span></p>
+<p class="rvps3"><span class="rvts8">This means you send a job with 30 frames and you get 30 frames, but each frame contains one tile only.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">NOTE: This example works only if a tile has a render time higher than 2 minutes! </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Dublicate the file [RR]\render_apps\_config\3D01__Softimage__2011.cfg and name it &nbsp; &nbsp;3D01__Softimage__2011_mytile.cfg</span></li>
+<li class="rvps3"><span class="rvts8">Dublicate the file [RR]\render_apps\scripts\kso_softimage.py and name it kso_softimage_mytile.py</span></li>
+<li class="rvps3"><span class="rvts8">Edit the file 3D01__Softimage__2011_mytile.cfg:</span></li>
+</ol>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;"><ul style="text-indent: 0px; margin-left: 48px; list-style-position: outside; list-style-type: circle;">
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Change RendererName= &nbsp;to RendererName= myTile - Mental Ray</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Remove all lines that start with KSO_ &nbsp; (KSO_Type=, KSO_Start=, ....) as KSO works only for rendering multiple frames, but we are using the frame number for tiles.</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Change &lt;RR_DIR&gt;render_apps/scripts/kso_softimage.py in to &lt;RR_DIR&gt;render_apps/scripts/kso_softimage_mytile.py</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Remove the line FlagsRegion= </span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Add two new lines &nbsp; SeqDivMIN=0~1 &nbsp; and SeqDivMAX=0~1 as a client should render only one frame with the specific tile, not multiple frames with the same tile.</span><br/><span class="rvts8"><br/></span></li>
+</ul></ul>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Edit the file kso_softimage_mytile.py:</span></li>
+</ol>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;"><ul style="text-indent: 0px; margin-left: 48px; list-style-position: outside; list-style-type: circle;">
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Search for the block that does the region/tile settings. It starts with &nbsp; </span><span class="rvts27">if ((arg.RegionX1!= None) and (len(str(arg.RegionX1))&gt;0))</span><br/><span class="rvts8">Add this block after that block:</span><br/><span class="rvts27">xsi.SetValue(str(arg.Pass)+".CropWindowEnabled",True)</span><br/><span class="rvts27">xsi.SetValue(str(arg.Pass)+".SelectionTracking",False)</span><br/><span class="rvts27">xsi.SetValue(str(arg.Pass)+".CropWindowOffsetY",0)</span><br/><span class="rvts27">xsi.SetValue(str(arg.Pass)+".CropWindowHeight",9999)</span><br/><span class="rvts27"></span><br/><span class="rvts27">numberOfTiles=30</span><br/><span class="rvts27">imagewith= xsi.GetValue("Passes.RenderOptions.ImageWidth")</span><br/><span class="rvts27">if (xsi.GetValue(str(arg.Pass)+".ImageFormatOverride")):</span><br/><span class="rvts27"> &nbsp; &nbsp;imagewith= xsi.GetValue(str(arg.Pass)+".ImageWidth")</span><br/><span class="rvts27">tile_ID= int(arg.FrStart)</span><br/><span class="rvts27"></span><br/><span class="rvts27">tileWidth=imagewith/numberOfTiles</span><br/><span class="rvts27">xsi.SetValue(str(arg.Pass)+".CropWindowOffsetX", tileWidth*(tile_ID-1) )</span><br/><span class="rvts27">xsi.SetValue(str(arg.Pass)+".CropWindowWidth", tileWidth+2 &nbsp;)</span></li>
+</ul>
+<li class="rvps3"><span class="rvts8">Use the submission plugin in Softimage as you always do.</span><br/><span class="rvts8">Select your new renderer from the lower left dropbox.</span><br/><span class="rvts8">Set the frame range to 1-30.</span></li>
+</ul>
+<p class="rvps7"><span class="rvts8"><br/></span></p>
+<p class="rvps7"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Further optimizations:</span></p>
+<p class="rvps3"><span class="rvts8">The above example requires you to submit the sequence 1-30. &nbsp;and it will always render 30 tiles.</span><br/><span class="rvts8">You could change the render config to support a dynamic number of tiles.</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Add &nbsp; &nbsp;FrTotal: &lt;TotalSeqEnd&gt; , &nbsp; to the render config.</span></li>
+<li class="rvps3"><span class="rvts8">Add &nbsp; &nbsp;self.FrTotal=getParam(allArgList,"FrTotal") &nbsp;to the render script.</span></li>
+<li class="rvps3"><span class="rvts8">Replace the line numberOfTiles=30 &nbsp; with &nbsp; numberOfTiles=int(self.FrTotal).</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8">If you submit 1-40, then you get 40 tiles, if you submit 1-20, you get 20 tiles.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

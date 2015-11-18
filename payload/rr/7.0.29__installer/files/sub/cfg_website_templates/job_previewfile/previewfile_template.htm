@@ -1,0 +1,37 @@
+<html>
+<head><SCRIPT LANGUAGE=JavaScript> intImage = 2;
+function swapImage() { switch (intImage) {
+ case 1: IMG1.src = "p<%CurrentRowNumberPadded%>.jpg"; intImage = 2;  return(false);
+case 2: IMG1.src = "p<%CurrentRowNumberPadded%>_a.jpg";  intImage = 1; return(false);
+ } } </SCRIPT></head>
+<body text="C0C0C0" bgcolor="#5F5F5F" link="#7090EE" vlink="#7090EE" alink="#7090EE" style="font-family:Arial;">
+<br>
+<br>
+<center>
+<table border="0" width="100%"><tr>
+<td align=middle width="33%">  <a href="p<%LastRowNumberPadded%>.htm" ><b>&lt Frame <%LastRowNumber%> &lt</b></a></td>
+<td align=middle width="33%"><a href="index.htm" ><b>back to job</b></a></td>
+<td align=middle> <a href="p<%NextRowNumberPadded%>.htm" ><b>&gt; Frame <%NextRowNumber%> &gt;</b></a></td>
+</tr></table>
+<br>
+<br>
+<b>Image Information: <%ImageInformation%><b><br>
+<font color="#CCCC00">Click on image to swap with alpha</font><br>
+<table border=0><tr><td nowrap>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td>
+<img name="IMG1" SRC="p<%CurrentRowNumberPadded%>.jpg" NOSAVE onclick="swapImage()">
+<br>&nbsp;
+<center><b>Frame <%CurrentRowNumberDisplay%></b></center>
+<br>&nbsp;
+<img SRC="p<%CurrentRowNumberPadded%>_a.jpg" NOSAVE>
+</td><td nowrap>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr></table>
+<br>
+<table border="0" width="100%"><tr>
+<td align=middle width="33%">  <a href="p<%LastRowNumberPadded%>.htm" ><b>&lt Frame <%LastRowNumber%> &lt</b></a></td>
+<td align=middle width="33%"><a href="index.htm" ><b>back to job</b></a></td>
+<td align=middle> <a href="p<%NextRowNumberPadded%>.htm" ><b>&gt; Frame <%NextRowNumber%> &gt;</b></a></td>
+</tr></table>
+<br>
+<br>
+</center>
+</body>
+</html>

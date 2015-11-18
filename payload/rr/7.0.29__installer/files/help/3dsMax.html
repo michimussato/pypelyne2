@@ -1,0 +1,151 @@
+﻿<html>
+	
+<head>
+	<title>3ds Max</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("3dsMax");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">3ds Max</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3D.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="3D.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Errors.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Setup</span></span></h1>
+<p class="rvps3"><span class="rvts8">Usually, there are no setup or config file changes required to render 3ds Max files.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Backburner needs to be installed!</span></p>
+<p class="rvps3"><span class="rvts8">Although the Commandline Renderer of Max does not use Backburner, it still requires Backburner Dlls.</span></p>
+<p class="rvps3"><span class="rvts8">The 3dsmax installer thinks that if you do not want Backburner, then you do not want to network render at all.</span></p>
+<p class="rvps3"><span class="rvts8">So you have to install Backburner files on the machine. (Usually installed by default if you have not removed/unchecked it) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Network Plugin Folder</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RR has setup a network plugin folder for 3dsmax.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Copy your plugins into the folder</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\3dsmax\MaxPlugins_2015\</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Create the folder if it does not exist.</span></p>
+<p class="rvps3"><span class="rvts8">(of course you have to replace the 3dsmax version with the version you use)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Path customization:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">The folder is specified in the </span><a class="rvts20" href="SetenvFiles.html">setenv file</a><span class="rvts8">. </span><br/><span class="rvts8">You can change it to any other path.</span></li>
+<li class="rvps3"><span class="rvts8">You can override it on a per-job base.</span><br/><span class="rvts8">Add the environment variable MaxPlugins_NetworkPath to the </span><a class="rvts20" href="RenderEnvironment.html">rrEnv file or rrEnv line</a><span class="rvts8"> of the job.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Plugin distribution</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It is possible that RR copies 3rd Party 3dsmax Plugins onto all machines. (e.g. mental Ray shaders)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Copy your plugins in the folder</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\3dsmax\win_x64\2015\</span></p>
+<p class="rvps3"><span class="rvts8">(of course you have to replace the 3dsmax version with the one you use)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then uncomment (remove the rem# ) from the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm">setenv file</a><span class="rvts8"> for 3dsMax to enable the copy. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Submission</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Install</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">After installing the "Submitter Plugins" via the rrWorkstation_installer (and restarting 3dsmax), you should have a new menu "RRender".</span></p>
+<p class="rvps3"><span class="rvts8">If you do not have that menu item or if it is not kept in your layout, please follow these steps:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Customize/ Customize User Interface.</span></li>
+<li class="rvps3"><span class="rvts8">Press the "New..." button on the right side to create a new menu "RRender".</span></li>
+<li class="rvps3"><span class="rvts8">Select the Category "RoyalRender" on the left side.</span></li>
+<li class="rvps3"><span class="rvts8">Drag n drop the commands into the menu RRender. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/submit_install_3dsmax.png"/></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Use</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">After you have opened your scene, you can start the submitter via the main menu in Max.</span></p>
+<p class="rvps3"><span class="rvts8">If you have a default max scene, use the "Submit Scene" menu item.</span></p>
+<p class="rvps3"><span class="rvts8">If you are using the 3rd party plugin RP-manager, please use the second menu item. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/max_plugin.jpg"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">New and depreciated submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">With RR 7.0.11 we introduced a new submission menu item</span><span class="rvts15"> "Submit scene (New. VRay and Max renderer only)"</span><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">The old submission was renamed to </span><span class="rvts15">"Submit scene (Old; all renderer)"</span></p>
+<p class="rvps3"><span class="rvts8">We have completely changed the rendering with 3dsmax to offer you features that the default Autodesk 3dsmax render does not offer (Like Stereo Cam rendering).</span></p>
+<p class="rvps3"><span class="rvts8">If you do not see the new submission, please follow the "Install" description above.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

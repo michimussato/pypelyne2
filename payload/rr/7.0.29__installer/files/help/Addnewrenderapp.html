@@ -1,0 +1,115 @@
+﻿<html>
+	
+<head>
+	<title>Add new render app</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Addnewrenderapp");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Add new render app</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; <a href="RenderApplications.html">Render Applications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="RenderApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="RenderApplications.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Renderconfigfiles.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Render</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To render with new application, you need to add these files:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Render Config File &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">[RR]\render_apps\_config</span></li>
+<li class="rvps3"><span class="rvts8">Install Path &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">[RR]\render_apps\_install_paths</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;(Only required if you use the &lt;Exe&gt; variable in your render config, otherwise hardcode the path.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;&lt;Exe&gt; requires to add the render application to the client config) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submit</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To automatically fill out the basic scene settings in the rrSubmitter you have two options:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24">A) Create a plugin inside your render application.</span><span class="rvts8"> &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">Examples: Softimage, Maya, 3dsMax.</span></p>
+<p class="rvps3"><span class="rvts8">Required files:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Submission Plugin</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">[RR]\render_apps\_submitplugins\</span></li>
+<li class="rvps3"><span class="rvts8">Install Path</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">[RR]\render_apps\_install_paths</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;(rrWorkstationInstaller automatically installs the plugin into all versions) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24">B) Create a Scene Parser (</span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Add_New_Rendere/Add_New_Renderer.htm">SDK link</a><span class="rvts24">) plugin.</span></p>
+<p class="rvps3"><span class="rvts8">The submitter reads the scene file.</span></p>
+<p class="rvps3"><span class="rvts8">Examples: Nuke, Shake, Fusion.</span></p>
+<p class="rvps3"><span class="rvts15">A Scene Parser is required if you want to load the scene file into the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">Alternatively, you can also create two text files to let the rrSubmitter know what to do with that file.</span></p>
+<p class="rvps3"><span class="rvts8">As an example please see the files [RR]\plugins\submitter_sceneparser\3D05__MakeVideo.desc.*</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Environment</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Most of the render applications require to set some environment variables.</span></p>
+<p class="rvps3"><span class="rvts8">May it be to set the license server, the path to preferences or plugins.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore you need</span><span class="rvts26"> Setenv Files</span><span class="rvts8">. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

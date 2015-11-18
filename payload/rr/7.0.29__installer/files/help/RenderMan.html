@@ -1,0 +1,119 @@
+﻿<html>
+	
+<head>
+	<title>RenderMan</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("RenderMan");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">RenderMan</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="ArchiveStandalone.html">Archive/Standalone</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="ArchiveStandalone.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="MentalRay.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="VRay.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Setup</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RenderMan does not have to be installed on every system. It will be copied only by RR for execution.</span></p>
+<p class="rvps3"><span class="rvts8">(see </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Renderer_Exe/Renderer_Exe_-_Shared.htm">Shared Executable</a><span class="rvts8">)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Therefore you have to copy your RenderMan application folder into</span></p>
+<p class="rvps3"><span class="rvts8">[rrRoot]\render_apps\renderer_exe\renderman\&lt;OS&gt;_&lt;bit&gt;\&lt;Renderer&gt;_&lt;version&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The result is then for example:</span></p>
+<p class="rvps3"><span class="rvts26">[rrRoot]\render_apps\renderer_exe\renderman\win_x64\RenderManProServer-18.0\bin\prman.exe</span></p>
+<p class="rvps3"><span class="rvts8">or</span></p>
+<p class="rvps3"><span class="rvts26">[rrRoot]\render_apps\renderer_exe\renderman\win_x64\3dlight_8.5\bin\renderdl.exe</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Submission</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Just like every other archive renderer type, you have to load one file of your .rib sequence into the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmitter recognizes the frame range of your sequence and output name.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">All Archive/Standalone renderer are based on a scene file per frame in Royal Render.</span></p>
+<p class="rvps3"><span class="rvts15">You can not export a complete animation into one file, you need one file per Frame.</span></p>
+<p class="rvps3"><span class="rvts15">name.#.ext</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">3Delight</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Setup</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please copy your 3Delight application folder to</span></p>
+<p class="rvps3"><span class="rvts8">[rrRoot]\render_apps\renderer_exe\renderman\&lt;OS&gt;_&lt;bit&gt;\3Delight&lt;version&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Example:</span></p>
+<p class="rvps3"><span class="rvts8">[rrRoot]\render_apps\renderer_exe\renderman\win_x64\3dlight_8.5</span></p>
+<p class="rvps3"><span class="rvts8">After you have copied the 3Dlight folder, your executable should be in</span></p>
+<p class="rvps3"><span class="rvts8">[rrRoot]\render_apps\renderer_exe\renderman\win_x64\3dlight_8.5\bin\renderdl.exe</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">RenderManStudio Export</span></span></h1>
+<p class="rvps3"><span class="rvts8">Please follow these steps if yu want to export .rib files from your Maya RenderManStudio scene:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Open "Render Settings" / tab "Advanced" / group "RIB Options".</span><br/><span class="rvts8">If you want to use the rrSubmitter to submit your exported .rib files, then you have to use the ASCII mode. </span><br/><span class="rvts8">You should </span><span class="rvts15">use zipped</span><span class="rvts8"> ribs to save space.</span></li>
+<li class="rvps3"><span class="rvts8">Open your Mel editor in Maya.</span><br/><span class="rvts8">Type the mel command "rman genrib" and execute it.</span><br/><span class="rvts8">Your rib files will be located in [MayaProject]/renderman/....</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You will have at least two rib files per frame.</span></p>
+<p class="rvps3"><span class="rvts8">E.g.</span><span class="rvts26"> 0001.rib </span><span class="rvts8">and</span><span class="rvts26"> perspShape_Final.0001.rib</span><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">Please load the rib with the frame number only. &nbsp;It defines the environment variable RMSTREE.</span></p>
+<p class="rvps3"><span class="rvts8">If this RMSTREE is not valid for your render farm, please open [RR]\render_apps\_setenv\win\renderman_proserver.bat, remove the rem in front of the RMSTREE line and set the right path.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

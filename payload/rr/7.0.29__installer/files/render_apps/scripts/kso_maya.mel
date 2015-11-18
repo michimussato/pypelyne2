@@ -1,0 +1,13 @@
+//  Render script for Maya    
+// Last Change: v 6.02.31
+//  Copyright (c)  Holger Schoenberger - Binary Alchemy
+
+
+global proc rrStartWrapper(string $pythonPath, string $args )
+{	
+    python("import sys ");
+    python("sys.path.append('"+$pythonPath+"')");
+    python("import kso_maya");
+    python("kso_maya.rrStart('"+$args+"')");
+}
+

@@ -1,0 +1,128 @@
+﻿<html>
+	
+<head>
+	<title>Houdini</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Houdini");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Houdini</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3D.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ClarisseIFX.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Lightwave.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Render Licenses</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Houdini rendering requires a batch license per client.</span></p>
+<p class="rvps3"><span class="rvts8">Please enter your number of Houdini licenses in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you use </span><a class="rvts20" href="MantraHoudini.html">Mantra</a><span class="rvts8"> rendering, then it does require a Mantra render license.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can set the environment to your license server in the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm">Setenv Files</a><span class="rvts8">. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please execute the rrWorkstationInstaller to install the submission plugin.</span></p>
+<p class="rvps3"><span class="rvts8">In Houdini, you have to run the script as shown in the screenshot.</span></p>
+<p class="rvps3"><span class="rvts8">It will start the rrSubmitter with your scene as commandline parameter.</span></p>
+<p class="rvps3"><span class="rvts8">Note: You can also start the rrSubmitter manually and load (multiple) scene files</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/rrsubmit_houdini.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">rrSubmitter loads Mantra nodes only:</span></p>
+<p class="rvps3"><span class="rvts8">The submitter reads mantra nodes from out/ and obj/ only.</span></p>
+<p class="rvps3"><span class="rvts8">They can be set to direct render or to generate Mantra .ifd files.</span></p>
+<p class="rvps3"><span class="rvts8">If they generate Mantra .ifd files, then the rrSubmitter will setup two jobs.</span></p>
+<p class="rvps3"><span class="rvts8">One to generate the .ifd sequence and one to render the .ifd sequence (With wait for first job).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Mantra .ifd sequence:</span></p>
+<p class="rvps3"><span class="rvts8">If you want to render a sequence with Mantra, it is sometimes easier to export an .ifd sequence and render that one, see </span><a class="rvts20" href="MantraHoudini.html">Mantra</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">(And rendering does not waste a full Houdini license)</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Simulations:</span></p>
+<p class="rvps3"><span class="rvts8">You only want to simulate? If you want to simulate, then most RR customers create a small and fast preview mantra node after the sim.</span></p>
+<p class="rvps3"><span class="rvts8">To check if everything is right. You do not want to end up with a broken sim after 2 days of simulation.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Houdini 13 is able to </span><span class="rvts15">stop and continue</span><span class="rvts8"> cached simulations.</span></p>
+<p class="rvps3"><span class="rvts8">Choose the renderer "simRender" at the rrSubmitter. (It sets Max Clients to 1, disables Preview Render and renders from start to end)</span></p>
+<p class="rvps3"><span class="rvts8">If you have a simulation that cannot be split, set the Sequence Divide min to 0.</span></p>
+<p class="rvps3"><span class="rvts8">More informations about non-frame jobs in help section "Knowledgebase".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">HtoA - Farm-wide Install</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Royal Render changes the environment that you do not have to install HtoA on all machines.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Installation Steps:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Please send a HtoA job to RR.</span><br/><span class="rvts8">Then take a look at the render log file.</span><br/><span class="rvts8">A few lines before "</span><span class="rvts27">++++++++ START ++++++++</span><span class="rvts8">" you will see a line </span><br/><span class="rvts27">HtoA installation path is set to \\fileserver\share\RR\render_apps\renderer_exe\houdini\win_x64\htoa3.1.0_houdini_13.0547</span></li>
+<li class="rvps3"><span class="rvts75">Create the folder </span><span class="rvts27">htoa3.1.0_houdini_13.0547</span><span class="rvts76"> if it does not exist.</span><br/><span class="rvts76">Note: Of course the version in the folder name is different from your HtoA or Houdini version.</span><br/><span class="rvts76">You have to use </span><span class="rvts77">your </span><span class="rvts76">folder name as shown in the render log file.</span></li>
+<li class="rvps3"><span class="rvts8">Install/Extract HtoA to any folder.</span></li>
+<li class="rvps3"><span class="rvts8">You need to browse to the HtoA folder which should be named like &nbsp;</span><span class="rvts27">htoa-1.5.3_r1364_houdini-14.0.361</span><span class="rvts8">.</span><br/><span class="rvts8">It can be that the extracted folder is named &nbsp; </span><span class="rvts27">htoa-1.5.3_r1364_houdini-14.0.361</span><span class="rvts8"> and you find the right </span><span class="rvts27">htoa-1.5.3_r1364_houdini-14.0.361</span><span class="rvts8"> &nbsp;inside that folder.</span><br/><span class="rvts8">The right </span><span class="rvts27">htoa-1.5.3_r1364_houdini-14.0.361</span><span class="rvts8"> folder contains subfolders named arnold, config, docs, ...., toolbar.</span><br/><span class="rvts8">Copy these subfolders (arnold, config, docs, ...., toolbar) into </span><span class="rvts27">\\fileserver\share\RR\render_apps\renderer_exe\houdini\win_x64\htoa3.1.0_houdini_13.0547</span></li>
+<li class="rvps3"><span class="rvts8">If you have copied it right, then you should find kick.exe in this location:</span><br/><span class="rvts27">\\fileserver\share\RR\render_apps\renderer_exe\houdini\win_x64\htoa3.1.0_houdini_13.0547\scripts\bin\kick.exe</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts74"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

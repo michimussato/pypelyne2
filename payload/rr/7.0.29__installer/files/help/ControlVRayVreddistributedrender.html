@@ -1,0 +1,90 @@
+﻿<html>
+	
+<head>
+	<title>Control VRay/Vred distributed rendering</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ControlVRayVreddistributedrender");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Control VRay/Vred distributed rendering</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="KnowledgebaseHiddenFeatures.html">Knowledgebase/Hidden Features</a> &rsaquo;&rsaquo; <a href="Misc.html">Misc</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Misc.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Misc.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="SDK.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Problem:</span></p>
+<p class="rvps3"><span class="rvts8">You want to be able to start and close the distributed client/server on a rrClient.</span></p>
+<p class="rvps3"><span class="rvts8">The Client should be disabled while the process is running.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Solution:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Open rrControl, right-click on a client, choose Other/Edit New Script.</span></li>
+<li class="rvps3"><span class="rvts8">Open the Execute Commandline script.</span></li>
+<li class="rvps3"><span class="rvts8">Change</span><br/><span class="rvts27">CmdLine= &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;'echo "Hello"&lt;NL&gt;'</span><br/><span class="rvts27">CmdLine=CmdLine+ &nbsp;'echo "I am alive""&lt;NL&gt;'</span><br/><span class="rvts8">into </span><br/><span class="rvts27">CmdLine="C:\\Program Files\\Autodesk\\VREDPro-6.67-x64\\bin\\WIN64\\VREDClusterServer.exe"</span></li>
+<li class="rvps3"><span class="rvts8">Save the script as VRed_Distributed_Start.py</span></li>
+<li class="rvps3"><span class="rvts8">Now change </span><br/><span class="rvts27">CmdLine="C:\\Program Files\\Autodesk\\VREDPro-6.67-x64\\bin\\WIN64\\VREDClusterServer.exe"</span><br/><span class="rvts8">into </span><br/><span class="rvts27">CmdLine="&lt;rrBin&gt;rrKillWait 1 VREDClusterServer.exe"</span></li>
+<li class="rvps3"><span class="rvts8">Save the script as VRed_Distributed_Stop.py</span></li>
+<li class="rvps3"><span class="rvts8">Open rrConfig, tab Client Config and select all clients.</span></li>
+<li class="rvps3"><span class="rvts8">Add </span><span class="rvts27">VREDClusterServer.exe to </span><span class="rvts8">"Disable if process found:"</span><br/><span class="rvts27"><br/></span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

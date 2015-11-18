@@ -1,0 +1,48 @@
+	-- Royal Render Plugin script for Fusion 5+
+	-- Author:  Royal Render, Holger Schoenberger, Binary Alchemy
+	-- Last change: v 6.02.01
+	-- Copyright (c) 2009-2010 Holger Schoenberger - Binary Alchemy
+	-- rrInstall_Copy: \Scripts\Comp\
+	
+RR_Dir = os.getenv( "RR_ROOT" )
+if (RR_Dir == nil) then
+	RR_Dir="%RRLocationWin%"
+	end
+if (string.sub(RR_Dir,1,1)=="%") then
+	RR_Dir=""
+	end
+
+if string.len(RR_Dir)<2 then
+	if (comp==nil) then 
+		return 
+		end
+	comp:AskUser( "Royal Render",{ {"myMessage", Name = "Environment RR_Root not set! Please reinstall plugins.", "Text", ReadOnly = true, Lines = 0 } } )
+	return
+	end
+	
+--composition = fusion:GetCurrentComp().	
+Attribs = comp:GetAttrs()
+
+if (Attribs.COMPS_FileName == "") then
+	comp:AskUser( "Royal Render",{ {"myMessage", Name = "Comp was never saved.", "Text", ReadOnly = true, Lines = 0 } } )
+	return
+end
+
+if composition:IsRendering()==true then 
+ composition:AbortRender()
+ end
+print ("Saving...:"..Attribs.COMPS_FileName)
+comp:Save(Attribs.COMPS_FileName)
+	
+
+command="\"" .. RR_Dir .. "\\win__rrSubmitter.bat\" "  .. "\"" .. Attribs.COMPS_FileName .. "\""
+command= string.gsub(command, string.char(196),"&#196;")
+command= string.gsub(command, string.char(214),"&#214;")
+command= string.gsub(command, string.char(220),"&#220;")
+command= string.gsub(command, string.char(228),"&#228;")
+command= string.gsub(command, string.char(246),"&#246;")
+command= string.gsub(command, string.char(252),"&#252;")
+command= string.gsub(command, string.char(223),"&#223;")
+
+executebg( command)
+

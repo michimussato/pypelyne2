@@ -1,0 +1,178 @@
+﻿<html>
+	
+<head>
+	<title>Modo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Modo");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Modo</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3D.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Messiah.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Rhino.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">No special setup or config file change is required.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Setup</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use a custom Modo config file, then please place the config into the folder</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_prefs\modo\win_x64\6.0\</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to replace the win, the x64 and the 4.01 with the version you use.</span></p>
+<p class="rvps3"><span class="rvts8">If you do not know the right values, please render a modo job.</span></p>
+<p class="rvps3"><span class="rvts8">Then open the render log and take a look at the render commandline. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Submission</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to run the rrWorkstationInstaller at least once to install the RR_ROOT environment variable. (Check at least "submitter plugins" and install.)</span></p>
+<p class="rvps3"><span class="rvts8">It can be that you have to restart the machine for the environment to take effect.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="0" cellpadding="2" cellspacing="0" style="border-width: 0px;">
+<tr valign="top">
+<td><p class="rvps3"><span class="rvts8">First you have to </span><span class="rvts15">enable</span><span class="rvts8"> the layer and use the browse button to set an </span><span class="rvts15">output filename</span><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">Note: The first time you set the output filename, you </span><span class="rvts15">have</span><span class="rvts8"> to use the "Browse..." button.</span></p>
+<p class="rvps3"><span class="rvts8">As you can only set the file extension via the browse button.</span></p>
+<p class="rvps3"><span class="rvts8">And without a file extension, Modo will not render the Layer.</span></p>
+</td>
+<td><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/renderout.png"/></p>
+</td>
+</tr>
+<tr valign="top">
+<td><p class="rvps3"><span class="rvts8">In Modo, you have to run the script RR\ render_apps\ _submitplugins\ rrSubmit_Modo_7.0+.py:</span></p>
+</td>
+<td><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/modo_plugin.jpg"/></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Render all layers at once</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you want to render all layers at once, you have two options:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Separate mode: </span><br/><span class="rvts8">Setup the image output for each layer separately like described above.</span></li>
+<li class="rvps3"><span class="rvts8">Joined mode:</span><br/><span class="rvts8">Setup the image output for each layer separately like described above.</span><br/><span class="rvts8">But instead of entering a different name, enter the same filename.</span><br/><span class="rvts8">The joined mode has the advantage that RR can use the Local Render Out feature.</span><br/><span class="rvts8">If you want to render each layer into its own subfolder, see next help section.</span></li>
+</ol>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Output Pattern - Output Layer Subfolder </span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="0" cellpadding="0" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 694px;"><p class="rvps3"><span class="rvts8">Modo does not support subfolders inside the Output Pattern of your render settings.</span></p>
+<p class="rvps3"><span class="rvts8">But with RR, you can use the </span><span class="rvts15">output layer name</span><span class="rvts8"> as folder name.</span></p>
+<p class="rvps3"><span class="rvts8">The output pattern: &nbsp; &nbsp;\[&lt;output&gt;]\[&lt;output&gt;]_[&lt;pass&gt;]_[&lt;LR&gt;]&lt;FFFF&gt;.ext.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: You can NOT use the pass or any other variable as folder name. </span></p>
+<p class="rvps3"><span class="rvts8">Only the output layer (&lt;output&gt;) can be used.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Example: </span></p>
+<p class="rvps3"><span class="rvts8">Your layer name is "FinalColor".</span></p>
+<p class="rvps3"><span class="rvts8">You want to render into \\fileserver\ share\ myModo\ renderout\ FinalColor\ FinalColor.###.exr</span></p>
+<p class="rvps3"><span class="rvts8">Set the output pattern to &nbsp;\[&lt;output&gt;]\[&lt;output&gt;]_[&lt;pass&gt;]_[&lt;LR&gt;]&lt;FFFF&gt;.ext</span></p>
+<p class="rvps3"><span class="rvts8">Use the browse button for the Layers Output Filename to set the file format .exr.</span></p>
+<p class="rvps3"><span class="rvts8">Set any filename in the browser like \\fileserver\ share\ myModo\ renderout\ temp.exr</span></p>
+<p class="rvps3"><span class="rvts8">Close the file browser and change the output to \\fileserver\ share\ myModo\ renderout\</span></p>
+<p class="rvps3"><span class="rvts8">If you now combine the output pattern with your output filename you get:</span></p>
+<p class="rvps3"><span class="rvts8">\\fileserver\ share\ myModo\ renderout\ [&lt;output&gt;]\ [&lt;output&gt;]_[&lt;pass&gt;]_[&lt;LR&gt;]&lt;FFFF&gt;.ext.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: </span></p>
+<p class="rvps3"><span class="rvts8">Unfortunately you cannot edit or copy-paste the Output Filename of a Layer </span><span class="rvts15">IF</span><span class="rvts8"> you have never used the browse button before. The browse button is the only way to set the file format. </span></p>
+<p class="rvps3"><span class="rvts8">If you have set the file format once, you can edit or copy-paste the path.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="width: 895px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/modo_pattern.png"/></p>
+</td>
+</tr>
+</table>
+</div>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Layered Exr</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">IMPORTANT:</span></p>
+<p class="rvps3"><span class="rvts15">Modo 801 crashes if you try to render Layered images.</span></p>
+<p class="rvps3"><span class="rvts15">You can not use it.</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts8"></span><br/><span class="rvts8"></span><br/><span class="rvts8">To render layered exr, you have to switch the renderer at the submitter to "LayeredExr".</span></p>
+<p class="rvps3"><span class="rvts8">Note: You</span><span class="rvts15"> have</span><span class="rvts8"> to use .exr as file extension for all Layers.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/layered.png"/></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Multiple Cameras</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The submission plugin will read all cameras.</span></p>
+<p class="rvps3"><span class="rvts8">You can the same scene with multiple cameras.</span></p>
+<p class="rvps3"><span class="rvts8">But you have to use &lt;Camera&gt; in the modo output pattern, otherwise all jobs render the same output name.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: &lt;Camera&gt; is not supported by Modo, it is supported by RR only. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Relative Image Paths</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">If you are using images which are relative to the scene file name, then you have to disable "Local Scene Copy".</span></p>
+<p class="rvps3"><span class="rvts8">Otherwise no image will be rendered.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/LocalSceneCopy.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

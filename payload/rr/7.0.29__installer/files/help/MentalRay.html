@@ -1,0 +1,127 @@
+﻿<html>
+	
+<head>
+	<title>MentalRay</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("MentalRay");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">MentalRay</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="ArchiveStandalone.html">Archive/Standalone</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="ArchiveStandalone.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Maxwell.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="RenderMan.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">This description is for the mentalRay Standalone to render .mi files (with ray.exe).</span></p>
+<p class="rvps3"><span class="rvts8">It is not a description how to setup rendering SI or Maya scenes with mentalRay enabled.</span></p>
+<p class="rvps3"><span class="rvts8">Please see the Softimage, Maya or 3dsmax help section. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Setup</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">mentalRay does not have to be installed on every system. It will be copied only by RR for execution.</span></p>
+<p class="rvps3"><span class="rvts8">(see Shared Executable)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Therefore you have to copy your mentalRay application folder into</span></p>
+<p class="rvps3"><span class="rvts8">[rrRoot]\render_apps\renderer_exe\mray_stda\&lt;OS&gt;_&lt;bit&gt;\&lt;Renderer&gt;_&lt;version&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The result is then for example:</span></p>
+<p class="rvps3"><span class="rvts26">[rrRoot]\render_apps\renderer_exe\mray_stda\win_x64\mentalRay_3.8.0\bin\ray3.exe </span></p>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Satellite</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use the Mental Ray Satellite (also called Mental Ray Distributed) rendering, you should first test it manually.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Create a simple .mi file. Probably a cube, set the render resolution to full HD 1920x1080 and antialiasing samples to 5 5 to get long render times.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Open a command prompt/terminal and change the directory to the place where your ray.exe is located.</span></li>
+<li class="rvps3"><span class="rvts8">Execute the line:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;ray.exe "[yourMiFile]" -v 4</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">It should start rendering.</span></li>
+<li class="rvps3"><span class="rvts8">Abort it.</span></li>
+<li class="rvps3"><span class="rvts8">Now test it in Satellite mode:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;ray.exe "[yourMiFile]" -v 4 -host [YourOtherMachine] --</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If it does not work, you probably need to add the right port for the satellite service.</span></li>
+<li class="rvps3"><span class="rvts8">The port was set when you installed the service.</span></li>
+<li class="rvps3"><span class="rvts8">ray.exe "[yourMiFile]" -v 4 -host [YourOtherMachine]::[SatellitePort] --</span></li>
+<li class="rvps3"><span class="rvts8">If you need to set this port, please edit the mRay render config [RR]\render_apps\_config\A50__MRayStdA.cfg.</span></li>
+<li class="rvps3"><span class="rvts8">There is a line SatellitePort=1~0, change it to SatellitePort=1~YourPort.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Submission</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Just like every other archive renderer type, you have to load one file of your .mi sequence into the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmitter recognizes the frame range of your sequence and output name.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">All Archive/Standalone renderer are based on a scene file per frame in Royal Render.</span></p>
+<p class="rvps3"><span class="rvts15">You can not export a complete animation into one file, you need one file per Frame.</span></p>
+<p class="rvps3"><span class="rvts15">name.#.ext</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Relative&lt;&gt;Absolute paths:</span></p>
+<p class="rvps3"><span class="rvts8">You should use absolute paths for textures, output....</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

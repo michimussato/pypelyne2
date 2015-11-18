@@ -1,0 +1,40 @@
+body 		
+{ 
+	font-family: Arial, Helvetica, Verdena, sans-serif; 
+	font-size: 11px; 
+    text-decoration: none;
+    color:#333333;
+	margin-left: 5px; 
+	margin-right: 5px; 
+	margin-top: 5px; 
+	margin-bottom: 5px; 
+	scrollbar-base-color:#000000;
+	scrollbar-3dlight-color:#8A8A8A;
+	scrollbar-arrow-color:#8A8A8A;
+	scrollbar-darkshadow-color:#8A8A8A;
+	scrollbar-face-color:#000000;
+	scrollbar-highlight-color:#FFFFFF;
+	scrollbar-shadow-color:#8A8A8A;
+	scrollbar-track-color:#8A8A8A;
+}
+ 
+b
+{ 
+        color:#000000;
+}
+
+a
+{ 
+	font-family: Arial, Helvetica, Verdena, sans-serif; 
+	font-size: 11px; 
+	text-decoration: none;
+	color:#333333; 
+}
+
+table
+{ 
+	font-family: Arial, Helvetica, Verdena, sans-serif; 
+	font-size: 11px; 
+	text-decoration: none;
+	color:#333333; 
+}

@@ -1,0 +1,249 @@
+﻿<html>
+	
+<head>
+	<title>Example - rrJob_submitFile</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ExamplerrJob_submitFile");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Example - rrJob_submitFile</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; <a href="RenderApplications.html">Render Applications</a> &rsaquo;&rsaquo; <a href="Submissionplugins.html">Submission plugins</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Submissionplugins.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrJobsubmitxmlfile.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="ExamplerrJob_submitFilewithoptio.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">&lt;rrJob_submitFile syntax_version="6.0"&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;DeleteXML&gt;1&lt;/DeleteXML&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;Job&gt;</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;&lt;IsActive&gt; true &lt;/IsActive&gt; </span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneName&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete\Scenes\RR_rendertest.scn &nbsp; &nbsp; &lt;/SceneName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneDatabaseDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete &nbsp; &nbsp; &lt;/SceneDatabaseDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Camera&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Camera&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Layer&gt; &nbsp; &nbsp; Default_Pass1wer &nbsp; &nbsp; &lt;/Layer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Channel&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Channel&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Software&gt; &nbsp; &nbsp; Softimage &nbsp; &nbsp; &lt;/Software&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Renderer&gt; &nbsp; &nbsp; Mental Ray &nbsp; &nbsp; &lt;/Renderer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Version&gt; &nbsp; &nbsp; 2010.1 &nbsp; &nbsp; &lt;/Version&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;JobBit&gt; &nbsp; &nbsp; all &nbsp; &nbsp; &lt;/JobBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SendAppBit&gt; &nbsp; &nbsp; 64 &nbsp; &nbsp; &lt;/SendAppBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;RequiredPlugins&gt; &nbsp; &nbsp; mental ray &nbsp; &nbsp; &lt;/RequiredPlugins&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStart&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStart&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqEnd&gt; &nbsp; &nbsp; 10 &nbsp; &nbsp; &lt;/SeqEnd&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStep&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStep&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqFileOffset&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/SeqFileOffset&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageWidth&gt; &nbsp; &nbsp; 2500 &nbsp; &nbsp; &lt;/ImageWidth&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageHeight&gt; &nbsp; &nbsp; 1406 &nbsp; &nbsp; &lt;/ImageHeight&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFilename&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFileNameVariables&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFileNameVariables&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\Render_Pictures\&amp;lt;SceneFile&amp;gt;--Default_Pass1\ &nbsp; &nbsp; &lt;/ImageDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImagePreNumberLetter&gt; &nbsp; &nbsp; . &nbsp; &nbsp; &lt;/ImagePreNumberLetter&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFramePadding&gt; &nbsp; &nbsp; 2 &nbsp; &nbsp; &lt;/ImageFramePadding&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageSingleOutputFile&gt; &nbsp; &nbsp; false &nbsp; &nbsp; &lt;/ImageSingleOutputFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OverrideImageFormat&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/OverrideImageFormat&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageExtension&gt; &nbsp; &nbsp; .exr &nbsp; &nbsp; &lt;/ImageExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneOS&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/SceneOS&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OS_Path_Format&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/OS_Path_Format&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;LocalTexturesFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/LocalTexturesFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;rrEnvFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/rrEnvFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;PreID&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/PreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomA&gt; &nbsp; &nbsp;mycustomA &nbsp; &nbsp; &nbsp;&lt;/CustomA&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomBlaBla&gt; &nbsp; &nbsp;More Custom values &lt;/CustomBlaBla&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomCamName&gt; &nbsp; &amp;lt;UTF8ã?«ã?¡ã?©&amp;gt; &lt;/CustomCamName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Specular\Specular. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Shadow\Shadow. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">&lt;Job&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneName&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete\Scenes\RR_rendertest.scn &nbsp; &nbsp; &lt;/SceneName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneDatabaseDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete &nbsp; &nbsp; &lt;/SceneDatabaseDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Camera&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Camera&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Layer&gt; &nbsp; &nbsp; Default_Pass1wer &nbsp; &nbsp; &lt;/Layer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Channel&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Channel&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Software&gt; &nbsp; &nbsp; Softimage &nbsp; &nbsp; &lt;/Software&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Renderer&gt; &nbsp; &nbsp; Mental Ray &nbsp; &nbsp; &lt;/Renderer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Version&gt; &nbsp; &nbsp; 2010.1 &nbsp; &nbsp; &lt;/Version&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;JobBit&gt; &nbsp; &nbsp; all &nbsp; &nbsp; &lt;/JobBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SendAppBit&gt; &nbsp; &nbsp; 64 &nbsp; &nbsp; &lt;/SendAppBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;RequiredPlugins&gt; &nbsp; &nbsp; mental ray &nbsp; &nbsp; &lt;/RequiredPlugins&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStart&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStart&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqEnd&gt; &nbsp; &nbsp; 10 &nbsp; &nbsp; &lt;/SeqEnd&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStep&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStep&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqFileOffset&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/SeqFileOffset&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageWidth&gt; &nbsp; &nbsp; 2500 &nbsp; &nbsp; &lt;/ImageWidth&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageHeight&gt; &nbsp; &nbsp; 1406 &nbsp; &nbsp; &lt;/ImageHeight&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFilename&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFileNameVariables&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFileNameVariables&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\Render_Pictures\&amp;lt;SceneFile&amp;gt;--Default_Pass1\ &nbsp; &nbsp; &lt;/ImageDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImagePreNumberLetter&gt; &nbsp; &nbsp; . &nbsp; &nbsp; &lt;/ImagePreNumberLetter&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFramePadding&gt; &nbsp; &nbsp; 2 &nbsp; &nbsp; &lt;/ImageFramePadding&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageSingleOutputFile&gt; &nbsp; &nbsp; false &nbsp; &nbsp; &lt;/ImageSingleOutputFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OverrideImageFormat&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/OverrideImageFormat&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageExtension&gt; &nbsp; &nbsp; .exr &nbsp; &nbsp; &lt;/ImageExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneOS&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/SceneOS&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OS_Path_Format&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/OS_Path_Format&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;LocalTexturesFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/LocalTexturesFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;rrEnvFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/rrEnvFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;PreID&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/PreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomA&gt; &nbsp; &nbsp;mycustomA &nbsp; &nbsp; &nbsp;&lt;/CustomA&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomBlaBla&gt; &nbsp; &nbsp;More Custom values &lt;/CustomBlaBla&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomCamName&gt; &nbsp; &amp;lt;UTF8ã?«ã?¡ã?©&amp;gt; &lt;/CustomCamName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Specular\Specular. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Shadow\Shadow. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">&lt;Job&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneName&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete\Scenes\RR_rendertest.scn &nbsp; &nbsp; &lt;/SceneName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneDatabaseDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete &nbsp; &nbsp; &lt;/SceneDatabaseDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Camera&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Camera&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Layer&gt; &nbsp; &nbsp; Default_Pass1wer &nbsp; &nbsp; &lt;/Layer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Channel&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Channel&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Software&gt; &nbsp; &nbsp; Softimage &nbsp; &nbsp; &lt;/Software&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Renderer&gt; &nbsp; &nbsp; Mental Ray &nbsp; &nbsp; &lt;/Renderer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Version&gt; &nbsp; &nbsp; 2010.1 &nbsp; &nbsp; &lt;/Version&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;JobBit&gt; &nbsp; &nbsp; all &nbsp; &nbsp; &lt;/JobBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SendAppBit&gt; &nbsp; &nbsp; 64 &nbsp; &nbsp; &lt;/SendAppBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;RequiredPlugins&gt; &nbsp; &nbsp; mental ray &nbsp; &nbsp; &lt;/RequiredPlugins&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStart&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStart&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqEnd&gt; &nbsp; &nbsp; 10 &nbsp; &nbsp; &lt;/SeqEnd&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStep&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStep&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqFileOffset&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/SeqFileOffset&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageWidth&gt; &nbsp; &nbsp; 2500 &nbsp; &nbsp; &lt;/ImageWidth&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageHeight&gt; &nbsp; &nbsp; 1406 &nbsp; &nbsp; &lt;/ImageHeight&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFilename&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFileNameVariables&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFileNameVariables&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\Render_Pictures\&amp;lt;SceneFile&amp;gt;--Default_Pass1\ &nbsp; &nbsp; &lt;/ImageDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImagePreNumberLetter&gt; &nbsp; &nbsp; . &nbsp; &nbsp; &lt;/ImagePreNumberLetter&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFramePadding&gt; &nbsp; &nbsp; 2 &nbsp; &nbsp; &lt;/ImageFramePadding&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageSingleOutputFile&gt; &nbsp; &nbsp; false &nbsp; &nbsp; &lt;/ImageSingleOutputFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OverrideImageFormat&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/OverrideImageFormat&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageExtension&gt; &nbsp; &nbsp; .exr &nbsp; &nbsp; &lt;/ImageExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneOS&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/SceneOS&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OS_Path_Format&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/OS_Path_Format&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;LocalTexturesFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/LocalTexturesFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;rrEnvFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/rrEnvFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;PreID&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/PreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomA&gt; &nbsp; &nbsp;mycustomA &nbsp; &nbsp; &nbsp;&lt;/CustomA&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomBlaBla&gt; &nbsp; &nbsp;More Custom values &lt;/CustomBlaBla&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomCamName&gt; &nbsp; &amp;lt;UTF8ã?«ã?¡ã?©&amp;gt; &lt;/CustomCamName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Specular\Specular. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Shadow\Shadow. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">&lt;Job&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneName&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete\Scenes\RR_rendertest.scn &nbsp; &nbsp; &lt;/SceneName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneDatabaseDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\To_Delete &nbsp; &nbsp; &lt;/SceneDatabaseDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Camera&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Camera&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Layer&gt; &nbsp; &nbsp; Default_Pass1wer &nbsp; &nbsp; &lt;/Layer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Channel&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/Channel&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Software&gt; &nbsp; &nbsp; Softimage &nbsp; &nbsp; &lt;/Software&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Renderer&gt; &nbsp; &nbsp; Mental Ray &nbsp; &nbsp; &lt;/Renderer&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;Version&gt; &nbsp; &nbsp; 2010.1 &nbsp; &nbsp; &lt;/Version&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;JobBit&gt; &nbsp; &nbsp; all &nbsp; &nbsp; &lt;/JobBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SendAppBit&gt; &nbsp; &nbsp; 64 &nbsp; &nbsp; &lt;/SendAppBit&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;RequiredPlugins&gt; &nbsp; &nbsp; mental ray &nbsp; &nbsp; &lt;/RequiredPlugins&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStart&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStart&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqEnd&gt; &nbsp; &nbsp; 10 &nbsp; &nbsp; &lt;/SeqEnd&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqStep&gt; &nbsp; &nbsp; 1 &nbsp; &nbsp; &lt;/SeqStep&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SeqFileOffset&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/SeqFileOffset&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageWidth&gt; &nbsp; &nbsp; 2500 &nbsp; &nbsp; &lt;/ImageWidth&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageHeight&gt; &nbsp; &nbsp; 1406 &nbsp; &nbsp; &lt;/ImageHeight&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFilename&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFileNameVariables&gt; &nbsp; &nbsp; Default_Pass1_Render. &nbsp; &nbsp; &lt;/ImageFileNameVariables&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageDir&gt; &nbsp; &nbsp; \\bilbo\renderfarm\3D\Render_Pictures\&amp;lt;SceneFile&amp;gt;--Default_Pass1\ &nbsp; &nbsp; &lt;/ImageDir&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImagePreNumberLetter&gt; &nbsp; &nbsp; . &nbsp; &nbsp; &lt;/ImagePreNumberLetter&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageFramePadding&gt; &nbsp; &nbsp; 2 &nbsp; &nbsp; &lt;/ImageFramePadding&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageSingleOutputFile&gt; &nbsp; &nbsp; false &nbsp; &nbsp; &lt;/ImageSingleOutputFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OverrideImageFormat&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/OverrideImageFormat&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ImageExtension&gt; &nbsp; &nbsp; .exr &nbsp; &nbsp; &lt;/ImageExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;SceneOS&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/SceneOS&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;OS_Path_Format&gt; &nbsp; &nbsp; windows &nbsp; &nbsp; &lt;/OS_Path_Format&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;LocalTexturesFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/LocalTexturesFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;rrEnvFile&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/rrEnvFile&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;PreID&gt; &nbsp; &nbsp; 0 &nbsp; &nbsp; &lt;/PreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;WaitForPreID&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;/WaitForPreID&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomA&gt; &nbsp; &nbsp;mycustomA &nbsp; &nbsp; &nbsp;&lt;/CustomA&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomBlaBla&gt; &nbsp; &nbsp;More Custom values &lt;/CustomBlaBla&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;CustomCamName&gt; &nbsp; &amp;lt;UTF8ã?«ã?¡ã?©&amp;gt; &lt;/CustomCamName&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Specular\Specular. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelFilename&gt; &nbsp; &nbsp; &nbsp; &nbsp; \\bilbo\renderfarm\To_Delete\Render_Pictures\&amp;lt;SceneFile&amp;gt;\Shadow\Shadow. &nbsp; &nbsp;&lt;/ChannelFilename&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;ChannelExtension&gt; &nbsp; &nbsp; &nbsp; &nbsp;.tif &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &lt;/ChannelExtension&gt;</span></p>
+<p class="rvps7"><span class="rvts8">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;/rrJob_submitFile&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,97 @@
+﻿<html>
+	
+<head>
+	<title>Version Display</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("VersionDisplay");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Version Display</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="CommandlineParameter.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrToolsPostScript.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"></span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">If you install updates, then not all applications are updated.</span></p>
+<p class="rvps3"><span class="rvts8">Only applications that got fixes/changes are updated.</span></p>
+<p class="rvps3"><span class="rvts8">So a RR application can display multiple versions.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This example shows the rrClientWatch:</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/versionlabel.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts59">The last update you have installed was 6.00.02.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts60">The application rrClientWatch itself is 6.00.00 (so it was not included in the last update).</span></p>
+<p class="rvps3"><span class="rvts55"><br/></span></p>
+<p class="rvps3"><span class="rvts55">rrClientWatch connects to the rrClient that runs as service in the background.</span></p>
+<p class="rvps3"><span class="rvts55">The rrClient is v6.00.02 (it was included in the update)</span></p>
+<p class="rvps3"><span class="rvts61"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts62">RR applications can be started in "local cache mode".</span></p>
+<p class="rvps3"><span class="rvts62">rrClient Service, rrControl, rrClientWatch and rrSubmitter are started by default in "local cache mode".</span></p>
+<p class="rvps3"><span class="rvts62">The executable and all required libraries are copied to the local drive of the machine that executes the application.</span></p>
+<p class="rvps3"><span class="rvts62">There will not be any problems if there are network connection issues and there is no constant connection to the fileserver.</span></p>
+<p class="rvps3"><span class="rvts62">If the application needs to be started again, the machine does not have to read the executables from the network.</span></p>
+<p class="rvps3"><span class="rvts62">(of course changes/updates are recognized).</span></p>
+<p class="rvps3"><span class="rvts62"><br/></span></p>
+<p class="rvps3"><span class="rvts62"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,103 @@
+﻿<html>
+	
+<head>
+	<title>rrProcSpeed (PS)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrProcSpeedPS");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrProcSpeed (PS)</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="InfosrrTerms.html">Infos/rrTerms</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="InfosrrTerms.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="UserforrrService1.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrApplications.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">What is PS?</span></span></h2>
+<p class="rvps3"><span class="rvts8">In a Nutshell:</span></p>
+<p class="rvps3"><span class="rvts8">PS (ProcessorSpeed) is an identifer, how fast is the client compared to the others.</span></p>
+<p class="rvps3"><span class="rvts8">For the calculation of the processor speed the client computes some tasks to get a relative processor speed.</span></p>
+<p class="rvps3"><span class="rvts8">RR can't use the GHz as different types of processors have different speeds at the same GHz value. (e.g. the newer the faster)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Usage: Client Averaging</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The Client Averaging is based on the PS of the clients, not on the number of clients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Usage: Remaining Time Calculation</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The server checks each job in intervals depending on the remaining time to render.The higher the time, the higher the intervals. Then the server re-calculates the remaining time depending on the clients, which are actual rendering this job.</span></p>
+<p class="rvps3"><span class="rvts8">For the calculation the server uses PM (ProcessorMinutes = PS x minutes). E.g. if one computer with 0.5 PS is rendering 1 minute on an job, the job takes 0.5 PM (0.5 PS x 1 Minute).</span></p>
+<p class="rvps3"><span class="rvts8">If the remaining PM's are 100 and only this 0.5 PS client is rendering this job, the remaining time will be 200 minutes. If you start 3 more clients with each 0.5 PS the remaining time will be 50 min.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The server uses PM/PS because all other remaining time calculations I know are only like this:</span></p>
+<p class="rvps3"><span class="rvts8">time till now: 10 min.</span></p>
+<p class="rvps3"><span class="rvts8">frames done: 10</span></p>
+<p class="rvps3"><span class="rvts8">frames missing: 90</span></p>
+<p class="rvps3"><span class="rvts8">time remaining= 10/10*90 = 90 minutes</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It's ok if you are using the same number of clients, but not if you add some clients, or in the worst case if you almost all clients are moving to a different job.</span></p>
+<p class="rvps3"><span class="rvts8">I know programs that calculate huge remaining times, if you have disabled the rendering for a while. For example you render one hour and then you disable the job for 5 hours, the remaining time can rise up to days with this old calculation. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Usage: Sequence Divide min max</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">When the server sends a job with Sequence Divide to the client, then the PS has an effect on the number of frames that are send to the client.</span></p>
+<p class="rvps3"><span class="rvts8">The higher the PS of a client compared to other clients, the more frames it gets.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

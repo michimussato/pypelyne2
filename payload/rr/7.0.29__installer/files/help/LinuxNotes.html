@@ -1,0 +1,146 @@
+﻿<html>
+	
+<head>
+	<title>Linux Notes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("LinuxNotes");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Linux Notes</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Installation.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="WindowsNotes.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="OSXNotes.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"></span><span class="rvts15"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts15">This chapter is about OS-specific issues with Linux.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Which Distribution?</span></span></h2>
+<p class="rvps3"><span class="rvts8">Recommended distributions are all the "redhat-style" linux distros (same as most other 3D and comp software manufactures recommend): Fedora, CentOS, Mandrake. </span></p>
+<p class="rvps3"><span class="rvts8">KDE is preferred, but not required (Gnome works as well)</span></p>
+<p class="rvps3"><span class="rvts8">RR was also well tested with the (K)Ubuntu distribution.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This does not mean that Suse and Debian are not working, we have tested all.</span></p>
+<p class="rvps3"><span class="rvts8">But we recommend the other distributions.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Which version?</span></span></h2>
+<p class="rvps3"><span class="rvts8">Most RR applications require GLIBC 2.3 (release year 2008 and later).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Some Tools (e.g. rrCreateVideo) require GLIBC 2.7 and GLIBCXX 3.4.9 &nbsp;(Fedora 8, &nbsp;CentOS 6, Ubuntu 10 and later ).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you need/want to check the version:</span></p>
+<p class="rvps3"><span class="rvts8">The GLIBC version can be checked with the commandline &nbsp; </span><span class="rvts27">ldd --version.</span></p>
+<p class="rvps3"><span class="rvts8">GLIBC can be checked with the commandline &nbsp; &nbsp; </span><span class="rvts27">strings /usr/lib64/libstdc++.so.6 | grep GLIBCXX</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Required Packages</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You need to have these packages installed:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">tcsh (C-Shell)</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> Mount Samba Share</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If your RR files are on a samba or windows fileserver, then you have to mount the fileserver share to a local directory.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Create a mount point/directory, for example create the folder /mnt/RRender.</span></li>
+<li class="rvps3"><span class="rvts8">Edit the file /etc/fstab, add a line:</span><br/><span class="rvts8">/mnt/RRender cifs username=myShareUser,password=myPassword,noperm,uid=myRRUser,gid=users,file_mode=0777,dir_mode=0777 0 0</span><br/><span class="rvts8">You have to replace some variables to match your environment:</span></li>
+</ol>
+<div class="rvps7"><table width="30%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">//192.168.0.15/RRShare</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 202px;"><p class="rvps3"><span class="rvts8">Set this to the fileserver IP and share name.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">myShareUser,myPassword</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 202px;"><p class="rvps3"><span class="rvts8">Add a user that is able to access the fileserver.</span></p>
+<p class="rvps3"><span class="rvts8">You do not need to have this user on linux, the user+password is send to the server. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">myRRUser</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 202px;"><p class="rvps3"><span class="rvts8">The user you use for running RoyalRender.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps7"><span class="rvts15"></span><br/><span class="rvts15">Important: Do not forget an empty line at the end of the fstab file!!</span><br/><span class="rvts15"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">After you have edited the file, execute the command</span><br/><span class="rvts26">mount -a</span><br/><span class="rvts8">If there is any problem with the fstab, it will be printed.</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note:</span></p>
+<p class="rvps3"><span class="rvts8">One customer had to add more flags to connect to a XSAN server, his fstab was:</span></p>
+<p class="rvps3"><span class="rvts8">//10.0.100.200/media/ cifs credentials=/home/parallels</span></p>
+<p class="rvps3"><span class="rvts8">/.smbcredentials,noperm,iocharset=utf8,uid=thankyou,thankyouall,file_mode=0777,dir_mode=0777,nounix,noserverinfo,sec=ntlmssp 0 0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,107 @@
+﻿<html>
+	
+<head>
+	<title>Nuke post-script</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Nukepostscript");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Nuke post-script</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="KnowledgebaseHiddenFeatures.html">Knowledgebase/Hidden Features</a> &rsaquo;&rsaquo; <a href="Rendering.html">Rendering</a> &rsaquo;&rsaquo; <a href="PrePreviewPostFinishedScripts.html">Pre-/Preview-/Post-/Finished- Scripts</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="PrePreviewPostFinishedScripts.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="PrePreviewPostFinishedScripts.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="NoframeJobs.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Example: How to create a custom nuke post-script to create videos</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: </span></p>
+<p class="rvps3"><span class="rvts8">Before you create a Nuke scripts to encode Videos, check the help files of </span><a class="rvts20" href="rrCreateVideo.html">rrCreateVideo</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">It support imprints, slates, watermarks and a lot of codes and easier to setup.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Create a nuke file with loader and movie saver.</span><br/><span class="rvts8">Save it to into the folder [RR]\render_apps\_prepost_scripts\</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">Then you open your nuke file in a text editor as well as this file [RR]\render_apps\_prepost_scripts\additional\post10__NukeProres_Convert.nk</span><br/><span class="rvts8">Search for all variables with ** in our Nuke file and and do the same replacements in your file. Do not forget to add "" for in and out in case you want to use folders or files with spaces.</span><br/><span class="rvts8">Note: You can add any other variable for e.g. for a text with layer or camera name. You have to add them to the post-script config file as well.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">Copy the file [RR]\render_apps\_prepost_scripts\additional\post10__NukeProres.cfg</span><br/><span class="rvts8">into [RR]\render_apps\_prepost_scripts</span><br/><span class="rvts8">Rename the file if you want to use multiple Nuke scripts.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Edit this post-script config file.</span><br/><span class="rvts8">Change &nbsp; </span><span class="rvts26">post10__NukeProres_Convert.nk &nbsp;</span><span class="rvts8"> to the name of your Nuke script.</span><br/><span class="rvts8">Optional: Change the name &nbsp;</span><span class="rvts26">NukeProres</span><span class="rvts8"> &nbsp; in case you want to use multiple different post-scripts.</span><br/><span class="rvts8">Optional: Change the output name and/or folder by replacing </span><span class="rvts26">&lt;ImageDirComplete&gt;&lt;..\&gt;&lt;ImageFilename&gt;_prores.mov</span><span class="rvts8"> &nbsp; &nbsp; (</span><span class="rvts15">do not</span><span class="rvts8"> replace </span><span class="rvts26">&lt;PD/</span><span class="rvts8"> and the last </span><span class="rvts26">&gt;</span><span class="rvts8">)</span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">You can use and absolute (\\fileserver\share\....) or relative paths (&lt;SceneFolder&gt;</span><span class="rvts26">&lt;..\&gt;&lt;..\&gt;MyVideos\</span><span class="rvts8">). </span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">You can use any</span><a class="rvts20" href="Renderconfigfiles.html"> render config variables like </a><a class="rvts20" href="Renderconfigfiles.html">&lt;SceneFolder&gt;, </a><a class="rvts82" href="Renderconfigfiles.html">&lt;ImageDirComplete&gt;, </a><a class="rvts20" href="Renderconfigfiles.html">&lt;CompanyProjectRootFolder&gt;</a><span class="rvts8">.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Your post-script is now ready to use for new or existing (rrControl/job settings) jobs.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Different Nuke scripts per project</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You might need to use different nuke script per company project.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. to imprint the project number/name/client like &nbsp; "2015.08.2 &nbsp;Coke" or because different projects use different frames/sec.</span></p>
+<p class="rvps3"><span class="rvts8">An easy solution is to copy your nuke file into &nbsp; \\fileserver\...\project X\rrPostscriptVideo.nk &nbsp;of each project (and into the empty preset folder for new projects in case you have such an empty project folder).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then edit the post-script config file and replace</span></p>
+<p class="rvps3"><span class="rvts8">"&lt;RR_DIR&gt;render_apps/_prepost_scripts/post10__NukeProres_Convert.nk"</span></p>
+<p class="rvps3"><span class="rvts8">with </span></p>
+<p class="rvps3"><span class="rvts8">"&lt;CompanyProjectRootFolder&gt;rrPostscriptVideo.nk"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

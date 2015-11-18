@@ -1,0 +1,7 @@
+global proc rr_exportAlembic(string $objname, string $alembicPath, int $startFrame, int $endFrame, int $stepFrame)
+{	
+	loadPlugin("AbcExport");
+	$exportopt="-v -uvWrite -frameRange "+$startFrame+" "+$endFrame+" -step "+$stepFrame+" -root "+$objname+" -file "+$alembicPath;
+	AbcExport -j   $exportopt;
+}
+

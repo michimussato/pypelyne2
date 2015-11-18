@@ -1,0 +1,42 @@
+#
+# This file defines extra commands you can send via rrControl to the client
+# The new command is available via right-click in the client table or via the client commands menu.
+# Submenu "Other"
+#
+# To add a new commandline, just enter your command [name], followed by = and the commandline
+#
+# Possible variables for the commandline:
+# <Client>: Name of the Client
+# <rrRoot>: Root folder of RR
+# 
+# 
+# 
+
+
+
+#####################################################################################
+[WINDOWS]
+#####################################################################################
+
+
+VNC (custom command) = "<rrRoot>\vncviewerx64.exe" <Client>
+
+
+
+
+
+#####################################################################################
+[LINUX]
+#####################################################################################
+
+
+
+
+
+
+#####################################################################################
+[MAC]
+#####################################################################################
+
+
+

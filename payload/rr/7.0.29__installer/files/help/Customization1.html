@@ -1,0 +1,158 @@
+﻿<html>
+	
+<head>
+	<title>Customization</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Customization1");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Customization</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="KnowledgebaseHiddenFeatures.html">Knowledgebase/Hidden Features</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="KnowledgebaseHiddenFeatures.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Customtilerender.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="View.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submitter defaults per renderer</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can change all Submitter default values per renderer.</span></p>
+<p class="rvps3"><span class="rvts8">Everything that is in the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Submitter_defau/Submitter_defaults.htm">Submitter Default Files</a><span class="rvts8"> can be used in the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Config_files/Config_files.htm">render configs</a><span class="rvts8"> of your renderer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">New Renderer Option</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can create new render options which are shown at the submitter as checkbox or value.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. Enable/Disable Motion blur for one job.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Config_files/Custom_Submitte/Custom_Submitter_Checkboxes.htm">here</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Local Maya Plugins</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Description</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have a lot of Maya plugins on your fileserver, then the maya startup can get very slow.</span></p>
+<p class="rvps3"><span class="rvts8">Also, if you have multiple mental ray shaders the fileserver load can quickly get very high.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">So the solution is to copy the plugins/shaders to the local harddrive and tell Maya to use them form there.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Setup</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Edit the file \render_apps\_setenv\win\maya.bat</span></li>
+<li class="rvps3"><span class="rvts8">There are some lines in the first part that set the location for all Maya plugins types:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;MAYA_PLUG_IN_PATH</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;MAYA_SCRIPT_PATH</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;MAYA_MODULE_PATH</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;MI_CUSTOM_SHADER_PATH</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;MAYA_RENDER_DESC_PATH</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Edit these lines and replace %rrPlugins% with %rrLocalPlugins%.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Note: %rrLocalPlugins% is not yet availble in v6.0 rc6.1.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Please add another line at start of the setenv file:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;setenv rrLocalPlugins=%rrLocalRoot%renderer_prefs\maya\win_%rrExeBit%\</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Add a new line to sync the local plugins with the network ones:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;rrCopy -sync %rrPlugins% %rrLocalPlugins%</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The copy command is executed every time you start a maya job.</span></p>
+<p class="rvps3"><span class="rvts8">But if there is no change in the shared network plugin folder, then no file is read or copied from the network.</span></p>
+<p class="rvps3"><span class="rvts8">And during rendering, there will be no more a frequent access to the shared network folder.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Project Based Nuke Wrapper</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Description</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Your projects need different Nuke environments/locations and you have created wrapper batch files for Nuke.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Artists start</span></p>
+<p class="rvps3"><span class="rvts8">\\Fileserver\Share\ProjectA\starter\NukeWrap.bat</span></p>
+<p class="rvps3"><span class="rvts8">\\Fileserver\Share\ProjectB\starter\NukeWrap.bat</span></p>
+<p class="rvps3"><span class="rvts8">\\Fileserver\Share\ProjectC\starter\NukeWrap.bat</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If there is no local project wrapper, then artists start</span></p>
+<p class="rvps3"><span class="rvts8">\\Fileserver\Share\ProjectGlobal\starter\NukeWrap.bat</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Setup</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Edit the file [RR]\render_apps\_config\C13__Nuke5.cfg</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Change the line</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;</span><span class="rvts26">CommandLine_Win</span><span class="rvts8">= ""</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;into</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;CommandLine_Win= call "%NukeWrapExe%"</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Edit the file [RR]\render_apps\_setenv\win\nuke.bat</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;At the end, add the lines</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;&nbsp;</span><span class="rvts26"> set "NukeWrapExe=\\Fileserver\Share\ProjectGlobal\starter\NukeWrap.bat"</span></p>
+<p class="rvps3"><span class="rvts26"> &nbsp; &nbsp; &nbsp;if exist " \\Fileserver\Share\%rrJobProject%\starter\NukeWrap.bat" (</span></p>
+<p class="rvps3"><span class="rvts26"> &nbsp; &nbsp; &nbsp;set " NukeWrapExe=\\Fileserver\Share\%rrJobProject%\starter\NukeWrap.bat"</span></p>
+<p class="rvps3"><span class="rvts26"> &nbsp; &nbsp; &nbsp;) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

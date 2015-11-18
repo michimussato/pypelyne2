@@ -1,0 +1,157 @@
+﻿<html>
+	
+<head>
+	<title>3rd Party Renderer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("3rdPartyRenderer1");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">3rd Party Renderer</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; <a href="Softimage.html">Softimage</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Softimage.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Softimage.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Terragen.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Arnold</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Farm-wide Install</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Just install the Arnold addon into your workgroup. (as set here)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: As long as Arnold does not come with a config file to set the License server,</span></p>
+<p class="rvps3"><span class="rvts8">please change the [RR]\render_apps\_setenv\[OS]\softimage.bat/sh file and add the environment variable ARNOLD_LICENSE_HOST. </span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Multiple Workgroups</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you use for example Arnold 3.6 and 4.1, you can edit some files to use different workgroups for your scenes.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">1. Dublicate the render config RR\render_apps\_config\3D01__Softimage__Arnold_2011.cfg for softimage and change the renderer name to Arnold Render 4 for example.</span></p>
+<p class="rvps3"><span class="rvts8">In the file, replace the -wg "%WorkgroupPath%" by -wg "%WorkgroupPath_A%".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">2. Edit the file RR\render_apps\_setenv\win\softimage.bat and dublicate the workgroup lines and change it to -wg "%WorkgroupPath_A%".</span></p>
+<p class="rvps3"><span class="rvts8">You can now select the Arnold version as renderer at the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">3. At last, you can edit the submission plugin RR\render_apps\_submitplugins\rrSubmit_Softimage_6.0+.js</span></p>
+<p class="rvps3"><span class="rvts8">Add a switch for the renderer version.</span></p>
+<p class="rvps3"><span class="rvts8">There are some uncommented lines at the end of the the function RRgetPassesInfo(sceneInfo):</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts26">if (passes.p[passes.max-1].renderer=="Arnold Render") {</span></p>
+<p class="rvps3"><span class="rvts26">if (UseArnold41()) {</span></p>
+<p class="rvps3"><span class="rvts26">passes.p[passes.max-1].renderer=="Arnold Render 41"</span></p>
+<p class="rvps3"><span class="rvts26">}</span></p>
+<p class="rvps3"><span class="rvts26">}</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Uncomment them and change the UseArnold41() function/condition to determine if the scene should use Arnold 4.1.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Tiled EXR</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Arnold writes Tiled EXR.</span></p>
+<p class="rvps3"><span class="rvts8">Scanline EXR are faster to load in some comp apps.</span></p>
+<p class="rvps3"><span class="rvts8">Please use the SequenceCheck post-script of RR to convert them into scanline EXR files. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Trial mode</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use Arnold in Trial mode, then you have to edit the render script.</span></p>
+<p class="rvps3"><span class="rvts8">Open the file RR\render_apps\scripts\renderchannels_2011.vbs in an editor.</span></p>
+<p class="rvps3"><span class="rvts8">Search for</span></p>
+<p class="rvps3"><span class="rvts8">SetValue pass &amp; ".Arnold_Render_Options.abort_on_license_fail", True</span></p>
+<p class="rvps3"><span class="rvts8">Change it to</span></p>
+<p class="rvps3"><span class="rvts8">SetValue pass &amp; ".Arnold_Render_Options.abort_on_license_fail", False</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Ass Create N Render</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can change the renderer to "Ass Create N Render" at the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">Instead of starting Maya and rendering with MtoA from the Maya scene,</span></p>
+<p class="rvps3"><span class="rvts8">it will start Maya, export .ass files to a local temp folder and renders these .ass files with kick.</span></p>
+<p class="rvps3"><span class="rvts8">This will save all the memory that is usually required by Maya for opening the scene file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: KSO mode is not supported.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Vray</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">License Server</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have issues with the license server, please see </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Renderer/Archive__sl__St/VRay/Setup/Setup.htm#License_Server">VRay Standalone.</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note</span><span class="rvts8">: The path in the help file above for the vrlclient.xml changes to</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_prefs\</span><span class="rvts15">softimage</span><span class="rvts8">\win_x32\vrlclient.xml </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">emRPC</span></span></h1>
+<p class="rvps3"><span class="rvts8">The current version of RR does not have a submission script to read all information from the ICE node.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore you have to follow this description:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">Create a pass for the emRPC render. Set the output path and format to the same as you have set for emRPC.</span></li>
+<li class="rvps3"><span class="rvts8">If you have multiple emRPC objects, create a group named "emCache_Group" and put all objects with emRPC in it.</span></li>
+<li class="rvps3"><span class="rvts8">Use the submission plugin to send the scene data to the rrSubmitter.</span></li>
+<li class="rvps3"><span class="rvts8">Open the "Scene Settings" at the top. Either check the emRPC pass only or set "Scene Settings" to "selected jobs" and select the emRPC pass.</span></li>
+<li class="rvps3"><span class="rvts8">Change the camera name to your emRPC object or to "emCache_Group".</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,1368 @@
+﻿<html>
+	
+<head>
+	<title>Render config files</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Renderconfigfiles");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Render config files</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; <a href="RenderApplications.html">Render Applications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="RenderApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Addnewrenderapp.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="SetenvFiles.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts15">Location: </span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\_config</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Render Config files are the most important files in RRender.</span></p>
+<p class="rvps3"><span class="rvts8">They tell RR how to render scenes with this render application (commandlines) and what parameters are supported by the render application (skip existing frames, frame tiling... )</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Name of the config file:</span></p>
+<p class="rvps3"><span class="rvts8">It does not matter how you name the config file.</span></p>
+<p class="rvps3"><span class="rvts8">It is only to sort them.</span></p>
+<p class="rvps3"><span class="rvts8">By default they have been names with 3Dxx, Axx=Archive render, Cxx=Compositing.</span></p>
+<p class="rvps3"><span class="rvts8">But you do not need to name them like this.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Comment Lines:</span></p>
+<p class="rvps3"><span class="rvts8">If a line starts with #, it is completely ignored.</span></p>
+<p class="rvps3"><span class="rvts8">No matter where is it, you can even comment a line part of a commandline.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Line Order inside the config:</span></p>
+<p class="rvps3"><span class="rvts8">The order of the parameters does also not matter.</span></p>
+<p class="rvps3"><span class="rvts8">It was grouped that humans can read it better.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Header</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">First of all, RRender requires to know for which render application it should use this config.</span></p>
+<p class="rvps3"><span class="rvts15">Identify Parameters are:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">Name of the render application that loads the scene file. (E.g. Lightwave, Softimage, Maya)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">RendererName, optional</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">Name of the plugin renderer used</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">RendererVersion, optional</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">Version of the plugin renderer used</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">Version</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">Major version of the render application (number). (major version of Maya 2008 =&gt; 2008. Softimage 7.5 =&gt; 7)If no render config for the exact version is found, RRender uses the next lower version. (e.g. Softimage config 6 is used for 6.0, 6.5, 7.0 and 7.5)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">Version_Minor, optional</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">Minor version of the render application (number only). (major version of Maya 2008 =&gt; 0. Softimage 7.5 =&gt; 5, Nuke 5.01a =&gt; 01)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">Bit, optional</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">In the case you require different render configs for different bit versions of the render application. Possible values are 32 or 64</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">Type, optional</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">Type of the render application in a human readable form. Typical values can be: 3D, Archive, Comp. This parameter is used for example to disable rrViewer cache file creation based on the type.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RendererLicense, optional</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><p class="rvps3"><span class="rvts8">Some jobs just need to be executed. They</span></p>
+<p class="rvps3"><span class="rvts8">1. Do not produce frames.optional</span></p>
+<p class="rvps3"><span class="rvts8">2. Do not have a frame range.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can set this parameter to</span></p>
+<p class="rvps3"><span class="rvts8">Once: The job will be executed one time at all. (E.g simulate something)</span></p>
+<p class="rvps3"><span class="rvts8">OnceEachClient: The job will be executed one time at each client. (E.g. install a software)Name of the renderer license the job uses (see rrConfig, tab render lic)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 215px;"><p class="rvps3"><span class="rvts8">ExecuteJobType, optional</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1063px;"><br/>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Local copy of</span><span class="rvts8"> </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Renderer_Exe/Renderer_Exe_-_Shared.htm">Shared Executables</a><span class="rvts8">:</span></p>
+<p class="rvps3"><span class="rvts8">If you want to use this features, you have to define additional parameters:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 154px;"><p class="rvps3"><span class="rvts8">ExeCopyFromDir</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1131px;"><p class="rvps3"><span class="rvts8">The folder that contains the application folders of your render application. Each application folder has to contain a version number.By derfault, this is , which is resolved to [RR]\render_apps\renderer_exe\\win_x64 (or win_x32, lx_64,...)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 154px;"><p class="rvps3"><span class="rvts8">ExeCopyToDirAll</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1131px;"><p class="rvps3"><span class="rvts8">Contents of the ExeCopyFromDir folder are copied into this folder.By default, this is , which is resolved to [RR_LocalData]\renderer_exe\\win_x64 (or win_x32, lx_64,...)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 154px;"><p class="rvps3"><span class="rvts8">ExeCopiedWin,</span></p>
+<p class="rvps3"><span class="rvts8">ExeCopiedLx</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1131px;"><p class="rvps3"><span class="rvts8">The executable "" that should be started for rendering. The path to the executable can contain * to be replaced by the version number.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Commandlines</span></span></h1>
+<p class="rvps3"><span class="rvts8">The next part are the commandlines.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Default render commandlines:</span></p>
+<p class="rvps3"><span class="rvts8">Commandlines start with</span></p>
+<p class="rvps3"><span class="rvts8">CommandLine=</span></p>
+<p class="rvps3"><span class="rvts8">You do not have to place all flags into one line, you should use multiple lines for better readability.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Commandlines are executed one after another.</span></p>
+<p class="rvps7"><span class="rvts24">Exception:</span></p>
+<p class="rvps7"><span class="rvts8">If you have defined a render config file for an archive render (sceneIsMultiFrame=1; .rib, .mi, ...), then some commandline are looped/executed for each frame.</span></p>
+<p class="rvps7"><span class="rvts8">The commandline are then seperated into three parts:</span></p>
+<p class="rvps7"><span class="rvts8">1. executed once before rendering</span></p>
+<p class="rvps7"><span class="rvts8">2. loop</span></p>
+<p class="rvps7"><span class="rvts8">3. executed once after rendering</span></p>
+<p class="rvps7"><span class="rvts8">The loop will start with the first commandline that has some kind of frame number (&lt;FN&gt;, &lt;Scene&gt;) in it.</span></p>
+<p class="rvps7"><span class="rvts8">And the loop ends with the last commandline that has some kind of frame number (&lt;FN&gt;, &lt;Scene&gt;) in it.</span></p>
+<p class="rvps7"><span class="rvts8">So you can set the environment and a cleanup function once, but the rendering is started for every frame.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">OS Declaration:</span></p>
+<p class="rvps3"><span class="rvts8">Via header:</span></p>
+<p class="rvps7"><span class="rvts8">Each commandline part has to start with an setting for which OS this commandline is ment.</span></p>
+<p class="rvps7"><span class="rvts8">This settings line has to start with an # and contains one or multiple of the following variables:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;"><ul style="text-indent: 0px; margin-left: 48px; list-style-position: outside; list-style-type: circle;">
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">[Windows]</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">[Linux]</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">[OSX] </span></li>
+</ul></ul>
+<p class="rvps7"><span class="rvts8"><br/></span></p>
+<p class="rvps7"><span class="rvts8">Example:</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">############# [Windows] [Linux] #############</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Per Line:</span></p>
+<p class="rvps7"><span class="rvts8">Addtional to this declaration via a header, lines can start with</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;"><ul style="text-indent: 0px; margin-left: 48px; list-style-position: outside; list-style-type: circle;">
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">::win</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">::lx</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">::osx </span></li>
+</ul></ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps7"><span class="rvts8">If the OS does not match, the whole line is ignored (like a comment).</span></p>
+<p class="rvps7"><span class="rvts8">If the OS matches, the flag is removed and the rest of the line is taken.</span></p>
+<p class="rvps7"><span class="rvts8">Example 1.</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps12"><span class="rvts8">::win CommandLine= myScript.bat</span></p>
+<p class="rvps12"><span class="rvts8">::lx CommandLine= myScript.sh</span></p>
+<p class="rvps12"><span class="rvts8">::osx CommandLine=</span></p>
+<p class="rvps12"><span class="rvts8">-myFlag1</span></p>
+<p class="rvps12"><span class="rvts8">-moreflags</span></p>
+<p class="rvps7"><span class="rvts8">Example 2.</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps12"><span class="rvts8">CommandLine=</span></p>
+<p class="rvps12"><span class="rvts8">-myFlag1</span></p>
+<p class="rvps12"><span class="rvts8">::win -windowsFlag</span></p>
+<p class="rvps12"><span class="rvts8">::lx -linuxFlag</span></p>
+<p class="rvps12"><span class="rvts8">-moreflags</span></p>
+<p class="rvps12"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Variables</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">All commandlines usally use some kind of variables.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">They are inside the &lt; &gt; characters.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There are two kind of usage possibilities for these variables:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">As value replacement:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1113px;"><p class="rvps3"><span class="rvts8">The variable is replaced by the value. E.g. &lt;SeqStart&gt; is replaced with the start frame, &lt;Scene&gt; with the scene name.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">As conditional element</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1113px;"><p class="rvps3"><span class="rvts8">You can create a condition to check if a value is used at all.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. "if Sequence divide is enabled, execute -overwrite, otherwise execute -skip".</span></p>
+<p class="rvps3"><span class="rvts8">This would be &lt;SequenceDivide -overwrite ? -skip&gt;</span></p>
+<p class="rvps3"><span class="rvts8">The value name,</span></p>
+<p class="rvps3"><span class="rvts8">followed by the commandline you want to execute if the value is non-zero/set/true/non-empty,</span></p>
+<p class="rvps3"><span class="rvts8">followed by a question mark ?</span></p>
+<p class="rvps3"><span class="rvts8">followed by the commandline you want to execute otherwise.</span></p>
+<p class="rvps3"><span class="rvts8">Note: If you do not need an "otherwise", then you do not need to use a question mark.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">These types can be combined.</span></p>
+<p class="rvps3"><span class="rvts8">For example if you do not have layers in your scene, you must not set the layer name in the commandline.</span></p>
+<p class="rvps3"><span class="rvts8">So you want to set:</span></p>
+<p class="rvps3"><span class="rvts8">If layer-not-empty, then execute -Layer "LayerName", otherwise do nothing.</span></p>
+<p class="rvps3"><span class="rvts8">This would be &lt;Layer -Layer "&lt;Layer&gt;" &gt;.</span></p>
+<p class="rvps3"><span class="rvts8">As you can see, the first &lt;Layer... was used as a condition, the second "&lt;Layer&gt;" as value replacement.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Variables - Scene</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">These variables will be replaced with the same values as you have set for the job at submission:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="70%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SeqStart&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SeqEnd&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SeqStep&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SeqFileOffset&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Each client gets a part of the total sequence length for rendering.</span></p>
+<p class="rvps3"><span class="rvts8">These values are the frame range a client should render.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px; height: 47px;"><p class="rvps3"><span class="rvts8">&lt;TotalSeqStart&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;TotalSeqEnd&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;TotalSeqStep&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px; height: 47px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Total sequence range of the scene/job. It is </span><span class="rvts15">not</span><span class="rvts8"> the frame range a client should render.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;TotalFrames&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Total number of frames of the job. It is </span><span class="rvts15">not</span><span class="rvts8"> the frame range a client should render.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SeqStart-1&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SeqEnd-1&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Start and end frame offsetted by -1</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SeqStartLead3&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SeqStartLead4&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SeqStartLead5&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Start frame with leading zeros.</span></p>
+<p class="rvps3"><span class="rvts8">The frame padding for the start frame will be either 3,4 or 5.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SeqStartNStep&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SeqStartNStep+1&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">The number of the last frame before the next frame rendered. It will be calculated (Start+Step-1).</span></p>
+<p class="rvps3"><span class="rvts8">The second +1 is equal to (Start+Step)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px; height: 15px;"><p class="rvps3"><span class="rvts8">&lt;ImageFramePadding&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px; height: 15px;"><p class="rvps3"><span class="rvts8">The frame padding of the job</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;FramePadding #&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FramePadding @&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Returns a number of #.</span></p>
+<p class="rvps3"><span class="rvts8">e.g. with a framepadding of 3 it genertates ###</span></p>
+<p class="rvps3"><span class="rvts8"># can be replaced with any other letter, e.g. @</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ImageHeight&gt;&lt;ImageWidth&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ImageDir&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;ImageDirComplete&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">ImageDir is the base directory for the rendering.</span></p>
+<p class="rvps3"><span class="rvts8">For most renderer &lt;ImageDirComplete&gt; and &lt;ImageDir&gt; is the same.</span></p>
+<p class="rvps3"><span class="rvts8">For Maya renderings, the &lt;ImageDir&gt; does not include the Layer nor the channel name. &lt;ImageDirComplete&gt; does include the full path to your rendered images.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ImageFilename&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ImageFilenameOnly&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">For Maya, the &lt;ImageFilename&gt; has to contain the layer folder. This variable has no folder.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ImageFilenameVariables&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">If you use file name variables like &lt;RenderLayer&gt; or &lt;RenderChannel&gt; in your Maya scene render settings, then RR has to set these variables at render time. It is not possible to tell Maya the resolved Layer or Channel names.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ImageExtension&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;PNL&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">(ImagePreNumberLetter)</span></p>
+<p class="rvps3"><span class="rvts8">Some applications always add a . or _ in front of the frame number. Set this variable to that character.</span></p>
+<p class="rvps3"><span class="rvts8">RR needs this letter at the end of the image file name to find the images. But for some render applications you have to remove this letter again, otherwise you end up with two of them, Typical use is therefore &lt;ImageFilename&gt;&lt;EL&lt;PNL&gt;&gt;</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;OverrideImageFormat&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;Camera&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;Layer&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;Channel&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;Database&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;DatabaseName&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">The path you set for the database.</span></p>
+<p class="rvps3"><span class="rvts8">Only the last folder of the path.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;Scene&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Scene with total path </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SceneFileName&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Scene filename only without extension </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SceneFileExt&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Scene files extension only </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SceneFolder&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Folder of scene only </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SceneFN&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SceneFileNameFN&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Same as &lt;Scene&gt; and &lt;SceneFileName&gt;, but it is used in the loop calculation for used for multi-file archive renderings (.rib, .mi), see introduction of this chapter (the "Exception:")</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;FN&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FN2&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FN3&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FN4&gt;</span></p>
+<p class="rvps3"><span class="rvts8">..</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FN7&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FNimgPadded&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Frame Number, used for multi-file archive renderings (.rib, .mi)</span></p>
+<p class="rvps3"><span class="rvts8">If you add a number, it uses this fixed frame padding.</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FNimgPadded&gt; Uses the frame padding set for the image name (seen at the submitter as ###)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;SequenceDivide&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Mostly used as a condition to switch commandline parameter if SequenceDivide is enabled/disabled.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;CustomOptionName&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">You can define custom options in your render config file. These options are then shown at the Submitter like all other RR settings. And you can use them via their "CustomOptionName" as a variable. Just like all other RR settings.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ImageSingleOutputFile&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Mostly used as a condition to switch commandline parameter if you render a single output file (.avi .mov)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;UserInfos&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;CustomA&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;CustomMy&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;CustomUser&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Custom variables that you can set with a custom submitter plugin.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;UserName&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;X1&gt;&lt;X2&gt;&lt;Y1&gt;&lt;Y2&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">If you use the RR "split frame" feature: Coordinates in pixel of the region to render, used if you split a frame with RR for multiple clients.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;X1f&gt;&lt;X2f&gt;&lt;Y1f&gt;&lt;Y2f&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">If you use the RR "split frame" feature: Same as above, but coordinates are a float value in the range 0-1, where 1 is the full size.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;TotalTiles&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">If you use the RR "split frame" feature: Total number of tiles</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;TileNumber&gt;&lt;TileNumber+1&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">If you use the RR "split frame" feature: Number of the current tile the client should render.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;CustomScene&gt;&lt;CustomShot&gt;&lt;CustomVersion&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;CompanyProjectName&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;CompanyProjectRootFolder&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">If you use the scene/output folder to detect the company name, then this variable returns the folder until your project name.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;ID&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;ID_S&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">unique Job ID as a number</span></p>
+<p class="rvps3"><span class="rvts8">and as a human readable string</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;verboseLevel&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Inserts the verbose flags you have set in the render config.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;renderQuality&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Inserts the quality flags you have set in the render config.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;PreviewGamma&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Enabled if Preview Gamma 2.2 is enabled for the job.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;JobPriority&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">Priority of the job.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 191px;"><p class="rvps3"><span class="rvts8">&lt;AvFrameTime&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 703px;"><p class="rvps3"><span class="rvts8">The average frame time of the job. Can be used in post/done-scripts.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Variables - RR</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="70%" border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;AdditionalCommandlineParam&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">You can set additional commandline flags for a job at the submitter</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;Exe&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">´The Executable you have set at the client for this render application.</span></p>
+<p class="rvps3"><span class="rvts8">Note: You can hardcode the exe, but then you loose the auto version change.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;ExeVersion&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;ExeVersionMayor&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;ExeVersionMinor&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;ExeVersionMinReq&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">The version of the Executable used.</span></p>
+<p class="rvps3"><span class="rvts8">Note: This does not have to be the same version as the render config nor the same as in the job.</span></p>
+<p class="rvps3"><span class="rvts8">ExeVersionMinReq: If the minor version is .0, then ExeVersionMinReq does not add the minor version.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;ClientConfigParam&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">You can set additional commandline flags in the client config for each render app</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">&lt;SetEnvSoft&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SetEnv_JobRenderApp&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Executes the setenv file for the render application.</span></p>
+<p class="rvps3"><span class="rvts8">The setenv file used is named [RenderApp]_[Renderer], or if that file does not exists, [RenderApp].</span></p>
+<p class="rvps3"><span class="rvts8">The file names are always lowercase.</span></p>
+<p class="rvps3"><span class="rvts8">Examples:</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\_setenv\win\renderman_proserver.bat</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\_setenv\win\softimage.bat</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">SetEnv_JobRenderApp is used in pre-/post-scripts to get the setenv of the render application of the jobs render application, not the setenv of the script.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;ResetExitCode&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Should be called before you start the main render process</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;CheckExitCode&gt; &lt;FN&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts15">Must</span><span class="rvts8"> be called after the main render process. If it is not executed, the client does not know if the render was closed or successful.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;CPU &lt;LimitCPUs&gt; &lt;CPU&gt;&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Windows only: Some render application have no option to set the number of Cpus used. Execute this at the beginning, it will limit the CPUs for the whole batch file.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;MaxMemory-300&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-400&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-500&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-600&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-700&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-800&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-900&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-1000&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Some predefined variables which gives you access to a memory value relative to the client memory.</span></p>
+<p class="rvps3"><span class="rvts8">Note: This parameter does not support expressions. You cannot use any value, please choose one of the shown values.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. Your machine has 10GB memory.</span></p>
+<p class="rvps3"><span class="rvts8">&lt;MaxMemory-700&gt; : 9.3GB</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">If you start multiple render instances, then the memory value is split for each job.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrSharedExeDir&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;rrLocalExeDir&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Renderer_Exe/Renderer_Exe_-_Shared.htm">Shared Executables</a></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrBaseAppPath&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">The base path of the render application used. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrLocalTemp&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">...\RR_localdata\temp</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrLocalRenderout&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">...\RR_localdata\renderout</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrWebsite&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">resolved path for [RR]\website</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;JobFilesFolder&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Folder which stores all rrJob files (render log files, rrViewer caches)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrRoot&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">resolved path </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrBin&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">resolved path for [RR]\bin\win, [RR]\bin\lx64 or [RR]\bin\mac</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;App&gt;&lt;AppLow&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;AppRenderer&gt;&lt;AppRendererLow&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;AppVer&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;AppVerMinor&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Name of the render application, name of the renderer or the version.</span></p>
+<p class="rvps3"><span class="rvts8">"low" is the name in lower case.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;LocalHost&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">The machine name of the client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;OS&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">win, lx or mac</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;jobBit&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">x32 or x64</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;Cores&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;CPU&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;InstanceCores&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">number of cores that should be used</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">InstanceCores is the number of cores of the machine divided by the number if instances started.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;LogFileName&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Name of the render log file used for this task.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;IsMultiInstance&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Used as switch for multi-instance jobs.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. &lt;IsMultiInstance -multiparam ? -defaultparam &gt; </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;SubmitMachine&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Name of the machine that submitted the job</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;FolderVideoPreview&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;FolderVideoFull&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">Folders presets for the video creator post-script.</span></p>
+<p class="rvps3"><span class="rvts8">Set them in rrConfig.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrClientThreadID&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">The number of the job thread which executes this job.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 321px;"><p class="rvps3"><span class="rvts8">&lt;rrClientThread_A&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;rrClientThread_B&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;rrClientThread_C&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 777px;"><p class="rvps3"><span class="rvts8">These values return 1 if the job thread matches. And 0 if the job thread does not match.</span></p>
+<p class="rvps3"><span class="rvts8">Useful for conditional flags e.g. &nbsp;&lt;rrClientThread_A &nbsp; &nbsp;-use_GPU_ID 0 &gt;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Variables - Special</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="70%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">&lt;date&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;date ddd, dd.MMM&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">The current Date. If you use &lt;date XXXXXXX&gt;, then you can specify your own format for the date. Possible variables are:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Expression &nbsp; &nbsp; Output</span></p>
+<p class="rvps3"><span class="rvts8">d</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the day as number without a leading zero (1 to 31)</span></p>
+<p class="rvps3"><span class="rvts8">dd</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the day as number with a leading zero (01 to 31)</span></p>
+<p class="rvps3"><span class="rvts8">ddd</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the abbreviated localized day name (e.g. 'Mon' to 'Sun').</span></p>
+<p class="rvps3"><span class="rvts8">dddd</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the long localized day name (e.g. 'Monday' to 'Sunday').</span></p>
+<p class="rvps3"><span class="rvts8">M</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the month as number without a leading zero (1-12)</span></p>
+<p class="rvps3"><span class="rvts8">MM</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the month as number with a leading zero (01-12)</span></p>
+<p class="rvps3"><span class="rvts8">MMM</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the abbreviated localized month name (e.g. 'Jan' to 'Dec').</span></p>
+<p class="rvps3"><span class="rvts8">MMMM</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the long localized month name (e.g. 'January' to 'December').</span></p>
+<p class="rvps3"><span class="rvts8">yy</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the year as two digit number (00-99)</span></p>
+<p class="rvps3"><span class="rvts8">yyyy</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the year as four digit number</span></p>
+<p class="rvps3"><span class="rvts8">hh</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the hour</span></p>
+<p class="rvps3"><span class="rvts8">mm</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; the minute</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;NoUNC XXXXXXX&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8"> &nbsp;Windows only: replaces all UNC paths in XXXXXXXX with drive mappings. The drive mappings have to be set in rrConfig.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;PD\\ XXXXXX&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;PD/ XXXXXX&gt; </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Converts all slashes/backslashes in XXXXXX with the one set after PD</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">&lt;ESC XXXXXXX&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Escapes special characters inside a string.</span></p>
+<p class="rvps3"><span class="rvts8">Only required if you need to use quoted strings inside quoted strings.</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Your script command inside your application is: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">SetRenderOutput "name_&lt;Layer&gt;_&lt;Frame&gt;"; </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">The commandline to execute commands via commandline is:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">myapp.exe -cmd "yourcommand"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">So o execute your command via commandline you have to enter:</span></p>
+<p class="rvps3"><span class="rvts8">All " and &lt; need to be escaped in a commandline.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">myapp.exe -cmd "SetRenderOutput \"name_\&lt;Layer\&gt;_\&lt;Frame\&gt;\";"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">With &lt;Esc XXXX&gt; the escaping is done for you.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">myapp.exe -cmd "&lt;Esc SetRenderOutput "name_&lt;Layer&gt;_&lt;Frame&gt;";&gt;"</span></p>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;ED&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Used at the end of a path variable. It removes everything backwards to the last slash.</span></p>
+<p class="rvps3"><span class="rvts8">C:\Softimage\Softimage_2010\Application\bin\setenv.bat&lt;ED&gt; =&gt; C:\Softimage\Softimage_2010\Application\bin\</span></p>
+<p class="rvps3"><span class="rvts8">C:\Softimage\Softimage_2010\Application\bin\setenv.bat&lt;ED&gt;&lt;ED&gt; =&gt; C:\Softimage\Softimage_2010\Application\</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;EL&gt;&lt;ELX&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Deletes the last letter before this variable. If something is specified after the EL inside the variable, then the last letter is only deleted if it matches.</span></p>
+<p class="rvps3"><span class="rvts8">RenderFrame_&lt;EL&gt; =&gt; RenderFrame</span></p>
+<p class="rvps3"><span class="rvts8">RenderFrame_&lt;EL.&gt; =&gt; RenderFrame_ (no change)</span></p>
+<p class="rvps3"><span class="rvts8">RenderFrame_&lt;EL_&gt; =&gt; RenderFrame </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;../&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Steps one directory back.</span></p>
+<p class="rvps3"><span class="rvts8">C:\Softimage\Softimage_2010\Application\bin\setenv.bat&lt;../&gt; =&gt; C:\Softimage\Softimage_2010\Application\</span></p>
+<p class="rvps3"><span class="rvts8">C:\Softimage\Softimage_2010\Application\bin\setenv.bat&lt;../&gt;&lt;../&gt; =&gt; C:\Softimage\Softimage_2010\</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;PD&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;\\&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;/&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">The first PD is replaced with the right slash type for a directory on the system. \ on windows, otherwise /.</span></p>
+<p class="rvps3"><span class="rvts8">The other two are replaced with the slash type they show.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;EndsWith(strg, endStrg) TrueStrg ? FalseStrg&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">If the string strg ends with endStrg, then TrueStrg in places in the commandline, otherwise FalseStrg.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;renderApp:3dsmax-vray &nbsp;TrueStrg ? FalseStrg&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;renderApp:3dsmax TrueStrg ? FalseStrg&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Can be used as switch in post-scripts</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;Replace Strg, OldStrg, NewStrg&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Searches for Strg in the commandline and replaces it with NewStrg.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;dec&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Decimal mark of the local system. Half of the world uses a period (.) is used, the other half a comma (,). Some applications (like 3dsmax) require the exact mark, otherwise they refuse to work. (most other just use a period no matter the country)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;removeRemStrg Strg&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Removes the string RemStrg from Strg.</span></p>
+<p class="rvps3"><span class="rvts8">Note: There is no Space between &lt;remove and RemStrg, but at least one space after RemStrg</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;newLine&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;nL&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Adds a line break to the batch. In case you want to write two commandline in one config commandline line.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;callScript filename_base&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">Example: if "filename_base" is //fileserver/share/myscript, then the results is:</span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 65px;"><p class="rvps3"><span class="rvts8">Windows:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 228px;"><p class="rvps3"><span class="rvts8">call //fileserver/share/myscript.bat</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 65px;"><p class="rvps3"><span class="rvts8">Linux: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 228px;"><p class="rvps3"><span class="rvts8">source //fileserver/share/myscript.sh</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 65px;"><p class="rvps3"><span class="rvts8">Mac: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 228px;"><p class="rvps3"><span class="rvts8">sourcel //fileserver/share/myscript.sh</span></p>
+</td>
+</tr>
+</table>
+</div>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 275px;"><p class="rvps3"><span class="rvts8">&lt;OsxApp Executable&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 619px;"><p class="rvps3"><span class="rvts8">If the client is running on OSX, then the executable filename is extended to the osx executable name.</span></p>
+<p class="rvps3"><span class="rvts8">Example:</span></p>
+<p class="rvps3"><span class="rvts8">&lt;OsxApp rrPythonconsole&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Result Windows/Linux: rrPythonconsole</span></p>
+<p class="rvps3"><span class="rvts8">Result OSX: rrPythonconsole.app/Contents/MacOS/rrPythonconsole</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Variables - OS</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can use OS variables as &lt;VarName&gt; instead of using %VarName% or ${VarName}.</span></p>
+<p class="rvps3"><span class="rvts8">It is useful if you want to use one commandline for multiple OS.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: The client can only replace OS variables that have been set when the client was started.</span></p>
+<p class="rvps3"><span class="rvts8">Environment variables set in the render config, setenv or rrEnvFile are not supported.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">KSO mode</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Usage/Submission/Job_Settings/RR_options/RR_options.htm#Keep_Scene_Open">KSO Mode</a><span class="rvts8"> is a special render mode.</span></p>
+<p class="rvps3"><span class="rvts8">The scene is kept open in memory and the clients sends new render commands via python or a text file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The parameters and commandlines are defined as:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">KSO_Type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">Can be either TCP or File.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">TCP:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The client starts a TCP cleint and sends all commands to the TCP server running in the render application.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">File:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The client writes all commands into a file. The render application has to read and delete the file. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">KSO_Start</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">The shell commandlines to start the render application, load the scene and set all render options.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">KSO_NewFrame</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">After the render application has done the assigned frames, it has to wait.</span></p>
+<p class="rvps3"><span class="rvts8">If there are new frames, the client sends these lines to the render application (via TCP or file).</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">KSO_Close</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">After the render application has done the assigned frames, it has to wait.</span></p>
+<p class="rvps3"><span class="rvts8">If the job is done, the client sends these lines to the render application (via TCP or file).</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">KSOlog_AppStarted</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">(The client checks the log output of the render application. )</span></p>
+<p class="rvps3"><span class="rvts8">If it received this text, then the client knows the application is started.</span></p>
+<p class="rvps3"><span class="rvts8">This setting is currently not used.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">KSOlog_Running</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">(The client checks the log output of the render application. )</span></p>
+<p class="rvps3"><span class="rvts8">If it received this text, then the client knows the application is in KSO mode.</span></p>
+<p class="rvps3"><span class="rvts8">If the application takes more than 20 minutes to display this message, the render is aborted.</span></p>
+<p class="rvps3"><span class="rvts8">(20 minutes as the application startup could require need to load the scene as well)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">KSOlog_FrameDone</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">(The client checks the log output of the render application. )</span></p>
+<p class="rvps3"><span class="rvts8">If this text is received, then the client knows the frames assigned have been finished and the render application is waiting for a new command.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">KSOlog_Quit</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1091px;"><p class="rvps3"><span class="rvts8">(The client checks the log output of the render application. )</span></p>
+<p class="rvps3"><span class="rvts8">If it received this text, then the client knows the KSO mode is down and the application is closing.</span></p>
+<p class="rvps3"><span class="rvts8">This setting is currently not used.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Render Settings</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 245px;"><p class="rvps3"><span class="rvts8">sceneIsMultiFrame</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1040px;"><p class="rvps3"><span class="rvts8">Each frame has a separate scene file. The client should render a archive sequence. E.g. .rib .mi. See "Commandlines" above. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 245px;"><p class="rvps3"><span class="rvts8">noScenefilePerFrame</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1040px;"><p class="rvps3"><span class="rvts8">Only valid if you use sceneIsMultiFrame.The scene file name itself of the job is not an archive sequence. It is a single scene file for the whole sequence.</span></p>
+<p class="rvps3"><span class="rvts8">But the client still needs to execute the render commandline in a loop.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. The client creates a .mi sequence from the Maya scene file and then renders the .mi sequence.</span></p>
+<p class="rvps3"><span class="rvts8">See render config file 3D02__Maya2008__CreateRenderMi.cfg for an example.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 245px;"><p class="rvps3"><span class="rvts8">FlagsRenderQuality0 .. 4</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1040px;"><p class="rvps3"><span class="rvts8">You can select render quality presets at the submitter.</span></p>
+<p class="rvps3"><span class="rvts8">The different numbers represent the different items in the preset selection.</span></p>
+<p class="rvps3"><span class="rvts8">0: Default</span></p>
+<p class="rvps3"><span class="rvts8">1: Preview</span></p>
+<p class="rvps3"><span class="rvts8">2: Normal</span></p>
+<p class="rvps3"><span class="rvts8">3: Production</span></p>
+<p class="rvps3"><span class="rvts8">4: Best</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 245px;"><p class="rvps3"><span class="rvts8">FlagsVerbose0 ..4</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1040px;"><p class="rvps3"><span class="rvts8">You can select render verbose presets at the submitter.</span></p>
+<p class="rvps3"><span class="rvts8">The different numbers represent the different items in the preset selection.</span></p>
+<p class="rvps3"><span class="rvts8">0: Default</span></p>
+<p class="rvps3"><span class="rvts8">1: No Verbose</span></p>
+<p class="rvps3"><span class="rvts8">2: Errors &amp; Warnings</span></p>
+<p class="rvps3"><span class="rvts8">3: Informations</span></p>
+<p class="rvps3"><span class="rvts8">4: Progress</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 245px;"><p class="rvps3"><span class="rvts8">FlagsRegion</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1040px;"><p class="rvps3"><span class="rvts8">Commandline flags to render a region of the final image. Required for rendering in slices/tiles.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 245px;"><p class="rvps3"><span class="rvts8">ImageSizeCommandline</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1040px;"><p class="rvps3"><span class="rvts8">Required if you want to override the render resolution at the submitter.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Submitter settings</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 197px;"><p class="rvps3"><span class="rvts8">ImageSize</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1088px;"><p class="rvps3"><span class="rvts8">Presets for the image size selection at the submitter.</span></p>
+<p class="rvps3"><span class="rvts8">The format is</span></p>
+<p class="rvps3"><span class="rvts8">Display Name ~ Width ~ Height</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 197px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">ImageTypes</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1088px;"><p class="rvps3"><span class="rvts8">Presets for the image type selection at the submitter. This setting is used for the</span><span class="rvts15"> dropdown box display only.</span></p>
+<p class="rvps3"><span class="rvts8">It does </span><span class="rvts15">not</span><span class="rvts8"> affect the rrSubmitterconsole with the commandline flag -OverrideImageFormat in any way.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The format is</span></p>
+<p class="rvps3"><span class="rvts8">DisplayName ~ flag ~ fileextension</span></p>
+<p class="rvps3"><span class="rvts8">Some render applications just work if you change the imageextension to a different format.</span></p>
+<p class="rvps3"><span class="rvts8">But others not, they require a special commandline flag to override the image format.</span></p>
+<p class="rvps3"><span class="rvts8">The render commandline need to include an "OverrideImageFormat" switch.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Next step is to check for the "commandlineParameter".</span></p>
+<p class="rvps3"><span class="rvts8">This should either be covered in the help files of the render application</span></p>
+<p class="rvps3"><span class="rvts8">or you can search if the render configs already includes presets for possible overrides. (Presets are set in the config file that you can see them in a dropdown at rrSubmitter)</span></p>
+<p class="rvps3"><span class="rvts8">Search for "ImageTypes=". The specification of this line is "ImageTypes= name ~ flag ~ extension". Use flag for -OverrideImageFormat &lt;value&gt;.</span></p>
+<p class="rvps3"><span class="rvts8">Example:</span></p>
+<p class="rvps3"><span class="rvts8">ImageTypes= SGI 16bit~ sgi16 ~sgi</span></p>
+<p class="rvps3"><span class="rvts8">-OverrideImageFormat sgi16</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 197px;"><p class="rvps3"><span class="rvts8">ParamPresets</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1088px;"><p class="rvps3"><span class="rvts8">Presets for additional commandline parameter at the submitter.</span></p>
+<p class="rvps3"><span class="rvts8">The commandline parameter will then be in your render commandline.</span></p>
+<p class="rvps3"><span class="rvts8">Note: also see CustomOptions in the description of the Submitter Defaults File.They can be used in render config files.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Submitter default values</span></span></h1>
+<p class="rvps3"><span class="rvts8">You can use any parameter that you can use the in the Submitter Default Files.</span></p>
+<p class="rvps3"><span class="rvts8">E.g.</span></p>
+<p class="rvps3"><span class="rvts8">- Most of the applications must have "Sequence divide enabled".</span></p>
+<p class="rvps3"><span class="rvts8">- You want "Render preview first" disabled for compising jobs by default.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Custom submitter options</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can create new checkboxes or value-spins for a renderer.</span></p>
+<p class="rvps3"><span class="rvts8">You can set everything that is available via the renderers commandline.</span></p>
+<p class="rvps3"><span class="rvts15">If it is not available via the commandline flags of your render application, then you cannot use it.</span></p>
+<p class="rvps3"><span class="rvts8">Hint: Some renderer use custom render scrips which you can extend with new options. (Softimage, Houdini, Modo)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For custom settings like:</span></p>
+<p class="rvps3"><span class="rvts8">- enable/disable motion blur</span></p>
+<p class="rvps3"><span class="rvts8">- set the ray depth level</span></p>
+<p class="rvps3"><span class="rvts8">The render config 3D01__Softimage__2011.cfg includes an example, check for CODisableDisplace in that file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 198px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Create the Option:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1087px;"><p class="rvps3"><span class="rvts8">Add a line</span></p>
+<p class="rvps3"><span class="rvts8">COYourCustomName= AllowChange ~ Checked ~ Value</span></p>
+<p class="rvps3"><span class="rvts8">to the render config, section "Render Settings" or "Submitter Settings". (the sections are just for human readability)</span></p>
+<p class="rvps3"><span class="rvts8">The format after the = is the one of the submitter default settings.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The first value is AllowChange. If the artist is allowed to change it.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 217px;"><p class="rvps3"><span class="rvts26">COYourCustomName= 1</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 310px;"><p class="rvps3"><span class="rvts8">Artist can change it </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 217px;"><p class="rvps3"><span class="rvts26">COYourCustomName= 0</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 310px;"><p class="rvps3"><span class="rvts8">Artist is not allow to change it</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The next part is the checkbox. If it is checked by default or not.</span></p>
+<p class="rvps3"><span class="rvts8">This one is checked:</span></p>
+<p class="rvps3"><span class="rvts8">COYourCustomName= 1 ~1</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you just want a checkbox, then this is everything you need for now.</span></p>
+<p class="rvps3"><span class="rvts8">If you want a value box, add another one for the default value.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. 345:</span></p>
+<p class="rvps3"><span class="rvts8">COYourCustomName= 1 ~ 1 ~ 345</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 198px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Use the new option</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1087px;"><p class="rvps3"><span class="rvts8">In your commandline, you can now use the parameter.</span></p>
+<p class="rvps3"><span class="rvts8">You can use the new parameter as boolean switch or directly use the value.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Config_files/Custom_Submitte/Config_files.htm#Variables">Variable Usage</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For example if you want to enable a Maya render flag if your parameter is checked:</span></p>
+<p class="rvps3"><span class="rvts8">&lt;COYourCustomName -MayaFlag true&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">An other example:</span></p>
+<p class="rvps3"><span class="rvts8">You want to use raytraced shadows by default, but if you check your option "shadow maps", then you want to use shadow maps with the resolution you set at the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts15">&lt;COShadowMaps</span><span class="rvts8"> -shMap on -shMapResolution &lt;COShadowMaps&gt;</span><span class="rvts15"> ?</span><span class="rvts8"> -raytrace on</span><span class="rvts15">&gt;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Hint:</span></p>
+<p class="rvps3"><span class="rvts8">You can also use this new </span><span class="rvts26">COYourCustomName</span><span class="rvts8">= in your submitter default files to use different settings for a special project. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Client settings</span></span></h1>
+<p class="rvps3"><span class="rvts8">findFrameNoPreLine</span></p>
+<p class="rvps3"><span class="rvts8">findFrameNoPre</span></p>
+<p class="rvps3"><span class="rvts8">findFrameNoPost</span></p>
+<p class="rvps3"><span class="rvts8">findFrameNoPostLine</span></p>
+<p class="rvps3"><span class="rvts8">findFrameNoPostLineSkip</span></p>
+<p class="rvps3"><span class="rvts8">TexReplaceFormat Char Unicode L4Unicode FOR4 Default DoubleBack AlwaysForward</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 209px;"><p class="rvps3"><span class="rvts8">licenseFailLine</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1076px;"><p class="rvps3"><span class="rvts8">What your renderer prints into the log file if it does not get a license.</span></p>
+<p class="rvps3"><span class="rvts8">You can use multiple lines.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 209px;"><p class="rvps3"><span class="rvts8">errorSearchLine</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1076px;"><p class="rvps3"><span class="rvts8">After rendering, the client searches the logfile for these messages. If it finds an error, the job is marked as crashed.</span></p>
+<p class="rvps3"><span class="rvts8">You can use multiple lines.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 209px;"><p class="rvps3"><span class="rvts8">permanentErrorSearchLine</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1076px;"><p class="rvps3"><span class="rvts8">Same as above, but the client gets directly deassigned. E.g. It is not useful that the client tries again if an plugin is not installed on that client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 209px;"><p class="rvps3"><span class="rvts8">seperateRenderLogFile</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1076px;"><p class="rvps3"><span class="rvts8">Some renderer are writing their log into a seperate log file. This tells the client where to look for the file.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 209px;"><p class="rvps3"><span class="rvts8">findFrameNoPre</span></p>
+<p class="rvps3"><span class="rvts8">findFrameNoPost</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1076px;"><p class="rvps3"><span class="rvts8">The client searches the render log for the frames rendered.</span></p>
+<p class="rvps3"><span class="rvts8">To find the frame numbers, you have to define what the renderer writes before and after the frame number.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 209px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">findFrameNoPostLine</span></p>
+<p class="rvps3"><span class="rvts8">findFrameNoPostLineSkip</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1076px;"><p class="rvps3"><span class="rvts8">Sometimes the it is not enough to define what is before and after the frame number.</span></p>
+<p class="rvps3"><span class="rvts8">Then you can define what </span><span class="rvts15">has to </span><span class="rvts8">be in the next line. (findFrameNoPostLine)</span></p>
+<p class="rvps3"><span class="rvts8">E.g.Accessing Frame 143</span></p>
+<p class="rvps3"><span class="rvts8">Frame rendered!</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Or what </span><span class="rvts15">must NOT be</span><span class="rvts8"> in the next line. (findFrameNoPostLineSkip)</span></p>
+<p class="rvps3"><span class="rvts8">E.g.Accessing Frame 143</span></p>
+<p class="rvps3"><span class="rvts8">Frame skipped!</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

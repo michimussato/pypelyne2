@@ -1,0 +1,170 @@
+﻿<html>
+	
+<head>
+	<title>Windows Notes</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("WindowsNotes");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Windows Notes</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Installation.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="UserforrrService.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="LinuxNotes.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">This chapter is about OS-specific issues with windows.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> Trusted Network</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="0" cellspacing="0" style="border-width: 0px;">
+<tr valign="middle">
+<td style="border-width : 1px; border-color: #000000; border-style: solid; width: 228px;"><p class="rvps3"><span class="rvts8">If you get this warning message,</span></p>
+<p class="rvps3"><span class="rvts8">then you have to change how windows</span></p>
+<p class="rvps3"><span class="rvts8">detects your local area network.</span></p>
+</td>
+<td style="border-width : 1px; border-color: #000000; border-style: solid; width: 1070px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/win_security_warning.jpg"/></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please follow these steps:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Open the windows control panel</span></li>
+<li class="rvps3"><span class="rvts8">Choose "Internet Options".</span></li>
+<li class="rvps3"><span class="rvts8">Change to tab "Security".</span></li>
+<li class="rvps3"><span class="rvts8">Select the Icon "Local Intranet".</span></li>
+<li class="rvps3"><span class="rvts8">Click on the Button "Sites".</span></li>
+<li class="rvps3"><span class="rvts8">Click on the Button "Advanced"..</span></li>
+<li class="rvps3"><span class="rvts8">Add \\Your_Fileserver to the list. (replace "Your_Fileserver" with the name of the fileserver the RR files are on)</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note: </span><span class="rvts8">This is a </span><span class="rvts15">per user </span><span class="rvts8">setting in windows.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">How to pin an RR app to the taskbar?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Windows 7 has some restrictions that dis-allow programs to be pinned to the taskbar.</span></p>
+<p class="rvps3"><span class="rvts8">There are cases in which programs on a network share are not allowed and/or if the executable file contains a reserved word (like help, control...).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Workaround:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">First click with the right mouse button on the desktop.</span></li>
+<li class="rvps3"><span class="rvts8">In the context menu select "New" -&gt; "Text Document":</span></li>
+<li class="rvps3"><span class="rvts8">Change the name of the text file into a meaningful front part (e.g.: "rrControl"), and - important - the file extension has to be ".exe".</span><br/><span class="rvts8">(If the file extension "txt" does not appear, previously deactivate in Windows Explorer via menu "Organize" -&gt; "Folder and search options" -&gt; tab "View" -&gt; "Hide extension to known file types".)</span></li>
+<li class="rvps3"><span class="rvts8">Ignore the warning from Windows 7 and answer the question:</span><br/><span class="rvts8">"Are you sure you want to change it?" with "Yes".</span></li>
+<li class="rvps3"><span class="rvts8">After that the icon has changed to a standard icon for EXE files.</span></li>
+<li class="rvps3"><span class="rvts8">Click on the file with the right mouse button. Now a menu item </span><span class="rvts26">"Pin to Taskbar</span><span class="rvts8">" appears. Choose this and a new icon appears in the taskbar.</span></li>
+<li class="rvps3"><span class="rvts8">Right-click on the icon in the taskbar and then again with the right mouse button on the "Program" (here: "rrControl"). In the context menu select "Properties"</span></li>
+<li class="rvps3"><span class="rvts8">Now change on tab "Shortcut" the "Target" to either the batch file ([RR]\win__rrControl.bat) or the executable ([RR]\bin\win\rrControl.exe)</span></li>
+<li class="rvps3"><span class="rvts8">The icon can now be selected with the button "Change Icon". Click on "Browse..." and select the executable ([RR]\bin\win\rrControl.exe)</span></li>
+<li class="rvps3"><span class="rvts8">The "fake program" text file on the desktop (here: "rrControl.exe") may be deleted. </span></li>
+<li class="rvps3"><span class="rvts8">The new shortcut in the taskbar can be used immediately. However, the changed icon sometimes appears only after a reboot. </span><br/><span class="rvts8">If the mouse hovers over the shortcut in the taskbar then the name appears as a "Tooltip" above the link. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Samba + rrClient Service</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24">Problem description:</span></p>
+<p class="rvps3"><span class="rvts8">You are not using domain accounts.</span></p>
+<p class="rvps3"><span class="rvts8">You can access your samba (Linux or OSX) when you login at your windows (7/8) workstation.</span></p>
+<p class="rvps3"><span class="rvts8">If you start the client manually, there is no error.</span></p>
+<p class="rvps3"><span class="rvts8">But if you start the client as service, the client cannot access the fileserver any more.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24">Solution:</span></p>
+<p class="rvps3"><span class="rvts8">You have to open the Local Security Policy via the windows system control. (or you can type "secpol.msc" as executable to run at the windows start button)Please change the "Network security: LAN manager authentication level" settings on your windows station to "Send LM &amp; NTLM responses":</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/win_network_settings.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Windows 7 - UAC</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Some applications are not able to run in service mode if the UAC in Windows 7/8 is enabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">We have reports that</span></p>
+<p class="rvps3"><span class="rvts8">- Maya crashes right away before even opening a scene.</span></p>
+<p class="rvps3"><span class="rvts8">- MayaPython crashes on the command</span><span class="rvts26"> maya.standalone.initialize()</span></p>
+<p class="rvps3"><span class="rvts8">- AFX reports an error if the user documents&amp; settings folder is not in its default location on C:\</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have any of these issues, please try to disable UAC.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts24">How to disable UAC:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Please open the windows control panel.</span></li>
+<li class="rvps3"><span class="rvts8">Enter UAC in the search box at the top right.</span></li>
+<li class="rvps3"><span class="rvts8">Click on the only icon left "Action Center".</span></li>
+<li class="rvps3"><span class="rvts8">Move the UAC slider to the bottom.</span></li>
+<li class="rvps3"><span class="rvts8">Save.</span></li>
+<li class="rvps3"><span class="rvts8">Restart the machine.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/uac.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

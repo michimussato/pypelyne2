@@ -1,0 +1,272 @@
+﻿<html>
+	
+<head>
+	<title>Submitter Defaults</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("SubmitterDefaults");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Submitter Defaults</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Customization.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="PrePreviewDoneFinishedScripts.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Examplefile.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can change the default settings for the job settings via config files.</span></p>
+<p class="rvps3"><span class="rvts8">These files can be different for each user, company project, machine or render application.</span></p>
+<p class="rvps3"><span class="rvts8">You can even define them via commandline and via the scene info xml as well.</span></p>
+<p class="rvps3"><span class="rvts8">And the settings are stackable, see</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can edit the files via the rrSubmitter menu.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Edit via text editor</span></span></h2>
+<p class="rvps3"><span class="rvts8">A </span><span class="rvts15">#</span><span class="rvts8"> in front of a parameter means it should be ignored.</span></p>
+<p class="rvps3"><span class="rvts8">All preset files have this # by default.</span></p>
+<p class="rvps3"><span class="rvts8">You have to remove the # first, then you can change the values.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Edit via UI</span></span></h2>
+<p class="rvps3"><span class="rvts8">The UI editor shows you all possible files that can hold value overrides. </span></p>
+<p class="rvps3"><span class="rvts8">Besides the render config files!</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Select a file you want to change on the left side and either hit Edit or Create.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Load Order</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The files are loaded in this order:</span></p>
+<p class="rvps3"><span class="rvts8">0) renderapp/_config/[renderApp].cfg</span></p>
+<p class="rvps3"><span class="rvts8">---------------------------------------</span></p>
+<p class="rvps3"><span class="rvts8">1) sub/cfg_global/submitter_first.txt</span></p>
+<p class="rvps3"><span class="rvts8">2) sub/cfg_user/submitter_prj_[ProjectName].txt</span></p>
+<p class="rvps3"><span class="rvts8">3) sub/cfg_user/submitter_usr_[UserLoggedIn].txt</span></p>
+<p class="rvps3"><span class="rvts8">4) sub/cfg_user/submitter_mac_[MachineName].txt</span></p>
+<p class="rvps3"><span class="rvts8">5) Commandline</span></p>
+<p class="rvps3"><span class="rvts8">6) ("Show All" button: Sets allowChange=1 for all options, =&gt; all options are visible)</span></p>
+<p class="rvps3"><span class="rvts8">7) sub/cfg_global/submitter_last.txt</span></p>
+<p class="rvps3"><span class="rvts8">8) sub/cfg_global/submitter_last_non_admin.txt </span></p>
+<p class="rvps3"><span class="rvts8">---------------------------------------</span></p>
+<p class="rvps3"><span class="rvts8">9) renderapp/_config/[renderApp].cfg</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Usage Hints:</span></p>
+<p class="rvps3"><span class="rvts8">The different files are used for:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">1) First</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1033px;"><p class="rvps3"><span class="rvts8">Basic global settings for all users, projects on the farm</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">2-4) prj_[ProjectName]</span></p>
+<p class="rvps3"><span class="rvts8">usr_[UserLoggedIn]</span></p>
+<p class="rvps3"><span class="rvts8">mac_[MachineName]</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1033px;"><p class="rvps3"><span class="rvts8">Override settings for one special project only, one user only or one machine only.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">5) Commandline</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1033px;"><p class="rvps3"><span class="rvts8">For a per job base. Mostly used for automated commandline submission.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">6) Show All</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1033px;"><p class="rvps3"><span class="rvts8">If you need a setting for the current job and it is not shown, press the button</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">7) Last</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1033px;"><p class="rvps3"><span class="rvts8">This config is used to verify that some settings are set, no matter what you have set before. So no matter what you have set in the project config, these settings will apply. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">8) last_non_admin</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1033px;"><p class="rvps3"><span class="rvts8">Similar to 7), but this one is only loaded if the user logged in is</span><span class="rvts15"> not</span><span class="rvts8"> a RRender admin. So if you want that default users can never change an option, you have to set it in this file.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">0) 9) renderapp/_config/[renderApp].cfg</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1033px;"><p class="rvps3"><span class="rvts8">See below</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">The Settings are stacked:</span></p>
+<p class="rvps3"><span class="rvts8">e.g. If you set a value in 1) submitter_first and this value is not set in any other config file, it is kept.</span></p>
+<p class="rvps3"><span class="rvts8">Values set in 3) user configs overwrite values from 1) submitter_first.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">0) 9) The render application config is applied two times</span></p>
+<p class="rvps3"><span class="rvts8">The first time 0) it is loaded as basic settings for the render application.</span></p>
+<p class="rvps3"><span class="rvts8">Then all the submitter config files are overwriting the parameters.</span></p>
+<p class="rvps3"><span class="rvts8">Then 9) the render application config is checked again if parameters are not allowed for that render application.</span></p>
+<p class="rvps3"><span class="rvts8">If a render application does not allow some parameter, it is simply not possible to use it with that application.</span></p>
+<p class="rvps3"><span class="rvts8">To ensure that those options are not set, it is checked again while a job is send to the rrServer</span></p>
+<p class="rvps3"><span class="rvts8">To choose if a settings should be used as base 0) or forced to be set 9), you have to use the AC/AllowChange part of the parameter.</span></p>
+<p class="rvps3"><span class="rvts8">E.g.</span></p>
+<p class="rvps3"><span class="rvts8">Base value: SeqDivMIN= 1~3</span></p>
+<p class="rvps3"><span class="rvts8">Forced to set: SeqDivMIN= 0~3</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">A</span><span class="rvts15"> # </span><span class="rvts8">in front of a parameter means it should be</span><span class="rvts15"> ignored and is skipped</span><span class="rvts8">!</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Which presets have been used?</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If there are default variables used, then the file is checked in the rrSubmitter menu. And shows the number of values loaded.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Create new preset files</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Open the submitter and choose "Edit preset file" via the menu.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to remove the # in front of the parameter to take effect.</span></p>
+<p class="rvps3"><span class="rvts8">(But do not remove it in the line with the parameter description "= AC~..") </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Examples</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Render into a separate layer subfolder</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The preset &lt;Layer&gt; only is not available by default.</span></p>
+<p class="rvps3"><span class="rvts8">You can add it via the rrSubmitter menu "default values", "Edit preset file" "first".</span></p>
+<p class="rvps3"><span class="rvts8">Add a line PathPresets= &lt;Layer&gt;\</span></p>
+<p class="rvps3"><span class="rvts8">This makes the preset available.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use it for all jobs add a line</span></p>
+<p class="rvps3"><span class="rvts8">OverridePathPreset=1~1~&lt;Layer&gt;\</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use it for Softimage jobs only, you have to add the OverridePathPreset line to the XSI render config RR\render_apps\_config\3D01__Softimage__.... </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Sequence/Shot/Version</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The Sequence/Shot/Version has some additional functions.</span></p>
+<p class="rvps3"><span class="rvts8">Possible values:</span></p>
+<div class="rvps3"><table width="60%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 161px;"><p class="rvps3"><span class="rvts8">&lt;auto&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 603px;"><p class="rvps3"><span class="rvts8">if it is set to &lt;auto&gt;, then the settings in rrConfig, tab jobs is used to get the values</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 161px;"><p class="rvps3"><span class="rvts8">any hardcoded value</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 603px;"><p class="rvps3"><span class="rvts8">You can just write any value and this value is used.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 161px;"><p class="rvps3"><span class="rvts8">&lt;s XX&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;s XX&gt;&lt;e XX&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 603px;"><p class="rvps3"><span class="rvts8">You can add the same logic as you have in rrConfig, tab jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Set the string that is right before your value, use &lt;s XX&gt; (XX is the string)</span></p>
+<p class="rvps3"><span class="rvts8">Set the string that is right after your value, use &lt;e XX&gt; (XX is the string)</span></p>
+<p class="rvps3"><span class="rvts8">If you do not set a &lt;e XX&gt;, then the next underscore, point or the end of the complete name is used.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 382px;"><p class="rvps3"><span class="rvts8">sA043_sh34_v54.scn</span></p>
+<p class="rvps3"><span class="rvts8">Sequence= A43 , Shot=34, Version=54</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">CustomSeQName=1~&lt;s s&gt;</span></p>
+<p class="rvps3"><span class="rvts8">CustomSHotName=1~&lt;s _sh&gt;</span></p>
+<p class="rvps3"><span class="rvts8">CustomVersionName=1~&lt;s _v&gt;</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 382px;"><p class="rvps3"><span class="rvts8">MAN_TR7_0270_light_CHR_np_v0011.Alpha.1001.exr</span></p>
+<p class="rvps3"><span class="rvts8">Sequence= 7 , Shot=0270, Version=0011</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">CustomSeQName=1~&lt;s _TR&gt;</span></p>
+<p class="rvps3"><span class="rvts8">CustomSHotName=1~&lt;s _&gt;</span></p>
+<p class="rvps3"><span class="rvts8">CustomVersionName=1~&lt;s _v&gt;</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 382px;"><p class="rvps3"><span class="rvts8">A043sh34_v54.scn</span></p>
+<p class="rvps3"><span class="rvts8">Sequence= A43 , Shot=34, Version=54</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">CustomSeQName=1~&lt;s &gt;</span></p>
+<p class="rvps3"><span class="rvts8">CustomSHotName=1~&lt;s sh&gt;</span></p>
+<p class="rvps3"><span class="rvts8">CustomVersionName=1~&lt;s _v&gt;</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

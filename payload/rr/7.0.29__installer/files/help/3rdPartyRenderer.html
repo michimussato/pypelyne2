@@ -1,0 +1,402 @@
+﻿<html>
+	
+<head>
+	<title>3rd Party Renderer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("3rdPartyRenderer");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">3rd Party Renderer</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; <a href="Maya.html">Maya</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Maya.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Errors1.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Messiah.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Batch</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">via commandline</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please check the following files.</span></p>
+<p class="rvps3"><span class="rvts8">They all execute Maya commands in different ways.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 496px;"><p class="rvps3"><span class="rvts8">RR\render_apps\_config\additional\3D02__Maya2008__FluidCache.cfg</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 789px;"><p class="rvps3"><span class="rvts8"> It uses the Layer name to specify the fluid object in your maya scene and the image name is the fluid file name generated.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 496px;"><p class="rvps3"><span class="rvts8">RR\render_apps\_config\3D02__Maya2008__CreateRenderMi.cfg </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 789px;"><p class="rvps3"><span class="rvts8"> loads a hardcoded mel script and executes the function in that file. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 496px;"><p class="rvps3"><span class="rvts8">RR\render_apps\_config\additional\3D02__Maya2009__MelOnce_Melfile.cfg </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 789px;"><p class="rvps3"><span class="rvts8"> loads a mel script that you enter as image name of the job. And executes the function in that file. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 496px;"><p class="rvps3"><span class="rvts8">RR\render_apps\_config\3D02__Maya2009__MelOnce.cfg </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 789px;"><p class="rvps3"><span class="rvts8"> executes the commands you enter as "user info" for the job. </span></p>
+</td>
+</tr>
+</table>
+</div>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">via render desc file</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please check the file</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\_config\3D02__Maya2012__CreateRenderVray.cfg</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It uses a new render description file for maya as "renderer"</span></p>
+<p class="rvps3"><span class="rvts8">-r vrayexport</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The render description file is located in</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\renderer_plugins\maya\win_x64\2013\rendererDesc\</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Arnold/MtoA</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Farm-wide Install</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Royal Render changes the environment that you do not have to install MtoA on all machines.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: This description is for Maya 2013 x64 Windows.</span></p>
+<p class="rvps3"><span class="rvts8">Change the version according to your installation. So if you use Maya 2014, then you should use "2014" instead of "2013". If you use linux, use lx instead of win</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Please copy your MtoA files into:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;[RR]\render_apps\renderer_exe\maya\win_x64\mtoadeploy_2013</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Please copy your MtoA/Arnold shaders into:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;[RR]\render_apps\renderer_exe\maya\win_x64\mtoadeploy_2013\shaders</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Please edit the file [RR]\render_apps\renderer_exe\maya\win_x64\mtoadeploy_2013\mtoa.mod.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Update the path to match this path.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The line should look something like this:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;+ mtoa * \\smaug\Renderfarm\_RR6\render_apps\renderer_exe\maya\win_x64\mtoadeploy_2013 </span><br/><span class="rvts8"></span><br/><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If Maya finds the plugin, but states that it cannot load the module, please install the Visual Studio 2012 Redistributable Package on the client:</span></p>
+<p class="rvps3"><span class="rvts8">http://www.microsoft.com/en-us/download/details.aspx?id=30679</span></p>
+<p class="rvps3"><span class="rvts78"><br/></span></p>
+<p class="rvps3"><span class="rvts78"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Multiple MtoA versions</span></span></h2>
+<p class="rvps3"><span class="rvts78"><br/></span></p>
+<p class="rvps3"><span class="rvts79">It is possible to use multiple MtoA versions for one Maya version.</span></p>
+<p class="rvps3"><span class="rvts79">There are two ways:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts79">Edit the file [RR]\render_apps\_setenv\win\maya.bat and change the part</span><br/><span class="rvts79">"RR_MTOA_BASE=%rrSharedExeDir%mtoadeploy_%rrExeVersionMajor%"</span><br/><span class="rvts79">to</span><br/><span class="rvts79">"RR_MTOA_BASE=%rrSharedExeDir%mtoadeploy_%rrExeVersionMajor%_%rrJobRendererVersion%"</span><br/><span class="rvts79"></span><br/><span class="rvts79">Send a job, check the render log and search for "</span><span class="rvts27">MtoA installation path is set to</span><span class="rvts79">".</span><br/><span class="rvts79">This is now the folder you have to use.</span><br/><span class="rvts79"></span><br/><span class="rvts79"><br/></span></li>
+<li class="rvps3"><span class="rvts79">Use the </span><a class="rvts20" href="RenderEnvironment.html">rrEnvline or rrEnvfile</a><span class="rvts79"> for a job to set the variable RR_MTOA_BASE.</span><br/><span class="rvts79">To verify it, send a job, check the render log and search for "</span><span class="rvts27">MtoA installation path is set to</span><span class="rvts79">"</span><br/><span class="rvts79"><br/></span></li>
+</ol>
+<p class="rvps3"><span class="rvts79"><br/></span></p>
+<p class="rvps3"><span class="rvts74"><br/></span></p>
+<p class="rvps3"><span class="rvts74"><br/></span></p>
+<p class="rvps3"><span class="rvts74"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Ass N Render</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can change the renderer to "arnold- Ass N Render" at the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">Instead of starting Maya and rendering the Maya scene with MtoA, it will &nbsp;start Maya, export .ass files to a local temp folder and renders these .ass files with kick.</span></p>
+<p class="rvps3"><span class="rvts8">This will save all the memory that would be required by Maya for opening the scene file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">You </span><span class="rvts15">must not </span><span class="rvts8">set the render options in Maya to"Export Ass" or "Export Ass and Kick".</span></p>
+<p class="rvps3"><span class="rvts8">Set the Arnold render settings to "Interactive".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">KSO mode is not supported.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts78"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Export .ass</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To export .ass files, change the Arnold render settings in your Maya scene. System/ Render Settings/ Render Type to "Export Ass".</span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmit plugin read the .ass export filename instead of the usual image filename.</span></p>
+<p class="rvps3"><span class="rvts8">And it changes the renderer to arnold-exportAss.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Errors</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Windows:</span></p>
+<p class="rvps3"><span class="rvts8">Arnold requires the "documents &amp; settings" or "users" folder on windows to work.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have installed the rrService with some user, then you have to login once on the machine with that user to let windows create the user folder.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Fluid Caches</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There is a render config file for rendering Maya fluids.</span></p>
+<p class="rvps3"><span class="rvts8">To use it, you have to copy the file</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\_config\additional\3D02__Maya2008__FluidCache.cfg</span></p>
+<p class="rvps3"><span class="rvts8">into RR\render_apps\_config\3D02__Maya2008__FluidCache.cfg</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">In the file is a description how to submit it via console.</span></p>
+<p class="rvps3"><span class="rvts8">Or you can change the renderer in rrSubmitter and change the values as shown in the render config:</span></p>
+<p class="rvps3"><span class="rvts8"># Variables you have to set differently from a default rendering:</span></p>
+<p class="rvps3"><span class="rvts8"># renderer= "FluidCache"</span></p>
+<p class="rvps3"><span class="rvts8"># layer: name of the fluid shape</span></p>
+<p class="rvps3"><span class="rvts8"># imageDir: Folder for the cache files</span></p>
+<p class="rvps3"><span class="rvts8"># imageFilename: Filename of the cache file. IMPORTANT: The filename has to end with "Frame".</span></p>
+<p class="rvps3"><span class="rvts8"># ImageExtension: ".mc"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Maxwell</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49"> Linux - cannot connect to X server</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you get this error, please add</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">setenv DISPLAY=:0.0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To your</span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm"> maya.sh setenv</a><span class="rvts8"> file.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Mental Ray</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">With each Maya network license you get 5 batch render licenses.</span></p>
+<p class="rvps3"><span class="rvts8">With the UI licenses you end up with 6 possible licenses for batch rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Custom Shaders</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to render with custom/3rd party shaders, you have to copy the files into:</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2009\mentalray\include</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_plugins\maya\win_x64\2009\mentalray\lib</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you do not like these paths, then you can change them in the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm">setenv file</a><span class="rvts8"> for maya.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Phoenix Tools</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you do not want to install phoenix on every machine, then you can try these instructions for a Farm-wide installation</span></p>
+<p class="rvps3"><span class="rvts8">(Please change the 2014 in all paths and variables if you are using a different Maya version):</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Please copy the folder C:\Program files\Autodesk\Maya 2014\phoenixfd\ to</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; [RR]\render_apps\renderer_plugins\maya\win_x64\2014\plug-ins\phoenixfd\</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Copy the folder C:\Users\%USERNAME%\Documents\Phoenix FD\samples maya\scripts to</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; ,[RR]\render_apps\renderer_plugins\maya\win_x64\2014\scripts\</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Then edit the Maya's </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm">Setenv File</a><span class="rvts8"> [RR]\render_apps\_setenv\win\maya.bat.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Add the lines</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;set "PHX_FOR_MAYA2014_MAIN_x64=%rrPlugins%%rrExeVersionMajor%\plug-ins\phoenixfd"</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;set "MAYA_PLUG_IN_PATH=%rrPlugins%%rrExeVersionMajor%\plug-ins\phoenixfd\plug-ins;%MAYA_PLUG_IN_PATH%"</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Copy the file C:\Program files\Autodesk\Maya 2014\vray\vrayplugins\vray_phoenix.dll</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;to [RR]\render_apps\renderer_exe\maya\win_x64\vray2014\vrayplugins\vray_phoenix.dll</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Copy the file C:\Program files\Autodesk\Maya 2014\svml_dispmd.dll to [RR]\render_apps\renderer_exe\maya\win_x64\vray2014\copy_maya\ </span></li>
+</ul>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">RenderMan Studio</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Farm-wide install</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Royal Render changes the environment that you do not have to install renderman on all machines.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: This description is for Maya 2008 x64 Windows with RenderMan Studio 2.0.1.</span></p>
+<p class="rvps3"><span class="rvts8">Change the versions according to your installation.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Please copy your Renderman Studio folder into:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;[RR]\render_apps\renderer_exe\maya\win_x64\RenderManStudio-2.0.1-maya2009</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">The renderman plugin file RenderMan_for_Maya.mll should then be in the folder</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;[RR]\render_apps\renderer_exe\maya\win_x64\RenderManStudio-2.0.1-maya2009\plug-ins\</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Please edit the file [RR]\render_apps\_setenv\win\maya.bat</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;There is a line</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;&nbsp;</span><span class="rvts26"> set "RR_RManStudio=%rrSharedExeDir%RenderManStudio-2.0.1-maya%rrExeVersionMajor%"</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Please adjust it to the renderman version you have installed/copied. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Rib Export</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please see </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Renderer/3D/Maya/RenderMan_Studi/RenderMan_Studio.htm">Archive Renderer/Renderman</a></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Vray</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Farm-wide install </span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">OSX Note:</span></p>
+<p class="rvps3"><span class="rvts8">This description is not for OSX. By default the maya setenv file for osx is setup for a local vray installation. Not a farm-wide installation.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have two options to run VRay:</span></p>
+<p class="rvps11"><span class="rvts8">1. Install it on every machine.</span><br/><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">2. Use a shared copy that is used on every machine.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This is a description of 2.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This description is for Maya 2015 and can be applied for all versions:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Edit </span><span class="rvts26">[RR]\render_apps\_setenv\win\maya.bat.</span><br/><span class="rvts8">There is a blocks that start with "################### VRay environment variables ###################".</span><br/><span class="rvts8">Remove the "rem" in front of the lines AFTER the comments "########...." and until the next comment block.</span><br/><span class="rvts8">Change the license server in the line "....setvrlservice.exe -server=...."</span><br/><span class="rvts8">Install VRay on your workstation.</span></li>
+<li class="rvps3"><span class="rvts8">Create the subfolder </span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\</span><br/><span class="rvts8">Copy everything from the folder &nbsp; &nbsp; </span><span class="rvts26">C:\Program Files (x86)\Autodesk\Maya2015\vray\</span><span class="rvts8"> &nbsp; &nbsp; into the folder &nbsp; &nbsp;</span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\</span></li>
+<li class="rvps3"><span class="rvts8">Create the subfolder </span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\rendererDesc</span><br/><span class="rvts8">Copy</span><span class="rvts26"> C:\Program Files\Autodesk\Maya2015\bin\rendererDesc\vrayRenderer.xml &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</span><span class="rvts8"> to &nbsp; </span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\rendererDesc\vrayRenderer.xml</span></li>
+<li class="rvps3"><span class="rvts8">Create the subfolder </span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\modules</span><br/><span class="rvts8">If the file exists, copy &nbsp; </span><span class="rvts26">C:\Program Files\Autodesk\Maya2015\modules\VRayForMaya.module</span><span class="rvts8"> &nbsp; to &nbsp;</span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\modules\VRayForMaya.module</span><br/><span class="rvts8">Edit the file </span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\modules\VRayForMaya.module</span><span class="rvts8">. Change the path to &nbsp;</span><span class="rvts26"> [RR]\render_apps\renderer_exe\maya\win_x64\vray2015\</span></li>
+<li class="rvps3"><span class="rvts8">Create a subfolder</span><span class="rvts26"> [RR]\render_apps\renderer_exe\maya\win_x64\vray2015\copy_maya\</span><br/><span class="rvts8">Copy the following files from &nbsp;</span><span class="rvts26"> C:\Program Files (x86)\Autodesk\Maya2015\bin\</span><span class="rvts8"> &nbsp; &nbsp; &nbsp;to &nbsp; &nbsp; </span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\copy_maya\</span><span class="rvts8">:</span><br/><span class="rvts8">Note: &nbsp;Some older VRay versions have not all of these files, just ignore the ones that are missing.</span></li>
+</ul>
+<p class="rvps7"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;"><ul style="text-indent: 0px; margin-left: 48px; list-style-position: outside; list-style-type: circle;">
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">vray.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">vraybifrost.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">vrayoslquery.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">vrayoslcomp.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">vrayoslexec.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">vrayopenimageio.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">dte_wrapper.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">svml_dispmd.dll</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">libmmd.dll</span></li>
+</ul></ul>
+<p class="rvps7"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">VRay 3.0:</span><br/><span class="rvts8">Create a subfolder</span><span class="rvts26"> [RR]\render_apps\renderer_exe\maya\win_x64\vray2015\Maya 2014 for x64\</span><br/><span class="rvts8">Copy everything from the folder </span><span class="rvts26">"C:\Program Files\Chaos Group\V-Ray\Maya 2014 for x64"</span><span class="rvts8"> into </span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\vray2015\Maya 2014 for x64\</span><br/><span class="rvts26"></span><br/><span class="rvts26"></span><br/><span class="rvts26"></span><br/><span class="rvts26"><br/></span></li>
+</ul>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Irradiance Map pre-render</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can render Vray Irradiance Maps via RR.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Set your Irradiance Mode to 'Animation(render)'</span></li>
+<li class="rvps3"><span class="rvts8">Set the Irradiance File Name</span></li>
+<li class="rvps3"><span class="rvts8">Set your Irradiance Mode back to 'Animation(prepass)'</span></li>
+<li class="rvps3"><span class="rvts8">Set your Irradiance Mode to 'Multiframe incremental' </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Error - Fluids</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you render with fluids, you might encounter a massive slowdown.</span></p>
+<p class="rvps3"><span class="rvts8">Even if you have cached the fluid files.</span></p>
+<p class="rvps3"><span class="rvts8">VRay will fix this for the upcoming version, but for now the solution is to</span></p>
+<p class="rvps3"><span class="rvts8">enter the following into the "pre render Mel" script in Maya to get it to behave:</span></p>
+<p class="rvps3"><span class="rvts8">$i = `getAttr "defaultRenderGlobals.startFrame"`; currentTime -edit $i; print`currentTime -q`;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Error - Render Element Separator</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There seems to be a bug in VRay. (at least version 1.5 Sp4)</span></p>
+<p class="rvps3"><span class="rvts8">No matter what you use as Render Element Separator ( . _ - ), VRay always renders with a . (point).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Therefore RR cannot find the images.</span></p>
+<p class="rvps3"><span class="rvts8">Please use the default setting . (point) as Render Element Separator.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">License Server</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have issues with the license server, please see </span><a class="rvts20" href="VRay.html">VRay Standalone</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts15">Note</span><span class="rvts8">: The path in the help file above for the vrlclient.xml changes to</span></p>
+<p class="rvps3"><span class="rvts8">[RR}\render_apps\renderer_prefs\</span><span class="rvts15">maya</span><span class="rvts8">\mac_x64\vrlclient.xml </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Two VRay versions with one Maya version</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Using two different VRay versions with one Maya version gonna be tricky.</span></p>
+<p class="rvps3"><span class="rvts8">As VRay has to have files inside the Maya app folder. It is not a default plugin that works with environment variable paths only.</span></p>
+<p class="rvps3"><span class="rvts8">But is possible if you use do not render with Maya on multiple client threads and the client is not used by any artist. (Maya must not be running, otherwise the dll is in use and cannot be replaced)</span></p>
+<p class="rvps3"><span class="rvts8">And you have to to a farm installation of VRay, see Help section </span><a class="rvts20" href="Maya.html">Maya/VRay</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts79">There are two ways:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts79">Edit the file [RR]\render_apps\_setenv\win\maya.bat and change the part</span><br/><span class="rvts79">"RR_VRAY_BASE=%rrSharedExeDir%vray%rrExeVersionMajor%"</span><br/><span class="rvts79">to</span><br/><span class="rvts79">"RR_VRAY_BASE=%rrSharedExeDir%vray%rrExeVersionMajor%_%rrJobRendererVersion%"</span><br/><span class="rvts79"></span><br/><span class="rvts79">Send a job, check the render log and search for "</span><span class="rvts27">VRAY installation path is set to</span><span class="rvts79">".</span><br/><span class="rvts79">This is now the folder you have to use for your farm-wide installation</span><br/><span class="rvts79"><br/></span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Redshift</span></span></h1>
+<p class="rvps3"><span class="rvts8">Farm-Wide installation:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Install Redshift on your workstation.</span></li>
+<li class="rvps3"><span class="rvts8">Copy the folder </span><span class="rvts26">c:\ProgramData\Redshift\</span><span class="rvts8"> &nbsp; &nbsp; to &nbsp; &nbsp;</span><span class="rvts26">[RR]\render_apps\renderer_exe\maya\win_x64\</span></li>
+<li class="rvps3"><span class="rvts8">Rename this folder: Add an underscore and the redshift version to the folders name. E.g.: &nbsp;</span><span class="rvts26">Redshift_1.0.64</span><br/><span class="rvts26">The resulting directory is then for example [RR]\render_apps\renderer_exe\maya\win_x64\Redshift_1.0.64</span></li>
+</ul>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Hint:</span></p>
+<p class="rvps3"><span class="rvts8">If you are unsure about the right folder name, then submit a redshift job and let it render.</span></p>
+<p class="rvps3"><span class="rvts8">Open the render log file of the job and search for &nbsp;"</span><span class="rvts26">RedShift Maya plugin installation path is set to"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">PhoenixFD simulation</span></span></h1>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Install phoenix on your workstation.</span></li>
+<li class="rvps3"><span class="rvts8">Copy the folder phoenix plugins &nbsp; &nbsp; to &nbsp; &nbsp;[RR]\render_apps\renderer_plugins\maya\win_x64\2014\plug-ins\phoenixfd</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,9 @@
+<RR_Job_File syntax_version="6.0">
+<Job>
+    <IsActive>   	1   		</IsActive>
+    <Software>		Execute		</Software>
+    <Version>		1.0		</Version>
+    <ImageDir>		&lt;SceneFolder&gt;		</ImageDir>
+    <ImageFilename>		 execOnce.file		</ImageFilename>
+  </Job>
+</RR_Job_File>

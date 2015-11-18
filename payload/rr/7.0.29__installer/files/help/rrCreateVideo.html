@@ -1,0 +1,361 @@
+﻿<html>
+	
+<head>
+	<title>rrCreateVideo</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrCreateVideo");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrCreateVideo</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrToolsPostScript.html">rrTools/Post-Script</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrToolsPostScript.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrCreatePlaceholderFile.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrExrCropRegion.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">The rrCreateVideo script creates a low-resolution quicktime file from your renderings.</span></p>
+<p class="rvps3"><span class="rvts8">If a client has pre-generated thumbnail cache files, then they are used.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrCreateVideo uses the open-source available ffmpeg libraries.</span></p>
+<p class="rvps3"><span class="rvts8">By default, RR does only support the MJpeg compressor and .mov quicktimes.</span></p>
+<p class="rvps3"><span class="rvts8">Due to license restrictions, it is not allowed to ship with more advanced codecs.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Commandline Flags</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">rrCreateVideo OutputVideoFile Input [options] </span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">OutputVideoFile: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Resulting output file, .mov is the preferred extension.</span></p>
+<p class="rvps3"><span class="rvts8">Some codecs require to change the output type. ".mov" is not possible with all formats.</span></p>
+<p class="rvps3"><span class="rvts8">File formats:</span></p>
+<p class="rvps7"><span class="rvts8"> avi &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AVI (Audio Video Interleaved)</span></p>
+<p class="rvps7"><span class="rvts8"> dnxhd &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; raw DNxHD (SMPTE VC-3)</span></p>
+<p class="rvps7"><span class="rvts8"> h263 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; raw H.263</span></p>
+<p class="rvps7"><span class="rvts8"> h264 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; raw H.264 video</span></p>
+<p class="rvps7"><span class="rvts8"> matroska &nbsp; &nbsp; &nbsp; &nbsp;Matroska</span></p>
+<p class="rvps7"><span class="rvts8"> mov &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; QuickTime / MOV</span></p>
+<p class="rvps7"><span class="rvts8"> mp4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MP4 (MPEG-4 Part 14)</span></p>
+<p class="rvps3"><span class="rvts8">Important: </span></p>
+<p class="rvps7"><span class="rvts8">Just because you write e.g. a .h264 file, does not mean that it is a h264 encoded file.</span></p>
+<p class="rvps7"><span class="rvts8">You have to choose the right codec as well! &nbsp;(see "More codecs" on the bottom of this page)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">Input: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Image Input. Specify one image from the sequence.The frame number should be replaced with a # (but not required)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-fps: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Set frames per second (e.g. "25" "29.97" )</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-q: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Set the quality for the encoding.The range for this value depends on the codec you select. Possible values for MJpeg are from 1 (best) to 20 (worst)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-kbit: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Set the bitrate for the encoding. The values are in KBit.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-codec codecName:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Set the video codec. &nbsp;Use -list to see all available codecs if you have installed more codecs.</span></p>
+<p class="rvps3"><span class="rvts8">By default rrCreatevideo supports these codecs (see "More codecs" on the bottom of this page to install more codecs):</span></p>
+<p class="rvps7"><span class="rvts8"> mjpeg &nbsp; &nbsp; &nbsp; &nbsp;MJPEG (Motion JPEG) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; default</span></p>
+<p class="rvps7"><span class="rvts8"> prores &nbsp; &nbsp; &nbsp; &nbsp;Apple ProRes &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> avui &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Avid Meridien Uncompressed &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> huffyuv &nbsp; &nbsp; &nbsp; &nbsp;Huffyuv / HuffYUV &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; I recommend Huffyuv if you want to use a lossless codec.</span></p>
+<p class="rvps7"><span class="rvts8"> avrp &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Avid 1:1 10-bit RGB Packer &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps7"><span class="rvts8"> ayuv &nbsp; &nbsp; &nbsp; &nbsp; Uncompressed packed MS 4:4:4:4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps7"><span class="rvts8"> dnxhd &nbsp; &nbsp; &nbsp; &nbsp;VC3/DNxHD &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> ffvhuff &nbsp; &nbsp; &nbsp; &nbsp; Huffyuv FFmpeg variant &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps7"><span class="rvts8"> h263 &nbsp; &nbsp; &nbsp; &nbsp; H.263 / H.263-1996 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps7"><span class="rvts8"> mpeg4 &nbsp; &nbsp; &nbsp; MPEG-4 part 2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> msmpeg4 &nbsp; &nbsp;MPEG-4 part 2 Microsoft variant version 3 &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> r210 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uncompressed RGB 10-bit &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> rawvideo &nbsp; &nbsp; raw video</span></p>
+<p class="rvps7"><span class="rvts8"> v210 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uncompressed 4:2:2 10-bit &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> v308 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uncompressed packed 4:4:4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> v408 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uncompressed packed QT 4:4:4:4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps7"><span class="rvts8"> v410 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uncompressed 4:4:4 10-bit &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> wmv2 &nbsp; &nbsp; &nbsp; &nbsp; Windows Media Video 8 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> y41p &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uncompressed YUV 4:1:1 12-bit &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span></p>
+<p class="rvps7"><span class="rvts8"> yuv4 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Uncompressed packed 4:2:0 &nbsp;</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-fullres: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Create fullres Quicktime (otherwise thumbnail 500x375, uses client cached files for high speed)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-scale:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Changes the resolution of the video. maxWidth and maxHeight are required.'letterbox' is by default set to true. inPixelRatio and outPixelRatio are by default set to 1.0.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-g:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Apply gamma correction</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-w:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Name of website folder of job (folder only, no complete directory). Loads client cached image files if available.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px; height: 19px;"><p class="rvps3"><span class="rvts8">-c:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px; height: 19px;"><p class="rvps3"><span class="rvts8">Create cache files in case they do not exist. Then rrViewer or SequenceCheck do not have to load the full again.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-tl,-tr,-br,-bl:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Adds text to TopLeft, TopRight, BottomRight, BottomLeft. Possible variables are (with asterisk *): *frame*: Current frame number of image.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-tli,-tri,-bri,-bli,mi:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Imprints an image file into the video.The image should have an alpha channel.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-ini: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">If this flag is set, then the imprint image will be in the background of the text. Otherwise the text is written beside the image. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-in: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">If this flag is *not* set, then bars are added (for the text &amp; image).</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-slate:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Create a one-frame slate with text.</span><br/><span class="rvts8">The text is written in two columns.</span><br/><span class="rvts8">One column with the labels, the other with the values.</span><br/><span class="rvts8">The format is "Label1,Label2,Label3 ~ Value1,Value2,Value3"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-slateImg: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">An image to be used as background for the Slate.</span></p>
+<p class="rvps3"><span class="rvts8">It will be scaled proportionally and then cropped to fit. &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">Can be used without slate text.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-seq [start] [end] [step] [offset]: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Defines a start and end frame for the conversion. Otherwise it converts the whole sequence.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-YUV [mode]: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">Changes the YUV color conversion.</span></p>
+<p class="rvps3"><span class="rvts8">Possible modes are:</span></p>
+<p class="rvps3"><span class="rvts8">PC (default)</span></p>
+<p class="rvps3"><span class="rvts8">601 (SD)</span></p>
+<p class="rvps3"><span class="rvts8">709 (HD)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 314px;"><p class="rvps3"><span class="rvts8">-List: </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 964px;"><p class="rvps3"><span class="rvts8">List all available codecs and formats for compression</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note about speed:</span></p>
+<p class="rvps3"><span class="rvts8">If you use -scale or -fullres, then rrCreatevideo </span><span class="rvts15">can not </span><span class="rvts8">use the cache files.</span></p>
+<p class="rvps3"><span class="rvts8">This means it has to load the whole image sequence again.</span></p>
+<p class="rvps3"><span class="rvts8">Which is many times slower.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Example Commandlines</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Scale to a max width of 1000 *OR* a max height of 500 (Lettebox off):</span></p>
+<p class="rvps3"><span class="rvts8">-scale 1000 500 false</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Scale your source video (non-anamorph) into a PAL 16:9 anamorph video:</span></p>
+<p class="rvps3"><span class="rvts8">-scale 720 576 true 1.0 1.4222</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Scale your source video (non-anamorph) into a PAL 4:3 video:</span></p>
+<p class="rvps3"><span class="rvts8">-scale 720 576 true 1.0 1.0667</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Scale your source video (anamorph 16:9) into a PAL 4:3 video with letterbox:</span></p>
+<p class="rvps3"><span class="rvts8">-scale 720 576 true 1.4222 1.0667</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Create a slate with some informations about the scene and background image:</span></p>
+<p class="rvps3"><span class="rvts8">-SlateImg "\\fileserver\share\MySplashScreen.png" -Slate "Date:,,Scene:,Layer: ~ &lt;date ddd, dd.MMM&gt;,,&lt;SceneFile&gt;,&lt;Layer&gt;"</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/slate.jpg"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">More codecs</span></span></h2>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RR is not able to ship ffmpeg libs with all codecs.</span></p>
+<p class="rvps3"><span class="rvts8">Some codecs as h264 and h265 are licenses under GPL which would require to make RR open source as well.</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Support for more codecs and output formats:</span></p>
+<p class="rvps3"><span class="rvts8">You need to remove the files avcodec-55.dll, avformat-55.dll, avutil-52.dll from the RR\bin\win directory. &nbsp;(Linux: libavcodec.so.55, libavformat.so.55, libavutil.so.52, OSX: avcodec-55.dylib, avformat-55.dylib, avutil-52.dylib )</span></p>
+<p class="rvps3"><span class="rvts8">Then place your own avcodec-55.dll, avformat-55.dll and avutil-52.dll dynamic library in the same folder.</span></p>
+<p class="rvps3"><span class="rvts8">The files you downloaded could be named without any version (avcodec.dll), you can use them as well. (Never rename any windows library file!)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">What to download:</span></p>
+<p class="rvps3"><span class="rvts8">You can get libraries via </span><span class="rvts32">http://ffmpeg.org/download.html</span></p>
+<p class="rvps3"><span class="rvts8">Use the link to the webpage "Windows Packages" or "Windows Builds".</span></p>
+<p class="rvps3"><span class="rvts8">Choose "Shared" or "Dynamic" &nbsp;(never "Static"), then choose OS and bit and use the link to "Previous FFmpeg 64-bit Static Versions".</span></p>
+<p class="rvps3"><span class="rvts8">Download a package not later than 06-Aug-2014.</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Which version?</span></p>
+<p class="rvps3"><span class="rvts8">Other versions than avcodec v.55, avformat v.55, avutil v.52 are not supported.</span></p>
+<p class="rvps3"><span class="rvts8">The versions are either stated in the readme or in the filename of the .dll or .lib file.</span></p>
+<p class="rvps3"><span class="rvts8">If you have a library file without the version name, you can open it in a text editor and search for "Lavf" in libavformat or "Lavc" in libavcodec.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Examples commandlines for codecs:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Quicktimes dnxhd:</span></p>
+<p class="rvps3"><span class="rvts8">"&lt;rrBin&gt;rrCreateVideo.exe" "&lt;ImageDirComplete&gt;&lt;..\&gt;&lt;ImageFilename&gt;.mov" "&lt;ImageDir&gt;&lt;ImageFilename&gt;#&lt;ImageExtension&gt;" -fullres -codec dnxhd -kbit 120 -fps</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Mpeg4:</span></p>
+<p class="rvps3"><span class="rvts8">"&lt;rrBin&gt;rrCreateVideo.exe" "&lt;ImageDirComplete&gt;&lt;..\&gt;&lt;ImageFilename&gt;.mp4" "&lt;ImageDir&gt;&lt;ImageFilename&gt;#&lt;ImageExtension&gt;" -fullres -codec mpeg4 -q 7</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">H.264 as Quicktime with quality only:</span></p>
+<p class="rvps3"><span class="rvts8">"&lt;rrBin&gt;rrCreateVideo.exe" "&lt;ImageDirComplete&gt;&lt;..\&gt;&lt;ImageFilename&gt;.mov" "&lt;ImageDir&gt;&lt;ImageFilename&gt;#&lt;ImageExtension&gt;" -fullres -codec libx264 -q 7</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">H.264 as mp4 with bit/s only:</span></p>
+<p class="rvps3"><span class="rvts8">"&lt;rrBin&gt;rrCreateVideo.exe" "&lt;ImageDirComplete&gt;&lt;..\&gt;&lt;ImageFilename&gt;.mp4" "&lt;ImageDir&gt;&lt;ImageFilename&gt;#&lt;ImageExtension&gt;" -fullres -codec libx264 -kbit 5000</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">DNxHD Quicktimes </span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You need to download additional codecs first.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then copy the example post-script</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\_prepost_scripts\additional\post01b__Create_FinalCut_Video.cfg</span></p>
+<p class="rvps3"><span class="rvts8">to</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\_prepost_scripts\post01b__Create_FinalCut_Video.cfg</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">The VC-3 (aka Avid DNxHD) Codec does only support a few resolutions/frame rates/ bitrates:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Project Format</span><span class="rvts15"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts15">Resolution</span><span class="rvts15"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts15">Frame Size</span><span class="rvts15"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts15">Bits</span><span class="rvts15"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts15">FPS</span><span class="rvts15"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts15">&lt;bitrate&gt;</span></p>
+<p class="rvps3"><span class="rvts8">1080i / 59.94</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 220</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">29.97</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">220Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080i / 59.94</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 145</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">29.97</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">145Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080i / 50</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 185</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">185Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080i / 50</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 120</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">120Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 185</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">185Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 120</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">120Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 36</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">25</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">36Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 24</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 175</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">24</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">175Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 24</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 115</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">24</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">115Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 24</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 36</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">24</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">36Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 175</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">175Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 115</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">115Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 36</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">36Mb</span></p>
+<p class="rvps3"><span class="rvts8">1080p / 29.7</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 45</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1920 x 1080</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">29.97</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">45Mb</span></p>
+<p class="rvps3"><span class="rvts8">720p / 59.94</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 220</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1280x720</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">59.94</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">220Mb</span></p>
+<p class="rvps3"><span class="rvts8">720p / 59.94</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 145</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1280x720</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">59.94</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">145Mb</span></p>
+<p class="rvps3"><span class="rvts8">720p / 50</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 175</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1280x720</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">50</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">175Mb</span></p>
+<p class="rvps3"><span class="rvts8">720p / 50</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 115</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1280x720</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">50</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">115Mb</span></p>
+<p class="rvps3"><span class="rvts8">720p / 23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 90</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1280x720</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">90Mb</span></p>
+<p class="rvps3"><span class="rvts8">720p / 23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">DNxHD 60</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">1280x720</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">8</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">23.976</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">60Mb</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

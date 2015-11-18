@@ -1,0 +1,175 @@
+﻿<html>
+	
+<head>
+	<title>Errors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Errors");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Errors</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; <a href="3dsMax.html">3ds Max</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3dsMax.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="3dsMax.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="RRfeatures.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">Important Info:</span></p>
+<p class="rvps3"><span class="rvts8">Although the Commandline Renderer of Max does not use Backburner, it still requires Backburner Dlls.</span></p>
+<p class="rvps3"><span class="rvts8">So you have to install Backburner files on the machine.</span></p>
+<p class="rvps3"><span class="rvts8">(Usually installed by default if you have not removed/unchecked it)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">"An unexpected exception has occurred"</span></span></h2>
+<p class="rvps3"><span class="rvts8">This error can mean anything.</span></p>
+<p class="rvps3"><span class="rvts8">It could be an issue with your scene or with your local preferences.</span></p>
+<p class="rvps3"><span class="rvts8">If you cannot get rid of this error, even with the simplest scene file, then try to delete the local preferences of 3ds max.</span></p>
+<p class="rvps3"><span class="rvts8">They are located in "c:\RR_Localdata\SysUserPrefs\AppData\Local\Autodesk\3dsMax\"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">"Frozen"</span></span></h2>
+<p class="rvps3"><span class="rvts8">It could be an issue with your scene or with your local preferences.</span></p>
+<p class="rvps3"><span class="rvts8">If you cannot get rid of this error, even with the simplest scene file, then try to delete the local preferences of 3ds max.</span></p>
+<p class="rvps3"><span class="rvts8">They are located in "c:\RR_Localdata\SysUserPrefs\AppData\Local\Autodesk\3dsMax\"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">3dsmax 2012 SAP</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The first release of 3dsmax 2012 SAP had a bug that you cannot run the commandline renderer in a service environment.</span></p>
+<p class="rvps3"><span class="rvts8">Running the rrClient manually (not as service) does not produce any error.</span></p>
+<p class="rvps3"><span class="rvts8">Autodesk has fixed the issue and released a new version of 2012 SAP:</span></p>
+<p class="rvps3"><span class="rvts8">http://area.autodesk.com/blogs/maxstation/updated_subscription_advantage_pack_is_available</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The error is just:</span></p>
+<p class="rvps3"><span class="rvts8">2012/1/17 13:10:50; Error rendering frame 0: An unexpected exception has occurred in the network renderer and it is terminating.</span></p>
+<p class="rvps3"><span class="rvts8">2012/1/17 13:10:50; Job Completed with Error(s) - see above</span></p>
+<p class="rvps3"><span class="rvts8">(Note: This error message can also appear with other scene issues) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">3dsmax 2013</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you are using an IP which is not a default internal network IP, then 3dsmaxcmd.exe will simply not execute, no message, no error, nothing.</span></p>
+<p class="rvps3"><span class="rvts8">You have to use an IP range like 192.168.0.xxx or 172.17.11.xxx</span></p>
+<p class="rvps3"><span class="rvts8">The bug is known at Autodesk. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">2014</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">3dsmax 2014 produces an error "***WARNING*** Missing dll: Built-in - AnchorHelperObject" if it has no settings for the rrUser (render user).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">I do not have enough test information to tell you the exact issue.</span></p>
+<p class="rvps3"><span class="rvts8">It can be either:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;1) No windows registry folder for the rrUser.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;2) rrUser did never log in to create user settings.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;3) 3dsmax was never started on the machine. Therefore it did not create the Registry settings HKEY_CURRENT_USER\Software\Autodesk\3dsMax\16.0 </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">1)</span></p>
+<p class="rvps3"><span class="rvts8">To check if your machine has a registry folder for the user, please take a look at a render log file in RR:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">rrStart-x64: Starting C:\RR_localdata\C_NODE31.bat...</span></p>
+<p class="rvps3"><span class="rvts8">P gina de c?digo ativa: 1252</span></p>
+<p class="rvps3"><span class="rvts8">"++++++++++++++++++++++++ Log Start +++++++++++++++++++++++++"</span></p>
+<p class="rvps3"><span class="rvts8">"NODE31 rrClient console L 6.02.14a rrVer6.02.14"</span></p>
+<p class="rvps3"><span class="rvts8">"07.16 17:58.59"</span></p>
+<p class="rvps3"><span class="rvts8">"Client is running on Win7_sp0 x64 8(HT)x3.0 Intel 15.6Ghz"</span></p>
+<p class="rvps3"><span class="rvts8">"Environment user is rrUser"</span></p>
+<p class="rvps3"><span class="rvts8">"Windows is using registry: HKEY_USERS/S-1-5-21-550814133-1602950796-499356099-1121/"</span></p>
+<p class="rvps3"><span class="rvts8">"Environment AppData path: C:\Users\rrUser\AppData\Roaming"</span></p>
+<p class="rvps3"><span class="rvts8">"WinApi Folder LocalAppData: C:\Users\rrUser\AppData\Local"</span></p>
+<p class="rvps3"><span class="rvts8">"USERPROFILE: C:\Users\rrUser"</span></p>
+<p class="rvps3"><span class="rvts8">"Job: {O8N} Sequence: 25-25, 1"</span></p>
+<p class="rvps3"><span class="rvts8">...</span></p>
+<p class="rvps3"><span class="rvts8">...</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If there is no user registry, then you see the message:</span></p>
+<p class="rvps3"><span class="rvts8">"Windows is using registry: HKEY_USERS/.Default/"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To create registry settings:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If you have installed RR prior to version 6.2.12, then it could be sufficient to re-install the rrService and let it start the rrClient.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;In rrControl, create a new command job via menu Clients. Choose "reinstall service". ("Frames left" are "Clients left". Clients that executed the command are deassigned from the job.)</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;After they reinstalled the service, send them a "shutdown rrClient (application)" command.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;After 30s, the service should start the rrCleint.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Send it a render, check if the registry is set as shown above.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Follow 2) to create registry settings. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">2)</span></p>
+<p class="rvps3"><span class="rvts8">Login at the workstation with the rrUser. (The name of "rrUser" in your company is shown in the render log (see above) in the line "Environment user is rrUser" )</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">3)</span></p>
+<p class="rvps3"><span class="rvts8">Start 3dsmax.</span></p>
+<p class="rvps3"><span class="rvts8">You could try to copy the files from one rrClient without the issue to a one with the issue.</span></p>
+<p class="rvps3"><span class="rvts8">Export the registry settings HKEY_CURRENT_USER\Software\Autodesk\3dsMax\16.0 and import it on the other machine.-</span></p>
+<p class="rvps3"><span class="rvts8">Note: A copy would require that the user and folder exists on that machine.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

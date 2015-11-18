@@ -1,0 +1,12 @@
+<RR_Job_File syntax_version="6.0">
+<SubmitterParameter> DoNotCheckForFrames=1~1 </SubmitterParameter>
+<Job>
+    <IsActive>   	1   		</IsActive>
+    <Software>		Vue		</Software>
+    <ImageDir>		&lt;SceneFolder&gt; 	</ImageDir>
+    <ImageFilename>	&lt;SceneFilename&gt;.tif	</ImageFilename>
+    <ImageSingleOutputFile>		true 	</ImageSingleOutputFile>
+    <SeqStart>                1                    </SeqStart>
+    <SeqEnd>                  1                    </SeqEnd>
+</Job>
+</RR_Job_File>

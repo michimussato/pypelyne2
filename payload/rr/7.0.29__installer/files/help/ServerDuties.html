@@ -1,0 +1,132 @@
+﻿<html>
+	
+<head>
+	<title>Server Duties</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ServerDuties");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Server Duties</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Usage.html">Usage</a> &rsaquo;&rsaquo; <a href="WatchJobs.html">Watch Jobs</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="WatchJobs.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ArtistTodo.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="ClientDuties.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Send Jobs</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Of course the main duty of the rrServer is to send the jobs to the clients.</span></p>
+<p class="rvps3"><span class="rvts8">Each rrClient connects to the rrServer every x seconds to send its status and asks for a job to render.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The rrServer then chooses an job based on:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Job Based</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1181px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Is the client de/assigned for a job (Deassigned because you have done it at submission or because it crashed)</span></li>
+<li class="rvps3"><span class="rvts8">Are there still frames left, that are not already send to a client. (The jobs framebar needs to have some white areas)</span></li>
+<li class="rvps3"><span class="rvts8">Job must not be disabled, in "first check" or in "wait for" state.</span></li>
+<li class="rvps3"><span class="rvts8">The priority of the job (preview render increases the priority +20, a script state has +10 priority) in this function.</span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><a class="rvts20" href="rrConfig.html">rrConfig</a><span class="rvts8"> Based</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1181px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Is the client </span><span class="rvts8">privileged for a user/project/software.</span></li>
+<li class="rvps3"><span class="rvts8">If </span><span class="rvts8">Client Averaging</span><span class="rvts8"> is enabled (default), then which user/project has the smallest ammount of clients. &nbsp;(if the job has not set ultimate or lowest priority)</span></li>
+<li class="rvps3"><span class="rvts8">Has the user/project/software </span><span class="rvts8">Exclusive Priority</span><span class="rvts8">.</span></li>
+<li class="rvps3"><span class="rvts8">There has to be a free renderer license. (rrControl "Global Info" tab) </span></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to check the real priority of a job based on job and rrConfig settings, then you have to select the job and a client in rrControl and execute "Show Servers Send Decision" via the menu Debug.</span></p>
+<p class="rvps3"><span class="rvts8">It shows you the internal priority with multiple number values.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Check</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The rrServer checks each job every x seconds (or if you use the command "Check Job").</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The main purpose of the check is to search for frames that are rendered.</span></p>
+<p class="rvps3"><span class="rvts8">If some Preview Frames are done, then the rrServer creates jpegs for the rrWebsite and rrControl.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It also creates an additional entry for the job stats image and it updates the framebar image.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Error</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There are two kinds of job errors.</span></p>
+<p class="rvps3"><span class="rvts8">Errors that happen at the rrServer and errors that happen at the rrClient.</span></p>
+<p class="rvps3"><span class="rvts8">Most of the rrServer errors are disabling the job immediately.</span></p>
+<p class="rvps3"><span class="rvts8">If there are rrClient errors, then a Client is de-assigned after 3 (default setting) Errors.</span></p>
+<p class="rvps3"><span class="rvts8">And if the job has 20 Client errors, then the whole job is disabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Errors are displayed at the job table as a small triangle.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="Troubleshooting1.html">Error Analysis</a><span class="rvts8"> for error types</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

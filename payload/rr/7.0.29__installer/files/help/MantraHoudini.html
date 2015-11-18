@@ -1,0 +1,122 @@
+﻿<html>
+	
+<head>
+	<title>Mantra (Houdini)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("MantraHoudini");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Mantra (Houdini)</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="ArchiveStandalone.html">Archive/Standalone</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="ArchiveStandalone.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Arnold.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Maxwell.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Generate .ifd files from within Houdini</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please follow these steps:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Open your Mantra Render output operator.</span></li>
+<li class="rvps3"><span class="rvts8">Enable "Disk File".</span></li>
+<li class="rvps3"><span class="rvts8">Render the node, it will create the sequence of .ifd files. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">. </span><img alt="" style="padding : 1px;" src="lib/ifd.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Generate .ifd files via RR.</span></span></h2>
+<p class="rvps3"><span class="rvts8">The generation job can be handled by RR.</span></p>
+<p class="rvps3"><span class="rvts8">Just apply the settings as shown above and submit the Houdini file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The scene parser for Houdini will create to jobs.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">A Houdini generate .ifd job</span></li>
+<li class="rvps3"><span class="rvts8">A Mantra render .ifd job.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Just like every other archive renderer type, you have to load one file of your .ass sequence into the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmitter recognizes the frame range of your sequence and output name.</span></p>
+<p class="rvps3"><span class="rvts8">You can also start the rrSubmitter with the file as commandline parameter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">All Archive/Standalone renderer are based on a scene file per frame in Royal Render.</span></p>
+<p class="rvps3"><span class="rvts15">You can not export a complete animation into one file, you need one file per Frame.</span></p>
+<p class="rvps3"><span class="rvts15">name.#.ext</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Errors</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Linux - Freezed</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Mantra requires to run the hserver.</span></p>
+<p class="rvps3"><span class="rvts8">If the hserver is not started before the rrClient starts to render, then mantra starts the hserver. hserver continues to run after mantra finished. And as long as a child process (hserver) is running, the render script will not finish.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Workaround: Please start hserver with the system.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">No render output</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There is one issue with Mantra and RRender.</span></p>
+<p class="rvps3"><span class="rvts8">If you start the rrClient manually, then you can NOT render .ifd files.</span></p>
+<p class="rvps3"><span class="rvts8">You have to start the rrClientconsole or install the client as service. </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

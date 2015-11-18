@@ -1,0 +1,421 @@
+﻿<html>
+	
+<head>
+	<title>Example file</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Examplefile");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Example file</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; <a href="SubmitterDefaults.html">Submitter Defaults</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="SubmitterDefaults.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="SubmitterDefaults.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="RenderApplications.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">This is an example of such an submitter defaults file.</span></p>
+<p class="rvps3"><span class="rvts15">Every line that has a # in front is not read and ignored.</span></p>
+<p class="rvps3"><span class="rvts15">(In this example all options are ignored)</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note: If you add any pre/post-script or if we add a new option to RR, then these new settings are not in this help document.</span></p>
+<p class="rvps3"><span class="rvts15">You have to use the rrSubmitter menu to edit/open a file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;SUBMITTER CONFIG FILE INFORMATION:</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;This file controls the default values for the submitter and control</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;There can be multiple submitter config files which are loaded</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;You can also specify all options in a commandline for submitter or control.</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;The files are loaded in this order:</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;0) renderapp/_config/[renderApp].cfg</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;---------------------------------------</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;1) sub/cfg_global/submitter_first.txt</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;2) sub/cfg_user/submitter_prj_[ProjectName].txt</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;3) sub/cfg_user/submitter_usr_[UserLoggedIn].txt</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;4) sub/cfg_user/submitter_mac_[MachineName].txt</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;5) Commandline</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;6) (Show All menu item: Sets allowChange=1 for all options)</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;7) sub/cfg_global/submitter_last.txt</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;8) sub/cfg_global/submitter_last_non_admin.txt</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;---------------------------------------</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;9) renderapp/_config/[renderApp].cfg</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;The Settings are stacked. </span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;e.g. If you set a value in 1) submitter_first and this value is not set in any other config file, it is kept.</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;Values set in 3) user configs overwrite values from 1) submitter_first. </span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;7) submitter_last_non_admin.txt is only loaded if the user logged in is not a RRender admin.</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;0) 8) The render application config is applied two times</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;The first time 0) it is loaded as basic settings for the render application. </span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;Then all the submitter config files are overwriting the parameters.</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;Then 8) the render application config is checked again if parameters are not allowed for that render application. </span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;If a render application does not allow some parameter, it is simply not possible to use it with that application.</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;To ensure that those options are not set, it is checked again while a job is send to the rrServer</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;NOTE: PLEASE SEE HELP FILES SECTION Customization / Submitter defauls FOR MORE EXPLANATION.</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;FORMAT:</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;The format of this file is ParameterName='Options'</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;If 'Options' has multiple options to set, they are divided by a '~' </span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;The values types are </span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; AC &nbsp;= Allow change &nbsp;( 0= Do not allow to change &nbsp; , 1= &nbsp;Allow to change)</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Most of the Parameters have this option. It controls if this setting can be changed at the submitter.</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; If it is not allowed to change this value, it is disabled and, if not checked, it is not visible at the submitter at all</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; VIS = Visible &nbsp; ( 0 = hidden, &nbsp; 1 = visible) </span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Sets if the parameter is visible at the submitter</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; COL = Collaped ( 0= Group is expanded , 1= &nbsp;Group is collapsed )</span></p>
+<p class="rvps3"><span class="rvts8">#</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Changes the expanded/collaped state</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; CK &nbsp;= Checked &nbsp; (0 = not checked, &nbsp; 1 = parameter is checked)</span></p>
+<p class="rvps3"><span class="rvts8">#</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">If this is set, the parameter is checked by default</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; VAL = Value &nbsp; (Number)</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Default value for the parameter</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; TXT = Text &nbsp;(text line) </span></p>
+<p class="rvps3"><span class="rvts8">#</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Name or parameter line set by default</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;NOTE: You do not have to set all values for a parameter.</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;You can set an empty space if you do not want to override the value.</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp;This does not apply for the render config files.</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;EXAMPLES:</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#RenderPreview=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;RenderPreview= 0~0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Not allowed to change &nbsp;(hidden) ~ not checked</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;RenderPreview= 1~0 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Allowed to change (and visible) ~ not checked</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;RenderPreview= 1~1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Allowed to change (and visible) ~ checked</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;RenderPreview= &nbsp;~1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; (value is not overridden) ~ checked</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;#Param=AC~CK~TXT</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;Param= 1~0~ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Allowed to change ~ not checked ~ no default parameter line</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp;Param= 1~0~ -samples_min -2 -samples_max 0 &nbsp; Allowed to change ~ not checked ~ a parameter line for preview antialiasing</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; PLEASE UNCOMMENT LINES YOU WANT TO OVERWRITE</span></p>
+<p class="rvps3"><span class="rvts8">#**************************************************************</span></p>
+<p class="rvps3"><span class="rvts8">#</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; UIStyle=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#UIStyle=1~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AutoDeleteFrames=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#AutoDeleteFrames=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NoLocalDriveWarning=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#NoLocalDriveWarning=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CloseAfterSubmit=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#CloseAfterSubmit=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WarnIfAllClientsAssigned=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#WarnIfAllClientsAssigned=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ShotNameRequired=AC</span></p>
+<p class="rvps3"><span class="rvts8">#ShotNameRequired=0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ShowAllOptionsButton=AC</span></p>
+<p class="rvps3"><span class="rvts8">#ShowAllOptionsButton=1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideRendererPossible=AC</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideRendererPossible=1</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupRightSubmitter=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupRightSubmitter=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupSceneSettings=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupSceneSettings=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupSceneSettingsPlugin=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupSceneSettingsPlugin=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupLoadScenePlugin=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupLoadScenePlugin=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideSequence=AC</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideSequence=1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AllowImageNameChange=AC</span></p>
+<p class="rvps3"><span class="rvts8">#AllowImageNameChange=1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AllowImageDirChange=AC</span></p>
+<p class="rvps3"><span class="rvts8">#AllowImageDirChange=1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverridePathPreset=AC~CK~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#OverridePathPreset=1~0~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PathPresets=TXT</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PathPresets=TXT</span></p>
+<p class="rvps3"><span class="rvts8">#.....</span></p>
+<p class="rvps3"><span class="rvts8">#PathPresets=&lt;CScene&gt;-&lt;CShot&gt;\&lt;CVersion&gt;\&lt;ImageFile&gt;</span></p>
+<p class="rvps3"><span class="rvts8">#PathPresets=&lt;Camera&gt;_&lt;Layer&gt;\&lt;ImageFile&gt;</span></p>
+<p class="rvps3"><span class="rvts8">#PathPresets=&lt;SceneName&gt;\&lt;Camera&gt;</span></p>
+<p class="rvps3"><span class="rvts8">#PathPresets=&lt;Layer&gt;</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideRREnvFile=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideRREnvFile=1~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideRREnvLine=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideRREnvLine=1~</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupClients=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupClients=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupClientFilter=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupClientFilter=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DefaultClientGroup=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#DefaultClientGroup=1~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; InvalidClientGroup=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#InvalidClientGroup=1~</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupRenderSettings=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupRenderSettings=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Priority=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#Priority=1~50</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PriorityMIN=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#PriorityMIN=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PriorityMAX=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#PriorityMAX=1~99</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; UltimatePriority=AC</span></p>
+<p class="rvps3"><span class="rvts8">#UltimatePriority=1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MaxCrashes=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#MaxCrashes=0~30</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MaxLimitsReached=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#MaxLimitsReached=0~30</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SeqDivMIN=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#SeqDivMIN=1~2</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SeqDivMAX=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#SeqDivMAX=1~30</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SeqDivMINComp=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#SeqDivMINComp=1~7</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SeqDivMAXComp=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#SeqDivMAXComp=1~40</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MaxClientsAtATime=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#MaxClientsAtATime=0~999</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MaxFrameTime=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#MaxFrameTime=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NumberPreview=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#NumberPreview=0~6</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SequenceDivide=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#SequenceDivide=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; RequiredMemory=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#RequiredMemory=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MinFileSizeKb=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#MinFileSizeKb=0~0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupRROptions=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupRROptions=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; UserName=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#UserName=0~&lt;User&gt;</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CustomSeQName=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#CustomSeQName=1~&lt;s s&gt;</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CustomSHotName=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#CustomSHotName=1~&lt;s _sh&gt;</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CustomVersionName=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#CustomVersionName=1~&lt;s _v&gt;</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CompanyProjectName=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#CompanyProjectName=0~&lt;CompanyProject&gt;</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CustomUserInfo=AC~CK~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#CustomUserInfo=0~0~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Color_ID=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#Color_ID=1~-1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; TileFrame=AC~CK~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#TileFrame=1~0~4</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SendJobDisabled=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#SendJobDisabled=0~0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupOverride=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupOverride=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideImageType=AC~CK~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideImageType=0~0~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideImageSize=AC~CK~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideImageSize=0~0~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideRenderQuality=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideRenderQuality=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideRenderVerbose=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideRenderVerbose=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OverrideJobBit=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#OverrideJobBit=0~0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupCommandLine=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupCommandLine=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AdditionalCommandlineParam=AC~CK~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#AdditionalCommandlineParam=0~0~</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupNotify=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupNotify=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NotifyFinish=AC~CK~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#NotifyFinish=1~0~</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NotifyFinishWhen=AC~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#NotifyFinishWhen=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NotifyFinishClient=AC~TXT</span></p>
+<p class="rvps3"><span class="rvts8">#NotifyFinishClient=1~&lt;ThisMachine&gt;</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NotifyFinishParam=AC~CK~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#NotifyFinishParam=1~0~0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupWait=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupWait=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WaitForJob=AC</span></p>
+<p class="rvps3"><span class="rvts8">#WaitForJob=1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; WaitForTime=AC~CK~VAL</span></p>
+<p class="rvps3"><span class="rvts8">#WaitForTime=1~0~0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupOnSubmissionScript=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupOnSubmissionScript=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupAfterPreviewScript=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupAfterPreviewScript=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupPreRenderScript=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupPreRenderScript=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupPostRenderScript=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupPostRenderScript=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GroupFinishedScript=AC~COL</span></p>
+<p class="rvps3"><span class="rvts8">#GroupFinishedScript=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AbortJobswithLowerPriority=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#AbortJobswithLowerPriority=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; IgnoreCrashes=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#IgnoreCrashes=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AutoApproveJob=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#AutoApproveJob=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; RenderPreviewFirst=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#RenderPreviewFirst=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DoNotShowPreviewJpegs=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#DoNotShowPreviewJpegs=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DoNotCheckForFrames=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#DoNotCheckForFrames=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; LittleJob=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#LittleJob=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; StartMultipleInstances=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#StartMultipleInstances=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; KeepSceneOpen=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#KeepSceneOpen=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AllowtoDeleteCrashedFrames=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#AllowtoDeleteCrashedFrames=0~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AllowLocalSceneCopy=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#AllowLocalSceneCopy=0~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AllowTextureReplacement=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#AllowTextureReplacement=0~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; AllowLocalRenderOut=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#AllowLocalRenderOut=0~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PreviewGamma2.2=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PreviewGamma2.2=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; CropEXR=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#CropEXR=0~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; MultiOSScenes=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#MultiOSScenes=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NoProcessTreeCheck=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#NoProcessTreeCheck=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Overwriteexistingfiles=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#Overwriteexistingfiles=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; NoFreezeDetection=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#NoFreezeDetection=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; GPUrequired=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#GPUrequired=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; DistributeStartToEnd=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#DistributeStartToEnd=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Preview-ContiguousFrames=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#Preview-ContiguousFrames=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Auto-getRequiredMemory=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#Auto-getRequiredMemory=0~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPShotgun-updateStats=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPShotgun-updateStats=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPDeletebroken=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPDeletebroken=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPDeleteJob=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPDeleteJob=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPAssembleTiles=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPAssembleTiles=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPSequenceCheck=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPSequenceCheck=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPEXRCropchannels=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPEXRCropchannels=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPCreateFullVideo=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPCreateFullVideo=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPCreateSmallVideo=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPCreateSmallVideo=1~1</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPNukeProres=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPNukeProres=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPJob-MakeVideo-proreshq=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPJob-MakeVideo-proreshq=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; PPShotgun-AddPreview=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#PPShotgun-AddPreview=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OSperjob_App_3D__hello_job=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#OSperjob_App_3D__hello_job=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OSperjob_hello_job=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#OSperjob_hello_job=1~0</span></p>
+<p class="rvps3"><span class="rvts8"># &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; OSperjob_setEnvLine=AC~CK</span></p>
+<p class="rvps3"><span class="rvts8">#OSperjob_setEnvLine=1~0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

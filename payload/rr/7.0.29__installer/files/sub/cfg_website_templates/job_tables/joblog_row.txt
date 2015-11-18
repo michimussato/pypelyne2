@@ -1,0 +1,1 @@
+<tr><td><%LogTime%> | <%LogFramesLeft%> | <%LogClientsRendering%></td><td><%LogWho%></td><td><%LogWhat%></td></tr>

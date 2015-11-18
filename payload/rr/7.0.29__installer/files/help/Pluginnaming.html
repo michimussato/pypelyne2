@@ -1,0 +1,94 @@
+﻿<html>
+	
+<head>
+	<title>Plugin naming</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Pluginnaming");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Plugin naming</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Plugins.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Python.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Howtotestplugins.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can name plugin files as you like. RR will not ignore any file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">But as you probably know a naming convention is always better.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Plugin order/sort:</span></p>
+<p class="rvps3"><span class="rvts8">At first, the plugin file name should start with 3 letters and two underscores.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. m50__..., a54__..., z45__..., 234__..., asc__...</span></p>
+<p class="rvps3"><span class="rvts8">These three letters are used to sort the plugins. Nothing else.</span></p>
+<p class="rvps3"><span class="rvts8">Use all letters/numbers and keep some space more more plugins in between.</span></p>
+<p class="rvps3"><span class="rvts8">For example you have a plugin that needs to be executed first on submission, name it a50__....</span></p>
+<p class="rvps3"><span class="rvts8">If you now have a new plugin that needs to be executed before that, name it a40__...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Filter (hide plugins):</span></p>
+<p class="rvps3"><span class="rvts8">The next part is a filter.</span></p>
+<p class="rvps3"><span class="rvts8">If you want to see a plugin for 3D applications only, name it ...APP_3D....</span></p>
+<p class="rvps3"><span class="rvts8">Or for Softimage only ...APP_Softimage....</span></p>
+<p class="rvps3"><span class="rvts8">For your company project "CokeCommercial" ...PRJ_CokeCommercial...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Hint:</span></p>
+<p class="rvps3"><span class="rvts8">If you use the the rrSubmitter or rrControl menu to create a new plugin file, it will ask you for all these filters.</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

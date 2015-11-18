@@ -1,0 +1,20 @@
+    <tr>
+      <td bgcolor="#000000"><font color="FFFFFF">&nbsp;<%CurrentRowNumber%>&nbsp;Commands</font> </td>
+      <td bgcolor="#000000"><font color="FFFFFF">&nbsp;ID</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF"></font></td>
+      <td bgcolor="#000000">Name</td>
+      <td bgcolor="#000000"><font color="FFFFFF">Software</font></td>
+      <td bgcolor="#000000">&nbsp;</td>
+      <td bgcolor="#000000"><font color="FFFFFF">&nbsp;&nbsp;Scene</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">&nbsp;&nbsp;Layer</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">&nbsp;&nbsp;Camera</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Frames</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Done</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Left</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Till&nbsp;now</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Remain</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">frame</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Pr.</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Status</font></td>
+      <td bgcolor="#000000"><font color="FFFFFF">Cl.</font></td>
+    </tr>

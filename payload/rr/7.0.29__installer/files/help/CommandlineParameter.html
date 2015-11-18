@@ -1,0 +1,140 @@
+﻿<html>
+	
+<head>
+	<title>Commandline Parameter</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("CommandlineParameter");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Commandline Parameter</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrApplications.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="VersionDisplay.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">All RR applications support a set of commandline parameter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: you can set the commandline flags in the files</span></p>
+<p class="rvps3"><span class="rvts8">lx__global.sh or win__global.bat.</span></p>
+<p class="rvps3"><span class="rvts8">Then they are used by each user.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Available Commandline parameter are:</span></p>
+<div class="rvps3"><table border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-Debug</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">output debug messages into logfile [rrRoot]\sub\log\</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-LogFlushAll</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">Directly write all log messages to file (otherwise buffered, Required if application crashes)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-LocalDataFolder [dir]</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">Set the local data folder to [dir]</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-defaultFontSize [number]</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">Set the default font size</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-smallerFontSize [number]</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">Set the smaller font size (mostly used for tables)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-darkUI</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">Uses a dark UI</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-lightUI</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">Use the default light UI</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-violaUI</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">girly UI... (had to implement that in as pay for some RR drawings/designs)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 232px;"><p class="rvps3"><span class="rvts8">-easterUI</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 536px;"><p class="rvps3"><span class="rvts8">very colorful UI... (useful for 1. April in win_rrControl.bat. ;-) </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For more commandline parameters, see the help section of each rrApplication. </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

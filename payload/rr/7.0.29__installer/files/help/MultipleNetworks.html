@@ -1,0 +1,136 @@
+﻿<html>
+	
+<head>
+	<title>Multiple Networks</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("MultipleNetworks");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Multiple Networks</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; <a href="AdditionalInfo.html">Additional Info</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="AdditionalInfo.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="MoveRRfolder.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="FasterNetworkTCPIPJumboFrames.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Multiple Networks</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">These are some hints if you use multiple mirrored fileservers and you need to map drives to the same machines.</span></p>
+<p class="rvps3"><span class="rvts8">RR does only support global settings for drive mappings which are the same for all clients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Workarounds:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 130px;"><p class="rvps3"><span class="rvts8">Local shell script file</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1155px;"><p class="rvps3"><span class="rvts8">If you need to access data that RR does not care about (RR needs to access scene file and output folder, it does not care about shader workgroup, texture data, ...), then you can create a local batch script to map/mount the drive.</span></p>
+<p class="rvps3"><span class="rvts8">Add a call/source to the local script file in [RR]\render_apps\_setenv\win\_global.bat.</span></p>
+<p class="rvps3"><span class="rvts8">This file is executed every time before a render is started. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 130px;"><p class="rvps3"><span class="rvts8">Local host file</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1155px;"><p class="rvps3"><span class="rvts8">Add a virtual machine name to each client. Each network will be able to use //localmirror as computer name, although this machine does not exist.</span></p>
+<p class="rvps3"><span class="rvts8">Edit the local system host file. Add a line 192.168.0.34 localmirror</span></p>
+<p class="rvps3"><span class="rvts8">Now you can use \\localmirror on this machine. And therefore for the drive mappings in rrConfig.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Sync external files of your scene (Textures, Reference Models, the data RR does not care about ):</span></p>
+<p class="rvps3"><span class="rvts8">If you have all Textures in a seperate folder ( or better: a per-shot directory structure), then you could sync these external files.</span></p>
+<p class="rvps3"><span class="rvts8">Either edit the</span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm"> Setenv file</a><span class="rvts8"> or the render config.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Example:</span></p>
+<p class="rvps3"><span class="rvts8">You have 2 fileserver:</span></p>
+<p class="rvps3"><span class="rvts8">ServerA where the scene file was created, serverB is the fileserver for your render farm.</span></p>
+<p class="rvps3"><span class="rvts8">You use ServerAlias as fileserver name on both sides for the local fileserver</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Example:</span></p>
+<p class="rvps3"><span class="rvts8">You have 2 fileserver:</span></p>
+<p class="rvps3"><span class="rvts8">ServerA where the scene file was created, serverB is the fileserver for your render farm.</span></p>
+<p class="rvps3"><span class="rvts8">You use ServerAlias as fileserver name on both sides for the local fileserver</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 151px;"><p class="rvps3"><span class="rvts8">Scene File:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 483px;"><p class="rvps3"><span class="rvts8">//ServerAlias/share/projectX/3D/shot23/scenes/myscene.mb</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 151px;"><p class="rvps3"><span class="rvts8">Texture Folder:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 483px;"><p class="rvps3"><span class="rvts8">//ServerAlias/share/projectX/3D/shot23/textures</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Now edit the render config file of your renderer.</span></p>
+<p class="rvps3"><span class="rvts8">Add a line</span></p>
+<p class="rvps3"><span class="rvts26">CommandLine_Win=&lt;rrBin&gt;rrCopy -sync &lt;Replace "&lt;scene&gt;&lt;/..&gt;textures" , ServerAlias , ServerA&gt; "&lt;scene&gt;&lt;/..&gt;textures"</span></p>
+<p class="rvps3"><span class="rvts8">This will sync all files from //ServerA/share/projectX/3D/shot23/textures to //ServerAlias/share/projectX/3D/shot23/textures</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note</span><span class="rvts8">: If you are at location A, then ServerA is the same as ServerAlias. Therefore -sync will not copy any files as they are the same. </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

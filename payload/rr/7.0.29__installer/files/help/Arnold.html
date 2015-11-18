@@ -1,0 +1,149 @@
+﻿<html>
+	
+<head>
+	<title>Arnold</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Arnold");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Arnold</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="ArchiveStandalone.html">Archive/Standalone</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="ArchiveStandalone.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ArchiveStandalone.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="MantraHoudini.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">This description is for the Arnold Standalone to render .ass files (with kick).</span></p>
+<p class="rvps3"><span class="rvts8">It is not a description how to setup/render XSI scenes with Arnold enabled.</span></p>
+<p class="rvps3"><span class="rvts8">Please see the Softimage help section. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Setup</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">By default Arnold is configured to use a </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Renderer_Exe/Renderer_Exe_-_Shared.htm">Shared Executable</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Important note SitoA/ MtoA/ HtoA</span><span class="rvts8">:</span></p>
+<p class="rvps3"><span class="rvts8">This description is for </span><span class="rvts15">Arnold Standalone, not SitoA/ MtoA/ HtoA.</span></p>
+<p class="rvps3"><span class="rvts8">If you have SitoA/MtoA/HtoA, then it is possible to build your Arnold Standalone folder by taking files from an SitoA/MtoA/HtoA folder and placing them into the /bin &nbsp;subfolder of the Arnold folder.</span></p>
+<p class="rvps3"><span class="rvts8">Just </span><span class="rvts15">make sure the kick executable is in the right folder in the end.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To setup Arnold, please follow these steps.</span></p>
+<p class="rvps3"><span class="rvts8">Note: this description is for Arnold Standalone 4.0.6.0 and windows x64, please modify regarding your OS and version</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Copy your Arnold Standalone folder to</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;[RR]\render_apps\renderer_exe\arnold\win_x64\Arnold-4.0.6.0\</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;You probably should only copy the \bin folder to keep the file count low.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The resulting kick.exe will be located in [RR]\render_apps\renderer_exe\arnold\win_x64\Arnold-4.0.6.0\bin\kick.exe</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Optional: </span><br/><span class="rvts8">Edit [RR]\render_apps\_setenv\win\arnold.bat, remove the comment ('rem') and set your license server name. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">SitoA/MtoA/HtoA:</span></p>
+<p class="rvps3"><span class="rvts8">If your .ass files have been exported by SitoA/MtoA/HtoA, then you need to copy the shader dlls from your SitoA/MtoA/HtoA installation into Arnold Standalone.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For example SitoA:</span></p>
+<p class="rvps3"><span class="rvts8">Copy</span><span class="rvts15"> from the folder </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">[YourWorkgroup]\Addons\SItoA\Application\Plugins\bin\nt-x86-64\ </span></p>
+<div class="rvps3"><table width="50%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 85px;"><p class="rvps3"><span class="rvts15">the files</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+</td>
+<td style="width: 555px;"><p class="rvps3"><span class="rvts8">sitoa.dll</span></p>
+<p class="rvps3"><span class="rvts8">sitoa_curves_proc.dll</span></p>
+<p class="rvps3"><span class="rvts8">sitoa_shaders.dll </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 85px; height: 15px;"><p class="rvps3"><span class="rvts8">into the folder</span></p>
+</td>
+<td style="width: 555px; height: 15px;"><p class="rvps3"><span class="rvts8">[RR]\render_apps\renderer_exe\arnold\win_x64\Arnold-4.0.6.0\bin\ </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Just like every other archive renderer type, you have to load one file of your .ifd sequence into the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmitter recognizes the frame range of your sequence and output name.</span></p>
+<p class="rvps3"><span class="rvts8">You can also start the rrSubmitter with the file as commandline parameter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">All Archive/Standalone renderer are based on a scene file per frame in Royal Render.</span></p>
+<p class="rvps3"><span class="rvts15">You can not export a complete animation into one file, you need one file per Frame.</span></p>
+<p class="rvps3"><span class="rvts15">name.#.ext</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Infos</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Tiles EXR</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Arnold writes Tiled EXR.</span></p>
+<p class="rvps3"><span class="rvts8">Scanline EXR are faster to load in some comp apps.</span></p>
+<p class="rvps3"><span class="rvts8">Please use the CropEXR of RR to convert them into scanline EXR files. </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,115 @@
+# This file defines external flipbooks:
+#
+# Format to add a new application
+# Name: name of app
+# command line for app
+#
+# The command line accepts this variables:
+# 	<basename>
+# 	<extention>
+# 	<padding>
+# 	<start>
+# 	<end>
+# 	<startPadding>
+# 	<endPadding>
+# 	<step>
+# 	<gamma   xxxxxxxxx    >     //if the job has the gamma flag set, then xxxxxxxx is executed, otherwise ignored
+# 	<chn_basename>  The basename of the first render channel (for stereo views)
+# 	<chn_extention> The basename of the first render channel (for stereo views)
+#
+#
+#	if you require placeholder letters for the frame number, use <# > including the character that should be inserted as placeholder
+#	e.g. filename.<# #>.tga => filename.###.tga
+#	e.g. filename.<# @>.tga => filename.@@@.tga
+#
+#	Don't forget to add " in front and at the end of file names. In case you use spaces for folder or directory names
+#
+#
+
+#####################################################################################
+[WINDOWS]
+#####################################################################################
+
+
+Name: XSI Flipbook 2010
+"C:\Softimage\Softimage_2010_SP1_x64\Application\bin\flip.exe" "<basename><extention>" <start> <end> <step> -p "(fn)<# #>(ext)" -d
+
+Name: XSI Flipbook 2011
+"c:\Program Files\Autodesk\Softimage 2011 Subscription Advantage Pack\Application\bin\flip.exe" "<basename><extention>" <start> <end> <step> -p "(fn)<# #>(ext)" -d
+
+Name: XSI Flipbook 2012
+"c:\Program Files\Autodesk\Softimage 2012\Application\bin\flip.exe" "<basename><extention>" <start> <end> <step> -p "(fn)<# #>(ext)" -d
+
+Name: XSI Flipbook 2013
+"c:\Program Files\Autodesk\Softimage 2013\Application\bin\flip.exe" "<basename><extention>" <start> <end> <step> -p "(fn)<# #>(ext)" -d
+
+
+Name: IRIDAS FrameCycler
+"C:\Program Files (x86)\IRIDAS FrameCycler Professional\bin\FrameCycler.exe" "<basename>1<extention>"
+
+Name: IRIDAS FrameCycler
+"C:\Program Files\IRIDAS FrameCycler Professional\bin\FrameCycler.exe" "<basename>1<extention>"
+
+
+Name: Maya fcheck 2009
+C:\windows\system32\cmd.exe /c start "" "C:\Program Files\Autodesk\Maya2009\bin\fcheck.exe" -n <start> <end> <step> "<basename><# @><extention>" 
+
+Name: Maya fcheck 2010
+C:\windows\system32\cmd.exe /c start "" "C:\Program Files\Autodesk\Maya2010\bin\fcheck.exe" -n <start> <end> <step> "<basename><# @><extention>" 
+
+Name: Maya fcheck 2011
+C:\windows\system32\cmd.exe /c start "" "C:\Program Files\Autodesk\Maya2011\bin\fcheck.exe" -n <start> <end> <step> "<basename><# @><extention>" 
+
+Name: Maya fcheck 2012
+C:\windows\system32\cmd.exe /c start "" "C:\Program Files\Autodesk\Maya2012\bin\fcheck.exe" -n <start> <end> <step> "<basename><# @><extention>" 
+
+Name: Maya fcheck 2013
+C:\windows\system32\cmd.exe /c start "" "C:\Program Files\Autodesk\Maya2013\bin\fcheck.exe" -n <start> <end> <step> "<basename><# @><extention>" 
+
+
+Name: RV
+"C:\Program Files\Tweak\RV\bin\rv.exe" "<basename>%0<padding>d<extention>" <gamma -sRGB >
+
+Name: RV Stereo 
+"C:\Program Files\Tweak\RV\bin\rv.exe"  [ "<chn_basename>%0<padding>d<chn_extention>" "<basename>%0<padding>d<extention>"   ] <gamma -sRGB >
+
+
+#####################################################################################
+[LINUX]
+#####################################################################################
+
+Name: djv_view
+/usr/local/djv/bin/djv_view "<basename><startPadding>-<endPadding><extention>"
+
+
+Name: Maya fcheck 2010
+/usr/autodesk/maya2010/bin/fcheck -n <start> <end> <step> "<basename><# @><extention>"
+
+Name: Maya fcheck 2011
+/usr/autodesk/maya2011/bin/fcheck -n <start> <end> <step> "<basename><# @><extention>"
+
+Name: Maya fcheck 2012
+/usr/autodesk/maya2012/bin/fcheck -n <start> <end> <step> "<basename><# @><extention>"
+
+Name: Maya fcheck 2013
+/usr/autodesk/maya2013/bin/fcheck -n <start> <end> <step> "<basename><# @><extention>"
+
+
+
+
+#####################################################################################
+[MAC]
+#####################################################################################
+
+
+Name: djv_view
+/Applications/djv-0.8.3-pre2.app/Contents/MacOS/djv-0.8.3-pre2 "<basename><startPadding>-<endPadding><extention>"
+
+
+Name: RV
+/Applications/RV64.app/Contents/MacOS/RV64 "<basename>%0<padding>d<extention>"
+
+Name: RV Stereo
+/Applications/RV64.app/Contents/MacOS/RV64 [ "<chn_basename>%0<padding>d<chn_extention>" "<basename>%0<padding>d<extention>" ]
+
+

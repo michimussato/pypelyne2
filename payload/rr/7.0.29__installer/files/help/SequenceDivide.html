@@ -1,0 +1,181 @@
+﻿<html>
+	
+<head>
+	<title>Sequence Divide</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("SequenceDivide");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Sequence Divide</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="InfosrrTerms.html">Infos/rrTerms</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="InfosrrTerms.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="PreviewRender.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="UserforrrService1.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">What is Sequence divide ?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Most of the RR jobs have Sequence Divide enabled.</span></p>
+<p class="rvps3"><span class="rvts8">With Sequence divide the Server sends the frame range in segments to the clients.</span></p>
+<p class="rvps3"><span class="rvts8">The size of the segment (Not the number of segments) depends on the Min/Max Frames settings for Sequence Divide.</span></p>
+<p class="rvps3"><span class="rvts8">Frames have been send to a client are blue in the framebar.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">An example:</span></p>
+<p class="rvps3"><span class="rvts8">Your scene frame range is 200.</span></p>
+<p class="rvps3"><span class="rvts8">Sequence Divide Min/Max frames is set to 10/10.</span></p>
+<p class="rvps3"><span class="rvts8">The server will send the job 20 times to a client, each time the client gets 10 frames to render.</span></p>
+<p class="rvps3"><span class="rvts8">There will be at max 20 clients rendering the job, not more. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Why min and max?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The min/max gives the server a little bit latitude.</span></p>
+<p class="rvps3"><span class="rvts8">For example if you have only a few free clients, then the server will send larger segments.</span></p>
+<p class="rvps3"><span class="rvts8">If you have a slower client, it will get a smaller segment.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">What should I set as min/max ?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The min/max values depend on your frame render and scene load time.</span></p>
+<p class="rvps3"><span class="rvts8">Then it also depends on your company, how many machines you have and what your total render load is.</span></p>
+<p class="rvps3"><span class="rvts8">If your scene takes very long to load, you would probably use higher values as the clients have to load the scene file for every render segment they get.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The min value is good if a client renders at least 15-30 minutes on a segment.</span></p>
+<p class="rvps3"><span class="rvts8">Thje max value should not let a client render for more than 3 hours. Cause while a client has a render segment, the server can not average clients between user nor projects. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Auto-adjusted by server ?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If the min/max settings are to low, then the server tries to increase them.</span></p>
+<p class="rvps3"><span class="rvts8">A client should at least render 2-3 minutes on a segment, otherwise the overhead will be to high and it can even happen that not all your clients are rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The server will adjust the sequence size, if the clients are rendering less than 60 seconds on a segment.</span></p>
+<p class="rvps3"><span class="rvts8">The reasons for this adjust are:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">You increase your render time per frame with the load time of the scene file.</span></li>
+<li class="rvps3"><span class="rvts8">There is a small delay in sending jobs to clients. This is caused by technical limitations or explicit implemented delays to reduce fileserver usage.</span><br/><span class="rvts8"><br/></span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Comparison render time:</span></p>
+<p class="rvps3"><span class="rvts8">The pure frame render time is 20 seconds.</span></p>
+<p class="rvps3"><span class="rvts8">Then it takes 60 seconds for the render application to start up, load the scene and all textures.</span></p>
+<p class="rvps3"><span class="rvts8">Your scene has 200 frames.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Two results of the example with different min/max settings:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="60%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 204px; height: 18px;"><p class="rvps3"><span class="rvts8">min/max = 2 </span></p>
+</td>
+<td style="width: 1087px; height: 18px;"><p class="rvps3"><span class="rvts8">You send 2 frames to each client, your total time will be (60s+2*20s)= 100s.</span><br/><span class="rvts8">Your effective render time per frame is now 100s/2= 50s. You just doubled your frame time.</span><br/><span class="rvts8">The whole scene takes 200*50s = </span><span class="rvts58">167 minutes = 2,7 hours</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 204px;"><p class="rvps3"><span class="rvts8">min/max = 10</span></p>
+</td>
+<td style="width: 1087px;"><p class="rvps3"><span class="rvts8">Your total time for a segment will be (60s+10*20s)= 260s.</span><br/><span class="rvts8">Your effective render time per frame is 260s/10= 26s. Almost no loss.</span></p>
+<p class="rvps3"><span class="rvts8">The whole scene takes 200*26s = </span><span class="rvts58">86 minutes = 1.4hours</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Comparison render farm efficiency:</span></p>
+<p class="rvps3"><span class="rvts8">The pure frame render time is 20 seconds.</span></p>
+<p class="rvps3"><span class="rvts8">This time we take a small application startup time like 30s for the render application to start up, load the scene and all textures.</span></p>
+<p class="rvps3"><span class="rvts8">In the worst case, RR needs 6 seconds until the job is started at the rrClient.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Two results of the example with different min/max settings:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="60%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 204px; height: 18px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">min/max = 2 </span></p>
+</td>
+<td style="width: 1087px; height: 18px;"><p class="rvps3"><span class="rvts8">Let's assume the server sends a segment every 5 seconds.</span><br/><span class="rvts8">A client takes 76s to render a segment. In these 76s the server can send jobs to 76s/5s= 15 clients.</span></p>
+<p class="rvps3"><span class="rvts8">After 15 clients got their job, the first is idle again. So it gets a new one.</span></p>
+<p class="rvps3"><span class="rvts8">This way the 16th client will never get a job. </span><br/><span class="rvts58">You are stuck to a max of 15 clients rendering. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 204px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">min/max = 10</span></p>
+</td>
+<td style="width: 1087px;"><p class="rvps3"><span class="rvts8">Let's assume the server sends a segment every 5 seconds.</span><br/><span class="rvts8">A client takes 236s to render a segment. In these 236s the server can send jobs to 236s/5s= 47 clients.</span></p>
+<p class="rvps3"><span class="rvts58">You get 47 clients rendering. </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">"Disable" Sequence Divide</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you set Sequence Divide Min to 0, then the sequence is not divided.</span></p>
+<p class="rvps3"><span class="rvts8">All frames are send at once to one client.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. for simulation pre-passes.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

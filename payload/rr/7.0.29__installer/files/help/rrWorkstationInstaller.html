@@ -1,0 +1,256 @@
+﻿<html>
+	
+<head>
+	<title>rrWorkstationInstaller</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrWorkstationInstaller");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrWorkstationInstaller</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrViewer.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Renderer.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">The workstation installer is used to install local RRender applications, submission plugins and configurations on the workstation.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The workstation installer supports the following commandline options to run in an automatic install mode.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Linux Note:</span></p>
+<p class="rvps3"><span class="rvts8">Although the commandline mode does not require XWindows on Linux, the application itself requires the libXrender.so.1 to start.</span></p>
+<p class="rvps3"><span class="rvts8">If you have Linux without any XWindows, then you have to install the libXrender package.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="30%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 91px;"><p class="rvps3"><span class="rvts8">-deinstall</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 283px;"><p class="rvps3"><span class="rvts8">Deinstall (otherwise it installs)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 91px;"><p class="rvps3"><span class="rvts8">-plugins</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 283px;"><p class="rvps3"><span class="rvts8">Plugins</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 91px;"><p class="rvps3"><span class="rvts8">-service</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 283px;"><p class="rvps3"><span class="rvts8">rrClient service</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 91px;"><p class="rvps3"><span class="rvts8">-serviceServer</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 283px;"><p class="rvps3"><span class="rvts8">rrServer service</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Linux:</span></p>
+<div class="rvps3"><table width="60%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 93px;"><p class="rvps3"><span class="rvts8">-allowShutdown</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 671px;"><p class="rvps3"><span class="rvts8">Allow daemons and all users logged in to shutdown and restart this machine. (changes etc/pam.d)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 93px;"><p class="rvps3"><span class="rvts8">-rrUser [username]</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 671px;"><p class="rvps3"><span class="rvts8">set the user name that the daemon will use to start the RR application</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Windows:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">-adduser</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1187px;"><p class="rvps3"><span class="rvts8">add service user to local admin group</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">-startmenu</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1187px;"><p class="rvps3"><span class="rvts8">add RR apps to Start menu</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">-registerRRC</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1187px;"><p class="rvps3"><span class="rvts8">register .rrc files with rrViewer</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">-disableQuota</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1187px;"><p class="rvps3"><span class="rvts8">disable quota on HDD for service use</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">-disableReports</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1187px;"><p class="rvps3"><span class="rvts8">disable windows error reporting</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">-disableUAC</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1187px;"><p class="rvps3"><span class="rvts8">Disable windows User Account Control</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Plugins</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RRender offers Submission plugins for some render applications.</span></p>
+<p class="rvps3"><span class="rvts8">The Workstation Installer searches for all versions of all render applications with plugins and installs the appropriate plugin.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can write own plugins and make them aware to the Workstation Installer. See section Customization for details.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Allow Shutdown</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">By default the command /usr/bin/poweroff is configured that it can only be executed from root.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore if the client runs as a daemon, it can not restart nor shutdown the machine.</span></p>
+<p class="rvps3"><span class="rvts8">You should leave it enabled.</span></p>
+<p class="rvps3"><span class="rvts8">If you do not want an automated shutdown, disable it in the rrClient settings, not via this option. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Disable UAC</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This is required if the client runs as service.</span></p>
+<p class="rvps3"><span class="rvts8">Some applications like After Effects or Maya will otherwise crash.</span></p>
+<p class="rvps3"><span class="rvts8">UAC is the message in windows that asks you for the admin pass if you want to change system settings.</span></p>
+<p class="rvps3"><span class="rvts8">Without it, an admin is not asked any more to re-enter its pass.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Disable Windows Error Reports</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">(Windows Only):</span></p>
+<p class="rvps3"><span class="rvts8">If an application crashes on windows, then you get either</span></p>
+<p class="rvps3"><span class="rvts8">an dialog that asks you if you want to send informations to support</span></p>
+<p class="rvps3"><span class="rvts8">or an dialog that tells you that your application crashed with error 0xC0xxxxx</span></p>
+<p class="rvps3"><span class="rvts8">If a render process crashes with such an message dialog, it is halted.</span></p>
+<p class="rvps3"><span class="rvts8">And the rrClient does not continue to render.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To keep the farm going, the error report dialogs should be disabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Small Disadvantage:</span></p>
+<p class="rvps3"><span class="rvts8">If an artists is working with an application that crashed, he does not get these dialogs "Application crashed 0xC0000xxxx. &lt;OK&gt;" or "Debug Program?" or "Find Error?"</span></p>
+<p class="rvps3"><span class="rvts8">The application disappears without this message.</span></p>
+<p class="rvps3"><span class="rvts8">But 99% of the artists do not require a dialog that tells them that their application will disappear after they hit &lt;OK&gt;. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Register .rrc files with rrViewer</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use the &lt;View&gt; or &lt;Play&gt; button at the rrWebsite, then you have to register the file type .rrc.</span></p>
+<p class="rvps3"><span class="rvts8">The files are opened by rrViewer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Service user - Add to local admins</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">(Windows Only):</span></p>
+<p class="rvps3"><span class="rvts8">As the user that runs the client should be a local admin, this checkbox adds it to the local admin group.</span></p>
+<p class="rvps3"><span class="rvts8">If it is already in a local admin group or domain admin group, you can disable this checkbox. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Service user - Disable HDD quota</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">(Windows Only):</span></p>
+<p class="rvps3"><span class="rvts8">Some companies have set a disk quota (disk space restrictions) for all users on a workstation.</span></p>
+<p class="rvps3"><span class="rvts8">The Service user should not be restricted as the client requires space for</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Software installers executed via RR.</span></li>
+<li class="rvps3"><span class="rvts8">Copied Shared Executables (The client is able to sync a complete render application, e.g. Renderman, Lightwave to the local drive)</span></li>
+<li class="rvps3"><span class="rvts8">Render temp files</span></li>
+<li class="rvps3"><span class="rvts8">Local Scene caches</span></li>
+<li class="rvps3"><span class="rvts8">Local texture caches</span></li>
+<li class="rvps3"><span class="rvts8">Local rendered image files </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Start Menu Shortcuts</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">(Windows Only):</span></p>
+<p class="rvps3"><span class="rvts8">Installs shortcuts to the main RR applications in the start menu.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">rrService</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It is recommended to start the rrClient and rrServer via a the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Installation/Permanent/Service/Service.htm">rrService</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">The rrService checks for the execution of rrClient/rrServer and restarts them if required.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To install the rrService, you need to set</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Local Installation Directory</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The service executable needs to be copied to the local harddrive of your workstations.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;This way it will be available on system startup.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">User</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;User login for your fileserver. See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/rrApplications/rrWorkstation_I/rrWorkstation_Installer.htm">rrTerms/ User for rrService</a><span class="rvts8"> for more information.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Local Data Folder</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;local folder for temp files and cached data. See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/rrApplications/rrWorkstation_I/%25LINK%254500_rrTerms/Local%2520Data%2520Folder/Local%2520Data%2520Folder.htm%25">rrTerms/ Local Data Folder</a><span class="rvts8"> for more information. </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

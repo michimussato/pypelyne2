@@ -1,0 +1,51 @@
+<html>
+<head></head>
+<body>
+<table width="100%" border="0" CELLSPACING="0" CELLPADDING="0"><tr height="4" ><td bgcolor="#666666">
+<font size="+0" color="white"><b>&nbsp;&nbsp;&nbsp;Before Installation</b></font>
+</td></tr></table><br>
+<br>
+<a name="Create_a_folder_on_a_fileserver"><b>Create a folder on a fileserver (fileserver CAN be the rrServer, but does NOT HAVE TO be the same machine)</b></a>
+<table border="0" cellspacing="0" cellpadding="0"><tr>
+<td>
+<ul><li>Royal Render uses one shared directory for all program and config files. All machines (server, clients and submitter) are starting RRender from this share. </li>
+<li>Create a folder on a fileserver. It can be a subdirectory of an existing network share or create a new network share for Royal Render. E.g. \\Fileserver\YourShare\RoyalRender or \\Fileserver\RoyalRenderShare. </li>
+<li>This folder needs to be accessable by everyone who submit render jobs as well as all render clients. </li>
+<li>The network share should be on a fileserver that runs Linux or Windows Server. Other OS (Win2k, XP) does not allow more than 10 network share connections, you are limited to a max of 10 clients. <br>
+(Windows Server Foundation is enough, but can only be bought bundled with hardware)</li>
+</ul>
+</td>
+</tr></table><br>
+<br>
+<a name="Set_a_fixed_IP_for_rrServer"><b>Set a fixed IP for rrServer</b><br></a>
+By default all RRender programs are connecting to the server via its IP.<br>
+So your rrServer machines should have a fixed IP and not a variable IP assigned by a DHCP server.<br>
+<br>
+<table width="100%" border="0" CELLSPACING="0" CELLPADDING="0"><tr height="4" ><td bgcolor="#666666">
+<font size="+0" color="white"><b>&nbsp;&nbsp;&nbsp;Installation</b></font>
+</td></tr></table>
+<br>
+
+Information: <br>
+The rrServer and rrClient can be started either<ul><li>Manually: <br>
+Runs with the user account, no login settings required, no fileserver access check. </li><li>via Service/Daemon: <br>
+Starts automatically with the machine. Nobody has to login into the machine, required for auto-shutdown and WOL, someone logged in can not automatically access the render data, recommended solution.
+In this help chapter this is named "permanent installation".</li></ul><br>
+For the basic installation you just start them manually.<br>
+<table border="0"  cellspacing="0" cellpadding="0"><tr><td><ol ><li><u>RR Program Files:</u><br>
+Execute rrSetup, use the browse button and select your RR Root Directory (The shared network folder you created). </li><li><u>rrServer:</u><br>
+Start rrServerconsole on the computer you want to use as server. The server handles the job database and controls all clients.<br>
+The server can be of any OS (XP, Vista, Windows Server, Linux)<br>
+The server does not require to be a fast machine. A dual 1.5 Ghz machine with 1GB RAM is sufficient for a bigger farm.<br>
+The rrServer creates the basic config files. From now the Server runs on this machine ONLY! </li><li><u>Config (optional):</u><br>
+Start rrConfig to change the basic configuration. </li><li><u>Clients: </u><br>
+Start rrClient on machines you want to use to render. Every client adds its configuration to the client configfile. </li><li><u>Submission:</u><br>
+Start rrWorkstation_installer on machines you want to use to submit jobs.<br>
+Install the <b>submission plugins only</b>. <br>
+For this basic test, you can/should uncheck everything else (e.g. service installation). </li><li><u>Permanent installation:</u><br>
+Please refer to the help section "permanent installation" how to install the services and other details. </li></ol></td></tr></table>
+
+
+<br><br><br>
+
+</body></html>

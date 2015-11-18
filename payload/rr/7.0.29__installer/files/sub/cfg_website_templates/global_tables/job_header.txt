@@ -1,0 +1,24 @@
+
+<table border="0" CELLSPACING="1" CELLPADDING="0">
+  <THEAD>
+    <TR>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;<%CurrentRowNumber%>&nbsp;</font> </span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;ID</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">Name</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">Software</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000">&nbsp;</span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;&nbsp;Scene</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;&nbsp;Layer</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;&nbsp;Camera</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;Frames</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">Done</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">Left</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;Till&nbsp;now</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">Remain</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">frame <br> time</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">Prio</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">&nbsp;&nbsp;Status</font></span></TH>
+      <TH onmousemove="doColumnResize(this,event)"  onmouseover="doColumnResize(this,event)" onmouseout='doneColumnResizing()' style='width:10px' bgcolor="#000000"><span class="nowrap"><font color="FFFFFF">Cl.</font></span></TH>
+    </TR>
+  </THEAD> 

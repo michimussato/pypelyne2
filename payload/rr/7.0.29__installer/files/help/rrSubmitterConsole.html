@@ -1,0 +1,591 @@
+﻿<html>
+	
+<head>
+	<title>rrSubmitterConsole</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrSubmitterConsole");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrSubmitterConsole</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrSubmitter.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrViewer.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">You can use the rrSubmitterconsole to submit jobs without any UI.</span></p>
+<p class="rvps3"><span class="rvts8">It is completely commandline-based.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have multiple ways to specify all required scene informations:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 140px;"><p class="rvps3"><span class="rvts8">1. </span><a class="rvts20" href="Submission.html">xml Submission</a><a class="rvts20" href="Submission.html"> </a></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 844px;"><p class="rvps3"><span class="rvts8">The rrSubmitterconsole can read the .xml files that are written by all submission plugins (e.g. the ones inside Softimage, Maya or Max).</span></p>
+<p class="rvps3"><span class="rvts8">So you can modify the submission plugins slightly and get a silent submit without any UI.</span></p>
+<p class="rvps3"><span class="rvts8">Use the .xml file instead of the [Scene] parameter at the commandline.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 140px; height: 15px;"><p class="rvps3"><span class="rvts8">2. </span><span class="rvts8">Scene parser</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 844px; height: 15px;"><p class="rvps3"><span class="rvts8">If you use a scene format which is supported by an scene parser plugin ([RR]\plugins\submitter_sceneparser\), then RR will read all information via this scene parser.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 140px;"><p class="rvps3"><span class="rvts8">3. Commandline Flags </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 844px;"><p class="rvps3"><span class="rvts8">All Scene Information can be set via commandline flags. You can also combine it with 1. or 2. to overwrite specific settings.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Commandline flags</span></span></h1>
+<p class="rvps3"><span class="rvts8"></span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">Usage:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [Scene/rrJob xml] [Flags] [Scene Information] [Submitter options]</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">With or without - (minus) in front of the parameter:</span></p>
+<p class="rvps3"><span class="rvts8">A - (minus) is only used for the [Flags] and [Scene Information]</span></p>
+<p class="rvps3"><span class="rvts8">Overrides for the [Submitter options] have the same syntax as in the submitter config files. Therefore no -.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Using quotation marks ("):</span></p>
+<p class="rvps3"><span class="rvts8">If you use spaces inside a parameter, then you need to use quotation marks " at front and at the end of the parameter.</span></p>
+<p class="rvps3"><span class="rvts8">Do not use quotation marks in the middle of a parameter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Short name:</span><span class="rvts8"> Each commandline parameter has a long and short name.</span></p>
+<p class="rvps3"><span class="rvts8">The short name is the combination of all upper-case letters.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">[Scene]</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The first commandline flag has to be the scene name.</span></p>
+<p class="rvps3"><span class="rvts8">If the scene extension is known by a sceneparser plugin, the plugin will read the file.</span></p>
+<p class="rvps3"><span class="rvts8">Note: If you do NOT want that the submitter tries to read the scene, use the flag "-NoAutoSceneRead"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The scene file can be a .xml file like the ones that are created by all submission plugins.</span></p>
+<p class="rvps3"><span class="rvts8">(This way you can easily submit scenes automatically, you just have to copy and modify the submission plugins)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">[Flags]</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">These flags only change the behavior of the submitter, but have (almost) no influence one the submitted job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Available flags are:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-NoAutoSceneRead</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><p class="rvps3"><span class="rvts8">-NASR</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">No not try to read the scene file with a scene parser plugin.</span></p>
+<p class="rvps3"><span class="rvts8">If you set this flag, then you have to tell RR all informations about the scene via the Scene Information flags.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-AutoDeleteEnabled</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><p class="rvps3"><span class="rvts8">-ADE</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">Delete all rendered frames before submitting the job(s). </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-NoSceneExistCheck</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><p class="rvps3"><span class="rvts8">-NSEC</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">The submitter does not check if the scene file exists.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-SendLayerOnly "layerName"</span></p>
+<p class="rvps3"><span class="rvts8">-SendLayerOnly layerNumber</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><p class="rvps3"><span class="rvts8">-SLO</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">By default the submitter sends all layers/passes to the server. If you define -SendLayerOnly "MyLayerName" it will only send this layer.</span></p>
+<p class="rvps3"><span class="rvts8">You can either specify the name of the layer or the number of the job in the rrSubmitter list. 1=first job, 2=second job....</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-Wait</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><br/>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">Waits a few seconds after the submission was done. This is for testing purposes to see the submission results in case the command prompt sindows closes directly after submission. -Wait is stackable (two flags -Wait wait twice as long) </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-NoDriveToUNC</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><br/>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">Windows only: Do not resolve drive letters into UNC paths.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-NoOutFolderCreation</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><br/>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">The rrSubmitter will not try to create the output folder of the job.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 196px;"><p class="rvps3"><span class="rvts8">-SetOutFolderUserRights</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 78px;"><br/>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1005px;"><p class="rvps3"><span class="rvts8">The rrSubmitter will modify the user rights of the output folder of the job. </span><br/><span class="rvts8">-NoOutFolderCreation must NOT set.</span></p>
+<p class="rvps3"><span class="rvts8">The folder gets read/write access for all users. &nbsp; </span></p>
+<p class="rvps3"><span class="rvts8">Windows: Inherited permissions are kept.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">[Scene Information]</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The submitter requires informations about the job, e.g. software to render or filename of the rendered frames.</span></p>
+<p class="rvps3"><span class="rvts8">If you do not specify an information, a default value will be uses (in most cases an empty value)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If the submitter has read the scene via a scene-parser plugin, then these parameter overwrite the informations read from the scene.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">These parameters and values are the same as in the .xml files created by every submission plugin.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">Long name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">Short name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-SceneOS &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-SOS</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">The format of all texture and image paths in the scene. Possible values are: win, lx, mac. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-SceneDatabaseDir &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-SDD</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Database directory of the scene (also called Project or Content directory in your 3D application). Only required for Maya, XSI and Lightwave. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-RequiredLicenses &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-RL</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Used to count the render licenses in RR.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-Camera &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-C</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-Channel &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-CN</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-Layer &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-L</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-ImageDir &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-ID</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-ImageFileName &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-IF</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-ImageExtension &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-IE</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-ImageFramePadding &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-IFP</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-ImageWidth &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-IW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-ImageHeight &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-IH</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-ImageSingleOutputFile &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-ISO</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Is the output file a single file? (Quicktime, .avi, . wmv) Set value to "1" or "true".</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-PreID &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-PID</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">A value between 0 and 255. Each job gets the Pre ID attached as small letter to the main ID. It is the the small letter at the end of the ID.</span></p>
+<p class="rvps3"><span class="rvts8">If you submit multiple jobs that are from the same scene or should be shown as the same submission, then you should always use a preID. Increase it with every submission of that scene. The jobs are visually connected due to a similar{ID} and you can group them in rrControl.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-WaitForPreID &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-WID</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">When the job is received by the server, the server checks for other jobs send from the machine in the last 15 minutes.</span></p>
+<p class="rvps3"><span class="rvts8">The server then gets the latest job with the same PreID as the WaitForPreID. This jobs waits for the other job.</span></p>
+<p class="rvps3"><span class="rvts8">Note: This flag can be used multiple times to wait for multiple jobs. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-SeqStart &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-QS</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-SeqEnd &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-QE</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-SeqStep &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-QP</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-SeqFileOffset &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-QFO</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-OverrideImageFormat &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-OIF</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Some render applications just work if you change the -ImageExtension to a different format.</span></p>
+<p class="rvps3"><span class="rvts8">But others not, they require a special commandline flag to override the image format.</span></p>
+<p class="rvps3"><span class="rvts8">&lt;value&gt; does not mean that you just enter the extension .exr or .sgi.</span></p>
+<p class="rvps3"><span class="rvts8">As there can be sgi 8 or 16 bit. Exr half, float...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please check your render config of the renderer you use RR\render_apps\_config\...</span></p>
+<p class="rvps3"><span class="rvts8">Search for "OverrideImageFormat".</span></p>
+<p class="rvps3"><span class="rvts8">If is in the commandline, you can use/have to use this flag.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Next step is to check for the &lt;value&gt;.</span></p>
+<p class="rvps3"><span class="rvts8">This should either be covered in the help files of the render application</span></p>
+<p class="rvps3"><span class="rvts8">or you can search if the render configs already includes presets for possible overrides. (Presets are set in the config file that you can see them in a dropdown at rrSubmitter)</span></p>
+<p class="rvps3"><span class="rvts8">Search for "ImageTypes=". The specification of this line is "ImageTypes= name ~ flag ~ extension". Use flag for -OverrideImageFormat &lt;value&gt;.</span></p>
+<p class="rvps3"><span class="rvts8">Example:</span></p>
+<p class="rvps3"><span class="rvts8">ImageTypes= SGI 16bit~ sgi16 ~sgi</span></p>
+<p class="rvps3"><span class="rvts8">-OverrideImageFormat sgi16</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-IsActive &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-IA</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">If set, then alll jobs are sended. Only required for UI submitter or if the scene was read by a scene-parser. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-Software &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-S</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Render application name. E.g. Softimage, Maya, Nuke </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-Renderer &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-R</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-Version &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-V</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Version of the render application. E.g. 2010, 7.5, 7.01, 3, 3.454 </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-BitRestriction &lt;value&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-BR</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Restricts the bit of the executed render application. Possible values are: 32, 64, all </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-DateSend &lt;DD.MM.YY&gt;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><p class="rvps3"><span class="rvts8">-DS</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Override for the "Date Send" value of the job</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 204px;"><p class="rvps3"><span class="rvts8">-CustomXXXX</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 105px;"><br/>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 966px;"><p class="rvps3"><span class="rvts8">Adds a custom string to the job data. XXXX can be any name. You have up to 5000 letters. (unicode letters 2500)</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">[Submitter Options]</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The previous commandline flags are everything you set for the scene.</span></p>
+<p class="rvps3"><span class="rvts8">But you have a lot of additional RR options like Priority or UserName. These settings are not scene related and usually controlled by "Submitter Defaults Files".</span></p>
+<p class="rvps3"><span class="rvts8">These "Submitter Defaults Files" are stackable and the rrSubmitter commandline is just another stack to these files.</span></p>
+<p class="rvps3"><span class="rvts8">The submitter uses the defaults defined in the "Submitter Defaults Files" located in</span></p>
+<p class="rvps3"><span class="rvts8">\sub\cfg_global\submitter_*.txt</span></p>
+<p class="rvps3"><span class="rvts8">and</span></p>
+<p class="rvps3"><span class="rvts8">\sub\cfg_user\submitter_*.txt</span></p>
+<p class="rvps3"><span class="rvts8">You can use any of the lines in these files as commandline parameter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can take a look at all these option via the rrSubmitter menu "default values", "Edit preset file".</span></p>
+<p class="rvps3"><span class="rvts8">There is an </span><a class="rvts20" href="Examplefile.html">example file</a><span class="rvts8"> with all settings in this help as well.</span></p>
+<p class="rvps3"><span class="rvts8">If you get &nbsp;new pre/post-scripts, they will not be added to existing files. You have to create a new preset file for e.g. the machine (the file must not exists). The rrSubmitter will add all existing parameters and pre/post/finished-scripts</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Commandline parameter examples:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Changing the Project Name:</span></p>
+<p class="rvps3"><span class="rvts8">Long: rrSubmitterconsole myscene.scn "CompanyProjectName=0~myProjectName"</span></p>
+<p class="rvps3"><span class="rvts8">Short: rrSubmitterconsole myscene.scn "CPN=0~myProjectName"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Changing the assigned client group:</span></p>
+<p class="rvps3"><span class="rvts8">Long: rrSubmitterconsole myscene.scn "DefaultClientGroup=0~SoftimageGroup"</span></p>
+<p class="rvps3"><span class="rvts8">Short: rrSubmitterconsole myscene.scn "DCG=0~myProjectName"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Changing the color of the job:</span></p>
+<p class="rvps3"><span class="rvts8">Long: rrSubmitterconsole myscene.scn "Color_ID=0~5"</span></p>
+<p class="rvps3"><span class="rvts8">Short: rrSubmitterconsole myscene.scn "C_ID=0~5"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Changing the Scene/Shot/Version of the job:</span></p>
+<p class="rvps3"><span class="rvts8">Long: rrSubmitterconsole myscene.scn "CustomSCeneName=1~Title" "CustomSHotName=1~02" "CustomVersionName=1~23b"</span></p>
+<p class="rvps3"><span class="rvts8">Short: rrSubmitterconsole myscene.scn "CSCN=0~Title" "CSHN=0~02" "CVN=0~23b" </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"CustomUserInfo=0~My custom message for the job"</span></p>
+<p class="rvps3"><span class="rvts8">"CUI=0~My custom message for the job"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"RenderPreviewFirst=0~1"</span></p>
+<p class="rvps3"><span class="rvts8">"RPF=0~1"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"SeqDivMINComp=0~10"</span></p>
+<p class="rvps3"><span class="rvts8">"SDMINC=0~10"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"SeqDivMIN=0~10"</span></p>
+<p class="rvps3"><span class="rvts8">"SDMIN=0~10"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"UserName=0~myUserName"</span></p>
+<p class="rvps3"><span class="rvts8">"UN=0~myUserName"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"CustomSeQName=1~P12" "CustomSHotName=1~50" "CustomVersionName=1~3B"</span></p>
+<p class="rvps3"><span class="rvts8">"CSCN=1~P12" "CSHN=1~50" "CVN=1~3B"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Short name:</span><span class="rvts8"> Each commandline parameter has a long and short name.</span></p>
+<p class="rvps3"><span class="rvts8">The short name is the combination of all upper-case letters, underscores _ and hyphen -.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Allow Change:</span></p>
+<p class="rvps3"><span class="rvts8">Each submitter config parameter has an "Allow Change (AC)" setting.</span></p>
+<p class="rvps3"><span class="rvts8">If you use the commandline submitter, then you should set it to 0.</span></p>
+<p class="rvps3"><span class="rvts8">It means that it has to be used and cannot be changed further by the submitter.</span></p>
+<p class="rvps3"><span class="rvts8">(It usually does not, but perhaps there are other affecting settings in other config files)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Test your commandline</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to test your commandline and if all options are set right (especially the Submitter Options), then you should try it with the UI version, the rrSubmitter instead.</span></p>
+<p class="rvps3"><span class="rvts15">The rrSubmitter takes exactly the same commandline flags,</span><span class="rvts8"> but you can directly see which options are set and which not. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Example commandlines</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Archive Render (.mi, .rib, .ifd)</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To automatically submit an archive render sequence (.ifd, .mi, .rib) files, you only need to specify one file of the sequence as scene name.</span></p>
+<p class="rvps3"><span class="rvts8">So it would be</span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole \\fileserver\share\projects\some_job\shots\101\ifd\render\frame_001.ifd </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">WaitFor</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to submit two jobs, but the second one has to wait for the first one:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [mySceneA] -PreID 1</span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [mySceneB] -PreID 2 -WaitForID 1</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Short version:</span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [mySceneA] -PID 1</span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [mySceneB] -PID 2 -WID 1 #</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">XSI scene</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The scene reader of the rrSubmitter can only read .scntoc files, not .scn files, so you either have to:</span></p>
+<p class="rvps3"><span class="rvts8">1) Use the .scntoc as scene flag. The sceneparser plugin can read all Basic Scene Information from the .scntoc.</span></p>
+<p class="rvps3"><span class="rvts8">This is pretty simple:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [yourScene].scntoc</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">2) Use the .scn file as scene flag and tell the rrSubmitter all Basic Scene Information (image output, extension, sequence start/end) via the commandline.</span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [yourScene].scn -Layer PassName -ImageDir \\Fileserver\Share\outDir -ImageFileName beauty. -ImageExtension .pic -SeqStart 1 -SeqEnd 150 -SeqStep 1</span></p>
+<p class="rvps3"><span class="rvts8">Short version:</span></p>
+<p class="rvps3"><span class="rvts8">rrSubmitterconsole [yourScene].scn -L PassName -ID \\Fileserver\Share\outDir -IF beauty. -IE .pic -QS 1 -QE 150 -QP 1 </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Speedup Startup</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Starting the rrSubmitterconsole will load about 8-14 MB from the RR folder (without loading the scene parser and notification plugins).</span></p>
+<p class="rvps3"><span class="rvts8">To increase this startup time, please use rrStartlocal.</span></p>
+<p class="rvps3"><span class="rvts8">The second time you start it, it will only require to load about 100Kb from the share (without loading the scene parser and notification plugins).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"%RR_ROOT%\bin\win\rrStartLocal.exe" "rrSubmitterconsole.exe" [your flags for rrSubmitterconsole] </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

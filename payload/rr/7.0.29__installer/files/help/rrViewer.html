@@ -1,0 +1,286 @@
+﻿<html>
+	
+<head>
+	<title>rrViewer</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrViewer");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrViewer</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrSubmitterConsole.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrWorkstationInstaller.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Image Info</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you select a frame, then rrViewer shows information about the frame.</span></p>
+<p class="rvps3"><span class="rvts8">Including format, channels, bitdepth, resolution, file size and date, client that has rendered the frame and a Render time (Dependend on the renderer, the time is either counted for this exact frame or an averaged time of multiple frames)</span></p>
+<p class="rvps3"><span class="rvts8">It also includes information why a frame cannot be loaded/is broken. </span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/imageinfo.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Client Name</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The rrViewer can display the client name in the image thumbnail if either of the following was executed:</span></p>
+<p class="rvps3"><span class="rvts8">a) It is a local render out and the client created cache files for the rrViewer.</span></p>
+<p class="rvps3"><span class="rvts8">b) The clients have collected the frame number from the log file and posted them at the job, Log files, "Frames Rendered".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Frame Caches</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have enabled "Local Render Out" for a job, then the client creates small thumbnail caches while it copies the frame to the fileserver.</span></p>
+<p class="rvps3"><span class="rvts8">Otherwise, if the clients have not created cache files, these caches can also be created by the post-script "Sequence Check" or "Create Web Video".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can disable the cache file creation for large sequences (default &gt;750 frames) or by the type of render application. (by default "Compositing" is disabled).</span></p>
+<p class="rvps3"><span class="rvts8">Please change this setting in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If rrViewer loads a cache file, it shows a small yellow C in the lower edge of the frame.</span><img alt="" style="padding : 1px;" src="lib/cachedisplay.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Full Resolution Viewer</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you double-click on a frame, a full resolution viewer pops up.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">If you select a new frame in the thumbnail table, then the viewer is updated.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Error Analysis</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrViewer is able to show different levels of frame Errors.</span></p>
+<p class="rvps3"><span class="rvts8">The error flags are either creates while the cache files are created or - if there are no caches - while rrViewer loads the frames.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">A frame with an error gets a border of the following colors:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 74px;"><p class="rvps3"><span class="rvts8">Level:</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 560px;"><p class="rvps3"><span class="rvts8">Possible errors: </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #333333; width: 74px; height: 22px;"><p class="rvps3"><span class="rvts71">Info</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 560px; height: 22px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Image to sequence difference high </span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #333333; width: 74px; height: 61px;"><p class="rvps3"><span class="rvts40"><br/></span></p>
+<p class="rvps3"><span class="rvts72">Warning</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 560px; height: 61px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">The Alpha channel is &gt;90% completely filled, but there are single 1-pixel size spots not white.</span></li>
+<li class="rvps3"><span class="rvts8">Image to sequence difference very high </span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #333333; width: 74px;"><p class="rvps3"><span class="rvts73">Error</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 560px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">File broken, image cannot be read.</span></li>
+<li class="rvps3"><span class="rvts8">Render tile missing. (Black square found) </span></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"Image to sequence difference":</span></p>
+<p class="rvps3"><span class="rvts8">If the post-script rrSequencecheck is executed, then it compares the color levels of the file with the average color levels of the whole sequence.</span></p>
+<p class="rvps3"><span class="rvts8">It also computes the total difference between the previous and the next image. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Supported file formats</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="40%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts15">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts15">Extensions</span><span class="rvts15"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts15">Comments</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Windows Bitmap</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.bmol</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Mental Ray ct</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.ct</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">SMPTE DPX, Kodak Cineon</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.cin</span></p>
+<p class="rvps3"><span class="rvts8">.dpx</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">OpenExr</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.exr</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">32bit Integer Object IDs are not supported</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Radiance Picture</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.hdr</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Maya IFF</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.iff</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Jpeg</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.jpg</span></p>
+<p class="rvps3"><span class="rvts8">.jpeg</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Softimage Picture</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.pic</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><br/>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.rla</span></p>
+<p class="rvps3"><span class="rvts8">.rpf</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Silicon Graphics Image</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.sgi</span></p>
+<p class="rvps3"><span class="rvts8">.rgb</span></p>
+<p class="rvps3"><span class="rvts8">.lwi</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Targa</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.tga</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Tagged Image File</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.tif</span></p>
+<p class="rvps3"><span class="rvts8">.tiff</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><p class="rvps3"><span class="rvts8">Tiled Tiffs are not supported.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">YUV4.1.1 Broadcast</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps3"><span class="rvts8">.yuv</span></p>
+<p class="rvps3"><span class="rvts8">.pal</span></p>
+<p class="rvps3"><span class="rvts8">.ntsc</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 252px;"><br/>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

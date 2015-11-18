@@ -1,0 +1,24 @@
+global proc MRconvert_incremental(string $layername, string $miPath, int $startFrame, int $endFrame, int $StepFrame )
+{	
+
+	if ($layername != "") { editRenderLayerGlobals -crl $layername;}
+
+	setAttr "defaultRenderGlobals.startFrame" $startFrame;
+	setAttr "defaultRenderGlobals.endFrame" $endFrame;
+	setAttr "defaultRenderGlobals.byFrameStep" $StepFrame;
+
+	setAttr "defaultRenderGlobals.animation" 1;
+	setAttr "defaultRenderGlobals.periodInExt" 0;
+	setAttr "defaultRenderGlobals.putFrameBeforeExt" 1;
+	setAttr "defaultRenderGlobals.outFormatControl" 0;
+
+
+	if ($layername == "") {
+		print("Exporting  MIFile as \"" + $miPath + "\"\n");
+		Mayatomr -mi -v 5 -file $miPath -perframe 0 -xp "3311111111" -binary;
+	} else {
+		print("Exporting  MIFile Layered as \"" + $miPath + "\"\n");
+		Mayatomr -mi -v 5 -file $miPath -perframe 0 -xp "3311111111" -binary -layer $layername;
+	}
+}
+

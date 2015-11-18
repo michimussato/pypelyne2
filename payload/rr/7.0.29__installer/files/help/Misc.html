@@ -1,0 +1,140 @@
+﻿<html>
+	
+<head>
+	<title>Misc</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Misc");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Misc</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="KnowledgebaseHiddenFeatures.html">Knowledgebase/Hidden Features</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="KnowledgebaseHiddenFeatures.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="View.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="ControlVRayVreddistributedrender.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Easter Game</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can access a small game via the rrControl menu.</span></p>
+<p class="rvps3"><span class="rvts8">It is real fun against a human (on the same keyboard or network), not that much fun against the computer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">rrControl Coffee Image</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Create a file RR\sub\coffee.jpg and start rrControl. Or use a webcam in front of your coffee machine to write that file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">rrControl via VPN</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you are using rrControl via a VPN, you probably want to speed it up.</span></p>
+<p class="rvps3"><span class="rvts8">Here are some tips:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Linux/Windows: Do not try to start the rrControl exeutable file directly.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Use a batch file like the one in the rr root.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;It calls startLocal as a startup wrapper. This will sync the rrControl executable and all required libraries to your local temp folder.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;So the next time you want to start rrControl, you already have it on your machine.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Disable some auto-update features via the rrControl menu "Layout".</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Do not forget to save the Layout for your machine!</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">rrControl loads only informations about jobs of the user and project selected at the dropdown lists.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;To pre-set the selected list value, see the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/rrApplications/rrControl/Commandline_Fla/Commandline_Flags.htm">rrControl commandline flags.</a></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If you delete a job or reset a job with frame delete, then rrControl will delete files of the job.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;This way the server does not have to do this time intensive job.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;But if you are connecting via a VPN, then it could be better to disable this function via the commandline flag.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/rrApplications/rrControl/Commandline_Fla/Commandline_Flags.htm">rrControl commandline flags</a><span class="rvts8">. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Hint: If you also need to submit files and/or view images, then loading all plugins can take some time.</span></p>
+<p class="rvps3"><span class="rvts8">In this case you could copy the whole RR folder.</span></p>
+<p class="rvps3"><span class="rvts8">Then follow the instructions for the config relink file in help section </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Knowledgebase/Setup/rrControl_via_V/rrControl_via_VPN.htm">Move RR program files.</a><span class="rvts8"> </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">How much speed do I gain from adding more machines?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There is no clear answer for that.</span></p>
+<p class="rvps3"><span class="rvts8">If you have a composition file with a small ammount of inputs and a lot of filters/effects, then the file loading/network is not the slow part, the CPUs are.</span></p>
+<p class="rvps3"><span class="rvts8">Using the double ammount of machines could probably almost double the render speed.</span></p>
+<p class="rvps3"><span class="rvts8">This is usally right for 3D renderings as they do not have that many textures/data to load.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">But if there are a lot of inputs/outputs or if you have too many machines, then the network is getting very slow and adding more machines does not speed up the rendering, it could even slow it down as the network and fileserver is overstrained.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">I can not give you a definitive answer. Usally the network/fileserver is the constraining factor.</span></p>
+<p class="rvps3"><span class="rvts8">You can do enough with a gigabit network if the fileserver has a fast connection to a good switch.</span></p>
+<p class="rvps3"><span class="rvts8">But I am not familiar with any (network) hardware to tell you how many machines which NAS and which switch can handle.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Perhaps you can simply do a test:</span></p>
+<p class="rvps3"><span class="rvts8">You need some file sequences with larger files (a few MB) on your fileserver, a lot of files that it take long to copy to the local drive (some temp folder for the test).</span></p>
+<p class="rvps3"><span class="rvts8">Then an application which can tell you how fast in MB/s you it copies/reads files.</span></p>
+<p class="rvps3"><span class="rvts8">Test the speed from one machine to the fileserver.</span></p>
+<p class="rvps3"><span class="rvts8">Then start to copy different image sequences onto different machines.</span></p>
+<p class="rvps3"><span class="rvts8">Then do the speed test again from the first client.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Enabling </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Q-A/Network/How_much_speed_/How_much_speed_do_I_gain_from_adding_more_machines_qm_.htm">Jumbo Frames</a><span class="rvts8"> could help.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

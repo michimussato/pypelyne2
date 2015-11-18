@@ -1,0 +1,158 @@
+﻿<html>
+	
+<head>
+	<title>An rrApplication does not start/work</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("AnrrApplicationdoesnotstartwork");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">An rrApplication does not start/work</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; <a href="Troubleshooting.html">Troubleshooting</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Troubleshooting.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Firewall.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Clientsdonotconnect.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">An rrApplication does not start/work: How to find the problem?</span></span></h1>
+<p class="rvps3"><span class="rvts8">You have followed the steps to install RR, but you an rrClient or rrServer is not connecting/not starting/not working.</span><br/><span class="rvts8">If the rrClient or rrServer does not start, then there are multiple ways to check what's going on.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">1) Watch Application:</span></span><br/><span class="rvts0"><span class="rvts13"> &nbsp; &nbsp;Is the process running at all?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">At first, please start the rrClientconsole or rrServerWatch on the machine where the rrClient or rrServer should be running.</span></p>
+<p class="rvps3"><span class="rvts8">This will start a tray icon which you can double-click to open the UI.</span></p>
+<p class="rvps3"><span class="rvts8">It will tell you in red if the client or server process was not found.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Instead of using the watch application, you can check your Task Manager/System Monitor/Activity Monitor youself.</span></p>
+<p class="rvps3"><span class="rvts8">Use the tab processes and click on the button to show the processes of all users (if the button exists).</span></p>
+<p class="rvps3"><span class="rvts8">If you have installed the client or service as service, then there has to be an process rrAutostartservice. This application is the service/deamon and it should start the client/server and watch over the process.</span></p>
+<p class="rvps3"><span class="rvts8">Search for the processes rrClientconsole.exe or rrServerconsole.exe.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">2) rrApplication log files:</span></span><br/><span class="rvts0"><span class="rvts13"> &nbsp; &nbsp;Did it start at some time? Did it automatically close? </span></span></h2>
+<p class="rvps3"><span class="rvts8">If the rrClient or rrServer have been started and they can write to the RR network folder, then they will write their log file into [RR]\sub\log\....</span></p>
+<p class="rvps3"><span class="rvts8">Even if they close at startup because some important function failed, they should start the log and write the error into that file.</span></p>
+<p class="rvps3"><span class="rvts8">If there is no log from the current time at all, then they have not been able to start or no write access.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If they cannot write to the [RR]\log folder, then please check the local folder for a log file (c:\RR_localdata\, &nbsp;Users/RR_localdata, /usr/local/RR_localdata )</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">3) rrAutostart Service log files:</span></span><br/><span class="rvts0"><span class="rvts13"> &nbsp; &nbsp;Did the service report an error?</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you have installed the rrClient or rrServer as service/deamon, then please check the service installation directory.</span></p>
+<p class="rvps3"><span class="rvts8">By default the path is C:\Program files (x86)\rrService (windows) or /usr/local/rrService (Linux, OSX).</span></p>
+<p class="rvps3"><span class="rvts8">If the service had any issues starting the rrClient/rrServer, then there will be a file named rrAutostartservice_Errors.log in the folder.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Note:</span></p>
+<p class="rvps3"><span class="rvts8">The file can be older, please check the time/date of the log messages.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Debug service log:</span></p>
+<p class="rvps3"><span class="rvts8">If there is no error message, then you can tell the service to report all steps that it does.</span></p>
+<p class="rvps3"><span class="rvts8">Edit the file rrAutostartservice.cfg and change</span></p>
+<p class="rvps3"><span class="rvts8">WriteLogFile = 1</span></p>
+<p class="rvps3"><span class="rvts8">If you now restart the service/machine, it will print detailed information about what it does.</span></p>
+<p class="rvps3"><span class="rvts8">(Note: the service waits 20s after its start before it does anything )</span></p>
+<p class="rvps3"><span class="rvts8">Remember to reset that change after you are done finding the problem.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Possible errors:</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Error</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Description</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">What to do?</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Logon failure: unknown user name or bad password</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">The user/pass that you have setup for the service does not work any more.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Use the rrWorkstationInstaller to reinstall the service.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Source file does not exists! </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">The service can not access the fileserver or the folder.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Please check the rrService user you have set for the rrService. The user is shown in rrAutostartservice.cfg as loginUser=.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please confirm that this rrService user is known to your fileserver. If you want to change the user, please use rrWorkstationInstaller.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please try to login on the machine with the rrService user. Windows can show an advanced error message why the user cannot login.</span><br/><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For more information and debugging service users, please check</span><a class="rvts20" href="UserforrrService1.html"> this page</a><span class="rvts8">.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">4) Manual Start:</span></span><br/><span class="rvts0"><span class="rvts13"> &nbsp; &nbsp;Does the app start at all?</span></span></h2>
+<p class="rvps3"><span class="rvts8">If there is an issue with the client not starting, then try to start it manually in application mode.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Start rrClient or rrClientconsole.</span></p>
+<p class="rvps3"><span class="rvts8">Do you see any error messages? Can it connect?</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

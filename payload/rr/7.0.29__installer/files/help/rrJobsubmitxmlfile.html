@@ -1,0 +1,365 @@
+﻿<html>
+	
+<head>
+	<title>rrJob submit xml file</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrJobsubmitxmlfile");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrJob submit xml file</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; <a href="RenderApplications.html">Render Applications</a> &rsaquo;&rsaquo; <a href="Submissionplugins.html">Submission plugins</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Submissionplugins.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Submissionplugins.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="ExamplerrJob_submitFile.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">XML header</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The XML structure is</span></p>
+<p class="rvps3"><span class="rvts27">&lt;rrJob_submitFile syntax_version="6.0"&gt;</span></p>
+<p class="rvps3"><span class="rvts27">&lt;DeleteXML&gt;1&lt;/DeleteXML&gt;</span></p>
+<p class="rvps3"><span class="rvts27">&lt;Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">...</span></p>
+<p class="rvps3"><span class="rvts27">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">&lt;Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">...</span></p>
+<p class="rvps3"><span class="rvts27">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">&lt;Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">...</span></p>
+<p class="rvps3"><span class="rvts27">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">&lt;Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">...</span></p>
+<p class="rvps3"><span class="rvts27">&lt;/Job&gt;</span></p>
+<p class="rvps3"><span class="rvts27">&lt;/RR_Job_File&gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">DeleteXML:</span></p>
+<p class="rvps3"><span class="rvts8">DeleteXML tells the submitter to delete this file after it has been loaded.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">&lt;Job&gt; &nbsp; &lt;/Job&gt;:</span></p>
+<p class="rvps3"><span class="rvts28">This section includes all scene settings (scene file name, camera, layer, ...) for each job as xml nodes.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><a class="rvts20" href="ExamplerrJob_submitFile.html">Example Submitter file without RR settings</a></p>
+<p class="rvps3"><span class="rvts28">You can add as many jobs to one xml file as you like.</span></p>
+<p class="rvps3"><span class="rvts28">All jobs that are in one file get the same base {ID} in RR. The preID changes automatically.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts8">A Job can be anything, you can create an xml file with</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">only one scene.</span></li>
+<li class="rvps3"><span class="rvts8">one scene with multiple cameras or layers</span></li>
+<li class="rvps3"><span class="rvts8">multiple scene files</span></li>
+<li class="rvps3"><span class="rvts8">multiple scene files of different render applications. (e.g. render with Softimage and directly comp that rendering with Nuke.) </span></li>
+</ul>
+<p class="rvps3"><span class="rvts42"><br/></span></p>
+<p class="rvps3"><span class="rvts42"><br/></span></p>
+<p class="rvps3"><span class="rvts42">Default settings:</span></p>
+<p class="rvps3"><span class="rvts28">You do not have to set everything. If you do not set a parameter in the xml file, then a default is used.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">&lt;Job&gt; XML Attributes - required</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">Software</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">Name of your render application. Same as in the render config file. (Maya, Softimage)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">Renderer</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">Renderer you use. Same as in the render config file (VRay, Mental Ray, Arnold)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">Version</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">Version you want to render with. (5.11, 2010, 12) </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">SceneName</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">Name of the scene file with full path.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">IsActive</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">Is the job enabled for submission?</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">SeqStart,</span></p>
+<p class="rvps3"><span class="rvts8">SeqEnd,</span></p>
+<p class="rvps3"><span class="rvts8">SeqStep,</span></p>
+<p class="rvps3"><span class="rvts8">SeqFileOffset</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Sequence settings of this job</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">ImageDir,</span></p>
+<p class="rvps3"><span class="rvts8">ImageFilename,</span></p>
+<p class="rvps3"><span class="rvts8">ImageExtension</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">If you specify ImageDir, then ImageFilename has no path. If you do NOT specify ImageDir, then ImageFilename has to include the path. Same for ImageExtension.</span></p>
+<p class="rvps3"><span class="rvts15">Important:</span><span class="rvts8"> Do not forget any _ or . in front or after the frame numbering. Usally ImageExtension always starts with a . (.tga .sgi .exr)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">ImagePreNumberLetter</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">Some applications always add a . or _ in front of the frame number. Set this variable to that character. The user can then change the filename at the rrSubmitter and the submitter keeps track of this character.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">ImageSingleOutputFile</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">If you render a single file, e.g. Quicktime or Avi, then you have to set this value. Videos have to be rendered at once on one client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 199px;"><p class="rvps3"><span class="rvts8">SceneOS</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1079px;"><p class="rvps3"><span class="rvts8">The OS the scene was created on, all texture paths are set on that OS. Possible values are windows, linux, osx </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">You can use other job variables as value</span></p>
+<p class="rvps3"><span class="rvts8">Available variables inside variables are:</span></p>
+<p class="rvps3"><span class="rvts8">&lt;User&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;LocalHost&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;NetworkShare&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;CompanyProject&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;Layer&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;Channel&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;CustomScene&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;CustomShot&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;CustomVersion&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;Scene&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;SceneFolder&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;Database&gt;</span></p>
+<p class="rvps3"><span class="rvts8">&lt;../&gt;</span></p>
+<p class="rvps3"><span class="rvts8">Note: If you write your own XML write and you do not use a xml write class, do not forget to escape &lt; and &gt; with &amp;lt; and &amp;gt;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Required for some render applications:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 121px;"><p class="rvps3"><span class="rvts8">SceneDatabaseDir</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 513px;"><p class="rvps3"><span class="rvts8">The database of your scene file. In Maya and XSI called "project", in Lightwave "content dir"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 121px;"><p class="rvps3"><span class="rvts8">ImageWidth,</span></p>
+<p class="rvps3"><span class="rvts8">ImageHeight</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 513px;"><p class="rvps3"><span class="rvts8">Required if you want to split frames on multiple clients</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 121px;"><p class="rvps3"><span class="rvts8">Camera</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 513px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 121px;"><p class="rvps3"><span class="rvts8">Layer</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 513px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 121px;"><p class="rvps3"><span class="rvts8">Channel</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 513px;"><br/>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">&lt;Job&gt; XML Attributes - optional</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 271px;"><p class="rvps3"><span class="rvts8">RequiredPlugins</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1014px;"><p class="rvps3"><span class="rvts8">Used for the RR render license function.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. If you render with mentalRay, then add mentalRay. If you render with Nuke and you use Furnace plugins in your comp, add Furnace.</span></p>
+<p class="rvps3"><span class="rvts8">Render licenses can be set in rrConfig</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 271px;"><p class="rvps3"><span class="rvts8">CustomA, CustomMyData, CustomMore</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1014px;"><p class="rvps3"><span class="rvts8">Custom variables, that can be used in a render config or postscript. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 271px;"><p class="rvps3"><span class="rvts8">ImageFramePadding</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1014px;"><p class="rvps3"><span class="rvts8">Frame Padding of the frame number in the rendered filename. Some render config files are setting the padding at render time.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 271px;"><p class="rvps3"><span class="rvts8">OverrideImageFormat</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1014px;"><p class="rvps3"><span class="rvts8">Some render applications support overriding the image format at the render commandline.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 271px;"><p class="rvps3"><span class="rvts8">ChannelFilename,ChannelExtension</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1014px;"><p class="rvps3"><span class="rvts8">rrControl can display the name of additonal channels that are rendered. Each channel requires these two values. ChannelFilename contains the full path.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 271px;"><p class="rvps3"><span class="rvts8">PreID</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1014px;"><p class="rvps3"><span class="rvts8">A value between 0 and 255. Each job gets the Pre ID attached as small letter to the main ID. A new main ID is generated for every machine for every 5/1000s.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 271px;"><p class="rvps3"><span class="rvts8">WaitForPreID</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 1014px;"><p class="rvps3"><span class="rvts8">When the job is received by the server, the server checks for other jobs send from this machine. If a job with the PreID was found, then this jobs waits for the other job. Note: This flag can be used multiple times to wait for multiple jobs. </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submitter Options</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The &lt;job&gt; flags include everything about the scene.</span></p>
+<p class="rvps3"><span class="rvts8">But you have a lot of additional </span><span class="rvts28">Render parameter (Priority, Verbose, Quality ) and Royal Render options (Which client, Post-scripts, Notification )</span><span class="rvts8">. </span></p>
+<p class="rvps3"><span class="rvts8">These settings are not scene related and usually controlled by "</span><a class="rvts20" href="SubmitterDefaults.html">Submitter Defaults Files</a><span class="rvts8">".</span></p>
+<p class="rvps3"><span class="rvts8">These "Submitter Defaults Files" are stackable. And the rrSubmitter commandline or this .xml is just another stack item for the default settings.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There are two modes:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Global per Submission:</span><br/><span class="rvts8">This is the recommended way.</span><br/><span class="rvts28">Add a global xml node and include the same parameter as you would in a commandline.</span><br/><span class="rvts28">For example an .xml file could start like this:</span><br/><span class="rvts27">&lt;rrJob_submitFile syntax_version="6.0"&gt;</span><br/><span class="rvts27"> &nbsp; &nbsp;&lt;DeleteXML&gt;1&lt;/DeleteXML&gt;</span><br/><span class="rvts27"> &nbsp; &nbsp;&lt;SubmitterParameter&gt; RenderPreviewFirst=1~0 &lt;/SubmitterParameter&gt;</span><br/><span class="rvts27"> &nbsp; &nbsp;&lt;SubmitterParameter&gt; "CustomSeQName=1~345" "CustomSHotName= 1~17a" &lt;/SubmitterParameter&gt;</span><br/><span class="rvts27"> &nbsp; &nbsp;&lt;Job&gt;</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">.</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">.</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts27"> &nbsp; &nbsp; &nbsp; &lt;/Job&gt;</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Local per job:</span><br/><span class="rvts8">You can set these settings per job. But this has some disadvantages:</span><br/><span class="rvts8">1) You will not see the settings in the UI of the rrSubmitter.</span><br/><span class="rvts8">2) &nbsp;Usually the Submitter Default Files "last" and "non_admin" are applied after the artist changes the rrSubmitter UI, sets flags via commandline or via a global xml setting.</span><br/><span class="rvts8">In this case the settings are applied after these files. But before the render config overrides non-valid settings.</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">&lt;Job&gt;</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">&lt;SubmitterParameter&gt; "CustomSeQName=1~345" "CustomSHotName= 1~17a" &lt;/SubmitterParameter&gt;</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">.</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">.</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">.</span><br/><span class="rvts27"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts27">&lt;/Job&gt;</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Some parameter examples (full and short name)</span></p>
+<p class="rvps3"><span class="rvts8">Please read &nbsp;</span><a class="rvts20" href="SubmitterDefaults.html">Submitter Defaults Files</a><span class="rvts8"> for more information about these settings and their names.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"CustomUserInfo=0~My custom message for the job"</span></p>
+<p class="rvps3"><span class="rvts8">"CUI=0~My custom message for the job"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"RenderPreviewFirst=0~1"</span></p>
+<p class="rvps3"><span class="rvts8">"RPF=0~1"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"SeqDivMIN=0~10"</span></p>
+<p class="rvps3"><span class="rvts8">"SDMIN=0~10"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"UserName=0~myUserName"</span></p>
+<p class="rvps3"><span class="rvts8">"UN=0~myUserName"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">"CustomSeQName=1~P12" "CustomSHotName=1~50" "CustomVersionName=1~3B"</span></p>
+<p class="rvps3"><span class="rvts8">"CSCN=1~P12" "CSHN=1~50" "CVN=1~3B"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33">rrControl .xml export?</span></span></h2>
+<p class="rvps3"><span class="rvts28">rrControl can export a job as an XML files.</span></p>
+<p class="rvps3"><span class="rvts28">You can use these xml files to submit jobs.</span></p>
+<p class="rvps3"><span class="rvts28">But submitter options are not loaded as the format is different.</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><a class="rvts20" href="Submissionplugins.html"><br/></a></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts33">Python script</span></span></h2>
+<p class="rvps3"><span class="rvts28">If you want to create your own xml file via python, please take a look in the python script:</span></p>
+<p class="rvps3"><span class="rvts28">RR\render_apps\_submitplugins\rrSubmit_Nuke_5.py</span></p>
+<p class="rvps3"><span class="rvts8">The file includes some functions that will help you to create .xml files.</span></p>
+<p class="rvps3"><span class="rvts28">You will need the two sections:</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">##############################################</span></p>
+<p class="rvps3"><span class="rvts28"># JOB CLASS #</span></p>
+<p class="rvps3"><span class="rvts28">##############################################</span></p>
+<p class="rvps3"><span class="rvts28"><br/></span></p>
+<p class="rvps3"><span class="rvts28">##############################################</span></p>
+<p class="rvps3"><span class="rvts28"># GLOBAL FUNCTIONS #</span></p>
+<p class="rvps3"><span class="rvts28">##############################################</span></p>
+<p class="rvps3"><span class="rvts35"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

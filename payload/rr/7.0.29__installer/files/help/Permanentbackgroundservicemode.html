@@ -1,0 +1,345 @@
+﻿<html>
+	
+<head>
+	<title>Permanent (background service mode)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Permanentbackgroundservicemode");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Permanent (background service mode)</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Installation.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="BasicTestinstallApplicationmode.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="UserforrrService.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Service/Deamon</span></span></h1>
+<p class="rvps3"><span class="rvts8">It is recommended to install a service for Clients and especially for the Server.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The service executable itself is installed on the local harddrive of the machine.</span></p>
+<p class="rvps3"><span class="rvts8">The service will get the latest rrClient/rrServer from the RR network share every time it starts.</span></p>
+<p class="rvps3"><span class="rvts8">The service is automatically started during boot of the machine (Without a service you have to manually start the client)</span></p>
+<p class="rvps3"><span class="rvts8">The service logs in with an user. This user is named for </span><a class="rvts22" href="UserforrrService1.html">rrService User</a><span class="rvts8"> in this help.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Which processes are started?</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">With a service installation, you should have 3 processes running:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">rrAutostartservice:</span><br/><span class="rvts8">Linux/Osx: rrAutostartservice changes its login to the User for rrService. Windows: rrAutostartservice starts rrClient/rrServer with the login of the User for rrService.</span><br/><span class="rvts8">Then it stays in the background and checks in regular intervals if rrClient/rrServer is still running.</span><br/><span class="rvts8">rrServer only: it checks if the main threads are executed. If not, it tells the rrServer to restart or forces a restart.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">rrClient/rrServer:</span><br/><span class="rvts8">rrClientconsole/rrServerconsole is the actual process that does all the rrClient/rrServer work.</span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps3"><span class="rvts8">rrClientwatch/rrServerwatch:</span><br/><span class="rvts8">As it is not allowed/possible for the service to display its UI on the users desktop, therefore you have the rrClientwatch/rrServerwatch application.</span><br/><span class="rvts8">Windows only : This application is started if a user logs in (via startmenu/startup).</span><br/><span class="rvts8">It checks if the actual rrClient/rrServer is running and you can send commands to the main rrClient application.</span><br/><span class="rvts8">By default, it is shown as tray icon. (Windows only: You do not see the tray icon by default, you need to customize your tray to see the watch icon all the time)</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">How to install</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The service can be installed with the </span><a class="rvts20" href="rrWorkstationInstaller.html">rrWorkstationInstaller</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Client run mode</span></span></h1>
+<p class="rvps3"><span class="rvts8">You have to decide how your client will run on workstations of artists.</span></p>
+<p class="rvps3"><span class="rvts8">See help section </span><a class="rvts20" href="rrClient.html#RunOnArtistWorkstation">rrApplications/ rrClient/ Run on artists workstation</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Important rrConfig settings</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Windows Only: Drive mappings </span></span></h2>
+<p class="rvps3"><span class="rvts8">rrConfig, tab "Paths and drives"</span></p>
+<p class="rvps3"><span class="rvts8">If you install the rrServer or rrClient as service, then you do not have any mapped drives. </span></p>
+<p class="rvps3"><span class="rvts8">No matter what you have in your windows environment, the service has its own environment.</span></p>
+<p class="rvps3"><span class="rvts8">If you use these drive letters in your scene files, then you have to tell RR these mapping.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">OS conversion</span></span></h2>
+<p class="rvps3"><span class="rvts8">rrConfig, tab "Paths and drives"</span></p>
+<p class="rvps3"><span class="rvts8">If you want to use RR on multiple OS, then you have to create a conversion table for the paths. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Company Project Name</span></span></h2>
+<p class="rvps3"><span class="rvts8">You should setup the Company Project name in rrConfig, tab "Jobs".</span></p>
+<p class="rvps3"><span class="rvts8">A Company Project is not the same as an XSI or Maya project/database. It is the Project your Company is working on.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For Example:</span></p>
+<p class="rvps3"><span class="rvts8">You are working on a Commercial for a new shoe named "The Faster" of the manufacturer "Nico".</span></p>
+<p class="rvps3"><span class="rvts8">So your Company Project name would probably be something like "2015_Nico_TheFaster".</span></p>
+<p class="rvps3"><span class="rvts8">Any you have created a folder for each company project \\fileserver\share\projects\2010_Nico_TheFaster\... for your data.</span></p>
+<p class="rvps3"><span class="rvts8">So you have to tell RR that your Company Project is the name of the 4th folder. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Average Clients</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RRender has a feature named "average clients".</span></p>
+<p class="rvps3"><span class="rvts8">For example if you are running multiple Company Projects at the same time, then the server tries that each Company Projects has the same amount of render power.</span></p>
+<p class="rvps3"><span class="rvts8">Or that all jobs with the same priority get the same amount of clients. Or each user gets the same amount.</span></p>
+<p class="rvps3"><span class="rvts8">When a client asks for a new job, the server sends a job of the Company Projects with the least render power.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: </span></p>
+<p class="rvps3"><span class="rvts8">As the server can only influence the averaging if a client asks for a new job, it could take some time.</span></p>
+<p class="rvps3"><span class="rvts8">Depending on how long the client takes to finish a job segment.</span></p>
+<p class="rvps3"><span class="rvts8">You can enable the option "Abort clients for better averaging" in rrConfig, tab jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Then the server checks the client distribution every x hours and aborts Company Projects that have too many clients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">File Access Rights</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you are in a larger company, you should set file access rights.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The table shows typical file access rights, some are required (like executable rights), some are optional (like no write access for default artists).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Inherit permissions:</span></p>
+<p class="rvps3"><span class="rvts8">You should always start from the root directory, set the permissions there, enable inheritable permissions and replace permissions for all child objects.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Windows:</span></p>
+<p class="rvps3"><span class="rvts8">To change permissions: right-click on an folder, "Properties", "Security" Tab, then you should use the "Advanced" button.</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/ShareProperties2.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">The access rights used in this table are</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps9"><span class="rvts21">R</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 885px;"><p class="rvps9"><span class="rvts21">Read access (this includes the eXecute right on linux for folders, otherwise you cannot read the dir listing)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps9"><span class="rvts21">W</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 885px;"><p class="rvps9"><span class="rvts21">Write/Create/Change Access</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 80px;"><p class="rvps9"><span class="rvts21">X</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 885px;"><p class="rvps9"><span class="rvts21">Execute files</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">There are four kinds of users</span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 108px;"><p class="rvps9"><span class="rvts21">rrService</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 797px;"><p class="rvps9"><span class="rvts21">The user that was set in the workstation installer for the rrService. All Clients and the Server runs with this user account.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 108px;"><p class="rvps9"><span class="rvts21">Tech</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 797px;"><p class="rvps9"><span class="rvts21">Technical Staff Members. They are allowed to change all RR settings.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 108px;"><p class="rvps9"><span class="rvts21">Artists</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 797px;"><p class="rvps9"><span class="rvts21">Artists submit and check jobs. They do *NOT* change *global* RR settings.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 108px;"><p class="rvps9"><span class="rvts21">Admin</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 797px;"><p class="rvps9"><span class="rvts21">You need one user that is allowed to write/change all data, including the executables. </span><span class="rvts21">This user is required for updates. It is not shown in the table as it needs full access.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">RR network folder</span></span></h2>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">Folder</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21">rrService + Tech</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21">Artists</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> R</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> R</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">Root folder, everyone needs to be able to read it. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]\*.bat</span></p>
+<p class="rvps9"><span class="rvts21">[RR]\*.sh </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> R X</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> R X</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">Startup scripts, everyone need to execute them</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]\autoload</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">Used by Artists for automated .xml file submission</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]\bin</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> R X</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> R X</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">RR executable files, write protected because of possible virus attacks.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]\plugins</span></p>
+<p class="rvps9"><span class="rvts21">[RR]\plugins64</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> R X</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> R X</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">RR plugin files, write protected because of possible virus attacks.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]\sub\cfg_global</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> R</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">Global RR settings. Artists usally do not need to change RR settings.</span></p>
+<p class="rvps9"><span class="rvts21">(But you can allow them by giving write access to some files in there) </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]\sub\cfg_user</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">Artists are allowed usally to write files in there. This folder is for</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps9" style="margin-left: 0px"><span class="rvts21">userInformation.htm:</span><br/><span class="rvts21">Informations for users shown in rrControl and rrSubmitter, changeable via the rrControl menu.</span></li>
+<li class="rvps9" style="margin-left: 0px"><span class="rvts21">flipbooks.txt:</span><br/><span class="rvts21">Commandlines for the flipbooks executed if an artist uses the "play" button.</span></li>
+<li class="rvps9" style="margin-left: 0px"><span class="rvts21">clientgroups.ini:</span><br/><span class="rvts21">Config file that saves the client groups.</span></li>
+<li class="rvps9" style="margin-left: 0px"><span class="rvts21">executables.txt:</span><br/><span class="rvts21">File to define the executables that should be used for displaying html files, quicktimes and folders</span></li>
+<li class="rvps9" style="margin-left: 0px"><span class="rvts21">submitter_prj_[ProjectName].txt, submitter_usr_[UserLoggedIn].txt, submitter_mac_[MachineName].txt:</span><br/><span class="rvts21">Config files for the default setting at the submitter. </span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 118px;"><p class="rvps9"><span class="rvts21">[RR]\website</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 99px;"><p class="rvps9"><span class="rvts21"> RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 40px;"><p class="rvps9"><span class="rvts21"> RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 697px;"><p class="rvps9"><span class="rvts21">Website and job data folder. Used for html files, render log files, image caches, ...</span><br/><span class="rvts21">If an artists resets or deletes a job via rrControl, it needs to delete the files in the website folder of that job</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Local Data Folder</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The Local Data Folder is created on every machine that runs the client.</span></p>
+<p class="rvps3"><span class="rvts8">As it contains rendered images and scene files, you can restrict the access rights.</span></p>
+<p class="rvps3"><span class="rvts8">Only the client requires to read that folder and sub-folders.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 89px;"><p class="rvps9"><span class="rvts21">Folder</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 53px;"><p class="rvps9"><span class="rvts21">rrService</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 42px;"><p class="rvps9"><span class="rvts21">Tech</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 757px;"><p class="rvps9"><span class="rvts21">Artists</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 89px;"><p class="rvps9"><span class="rvts21">../rrLocalData</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 53px;"><p class="rvps9"><span class="rvts21">RW</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 42px;"><p class="rvps9"><span class="rvts21"><br/></span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 757px;"><p class="rvps9"><span class="rvts21"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

@@ -1,0 +1,166 @@
+﻿<html>
+	
+<head>
+	<title>class _ClientHardware</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("class_ClientHardware");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">class _ClientHardware</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; <a href="Pythonreference.html">Python reference</a> &rsaquo;&rsaquo; <a href="Client.html">Client</a> &rsaquo;&rsaquo; <a href="class_Client.html">class _Client</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="class_Client.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="class_Client.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="class_pythonGenericUI.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Class _ClientHardware parameter:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table width="40%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts15">Type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts15">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><span class="rvts15">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts8">float</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">ghzEffective</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><span class="rvts8">The total Ghz of the machine. The default Hyperthreading speedup percentage is taken into account.</span></p>
+<p class="rvps3"><span class="rvts8">Note: Since different CPUs vendors (Intel, AMD) and different CPU architectures have different computation speeds at the same GHz, you should use PS.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts8">UInt16</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">PS</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><a class="rvts20" href="rrProcSpeedPS.html">Processor Speed</a><a class="rvts20" href="rrProcSpeedPS.html"> </a><span class="rvts8">of the client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts8">int</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">totalMemoryMB</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><span class="rvts8">Total installed memory.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts8">UInt8</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">nrCores</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><span class="rvts8">Number of logical cores. (Physical cores x Hyperthreading= Logical Cores)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts8">UInt8</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">OSversion</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><span class="rvts8">OS version</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts8">byte</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">OS</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><span class="rvts8">Type of OS. 1: Windows, 2: Linux, 3: OSX</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 44px;"><p class="rvps3"><span class="rvts8">bool</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 98px;"><p class="rvps3"><span class="rvts8">OSis64</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 356px;"><p class="rvps3"><span class="rvts8">Has the machine a 64bit OS</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Class _ClientHardware functions:</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<div class="rvps3"><table width="40%" border="1" cellpadding="1" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 119px;"><p class="rvps3"><span class="rvts15">Return type</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 153px;"><p class="rvps3"><span class="rvts15">Name</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 226px;"><p class="rvps3"><span class="rvts15">Description</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 119px;"><p class="rvps3"><span class="rvts8">QString</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 153px;"><p class="rvps3"><span class="rvts8">OSasString()</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 226px;"><p class="rvps3"><span class="rvts8">OS, OSversion and OSis64 as string</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

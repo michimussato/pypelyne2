@@ -1,0 +1,1 @@
+If you use sequences and shots for a project, then you have to use this one.

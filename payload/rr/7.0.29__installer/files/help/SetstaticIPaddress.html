@@ -1,0 +1,91 @@
+﻿<html>
+	
+<head>
+	<title>Set static IP address</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("SetstaticIPaddress");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Set static IP address</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; <a href="Troubleshooting.html">Troubleshooting</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Troubleshooting.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="WindowsrrSubmitterdoesnotstart.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Windowssidebysideconfigurationis.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Windows</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Open the Windows control panel.</span></li>
+<li class="rvps3"><span class="rvts8">In the control panel, open the "Network and Sharing Center".</span></li>
+<li class="rvps3"><span class="rvts8">On the left side, choose "Change Adapter Settings".</span></li>
+<li class="rvps3"><span class="rvts8">Choose the right network adapter and double-click on it.</span><br/><span class="rvts8">If you do not know the right one: </span><br/><span class="rvts8">First, ignore all with an red X, they are not connected as the second line of the connection info should state.</span><br/><span class="rvts8">Then check the lower right of the icon. It should be a network cable plug, no bluetooth symbol and no wireless bars.</span></li>
+<li class="rvps3"><span class="rvts8">Click on the details button. </span><br/><span class="rvts8">Write down/Remember the IPv4 Address, the IPv4 Subnet Mask, the IPv4 Default Gateway and the IPv4 Address DNS Servers.</span><br/><span class="rvts8">Close the Details again.</span></li>
+<li class="rvps3"><span class="rvts8">Click on the Properties button</span></li>
+<li class="rvps3"><span class="rvts8">Double-click on "Internet Protocol version 4 (TCP/IPv4)"</span></li>
+<li class="rvps3"><span class="rvts8">Change it to "Use the following IP address".</span></li>
+<li class="rvps3"><span class="rvts8">The first three numbers (the network) have to the the same as from the details.</span><br/><span class="rvts8">The last number is the identifier of this machine in this network.</span><br/><span class="rvts8">It should not conflict with any other machine and therefore not with the range set in your DHCP server (router).</span><br/><span class="rvts8">If you do not know your DHCP server settings, choose the number 250. It should not be used.</span></li>
+<li class="rvps3"><span class="rvts8">Enter the &nbsp;IPv4 Subnet Mask, the IPv4 Default Gateway and the IPv4 Address DNS Servers as you have remembered/written.</span><br/><span class="rvts8"><br/></span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

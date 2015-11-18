@@ -1,0 +1,148 @@
+﻿<html>
+	
+<head>
+	<title>Local Data Folder</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("LocalDataFolder");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Local Data Folder</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="InfosrrTerms.html">Infos/rrTerms</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="InfosrrTerms.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="GPUrender.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="PreviewRender.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">The Local Data Folder is created on every machine that runs the client.</span></p>
+<p class="rvps3"><span class="rvts8">This folder is required for RR. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Log Files</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The rrClient pipes the renderer output to a logfile in this folder.</span></p>
+<p class="rvps3"><span class="rvts8">The render log file is uploaded every x minutes to the main rrRoot folder and accessible via Control.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Render output</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Instead of rendering images to the final network path, the client tells the render application to render the images into the Local Data Folder (if supported for the render application).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">It reduces network traffic and fileserver access times for some renderers. You have only a one-time access to the fileserver writing the whole image file in one go.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;It helps with these kind of renderers:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;1. A renderer that directly write every rendered pixel/line/tile to the file (Like shake).</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Without: You have a constant few-KB-block write to the fileserver during the whole rende timer of the frame.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;2. A renderer that first write the rendered image uncompressed to the output image, then compress the image in a second step and write the compressed image to the output file.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;(like Maya Software renderer)</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Without: Even more worst than 1. regarding constant fileserver access as it writes an uncompressed and compressed image to the fileserver.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;3. Exr cropping post-process:</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;Without: The file is written by the renderer to the fileserver, then read again by at the crop tool and written back to the fileserver.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;So after all, if you render exr files, this feature saves you about 66% network traffic.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If a render segment crashes/aborted, then the last frame is not copied to the network.</span></li>
+<li class="rvps3"><span class="rvts8">If a image is started to render, then the client creates a placeholder file on the final network path. This placeholder file includes the name of the client, that is rendering the file.</span></li>
+<li class="rvps3"><span class="rvts8">If the next frame is started, the last frame is copied to the network folder.</span></li>
+<li class="rvps3"><span class="rvts8">During copy to the network drive, the file is analysed for errors (like not loadable or render tile missing).</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;These error messages are loaded by the rrSequenceChecker.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">A low resolution version (500 Pixel wide) of the image is saved in the the website folder. (often named "cached file").</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;The low resolution image is loaded by the rrViewer (application for the artist to have a quick view on the sequence) and rrSequenceChecker (sequence visual error analysis). </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Temp folder</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RRender sets the temp environment folder for the renderer into the Local Data Folder.</span></p>
+<p class="rvps3"><span class="rvts8">If the renderer writes temporally files, they will be written to [LocalDataFolder]/temp</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Renderer prefs</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If set via the </span><span class="rvts8">setenv file</span><span class="rvts8"> of the application, the</span><span class="rvts8"> renderer preferences</span><span class="rvts8"> are copied from the RR network share to the Local Data Folder.</span></p>
+<p class="rvps3"><span class="rvts8">(And then used by the renderer) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Scene File Caching</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If a client gets a scene to render, then it copies the scene file to the local hard drive first.</span></p>
+<p class="rvps3"><span class="rvts8">Then it starts to render the local copy.</span></p>
+<p class="rvps3"><span class="rvts8">This is not a drawback, as the file has to be read from the network anyway.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If a client gets the same scene to render again, then the client does not have to load/copy the scene from the slow network again.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Local cached scenes are deleted after a day.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If a scene file on the network drive changes (date-time/file size), then it is re-copied.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note on</span><span class="rvts15"> "Local Texture Conversion"</span><span class="rvts8"> and </span><span class="rvts15">"Cross OS conversion"</span><span class="rvts8">:</span></p>
+<p class="rvps3"><span class="rvts8">You have to enable "Local Scene Copy" for a job to be able to use the "Local Texture Conversion" and/or "Cross OS conversion".</span></p>
+<p class="rvps3"><span class="rvts8">The client does a search &amp; replace on the local scene. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Local texture copies</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Usually a textures is used in many scenes and in many versions of a scene during a project.</span></p>
+<p class="rvps3"><span class="rvts8">So why load this texture every time for every render job from the slow network?</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If a job was send with the option to copy textures to the local drive, the the client copies all textures to the Local Data Folder.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Local textures are kept for "x" days (set "x" in rrConfig) in case they are re-used for a scene.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: This feature can also be used for reference models or any other file type, it is not restricted to texture files.</span></p>
+<p class="rvps3"><span class="rvts8">For further description how to create your own submission that support Local Texture Copies, see the </span><span class="rvts8">Customization Submission plugin</span><span class="rvts8"> section. </span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

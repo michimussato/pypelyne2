@@ -1,0 +1,443 @@
+// Royal Render Plugin script for Softimage XSI
+// Author: Royal Render, Holger Schoenberger, Binary Alchemy
+// Last change: v 6.02.31
+// Copyright (c) 2009-2010 Holger Schoenberger - Binary Alchemy
+// #win:   rrInstall_Copy: plugins\
+// #linux: rrInstall_Copy: plugins\
+// #mac:   rrInstall_Copy: ..\..\..\plugins\
+// #win:   rrInstall_CreateFolder: plugins\rrtemp\
+// #linux: rrInstall_CreateFolder: plugins\rrtemp\
+// #mac:   rrInstall_CreateFolder: ..\..\..\plugins\rrtemp\
+
+
+
+
+class rrSubmitMenu : MenuPlugin
+{
+
+	public:
+
+	rrSubmitMenu();
+	GetName();
+	GetID();
+	GetHelp();
+	Execute( doc );
+	
+	getRRRoot();
+	PD();
+
+	
+	private:
+	
+	WriteXmlNode(xmlFile, name, value);
+	toXmlString(value);
+}
+
+rrSubmitMenu::rrSubmitMenu()   
+{ 
+	super(); 
+}
+rrSubmitMenu::GetID()        
+{ 
+	//Plugin ID 1025180 assigned to "rrSubmit"
+	return 1025180; 
+}
+
+rrSubmitMenu::GetName()      
+{ 
+	return "RR - Submit"; 
+}
+
+rrSubmitMenu::GetHelp()      
+{ 
+	return "Submit this scene to Royal Render"; 
+}
+
+rrSubmitMenu::getRRRoot()
+{
+	var rrPath="";
+	switch (GeGetCurrentOS()) {
+		case GE_WIN:
+			rrPath="%RRLocationWin%";
+			break;
+		case GE_MAC:
+			rrPath="%RRLocationMac%";
+			break;
+	}
+	return rrPath;
+}
+
+
+rrSubmitMenu::PD()
+{
+	switch (GeGetCurrentOS()) {
+		case GE_WIN:
+			return "\\";
+			break;
+		case GE_MAC:
+			return "/";
+			break;
+	}
+}
+
+rrSubmitMenu::toXmlString(value)
+{
+	var pos=0;
+	while (strchr(value,'&',pos)>=0) {
+		pos=strchr(value,'&',pos);
+		value= stradd( strmid(value,0,pos), "&amp;" ,  strmid(value,pos+1,999));
+		pos++;
+	}
+	pos=0;
+	while (strchr(value,'<')>=0) {
+		pos=strchr(value,'<');
+		value= stradd( strmid(value,0,pos), "&lt;" ,  strmid(value,pos+1,999));
+	}
+	pos=0;
+	while (strchr(value,'>')>=0) {
+		pos=strchr(value,'>');
+		value= stradd( strmid(value,0,pos), "&gt;" ,  strmid(value,pos+1,999));
+	}
+	pos=0;
+	while (strchr(value,'"')>=0) {
+		pos=strchr(value,'"');
+		value= stradd( strmid(value,0,pos), "&quot;" ,  strmid(value,pos+1,999));
+	}
+	pos=0;
+	while (strchr(value,'ä')>=0) {
+		pos=strchr(value,'ä');
+		value= stradd( strmid(value,0,pos), "&#228;" ,  strmid(value,pos+1,999));
+	}
+	pos=0;
+	while (strchr(value,'ö')>=0) {
+		pos=strchr(value,'ö');
+		value= stradd( strmid(value,0,pos), "&#246;" ,  strmid(value,pos+1,999));
+	}
+	pos=0;
+	while (strchr(value,'ü')>=0) {
+		pos=strchr(value,'ü');
+		value= stradd( strmid(value,0,pos), "&#252;" ,  strmid(value,pos+1,999));
+	}
+	pos=0;
+	while (strchr(value,'ß')>=0) {
+		pos=strchr(value,'ß');
+		value= stradd( strmid(value,0,pos), "&#223;" ,  strmid(value,pos+1,999));
+	}
+	return value;
+}
+
+
+rrSubmitMenu::WriteXmlNode(xmlFile, name, value)
+{
+	value=tostring(value);
+	value=toXmlString(value);
+	xmlFile->WriteString( "<"+name+">"+value+"</"+name+">\n" );
+}
+
+
+rrSubmitMenu::Execute	( doc )
+{
+	println("*******************************************************");
+	println("rrSubmit v 6.02.31");
+	var objScene = GetActiveDocument();
+	var sceneFilename = objScene->GetFilename()->GetFullString();
+	
+	var renderData = objScene->GetFirstRenderData();
+	var renderSettings = renderData->GetContainer();
+
+
+	//I cannot get the %temp% folder, so create a subfolder in /plugins
+	var cinemaRoot = GeGetRootFilename();
+	cinemaRoot->RemoveLast();
+	cinemaRoot = cinemaRoot->GetFullString();
+	var tempFileName = new (Filename);
+
+	switch (GeGetCurrentOS()) {
+		case GE_WIN:
+			tempFileName->SetFullString( cinemaRoot + PD() +"rrtemp" );
+			if( !GeFileExist( tempFileName,TRUE)) {
+				var success=GeFileCreateDir(tempFileName);
+				if(!success) {
+					TextDialog( "Could not create temp folder '"+ tempFileName->GetFullString()+"'.", DLG_OK + DLG_ICONSTOP );
+					return;
+				}		
+			}
+			tempFileName->SetFullString( stradd( tempFileName->GetFullString(),PD()+"rrSubmit.xml"));
+			break;
+		case GE_MAC:
+			tempFileName->SetFullString( "/tmp/rrSubmit_C4D.xml" );
+			break;
+	}
+
+
+
+	var saveEnabled= renderSettings->GetData( RDATA_GLOBALSAVE ); 
+	if (saveEnabled==0) {
+		TextDialog( "You have not checked 'Save' in your Render Settings for 'Regular Image'.", DLG_OK + DLG_ICONSTOP );
+		return;
+	}
+	saveEnabled= renderSettings->GetData( RDATA_SAVEIMAGE ); 
+	if (saveEnabled==0) {
+		TextDialog( "You have not checked 'Save' in your Render Settings for 'Regular Image'.", DLG_OK + DLG_ICONSTOP );
+		return;
+	}
+	objScene->Save( objScene->GetFilename() );
+	var layerName="";
+	saveEnabled= renderSettings->GetData( RDATA_MULTIPASS_ENABLE); 
+	if (saveEnabled!=0) {
+		layerName="MultiPass";
+	}
+
+
+	
+	var seqStart =1;
+	var seqEnd =100;
+	var seqStep =1;
+	
+	var seqMode = renderSettings->GetData( RDATA_FRAMESEQUENCE );
+
+	var frameRate2 = objScene->GetFps();
+	var frameRate = renderSettings->GetInt( RDATA_FRAMERATE );
+	if (frameRate!=frameRate2) {
+	    TextDialog( "The Frame Rate between your scene 'Project Settings' and the 'Render Settings' is different.\nThey have to be the same.\nPlease change one of them.", DLG_OK + DLG_ICONSTOP );
+   	    return;
+	}
+
+	if (seqMode==0) {
+		//manual sequence mode
+		var startTime = renderSettings->GetData( RDATA_FRAMEFROM );
+		var endTime = renderSettings->GetData( RDATA_FRAMETO );
+		var frameRate = renderSettings->GetInt( RDATA_FRAMERATE );
+		seqStart = int(startTime->GetFrame( frameRate ));
+		seqEnd = int(endTime->GetFrame( frameRate ));
+	} else if (seqMode==3) {
+		//preview range
+		var startTime = objScene->GetLoopMinTime();
+		var endTime = objScene->GetLoopMaxTime();
+		var frameRate = objScene->GetFps();
+		seqStart = int(startTime->GetFrame( frameRate ));
+		seqEnd = int(endTime->GetFrame( frameRate ));
+	} else  {
+		var startTime = objScene->GetMinTime();
+		var endTime = objScene->GetMaxTime();
+		var frameRate = objScene->GetFps();
+		seqStart = int(startTime->GetFrame( frameRate ));
+		seqEnd = int(endTime->GetFrame( frameRate ));
+	}
+	seqStep = renderSettings->GetInt( RDATA_FRAMESTEP );
+
+
+	
+
+	var imageFormatID = renderSettings->GetData( RDATA_FORMAT );
+	var imageFormat=".tga";
+	var imageSingleOutput=false;
+	switch (imageFormatID) {
+	case 1122:
+			imageFormat=".avi";
+			imageSingleOutput=true;
+			break;
+	case 1125:
+			imageFormat=".mov";
+			imageSingleOutput=true;
+			break;
+	case 1903454566:
+			imageFormat=".qt";
+			break;
+	case 1112363110:
+			imageFormat=".bmp";
+			break;
+	case 1785737760:
+			imageFormat=".jp2";
+			break;
+	case 1246774599:
+			imageFormat=".jpg";
+			break;
+	case 943870035:
+			imageFormat=".psd";
+			break;
+	case 1346978644:
+			imageFormat=".pict";
+			break;
+	case 1347307366:
+			imageFormat=".png";
+			break;
+	case 777209673:
+			imageFormat=".sgi";
+			break;
+	case 1414088262:
+			imageFormat=".tif";
+			break;
+	case FILTER_TIF:
+			imageFormat=".tif";
+			break;
+	case FILTER_TGA:
+			imageFormat=".tga";
+			break;
+	case FILTER_BMP:
+			imageFormat=".bmp";
+			break;
+	case FILTER_IFF:
+			imageFormat=".iff";
+			break;
+	case FILTER_JPG:
+			imageFormat=".jpg";
+			break;
+	case FILTER_PICT:
+			imageFormat=".pict";
+			break;
+	case FILTER_PSD:
+			imageFormat=".psd";
+			break;
+	case FILTER_RLA:
+			imageFormat=".rla";
+			break;
+	case FILTER_RPF:
+			imageFormat=".rpf";
+			break;
+	case FILTER_B3D:
+			imageFormat=".b3d";
+			break;
+	case FILTER_TIF_B3D:
+			imageFormat=".tif";
+			break;
+	case FILTER_HDR:
+			imageFormat=".hdr";
+			break;
+	case 1023671:
+			imageFormat=".png";
+			break;
+	case 1023737:
+			imageFormat=".dpx";
+			break;
+	case 1016606:
+			imageFormat=".exr";
+			break;
+	case FILTER_QTVRSAVER_PANORAMA:
+			imageFormat=".qtvr";
+			break;
+	case FILTER_QTVRSAVER_OBJECT:
+			imageFormat=".qtvr";
+			break;
+	}
+
+
+	var imageName = renderSettings->GetData( RDATA_PATH )->GetFullString();
+
+	var imagePadding=4;
+	var imageNamingID = renderSettings->GetData( RDATA_NAMEFORMAT );
+	switch (imageNamingID) {
+		case 0:
+			//println("name0000.ext");
+			imagePadding=4;
+			break;
+		case 1:
+			//println("name0000");
+			imageFormat="";
+			imagePadding=4;
+			break;
+		case 2:
+			//println("name.0000");
+			imageName=imageName+".";
+			imageFormat="";
+			imagePadding=4;
+			break;
+		case 3:
+			//println("name000.ext");
+			imagePadding=3;
+			break;
+		case 4:
+			//println("name000");
+			imageFormat="";
+			imagePadding=3;
+			break;
+		case 5:
+			//println("name.000");
+			imageName=imageName+".";
+			imageFormat="";
+			imagePadding=3;
+			break;
+		case 6:
+			//println("name.0000.tif");
+			imageName=imageName+".";
+			imagePadding=4;
+			break;
+	}
+ 	if (isdigit( imageName[sizeof(imageName)-1] )) {
+		imageName=imageName+"_";
+	}
+
+
+	var width = renderSettings->GetInt( RDATA_XRES );
+	var height = renderSettings->GetInt( RDATA_YRES );
+	
+	var osString;
+	switch (GeGetCurrentOS()) {
+		case GE_WIN:
+			osString="win";
+			break;
+		case GE_MAC:
+			osString="mac";
+			break;
+	}
+	var versionInfo=GetC4DVersion();
+	versionInfo= tostring(int(versionInfo/1000)) + "." + tostring(int(Modulo(versionInfo,1000)));
+
+
+
+	//------------------------------------------------------------
+	//ok, we got all required data, now write in into an .xml file
+	//------------------------------------------------------------
+	
+	var xmlFile = new( BaseFile );
+	xmlFile->Open( tempFileName, GE_WRITE );
+	xmlFile->WriteString( "<rrJob_submitFile syntax_version=\"6.0\">\n" );
+	xmlFile->WriteString( "<DeleteXML>1</DeleteXML>\n" );
+	xmlFile->WriteString( "<Job>\n" );
+	
+	WriteXmlNode(xmlFile, "Software", "Cinema 4D");
+	WriteXmlNode(xmlFile, "Version", versionInfo );
+	WriteXmlNode(xmlFile, "SceneName",sceneFilename );
+	WriteXmlNode(xmlFile, "IsActive", "1" );
+	WriteXmlNode(xmlFile, "Layer", layerName);
+	WriteXmlNode(xmlFile, "SeqStart", seqStart);
+	WriteXmlNode(xmlFile, "SeqEnd", seqEnd);
+	WriteXmlNode(xmlFile, "SeqStep", seqStep);
+	WriteXmlNode(xmlFile, "ImageWidth", width);
+	WriteXmlNode(xmlFile, "ImageHeight", height);
+	WriteXmlNode(xmlFile, "ImageFilename", imageName);
+	WriteXmlNode(xmlFile, "ImageFramePadding", imagePadding);
+	WriteXmlNode(xmlFile, "ImageExtension", imageFormat);
+	WriteXmlNode(xmlFile, "SceneOS", osString);
+	
+	xmlFile->WriteString( "</Job>\n" );
+	xmlFile->WriteString( "</rrJob_submitFile>\n" );
+	xmlFile->Close();
+	
+
+	//------------------------------------------------------------
+	//execute the submitter 
+	//------------------------------------------------------------
+
+	var rrSubmitter=getRRRoot();
+
+	switch (GeGetCurrentOS()) {
+		case GE_WIN:
+			rrSubmitter= rrSubmitter +  "\\win__rrSubmitter.bat";
+			break;
+		case GE_MAC:
+			rrSubmitter= rrSubmitter +  "/bin/mac/rrSubmitter.app/Contents/MacOS/rrSubmitter";
+			break;
+	}
+
+	var rrSubmitterFile = new( Filename );
+	rrSubmitterFile->SetFullString( rrSubmitter );
+	GeExecuteProgram(rrSubmitterFile, tempFileName); 
+	return; 
+}
+
+
+main()
+{
+	Register( rrSubmitMenu );
+}

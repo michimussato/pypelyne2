@@ -1,0 +1,34 @@
+//this example script is used in combination with the render config 3D02__Maya2008__FluidCache.cfg
+
+global proc rrCreateCache(string $fluidObject, string $cacheFolder, string $cacheFile, int $startFrame, int $endFrame)
+{
+
+select -replace $fluidObject;
+
+doCreateFluidCache 5 {
+"0", //time range mode
+$startFrame, // start frame
+$endFrame, // end frame
+"OneFilePerFrame", // cache distribution
+"0", //refresh during caching
+$cacheFolder, //cache files directory
+"0", //cache per geometry
+$cacheFile, //cache file name
+"0", //use prefix
+"replace", // action, (add, replace, merge, mergeDelete)
+"1", // force save
+"1", // sim rate
+"1", // sample multiplier
+"0", // inherite multiplication
+"1", // store double as floats
+"mcc", // name of the cache format
+"1", // density channel
+"1", // velocity channel
+"1", // temperature channel
+"1", // fuel channel
+"1", // color channel
+"1", // texture channel
+"1" // falloff channel
+    }; 
+
+}

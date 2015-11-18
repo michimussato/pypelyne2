@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
+<plist version="0.9">
+<dict>
+	<key>CFBundleDocumentTypes</key>
+        <array>
+            <dict>
+                <key>CFBundleTypeExtensions</key>
+                <array>
+                    <string>*</string>
+                </array>
+                <key>CFBundleTypeMIMETypes</key>
+                <array>
+                    <string>*/*</string>
+                </array>
+                <key>CFBundleTypeOSTypes</key>
+                <array>
+                    <string>****</string>
+                </array>
+                <key>CFBundleTypeName</key>
+                <string>All</string>
+                <key>CFBundleTypeRole</key>
+                <string>Viewer</string>
+            </dict>
+        </array>
+
+	<key>CFBundleIconFile</key>
+	<string>rrSubmitter.icns</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleExecutable</key>
+	<string>rrSubmitter</string>
+	<key>CFBundleIdentifier</key>
+	<string>de.RoyalRender.rrSubmitter</string>
+</dict>
+</plist>

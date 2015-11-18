@@ -1,0 +1,209 @@
+﻿<html>
+	
+<head>
+	<title>View Job Results</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("ViewJobResults");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">View Job Results</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Usage.html">Usage</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Usage.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="ControlJobs.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="HistoryDB.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Re-render broken frames</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">If the Job is in the list:</span></p>
+<p class="rvps3"><span class="rvts8">If you find broken frames and want to re-render them, then just delete them.</span></p>
+<p class="rvps3"><span class="rvts8">Via rrViewer, Windows Explorer or any other application.</span></p>
+<p class="rvps3"><span class="rvts8">Then send a "check job" command.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can also delete images while the job is running, then you do not need to send the check job command as it is often executed while rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">rrViewer asks automatically if it should send the "Check Job" command.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">If the job is not in the list any more:</span></p>
+<p class="rvps3"><span class="rvts8">Re-send the job (either as you usually send jobs or via rrHistoryDB)</span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmitter asks if you want ot keep all existing files.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">rrViewer</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can access the rrViewer via the "check" button in rrControl or rrWebsite.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="rrViewer.html">rrViewer</a><span class="rvts8"> for more information.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Error analysis</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If something is not right at a job, then please follow these steps:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">1.Check for rrErrors</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If there is an error known to RRender, then you see a small triangle in the job table.</span></p>
+<p class="rvps3"><span class="rvts8">To read the error message, please select the job.</span></p>
+<p class="rvps3"><span class="rvts8">In rrControl, please select the tab "Job log", then select "Errors" from the table.</span></p>
+<p class="rvps3"><span class="rvts8">On the rrWebsite you see the error messages in red in the "Log Section" of the job page.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="30%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 54px;"><p class="rvps3"><span class="rvts8">Icon</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">Number of Client errors</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Server error?</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 54px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_yellow.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">1+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 54px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_orange.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">7+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 54px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_red.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">15+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 54px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_yellowfill.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">1+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Yes</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 54px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_orangefill.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">7+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Yes</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 54px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_redfill.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 194px;"><p class="rvps3"><span class="rvts8">15+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid;"><p class="rvps3"><span class="rvts8">Yes</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 179px;"><p class="rvps3"><span class="rvts8">Some rrServer errors are</span></p>
+</td>
+<td style="width: 461px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Not enough disk space left on fileserver for images.</span></li>
+<li class="rvps3"><span class="rvts8">Job was started multiple times, but no image was rendered.</span></li>
+<li class="rvps3"><span class="rvts8">Output directory not found. </span><br/><span class="rvts8"></span><br/><span class="rvts8"><br/></span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 179px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Some rrClient errors are</span></p>
+</td>
+<td style="width: 461px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Render crashed.</span></li>
+<li class="rvps3"><span class="rvts8">No render license (licenses temporally reduced, does not deassign nor disable the job).</span></li>
+<li class="rvps3"><span class="rvts8">Scene file not found.</span></li>
+<li class="rvps3"><span class="rvts8">No drive space left (for temp files) </span></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">2. Check for renderer errors</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">On the website, please click on the link "Job log and render log files" in the "Log Section" of the job page.</span></p>
+<p class="rvps3"><span class="rvts8">In rrControl, you are already there (if you have followed 1.).</span></p>
+<p class="rvps3"><span class="rvts8">You see a list of all render logfiles with the date it was started and the client name.</span></p>
+<p class="rvps3"><span class="rvts8">If you click on a render log file, you can see what the render application has returned.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The logfiles can have colors:</span></p>
+<p class="rvps3"><span class="rvts8">Black</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Nothing special</span></p>
+<p class="rvps3"><span class="rvts50">Green</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The client is still rendering</span></p>
+<p class="rvps3"><span class="rvts31">Orange</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The job was aborted at the client</span></p>
+<p class="rvps3"><span class="rvts51">Red</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The render application crashes, the client found an error message in the log or there was a license problem.</span></p>
+<p class="rvps3"><span class="rvts29">Violet</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The client executed a RR Pre/Post/Done-script </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

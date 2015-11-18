@@ -1,0 +1,109 @@
+﻿<html>
+	
+<head>
+	<title>Maxwell</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Maxwell");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Maxwell</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="ArchiveStandalone.html">Archive/Standalone</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="ArchiveStandalone.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="MantraHoudini.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="MentalRay.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">This description is for the Maxwell Standalone to render .mxs files.</span></p>
+<p class="rvps3"><span class="rvts8">It is not a description how to setup/render XSI/Maya/Lightwave scenes with Maxwell enabled.</span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Just like every other archive renderer type, you have to load one file of your .mxs sequence into the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">The rrSubmitter recognizes the frame range of your sequence and output name.</span></p>
+<p class="rvps3"><span class="rvts8">You can also start the rrSubmitter with the file as commandline parameter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">All Archive/Standalone renderer are based on a scene file per frame in Royal Render.</span></p>
+<p class="rvps3"><span class="rvts15">You can not export a complete animation into one file, you need one file per Frame.</span></p>
+<p class="rvps3"><span class="rvts15">name.#.ext</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Co-op and resume job</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please take a look at this forum thread:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">http://www.binaryalchemy.de/forum/viewtopic.php?p=8541 </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Errors</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Linux - X Server</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Maxwell does not run if you do not have a XServer running.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore it does not run in daemon mode.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This is the workaround from Maxwell support about this issue:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can use Xvfb to emulate an X server running in the rendernode.</span></p>
+<p class="rvps3"><span class="rvts8">The package to look for is something like xorg-x11-server-Xvfb.x.y.z.rpm</span></p>
+<p class="rvps3"><span class="rvts8">Install it.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then add these lines to the render config before the &lt;ResetExitCode&gt; :</span></p>
+<p class="rvps3"><span class="rvts8">CommandLine_Lx = Xvfb :2 -screen 0 800x600x24&amp;</span></p>
+<p class="rvps3"><span class="rvts8">CommandLine_Lx = setenv DISPLAY localhost:2.0</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">And add threse lines to the render config after the &lt;CheckExitCode&gt; :</span></p>
+<p class="rvps3"><span class="rvts8">CommandLine_Lx = killall -q -s INT Xvfb</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

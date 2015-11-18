@@ -1,0 +1,124 @@
+﻿<html>
+	
+<head>
+	<title>Authorization</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Authorization");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Authorization</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Plugins.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Howtotestplugins.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Pythonreference.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To prevent unwanted access and control to RR jobs, RR has implemented different authorization levels.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Authorization - take network connection information</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">By default, the rrServer does </span><span class="rvts15">NOT</span><span class="rvts8"> check for a valid user if you connect to the rrServer.</span></p>
+<p class="rvps3"><span class="rvts8">You can enable user authorization to even connect to the rrServer </span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts24">Whitelist</span><span class="rvts8">:</span><br/><span class="rvts75">You can tell the rrServer that it requires a valid user login if the connection is send from outside your network.</span><br/><span class="rvts75">e.g. A remote connection through your router.</span><br/><span class="rvts75">Add the start address of your IPs in your company network to the Whitelist in rrConfig, tab rrLogins, lower left.</span><br/><span class="rvts75">E.g. &nbsp;192.168.0.</span></li>
+<li class="rvps3"><span class="rvts83">Required for all connections:</span><br/><span class="rvts75">You can enable that the rrServer requires a valid user login for all connections.</span><br/><span class="rvts75">The setting can be found in rrConfig, tab rrLogins, lower left "Authorization required for all connections".</span><br/><span class="rvts75">Note: This affects rrControl as well.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"></span><br/><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">If authorization is enabled:</span><br/><span class="rvts8">If you connect to the rrServer, then it checks if you are a valid user.</span></p>
+<p class="rvps3"><span class="rvts8">The user name is either taken from rrControl or if you use the external module </span><span class="rvts28">libpyRR2, then from tcp.setLogin("TestUser", "Password")</span></p>
+<p class="rvps3"><span class="rvts28">If the login fails, then the server adds an entry to the file [RR]/sub/log/server_...._AuthFail.txt</span></p>
+<p class="rvps7"><span class="rvts27">FROM: 192.168.0.24</span></p>
+<p class="rvps7"><span class="rvts27">SEND: Name:CustomMachineName TimeZone:02:00 app:Script</span></p>
+<p class="rvps7"><span class="rvts27">AUTH: User:UserName rrUserID:-1 PW:d41d8cd98f0b24e980998ecf8427e</span></p>
+<p class="rvps7"><span class="rvts27">DATA: JobCommandSend 1 60040 60040 0</span></p>
+<p class="rvps3"><span class="rvts75">Note: The "PW" is not the password in clear text. It is only a checksum.</span></p>
+<p class="rvps3"><span class="rvts75"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Authorization - user rights</span></span></h1>
+<p class="rvps3"><span class="rvts8">Even if you are valid to change your jobs, your company might have decided that you cannot view or change jobs of other projects.</span></p>
+<p class="rvps3"><span class="rvts8">Job commands just require the ID number to send commands.</span></p>
+<p class="rvps3"><span class="rvts8">Therefore the user you use for </span><span class="rvts28">tcp.setLogin has the right to change jobs via remote/script.</span><br/><span class="rvts28">Set this user right in rrConfig, tab rrLogins.</span></p>
+<p class="rvps3"><span class="rvts28">If your user does not exist or if you do not specify a user name, then you have to give Anonymous the right to change jobs. (in combination with the Whitelist as described above)</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Passwords and encrypted data</span></span></h1>
+<p class="rvps3"><span class="rvts8">RR will never send any passwords.</span></p>
+<p class="rvps3"><span class="rvts8">A second layer of TCP encryption (e.g. ssh) is not required.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">rrServer requests:</span></p>
+<p class="rvps3"><span class="rvts8">If you send a command to the rrServer, then RR sends the MD5 checksum of the password you entered.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Data from the rrServer</span></p>
+<p class="rvps3"><span class="rvts8">If the rrServer sends data back to you (e.g. a job list), then this data is encrypted with your password.</span></p>
+<p class="rvps3"><span class="rvts8">The rrServer knows your password as you have entered it into rrConfig tab logins.</span></p>
+<p class="rvps3"><span class="rvts8">The data is send to you and your local RR module decodes the data with the password you have entered/given on your machine/script (e.g. </span><span class="rvts28">tcp.setLogin() </span><span class="rvts8">). </span></p>
+<p class="rvps3"><span class="rvts8">Only if the passwords match, you can decode the data.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Man in the middle:</span></p>
+<p class="rvps3"><span class="rvts8">Someone analyzing RR packets and sniffing your TCP data can get:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">The MD5 hash of the password you use for RR.</span></li>
+<li class="rvps3"><span class="rvts8">Type of data/command send (e.g. "job command", "job information", "client list", "user change",..)</span></li>
+<li class="rvps3"><span class="rvts8">Amount of data send (how much bytes)</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

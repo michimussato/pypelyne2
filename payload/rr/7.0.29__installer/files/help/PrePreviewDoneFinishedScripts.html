@@ -1,0 +1,162 @@
+﻿<html>
+	
+<head>
+	<title>Pre-/Preview-/Done-/Finished-Scripts</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("PrePreviewDoneFinishedScripts");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Pre-/Preview-/Done-/Finished-Scripts</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Customization.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="RenderEnvironment.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="SubmitterDefaults.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">A job can have multiple Pre-/, Preview-/, Post-/ or Finished-scripts.</span></p>
+<p class="rvps3"><span class="rvts8">These scripts do not render any frames.</span></p>
+<p class="rvps3"><span class="rvts8">They are used to do special tasks for the whole job before or after rendering.</span></p>
+<p class="rvps3"><span class="rvts8">They are executed on the client. You can recognize the scripts in the job log section as the log files are purple.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts24">Pre(render)-Scripts</span><span class="rvts8"> are executed before any frame is started.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;They can be used to precalculate stuff for the job.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts24">Preview-Scripts</span><span class="rvts8"> are executed after the preview frames are done.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;They can be used to send information about preview being done or an upload of the preview images.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts24">Post(render)-scrip</span><span class="rvts8">ts are executed after all frames are rendered.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Typical Post-scripts are the Web Video Creation or the Sequence Checker.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts24">Finished-scripts</span><span class="rvts8"> are executed after Postrender-scripts.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The only difference between them is that the Job Approval is between them.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;So only approved jobs execute the Finished-script.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Typical Finished-Scripts are for example the copy to your cut or compositing station (e.g. Avid, Flame,...)</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;</span><span class="rvts15">Note: Job Approval has to be enabled in rrConfig. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The script files are located in RR\render_apps\_prepost_scripts\</span></p>
+<p class="rvps3"><span class="rvts8">The format is the same as the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Config_files/Config_files.htm">render config files</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8">The header is different.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Identify Parameters are:</span></p>
+<div class="rvps3"><table width="60%" border="0" cellpadding="1" cellspacing="2" style="border-width: 0px;">
+<tr valign="top">
+<td style="width: 181px;"><p class="rvps3"><span class="rvts8">Name=</span></p>
+</td>
+<td style="width: 583px;"><p class="rvps3"><span class="rvts8">Name of the Script as displayed in rrSubmitter </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 181px;"><p class="rvps3"><span class="rvts8">PrePostType= </span></p>
+</td>
+<td style="width: 583px;"><p class="rvps3"><span class="rvts8">Type of the script. Available are :</span></p>
+<p class="rvps3"><span class="rvts8">pre</span></p>
+<p class="rvps3"><span class="rvts8">preview</span></p>
+<p class="rvps3"><span class="rvts8">post</span></p>
+<p class="rvps3"><span class="rvts8">finished</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 181px;"><p class="rvps3"><span class="rvts8">PrePostChecked=</span></p>
+</td>
+<td style="width: 583px;"><p class="rvps3"><span class="rvts8">Should the script be checked by default? Set 1 for checked. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 181px;"><p class="rvps3"><span class="rvts8">PrePostShowParamA=</span></p>
+<p class="rvps3"><span class="rvts8">PrePostShowParamB=</span></p>
+</td>
+<td style="width: 583px;"><p class="rvps3"><span class="rvts8">Scripts can have 2 numeric parameter that the artist can set at the rrSubmitter. Set it to 1 to show the value box.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 181px;"><p class="rvps3"><span class="rvts8">PrePostParamA=</span></p>
+<p class="rvps3"><span class="rvts8">PrePostParamB=</span></p>
+</td>
+<td style="width: 583px;"><p class="rvps3"><span class="rvts8">default value for both parameter</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 181px;"><p class="rvps3"><span class="rvts8">AllowedForSingleOutput =</span></p>
+</td>
+<td style="width: 583px;"><p class="rvps3"><span class="rvts8">Some scripts should not be executed if you have a single output file. E.g. .avi .mov </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="width: 181px;"><p class="rvps3"><span class="rvts8">ExecutePerChannel =</span></p>
+</td>
+<td style="width: 583px;"><p class="rvps3"><span class="rvts8">Should this script be executed for each render channel? If yes, then set it to 1</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

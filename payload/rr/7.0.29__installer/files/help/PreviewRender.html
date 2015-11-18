@@ -1,0 +1,111 @@
+﻿<html>
+	
+<head>
+	<title>Preview Render</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("PreviewRender");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Preview Render</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="InfosrrTerms.html">Infos/rrTerms</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="InfosrrTerms.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="LocalDataFolder.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="SequenceDivide.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8">If preview is enabled the server renders only a few frames of the job first.</span></p>
+<p class="rvps3"><span class="rvts8">Preview renderings have automatically a higher priority than the main render phase (+20).</span></p>
+<p class="rvps3"><span class="rvts8">Preview is very useful if you have many jobs.</span></p>
+<p class="rvps3"><span class="rvts8">After the previews are finished you...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;...have an overview how long all yout jobs will take to render.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;...can view all the pictures at the local website.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;...have a quick overview if one of your render jobs is crap (e.g. wrong light is hided, wrong shader assigned, texture not found). </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">On the other side, if you disable preview rendering you need to make sure that...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;...frame render times in high quality are reasonable.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;(you get everything rendered until tomorrow/deadline/next scenes have to render)</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;...you have setup everything right in your scene.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;(no helper objects still visible,</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;shader plugins installed on the farm,</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;all textures on the farm,</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;passes/layer visibility setup is right...). </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The things you have to consider if you disable preview render do not sound very problematic and they usally do not happen. Exspecially if you have rendered the scene before.</span></p>
+<p class="rvps3"><span class="rvts8">But I personally know from my and others experiences that they do happen.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;You add an object and forget a visibility or shader setting for a pass/layer. A whole night of render for nothing.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;You are tweaking lights and shaders. Therefore you disable hair or particle simulations in a differnt part of the scene to work faster.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;You tweak shaders in your scene and it does not take that much more time. But at render stage some models are replaced with highres-versions or your render settings (DOF, Mblur) are different, render times rise hours+.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp;You test the render times and they are good, but in the middle of the sequence is a small part where the camera moves close to an object. So it has to render a closeup, which can rise render times very high. Or even worse, this usally small object has a tiny frost reflection and your whole scene is visible in the reflection... </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">As you can see rendering the preview first has advantages. You can disable it (I also do it sometimes), but then the job should be a fast light-weight render job that you have already rendered some times.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Words at last:</span></p>
+<p class="rvps3"><span class="rvts8">Exspecially if the deadline is near and you are thinking of disabling the render preview (as you can gain a small percentage of render time), jobs that render wrong jeopardize the deadline. (And you usally make more of these small mistakes the more you have to hurry).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

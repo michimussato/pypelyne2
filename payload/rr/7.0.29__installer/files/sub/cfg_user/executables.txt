@@ -1,0 +1,78 @@
+# This file defines some executables used by RR:
+#
+# RR uses the first executable that exists on your system.
+# Following executables are then ignored.
+#
+#
+# Possible Executables are:
+#
+#    QuickTimePlayer=  [YourExecutable]  [flags]   <QuickTime>   [more flags]   
+#
+#    OpenFolder=  [YourExecutable]  [flags]   <Folder>   [more flags]   
+#
+#    OpenHtml=  [YourExecutable]  <HtmlSite>   
+#
+#
+#
+
+
+#####################################################################################
+[WINDOWS]
+#####################################################################################
+
+
+# On windows it is possible to use only the file as commandline, windows then uses the default application for it.
+# Works the same as a double-click in WinExplorer
+OpenFolder=  <Folder>
+
+
+# On windows it is possible to use only the file as commandline, windows then uses the default application for it.
+# Works the same as a double-click in WinExplorer
+QuickTimePlayer=  <QuickTime>
+
+
+#It is not possble to use only the html file as commandline like for the quicktime
+#The html site can contain Filename+htmlOption
+
+
+OpenHtml=  "C:\Program Files\Mozilla Firefox\firefox.exe" <HtmlSite>
+
+OpenHtml=  "C:\Program Files (x86)\Mozilla Firefox\firefox.exe" <HtmlSite>
+
+OpenHtml=  "C:\Program Files\Internet Explorer\iexplore.exe" <HtmlSite>
+
+
+
+#####################################################################################
+[LINUX]
+#####################################################################################
+
+OpenFolder= "/usr/bin/kfmclient" openProfile filemanagement <Folder>
+
+OpenFolder= "/usr/bin/nautilus" --no-desktop --browser <Folder>
+
+
+QuickTimePlayer= "/usr/bin/vlc"  <QuickTime> 
+
+
+OpenHtml=  "/usr/bin/firefox" <HtmlSite>
+
+OpenHtml=  "/usr/bin/kfmclient" openProfile webbrowsing <HtmlSite>
+
+
+#####################################################################################
+[MAC]
+#####################################################################################
+
+
+OpenFolder= /usr/bin/open <Folder>
+
+
+QuickTimePlayer= "/Applications/Quicktime Player.app/Contents/MacOS/Quicktime Player"  <QuickTime> 
+
+
+OpenHtml=  "/Applications/Safari.app/Contents/MacOS/Safari"  <HtmlSite>
+
+
+
+

@@ -1,0 +1,125 @@
+﻿<html>
+	
+<head>
+	<title>Setenv Files</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("SetenvFiles");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Setenv Files</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Customization.html">Customization</a> &rsaquo;&rsaquo; <a href="RenderApplications.html">Render Applications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="RenderApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Renderconfigfiles.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Installationpaths.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Location: [RR]\render_apps\_setenv</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Setenv files are used to set the environment for the render application.</span></p>
+<p class="rvps3"><span class="rvts8">Some renderer or plugins require to set environment variables to their install location.</span></p>
+<p class="rvps3"><span class="rvts8">Setenv files are also used to tell the render application the location of the renderer preferences</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Setenv files are called by the commandline &lt;SetEnvSoft&gt; in your render config.</span></p>
+<p class="rvps3"><span class="rvts8">RRender searches for the following files and executes the one it finds:</span></p>
+<p class="rvps3"><span class="rvts8">1. [RR]/render_apps/_setenv/[OS]/setenv_[renderapp]_[renderer]</span></p>
+<p class="rvps3"><span class="rvts8">2. [RR]/render_apps/_setenv/[OS]/setenv_[renderapp]</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Environment variables set</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The client sets a lot of environment variables before calling the setenv.</span></p>
+<p class="rvps3"><span class="rvts8">This way you have access to parameters like render application version.</span></p>
+<p class="rvps3"><span class="rvts8">So you can define different plugin locations for different versions of your software.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can do this either by an if then switch or by directly using the variable in the path name.</span></p>
+<p class="rvps3"><span class="rvts8">See existing environment files for an example.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The client defines the following environment variables, you can check them by taking a look into render log files of a job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrExeBit</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The value is x32 or x64 depending on the render executable.</span></p>
+<p class="rvps3"><span class="rvts8">rrExeVersionMajor</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The major version of the render application started.</span></p>
+<p class="rvps3"><span class="rvts8">rrJobVersionMinor</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The minor version of the render application started.</span></p>
+<p class="rvps3"><span class="rvts8">rrJobRenderapp</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The render application of this job (Softimage, Maya, Nuke...).</span></p>
+<p class="rvps3"><span class="rvts8">rrJobRenderer</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The renderer used (mentalRay, VRay...)</span></p>
+<p class="rvps3"><span class="rvts8">rrJobRenderType</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Same as RenderType in the render config, custom defined.</span></p>
+<p class="rvps3"><span class="rvts8">rrJobBit</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The bit restriction of the Job. x32, x64 or xAll (if not restricted at the submitter)</span></p>
+<p class="rvps3"><span class="rvts8">rrJobVersionMajor</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Major version set for the job on submission.</span></p>
+<p class="rvps3"><span class="rvts8">rrJobVersionMinor</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Minor version for the job</span></p>
+<p class="rvps3"><span class="rvts8">rrJobTiled</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Is it a tiled render?</span></p>
+<p class="rvps3"><span class="rvts8">rrJobScene</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Custom Scene name set at the submitter</span></p>
+<p class="rvps3"><span class="rvts8">rrJobShot</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Custom Shot name set at the submitter</span></p>
+<p class="rvps3"><span class="rvts8">rrJobVersion</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Custom Version name set at the submitter</span></p>
+<p class="rvps3"><span class="rvts8">rrClientName</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Name of the client</span></p>
+<p class="rvps3"><span class="rvts8">rrClientCPUs</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Total number of CPUs the client has.</span></p>
+<p class="rvps3"><span class="rvts8">rrClientCPUsUsed</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Number of CPUs to use for render processes.</span></p>
+<p class="rvps3"><span class="rvts8">rrClientBit</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">x32 or x64 depending on the operation system of the client.</span></p>
+<p class="rvps3"><span class="rvts8">rrClientRenderInstance</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The number of the render instance that was started. The value ranges from 0 to 10.</span></p>
+<p class="rvps3"><span class="rvts8">rrClientLocalRoot</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Root of the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Setenv_files/Setenv_files.htm">Local Data Folder</a></p>
+<p class="rvps3"><span class="rvts8">rrLocalPrefs</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The preference folder of the current render application in the Local Data Folder</span></p>
+<p class="rvps3"><span class="rvts8">rrClientLocalTemp</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The temp folder in the Local Data Folder</span></p>
+<p class="rvps3"><span class="rvts8">TEMP</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Same as rrClientLocalTemp without slash at the end.</span></p>
+<p class="rvps3"><span class="rvts8">TMP</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Same as rrClientLocalTemp without slash at the end.</span></p>
+<p class="rvps3"><span class="rvts8">RR_ROOT</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Root directory of the RR network folder.</span></p>
+<p class="rvps3"><span class="rvts8">rrBin</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Path to all executables in the RR network folder.</span></p>
+<p class="rvps3"><span class="rvts8">rrPlugins</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Path to the plugins folder of the render application (usally [RR]/render_apps/renderer_plugins/[renderapp]/)</span></p>
+<p class="rvps3"><span class="rvts8">rrPrefs</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Path to the network preference folder of the render application ( [RR]/render_apps/renderer_prefs/[renderapp]/)</span></p>
+<p class="rvps3"><span class="rvts8">rrExe</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Path to the network executable folder of the render application ( [RR]/render_apps/renderer_exe/[renderapp]/)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

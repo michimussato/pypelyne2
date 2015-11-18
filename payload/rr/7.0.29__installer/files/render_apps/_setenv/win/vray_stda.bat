@@ -1,0 +1,1 @@
+rem  set "VRAY_AUTH_CLIENT_FILE_PATH=%rrPrefs%"

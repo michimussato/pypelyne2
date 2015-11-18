@@ -1,0 +1,156 @@
+﻿<html>
+	
+<head>
+	<title>Types of plugins</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Typesofplugins");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Types of plugins</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="SDK.html">SDK</a> &rsaquo;&rsaquo; <a href="Plugins.html">Plugins</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Plugins.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Plugins.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="C.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Control - Client &nbsp; plugin</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Control-Client plugins are python scripts that can be executed with a right-click in your rrControl client table. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Control - Job &nbsp; plugin</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Control-Job plugins are python scripts that can be executed with a right-click in your rrControl job table. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Server - Job &nbsp; plugin</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Server job plugins are executed by the server if a job changes its status.</span></p>
+<p class="rvps3"><span class="rvts8">As soon as a job enters the status, the plugin is executed.</span></p>
+<p class="rvps3"><span class="rvts8">After the plugin was called, the status itself is executed.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The different status of a job are:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">First Check </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;A new job was received (or reset) and the rrServer checks for existing frames</span></p>
+<p class="rvps3"><span class="rvts8">Pre Render </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The pre-render scripts are executed by a client.</span></p>
+<p class="rvps3"><span class="rvts8">Preview Render &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">If enabled for the job, then the client render the few preview frames.</span></p>
+<p class="rvps3"><span class="rvts8">Wait For Approval - Main </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The job stays in "wait for approval" mode. If enabled in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8">Main Render </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The main render phase.</span></p>
+<p class="rvps3"><span class="rvts8">Post Render </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The post-render scripts are executed by a client.</span></p>
+<p class="rvps3"><span class="rvts8">Wait For Approval - Done </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The job stays in "wait for approval" mode. If enabled in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8">Post Done </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">The post-done scripts are executed by a client.</span></p>
+<p class="rvps3"><span class="rvts8">Finished </span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Job status is set to finished.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Server - Notify &nbsp; plugin</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It is possible to enable notifications at the submitter if a job was finished.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/SDK/Plugins/Types_of_Plugin/Types_of_Plugins.htm">Notifications.</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submitter - OnSubmission &nbsp; plugin</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">OnSubmission plugins are python scripts that can be executed on submission.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submitter - Scene Parser &nbsp; plugin</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Scene Parser are plugins for the rrSubmitter and rrSubmitterconsole.</span></p>
+<p class="rvps3"><span class="rvts8">If you call the rrSubmitter(console) with a scene filename as first parameter or if you load it into the rrSubmitter with the load button, then the rrSubmitter searches through all plugins if they are able to load a file with that extension.</span></p>
+<p class="rvps3"><span class="rvts8">If there are multiple plugins which support the extension, then the rrSubmitter stops if one plugin returns successfully.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The scene parser collects the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Usage/Submission/Submitter/Submitter.htm#Get_Basic_Scene_Information">Basic Scene Information. </a></p>
+<p class="rvps3"><span class="rvts20"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submitter - Scene Parser - XML job file</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Instead of writing a python or C++ plugin for a new render application, you can also write a text based description file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">What are these description files?</span></p>
+<p class="rvps3"><span class="rvts8">Some render applications do not have a scene parser plugin.</span></p>
+<p class="rvps3"><span class="rvts8">But the user still wants to load the scene file into the submitter.</span></p>
+<p class="rvps3"><span class="rvts8">And the submitter should switch to the right render application.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Scene description files consists of two files:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">The &lt;Name&gt;.desc.cfg file:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The file includes informations for the submitter when to use the file.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Required is the scene file extension.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">A &lt;Name&gt;.desc.xml job preset file:</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;The submitter loads all job informations from the .xml files.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Required are software and renderer name.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;But the files can also include an output image name.</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;e.g. &lt;SceneFolder&gt;../images/&lt;SceneFilename&gt;</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;(if you have no xml editor, as xml source: &amp;lt;SceneFolder&amp;gt;../images/ )</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Note: The xml file structure is the same as the </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/Usage/Submission/RR_job_files/RR_job_files.htm">RR job .xml</a><span class="rvts8"> files that are created by submitter plugins. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submitter - Submission Plugins</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Submission plugins are not a plugin for RR.</span></p>
+<p class="rvps3"><span class="rvts8">They are plugins for your 3D/Comp application to send the Scene Information to the Submitter.</span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/Customization/Renderer/Submission_Plug/Submit_Plugins.htm">Submission Plugins.</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

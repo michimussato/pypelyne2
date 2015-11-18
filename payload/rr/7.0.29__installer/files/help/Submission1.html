@@ -1,0 +1,107 @@
+﻿<html>
+	
+<head>
+	<title>Submission</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Submission1");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Submission</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="KnowledgebaseHiddenFeatures.html">Knowledgebase/Hidden Features</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="KnowledgebaseHiddenFeatures.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="InstallationAdministration.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Rendering.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Maya Mtoa Arnold &nbsp;export .ass &nbsp;and render </span></span></h1>
+<p class="rvps3"><span class="rvts8">RR provides a CreateNRender .ass for your MtoA scenes. See rrHelp section </span><a class="rvts20" href="3rdPartyRenderer.html">Maya</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"></span><br/><span class="rvts8">If you want to have two separate jobs, e.g. because not all machines have Maya installed, this is a short description.</span></p>
+<p class="rvps3"><span class="rvts8">You need scripting experience.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">First, follow this manual way to know what to expect:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">In your Maya scene, set the render type to Export Ass.</span></li>
+<li class="rvps3"><span class="rvts8">Submit the job. </span></li>
+<li class="rvps3"><span class="rvts8">Wait until at least one .ass is done.</span></li>
+<li class="rvps3"><span class="rvts8">Load the .ass in the rrSubmitter, set wait for in the lower right and set the sequence start/end to the final .ass range.</span></li>
+<li class="rvps3"><span class="rvts8">Submit it.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Automated way:</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Create a script that enables the "Export Ass" render setting.</span></li>
+<li class="rvps3"><span class="rvts8">Create a job by re-using functions of the rrSubmit plugin.</span></li>
+<li class="rvps3"><span class="rvts8">Add a xml flag PreID and set it to 1.</span></li>
+<li class="rvps3"><span class="rvts8">Disable "Export Ass" again</span></li>
+<li class="rvps3"><span class="rvts8">Create a job by re-using functions of the rrSubmit plugin.</span></li>
+<li class="rvps3"><span class="rvts8">Change the Software to "Arnold"</span></li>
+<li class="rvps3"><span class="rvts8">Change the Scene name to the ImageFileName of the first job and add &lt;FN4&gt;.ass (FN4 tells RR that there is a 4 digits long frame number in the scene name)</span></li>
+<li class="rvps3"><span class="rvts8">Add the xml flag WaitForID and set it to 1.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Different Clients:</span></p>
+<p class="rvps3"><span class="rvts8">If Maya is only installed on some clients, then you do not need to change the client assignment for the jobs.</span></p>
+<p class="rvps3"><span class="rvts8">But if you need to define a different client group for each job, then you have to submit two xml files instead of one with both jobs.</span></p>
+<p class="rvps3"><span class="rvts8">As you can only set rrSubmitter options like ClientGroup once for a whole xml file. (</span><a class="rvts20" href="ExamplerrJob_submitFilewithoptio.html">See xml example</a><span class="rvts8">)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

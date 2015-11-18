@@ -1,0 +1,144 @@
+﻿<html>
+	
+<head>
+	<title>RR features</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("RRfeatures");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">RR features</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; <a href="3dsMax.html">3ds Max</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3dsMax.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Errors.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Cinema4D.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts15">These features (or parts of it) are unique to RR.</span></p>
+<p class="rvps3"><span class="rvts15">No other render manager including Backburner support these features.</span></p>
+<p class="rvps3"><span class="rvts15"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Variables</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">3dsmax does not support variables like &lt;camera&gt; or &lt;scene&gt; in the output name.</span></p>
+<p class="rvps3"><span class="rvts8">But you can use these instead inside 3dsmax. The submitter will convert them on load.</span></p>
+<p class="rvps3"><span class="rvts8">Just use this placeholder including brackets [] as part of the filename.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">[Layer]</span></li>
+<li class="rvps3"><span class="rvts8">[Camera]</span></li>
+<li class="rvps3"><span class="rvts8">[User]</span></li>
+<li class="rvps3"><span class="rvts8">[LocalHost]</span></li>
+<li class="rvps3"><span class="rvts8">[CompanyProject]</span></li>
+<li class="rvps3"><span class="rvts8">[Scene]</span></li>
+<li class="rvps3"><span class="rvts8">[SceneFolder]</span></li>
+<li class="rvps3"><span class="rvts8">[Database]</span></li>
+<li class="rvps3"><span class="rvts8">[DatabaseName] </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Stereo Rig Addon (2014+)</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Autodesk offers customers with the Subscription Advantage Pack a Stereo Camera Addon.</span></p>
+<p class="rvps3"><span class="rvts8">If you use this addon, you should use "[Camera]" in your output filename.</span></p>
+<p class="rvps3"><span class="rvts8">Then submit the scene and choose which camera (Left or Right) should be rendered via the rrSubmitter UI.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The addon has to be installed on every machine. To distribute the addon on all your farm machines, you have to create a .bat batch file, add the commandline line to the file and submit the .bat file with the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">Commandline:</span></p>
+<p class="rvps3"><span class="rvts8">msiexec /i \\filesserver\share\_installs\AutodeskStereoCamera2014.msi /quiet /qn /norestart</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Scene States</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">3dsmax offers the feature to create multiple scene states in your scene.</span></p>
+<p class="rvps3"><span class="rvts8">If you use scene states, you should use [Layer] as part of the filename.</span></p>
+<p class="rvps3"><span class="rvts8">Then you can choose which Layer you want to render via rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">VRay GI Irradiance map</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can render your Irradiance maps via Royal Render.</span></p>
+<p class="rvps3"><span class="rvts8">You just need to have GI enabled and set your GI Irradiance mode to "animation/prepass". </span></p>
+<p class="rvps3"><span class="rvts8">No other change to your render settings are required.</span></p>
+<p class="rvps3"><span class="rvts8">Then choose the "new" submit function from the RRender menu.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Optional:</span></p>
+<p class="rvps3"><span class="rvts8">After submission, you could change your render setting to "animation/render" and open the submitter again via the RRender menu.</span></p>
+<p class="rvps3"><span class="rvts8">Choose "wait for jobs" at the lower right of the rrSubmitter and select your prepass job.</span></p>
+<p class="rvps3"><span class="rvts8">You have now two jobs on the farm, the prepass job and the render job which will start after your vrmaps are rendered.</span></p>
+<p class="rvps3"><span class="rvts8">There is </span><span class="rvts15">no need to save two seperate scenes</span><span class="rvts8"> or to wait.</span></p>
+<p class="rvps3"><span class="rvts8">Just be sure you have choosen the same filename for "animation/prepass" and "animation/render".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">You can set a different .vrmap to be loaded for (animation/render), but there does not seem to be a way to change the output name of the Irradiance map prepass in the render settings once you have set it.</span></p>
+<p class="rvps3"><span class="rvts8">But you can change it at the rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8">Or you can script it in 3dsmax (You have to use double backslashes \\ for each backslash \ ):</span></p>
+<p class="rvps3"><span class="rvts26">renderers.production.adv_irradmap_autoSaveFileName="\\\\fileserver\\share\\projectX\\render\\mymap.vrmap" &nbsp;</span></p>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

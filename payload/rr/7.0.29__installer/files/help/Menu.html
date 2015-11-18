@@ -1,0 +1,361 @@
+﻿<html>
+	
+<head>
+	<title>Menu</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Menu");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Menu</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; <a href="rrControl.html">rrControl</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrControl.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="rrControl.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="rrSubmitter.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Main</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Set Information for all Users</span></span></h2>
+<p class="rvps3"><span class="rvts8">You can enter some information for everyone that uses the render farm.</span></p>
+<p class="rvps3"><span class="rvts8">The information is displayed in rrControl and in rrSubmitter.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/userinfo.png"/></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> Login as ...</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you have defined user accounts in the rrConfig, then you are only allowed to change your own jobs. (can be modified if you change the right for *anonymous* )</span></p>
+<p class="rvps3"><span class="rvts8">If you want to manage jobs of other artists, then rrControl asks for a password every time.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you are managing a lot of jobs of an other artist, you can change your login via this command.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Job Commands</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Menu - Job Commands</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can also access this menu via right-click in the job table. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Enable/Disable Job</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">An "enabled" job can be send to a client.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">A "disabled" job will not be send to a client.</span></p>
+<p class="rvps3"><span class="rvts8">This does not exclude that clients which are rendering on the job continue to render on the job.</span></p>
+<p class="rvps3"><span class="rvts8">If they should stop rendering the job, you need to "abort &amp; disable" the job. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Approve Job</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can set an "approved" status of a job.</span></p>
+<p class="rvps3"><span class="rvts8">With the default RR configuration this only means that you see a checked box in the job table. The artists can use it as they like.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">But you can enable "Wait for Approval before" in rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8">Then an artists has to approve jobs before they get into the main render phase or before they get the finished status.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Abort Job</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you abort a job, then all clients that are currently rendering the job will abort.</span></p>
+<p class="rvps3"><span class="rvts8">Note: If the job is not disabled, it is continued to be send to clients. You have to "Disable &amp; Abort" if you want that no client renders the job from now on.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Check Job</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The server automatically checks each job that is rendering for frames done (and converts the preview images).</span></p>
+<p class="rvps3"><span class="rvts8">It does </span><span class="rvts15">not</span><span class="rvts8"> automatically check jobs that are finished.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Example for a manual "check job":</span></p>
+<p class="rvps3"><span class="rvts8">Have a finished job and you realize that some frames are broken.</span></p>
+<p class="rvps3"><span class="rvts8">So you delete the images.</span></p>
+<p class="rvps3"><span class="rvts8">Then you send a "check job" and the server re-renders the missing frames. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Delete Job</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Deletes a job from the job queue.</span></p>
+<p class="rvps3"><span class="rvts8">(It does not delete rendered frames)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If a client is rendering the job, then the server waits until the client aborted the job before it deletes it.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Reset Job</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">With "Reset Job" you can set the status of a job to the same as if you have just submitted it.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You usually only need this command if you have overwritten/resaved the Softimage/Maya/Nuke... scene.</span></p>
+<p class="rvps3"><span class="rvts8">Then you can use "Reset Job" (with delete frames).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Otherwise you should not use this command.</span></p>
+<p class="rvps3"><span class="rvts8">You will loose all render log files and all stats of the job.</span></p>
+<p class="rvps3"><span class="rvts8">So after a reset you can never check for older errors.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Clear error messages</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If a job gets too many error messages, then it is disabled.</span></p>
+<p class="rvps3"><span class="rvts8">If you have fixed the problem, you can use "Clear Error Messages" and enable the job again.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Mark Job as Finished</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This works for non-rendering jobs only.</span></p>
+<p class="rvps3"><span class="rvts8">It will set the job status to "finished" no matter if all frames are done or not.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Commands - Edit/New Script...</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This opens a dialog which allows you to create or edit new commands for this menu.</span></p>
+<p class="rvps3"><span class="rvts8">The commands are Python scripts.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Move Jobs</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Moving jobs in the queue is done in two steps:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">1. Select the jobs you want to move.</span></p>
+<p class="rvps3"><span class="rvts8">Use the command "1. Move selected Jobs...".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">2. Then select the job where you want to paste the other jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Execute the command "2. Paste jobs before selection".</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Select Clients rendering selected Job(s)</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Select a job, then execute "Select Clients rendering selected Job(s)".</span></p>
+<p class="rvps3"><span class="rvts8">rrControl will select the clients in the client table for you.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Export selected Jobs as .xml/.csv</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can export jobs as .xml or .csv files.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">These xml files can be loaded into the rrSubmitter, then you can resubmit the job and change the options.</span></p>
+<p class="rvps3"><span class="rvts8">This xml file contains job options like Sequence Divide Min/Max, BUT these options will not be loaded by the rrSubmitter. </span></p>
+<p class="rvps3"><span class="rvts8">Please see the </span><a class="rvts20" href="ExamplerrJob_submitFilewithoptio.html">example .xml submission files</a><span class="rvts8"> for submission xml files with options.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Client Commands</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Abort</span></span></h2>
+<p class="rvps3"><span class="rvts8">If the selected client or client threads is rendering, then it aborts the job.</span></p>
+<p class="rvps3"><span class="rvts8">NOTE: </span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">The rrClient will not be disabled (it still takes jobs)</span></li>
+<li class="rvps3"><span class="rvts8">The rrClient will not be deassigned from the job (It could still get the same job again)</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Abort after frame</span></span></h2>
+<p class="rvps3"><span class="rvts8">This is the same as abort, but the client tries to wait until the current frame is finished.</span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">Often a client gets multiple frames of a job to render.</span></p>
+<p class="rvps3"><span class="rvts8">If the client is able to recognize the output files as they are being rendered, it can abort after one of these frames is done.</span></p>
+<p class="rvps3"><span class="rvts8">This requires the job option "local render out", but is still not available for all renderer.</span></p>
+<p class="rvps3"><span class="rvts8">If it is not possible, the client continues to render all frames.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Abort &amp; Disable</span></span></h2>
+<p class="rvps3"><span class="rvts8">If the client is rendering, it aborts the current render job.</span></p>
+<p class="rvps3"><span class="rvts8">The client will be disabled and does not take any new jobs.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Enable/Disable</span></span></h2>
+<p class="rvps3"><span class="rvts8">If the client is disabled, it will not take any new jobs.</span></p>
+<p class="rvps3"><span class="rvts8">Note: This does not abort the client. It will continue to render the current frames of the job it is rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Deassign from all jobs and abort</span></span></h2>
+<p class="rvps3"><span class="rvts8">The client will be deassigned from all jobs and it will abort any render.</span></p>
+<p class="rvps3"><span class="rvts8">The effect is similar to Disable &amp; Abort. &nbsp;The client will abort anything it is doing.</span></p>
+<p class="rvps3"><span class="rvts8">And as it is deassigned from all jobs, it will not get any new job.</span></p>
+<p class="rvps3"><span class="rvts8">You have to send a new job or re-assign the client on a job.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Little Job</span></span></h2>
+<p class="rvps3"><a class="rvts20" href="JobSettings.html">"Little Job"</a><span class="rvts8"> is a job attribute. It allows the server to send this job to disabled clients.</span></p>
+<p class="rvps3"><span class="rvts8">You can allow or disallow little jobs on the client if it is disabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Working hours</span></span></h2>
+<p class="rvps3"><span class="rvts8">You can set the artists working hours on a client.</span></p>
+<p class="rvps3"><span class="rvts8">With this command you can temporally disable the working hours.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">rrClient (Program)</span></span></h2>
+<p class="rvps3"><span class="rvts8">Commands to restart and close the client application.</span></p>
+<p class="rvps3"><span class="rvts8">This does not affect the clients machine itself, only the rrClient application.</span></p>
+<p class="rvps3"><span class="rvts8">Note: If the client is running as service, the close command will only close the client.</span></p>
+<p class="rvps3"><span class="rvts8">The service will restart the client.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Config - Reload user logins</span></span></h2>
+<p class="rvps3"><span class="rvts8">Tells the client to re-load the config file for the rrLogins (</span><a class="rvts20" href="rrLoginRights.html">see rrConfig</a><span class="rvts8">)</span></p>
+<p class="rvps3"><span class="rvts8">This is </span><span class="rvts15">not</span><span class="rvts8"> required if you change anything via rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8">rrConfig sends a reload command via the rrServer to all rrClients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Config - Reload all config files</span></span></h2>
+<p class="rvps3"><span class="rvts8">Tells the client to re-load all config files (everything you set in rrConfig)</span></p>
+<p class="rvps3"><span class="rvts8">This is </span><span class="rvts15">not</span><span class="rvts8"> required if you change anything via rrConfig.</span></p>
+<p class="rvps3"><span class="rvts8">rrConfig sends a reload command via the rrServer to all rrClients.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Config - Rescan for installed render applications</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you have installed a new application (A new one, not a new version of an existing one), then you have to add it to the config of the client.</span></p>
+<p class="rvps3"><span class="rvts8">Either via rrConfig or via this command. The client uses the </span><a class="rvts20" href="Installationpaths.html">render app installation path files</a><span class="rvts8"> to find the render apps.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Config - Delete all, then rescan for installed render apps</span></span></h2>
+<p class="rvps3"><span class="rvts8">Same as the above command.</span></p>
+<p class="rvps3"><span class="rvts8">But before the rrClient finds new applications, it will clear the client.</span></p>
+<p class="rvps3"><span class="rvts8">So you will not have any render application in the rrClient config that does not exist any more.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Config - Synchronize time with rrServer</span></span></h2>
+<p class="rvps3"><span class="rvts8">This command is available for windows rrClient only.</span></p>
+<p class="rvps3"><span class="rvts8">The rrClient will synchronize its time with the rrServer.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Config - Change Password/Login for rrService User</span></span></h2>
+<p class="rvps3"><span class="rvts8">You have installed all rrClients as service via rrWorkstationinstaller.</span></p>
+<p class="rvps3"><span class="rvts8">The rrWorkstationinstaller takes a user account with password.</span></p>
+<p class="rvps3"><span class="rvts8">If you are in a windows domain that requires to change the password every x months, then you can update the password via this command on all machines.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Config - Development debug</span></span></h2>
+<p class="rvps3"><span class="rvts8">This command will print some information for the rrSupport.</span></p>
+<p class="rvps3"><span class="rvts8">If you are requested to execute this command.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Other - Windows Message</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can send a message from one windows machine to an other windows machine.</span></p>
+<p class="rvps3"><span class="rvts8">It uses the same functions as the windows application msg.exe.</span></p>
+<p class="rvps3"><span class="rvts8">It is a direct connection from your machine to the target machine.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For troubleshooting, please test the windows function in a windows command prompt (cmd.exe) and execute the command msg /server:ClientName * </span><span class="rvts26">"myMessage"</span></p>
+<p class="rvps3"><span class="rvts26"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Other - rrMessage</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The rrMessage is send via the rrServer to the clients. Therefore it can take up to 45 seconds.</span></p>
+<p class="rvps3"><span class="rvts8">The message will then be displayed by the rrClientWatch application at the target machine.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Messages are cached by the rrServer if the client is offline.</span></p>
+<p class="rvps3"><span class="rvts8">Messages are cached by the rrClientconsole if rrClientWatch is not running (user logged off).</span></p>
+<p class="rvps3"><span class="rvts8">Multiple messages are appended, even if the message popup is already displayed. (up to 2500 letters, then first/earliest message is cropped). </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Other - Custom Commands</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can add executable lines as custom commands.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. to start VNC.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You have to edit the file RR\sub\cfg_user\clientcommands.txt to add new commands.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">New Command Job...</span></span></h2>
+<p class="rvps3"><span class="rvts8">Opens a dialog which lets you choose a new command job.</span></p>
+<p class="rvps3"><span class="rvts8">Command jobs can have the same functionality as the client commands above.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">But the difference is that it is a job: This means a client will take this job like every other job.</span></p>
+<p class="rvps3"><span class="rvts8">It will finish its current job it has, it will take jobs with a higher priority first.</span></p>
+<p class="rvps3"><span class="rvts8">This allows you for example to restart all rrClients, but first they will finish the current job.</span></p>
+<p class="rvps3"><span class="rvts8">If you would send a command directly to restart the rrClient, it would abort the job it is currently rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There is a wide range of commands available.</span></p>
+<p class="rvps3"><span class="rvts8">E.g. to update all submission plugins on all workstations with the latest version.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Debug</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Show "Send job to client?" decision</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This information shows the details of the rrServer if a job is send to a client.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">See </span><a class="rvts20" href="ServerDuties.html">Server Duties</a><span class="rvts8"> for an explanation of all rrConfig and job options for the decision which job should be send.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This debug information is separated into three parts.</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8">send/Not send</span><br/><span class="rvts8">A short info if the job could be send to that client.</span></li>
+<li class="rvps3"><span class="rvts8">Priority</span><br/><span class="rvts8">If you have selected multiple jobs, then you can see which job will be send earlier to a client.</span><br/><span class="rvts8">The number is divided into multiple parts, which are the same as in </span><a class="rvts20" href="Jobs.html">rrConfig, tab Jobs, Render Order.</a><br/><span class="rvts8">e.g. the first priority number is "Exclusive Priority". If a job A has some exclusive priority and the other job B has not, then A is send first.</span><br/><span class="rvts8">No matter what the lower numbers of the priority are.</span></li>
+<li class="rvps3"><span class="rvts8">A reason why a job cannot be send to a client.</span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">For rrSupport: &nbsp; &nbsp;Export debug info - selected job(s)</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you need to contact support and want to send detailed information about a job, please use this command.</span></p>
+<p class="rvps3"><span class="rvts8">It will create a .zip file with all information about a job.</span></p>
+<p class="rvps3"><span class="rvts8">It includes:</span></p>
+<p class="rvps3"><span class="rvts8">- Render log files of the job.</span></p>
+<p class="rvps3"><span class="rvts8">- The current job data with all information the server currently stores about the job.</span></p>
+<p class="rvps3"><span class="rvts8">- The current amount of render licenses used.</span></p>
+<p class="rvps3"><span class="rvts8">- Client application log files.</span></p>
+<p class="rvps3"><span class="rvts8">- RR configuration files</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">For rrSupport: &nbsp; &nbsp;Export snapshot of whole database &nbsp;(no job detail)</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Exports a snapshot of the current job database and the current status of all clients.</span></p>
+<p class="rvps3"><span class="rvts8">These files can be used by the support team to load the snapshot.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">rrServer: Log messages for jobs of ...</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you enable the debug messages for a job at the rrServer, then the rrServer will print a lot of informations like which frame will be send to a client into its logfile RR/sub/log/server...txt</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">rrServer: Log messages about auto-WOL status</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you send this command to the rrServer, then the rrServer will log the status of the auto-WOL into the WOL logfile RR/sub/log/server...WOL.txt</span><br/><span class="rvts8">Which clients are able to WOL, which are not, which jobs need clients and have clients to WOL.</span></p>
+<p class="rvps3"><span class="rvts8">Note: The auto-WOL function will not print all jobs, it will stop if it has found a job with a client to WOL.</span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Layout</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Menu - Layout</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can use the Layout menu to show/hide windows or table columns of rrControl.</span></p>
+<p class="rvps3"><span class="rvts8">You can also lock the UI that you cannot move the windows around any more.</span></p>
+<p class="rvps3"><span class="rvts8">Any of course you can save the Layout for your machine.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

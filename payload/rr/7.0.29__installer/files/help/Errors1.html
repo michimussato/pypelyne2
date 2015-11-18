@@ -1,0 +1,153 @@
+﻿<html>
+	
+<head>
+	<title>Errors</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Errors1");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Errors</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; <a href="Maya.html">Maya</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Maya.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Maya.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="3rdPartyRenderer.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Flipped Camera</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you are using Z-up in your Maya preferences, then you should set Z-up on the farm as well.</span></p>
+<p class="rvps3"><span class="rvts8">Otherwise it could happen that the camera flips.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please copy your userPrefs.mel from</span></p>
+<p class="rvps3"><span class="rvts8">C:\Documents and Settings\[User]\My Documents\maya\2011-x64\prefs\</span></p>
+<p class="rvps3"><span class="rvts8">to</span></p>
+<p class="rvps3"><span class="rvts8">[RR]/render_apps/renderer_prefs/maya/win_x64/2011-x64/prefs/</span></p>
+<p class="rvps3"><span class="rvts8">[RR]/render_apps/renderer_prefs/maya/win_x32/2011-x64/prefs/</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Hair</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This is a report from a customer regarding hair issues in Maya:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Issue:</span></p>
+<p class="rvps3"><span class="rvts8">There is a bug within Maya hair that even on static hair systems hair simulations are triggered when maya is run in batch. I have written a work around script that sets the start frame of the hair simulations to be the same as the start frame. This works fine, however the start frame of the packet will not match the start frame of the render globals. This script is called when the render scene is opened via API callback.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">ie If a render is set to render from frames 100 - 200 my script will set the start times to 100.</span></p>
+<p class="rvps3"><span class="rvts8">However the packet start might be 120 - 130 and frames 100 - 120 will simulate. Essentially I need a method to query the packet start/end from within maya. defaultRenderGlobals will not give the correct range.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Details of the bug we are encountering can be found at:</span></p>
+<p class="rvps3"><span class="rvts8">http://area.autodesk.com/forum/autodesk-maya/lighting---rendering/eliminate-hair-run-up-on-batch-render/</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Possible solutions:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There are two possibilities:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">1) See</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\_config\additional\3D02__Maya2009__MelOnce.cfg</span></p>
+<p class="rvps3"><span class="rvts8">RR\render_apps\_config\3D02__Maya2008__CreateRenderMi.cfg</span></p>
+<p class="rvps3"><span class="rvts8">Those render configs use a mel script to execute maya commands.</span></p>
+<p class="rvps3"><span class="rvts8">You can write your own render script.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">2) Or you have to edit the config file that tell Maya Batch what do to.</span></p>
+<p class="rvps3"><span class="rvts8">This one is for rendering with Mental Ray.</span></p>
+<p class="rvps3"><span class="rvts8">C:\Program Files\Autodesk\Maya2010\bin\rendererDesc\mrRenderer.xml</span></p>
+<p class="rvps3"><span class="rvts8">There you could add your command to the start frame change.</span></p>
+<p class="rvps3"><span class="rvts8">Then you have to make sure the new file gets distributed before rendering.</span></p>
+<p class="rvps3"><span class="rvts8">You can add a command to your RR maya setenv file RR\render_apps\_setenv\win\maya.bat.</span></p>
+<p class="rvps3"><span class="rvts8">"%rrBin%rrCopy.exe" -oo -os "\\fileserver\share\...\mrRenderer.xml" "C:\Program Files\Autodesk\Maya2010\bin\rendererDesc\mrRenderer.xml"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Unable to locate valid MAYA_APP_DIR</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you get the message "Unable to locate valid MAYA_APP_DIR", then please check if Windows UAC is disabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">mRay animation detection</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">It can happen that you have a scene that does not render any animation.</span></p>
+<p class="rvps3"><span class="rvts8">For example animation on the transform of the Image Based Lighting node.</span></p>
+<p class="rvps3"><span class="rvts8">Please try to turn off "Optimize animation detection".</span></p>
+<p class="rvps3"><span class="rvts8">(window "Render Settings", tab "Options", group "Translation" ) </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">MtoA: "is not a unique name. &nbsp;Cannot remove alias"</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Those warnings mean that the custom AOV data in the Maya scene file is incomplete (AOV aliases are missing for some custom AOVs; the aliases are user-friendly descriptive names).</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There's a discussion of one such case here:</span></p>
+<p class="rvps3"><span class="rvts8">http://wp.me/p2TBho-dB</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">And here's a thread on the MtoA mailing list about it:</span></p>
+<p class="rvps3"><span class="rvts8">https://groups.google.com/a/solidangle.com/forum/#!searchin/mtoa/alias/mtoa/bhzD4AvxgeA/y6PyhIBG1e0J</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This post has a script one user wrote to fix his scenes:</span></p>
+<p class="rvps3"><span class="rvts8">https://groups.google.com/a/solidangle.com/d/msg/mtoa/Rnkd3jjGmRI/0nDpKqyrcdQJ</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">There's an MtoA ticket here:</span></p>
+<p class="rvps3"><span class="rvts8">https://trac.solidangle.com/mtoa/ticket/2127</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Depending on the scene, the scene may render fine. Other scenes don't render properly because all the AOV definitions are messed up.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

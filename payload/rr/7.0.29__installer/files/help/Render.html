@@ -1,0 +1,146 @@
+﻿<html>
+	
+<head>
+	<title>Render</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Render");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Render</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Usage.html">Usage</a> &rsaquo;&rsaquo; <a href="Troubleshooting1.html">Troubleshooting</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Troubleshooting1.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Submission2.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Howtofindtheproblemofajob.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Frame Number to Issue</span></span></h1>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">Very often you have a frame number, but you do not know which Client has rendered it or why it was not rendered broken.</span></p>
+<p class="rvps3"><span class="rvts8">These are two ways to find the issue:</span></p>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps3"><span class="rvts8"> Frame List</span><br/><span class="rvts8">In rrControl, tab "Job Log" you find a table named "Frames Rendered".</span><br/><span class="rvts8">It shows you the name of the rrClient and a time.</span><br/><span class="rvts8"></span><br/><span class="rvts8">The next step is to select the right logfile with that date.</span></li>
+<li class="rvps3"><span class="rvts8">rrViewer</span><br/><span class="rvts8">Select the frame that is broken.</span><br/><span class="rvts8">The Client name should be shown on the image and in the top bar.</span><br/><span class="rvts8">If you right-click on the image, you can open the render log of the frame.</span></li>
+</ol>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Why does the Client render job X</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Please check Server Duties to read more about the decision why a job is send.</span></p>
+<p class="rvps3"><span class="rvts8">Please see Show "send job to client" decision to analyse which job is send.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Free client does not get job</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you have free clients and the scene is not send to such a free client, then select the scene and the client in rrControl and use the Debug menu item "Show "send job to client?" decision"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Windows drive mappings</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you are running the client/server as a service, then you need to tell RR that it should map your drives.</span></p>
+<p class="rvps3"><span class="rvts8">It does not matter if the user logged in maps drives manually.</span></p>
+<p class="rvps3"><span class="rvts8">A service has to map drives itself, it runs in a completely different environment.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14"><br/></span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Render Environment - Windows Registry</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you have a plugin that has saved the license information into the current users registry, then it can happen that the RR service rendering is not able to access that information.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Background:</span></p>
+<p class="rvps3"><span class="rvts8">Royal Render runs as a system service, but executes renders as a specified user. When this user is logged in to the desktop, RR will access that user's registry. If another user is logged in or if there is no user logged in, RR will access the local system account registry. This is an effect of the windows background login. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Solution:</span></p>
+<p class="rvps3"><span class="rvts8">One solution is to have RR enter the appropriate registry values before each render. </span></p>
+<p class="rvps3"><span class="rvts8">First, export the license registry. In this example we are using the Red Giant Software plugins.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">E.g. the "HKEY_CURRENT_USER\Software\Red Giant Software" registry tree from a user on a computer where you have installed and tested your desired plug-ins. This will give you a .reg file that looks something like this: </span></p>
+<p class="rvps15"><span class="rvts53">Windows Registry Editor Version 5.00 </span></p>
+<p class="rvps15"><span class="rvts53"><br/></span></p>
+<p class="rvps15"><span class="rvts53">[HKEY_CURRENT_USER\Software\Red Giant Software] </span></p>
+<p class="rvps15"><span class="rvts53">[HKEY_CURRENT_USER\Software\Red Giant Software\CompositeWizard] </span></p>
+<p class="rvps15"><span class="rvts53">[HKEY_CURRENT_USER\Software\Red Giant Software\CompositeWizard\AE] </span></p>
+<p class="rvps15"><span class="rvts53">"serial"="PCWX################" </span></p>
+<p class="rvps15"><span class="rvts53"><br/></span></p>
+<p class="rvps15"><span class="rvts53">[HKEY_CURRENT_USER\Software\Red Giant Software\TrapcodeParticular] </span></p>
+<p class="rvps15"><span class="rvts53">[HKEY_CURRENT_USER\Software\Red Giant Software\TrapcodeParticular\AE] </span></p>
+<p class="rvps15"><span class="rvts53">"serial"="TCPX################"</span><span class="rvts52"> </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Manually import this .reg file (double-click it) on at least one other machine for testing. If you're using interactive serials, you will just be able to open AE and apply plug-ins to see if they work. Render-only serials will always error when used interactively, so to test them, you must kick off a command line render either manually or through RR. This is the most tedious part of this process. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Once you are confident that your .reg file is working, place it somewhere network accessible. For example: </span></p>
+<p class="rvps7"><span class="rvts54">\\FILESERVER\SHARE\afxTCRGRenderSerials.reg</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Then, you have to have RR exec that file. RR's setenv pre-render files provide an easy way to do this. Edit this file: </span></p>
+<p class="rvps7"><span class="rvts54">\\RRSERVER\RRSHARE\render_apps\_setenv\win\afx.bat</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">And add these two lines: </span></p>
+<p class="rvps7"><span class="rvts54">reg import \\FILESERVER\SHARE\afxTCRGRenderSerials.reg </span></p>
+<p class="rvps7"><span class="rvts54">reg add "HKCU\Software\Red Giant Software" /f /v ConfiguredByRoyalRender /d "AFX Setenv: %date% %time%"</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The first line imports the .reg file.</span></p>
+<p class="rvps3"><span class="rvts8">The second line makes a registry entry with the last date and time RR's setenv was triggered on a machine; this is useful for detective work. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

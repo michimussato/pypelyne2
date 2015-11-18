@@ -1,0 +1,100 @@
+﻿<html>
+	
+<head>
+	<title>Basic (Test install/ Application mode)</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("BasicTestinstallApplicationmode");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Basic (Test install/ Application mode)</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Installation.html">Installation</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="Installation.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="RequirementsHowdoesitwork.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Permanentbackgroundservicemode.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Before Installation</span></span></h1>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;"><ol style="text-indent: 0px; margin-left: 48px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Test to network render without RR first.</span><br/><span class="rvts8">If this does not work, then you will just make it even more complicated with RR.</span><br/><span class="rvts8">It is like if you jump into a car for the first time and try to drive, but you have never ever seen or walked on streets before.</span><br/><span class="rvts8">Create a scene file (e.g. Maya) with objects and textures and save it to your fileserver.</span><br/><span class="rvts8">Open the same file on a second machine in Maya. (without moving/copying it) </span><br/><span class="rvts8">Change the render range in the scene to frame 1-10 on the first machine and to 11-20 on the second machine.</span><br/><span class="rvts8">Render the scene within your Maya UI.</span><br/><span class="rvts8">Check if all 20 files are in the same location where you want them to be.</span><br/><span class="rvts8"></span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Create a folder on a fileserver/NAS.</span><br/><span class="rvts8">You have to create a folder on a share (or a share) on your fileserver/NAS.</span><br/><span class="rvts8">This folder is used for all RR files (application and config files).</span><br/><span class="rvts8">E.g. \\Fileserver\shareapps\RoyalRender\</span><br/><span class="rvts8"></span><br/><span class="rvts8"><br/></span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts8">Set a fixed IP for rrServer (recommended)</span><br/><span class="rvts8">By default all RRender programs are connecting to the server via its IP.</span><br/><span class="rvts8">So your rrServer machines should have a fixed IP and not a variable IP assigned by a DHCP server.</span><br/><span class="rvts8">Note: </span><br/><span class="rvts8">It is not required to use a fixed IP address, you can use the rrServer name (change this setting in &nbsp;rrConfig tab Clients/global)</span><br/><span class="rvts8">But it could cause connection issues in case the rrServer gets a new IP and a client machines OS has the old IP cached.</span></li>
+</ol></ol>
+<p class="rvps7"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Installation</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Manual Application Mode &nbsp; &nbsp;vs. &nbsp; &nbsp; Service Mode</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps8" style="margin-left: 0px"><span class="rvts19">Manually (Application mode/ Basic test installation):</span><br/><span class="rvts17">RR is started like any other application by the artist.No login settings are required.</span><br/><span class="rvts17">The "Basic Installation" is just a quick test installation.It will not install any services, there will not be any auto-start.</span><br/><span class="rvts17">The only files that need to be copied are the submission plugins (Softimage, Nuke, ... plugin files).</span><br/><span class="rvts17">This is covered on this site.</span><br/><span class="rvts17"><br/></span></li>
+<li class="rvps8" style="margin-left: 0px"><span class="rvts19">via Service/Daemon (background service mode / permanent / recommended solution):</span><br/><span class="rvts17">RR starts automatically with the machine. Nobody has to login into the machine. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; </span><br/><span class="rvts17">This is required for auto-shutdown and WOL.</span><br/><span class="rvts17">The artist logged in on a workstation can not access the render data. &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</span><br/><span class="rvts17">The service installation is covered in the next chapter </span><a class="rvts18" href="Permanentbackgroundservicemode.html">Permanent</a><span class="rvts17">. </span></li>
+</ul>
+<p class="rvps8"><span class="rvts17"><br/></span></p>
+<p class="rvps7"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Installation steps</span></span></h2>
+<ol style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: decimal;">
+<li class="rvps7" style="margin-left: 0px"><span class="rvts16">RR Program Files:</span><br/><span class="rvts8">Download the RR windows/linux installer and extract it into a temp folder.</span><br/><span class="rvts8">Execute rrSetup, use the browse button and select your RR directory (The shared network folder you created in "Before Installation 1.").</span><br/><span class="rvts8">Open the RR directory in an explorer/file browser.</span><br/><span class="rvts8">For Windows and Linux, there are a few shortcuts to the main executables in the root of the folder.</span></li>
+<li class="rvps3"><span class="rvts16">rrServer:</span><br/><span class="rvts8">Start rrServerConsole on the computer you want to use as server (see Requirements).</span><br/><span class="rvts8">The rrServer creates the basic config files.</span><br/><span class="rvts8">From now on the Server runs on this machine ONLY!</span></li>
+<li class="rvps7" style="margin-left: 0px"><span class="rvts16">Clients:</span><br/><span class="rvts8">Start rrClient on machines you want to use to render.</span><br/><span class="rvts8">Every client adds its configuration to the shared client configfile.</span></li>
+<li class="rvps3"><span class="rvts16">rrControl:</span><br/><span class="rvts8">Start rrControl.</span><br/><span class="rvts8">You should see all your clients in a black (not grey) font in the client table (lower left).</span><br/><span class="rvts8">And there should not be any error message that rrControl can not connect.</span><br/><span class="rvts8">If you get issues, please refer to the help section Installation/Troubleshooting.</span></li>
+<li class="rvps3"><span class="rvts16">Submission:</span><br/><span class="rvts8">Start rrWorkstation_installer on machines you want to use to submit jobs.</span><br/><span class="rvts8">Install the </span><span class="rvts15">submission plugins only</span><span class="rvts8"> as this is a test installation. Uncheck everything else (e.g. service installation).</span></li>
+<li class="rvps3"><span class="rvts16">Render:</span><br/><span class="rvts8">Now you can start to submit and render. Please refer to the help section "Usage".</span></li>
+<li class="rvps3"><span class="rvts16">Permanent installation:</span><br/><span class="rvts8">If everything is rendering fine, you should install RR with services/deamons.</span><br/><span class="rvts8">Please refer to the help section "Permanent" how to install the services and other details. </span></li>
+</ol>
+<p class="rvps3"><span class="rvts8"></span><br/><span class="rvts8"></span><br/><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

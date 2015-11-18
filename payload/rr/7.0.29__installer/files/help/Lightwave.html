@@ -1,0 +1,194 @@
+﻿<html>
+	
+<head>
+	<title>Lightwave</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("Lightwave");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">Lightwave</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="Renderer.html">Renderer</a> &rsaquo;&rsaquo; <a href="3D.html">3D</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="3D.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="Houdini.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Maya.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Setup</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">By default Lightwave is configured to use a Shared Executable.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">To setup Lightwave, please follow these steps:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Copy your Lightwave \program and \plugins folder to</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;[RR]\render_apps\renderer_exe\lightwave\win_xXX\Lightwave_9.6\</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Remove all files you do not need to keep the file count lower (e.g. folders docs, include, ntcodec,sdk).</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Submit a Lightwave render with RR to a workstation. After the job started, delete it.</span></li>
+<li class="rvps3"><span class="rvts8">You should now have a Lightwave copy on that workstation in</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;C:\RR_localdata\renderer_exe\lightwave\win_xXX\Lightwave_9.6</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Start the interactive Lightwave from that folder.</span></li>
+<li class="rvps3"><span class="rvts8">Open the "Utilities" tab, then right menu "Edit plugins".</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Use the "Clear" button. Then "Scan Directory" and scan the *local* plugin directory C:\RR_localdata\renderer_exe\lightwave\win_xXX\Lightwave_9.6\plugins</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Close Lightwave.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Copy the config files</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;C:\Documents and Settings\[YourUser]\LW9.CFG or LW9-64.CFG</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;C:\Documents and Settings\[YourUser]\LWEXT9.CFG or LWEXT9-64.CFG</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;(dependend if you have started 32bit or 64bit Lightwave)</span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;to [RR]\render_apps\renderer_prefs\lightwave\win_x32\9.6\</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">You are done with the setup.</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp;Now you have all Lightwave executables, plugins and config files in the RR share.</span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">If the machine was a workstation you use, you should change the plugin config on your workstation back to your original Lightwave installation. </span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Note: You have to do these steps twice if you are using x32 and x64 Lightwave. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Submission</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Install Plugin</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="1" cellpadding="1" cellspacing="2" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 787px;"><p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Start Lightwave.</span></p>
+<p class="rvps3"><span class="rvts8">Select the utilities tab.</span></p>
+<p class="rvps3"><span class="rvts8">Click on "Add plugins" on the left menu.</span></p>
+<p class="rvps3"><span class="rvts8">Browse for</span></p>
+<p class="rvps3"><span class="rvts8">[RR]\render_apps\_submitplugins\rrSubmit_Lightwave_8+.ls</span></p>
+<p class="rvps3"><span class="rvts8">and add this plugin.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 498px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/submit_install1.png"/></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 787px;"><p class="rvps3"><span class="rvts8">If you have never started the rrWorkstationInstaller, please start it and install the submission plugins.</span></p>
+<p class="rvps3"><span class="rvts8">This will register the RR_ROOT environment variable.</span></p>
+<p class="rvps3"><span class="rvts8">Please restart the machine if requested. </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 498px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 787px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Choose Edit/Edit Menu Layout from the side bar. </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 498px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/submit_install2.png"/></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 787px;"><p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Open the Additional group on the left.</span></p>
+<p class="rvps3"><span class="rvts8">And Main Menu/ Render on the right side.</span></p>
+<p class="rvps3"><span class="rvts8">Drag'n'Drop the rrSubmit into the Render menu.</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 498px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/submit_install3.png"/></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 787px;"><p class="rvps3"><span class="rvts8">You can now start the submitter from within Lightwave.</span></p>
+<p class="rvps3"><span class="rvts8">It will start the rrSubmitter with your scene file and your Lightwave version as commandline parameter. </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 498px;"><br/>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Submit</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Submit:</span></p>
+<p class="rvps3"><span class="rvts8">To Submit, please use the Lightwave plugin.</span></p>
+<p class="rvps3"><span class="rvts8">Note: You can also start the rrSubmitter manually and load (multiple) scene files, but that will not set the content folder.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts15">Content Folder:</span></p>
+<p class="rvps3"><span class="rvts8">If you use a content folder for your Lightwave scene, then this content folder has to be set in the "Database" path in rrSubmitter. </span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Pipeline</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Fixed Content Folder</span></span></h3>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If you want to use one Content Folder for *ALL* jobs, then you can edit the lightwave render config file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Open the file [RR]\render_apps\_config\3D04__Lightwave.cfg in an editor.</span></p>
+<p class="rvps3"><span class="rvts8">Change the line</span></p>
+<p class="rvps3"><span class="rvts8">CommandLine_Win= set "LW_CONTENT_DIR=&lt;D&gt;&lt;EL\&gt;"</span></p>
+<p class="rvps3"><span class="rvts8">into</span></p>
+<p class="rvps3"><span class="rvts8">CommandLine_Win= set "LW_CONTENT_DIR=\\filerserver\share\myContentFolder&lt;EL\&gt;"</span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+

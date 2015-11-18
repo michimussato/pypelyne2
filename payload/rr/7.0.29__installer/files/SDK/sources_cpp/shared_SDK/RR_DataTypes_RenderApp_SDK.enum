@@ -1,0 +1,41 @@
+// RR_DataTypes_RenderApp_SDK.enum
+
+//#define ENUM_TYPE_RRO(ID, name, submitterlocation, description, allowchangeDefault, checkedDefault) 
+
+//nach dem hinzufügen in RR_uiSubmitterSettings.cpp hinzufügen:
+//if (RROptionsCheck[19]) connect(RROptionsCheck[19],SIGNAL(toggled(bool)),this, SLOT(onRROptions19Change())); 
+//OnCheckChangeRO(RROptions24,   24   ,   RROptionsCheck[24]) 
+//im header: void onRROptions24Change();
+
+ENUM_TYPE_RRO( 0,  rroAbortLowJobs,		oulRenderSettings,    "Abort Jobs with Lower Priority\0", false, false)
+ENUM_TYPE_RRO( 1,  rroIgnoreCrashes,   oulRROptions,    "Ignore Crashes\0", false, false)
+ENUM_TYPE_RRO( 2,  rroAutoApprove,   oulRROptions,    "Auto Approve Job\0", false, false)
+ENUM_TYPE_RRO( 3,  rroSendSMS,   oulHidden,    "unused", false, false) //unused
+ENUM_TYPE_RRO( 4,  rroPreviewRendering,   oulRenderSettings,    "Render Preview First\0", true, true)
+ENUM_TYPE_RRO( 5,  rroNoWebsiteJpegs,   oulRROptions,    "Do Not Show Preview Jpegs\0", false, false)
+ENUM_TYPE_RRO( 6,  rroNoFrameChecking,   oulRenderSettings,    "Do Not Check For Frames\0", false, false)
+ENUM_TYPE_RRO( 7,  rroLittleJob,   oulRenderSettings,    "Little Job\0", false, false)
+ENUM_TYPE_RRO( 8,  rroMultipleInstances,   oulRenderSettings,    "Start Multiple Instances\0", false, false)
+ENUM_TYPE_RRO( 9,  rroKeepSceneOpen,   oulRROptions,    "Keep Scene Open", true, true)  
+
+ENUM_TYPE_RRO( 10,  rroAllowToDeleteCrashedFrame,   oulHidden,    "Allow to Delete Crashed Frames\0", false, true)
+ENUM_TYPE_RRO( 11,  rroLocalSceneCopy,   oulRROptions,    "Allow Local Scene Copy\0", false, true)
+ENUM_TYPE_RRO( 12,  rroTextureReplacements,   oulRROptions,    "Allow Texture Replacement\0", false, true)
+ENUM_TYPE_RRO( 13,  rroLocalRenderOut,   oulRROptions,    "Allow Local Render Out\0", false, true)
+ENUM_TYPE_RRO( 14,  rroPreviewGamma22,   oulRROptions,    "Preview Gamma 2.2\0", false, false)
+ENUM_TYPE_RRO( 15,  rroCropEXR,   oulRROptions,    "Crop EXR\0", false, true)
+ENUM_TYPE_RRO( 16,  rroMultiOSScene,   oulRROptions,    "Multi OS Scenes\0", false, false)
+ENUM_TYPE_RRO( 17,  rroNoProcessTreeCheck,   oulRROptions,    "No Process Tree Check\0", false, false)
+ENUM_TYPE_RRO( 18,  rroOverwriteExisting,   oulRROptions,    "Overwrite existing files\0", false, false)
+ENUM_TYPE_RRO( 19,  rroNoFreezeDetection,   oulRROptions,    "No Freeze Detection\0", false, false)
+
+ENUM_TYPE_RRO( 20,  rroIsGPURender,   oulRenderSettings,    "GPU required (read rrHelp 'Infos/GPU')\0", true, false)
+ENUM_TYPE_RRO( 21,  rroDisStartToEnd,   oulRROptions,    "Distribute Start To End\0", false, false)
+ENUM_TYPE_RRO( 22,  rroPreviewContiguous,   oulRenderSettings,    "Preview- Contiguous Frames\0", false, false)
+ENUM_TYPE_RRO( 23,  rroAutoRequiredMem,   oulRROptions,    "Auto-get Required Memory\0", false, false)
+
+
+//ENUM_TYPE_RRO(34,.....    will be the last one. As MaxRROptions is set to 35. If it is increased, increase onRROptions in RR_uiSubmitterSettings
+
+
+ENUM_TOTAL( rroTotalrrOptions )

@@ -1,0 +1,525 @@
+﻿<html>
+	
+<head>
+	<title>rrControl</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="generator" content="HelpNDoc Standard Edition 4.2.0.299">
+	
+	<link type="text/css" rel="stylesheet" media="all" href="css/reset.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/base.css" />
+	<link type="text/css" rel="stylesheet" media="all" href="css/hnd.css" />
+	<!--[if lte IE 8]>
+		<link type="text/css" rel="stylesheet" media="all" href="css/ielte8.css" />
+	<![endif]-->
+	<style type="text/css">
+		#topic_header
+		{
+			background-color: #EFEFEF;
+		}
+	</style>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/hnd.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function()
+		{
+			if (top.frames.length == 0)
+			{
+				var sTopicUrl = top.location.href.substring(top.location.href.lastIndexOf("/") + 1, top.location.href.length);
+				top.location.href = "index.html?" + sTopicUrl;
+			}
+			else if (top && top.FrameTOC && top.FrameTOC.SelectTocItem)
+			{
+				top.FrameTOC.SelectTocItem("rrControl");
+			}
+		});
+	</script>
+	
+	</head>
+
+<body>
+
+<div id="topic_header">
+			<div id="topic_header_content">
+				<h1 id="topic_header_text">rrControl</h1>
+				
+				<div id="topic_breadcrumb">
+					<a href="rrApplications.html">rrApplications</a> &rsaquo;&rsaquo; </div>
+				</div>
+			<div id="topic_header_nav">
+				<a href="rrApplications.html"><img src="img/arrow_up.png" alt="Parent"/></a>
+				
+				<a href="License.html"><img src="img/arrow_left.png" alt="Previous"/></a>
+				
+				<a href="Menu.html"><img src="img/arrow_right.png" alt="Next"/></a>
+				
+				</div>
+			<div class="clear"></div>
+		</div>
+	<div id="topic_content">
+		
+<p></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">How to use rrControl? </span></span></h1>
+<p class="rvps10"><span class="rvts25">Please check the section </span><a class="rvts68" href="Usage.html">Usage.</a></p>
+<p class="rvps10"><span class="rvts25"><br/></span></p>
+<p class="rvps10"><span class="rvts25"><br/></span></p>
+<p class="rvps10"><span class="rvts25"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Commandline Flags</span></span></h1>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">You can use all </span><a class="rvts20" href="file:///file:///C:/Users/dd/Desktop/RoyalRender%2520Help/generation/rrApplications/commandline_par/commandline_parameter.htm">Global RR Commandline Flags</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Additional to the global flags you have the commandline flags for rrControl:</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">-User [name]</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Select User [name]</span></p>
+<p class="rvps3"><span class="rvts8">e.g. -User "-- all --"</span></p>
+<p class="rvps3"><span class="rvts8">-Project [name]</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Select Project [name]</span></p>
+<p class="rvps3"><span class="rvts8">-RenderApp [name]</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Select RenderApp [name]</span></p>
+<p class="rvps3"><span class="rvts8">-noNotRendering</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Uncheck NotRendering</span></p>
+<p class="rvps3"><span class="rvts8">-noRendering</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Uncheck Rendering</span></p>
+<p class="rvps3"><span class="rvts8">-noDisabled</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Uncheck Disabled</span></p>
+<p class="rvps3"><span class="rvts8">-noWaitFor</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Uncheck Disabled</span></p>
+<p class="rvps3"><span class="rvts8">-noFinished</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">Uncheck Finished</span></p>
+<p class="rvps3"><span class="rvts8">-VPN_NoDirectFileDelete</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">rrControl will not try to delete any files if you delete or reset a job. (slows down server on job delete/reset)</span></p>
+<p class="rvps3"><span class="rvts8">-allowMultipleInstances</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8">You can start multiple rrControl at the same time. This is not recommended. If, then you should set a user or project in the dropdown boxes.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Python Editor</span></span></h1>
+<p class="rvps3"><span class="rvts8">The Python Editor can be used to edit any Python file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Tab/Space indentation:</span></span></h2>
+<p class="rvps3"><span class="rvts8">As python requires special indentation, the editor tries to get the favored indentation when it loads a file.</span></p>
+<p class="rvps3"><span class="rvts8">It will keep your indentation and will auto-indent.</span></p>
+<p class="rvps3"><span class="rvts8">You can change from tab to space indentation at any time via the menu. The file will be converted.</span></p>
+<p class="rvps3"><span class="rvts8">If you use the TAB key on your keyboard it either inserts a tab or spaces depending on your python file.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Job Table</span></span></h1>
+<p class="rvps3"><span class="rvts8">The job table shows you all jobs in RR.</span></p>
+<p class="rvps3"><span class="rvts8">You can filter the jobs via dropdown- and check-boxes in the upper left of rrControl.</span></p>
+<p class="rvps3"><span class="rvts8">If you filter the jobs, then rrControl will not update the jobs of other users/projects. (This reduces the network traffic a bit)</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Visible columns</span></span></h2>
+<p class="rvps3"><span class="rvts8">You can add/remove columns via the layout menu.</span></p>
+<p class="rvps3"><span class="rvts8">A Layout is not saved by default, you have to save it via the Layout menu</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Job Status Colors</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">A job has a color which shows its status:</span></p>
+<div class="rvps3"><table width="400" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #000000; width: 71px;"><p class="rvps3"><span class="rvts65">Black</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The job is waiting for a rrClient.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #00ff00; width: 71px;"><p class="rvps3"><span class="rvts8">Green</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The job is currently rendering on a rrCleint</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #ff9900; width: 71px;"><p class="rvps3"><span class="rvts8">Orange</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The job is disabled. It will not be send to a client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #969696; width: 71px;"><p class="rvps3"><span class="rvts8">Grey</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The job is finished.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #e9e9e9; width: 71px;"><p class="rvps3"><span class="rvts66">White</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The job is about to be deleted.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Multiple colors for a job</span></span></h3>
+<p class="rvps3"><span class="rvts8">A job could be shown in multiple colors.</span></p>
+<p class="rvps3"><span class="rvts8">For example: the job could be still rendering, but you have disabled it.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h3 class="rvps14"><span class="rvts0"><span class="rvts49">Multiple colors for a job group</span></span></h3>
+<p class="rvps3"><span class="rvts8">If your jobs are grouped for example by user, then a user can be shown in multiple colors.</span></p>
+<p class="rvps3"><span class="rvts8">As some jobs are waiting, some are rendering, some are disabled.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Error Icons</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">If there is an error known to RRender, then you see a small triangle in the job table.</span></p>
+<p class="rvps3"><span class="rvts8">To read the error message, please select the job.</span></p>
+<p class="rvps3"><span class="rvts8">In rrControl, please select the tab "Job log", then select "Errors" from the table.</span></p>
+<p class="rvps3"><span class="rvts8">On the rrWebsite you see the error messages in red in the "Log Section" of the job page.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="400" border="1" cellpadding="3" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><span class="rvts8">Icon</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts8">Number of Client Errors</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 150px;"><p class="rvps3"><span class="rvts8">Server Error</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_yellow.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts8">1+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 150px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_orange.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts8">7+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 150px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_red.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts8">15+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 150px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_yellowfill.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts8">1+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 150px;"><p class="rvps3"><span class="rvts8">Yes</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_orangefill.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts8">7+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 150px;"><p class="rvps3"><span class="rvts8">Yes</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 58px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/error_redfill.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 152px;"><p class="rvps3"><span class="rvts8">15+</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 150px;"><p class="rvps3"><span class="rvts8">Yes</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 142px;"><p class="rvps3"><span class="rvts8">Some rrServer errors are</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 498px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Not enough diskspace left on fileserver for images.</span></li>
+<li class="rvps3"><span class="rvts8">Job was started multiple times, but no image was rendered.</span></li>
+<li class="rvps3"><span class="rvts8">Output directory not found. </span></li>
+</ul>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 142px;"><p class="rvps3"><span class="rvts8">Some rrClient errors are</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 498px;"><ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">Render crashed.</span></li>
+<li class="rvps3"><span class="rvts8">No render license (licenses temporally reduced, does not deassign nor disable the job).</span></li>
+<li class="rvps3"><span class="rvts8">Scene file not found.</span></li>
+<li class="rvps3"><span class="rvts8">No drive space left (for temp files) </span></li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="100%" border="0" cellpadding="2" cellspacing="0" style="border-width: 0px;">
+<tr valign="top">
+<td style="background-color: #3366ff; width: 125px;"><p class="rvps3"><span class="rvts67"> &nbsp;BLUE:</span></p>
+</td>
+<td style="width: 1350px;"><p class="rvps3"><span class="rvts8">If the background of the error table is blue, then your render licenses for this software are completely used.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Image Analysis Icons</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">After a job is rendered, the post-script "Sequence Check" loads the cache files created by the client and collects the errors flags from the error analysis.</span></p>
+<p class="rvps3"><span class="rvts8">If the clients do not have created cache files ("Local Render Out" was disabled for the job), then "Sequence Check" loads the original full res frames.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="20%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 72px;"><p class="rvps3"><span class="rvts8">Icon</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><br/>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 72px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/analyse_ok.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">No Error found.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 72px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/analyse_info.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">Flag "Info"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 72px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/analyse_warning.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">Flag "Warning"</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 72px;"><p class="rvps3"><img alt="" style="padding : 1px;" src="lib/analyse_error.png"/></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 172px;"><p class="rvps3"><span class="rvts8">Flag "Error" </span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">For a description of the Flags, see the help of </span><a class="rvts20" href="rrViewer.html">rrViewer</a><span class="rvts8">. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Client Table</span></span></h1>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Visible columns</span></span></h2>
+<p class="rvps3"><span class="rvts8">You can add/remove columns via the layout menu.</span></p>
+<p class="rvps3"><span class="rvts8">A layout is not saved by default, you have to save it via the Layout menu.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Status Colors</span></span></h2>
+<p class="rvps3"><span class="rvts8">A Client has a colors which shows their status:</span></p>
+<div class="rvps3"><table width="500" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #000000; width: 71px;"><p class="rvps3"><span class="rvts65">Black</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The rrClient is waiting for a new job</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #00ff00; width: 71px;"><p class="rvps3"><span class="rvts8">Green</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The rrClient is rendering. The job is selected in rrControl.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #00b900; width: 71px;"><p class="rvps3"><span class="rvts8">Green</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The rrClient is rendering. </span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #ff9900; width: 71px;"><p class="rvps3"><span class="rvts8">Orange</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The rrClient is disabled</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; background-color: #969696; width: 71px;"><p class="rvps3"><span class="rvts8">Grey</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 315px;"><p class="rvps3"><span class="rvts8">The Client is offline.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Overview</span></span></h2>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/rrControl_clienttable.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Job Info</span></span></h1>
+<p class="rvps3"><span class="rvts8">This tab shows some information about the selected jobs.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts37">See Pink?</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you have selected multiple jobs,</span></p>
+<p class="rvps3"><span class="rvts8">then the submitter shows you differences between the selected jobs in pink.</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span><span class="rvts8"> &nbsp; &nbsp; &nbsp; &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13"> Preview Images</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">RRender displays Preview Frames on the job page in rrControl and at the rrWebsite.</span></p>
+<p class="rvps3"><span class="rvts8">You should check these Preview Frames after some time to see if there is any problem rendering the scene.</span></p>
+<p class="rvps3"><span class="rvts8">Rendering some preview frames does not take that much time, but loosing a whole render job because something was missed...</span></p>
+<p class="rvps3"><span class="rvts8">Also see </span><a class="rvts20" href="PreviewRender.html">Preview Render</a></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Statistics graph</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Sometimes it can help to take a look at the Statistics of a job.</span></p>
+<p class="rvps3"><span class="rvts8">The most important graph is the blue line.</span></p>
+<p class="rvps3"><span class="rvts8">It shows you the frames rendered over time.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/stat.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Framebar</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">rrControl and rrWebsite show you a framebar of the job:</span></p>
+<p class="rvps3"><img alt="" style="padding : 1px;" src="lib/framebar.png"/></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The framebar shows the frames as bars.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The colors are: </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<div class="rvps3"><table width="50%" border="1" cellpadding="2" cellspacing="0" style="border-color: #000000; border-style: solid;">
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 95px;"><p class="rvps3"><span class="rvts47"> White </span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 539px;"><p class="rvps3"><span class="rvts8">The frames are missing and not assigned to a client.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 95px; height: 17px;"><p class="rvps3"><span class="rvts46">Blue</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 539px; height: 17px;"><p class="rvps3"><span class="rvts8">Assigned to a client for rendering (Sequence Divide)</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 95px;"><p class="rvps3"><span class="rvts39">Green</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 539px;"><p class="rvps3"><span class="rvts8">A started frame (placeholder file).</span></p>
+<p class="rvps3"><span class="rvts8">If a client starts to render a frame, then the renderer or RR often creates a placeholder file.</span></p>
+<p class="rvps3"><span class="rvts8">rrViewer will show you the client name that has started the frame.</span></p>
+<p class="rvps3"><span class="rvts8">If a client is aborted, then it can be that placeholder files are left.</span></p>
+<p class="rvps3"><span class="rvts8">The rrServer will delete these placeholder files in that case.</span></p>
+</td>
+</tr>
+<tr valign="top">
+<td style="border-color: #000000; border-style: solid; width: 95px;"><p class="rvps3"><span class="rvts15">Black</span></p>
+</td>
+<td style="border-color: #000000; border-style: solid; width: 539px;"><p class="rvps3"><span class="rvts8">Rendered/Finished Frames.</span></p>
+</td>
+</tr>
+</table>
+</div>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Job Settings</span></span></h1>
+<p class="rvps3"><span class="rvts8">This section allows you to change all settings for a job.</span></p>
+<p class="rvps3"><span class="rvts8">Please see </span><a class="rvts20" href="JobSettings.html">Usage/Job Settings</a><span class="rvts8"> for all available settings.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Job Log</span></span></h1>
+<p class="rvps10"><span class="rvts25">Please check the section </span><a class="rvts68" href="Usage.html">Usage</a><span class="rvts25"> as well.</span></p>
+<p class="rvps10"><span class="rvts25"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Job Log</span></span></h2>
+<p class="rvps3"><span class="rvts8">This log contains all kind of informations like when a job was send to which client, if someone has send a command for the job, ...</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Errors</span></span></h2>
+<p class="rvps3"><span class="rvts8">If you see an error triangle in the job table, then you should check the error messages of the job.</span></p>
+<p class="rvps3"><span class="rvts8">See Troubleshooting/</span><a class="rvts20" href="Troubleshooting1.html">Error Analysis</a><span class="rvts8">.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Frames Rendered v7</span></span></h2>
+<p class="rvps3"><span class="rvts8">This table shows the list of all frames and which client has rendered it.</span></p>
+<p class="rvps3"><span class="rvts8">As well as frame time, max CPU and max Memory usage.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This table is created by the rrClients.</span></p>
+<p class="rvps3"><span class="rvts8">After a rrClient has rendered a segment, it will add its frames with all informations to this table.</span></p>
+<p class="rvps3"><span class="rvts8">It will not update the table while it is rendering.</span></p>
+<p class="rvps3"><span class="rvts8">Please use rrViewer, for some render applications you will have a client name even while the client is rendering.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h4 class="rvps16"><span class="rvts0"><span class="rvts69">Logfile:</span></span></h4>
+<p class="rvps3"><span class="rvts8">This date and time are the same date and time of the client render log file.</span></p>
+<p class="rvps3"><span class="rvts8">You can select the render log files on the left side.</span></p>
+<h4 class="rvps16"><span class="rvts0"><span class="rvts69"><br/></span></span></h4>
+<h4 class="rvps16"><span class="rvts0"><span class="rvts69">Averaged?:</span></span></h4>
+<p class="rvps3"><span class="rvts8">The client was not able to get exact information about each frame it got.</span></p>
+<p class="rvps3"><span class="rvts8">It had to calculate an average time for all frames it got.</span></p>
+<p class="rvps3"><span class="rvts8">The number after "av" shows you how many frames have been rendered in this segment.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h4 class="rvps16"><span class="rvts0"><span class="rvts69">Memory/CPU/Threads:</span></span></h4>
+<p class="rvps3"><span class="rvts8">While a frame is rendering, the client takes stats like </span></p>
+<ul style="text-indent: 0px; margin-left: 24px; list-style-position: outside; list-style-type: disc;">
+<li class="rvps3"><span class="rvts8">the memory usage for the render application</span></li>
+<li class="rvps3"><span class="rvts8">the CPU usage of the render application</span></li>
+<li class="rvps3"><span class="rvts8">the CPU usage of every else on the system</span></li>
+<li class="rvps3"><span class="rvts8">the number of client job threads that have been rendering while the frame was rendered</span></li>
+</ul>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">Currently the CPU values have no visual graph, they show a shortened % value. &nbsp;</span></p>
+<p class="rvps3"><span class="rvts8">_ = 0%</span></p>
+<p class="rvps3"><span class="rvts8">0 = 0-9%</span></p>
+<p class="rvps3"><span class="rvts8">1 = 10%-19%</span></p>
+<p class="rvps3"><span class="rvts8">...</span></p>
+<p class="rvps3"><span class="rvts8">9 = 90-99%</span></p>
+<p class="rvps3"><span class="rvts8"># =100%</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">Client render log files</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">The output of the environment setup and the render application.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h4 class="rvps16"><span class="rvts0"><span class="rvts69">rrErr:</span></span></h4>
+<p class="rvps3"><span class="rvts8">A console application has two ways to print informations.</span></p>
+<p class="rvps3"><span class="rvts8">It can print into a StandardOut &nbsp;and into a StandardError.</span></p>
+<p class="rvps3"><span class="rvts8">(If you use a terminal, you will see both in realtime with no visual difference. If you want to capture, you have to capture them separately)</span></p>
+<p class="rvps3"><span class="rvts8">Everything that is printed into the StandardError by the application is marked with an </span><span class="rvts15">rrErr:</span></p>
+<p class="rvps3"><span class="rvts8">These are no error messages that the rrClient has recognized. These are messages that should be error messages.</span></p>
+<p class="rvps3"><span class="rvts8">Note:</span></p>
+<p class="rvps3"><span class="rvts8">Some render applications have chosen the wrong output for some messages by mistake.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Application Log</span></span></h1>
+<p class="rvps3"><span class="rvts8">If you print anything with your Python script, then this information is shown in this tab.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h1 class="rvps6"><span class="rvts0"><span class="rvts14">Global Info</span></span></h1>
+<p class="rvps3"><span class="rvts8">This section shows some stats and informations about RR.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<h2 class="rvps5"><span class="rvts0"><span class="rvts13">License Usage</span></span></h2>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">This table shows you the number of render licenses you have set for each render application for RR.</span></p>
+<p class="rvps3"><span class="rvts8">It shows the maximum number of licenses RR is allowed to use for rendering.</span></p>
+<p class="rvps3"><span class="rvts8">Then how many licenses RR actually uses.</span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8">And at last "Reduced Licenses" and buttons to free/return licenses for artists. See </span><a class="rvts20" href="RenderLic.html">rrConfig/Render Licenses</a><span class="rvts8"> for more information. </span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p class="rvps3"><span class="rvts8"><br/></span></p>
+<p></p>
+</div>
+	
+	<div id="topic_footer">
+
+			<div id="topic_footer_content">
+				Copyright Holger Schoenberger. All Rights Reserved.</div>
+		</div>
+	</body>
+	
+</html>
+
