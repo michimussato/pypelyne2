@@ -2,7 +2,7 @@ import os
 import json
 import logging
 import src.modules.plugin.plugin as class_plugin
-import src.conf.SETTINGS as SETTINGS
+import src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_plugins():

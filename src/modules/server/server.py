@@ -3,7 +3,7 @@ import socket
 import threading
 import logging
 import json
-import src.conf.SETTINGS as SETTINGS
+import src.conf.settings.SETTINGS as SETTINGS
 
 
 class Server:

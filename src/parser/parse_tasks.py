@@ -1,7 +1,7 @@
 import json
 import logging
 import src.modules.task.task as class_task
-import src.conf.SETTINGS as SETTINGS
+import src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_tasks():

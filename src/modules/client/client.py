@@ -3,7 +3,7 @@ import logging
 import os
 import json
 import sys
-import src.conf.SETTINGS as SETTINGS
+import src.conf.settings.SETTINGS as SETTINGS
 
 
 class Client:

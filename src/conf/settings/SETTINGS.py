@@ -31,7 +31,6 @@ TASKS_FILE = os.path.join(TASKS_DIR, 'tasks.json')
 # TASKS_FILE = [x for x in os.listdir(TASKS_DIR) if x.endswith('.json')]
 
 # Server and Client modules
-ip = '127.0.0.1'
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(('8.8.8.8', 80))
@@ -39,6 +38,7 @@ try:
     s.close()
 except Exception, e:
     print 'could not get local ip: %s' % e
+    ip = '127.0.0.1'
 SERVER_IP = ip
 SERVER_PORT = 5678
 

@@ -2,7 +2,7 @@ import datetime
 import logging
 # import sys
 # import threading
-import src.conf.SETTINGS as SETTINGS
+import src.conf.settings.SETTINGS as SETTINGS
 from PyQt4 import QtGui, QtCore
 
 
