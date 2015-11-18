@@ -1,6 +1,6 @@
 import time
 import sys
-import os
+# import os
 import Queue
 import datetime
 import src.conf.settings.SETTINGS as SETTINGS
@@ -11,10 +11,15 @@ from PyQt4 import QtGui, QtCore
 
 
 class Thread(QtCore.QThread):
-    def __init__(self):
+    def __init__(self, screengrabber=None):
         super(Thread, self).__init__()
+        self.screengrabber = screengrabber
         self.halt = False
         self.queue = Queue.Queue()
+        self.connect(self.screengrabber, QtCore.SIGNAL('stop_capture()'), self.foo)
+
+    def foo(self):
+        print 'bar'
         
     def run(self):
         fps = 1.0/SETTINGS.FPS
@@ -30,15 +35,17 @@ class Thread(QtCore.QThread):
         # empty the queue here (thread safe)
         with self.queue.mutex:
             self.queue.queue.clear()
-        
+            print 'queue cleared'
+
 
 class ScreenGrabber(QtCore.QObject):
     def __init__(self):
         super(ScreenGrabber, self).__init__()
         self.now = datetime.datetime.now().strftime('%Y-%m-%d_%H%M-%S')
         self.arrow = QtGui.QPixmap(SETTINGS.CURSOR_ICON).scaledToHeight(SETTINGS.CURSOR_SIZE)
-        self.snap_shots = Thread()
+        self.snap_shots = Thread(self)
         self.connect(self.snap_shots, QtCore.SIGNAL('capture()'), self.capture)
+        # self.connect(self.snap_shots, QtCore.SIGNAL('clicked()'), self.stop_capture)
         self.capture_count = 0
         self.start_capture_time = None
         self.previous_px = None
@@ -55,28 +62,45 @@ class ScreenGrabber(QtCore.QObject):
         
     def stop_capture(self):
         self.snap_shots.halt = True
+        self.emit(QtCore.SIGNAL('stop_capture()'))
+        self.snap_shots.quit()
         print 'stopped'
 
     def capture(self):
         # app.processEvents()
 
-        print 'caught capture', 'tmp_{}_{}.{}'.format(self.now, str(self.capture_count).zfill(SETTINGS.PADDING), SETTINGS.GRABBER_FORMAT.lower(), SETTINGS.GRABBER_FORMAT)
+        print 'caught capture', 'tmp_{}_{}.{}'.format(self.now,
+                                                      str(self.capture_count).zfill(SETTINGS.PADDING),
+                                                      SETTINGS.GRABBER_FORMAT.lower(),
+                                                      SETTINGS.GRABBER_FORMAT)
         print 'current fps', float(self.capture_count)/(time.time()-self.start_capture_time)
         if not self.snap_shots.queue.empty():
             self.snap_shots.queue.get(0)
 
             self.px = QtGui.QPixmap.grabWindow(QtGui.QApplication.desktop().winId())
+
+            if SETTINGS.CURSOR:
+
+                painter = QtGui.QPainter(self.px)
+                painter.drawPixmap(QtGui.QCursor.pos(), self.arrow)
+
             new_image = self.px.scaled(self.px.size()*SETTINGS.SCALE_FACTOR, QtCore.Qt.KeepAspectRatio).toImage()
 
             if not new_image == self.previous_image:
-                if SETTINGS.CURSOR:
-                    painter = QtGui.QPainter(new_image)
-                    painter.drawPixmap(QtGui.QCursor.pos(), self.arrow)
-                new_image.save('tmp_{}_{}.{}'.format(self.now, str(self.capture_count).zfill(SETTINGS.PADDING), SETTINGS.GRABBER_FORMAT).lower(), format=SETTINGS.GRABBER_FORMAT, quality=SETTINGS.GRABBER_QUALITY)
+
+
+                new_image.save('tmp_{}_{}.{}'.format(self.now,
+                                                     str(self.capture_count).zfill(SETTINGS.PADDING),
+                                                     SETTINGS.GRABBER_FORMAT).lower(),
+                               format=SETTINGS.GRABBER_FORMAT,
+                               quality=SETTINGS.GRABBER_QUALITY)
             else:
                 print 'same image'
             self.previous_image = new_image
             self.capture_count += 1
+
+            if self.capture_count == 5:
+                self.stop_capture()
 
 
 if __name__ == '__main__':
@@ -85,15 +109,9 @@ if __name__ == '__main__':
     
     window = ScreenGrabber()
     window.start_capture()
-    # window.stop_capture()
-    # time.sleep(4)
-    # window.stop_capture()
-    # window
-    # window.show()
+
     sys.exit(app.exec_())
-    # try:
-    #     sys.exit(app.exec_())
-    # except SystemExit as e:
-    #     if e.code != 0:
-    #         raise()
-    #     os._exit(0)
+
+    for i in range(100000000): pass
+
+    window.stop_capture()

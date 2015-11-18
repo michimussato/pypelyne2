@@ -18,7 +18,7 @@ elif sys.maxsize > 2**32:
     ARCHITECTURE = ARCHITECTURES[1]
 
 here = os.path.dirname(os.path.realpath(__file__))
-PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(here))
+PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
 
 # Plugin module
@@ -44,11 +44,11 @@ SERVER_PORT = 5678
 
 # ScreenGrabber module
 FPS = 1
-CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor.png')
+CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_reddot.png')
 CURSOR = True
 CURSOR_SIZE = 30
 PADDING = 10
-SCALE_FACTOR = 0.25
+SCALE_FACTOR = 0.5
 GRABBER_FORMAT = 'PNG'
 # min 0, max 100, default -1
 GRABBER_QUALITY = -1
