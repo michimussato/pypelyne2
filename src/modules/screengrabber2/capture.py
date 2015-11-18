@@ -15,12 +15,12 @@ import threading
 import Queue
 import numpy
 
-from PySide.QtGui import QPixmap, QApplication, QMainWindow,QWidget,\
+from PyQt4.QtGui import QPixmap, QApplication, QMainWindow,QWidget,\
                         QPushButton,QVBoxLayout,QPainter,QCursor,QSpinBox,\
                         QLabel,QGridLayout,QLineEdit,QButtonGroup,QRadioButton, \
                         QGroupBox,QLayout
 
-from PySide.QtCore import SIGNAL,Qt, QThread
+from PyQt4.QtCore import SIGNAL,Qt, QThread
 
 class SelectedArea(QWidget):
     def __init__(self):

@@ -1,6 +1,6 @@
 import datetime
 import logging
-import sys
+# import sys
 # import threading
 import src.conf.SETTINGS as SETTINGS
 from PyQt4 import QtGui, QtCore
@@ -16,7 +16,7 @@ class ScreenGrabber(QtCore.QThread):
         self.previous_image = None
         self.pixmap_previous = None
         self.qimage = None
-        self.format = 'PNG'
+        # self.format = 'PNG'
 
         self.counter = 1
 
@@ -53,9 +53,9 @@ class ScreenGrabber(QtCore.QThread):
         self.counter += 1
 
 
-app = QtGui.QApplication(sys.argv)
-test = ScreenGrabber()
-# test.run()
-
-app.exec_()
-# test.quit()
+# app = QtGui.QApplication(sys.argv)
+# test = ScreenGrabber()
+# # test.run()
+#
+# app.exec_()
+# # test.quit()

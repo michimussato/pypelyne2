@@ -4,11 +4,15 @@ import sys
 import PyQt4.QtGui as QtGui
 
 
-# app = QtGui.QApplication(sys.argv)
-
+app = QtGui.QApplication(sys.argv)
+# global app
+# app = QApplication(sys.argv)
 grabber = screengrabber.ScreenGrabber()
-grabber.run()
+# app.exec_()
 
-time.sleep(60)
 
-grabber.stop()
+# grabber.run()
+#
+# time.sleep(60)
+#
+# grabber.stop()

@@ -4,8 +4,10 @@ import sys
 import os
 import platform
 
+# global logging setting
 logging.basicConfig(level=logging.DEBUG)
 
+# system information
 platform = platform.system()
 OPERATING_SYSTEM = str(platform).lower()
 ARCHITECTURES = ['x32', 'x64']
@@ -15,13 +17,21 @@ if sys.maxsize <= 2**32:
 elif sys.maxsize > 2**32:
     ARCHITECTURE = ARCHITECTURES[1]
 
-script_dir = os.path.dirname(os.path.realpath(__file__))
-PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(script_dir))
+here = os.path.dirname(os.path.realpath(__file__))
+PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(here))
+ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
+
+# Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
 PLUGINS_FILES = [x for x in os.listdir(PLUGINS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
-TASKS_FILE = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks', 'tasks.json')
+
+# Task module
+TASKS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks')
+TASKS_FILE = os.path.join(TASKS_DIR, 'tasks.json')
 # TASKS_FILE = [x for x in os.listdir(TASKS_DIR) if x.endswith('.json')]
 
+# Server and Client modules
+ip = '127.0.0.1'
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(('8.8.8.8', 80))
@@ -29,13 +39,16 @@ try:
     s.close()
 except Exception, e:
     print 'could not get local ip: %s' % e
-SERVER_IP = ip or '192.168.32.32'
+SERVER_IP = ip
 SERVER_PORT = 5678
 
-# ScreenGrabber:
+# ScreenGrabber module
 FPS = 1
+CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor.png')
+CURSOR = True
+CURSOR_SIZE = 30
 PADDING = 10
-SCALE_FACTOR = 0.5
+SCALE_FACTOR = 0.25
 GRABBER_FORMAT = 'PNG'
 # min 0, max 100, default -1
-GRABBER_QUALITY = 0
+GRABBER_QUALITY = -1
