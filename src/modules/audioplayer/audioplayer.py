@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     app = QApplication(sys.argv)
     playerWindow = playerUi()
-    #screenSize = QApplication.desktop().availableGeometry()
+    #screen_size = QApplication.desktop().availableGeometry()
 
     playerUi.show()
     app.exec_()
