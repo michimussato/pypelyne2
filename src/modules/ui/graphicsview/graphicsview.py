@@ -2,6 +2,8 @@ from PyQt4 import QtGui
 from PyQt4 import QtCore
 from PyQt4 import QtOpenGL
 
+# import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
+
 
 class GraphicsView(QtGui.QGraphicsView):
     def __init__(self):
