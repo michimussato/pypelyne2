@@ -28,9 +28,12 @@ class DockWidgetPlugins(dockwidget.DockWidget):
 
         for plugin in self.plugins:
             if plugin.family_enable:
-                # print dir(plugin)
-                plugin_widget = pluginwidget.PluginWidget(plugin)
-                self.layout_plugins.addWidget(plugin_widget)
+                if SETTINGS.DISPLAY_ONLY_AVAILABLE and plugin.executable_x32 is None and plugin.executable_x64 is None:
+                    pass
+                else:
+                    # print dir(plugin)
+                    plugin_widget = pluginwidget.PluginWidget(plugin)
+                    self.layout_plugins.addWidget(plugin_widget)
 
         widget.setLayout(self.layout_plugins)
 

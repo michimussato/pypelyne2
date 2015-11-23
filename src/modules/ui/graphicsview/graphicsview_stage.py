@@ -11,3 +11,4 @@ class GraphicsViewStage(graphicsview.GraphicsView):
     def __init__(self):
         super(GraphicsViewStage, self).__init__()
         self.scene = graphicsscene.GraphicsScene()
+        self.setSceneRect(0, 0, 500, 500)

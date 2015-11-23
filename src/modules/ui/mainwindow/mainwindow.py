@@ -18,3 +18,10 @@ class MainWindow(QtGui.QMainWindow):
         self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_bl)
 
         self.setCentralWidget(self.graphicssview_stage)
+
+    def resizeEvent(self, event):
+        self.graphicssview_stage.setSceneRect(0, 0, self.graphicssview_stage.width(), self.graphicssview_stage.height())
+
+    def graphicssview_stage_wheelEvent(self, event):
+        factor = 1.41 ** ((event.delta()*.5) / 240.0)
+        self.graphicssview_stage.scale(factor, factor)
