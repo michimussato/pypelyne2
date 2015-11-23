@@ -21,12 +21,15 @@ here = os.path.dirname(os.path.realpath(__file__))
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
 
+ICON_X32 = os.path.join(ICONS_DIR, 'icon_x32.png')
+ICON_X64 = os.path.join(ICONS_DIR, 'icon_x64.png')
+
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
 PLUGINS_FILES = [x for x in os.listdir(PLUGINS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
 PLUGINS_ICONS = os.path.join(PLUGINS_DIR, 'icons')
 PLUGINS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_plugin_icon.png')
-PLUGINS_ICON_HEIGHT = 40
+PLUGINS_ICON_HEIGHT = 60
 
 # Task module
 TASKS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks')
