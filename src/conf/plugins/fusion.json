@@ -6,7 +6,7 @@
   "releases": [
     {
       "release_number": "7",
-      "icon": null,
+      "icon": "icon_blackmagicdesign_fusion_7.png",
       "release_extension": ".comp",
       "project_template": "null_blackmagicdesign_fusion7.comp",
       "project_workspace_template": null,
