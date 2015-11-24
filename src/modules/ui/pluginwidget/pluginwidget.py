@@ -56,6 +56,45 @@ class ToolButtonDraggable(QtGui.QToolButton):
         else:
             print 'copied'
 
+
+class PixmapDraggable(QtGui.QPixmap):
+    # http://stackoverflow.com/questions/5284648/init-method-for-subclass-of-pyqt-qtablewidgetitem
+    def __init__(self, plugin=None, *args, **kwargs):
+        super(PixmapDraggable, self).__init__(*args, **kwargs)
+    #
+    #     self.plugin = plugin
+    #
+    def mouseMoveEvent(self, e):
+        # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
+        # if e.buttons() != QtCore.Qt.RightButton:
+        #     return
+
+        # write the relative cursor position to mime data
+        mime_data = QtCore.QMimeData()
+        # simple string with 'x,y'
+        mime_data.setText('%d,%d' % (e.x(), e.y()))
+
+        # let's make it fancy. we'll show a "ghost" of the button as we drag
+        # grab the button to a pixmap
+        # print self.plugin.icon
+        pixmap = QtGui.QPixmap(self.plugin.icon).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+
+        # make a QDrag
+        drag = QtGui.QDrag(self)
+        # put our MimeData
+        drag.setMimeData(mime_data)
+        # set its Pixmap
+        drag.setPixmap(pixmap)
+        # shift the Pixmap so that it coincides with the cursor position
+        drag.setHotSpot(e.pos())
+
+        # start the drag operation
+        # exec_ will return the accepted action from dropEvent
+        if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
+            print 'moved'
+        else:
+            print 'copied'
+
     # def mouseReleaseEvent(self, event):
     #     # self.setEnabled(False)
     #     pass
@@ -96,10 +135,28 @@ class PluginWidget(QtGui.QWidget, QtGui.QStandardItem):
             self.icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS,
                                                    plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
+        # paint architecture on top of the application icon
+        qicon = QtGui.QPixmap(self.icon)
+        qarch = QtGui.QPixmap(SETTINGS.ICON_X32).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
+
+        pixmap = PixmapDraggable(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
+        color = QtGui.QColor(0, 0, 0, 0)
+        pixmap.fill(color)
+
+        painter = QtGui.QPainter()
+        painter.begin(pixmap)
+        # http://doc.qt.io/qt-4.8/qpainter.html#CompositionMode-enum
+        painter.setCompositionMode(painter.CompositionMode_SourceOver)
+        painter.drawPixmap(0, 0, qicon)
+        painter.drawPixmap(0, 0, qarch)
+        painter.end()
+
+
+
         self.ui.label.setText('{} {}'.format(plugin.family, plugin.release_number))
         self.ui.label.setEnabled(False)
 
-        self.ui.label_icon.setPixmap(self.icon)
+        self.ui.label_icon.setPixmap(pixmap)
         self.ui.label_icon.setEnabled(False)
 
         self.tool_button_x32.setIcon(QtGui.QIcon(SETTINGS.ICON_X32))
@@ -114,9 +171,6 @@ class PluginWidget(QtGui.QWidget, QtGui.QStandardItem):
 
         if plugin.executable_x32 is not None:
             x32_object = plugin.x32
-
-            # print self.plugin_x32.__dict__
-            # plugin_x32 = plugin.x32()
 
             self.ui.label.setEnabled(True)
 

@@ -17,6 +17,8 @@ class GraphicsView(QtGui.QGraphicsView):
 
         self.setGeometry(600, 300, 600, 400)
 
+        # self.setAll
+
         self.sc = GraphicsScene(parent=self)
         self.setScene(self.sc)
 
@@ -34,6 +36,8 @@ class GraphicsScene(QtGui.QGraphicsScene):
     def __init__(self, parent=None):
         super(GraphicsScene, self).__init__(parent)
         self.addRect(30, 16, 20, 20, pen=QtGui.QPen(QtCore.Qt.blue))
+
+        # self.
 
     def dropEvent(self, event):
         if event.mimeData().hasFormat("application/x-imgname"):
