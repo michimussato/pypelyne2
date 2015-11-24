@@ -1,14 +1,14 @@
 import os
-# import subprocess
 
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
 
 import src.conf.settings.SETTINGS as SETTINGS
+import src.modules.launch.launch as launch
 
 
-# class PixmapClickable(QtGui.QPixmap, QtGui.QWidget):
+# class PixmapClickable(QtGui.QPixmap):
 #     def __init__(self, *__args):
 #         super(PixmapClickable, self).__init__()
 #         # pass
@@ -17,21 +17,60 @@ import src.conf.settings.SETTINGS as SETTINGS
 #         print 'test'
 #
 #     # http://www.qtforum.org/article/34120/adding-a-clickable-image-to-a-window.html
-#
-#
-# class ToolButtonClickable(QtGui.QToolButton):
-#     def __init__(self):
-#         super(ToolButtonClickable).__init__()
-#
-#     def mouseReleaseEvent(self, event):
-#         pass
 
 
-class PluginWidget(QtGui.QWidget):
+class ToolButtonDraggable(QtGui.QToolButton):
+    def __init__(self, plugin=None):
+        super(ToolButtonDraggable, self).__init__()
+
+        self.plugin = plugin
+
+    def mouseMoveEvent(self, e):
+        # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
+        # if e.buttons() != QtCore.Qt.RightButton:
+        #     return
+
+        # write the relative cursor position to mime data
+        mime_data = QtCore.QMimeData()
+        # simple string with 'x,y'
+        mime_data.setText('%d,%d' % (e.x(), e.y()))
+
+        # let's make it fancy. we'll show a "ghost" of the button as we drag
+        # grab the button to a pixmap
+        # print self.plugin.icon
+        pixmap = QtGui.QPixmap(self.plugin.icon).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+
+        # make a QDrag
+        drag = QtGui.QDrag(self)
+        # put our MimeData
+        drag.setMimeData(mime_data)
+        # set its Pixmap
+        drag.setPixmap(pixmap)
+        # shift the Pixmap so that it coincides with the cursor position
+        drag.setHotSpot(e.pos())
+
+        # start the drag operation
+        # exec_ will return the accepted action from dropEvent
+        if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
+            print 'moved'
+        else:
+            print 'copied'
+
+    # def mouseReleaseEvent(self, event):
+    #     # self.setEnabled(False)
+    #     pass
+
+
+class PluginWidget(QtGui.QWidget, QtGui.QStandardItem):
     def __init__(self, plugin=None):
         super(PluginWidget, self).__init__()
 
         self.processes = []
+
+        # self.plugin_x32 = plugin.x32
+        # self.plugin_x64 = plugin.x64
+
+        # self.setAcceptDrops(True)
 
         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
                                           'src',
@@ -39,6 +78,14 @@ class PluginWidget(QtGui.QWidget):
                                           'ui',
                                           'pluginwidget',
                                           'pluginwidget.ui'), self)
+
+        self.tool_button_x32 = ToolButtonDraggable(plugin=plugin)
+        self.tool_button_x64 = ToolButtonDraggable(plugin=plugin)
+        self.v_spacer = QtGui.QSpacerItem(1, 1, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
+
+        self.tool_buttons_layout.addWidget(self.tool_button_x32)
+        self.tool_buttons_layout.addWidget(self.tool_button_x64)
+        self.tool_buttons_layout.addItem(self.v_spacer)
 
         self.ui.label_icon.setText('')
         self.ui.label_icon.setEnabled(False)
@@ -55,66 +102,70 @@ class PluginWidget(QtGui.QWidget):
         self.ui.label_icon.setPixmap(self.icon)
         self.ui.label_icon.setEnabled(False)
 
-        self.ui.tool_button_x32.setIcon(QtGui.QIcon(SETTINGS.ICON_X32))
-        self.ui.tool_button_x64.setIcon(QtGui.QIcon(SETTINGS.ICON_X64))
+        self.tool_button_x32.setIcon(QtGui.QIcon(SETTINGS.ICON_X32))
+        self.tool_button_x64.setIcon(QtGui.QIcon(SETTINGS.ICON_X64))
 
-        self.ui.tool_button_x32.setEnabled(False)
-        self.ui.tool_button_x64.setEnabled(False)
-        self.ui.tool_button_x32.setToolTip('32 bits instance of {} {} is not available'.format(plugin.family,
-                                                                                               plugin.release_number))
-        self.ui.tool_button_x64.setToolTip('64 bits instance of {} {} is not available'.format(plugin.family,
-                                                                                               plugin.release_number))
+        self.tool_button_x32.setEnabled(False)
+        self.tool_button_x64.setEnabled(False)
+        self.tool_button_x32.setToolTip('32 bits instance of {} {} is not available'.format(plugin.family,
+                                                                                            plugin.release_number))
+        self.tool_button_x64.setToolTip('64 bits instance of {} {} is not available'.format(plugin.family,
+                                                                                            plugin.release_number))
 
         if plugin.executable_x32 is not None:
+            x32_object = plugin.x32
+
+            # print self.plugin_x32.__dict__
+            # plugin_x32 = plugin.x32()
+
             self.ui.label.setEnabled(True)
 
             self.ui.label_icon.setEnabled(True)
 
             self.tool_button_x32_menu = QtGui.QMenu()
             self.tool_button_x32_menu.addAction('launch instance',
-                                                lambda: self.launch_instance_x32(plugin=plugin))
+                                                lambda: self.launch_instance(plugin=x32_object))
 
-            self.ui.tool_button_x32.setText('')
-            self.ui.tool_button_x32.setAutoRaise(True)
-            self.ui.tool_button_x32.setEnabled(True)
-            self.ui.tool_button_x32.setPopupMode(self.ui.tool_button_x32.MenuButtonPopup)
-            self.ui.tool_button_x32.setMenu(self.tool_button_x32_menu)
-            self.ui.tool_button_x32.clicked.connect(lambda: self.launch_instance_x32(plugin=plugin))
-            self.ui.tool_button_x32.setToolTip('launch 32 bits instance of {} {}'.format(plugin.family,
-                                                                                         plugin.release_number))
+            self.tool_button_x32.setText('')
+            self.tool_button_x32.setAutoRaise(True)
+            self.tool_button_x32.setEnabled(True)
+            self.tool_button_x32.setPopupMode(self.tool_button_x32.MenuButtonPopup)
+            self.tool_button_x32.setMenu(self.tool_button_x32_menu)
+            self.tool_button_x32.clicked.connect(lambda: self.launch_instance(plugin=x32_object))
+            self.tool_button_x32.setToolTip('launch 32 bits instance of {}'.format(x32_object.label))
 
         if plugin.executable_x64 is not None:
+            x64_object = plugin.x64
+            # plugin_x64 = plugin.x64()
+
             self.ui.label.setEnabled(True)
 
             self.ui.label_icon.setEnabled(True)
 
             self.tool_button_x64_menu = QtGui.QMenu()
             self.tool_button_x64_menu.addAction('launch instance',
-                                                lambda: self.launch_instance_x64(plugin=plugin))
+                                                lambda: self.launch_instance(plugin=x64_object))
 
-            self.ui.tool_button_x64.setText('')
-            self.ui.tool_button_x64.setAutoRaise(True)
-            self.ui.tool_button_x64.setEnabled(True)
-            self.ui.tool_button_x64.setPopupMode(self.ui.tool_button_x64.MenuButtonPopup)
-            self.ui.tool_button_x64.setMenu(self.tool_button_x64_menu)
-            self.ui.tool_button_x64.clicked.connect(lambda: self.launch_instance_x64(plugin=plugin))
-            self.ui.tool_button_x64.setToolTip('launch 64 bits instance of {} {}'.format(plugin.family,
-                                                                                         plugin.release_number))
+            self.tool_button_x64.setText('')
+            self.tool_button_x64.setAutoRaise(True)
+            self.tool_button_x64.setEnabled(True)
+            self.tool_button_x64.setPopupMode(self.tool_button_x64.MenuButtonPopup)
+            self.tool_button_x64.setMenu(self.tool_button_x64_menu)
+            self.tool_button_x64.clicked.connect(lambda: self.launch_instance(plugin=x64_object))
+            self.tool_button_x64.setToolTip('launch 64 bits instance of {}'.format(x64_object.label))
 
-    def launch_instance_x32(self, plugin=None):
+    def launch_instance(self, plugin=None):
+        # print plugin
         process = QtCore.QProcess(self)
-        process.started.connect(self.started)
-        process.finished.connect(self.finished)
-        process.start(plugin.executable_x32, plugin.flags_x32)
+        process.started.connect(lambda: self.started(plugin=plugin))
+        process.finished.connect(lambda: self.finished(plugin=plugin))
+        process.start(plugin.executable, plugin.flags)
 
-    def launch_instance_x64(self, plugin=None):
-        process = QtCore.QProcess(self)
-        process.started.connect(self.started)
-        process.finished.connect(self.finished)
-        process.start(plugin.executable_x64, plugin.flags_x64)
+    def started(self, plugin):
+        print 'plugin {} started'.format(plugin.label)
 
-    def started(self):
-        print 'started'
+    def finished(self, plugin):
+        print 'plugin {} finished'.format(plugin.label)
 
-    def finished(self):
-        print 'finished'
+    def dropEvent(self, event):
+        print 'drop'

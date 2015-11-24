@@ -33,7 +33,7 @@
             "project_file_flag": null,
             "executable_x32": null,
             "flags_x32": [],
-            "executable_x64": "C:\\Program Files\\Autodesk\\Maya2013\\bin\\maya.exe",
+            "executable_x64": "/Applications/Natron.app/Contents/MacOS/Natron",
             "flags_x64": []
           }
         },

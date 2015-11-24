@@ -68,8 +68,11 @@ def parse_plugins():
                         json_object[u'abbreviation']
                     plugin_dict[u'release_number'] = \
                         release[u'release_number']
-                    plugin_dict[u'icon'] = \
-                        release[u'icon']
+                    if release[u'icon'] is None:
+                        plugin_dict[u'icon'] = release[u'icon']
+                    else:
+                        plugin_dict[u'icon'] = \
+                            os.path.join(SETTINGS.PLUGINS_ICONS, release[u'icon'])
                     plugin_dict[u'release_extension'] = \
                         release[u'release_extension']
                     plugin_dict[u'project_template'] = \

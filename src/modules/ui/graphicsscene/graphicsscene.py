@@ -1,4 +1,5 @@
 import os
+import cPickle
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 from PyQt4 import uic
@@ -34,7 +35,24 @@ class GraphicsScene(QtGui.QGraphicsScene):
         super(GraphicsScene, self).__init__(parent)
         self.addRect(30, 16, 20, 20, pen=QtGui.QPen(QtCore.Qt.blue))
 
+    def dropEvent(self, event):
+        if event.mimeData().hasFormat("application/x-imgname"):
+            event.accept()
+            data = event.mimeData().data("application/x-imgname")
+            data = data.data()
+            unPickleData = cPickle.loads(data)
+            # unPickleData = userListModule.ListBaseClass.d[unPickleData]
+            # Create the node in the scene
+            self.createNode(unPickleData, event.scenePos())
+            if unPickleData.dictKey is "emitterCat":
+                newPos = event.scenePos()
+                newPos.setY(newPos.y()-175)
+                # behaviorNode = mayaNodesModule.MayaNodes['behaviorCat']
+                # self.createNode(behaviorNode, newPos)
 
+    def dragMoveEvent(self, event):
+        if event.mimeData().hasFormat("application/x-imgname"):
+            event.accept()
 
 
 
