@@ -57,13 +57,39 @@ class ToolButtonDraggable(QtGui.QToolButton):
             print 'copied'
 
 
-class PixmapDraggable(QtGui.QPixmap):
+class PixmapDraggable(QtGui.QLabel):
     # http://stackoverflow.com/questions/5284648/init-method-for-subclass-of-pyqt-qtablewidgetitem
     def __init__(self, plugin=None, *args, **kwargs):
         super(PixmapDraggable, self).__init__(*args, **kwargs)
-    #
-    #     self.plugin = plugin
-    #
+
+        self.plugin = plugin
+
+        self.setText('{} {}'.format(plugin.family, plugin.release_number))
+
+        if plugin.icon is None:
+            self.icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+        else:
+            self.icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS,
+                                                   plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+
+        self.pixmap = QtGui.QPixmap()
+
+        qicon = QtGui.QPixmap(self.icon)
+        qarch = QtGui.QPixmap(SETTINGS.ICON_X32).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
+
+        color = QtGui.QColor(0, 0, 0, 0)
+        self.pixmap.fill(color)
+
+        painter = QtGui.QPainter()
+        painter.begin(self.pixmap)
+        # http://doc.qt.io/qt-4.8/qpainter.html#CompositionMode-enum
+        painter.setCompositionMode(painter.CompositionMode_SourceOver)
+        painter.drawPixmap(0, 0, qicon)
+        painter.drawPixmap(0, 0, qarch)
+        painter.end()
+
+        self.setPixmap(self.icon)
+
     def mouseMoveEvent(self, e):
         # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
         # if e.buttons() != QtCore.Qt.RightButton:
@@ -87,6 +113,7 @@ class PixmapDraggable(QtGui.QPixmap):
         drag.setPixmap(pixmap)
         # shift the Pixmap so that it coincides with the cursor position
         drag.setHotSpot(e.pos())
+        print 'hello'
 
         # start the drag operation
         # exec_ will return the accepted action from dropEvent
@@ -95,12 +122,23 @@ class PixmapDraggable(QtGui.QPixmap):
         else:
             print 'copied'
 
+    def mouseDoubleClickEvent(self, event):
+        print 'test'
+
+    def mousePressEvent(self, event):
+        return
+        # self.setCursor(QtCore.Qt.BusyCursor)
+
+    def mouseReleaseEvent(self, event):
+        return
+        # self.setCursor(QtCore.Qt.ArrowCursor)
+
     # def mouseReleaseEvent(self, event):
     #     # self.setEnabled(False)
     #     pass
 
 
-class PluginWidget(QtGui.QWidget, QtGui.QStandardItem):
+class PluginWidget(QtGui.QWidget):
     def __init__(self, plugin=None):
         super(PluginWidget, self).__init__()
 
@@ -136,27 +174,28 @@ class PluginWidget(QtGui.QWidget, QtGui.QStandardItem):
                                                    plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
         # paint architecture on top of the application icon
-        qicon = QtGui.QPixmap(self.icon)
-        qarch = QtGui.QPixmap(SETTINGS.ICON_X32).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
+        # qicon = QtGui.QPixmap(self.icon)
+        # qarch = QtGui.QPixmap(SETTINGS.ICON_X32).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
 
-        pixmap = PixmapDraggable(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
-        color = QtGui.QColor(0, 0, 0, 0)
-        pixmap.fill(color)
-
-        painter = QtGui.QPainter()
-        painter.begin(pixmap)
-        # http://doc.qt.io/qt-4.8/qpainter.html#CompositionMode-enum
-        painter.setCompositionMode(painter.CompositionMode_SourceOver)
-        painter.drawPixmap(0, 0, qicon)
-        painter.drawPixmap(0, 0, qarch)
-        painter.end()
+        pixmap = PixmapDraggable(plugin, 'test')
+        # color = QtGui.QColor(0, 0, 0, 0)
+        # pixmap.fill(color)
+        #
+        # painter = QtGui.QPainter()
+        # painter.begin(pixmap)
+        # # http://doc.qt.io/qt-4.8/qpainter.html#CompositionMode-enum
+        # painter.setCompositionMode(painter.CompositionMode_SourceOver)
+        # painter.drawPixmap(0, 0, qicon)
+        # painter.drawPixmap(0, 0, qarch)
+        # painter.end()
 
 
 
         self.ui.label.setText('{} {}'.format(plugin.family, plugin.release_number))
         self.ui.label.setEnabled(False)
 
-        self.ui.label_icon.setPixmap(pixmap)
+        # self.ui.label_icon.setPixmap(pixmap)
+        self.ui.verticalLayout_2.addWidget(pixmap)
         self.ui.label_icon.setEnabled(False)
 
         self.tool_button_x32.setIcon(QtGui.QIcon(SETTINGS.ICON_X32))
