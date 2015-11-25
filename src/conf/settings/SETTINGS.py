@@ -32,7 +32,7 @@ PLUGINS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_plugin_icon.png')
 PLUGINS_ICON_HEIGHT = 60
 
 # dockwidget_plugins module
-DISPLAY_ONLY_AVAILABLE = True
+DISPLAY_ONLY_AVAILABLE = False
 
 # Task module
 TASKS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks')
