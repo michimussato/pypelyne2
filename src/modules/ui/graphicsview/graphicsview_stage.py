@@ -12,6 +12,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         super(GraphicsViewStage, self).__init__()
         self.scene = graphicsscene.GraphicsScene()
         self.setScene(self.scene)
+
+        self.setResizeAnchor(self.AnchorUnderMouse)
+        # self.setTransformationAnchor(self.AnchorUnderMouse)
+
         # self.setResizeAnchor(self.AnchorUnderMouse)
         # self.setSceneRect(0, 0, 500, 500)
 
@@ -34,8 +38,8 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         # delta = 2 * (event.pos().x())
         # self.setResizeAnchor(self.AnchorViewCenter)
-        self.setResizeAnchor(self.AnchorUnderMouse)
-        factor = 1.15
+
+        factor = event.delta()/1000
 
         # print self.visibleRegion().boundingRect()
 
@@ -49,6 +53,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # print event.pos()
         # print self.frameRect()
         # print self.frameSize()
+
         print ''
         visible_rect = self.mapToScene(self.rect()).boundingRect()
         self.setSceneRect(visible_rect)
@@ -57,19 +62,19 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # print self.mapFromScene(self.mapToScene(self.rect()).boundingRect()).boundingRect()
         print self.mapToScene(event.pos())
 
-        #self.nodeView.centerOn()
+        self.scale(factor, factor)
 
-        #print 'event.delta() = %s' %event.delta()
-
-        if event.delta() > 0:
-            self.scale(factor, factor)
-            # self.centerOn()
-            # self.centerOn(self.mapToScene(event.pos()))
-
-        else:
-            self.scale(1.0 / factor, 1.0 / factor)
-            # self.centerOn(self.mapToScene(event.pos()))
-
-        # self.setResizeAnchor(self.AnchorUnderMouse)
-
-
+        # #self.nodeView.centerOn()
+        #
+        # #print 'event.delta() = %s' %event.delta()
+        #
+        # if event.delta() > 0:
+        #     self.scale(factor, factor)
+        #     # self.centerOn()
+        #     # self.centerOn(self.mapToScene(event.pos()))
+        #
+        # else:
+        #     self.scale(1.0 / factor, 1.0 / factor)
+        #     # self.centerOn(self.mapToScene(event.pos()))
+        #
+        # # self.setResizeAnchor(self.AnchorUnderMouse)

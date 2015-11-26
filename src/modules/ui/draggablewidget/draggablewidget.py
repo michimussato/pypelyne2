@@ -24,41 +24,52 @@ class PixmapDraggable(QtGui.QLabel):
                                                    plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
         self.pixmap = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
+        self.pixmap_hovered = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
 
         if plugin.architecture == 'x32':
             self.arch_icon = QtGui.QPixmap(SETTINGS.ICON_X32).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
         elif plugin.architecture == 'x64':
             self.arch_icon = QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
 
-        self.color = QtGui.QColor(0, 0, 0, 0)
-        self.pixmap.fill(self.color)
-
-        self.painter = QtGui.QPainter()
-        self.painter.begin(self.pixmap)
-        # http://doc.qt.io/qt-4.8/qpainter.html#CompositionMode-enum
-        self.painter.setCompositionMode(self.painter.CompositionMode_SourceOver)
-        self.painter.drawPixmap(0, 0, self.icon)
-        self.painter.drawPixmap(0, 0, self.arch_icon)
-        self.painter.end()
-
+        self.create_pixmap()
+        self.create_pixmap_hovered()
         self.setPixmap(self.pixmap)
+
+    def create_pixmap(self):
+        color = QtGui.QColor(0, 0, 0, 0)
+        self.pixmap.fill(color)
+
+        painter = QtGui.QPainter()
+        painter.begin(self.pixmap)
+        # http://doc.qt.io/qt-4.8/qpainter.html#CompositionMode-enum
+        painter.setCompositionMode(painter.CompositionMode_SourceOver)
+        painter.drawPixmap(0, 0, self.icon)
+        painter.drawPixmap(0, 0, self.arch_icon)
+        painter.end()
+
+    def create_pixmap_hovered(self):
+        color_hovered = QtGui.QColor(255, 255, 255, 255)
+        self.pixmap_hovered.fill(color_hovered)
+
+        painter_hovered = QtGui.QPainter()
+        painter_hovered.begin(self.pixmap_hovered)
+        painter_hovered.setCompositionMode(painter_hovered.CompositionMode_SourceOver)
+        painter_hovered.drawPixmap(0, 0, self.pixmap_hovered)
+        painter_hovered.drawPixmap(0, 0, self.pixmap)
+        painter_hovered.end()
 
     def mouseMoveEvent(self, e):
         # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
         mime_data = QtCore.QMimeData()
-        # mime_data.set
         mime_data.setObjectName('node/draggable-pixmap')
 
         pickled_plugin_object = cPickle.dumps(self.plugin)
         mime_data.setData('node/draggable-pixmap', pickled_plugin_object)
-        # mime_data.setText('%d,%d' % (e.x(), e.y()))
         print mime_data.objectName()
-
-        pixmap = QtGui.QPixmap(self.pixmap).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
         drag = QtGui.QDrag(self)
         drag.setMimeData(mime_data)
-        drag.setPixmap(pixmap)
+        drag.setPixmap(self.pixmap)
         drag.setHotSpot(e.pos())
 
         if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
@@ -66,12 +77,18 @@ class PixmapDraggable(QtGui.QLabel):
         else:
             print 'copied'
 
+    def enterEvent(self, *args, **kwargs):
+        # print 'entered'
+        self.setPixmap(self.pixmap_hovered)
+
+    def leaveEvent(self, *args, **kwargs):
+        self.setPixmap(self.pixmap)
+        # print 'left'
+
     def mouseDoubleClickEvent(self, event):
         process = QtCore.QProcess(self)
-        # process.setProcessChannelMode(process.MergedChannels)
         process.started.connect(lambda: self.started(plugin=self.plugin))
         process.finished.connect(lambda: self.finished(plugin=self.plugin))
-        # process.readyRead.connect(lambda: self.ready_read(process=process))
         process.readyReadStandardOutput.connect(lambda: self.ready_read_stdout(process=process))
         process.readyReadStandardError.connect(lambda: self.ready_read_stderr(process=process))
 
