@@ -3,6 +3,7 @@ import sys
 import PyQt4.QtGui as QtGui
 
 import src.modules.ui.graphicsview.graphicsview as graphicsview
+import src.modules.ui.rectangle.rectangle as rectangle
 
 app = QtGui.QApplication(sys.argv)
 # screen_size = QtGui.QApplication.desktop().availableGeometry()

@@ -13,3 +13,10 @@ class GraphicsView(QtGui.QGraphicsView):
         self.setViewport(QtOpenGL.QGLWidget(QtOpenGL.QGLFormat(QtOpenGL.QGL.SampleBuffers)))
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
+        self.setAcceptDrops(True)
+
+    # def dropEvent(self, event):
+    #     print event
+
+    # def mousePressEvent(self, event):
+    #     print 'mousePress'

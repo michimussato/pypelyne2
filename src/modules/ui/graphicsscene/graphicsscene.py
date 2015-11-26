@@ -6,57 +6,117 @@ from PyQt4 import uic
 import src.conf.settings.SETTINGS as SETTINGS
 
 
-class GraphicsView(QtGui.QGraphicsView):
-    def __init__(self, myView=[]):
-        super(GraphicsView, self).__init__()
-        # self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT, 'src', 'modules', 'graphicsscene', 'graphicsscene.ui'), self)
-        self.setResizeAnchor(QtGui.QGraphicsView.AnchorUnderMouse)
-        self.setTransformationAnchor(QtGui.QGraphicsView.AnchorUnderMouse)
-        # self.nodeView.wheelEvent = self.graphicsView_wheelEvent
-        self.myView = myView
+class DraggableMark(QtGui.QGraphicsItem):
+    def __init__(self, position, scene):
+        super(DraggableMark, self).__init__(None, scene)
+        #self.setObjectName( 'fuck' )
+        self.setFlags(QtGui.QGraphicsItem.ItemIsSelectable | QtGui.QGraphicsItem.ItemIsMovable)
+        #now = datetime.datetime.now()
+        #self.setData( 0, 'Das ist mein Name' )
+        #self.setData( 1, 'fuck' )
+        #self.rect = QtCore.QRectF(position.x(), position.y(), 15, 15)
+        self.rect = QtCore.QRectF(-30, -30, 120, 60)
+        self.setPos(position)
+        scene.clearSelection()
 
-        self.setGeometry(600, 300, 600, 400)
+        #print dir( item )
+        #print 'init'
 
-        # self.setAll
+        #painter = QtGui.QPainter()
 
-        self.sc = GraphicsScene(parent=self)
-        self.setScene(self.sc)
 
-    # def wheelEvent(self, event):
-    #     # 'zoom'
-    #     sc = event.delta()/100
-    #     if sc < 0:
-    #         sc -= 1/sc
-    #     self.myView.scale(sc, sc)
-    #     self.myView.setDragMode(0)
-    #     self.myView.showMatrix()
+    def boundingRect(self):
+        return self.rect
+
+    def paint(self, painter, option, widget):
+        painter.setRenderHint(QtGui.QPainter.Antialiasing)
+        pen = QtGui.QPen(QtCore.Qt.SolidLine)
+        pen.setColor(QtCore.Qt.black)
+        pen.setWidth(3)
+
+        if option.state & QtGui.QStyle.State_Selected:
+            pen.setColor(QtCore.Qt.green)
+            print 'hallo'
+            #print dir( self.data( 0 ) )
+            #print self.data( 0 )..toString
+            #print self.data( 0 ).type
+        painter.setPen(pen)
+        #brush = QtGui.QBrush(QtCore.Qt.SolidPattern)
+        #painter.setBrush(brush)
+        painter.setBrush(QtGui.QColor(200, 0, 0))
+        #painter.drawEllipse(self.rect)
+        painter.drawRoundedRect(self.rect, 10.0, 10.0)
+        #painter.drawLine(20, 160, 250, 160)
+
+
+# class GraphicsView(QtGui.QGraphicsView):
+#     def __init__(self, myView=[]):
+#         super(GraphicsView, self).__init__()
+#         # self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT, 'src', 'modules', 'graphicsscene', 'graphicsscene.ui'), self)
+#         self.setResizeAnchor(QtGui.QGraphicsView.AnchorUnderMouse)
+#         self.setTransformationAnchor(QtGui.QGraphicsView.AnchorUnderMouse)
+#         # self.nodeView.wheelEvent = self.graphicsView_wheelEvent
+#         self.myView = myView
+#
+#         self.setGeometry(600, 300, 600, 400)
+#
+#         # self.setAll
+#
+#         self.sc = GraphicsScene(parent=self)
+#         self.setScene(self.sc)
+#
+#     # def wheelEvent(self, event):
+#     #     # 'zoom'
+#     #     sc = event.delta()/100
+#     #     if sc < 0:
+#     #         sc -= 1/sc
+#     #     self.myView.scale(sc, sc)
+#     #     self.myView.setDragMode(0)
+#     #     self.myView.showMatrix()
 
 
 class GraphicsScene(QtGui.QGraphicsScene):
     def __init__(self, parent=None):
         super(GraphicsScene, self).__init__(parent)
-        self.addRect(30, 16, 20, 20, pen=QtGui.QPen(QtCore.Qt.blue))
 
-        # self.
+    def dragEnterEvent(self, event):
+        # event.accept()
+        print 'and here', event
 
     def dropEvent(self, event):
-        if event.mimeData().hasFormat("application/x-imgname"):
+        print 'here'
+        # print dir(event.mimeData())
+        if event.mimeData().hasFormat('node/draggable-pixmap'):
             event.accept()
-            data = event.mimeData().data("application/x-imgname")
+            pos = event.scenePos()
+            print 'accepted'
+            data = event.mimeData().data('node/draggable-pixmap')
             data = data.data()
-            unPickleData = cPickle.loads(data)
+            unpickled_plugin_object = cPickle.loads(data)
+
+            # print dir(unpickled_plugin_object)
+
+            # print unPickleData.dictKey
+            self.addRect(QtCore.QRectF(pos.x(), pos.y(), 20, 20), QtCore.Qt.red)
             # unPickleData = userListModule.ListBaseClass.d[unPickleData]
             # Create the node in the scene
-            self.createNode(unPickleData, event.scenePos())
-            if unPickleData.dictKey is "emitterCat":
-                newPos = event.scenePos()
-                newPos.setY(newPos.y()-175)
-                # behaviorNode = mayaNodesModule.MayaNodes['behaviorCat']
-                # self.createNode(behaviorNode, newPos)
+            # self.createNode(unPickleData, event.scenePos())
+            # if unPickleData.dictKey is 'emitterCat':
+            #
+            #     newPos = event.scenePos()
+            #     newPos.setY(newPos.y()-175)
+            #     # behaviorNode = mayaNodesModule.MayaNodes['behaviorCat']
+            #     # self.createNode(behaviorNode, newPos)
 
     def dragMoveEvent(self, event):
+        print 'there'
         if event.mimeData().hasFormat("application/x-imgname"):
             event.accept()
+
+    def mousePressEvent(self, event):
+        DraggableMark(position=self.scene.event.scenePos(), scene=self.scene)
+
+    # def drag
 
 
 

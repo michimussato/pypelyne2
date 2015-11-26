@@ -61,3 +61,7 @@ SCALE_FACTOR = 0.5
 GRABBER_FORMAT = 'PNG'
 # min 0, max 100, default -1
 GRABBER_QUALITY = -1
+
+# MainWindow
+SPLASH = True
+SPLASH_ICON = os.path.join(ICONS_DIR, 'pypelyne.png')
