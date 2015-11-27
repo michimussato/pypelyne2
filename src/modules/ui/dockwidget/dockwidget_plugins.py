@@ -1,7 +1,7 @@
-import os
+# import os
 from PyQt4 import QtGui
 from PyQt4 import QtCore
-import PyQt4.uic as uic
+# import PyQt4.uic as uic
 
 import src.modules.ui.dockwidget.dockwidget as dockwidget
 import src.modules.ui.pluginwidget.pluginwidget as pluginwidget
@@ -13,13 +13,15 @@ import src.conf.settings.SETTINGS as SETTINGS
 
 
 class DockWidgetPlugins(dockwidget.DockWidget):
-    def __init__(self):
+    def __init__(self, mainwindow=None):
         super(DockWidgetPlugins, self).__init__()
+
+        self.mainwindow = mainwindow
 
         self.setWindowTitle('DockWidgetPlugins')
 
         self.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea)
-        self.setFeatures(QtGui.QDockWidget.DockWidgetFloatable | QtGui.QDockWidget.DockWidgetMovable)
+        self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable)
 
         self.plugins = parse_plugins.get_plugins()
 
@@ -32,7 +34,7 @@ class DockWidgetPlugins(dockwidget.DockWidget):
                     pass
                 else:
                     # print dir(plugin)
-                    plugin_widget = pluginwidget.PluginWidget(plugin)
+                    plugin_widget = pluginwidget.PluginWidget(plugin=plugin, mainwindow=mainwindow)
                     self.layout_plugins.addWidget(plugin_widget)
 
         widget.setLayout(self.layout_plugins)

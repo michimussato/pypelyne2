@@ -47,7 +47,6 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         #     if not i.startswith('_'):
         #         print i, getattr(self, i)
 
-
         # print self.x()
         # print self.y()
         # print event.pos()

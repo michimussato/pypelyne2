@@ -12,4 +12,4 @@ class DockWidget(QtGui.QDockWidget):
         # self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT, 'src', 'modules', 'ui', 'dockwidget', 'dockwidget.ui'), self)
         self.setWindowTitle(str(self))
         self.setAllowedAreas(QtCore.Qt.NoDockWidgetArea)
-        self.setFeatures(QtGui.QDockWidget.NoDockWidgetFeatures)
+        self.setFeatures(self.NoDockWidgetFeatures)

@@ -4,12 +4,14 @@ import PyQt4.QtGui as QtGui
 import PyQt4.uic as uic
 
 import src.conf.settings.SETTINGS as SETTINGS
-import src.modules.ui.draggablewidget.draggablewidget as draggablewidget
+import src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
 
 
 class PluginWidget(QtGui.QWidget):
-    def __init__(self, plugin=None):
+    def __init__(self, plugin=None, mainwindow=None):
         super(PluginWidget, self).__init__()
+
+        self.mainwindow = mainwindow
 
         self.processes = []
 
@@ -26,8 +28,8 @@ class PluginWidget(QtGui.QWidget):
             self.icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS,
                                                    plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
-        self.pixmap_x32 = draggablewidget.PixmapDraggable(plugin.x32)
-        self.pixmap_x64 = draggablewidget.PixmapDraggable(plugin.x64)
+        self.pixmap_x32 = pixmapdraggable.PixmapDraggable(plugin.x32, self.mainwindow)
+        self.pixmap_x64 = pixmapdraggable.PixmapDraggable(plugin.x64, self.mainwindow)
 
         self.pixmap_x32.setToolTip('{} {} is not available'.format(plugin.family, plugin.release_number))
         self.pixmap_x64.setToolTip('{} {} is not available'.format(plugin.family, plugin.release_number))
@@ -43,12 +45,18 @@ class PluginWidget(QtGui.QWidget):
 
         if plugin.executable_x32 is not None:
             self.pixmap_x32.setEnabled(True)
-            self.pixmap_x32.setToolTip('double click to launch. drag to create {} {} node.'.format(plugin.family, plugin.release_number))
+            self.pixmap_x32.setToolTip('double click to launch. '
+                                       'drag to create {0} {1} {2} node.'.format(plugin.family,
+                                                                                 plugin.release_number,
+                                                                                 plugin.architecture))
 
             self.ui.label.setEnabled(True)
 
         if plugin.executable_x64 is not None:
             self.pixmap_x64.setEnabled(True)
-            self.pixmap_x64.setToolTip('double click to launch. drag to create {} {} node.'.format(plugin.family, plugin.release_number))
+            self.pixmap_x64.setToolTip('double click to launch. '
+                                       'drag to create {0} {1} {2} node.'.format(plugin.family,
+                                                                                 plugin.release_number,
+                                                                                 plugin.architecture))
 
             self.ui.label.setEnabled(True)

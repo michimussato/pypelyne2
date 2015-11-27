@@ -6,30 +6,33 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 
 import src.conf.settings.SETTINGS as SETTINGS
+import src.modules.ui.dockwidget.dockwidget_output as dockwidget_output
 
 
 class PixmapDraggable(QtGui.QLabel):
     # http://stackoverflow.com/questions/5284648/init-method-for-subclass-of-pyqt-qtablewidgetitem
-    def __init__(self, plugin, *args, **kwargs):
+    def __init__(self, plugin=None, mainwindow=None, *args, **kwargs):
         super(PixmapDraggable, self).__init__(*args, **kwargs)
 
         self.plugin = plugin
+        self.mainwindow = mainwindow
 
         self.setText('{} {}'.format(plugin.family, plugin.release_number))
 
         if plugin.icon is None:
-            self.icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+            icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON)
         else:
-            self.icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS,
-                                                   plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+            icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS, plugin.icon))
+        self.icon = icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
 
         self.pixmap = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
         self.pixmap_hovered = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
 
         if plugin.architecture == 'x32':
-            self.arch_icon = QtGui.QPixmap(SETTINGS.ICON_X32).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
+            arch_icon = QtGui.QPixmap(SETTINGS.ICON_X32)
         elif plugin.architecture == 'x64':
-            self.arch_icon = QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5)
+            arch_icon = QtGui.QPixmap(SETTINGS.ICON_X64)
+        self.arch_icon = arch_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5, QtCore.Qt.SmoothTransformation)
 
         self.create_pixmap()
         self.create_pixmap_hovered()
@@ -86,33 +89,66 @@ class PixmapDraggable(QtGui.QLabel):
         # print 'left'
 
     def mouseDoubleClickEvent(self, event):
+        output_dock = None
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            output_dock = dockwidget_output.DockWidgetOutput(self)
         process = QtCore.QProcess(self)
-        process.started.connect(lambda: self.started(plugin=self.plugin))
-        process.finished.connect(lambda: self.finished(plugin=self.plugin))
-        process.readyReadStandardOutput.connect(lambda: self.ready_read_stdout(process=process))
-        process.readyReadStandardError.connect(lambda: self.ready_read_stderr(process=process))
+        process.started.connect(lambda: self.started(plugin=self.plugin, dock=output_dock))
+        process.finished.connect(lambda: self.finished(plugin=self.plugin, dock=output_dock))
+        process.readyReadStandardOutput.connect(lambda: self.ready_read_stdout(process=process, dock=output_dock))
+        process.readyReadStandardError.connect(lambda: self.ready_read_stderr(process=process, dock=output_dock))
 
         process.start(self.plugin.executable, self.plugin.flags)
 
-    def started(self, plugin):
+    def started(self, plugin, dock):
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            dock.setWindowTitle(plugin.label)
+            self.add_output_dock(plugin, dock)
         logging.info('plugin {0} started'.format(plugin.label))
 
-    def finished(self, plugin):
+    def finished(self, plugin, dock):
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            self.remove_output_dock(plugin, dock)
         logging.info('plugin {0} finished'.format(plugin.label))
 
     def dropEvent(self, event):
         print 'drop'
 
-    def ready_read_stdout(self, process):
+    def ready_read_stdout(self, process, dock):
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            dock.data_ready_std(process)
         logging.info('process {0} ({1} {2} {3}): {4}'.format(process.pid(),
                                                              self.plugin.family,
                                                              self.plugin.release_number,
                                                              self.plugin.architecture,
                                                              str(process.readAllStandardOutput())))
 
-    def ready_read_stderr(self, process):
+    def ready_read_stderr(self, process, dock):
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            dock.data_ready_err(process)
         logging.warning('process {0} ({1} {2} {3}): {4}'.format(process.pid(),
                                                                 self.plugin.family,
                                                                 self.plugin.release_number,
                                                                 self.plugin.architecture,
                                                                 str(process.readAllStandardError())))
+
+    def add_output_dock(self, plugin, dock):
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            self.mainwindow.addDockWidget(QtCore.Qt.LeftDockWidgetArea, dock)
+            self.mainwindow.dock_output_widgets.append(dock)
+            if SETTINGS.TABIFY_OUTPUT_WINDOWS:
+                try:
+                    self.mainwindow.tabifyDockWidget(self.mainwindow.dock_output_widgets[0], dock)
+                except IndexError, e:
+                    logging.info('there was no dock_output_widget before ({0})'.format(e))
+        else:
+            pass
+
+    def remove_output_dock(self, plugin, dock):
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            dock.setFeatures(dock.DockWidgetFloatable | dock.DockWidgetMovable | dock.DockWidgetClosable)
+            self.mainwindow.dock_output_widgets.remove(dock)
+            if SETTINGS.CLOSE_DOCK_AFTER_PLUGIN_CLOSE:
+                self.mainwindow.removeDockWidget(dock)
+        else:
+            pass
