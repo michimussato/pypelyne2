@@ -5,7 +5,7 @@ import os
 import platform
 
 # global logging setting
-logging.basicConfig(level=logging.DEBUG)
+logging.basicConfig(level=logging.INFO)
 
 # system information
 platform = platform.system()
@@ -66,5 +66,5 @@ GRABBER_QUALITY = -1
 SPLASH = True
 SPLASH_ICON = os.path.join(ICONS_DIR, 'pypelyne.png')
 SHOW_OUTPUT_WINDOWS = True
-TABIFY_OUTPUT_WINDOWS = False
-CLOSE_DOCK_AFTER_PLUGIN_CLOSE = True
+TABIFY_OUTPUT_WINDOWS = True
+CLOSE_DOCK_AFTER_PLUGIN_CLOSE = False

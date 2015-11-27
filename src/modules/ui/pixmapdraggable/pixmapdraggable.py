@@ -135,20 +135,13 @@ class PixmapDraggable(QtGui.QLabel):
     def add_output_dock(self, plugin, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
             self.mainwindow.addDockWidget(QtCore.Qt.LeftDockWidgetArea, dock)
-            self.mainwindow.dock_output_widgets.append(dock)
             if SETTINGS.TABIFY_OUTPUT_WINDOWS:
-                try:
+                if bool(self.mainwindow.dock_output_widgets):
                     self.mainwindow.tabifyDockWidget(self.mainwindow.dock_output_widgets[0], dock)
-                except IndexError, e:
-                    logging.info('there was no dock_output_widget before ({0})'.format(e))
-        else:
-            pass
+            self.mainwindow.dock_output_widgets.append(dock)
 
     def remove_output_dock(self, plugin, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
             dock.setFeatures(dock.DockWidgetFloatable | dock.DockWidgetMovable | dock.DockWidgetClosable)
-            self.mainwindow.dock_output_widgets.remove(dock)
             if SETTINGS.CLOSE_DOCK_AFTER_PLUGIN_CLOSE:
                 self.mainwindow.removeDockWidget(dock)
-        else:
-            pass

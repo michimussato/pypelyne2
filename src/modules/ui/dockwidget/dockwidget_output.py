@@ -7,10 +7,11 @@ import src.modules.ui.pluginconsole.pluginconsole as pluginconsole
 
 
 class DockWidgetOutput(dockwidget.DockWidget):
-    def __init__(self, mainwindow=None):
+    def __init__(self, pixmapdraggable=None):
         super(DockWidgetOutput, self).__init__()
 
-        self.mainwindow = mainwindow
+        # self.mainwindow = mainwindow
+        self.pixmapdraggable = pixmapdraggable
 
         self.setWindowTitle('DockWidgetOutput')
 
@@ -38,3 +39,8 @@ class DockWidgetOutput(dockwidget.DockWidget):
         cursor_box.movePosition(cursor_box.End)
         cursor_box.insertText('\n')
         box.ensureCursorVisible()
+
+    def closeEvent(self, event):
+        # print self.pixmapdraggable.mainwindow.dock_output_widgets
+        self.pixmapdraggable.mainwindow.dock_output_widgets.remove(self)
+        # print self.pixmapdraggable.mainwindow.dock_output_widgets
