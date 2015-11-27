@@ -20,7 +20,7 @@ class DockWidgetPlugins(dockwidget.DockWidget):
 
         self.setWindowTitle('DockWidgetPlugins')
 
-        self.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea)
+        self.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea | QtCore.Qt.RightDockWidgetArea)
         self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable)
 
         self.plugins = parse_plugins.get_plugins()

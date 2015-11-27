@@ -1,24 +1,31 @@
 import datetime
 
-from PyQt4 import QtCore
+# from PyQt4 import QtCore
+import PyQt4.QtCore as QtCore
+import PyQt4.QtGui as QtGui
 
 import src.modules.ui.dockwidget.dockwidget as dockwidget
 import src.modules.ui.pluginconsole.pluginconsole as pluginconsole
 
 
 class DockWidgetOutput(dockwidget.DockWidget):
-    def __init__(self, pixmapdraggable=None):
+    def __init__(self, pixmapdraggable=None, plugin=None):
         super(DockWidgetOutput, self).__init__()
 
         # self.mainwindow = mainwindow
         self.pixmapdraggable = pixmapdraggable
+        self.plugin = plugin
 
         self.setWindowTitle('DockWidgetOutput')
 
-        self.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea)
+        self.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea | QtCore.Qt.RightDockWidgetArea)
         self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable)
 
-        self.console = pluginconsole.PluginConsole()
+        self.console = pluginconsole.PluginConsole(self.plugin)
+
+        # self.icon = QtGui.QIcon(self.plugin.icon)
+
+        # self.setTitleBarWidget(self.icon)
 
         self.setWidget(self.console)
 

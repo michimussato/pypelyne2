@@ -91,7 +91,7 @@ class PixmapDraggable(QtGui.QLabel):
     def mouseDoubleClickEvent(self, event):
         output_dock = None
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            output_dock = dockwidget_output.DockWidgetOutput(self)
+            output_dock = dockwidget_output.DockWidgetOutput(self, self.plugin)
         process = QtCore.QProcess(self)
         process.started.connect(lambda: self.started(plugin=self.plugin, dock=output_dock))
         process.finished.connect(lambda: self.finished(plugin=self.plugin, dock=output_dock))

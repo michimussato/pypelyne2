@@ -14,16 +14,16 @@ class DockWidget(QtGui.QDockWidget):
         self.setAllowedAreas(QtCore.Qt.NoDockWidgetArea)
         self.setFeatures(self.NoDockWidgetFeatures)
 
-        layout = QtGui.QHBoxLayout()
-        wdg = self.titleBarWidget()
-        btn = QtGui.QPushButton('test')
-        self.setTitleBarWidget(btn)
-
-        layout.addWidget(wdg)
+        # layout = QtGui.QVBoxLayout()
+        # wdg = self.titleBarWidget()
+        # btn = QtGui.QPushButton('test')
+        # self.setTitleBarWidget(btn)
+        #
+        # layout.addWidget(wdg)
         # layout.addWidget(btn)
-
-        new_wdg = QtGui.QWidget()
-
-        new_wdg.setLayout(layout)
-
-        self.setTitleBarWidget(wdg)
+        #
+        # new_wdg = QtGui.QWidget()
+        #
+        # new_wdg.setLayout(layout)
+        #
+        # self.setTitleBarWidget(new_wdg)
