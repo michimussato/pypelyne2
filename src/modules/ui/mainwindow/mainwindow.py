@@ -8,6 +8,7 @@ import src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
 # import src.modules.ui.dockwidget.dockwidget as dockwidget
 import src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plugins
 import src.modules.ui.dockwidget.dockwidget_output as dockwidget_output
+import src.modules.ui.dockwidget.dockwidget_resourcebar as dockwidget_resourcebar
 
 
 class MainWindow(QtGui.QMainWindow):
@@ -20,9 +21,13 @@ class MainWindow(QtGui.QMainWindow):
         self.dock_widget_plugins = dockwidget_plugins.DockWidgetPlugins(mainwindow=self)
         self.dock_output_widgets = []
 
+        self.resource_bar_widget = dockwidget_resourcebar.DockWidgetResourceBar(mainwindow=self)
+
+
         self.graphicssview_stage = graphicsview_stage.GraphicsViewStage()
 
         self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_plugins)
+        self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.resource_bar_widget)
 
         self.setCentralWidget(self.graphicssview_stage)
 

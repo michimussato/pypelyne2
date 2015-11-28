@@ -19,6 +19,7 @@ class PixmapDraggable(QtGui.QLabel):
 
         self.pixmap = compositeicon.CompositeIcon(self.plugin).pixmap
         self.pixmap_hovered = compositeicon.CompositeIcon(self.plugin).pixmap_hovered
+        self.pixmap_noarch = compositeicon.CompositeIcon(self.plugin).pixmap_no_arch
 
         self.setPixmap(self.pixmap)
 
@@ -33,7 +34,7 @@ class PixmapDraggable(QtGui.QLabel):
 
         drag = QtGui.QDrag(self)
         drag.setMimeData(mime_data)
-        drag.setPixmap(self.pixmap_hovered)
+        drag.setPixmap(self.pixmap_noarch)
         drag.setHotSpot(e.pos())
 
         if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
