@@ -1,9 +1,5 @@
 import datetime
-
-# from PyQt4 import QtCore
 import PyQt4.QtCore as QtCore
-import PyQt4.QtGui as QtGui
-
 import src.modules.ui.dockwidget.dockwidget as dockwidget
 import src.modules.ui.pluginconsole.pluginconsole as pluginconsole
 
@@ -12,7 +8,6 @@ class DockWidgetOutput(dockwidget.DockWidget):
     def __init__(self, pixmapdraggable=None, plugin=None):
         super(DockWidgetOutput, self).__init__()
 
-        # self.mainwindow = mainwindow
         self.pixmapdraggable = pixmapdraggable
         self.plugin = plugin
 
@@ -22,10 +17,6 @@ class DockWidgetOutput(dockwidget.DockWidget):
         self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable)
 
         self.console = pluginconsole.PluginConsole(self.plugin)
-
-        # self.icon = QtGui.QIcon(self.plugin.icon)
-
-        # self.setTitleBarWidget(self.icon)
 
         self.setWidget(self.console)
 
@@ -48,6 +39,4 @@ class DockWidgetOutput(dockwidget.DockWidget):
         box.ensureCursorVisible()
 
     def closeEvent(self, event):
-        # print self.pixmapdraggable.mainwindow.dock_output_widgets
         self.pixmapdraggable.mainwindow.dock_output_widgets.remove(self)
-        # print self.pixmapdraggable.mainwindow.dock_output_widgets

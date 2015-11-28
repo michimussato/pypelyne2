@@ -27,9 +27,10 @@ ICON_X64 = os.path.join(ICONS_DIR, 'icon_x64.png')
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
 PLUGINS_FILES = [x for x in os.listdir(PLUGINS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
-PLUGINS_ICONS = os.path.join(PLUGINS_DIR, 'icons')
+PLUGINS_ICONS = os.path.join(PLUGINS_DIR, '_icons')
 PLUGINS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_plugin_icon.png')
 PLUGINS_ICON_HEIGHT = 60
+ICON_HEIGHT = 20
 
 # dockwidget_plugins module
 DISPLAY_ONLY_AVAILABLE = False

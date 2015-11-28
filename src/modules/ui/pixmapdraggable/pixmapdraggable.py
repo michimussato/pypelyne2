@@ -1,12 +1,10 @@
 import logging
-import os
 import cPickle
-
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-
 import src.conf.settings.SETTINGS as SETTINGS
 import src.modules.ui.dockwidget.dockwidget_output as dockwidget_output
+import src.modules.ui.compositeicon.compositeicon as compositeicon
 
 
 class PixmapDraggable(QtGui.QLabel):
@@ -17,49 +15,12 @@ class PixmapDraggable(QtGui.QLabel):
         self.plugin = plugin
         self.mainwindow = mainwindow
 
-        self.setText('{} {}'.format(plugin.family, plugin.release_number))
+        self.setText('{0} {1}'.format(plugin.family, plugin.release_number))
 
-        if plugin.icon is None:
-            icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON)
-        else:
-            icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS, plugin.icon))
-        self.icon = icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+        self.pixmap = compositeicon.CompositeIcon(self.plugin).pixmap
+        self.pixmap_hovered = compositeicon.CompositeIcon(self.plugin).pixmap_hovered
 
-        self.pixmap = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
-        self.pixmap_hovered = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
-
-        if plugin.architecture == 'x32':
-            arch_icon = QtGui.QPixmap(SETTINGS.ICON_X32)
-        elif plugin.architecture == 'x64':
-            arch_icon = QtGui.QPixmap(SETTINGS.ICON_X64)
-        self.arch_icon = arch_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5, QtCore.Qt.SmoothTransformation)
-
-        self.create_pixmap()
-        self.create_pixmap_hovered()
         self.setPixmap(self.pixmap)
-
-    def create_pixmap(self):
-        color = QtGui.QColor(0, 0, 0, 0)
-        self.pixmap.fill(color)
-
-        painter = QtGui.QPainter()
-        painter.begin(self.pixmap)
-        # http://doc.qt.io/qt-4.8/qpainter.html#CompositionMode-enum
-        painter.setCompositionMode(painter.CompositionMode_SourceOver)
-        painter.drawPixmap(0, 0, self.icon)
-        painter.drawPixmap(0, 0, self.arch_icon)
-        painter.end()
-
-    def create_pixmap_hovered(self):
-        color_hovered = QtGui.QColor(255, 255, 255, 255)
-        self.pixmap_hovered.fill(color_hovered)
-
-        painter_hovered = QtGui.QPainter()
-        painter_hovered.begin(self.pixmap_hovered)
-        painter_hovered.setCompositionMode(painter_hovered.CompositionMode_SourceOver)
-        painter_hovered.drawPixmap(0, 0, self.pixmap_hovered)
-        painter_hovered.drawPixmap(0, 0, self.pixmap)
-        painter_hovered.end()
 
     def mouseMoveEvent(self, e):
         # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
@@ -72,7 +33,7 @@ class PixmapDraggable(QtGui.QLabel):
 
         drag = QtGui.QDrag(self)
         drag.setMimeData(mime_data)
-        drag.setPixmap(self.pixmap)
+        drag.setPixmap(self.pixmap_hovered)
         drag.setHotSpot(e.pos())
 
         if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
@@ -102,7 +63,8 @@ class PixmapDraggable(QtGui.QLabel):
 
     def started(self, plugin, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            dock.setWindowTitle(plugin.label)
+            # print dir(plugin)
+            dock.setWindowTitle(plugin.family)
             self.add_output_dock(plugin, dock)
         logging.info('plugin {0} started'.format(plugin.label))
 
