@@ -22,10 +22,13 @@ elif sys.maxsize > 2**32:
 here = os.path.dirname(os.path.realpath(__file__))
 
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
+QSS_ENABLE = False
+QSS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'qss')
+QSS_FILE = os.path.join(QSS_DIR, 'dark.css')
 ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
-
 ICON_X32 = os.path.join(ICONS_DIR, 'icon_x32.png')
 ICON_X64 = os.path.join(ICONS_DIR, 'icon_x64.png')
+EXCLUSIONS = [ '.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini' ]
 
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
@@ -34,6 +37,9 @@ PLUGINS_ICONS = os.path.join(PLUGINS_DIR, '_icons')
 PLUGINS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_plugin_icon.png')
 PLUGINS_ICON_HEIGHT = 40
 ICON_HEIGHT = 20
+CAPTURE_ICON_START = os.path.join(ICONS_DIR, 'capture_start.png')
+CAPTURE_ICON_STOP = os.path.join(ICONS_DIR, 'capture_stop.png')
+KILL_ICON = os.path.join(ICONS_DIR, 'kill.png')
 
 # dockwidget_plugins module
 DISPLAY_ONLY_AVAILABLE = True
@@ -69,6 +75,7 @@ TEST_MODE = True
 TEST_LOOP = False
 TEST_TIME = 10
 ENABLE_SKIP_GAPS = True
+GRABBER_AUTO_START = True
 
 # MainWindow
 SPLASH = True
@@ -77,9 +84,12 @@ SHOW_PLUGINS = True
 SHOW_PLAYER = True
 SHOW_OUTPUT_WINDOWS = True
 TABIFY_OUTPUT_WINDOWS = True
-CLOSE_DOCK_AFTER_PLUGIN_CLOSE = True
+CLOSE_DOCK_AFTER_PLUGIN_CLOSE = False
 
 # Resources
+ENABLE_CPU = True
+ENABLE_MEM = True
+ENABLE_DSK = True
 COLOR_LOW = QtGui.QColor(100, 255, 100)
 COLOR_MID = QtGui.QColor(255, 180, 100)
 COLOR_HIGH = QtGui.QColor(255, 100, 100)
@@ -92,3 +102,7 @@ SHOW_RESOURCES = True
 TOTAL_MEM = int(float(psutil.virtual_memory().total)/1024/1024)
 disks = psutil.disk_partitions(all=False)
 TOTAL_DSK = int(float(psutil.disk_usage(disks[0].mountpoint).total)/1000/1000/1000)
+
+# Player
+MP3_ROOT = r'/Users/michaelmussato/Music/mp3'
+AUDIO_EXTENSIONS = [ '.mp3', '.m4a', '.mp4' ]

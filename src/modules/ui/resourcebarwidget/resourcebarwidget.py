@@ -179,10 +179,17 @@ class ResourceBarWidget(QtGui.QWidget):
                                           'resourcebarwidget.ui'))
 
         self.scroll_layout = QtGui.QVBoxLayout()
+        spacer = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
 
-        self.cpu_bar = BarWidget(monitor_item='cpu', maximum=100)
-        self.mem_bar = BarWidget(monitor_item='mem', maximum=SETTINGS.TOTAL_MEM)
-        self.dsk_bar = BarWidget(monitor_item='dsk', maximum=SETTINGS.TOTAL_DSK)
+        if SETTINGS.ENABLE_CPU:
+            self.cpu_bar = BarWidget(monitor_item='cpu', maximum=100)
+            self.ui.scroll_layout.addWidget(self.cpu_bar)
+        if SETTINGS.ENABLE_MEM:
+            self.mem_bar = BarWidget(monitor_item='mem', maximum=SETTINGS.TOTAL_MEM)
+            self.ui.scroll_layout.addWidget(self.mem_bar)
+        if SETTINGS.ENABLE_DSK:
+            self.dsk_bar = BarWidget(monitor_item='dsk', maximum=SETTINGS.TOTAL_DSK)
+            self.ui.scroll_layout.addWidget(self.dsk_bar)
 
         # nets = psutil.net_connections()
 
@@ -193,12 +200,6 @@ class ResourceBarWidget(QtGui.QWidget):
         #     total = psutil.disk_usage(disk.mountpoint).total
         #     used = psutil.disk_usage(disk.mountpoint).used
         #     print used, total
-
-        self.ui.scroll_layout.addWidget(self.cpu_bar)
-        self.ui.scroll_layout.addWidget(self.mem_bar)
-        self.ui.scroll_layout.addWidget(self.dsk_bar)
-
-        spacer = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
 
         self.ui.scroll_layout.addItem(spacer)
 

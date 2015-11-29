@@ -52,9 +52,11 @@ class PixmapDraggable(QtGui.QLabel):
 
     def mouseDoubleClickEvent(self, event):
         output_dock = None
-        if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            output_dock = dockwidget_output.DockWidgetOutput(self, self.plugin)
+        # if SETTINGS.SHOW_OUTPUT_WINDOWS:
+        #     output_dock = dockwidget_output.DockWidgetOutput(self, self.plugin)
         process = QtCore.QProcess(self)
+        if SETTINGS.SHOW_OUTPUT_WINDOWS:
+            output_dock = dockwidget_output.DockWidgetOutput(self, self.plugin, process)
         process.started.connect(lambda: self.started(plugin=self.plugin, dock=output_dock))
         process.finished.connect(lambda: self.finished(plugin=self.plugin, dock=output_dock))
         process.readyReadStandardOutput.connect(lambda: self.ready_read_stdout(process=process, dock=output_dock))
@@ -83,7 +85,7 @@ class PixmapDraggable(QtGui.QLabel):
 
     def ready_read_stdout(self, process, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            dock.data_ready_std(process)
+            dock.data_ready_std()
         logging.info('process {0} ({1} {2} {3}): {4}'.format(process.pid(),
                                                              self.plugin.family,
                                                              self.plugin.release_number,
@@ -92,7 +94,7 @@ class PixmapDraggable(QtGui.QLabel):
 
     def ready_read_stderr(self, process, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            dock.data_ready_err(process)
+            dock.data_ready_err()
         logging.warning('process {0} ({1} {2} {3}): {4}'.format(process.pid(),
                                                                 self.plugin.family,
                                                                 self.plugin.release_number,

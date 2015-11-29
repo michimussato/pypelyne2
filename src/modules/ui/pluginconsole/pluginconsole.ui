@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>566</width>
-    <height>292</height>
+    <width>1107</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,6 +18,13 @@
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="label_arch_icon">
+         <property name="text">
+          <string>&lt;placeholderArchIcon&gt;</string>
+         </property>
+        </widget>
+       </item>
        <item>
         <widget class="QLabel" name="label_plugin_icon">
          <property name="text">
@@ -46,9 +53,26 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLabel" name="label_arch_icon">
+        <widget class="QPushButton" name="push_button_capture_start">
          <property name="text">
-          <string>&lt;placeholderArchIcon&gt;</string>
+          <string>&lt;placeholderCaptureStart&gt;</string>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="push_button_capture_stop">
+         <property name="text">
+          <string>&lt;placeholderCaptureStop&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="push_button_kill">
+         <property name="text">
+          <string>&lt;placeholderKill&gt;</string>
          </property>
         </widget>
        </item>

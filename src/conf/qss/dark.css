@@ -1,0 +1,21 @@
+*                   {   background: rgb(40, 40, 40, 40);
+                        color: rgb(200, 120, 00, 40);
+}
+
+QWidget:disabled    {   color: rgb(120, 60, 0);
+}
+
+/*
+QPixmap { color: rgb(200, 120, 00); }
+*/
+
+QTextBrowser        {   background-color: rgb(20, 20, 20, 20);
+}
+
+/*
+QGraphicsView, QGraphicsScene { background-color: rgb(40, 40, 40, 40);
+}
+*/
+
+QPainter { color: rgb(200, 120, 00);
+}

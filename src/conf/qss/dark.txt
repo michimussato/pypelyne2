@@ -1,0 +1,6 @@
+QWidget {   background: rgb(40, 40, 40);
+            color: rgb(200, 120, 00); }
+
+QWidget:disabled { color: rgb(120, 60, 0); }
+
+QTextBrowser { background-color: rgb(20, 20, 20); }

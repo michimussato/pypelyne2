@@ -13,7 +13,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.scene = graphicsscene.GraphicsScene()
         self.setScene(self.scene)
 
-        self.setResizeAnchor(self.AnchorUnderMouse)
+        # self.setResizeAnchor(self.AnchorUnderMouse)
         # self.setTransformationAnchor(self.AnchorUnderMouse)
 
         # self.setResizeAnchor(self.AnchorUnderMouse)
@@ -26,54 +26,62 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # self.scene.addItem(self.rectangle)
 
     def wheelEvent(self, event):
+        print 'hi'
+        sc = event.delta()/100000
+        if sc < 0:
+            sc -= 1/sc
+        self.scale(sc, sc)
+        # self.setDragMode(0)
+        # self.scene.showMatrix()
 
-        # numSteps = event.delta() / 15 / 8
+
+        # # numSteps = event.delta() / 15 / 8
+        # #
+        # # if numSteps == 0:
+        # #     event.ignore()
+        # #
+        # # sc = 1.25 * numSteps
+        # # self.zoom(sc, self.mapToScene(event.pos()))
+        # # event.accept()
         #
-        # if numSteps == 0:
-        #     event.ignore()
+        # # delta = 2 * (event.pos().x())
+        # # self.setResizeAnchor(self.AnchorViewCenter)
         #
-        # sc = 1.25 * numSteps
-        # self.zoom(sc, self.mapToScene(event.pos()))
-        # event.accept()
-
-        # delta = 2 * (event.pos().x())
-        # self.setResizeAnchor(self.AnchorViewCenter)
-
-        factor = event.delta()/1000
-
-        # print self.visibleRegion().boundingRect()
-
-        # for i in dir(self):
-        #     if not i.startswith('_'):
-        #         print i, getattr(self, i)
-
-        # print self.x()
-        # print self.y()
-        # print event.pos()
-        # print self.frameRect()
-        # print self.frameSize()
-
-        print ''
-        visible_rect = self.mapToScene(self.rect()).boundingRect()
-        self.setSceneRect(visible_rect)
-        print self.sceneRect()
-        print visible_rect
-        # print self.mapFromScene(self.mapToScene(self.rect()).boundingRect()).boundingRect()
-        print self.mapToScene(event.pos())
-
-        self.scale(factor, factor)
-
-        # #self.nodeView.centerOn()
+        # factor = event.delta()/1000
         #
-        # #print 'event.delta() = %s' %event.delta()
+        # # print self.visibleRegion().boundingRect()
         #
-        # if event.delta() > 0:
-        #     self.scale(factor, factor)
-        #     # self.centerOn()
-        #     # self.centerOn(self.mapToScene(event.pos()))
+        # # for i in dir(self):
+        # #     if not i.startswith('_'):
+        # #         print i, getattr(self, i)
         #
-        # else:
-        #     self.scale(1.0 / factor, 1.0 / factor)
-        #     # self.centerOn(self.mapToScene(event.pos()))
+        # # print self.x()
+        # # print self.y()
+        # # print event.pos()
+        # # print self.frameRect()
+        # # print self.frameSize()
         #
-        # # self.setResizeAnchor(self.AnchorUnderMouse)
+        # print ''
+        # visible_rect = self.mapToScene(self.rect()).boundingRect()
+        # self.setSceneRect(visible_rect)
+        # print self.sceneRect()
+        # print visible_rect
+        # # print self.mapFromScene(self.mapToScene(self.rect()).boundingRect()).boundingRect()
+        # print self.mapToScene(event.pos())
+        #
+        # self.scale(factor, factor)
+        #
+        # # #self.nodeView.centerOn()
+        # #
+        # # #print 'event.delta() = %s' %event.delta()
+        # #
+        # # if event.delta() > 0:
+        # #     self.scale(factor, factor)
+        # #     # self.centerOn()
+        # #     # self.centerOn(self.mapToScene(event.pos()))
+        # #
+        # # else:
+        # #     self.scale(1.0 / factor, 1.0 / factor)
+        # #     # self.centerOn(self.mapToScene(event.pos()))
+        # #
+        # # # self.setResizeAnchor(self.AnchorUnderMouse)
