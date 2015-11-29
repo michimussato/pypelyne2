@@ -22,6 +22,9 @@ class PluginConsole(QtGui.QWidget):
                                           'pluginconsole',
                                           'pluginconsole.ui'), self)
 
+        if SETTINGS.HIDE_CONSOLE:
+            self.ui.splitter.setVisible(False)
+
         self.icon = compositeicon.CompositeIcon(self.plugin).pixmap_no_arch.scaledToHeight(SETTINGS.ICON_HEIGHT,
                                                                                            QtCore.Qt.SmoothTransformation)
         self.arch_icon = compositeicon.CompositeIcon(self.plugin).arch_icon.scaledToHeight(SETTINGS.ICON_HEIGHT,
@@ -83,8 +86,10 @@ class PluginConsole(QtGui.QWidget):
     def grabber_stop(self):
         # self.grabber.stop_capture()
         self.set_stop()
-        self.ui.push_button_capture_stop.setVisible(False)
-        self.ui.push_button_capture_start.setVisible(True)
+
+    # def app_close(self):
+    #     self.grabber_stop()
+    #     # self.grabber.stop_capture()
 
     # def terminate(self):
     #     self.grabber_stop()
@@ -93,9 +98,13 @@ class PluginConsole(QtGui.QWidget):
     #     self.ui.push_button_capture_stop.setEnabled(False)
     #     self.process.terminate()
 
-    def kill(self):
+    def deactivate_buttons(self):
         self.grabber_stop()
         self.ui.push_button_kill.setEnabled(False)
         self.ui.push_button_capture_start.setEnabled(False)
         self.ui.push_button_capture_stop.setEnabled(False)
+
+    def kill(self):
+        # self.grabber_stop()
+        self.deactivate_buttons()
         self.process.terminate()

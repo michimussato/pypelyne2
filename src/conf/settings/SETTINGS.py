@@ -40,6 +40,7 @@ ICON_HEIGHT = 20
 CAPTURE_ICON_START = os.path.join(ICONS_DIR, 'capture_start.png')
 CAPTURE_ICON_STOP = os.path.join(ICONS_DIR, 'capture_stop.png')
 KILL_ICON = os.path.join(ICONS_DIR, 'kill.png')
+HIDE_CONSOLE = False
 
 # dockwidget_plugins module
 DISPLAY_ONLY_AVAILABLE = True
@@ -75,7 +76,7 @@ TEST_MODE = True
 TEST_LOOP = False
 TEST_TIME = 10
 ENABLE_SKIP_GAPS = True
-GRABBER_AUTO_START = True
+GRABBER_AUTO_START = False
 
 # MainWindow
 SPLASH = True

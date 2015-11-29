@@ -71,6 +71,7 @@ class PixmapDraggable(QtGui.QLabel):
         logging.info('plugin {0} started'.format(plugin.label))
 
     def finished(self, plugin, dock):
+        dock.console.deactivate_buttons()
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
             self.remove_output_dock(dock)
         if SETTINGS.CLOSE_DOCK_AFTER_PLUGIN_CLOSE:
