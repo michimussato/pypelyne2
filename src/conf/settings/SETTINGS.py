@@ -1,8 +1,10 @@
+import PyQt4.QtGui as QtGui
 import logging
 import socket
 import sys
 import os
 import platform
+import src.modules.psutil221 as psutil
 
 # global logging setting
 logging.basicConfig(level=logging.INFO)
@@ -18,6 +20,7 @@ elif sys.maxsize > 2**32:
     ARCHITECTURE = ARCHITECTURES[1]
 
 here = os.path.dirname(os.path.realpath(__file__))
+
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
 
@@ -29,11 +32,11 @@ PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
 PLUGINS_FILES = [x for x in os.listdir(PLUGINS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
 PLUGINS_ICONS = os.path.join(PLUGINS_DIR, '_icons')
 PLUGINS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_plugin_icon.png')
-PLUGINS_ICON_HEIGHT = 60
+PLUGINS_ICON_HEIGHT = 40
 ICON_HEIGHT = 20
 
 # dockwidget_plugins module
-DISPLAY_ONLY_AVAILABLE = False
+DISPLAY_ONLY_AVAILABLE = True
 
 # Task module
 TASKS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks')
@@ -53,7 +56,7 @@ SERVER_IP = ip
 SERVER_PORT = 5678
 
 # ScreenGrabber module
-FPS = 1
+FPS = 2
 CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_reddot.png')
 CURSOR = True
 CURSOR_SIZE = 30
@@ -62,13 +65,30 @@ SCALE_FACTOR = 0.5
 GRABBER_FORMAT = 'PNG'
 # min 0, max 100, default -1
 GRABBER_QUALITY = -1
+TEST_MODE = True
+TEST_LOOP = False
+TEST_TIME = 10
+ENABLE_SKIP_GAPS = True
 
 # MainWindow
 SPLASH = True
 SPLASH_ICON = os.path.join(ICONS_DIR, 'pypelyne.png')
+SHOW_PLUGINS = True
+SHOW_PLAYER = True
 SHOW_OUTPUT_WINDOWS = True
 TABIFY_OUTPUT_WINDOWS = True
-CLOSE_DOCK_AFTER_PLUGIN_CLOSE = False
+CLOSE_DOCK_AFTER_PLUGIN_CLOSE = True
 
 # Resources
-REFRESH_INTERVAL = 100
+COLOR_LOW = QtGui.QColor(100, 255, 100)
+COLOR_MID = QtGui.QColor(255, 180, 100)
+COLOR_HIGH = QtGui.QColor(255, 100, 100)
+COLOR_TEXT = QtGui.QColor(0, 0, 0)
+THRESHOLD_MID = 0.7
+THRESHOLD_HIGH = 0.9
+SECTION_COUNT = 10
+REFRESH_INTERVAL = 1500
+SHOW_RESOURCES = True
+TOTAL_MEM = int(float(psutil.virtual_memory().total)/1024/1024)
+disks = psutil.disk_partitions(all=False)
+TOTAL_DSK = int(float(psutil.disk_usage(disks[0].mountpoint).total)/1000/1000/1000)

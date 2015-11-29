@@ -1,11 +1,10 @@
 import time
 import sys
-# import os
 import Queue
 import datetime
 import src.conf.settings.SETTINGS as SETTINGS
-
 from PyQt4 import QtGui, QtCore
+
 
 # http://www.ifnamemain.com/posts/2014/Jul/11/screen_capture_1/
 
@@ -16,10 +15,10 @@ class Thread(QtCore.QThread):
         self.screengrabber = screengrabber
         self.halt = False
         self.queue = Queue.Queue()
-        self.connect(self.screengrabber, QtCore.SIGNAL('stop_capture()'), self.foo)
-
-    def foo(self):
-        print 'bar'
+    #     self.connect(self.screengrabber, QtCore.SIGNAL('stop_capture()'), self.foo)
+    #
+    # def foo(self):
+    #     print 'bar'
         
     def run(self):
         fps = 1.0/SETTINGS.FPS
@@ -47,7 +46,10 @@ class ScreenGrabber(QtCore.QObject):
         self.connect(self.snap_shots, QtCore.SIGNAL('capture()'), self.capture)
         # self.connect(self.snap_shots, QtCore.SIGNAL('clicked()'), self.stop_capture)
         self.capture_count = 0
-        self.start_capture_time = None
+        if SETTINGS.TEST_MODE:
+            self.loop = 0
+        # self.start_capture_time = None
+        self.capture_set = time.time()
         self.previous_px = None
         self.px = None
         self.px2 = None
@@ -55,10 +57,12 @@ class ScreenGrabber(QtCore.QObject):
 
     def start_capture(self):
         # time.sleep(0)
-        self.capture_count = 0
+        # self.capture_count = 0
+        if SETTINGS.TEST_MODE:
+            self.loop = 0
         self.snap_shots.halt = False
         self.snap_shots.start()
-        self.start_capture_time = time.time()
+        # self.start_capture_time = time.time()
         
     def stop_capture(self):
         self.snap_shots.halt = True
@@ -69,11 +73,14 @@ class ScreenGrabber(QtCore.QObject):
     def capture(self):
         # app.processEvents()
 
+        # if SETTINGS.TEST_MODE:
+        #     loop = 0
+
         print 'caught capture', 'tmp_{}_{}.{}'.format(self.now,
                                                       str(self.capture_count).zfill(SETTINGS.PADDING),
                                                       SETTINGS.GRABBER_FORMAT.lower(),
                                                       SETTINGS.GRABBER_FORMAT)
-        print 'current fps', float(self.capture_count)/(time.time()-self.start_capture_time)
+        print 'current fps', float(self.capture_count)/(time.time() - self.capture_set)
         if not self.snap_shots.queue.empty():
             self.snap_shots.queue.get(0)
 
@@ -84,27 +91,33 @@ class ScreenGrabber(QtCore.QObject):
                 painter = QtGui.QPainter(self.px)
                 painter.drawPixmap(QtGui.QCursor.pos(), self.arrow)
 
-            new_image = self.px.scaled(self.px.size()*SETTINGS.SCALE_FACTOR, QtCore.Qt.KeepAspectRatio).toImage()
+            new_image = self.px.scaled(self.px.size()*SETTINGS.SCALE_FACTOR,
+                                       QtCore.Qt.KeepAspectRatio,
+                                       QtCore.Qt.SmoothTransformation).toImage()
 
-            if not new_image == self.previous_image:
-
+            if not new_image == self.previous_image or not SETTINGS.ENABLE_SKIP_GAPS:
 
                 new_image.save('tmp_{}_{}.{}'.format(self.now,
                                                      str(self.capture_count).zfill(SETTINGS.PADDING),
                                                      SETTINGS.GRABBER_FORMAT).lower(),
                                format=SETTINGS.GRABBER_FORMAT,
                                quality=SETTINGS.GRABBER_QUALITY)
+
+                self.capture_count += 1
+
             else:
                 print 'same image'
             self.previous_image = new_image
-            self.capture_count += 1
 
-            if self.capture_count == 5:
-                self.stop_capture()
+            if SETTINGS.TEST_MODE:
+                self.loop += 1
+                if self.loop == SETTINGS.TEST_TIME * SETTINGS.FPS:
+                    self.stop_capture()
+                    if SETTINGS.TEST_LOOP:
+                        self.start_capture()
 
 
 if __name__ == '__main__':
-    # global app
     app = QtGui.QApplication(sys.argv)
     
     window = ScreenGrabber()
@@ -112,6 +125,6 @@ if __name__ == '__main__':
 
     sys.exit(app.exec_())
 
-    for i in range(100000000): pass
-
-    window.stop_capture()
+    # time.sleep(10)
+    #
+    # window.stop_capture()

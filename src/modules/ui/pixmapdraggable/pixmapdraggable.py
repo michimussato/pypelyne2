@@ -64,14 +64,18 @@ class PixmapDraggable(QtGui.QLabel):
 
     def started(self, plugin, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            # print dir(plugin)
             dock.setWindowTitle(plugin.family)
-            self.add_output_dock(plugin, dock)
+            self.add_output_dock(dock)
         logging.info('plugin {0} started'.format(plugin.label))
 
     def finished(self, plugin, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            self.remove_output_dock(plugin, dock)
+            self.remove_output_dock(dock)
+        if SETTINGS.CLOSE_DOCK_AFTER_PLUGIN_CLOSE:
+            try:
+                self.mainwindow.dock_output_widgets.remove(dock)
+            except ValueError, e:
+                logging.warning('SHOW_OUTPUT_WINDOWS disabled? {0}'.format(e))
         logging.info('plugin {0} finished'.format(plugin.label))
 
     def dropEvent(self, event):
@@ -95,7 +99,7 @@ class PixmapDraggable(QtGui.QLabel):
                                                                 self.plugin.architecture,
                                                                 str(process.readAllStandardError())))
 
-    def add_output_dock(self, plugin, dock):
+    def add_output_dock(self, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
             self.mainwindow.addDockWidget(QtCore.Qt.LeftDockWidgetArea, dock)
             if SETTINGS.TABIFY_OUTPUT_WINDOWS:
@@ -103,8 +107,7 @@ class PixmapDraggable(QtGui.QLabel):
                     self.mainwindow.tabifyDockWidget(self.mainwindow.dock_output_widgets[0], dock)
             self.mainwindow.dock_output_widgets.append(dock)
 
-    def remove_output_dock(self, plugin, dock):
-        if SETTINGS.SHOW_OUTPUT_WINDOWS:
-            dock.setFeatures(dock.DockWidgetFloatable | dock.DockWidgetMovable | dock.DockWidgetClosable)
-            if SETTINGS.CLOSE_DOCK_AFTER_PLUGIN_CLOSE:
-                self.mainwindow.removeDockWidget(dock)
+    def remove_output_dock(self, dock):
+        dock.setFeatures(dock.DockWidgetFloatable | dock.DockWidgetMovable | dock.DockWidgetClosable)
+        if SETTINGS.CLOSE_DOCK_AFTER_PLUGIN_CLOSE:
+            self.mainwindow.removeDockWidget(dock)

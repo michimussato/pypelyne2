@@ -1,14 +1,8 @@
-# import os
 from PyQt4 import QtGui
 from PyQt4 import QtCore
-# import PyQt4.uic as uic
-
 import src.modules.ui.dockwidget.dockwidget as dockwidget
 import src.modules.ui.pluginwidget.pluginwidget as pluginwidget
-# import src.modules.ui.graphicsview.graphicsview as graphicsview
-
 import src.parser.parse_plugins as parse_plugins
-
 import src.conf.settings.SETTINGS as SETTINGS
 
 
@@ -18,7 +12,7 @@ class DockWidgetPlugins(dockwidget.DockWidget):
 
         self.mainwindow = mainwindow
 
-        self.setWindowTitle('DockWidgetPlugins')
+        self.setWindowTitle('Plugins')
 
         self.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea | QtCore.Qt.RightDockWidgetArea)
         self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable)
@@ -33,7 +27,6 @@ class DockWidgetPlugins(dockwidget.DockWidget):
                 if SETTINGS.DISPLAY_ONLY_AVAILABLE and plugin.executable_x32 is None and plugin.executable_x64 is None:
                     pass
                 else:
-                    # print dir(plugin)
                     plugin_widget = pluginwidget.PluginWidget(plugin=plugin, mainwindow=mainwindow)
                     self.layout_plugins.addWidget(plugin_widget)
 

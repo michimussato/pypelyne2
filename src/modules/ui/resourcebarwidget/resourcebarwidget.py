@@ -6,67 +6,153 @@ import PyQt4.uic as uic
 import src.conf.settings.SETTINGS as SETTINGS
 
 
+class Communicate(QtCore.QObject):
+    updateBW = QtCore.pyqtSignal(int)
+
+
+class BurningWidget(QtGui.QWidget):
+    def __init__(self, max_value, monitor_item):
+        super(BurningWidget, self).__init__()
+
+        self.value = 0
+        self.num = []
+
+        self.monitor_item = monitor_item
+
+        self.maximum = float(max_value)
+        self.increment = self.maximum/SETTINGS.SECTION_COUNT
+
+        self.init_ui()
+
+    def init_ui(self):
+        self.setMinimumSize(1, 17)
+
+        for i in range(SETTINGS.SECTION_COUNT):
+            self.num.append(self.increment*(i+1))
+
+    def set_value(self, value):
+        self.value = value
+
+    def paintEvent(self, e):
+        qp = QtGui.QPainter()
+        qp.begin(self)
+        self.draw_widget(qp)
+        qp.end()
+
+    def draw_widget(self, qp):
+        font = QtGui.QFont('Serif', 7, QtGui.QFont.Light)
+        qp.setFont(font)
+
+        size = self.size()
+        w = size.width()
+        h = size.height()
+
+        step = int(round(w / float(SETTINGS.SECTION_COUNT)))
+
+        threshold_mid = self.maximum * SETTINGS.THRESHOLD_MID
+        threshold_high = self.maximum * SETTINGS.THRESHOLD_HIGH
+
+        normal = int(((w / self.maximum) * self.value))
+        # mid = int((w / self.maximum) * threshold_mid)
+        # high = int(((w / self.maximum) * threshold_high))
+
+        if self.value >= threshold_high:
+            qp.setPen(SETTINGS.COLOR_TEXT)
+            qp.setBrush(SETTINGS.COLOR_HIGH)
+            qp.drawRect(0, 0, normal, h)
+
+        elif self.value >= threshold_mid:
+            qp.setPen(SETTINGS.COLOR_TEXT)
+            qp.setBrush(SETTINGS.COLOR_MID)
+            qp.drawRect(0, 0, normal, h)
+
+        else:
+            qp.setPen(SETTINGS.COLOR_TEXT)
+            qp.setBrush(SETTINGS.COLOR_LOW)
+            qp.drawRect(0, 0, normal, h)
+
+        pen = QtGui.QPen(SETTINGS.COLOR_TEXT, 1, QtCore.Qt.SolidLine)
+
+        qp.setPen(pen)
+        qp.setBrush(QtCore.Qt.NoBrush)
+        qp.drawRect(0, 0, w-1, h-1)
+
+        j = 0
+
+        for i in range(step, SETTINGS.SECTION_COUNT*step, step):
+            qp.drawLine(i, 0, i, 1)
+            metrics = qp.fontMetrics()
+            fw = metrics.width(str(self.num[j]))
+            if i == step:
+                qp.drawText(i-fw/2, h/2, str(self.monitor_item))
+            else:
+                qp.drawText(i-fw/2, h/2, str(int(self.num[j])))
+            j += 1
+
+
 class Worker(QtCore.QObject):
-    def __init__(self, widget):
+    def __init__(self, widget, monitor_item):
         super(Worker, self).__init__()
+        self.monitor_item = monitor_item
         self.widget = widget
 
     def update(self):
-        self.update_cpu()
-        self.update_mem()
+        if str(self.monitor_item).startswith('cpu'):
+            self.update_cpu()
+        elif str(self.monitor_item).startswith('mem'):
+            self.update_mem()
+        elif str(self.monitor_item).startswith('dsk'):
+            self.update_dsk()
+        elif str(self.monitor_item).startswith('net'):
+            self.update_net()
 
     def update_mem(self):
         virtual_mem = psutil.virtual_memory()
-        # print self.virtual_mem
 
-        self.widget.mem.bar_item.setValue(int(virtual_mem.percent))
-        self.widget.mem.label_item.setText('{0}/{1}MB'.format(str(int(float(virtual_mem.used)/1024/1024)),
-                                                              str(int(float(virtual_mem.total)/1024/1024))))
-        # threading.Timer(0.2, self.update).start()
+        current_mem = int(float(virtual_mem.used)/1024/1024)
+
+        self.widget.c.updateBW.emit(current_mem)
+        self.widget.repaint()
 
     def update_cpu(self):
         cpu_times = psutil.cpu_percent(percpu=False)
-        # print self.cpu_times
-        self.widget.cpu.bar_item.setValue(cpu_times)
-        self.widget.cpu.label_item.setText('{0}%'.format(str(int(cpu_times))))
+
+        self.widget.c.updateBW.emit(cpu_times)
+        self.widget.repaint()
+
+    def update_dsk(self):
+        disks = psutil.disk_partitions(all=False)
+        used = int(float(psutil.disk_usage(disks[0].mountpoint).used)/1024/1024/1024)
+        self.widget.c.updateBW.emit(used)
+        self.widget.repaint()
+
+    def update_net(self):
+        pass
 
 
-class ResourceBarWidget(QtGui.QWidget):
-    def __init__(self):
-        super(ResourceBarWidget, self).__init__()
+class BarWidget(QtGui.QWidget):
+    def __init__(self, monitor_item, maximum):
+        super(BarWidget, self).__init__()
 
-        self.cpu = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-                                           'src',
-                                           'modules',
-                                           'ui',
-                                           'resourcebarwidget',
-                                           'resourcebarwidget.ui'))
-        self.mem = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-                                           'src',
-                                           'modules',
-                                           'ui',
-                                           'resourcebarwidget',
-                                           'resourcebarwidget.ui'))
-
-        self.cpu.label_title.setText('CPU')
-        self.cpu.label_item.setText('{0}%'.format('0'))
-        self.mem.label_title.setText('Memory')
-        self.mem.label_item.setText('{0}/{1}MB'.format('0', '0'))
-
+        self.c = None
+        self.wid = None
         self.layout = QtGui.QVBoxLayout()
-        self.layout.addWidget(self.cpu)
-        self.layout.addWidget(self.mem)
-        spacer = QtGui.QSpacerItem(1, 1, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
-        self.layout.addStretch()
+
+        self.monitor_item = monitor_item
+
+        self.maximum = maximum
+
+        self.c = Communicate()
+        self.wid = BurningWidget(self.maximum, self.monitor_item)
+        self.c.updateBW[int].connect(self.wid.set_value)
+
+        self.layout.addWidget(self.wid)
 
         self.setLayout(self.layout)
 
-        # self.cores = psutil.cpu_count(logical=True)
-
-        # self.cpu_times = []
         self.timer = QtCore.QTimer()
         self.t = QtCore.QThread()
-        self.worker = Worker(self)
+        self.worker = Worker(self, self.monitor_item)
         self.connect(self.timer, QtCore.SIGNAL('timeout()'), self.worker.update)
 
         self.timer.start(SETTINGS.REFRESH_INTERVAL)
@@ -77,3 +163,45 @@ class ResourceBarWidget(QtGui.QWidget):
 
     def closeEvent(self, event):
         self.timer.stop()
+
+
+class ResourceBarWidget(QtGui.QWidget):
+    def __init__(self):
+        super(ResourceBarWidget, self).__init__()
+
+        self.layout = QtGui.QVBoxLayout()
+
+        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+                                          'src',
+                                          'modules',
+                                          'ui',
+                                          'resourcebarwidget',
+                                          'resourcebarwidget.ui'))
+
+        self.scroll_layout = QtGui.QVBoxLayout()
+
+        self.cpu_bar = BarWidget(monitor_item='cpu', maximum=100)
+        self.mem_bar = BarWidget(monitor_item='mem', maximum=SETTINGS.TOTAL_MEM)
+        self.dsk_bar = BarWidget(monitor_item='dsk', maximum=SETTINGS.TOTAL_DSK)
+
+        # nets = psutil.net_connections()
+
+        # for disk in self.disks:
+        #     print disk.mountpoint
+        #     # print dir(disk)
+        #     # print dir(psutil.disk_usage(disk.mountpoint))
+        #     total = psutil.disk_usage(disk.mountpoint).total
+        #     used = psutil.disk_usage(disk.mountpoint).used
+        #     print used, total
+
+        self.ui.scroll_layout.addWidget(self.cpu_bar)
+        self.ui.scroll_layout.addWidget(self.mem_bar)
+        self.ui.scroll_layout.addWidget(self.dsk_bar)
+
+        spacer = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
+
+        self.ui.scroll_layout.addItem(spacer)
+
+        self.layout.addWidget(self.ui)
+
+        self.setLayout(self.layout)

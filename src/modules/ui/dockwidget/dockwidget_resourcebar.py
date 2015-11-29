@@ -12,7 +12,8 @@ class DockWidgetResourceBar(dockwidget.DockWidget):
         self.setWindowTitle('Resources')
 
         self.setAllowedAreas(QtCore.Qt.LeftDockWidgetArea | QtCore.Qt.RightDockWidgetArea)
-        self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable | self.DockWidgetClosable)
+        # self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable | self.DockWidgetClosable)
+        self.setFeatures(self.DockWidgetFloatable | self.DockWidgetMovable)
 
         self.resourcebar = resourcebarwidget.ResourceBarWidget()
 
