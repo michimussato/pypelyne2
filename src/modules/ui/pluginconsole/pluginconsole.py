@@ -107,4 +107,5 @@ class PluginConsole(QtGui.QWidget):
     def kill(self):
         # self.grabber_stop()
         self.deactivate_buttons()
-        self.process.terminate()
+        # self.process.terminate()
+        self.process.kill()

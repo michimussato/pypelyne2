@@ -14,7 +14,7 @@ class MainWindow(QtGui.QMainWindow):
             self.splash = None
             self.setup_splash_screen()
 
-        self.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint)
+        # self.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint)
 
         # self.background =
 

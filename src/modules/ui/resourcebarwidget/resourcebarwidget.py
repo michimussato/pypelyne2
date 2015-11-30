@@ -1,5 +1,6 @@
 import os
-import src.modules.psutil221 as psutil
+import psutil
+# import src.modules.psutil221 as psutil
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
@@ -109,7 +110,7 @@ class Worker(QtCore.QObject):
     def update_mem(self):
         virtual_mem = psutil.virtual_memory()
 
-        current_mem = int(float(virtual_mem.used)/1024/1024)
+        current_mem = int(float(virtual_mem.used)/1024/1024/SETTINGS.MEM_MULT)
 
         self.widget.c.updateBW.emit(current_mem)
         self.widget.repaint()
@@ -206,7 +207,7 @@ class ResourceBarWidget(QtGui.QWidget):
             layout.addWidget(label)
 
 
-            self.mem_bar = BarWidget(monitor_item='mem', maximum=SETTINGS.TOTAL_MEM)
+            self.mem_bar = BarWidget(monitor_item='mem', maximum=SETTINGS.TOTAL_MEM/SETTINGS.MEM_MULT)
             layout.addWidget(self.mem_bar)
             widget.setLayout(layout)
             self.ui.scroll_layout.addWidget(widget)

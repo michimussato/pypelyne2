@@ -4,7 +4,8 @@ import socket
 import sys
 import os
 import platform
-import src.modules.psutil221 as psutil
+import psutil
+# import src.modules.psutil221 as psutil
 
 # global logging setting
 logging.basicConfig(level=logging.INFO)
@@ -100,7 +101,12 @@ THRESHOLD_HIGH = 0.9
 SECTION_COUNT = 10
 REFRESH_INTERVAL = 1500
 SHOW_RESOURCES = True
+# mem = int(float(psutil.virtual_memory().total))
 TOTAL_MEM = int(float(psutil.virtual_memory().total)/1024/1024)
+MEM_MULT = 1
+if TOTAL_MEM > 8192:
+    MEM_MULT = 1024
+
 disks = psutil.disk_partitions(all=False)
 TOTAL_DSK = int(float(psutil.disk_usage(disks[0].mountpoint).total)/1000/1000/1000)
 
