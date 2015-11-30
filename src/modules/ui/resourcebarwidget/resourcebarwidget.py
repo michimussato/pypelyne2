@@ -181,15 +181,47 @@ class ResourceBarWidget(QtGui.QWidget):
         self.scroll_layout = QtGui.QVBoxLayout()
         spacer = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
 
+
+
         if SETTINGS.ENABLE_CPU:
+            widget = QtGui.QWidget()
+            label = QtGui.QLabel('')
+            label.setFixedWidth(SETTINGS.ICON_HEIGHT)
+            layout = QtGui.QHBoxLayout()
+            pixmap = QtGui.QPixmap(os.path.join(SETTINGS.ICONS_DIR, 'cpu.png')).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+            label.setPixmap(pixmap)
+            layout.addWidget(label)
+            # layout.addItem(spacer)
             self.cpu_bar = BarWidget(monitor_item='cpu', maximum=100)
-            self.ui.scroll_layout.addWidget(self.cpu_bar)
+            layout.addWidget(self.cpu_bar)
+            widget.setLayout(layout)
+            self.ui.scroll_layout.addWidget(widget)
         if SETTINGS.ENABLE_MEM:
+            widget = QtGui.QWidget()
+            label = QtGui.QLabel('')
+            label.setFixedWidth(SETTINGS.ICON_HEIGHT)
+            layout = QtGui.QHBoxLayout()
+            pixmap = QtGui.QPixmap(os.path.join(SETTINGS.ICONS_DIR, 'mem.png')).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+            label.setPixmap(pixmap)
+            layout.addWidget(label)
+
+
             self.mem_bar = BarWidget(monitor_item='mem', maximum=SETTINGS.TOTAL_MEM)
-            self.ui.scroll_layout.addWidget(self.mem_bar)
+            layout.addWidget(self.mem_bar)
+            widget.setLayout(layout)
+            self.ui.scroll_layout.addWidget(widget)
         if SETTINGS.ENABLE_DSK:
+            widget = QtGui.QWidget()
+            label = QtGui.QLabel('')
+            label.setFixedWidth(SETTINGS.ICON_HEIGHT)
+            layout = QtGui.QHBoxLayout()
+            pixmap = QtGui.QPixmap(os.path.join(SETTINGS.ICONS_DIR, 'dsk.png')).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+            label.setPixmap(pixmap)
+            layout.addWidget(label)
             self.dsk_bar = BarWidget(monitor_item='dsk', maximum=SETTINGS.TOTAL_DSK)
-            self.ui.scroll_layout.addWidget(self.dsk_bar)
+            layout.addWidget(self.dsk_bar)
+            widget.setLayout(layout)
+            self.ui.scroll_layout.addWidget(widget)
 
         # nets = psutil.net_connections()
 
