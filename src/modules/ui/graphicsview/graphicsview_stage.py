@@ -25,12 +25,12 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # self.rectangle = rectangle.Rectangle()
         # self.scene.addItem(self.rectangle)
 
-    def wheelEvent(self, event):
-        print 'hi'
-        sc = event.delta()/100000
-        if sc < 0:
-            sc -= 1/sc
-        self.scale(sc, sc)
+    # def wheelEvent(self, event):
+    #     print 'hi'
+    #     sc = event.delta()/100000
+    #     if sc < 0:
+    #         sc -= 1/sc
+    #     self.scale(sc, sc)
         # self.setDragMode(0)
         # self.scene.showMatrix()
 

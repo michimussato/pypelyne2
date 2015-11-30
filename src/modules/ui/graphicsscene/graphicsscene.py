@@ -116,9 +116,6 @@ class GraphicsScene(QtGui.QGraphicsScene):
     def mousePressEvent(self, event):
         DraggableMark(position=self.scene.event.scenePos(), scene=self.scene)
 
-    # def drag
-
-
 
 
 #     def graphicsView_wheelEvent(self, event):
