@@ -113,8 +113,8 @@ class GraphicsScene(QtGui.QGraphicsScene):
         if event.mimeData().hasFormat("application/x-imgname"):
             event.accept()
 
-    def mousePressEvent(self, event):
-        DraggableMark(position=self.scene.event.scenePos(), scene=self.scene)
+    # def mousePressEvent(self, event):
+    #     DraggableMark(position=self.scene.event.scenePos(), scene=self.scene)
 
 
 

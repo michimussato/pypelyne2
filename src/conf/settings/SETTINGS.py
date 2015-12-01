@@ -104,7 +104,7 @@ SHOW_RESOURCES = True
 # mem = int(float(psutil.virtual_memory().total))
 TOTAL_MEM = int(float(psutil.virtual_memory().total)/1024/1024)
 MEM_MULT = 1
-if TOTAL_MEM > 8192:
+if TOTAL_MEM > 4096:
     MEM_MULT = 1024
 
 disks = psutil.disk_partitions(all=False)
