@@ -80,15 +80,20 @@ class BurningWidget(QtGui.QWidget):
 
         j = 0
 
-        for i in range(step, SETTINGS.SECTION_COUNT*step, step):
-            qp.drawLine(i, 0, i, 1)
-            metrics = qp.fontMetrics()
-            fw = metrics.width(str(self.num[j]))
-            if i == step:
-                qp.drawText(i-fw/2, h/2, str(self.monitor_item))
-            else:
-                qp.drawText(i-fw/2, h/2, str(int(self.num[j])))
-            j += 1
+        try:
+            for i in range(step, SETTINGS.SECTION_COUNT*step, step):
+                qp.drawLine(i, 0, i, 1)
+                metrics = qp.fontMetrics()
+                fw = metrics.width(str(self.num[j]))
+                if i == step:
+                    qp.drawText(i-fw/2, h/2, str(self.monitor_item))
+                else:
+                    qp.drawText(i-fw/2, h/2, str(int(self.num[j])))
+                j += 1
+
+        except ValueError, e:
+            # TODO: something meaningful here
+            print e
 
 
 class Worker(QtCore.QObject):

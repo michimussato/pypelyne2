@@ -104,7 +104,7 @@ SHOW_RESOURCES = True
 # mem = int(float(psutil.virtual_memory().total))
 TOTAL_MEM = int(float(psutil.virtual_memory().total)/1024/1024)
 MEM_MULT = 1
-if TOTAL_MEM > 4096:
+if TOTAL_MEM > 9000:
     MEM_MULT = 1024
 
 disks = psutil.disk_partitions(all=False)
@@ -113,3 +113,7 @@ TOTAL_DSK = int(float(psutil.disk_usage(disks[0].mountpoint).total)/1000/1000/10
 # Player
 MP3_ROOT = r'/Users/michaelmussato/Music/mp3'
 AUDIO_EXTENSIONS = [ '.mp3', '.m4a', '.mp4' ]
+
+# NodeGraphicsItem
+NODE_ROUNDNESS = 5
+COLOR_LABEL = '#080808'

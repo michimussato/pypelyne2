@@ -1,9 +1,10 @@
-import os
+# import os
 import cPickle
 from PyQt4 import QtGui
 from PyQt4 import QtCore
-from PyQt4 import uic
-import src.conf.settings.SETTINGS as SETTINGS
+import src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
+# from PyQt4 import uic
+# import src.conf.settings.SETTINGS as SETTINGS
 
 
 class DraggableMark(QtGui.QGraphicsItem):
@@ -97,7 +98,15 @@ class GraphicsScene(QtGui.QGraphicsScene):
             # print dir(unpickled_plugin_object)
 
             # print unPickleData.dictKey
-            self.addRect(QtCore.QRectF(pos.x(), pos.y(), 20, 20), QtCore.Qt.red)
+            node_graphics_item = nodegraphicsitem.NodeGraphicsItem(pos.x(), pos.y())
+            self.addItem(node_graphics_item)
+            # rect = self.addRect(QtCore.QRectF(pos.x(), pos.y(), 20, 20), QtCore.Qt.red)
+
+            # painter.setBackgroundMode( Qt::OpaqueMode );
+            # painter.setBackground( QColor( Qt::gray ) );
+            # painter.setPen( QPen( Qt::black ) );
+            # painter.setBrush( QBrush( Qt::black, Qt::BDiagPattern ) );
+
             # unPickleData = userListModule.ListBaseClass.d[unPickleData]
             # Create the node in the scene
             # self.createNode(unPickleData, event.scenePos())
