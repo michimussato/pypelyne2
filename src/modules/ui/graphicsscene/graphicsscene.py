@@ -80,6 +80,8 @@ class GraphicsScene(QtGui.QGraphicsScene):
     def __init__(self, parent=None):
         super(GraphicsScene, self).__init__(parent)
 
+        # self.bounding_rect = None
+
     def dragEnterEvent(self, event):
         # event.accept()
         print 'and here', event
@@ -100,6 +102,12 @@ class GraphicsScene(QtGui.QGraphicsScene):
             # print unPickleData.dictKey
             node_graphics_item = nodegraphicsitem.NodeGraphicsItem(pos.x(), pos.y())
             self.addItem(node_graphics_item)
+
+            # rect = self.itemsBoundingRect()
+            # rect.adjust(-20, -20, 20, 20)
+            #
+            # self.setSceneRect(rect)
+            #
             # rect = self.addRect(QtCore.QRectF(pos.x(), pos.y(), 20, 20), QtCore.Qt.red)
 
             # painter.setBackgroundMode( Qt::OpaqueMode );

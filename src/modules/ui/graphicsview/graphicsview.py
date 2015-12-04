@@ -20,6 +20,8 @@ class GraphicsView(QtGui.QGraphicsView):
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.setAcceptDrops(True)
 
+        self.setBackgroundBrush(QtGui.QBrush(QtGui.QColor(60, 60, 60, 255), QtCore.Qt.SolidPattern))
+
         # self.focus_all_elements()
 
     def wheelEvent(self, event):

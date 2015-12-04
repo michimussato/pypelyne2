@@ -23,7 +23,7 @@ elif sys.maxsize > 2**32:
 here = os.path.dirname(os.path.realpath(__file__))
 
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
-QSS_ENABLE = False
+QSS_ENABLE = True
 QSS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'qss')
 QSS_FILE = os.path.join(QSS_DIR, 'dark.css')
 ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
