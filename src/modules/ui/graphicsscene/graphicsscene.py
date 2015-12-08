@@ -80,7 +80,11 @@ class GraphicsScene(QtGui.QGraphicsScene):
     def __init__(self, parent=None):
         super(GraphicsScene, self).__init__(parent)
 
+        self.rect = self.addRect(QtCore.QRectF(0, 0, 512, 512), QtCore.Qt.red)
+
         # self.bounding_rect = None
+
+        # self.rect = self.sceneRect()
 
     def dragEnterEvent(self, event):
         # event.accept()
@@ -100,8 +104,12 @@ class GraphicsScene(QtGui.QGraphicsScene):
             # print dir(unpickled_plugin_object)
 
             # print unPickleData.dictKey
+            # TODO: map to self.rect
             node_graphics_item = nodegraphicsitem.NodeGraphicsItem(pos.x(), pos.y())
             self.addItem(node_graphics_item)
+
+            node_graphics_item.setParentItem(self.rect)
+
 
             # rect = self.itemsBoundingRect()
             # rect.adjust(-20, -20, 20, 20)
@@ -132,6 +140,37 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
     # def mousePressEvent(self, event):
     #     DraggableMark(position=self.scene.event.scenePos(), scene=self.scene)
+
+    def wheelEvent(self, event):
+        # print dir(self.rect.setRect())
+        factor = 1.2
+        if event.delta() > 0:
+            self.rect.setScale(self.rect.scale()*factor)
+            # for item in self.items():
+            #     print dir(item)
+            #     item.setScale(item.scale()*factor)
+        else:
+            self.rect.setScale(self.rect.scale()/factor)
+            # for item in self.items():
+            #     print dir(item)
+            #     item.setScale(item.scale()/factor)
+
+        # print event
+        # # print dir(self)
+        # print self.items()
+        # for item in self.items():
+        #     print dir(item)
+        #     item.setScale(item.scale()*0.9)
+
+    # def wheelEvent(self, event):
+    #     factor = 1.02
+    #
+    #     if event.delta() > 0:
+    #         self.scale(factor, factor)
+    #     else:
+    #         self.scale(1.0 / factor, 1.0 / factor)
+    #
+    #     print self.mapToScene(self.rect()).size()
 
 
 

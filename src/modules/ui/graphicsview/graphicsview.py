@@ -24,13 +24,15 @@ class GraphicsView(QtGui.QGraphicsView):
 
         # self.focus_all_elements()
 
-    def wheelEvent(self, event):
-        factor = 1.02
-
-        if event.delta() > 0:
-            self.scale(factor, factor)
-        else:
-            self.scale(1.0 / factor, 1.0 / factor)
+    # def wheelEvent(self, event):
+    #     factor = 1.02
+    #
+    #     if event.delta() > 0:
+    #         self.scale(factor, factor)
+    #     else:
+    #         self.scale(1.0 / factor, 1.0 / factor)
+    #
+    #     print self.mapToScene(self.rect()).size()
 
     def focus_all_elements(self):
         extra_margin = 20

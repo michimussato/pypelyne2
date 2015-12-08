@@ -35,7 +35,7 @@ class MainWindow(QtGui.QMainWindow):
 
         self.setCentralWidget(self.graphicssview_stage)
 
-        self.graphicssview_stage.scene.addRect(QtCore.QRectF(0, 0, 512, 512), QtCore.Qt.red)
+        # self.graphicssview_stage.scene.addRect(QtCore.QRectF(0, 0, 512, 512), QtCore.Qt.red)
 
         if SETTINGS.SPLASH:
             self.splash.finish(self.splash)
@@ -46,4 +46,13 @@ class MainWindow(QtGui.QMainWindow):
         self.splash.show()
 
     def resizeEvent(self, event):
+        print event
+        # self.graphicssview_stage.setScen
         self.graphicssview_stage.setSceneRect(0, 0, self.graphicssview_stage.width(), self.graphicssview_stage.height())
+        # print self.graphicssview_stage.sceneRect().width()
+        # print self.graphicssview_stage.sceneRect().height()
+
+        print self.graphicssview_stage.rect()
+
+        # self.graphicssview_stage.scene.setSceneRect(self.graphicssview_stage.rect())
+        self.graphicssview_stage.scene.rect.setRect(QtCore.QRectF(self.graphicssview_stage.rect()))
