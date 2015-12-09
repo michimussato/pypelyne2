@@ -45,14 +45,14 @@ class MainWindow(QtGui.QMainWindow):
         self.splash.setMask(self.splash.mask())
         self.splash.show()
 
-    def resizeEvent(self, event):
-        print event
-        # self.graphicssview_stage.setScen
-        self.graphicssview_stage.setSceneRect(0, 0, self.graphicssview_stage.width(), self.graphicssview_stage.height())
-        # print self.graphicssview_stage.sceneRect().width()
-        # print self.graphicssview_stage.sceneRect().height()
-
-        print self.graphicssview_stage.rect()
-
-        # self.graphicssview_stage.scene.setSceneRect(self.graphicssview_stage.rect())
-        self.graphicssview_stage.scene.rect.setRect(QtCore.QRectF(self.graphicssview_stage.rect()))
+    # def resizeEvent(self, event):
+    #     print event
+    #     # self.graphicssview_stage.setScen
+    #     self.graphicssview_stage.setSceneRect(0, 0, self.graphicssview_stage.width(), self.graphicssview_stage.height())
+    #     # print self.graphicssview_stage.sceneRect().width()
+    #     # print self.graphicssview_stage.sceneRect().height()
+    #
+    #     print self.graphicssview_stage.rect()
+    #
+    #     # self.graphicssview_stage.scene.setSceneRect(self.graphicssview_stage.rect())
+    #     self.graphicssview_stage.scene.base_rect.setRect(QtCore.QRectF(self.graphicssview_stage.rect()))

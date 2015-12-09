@@ -34,18 +34,18 @@ class GraphicsView(QtGui.QGraphicsView):
     #
     #     print self.mapToScene(self.rect()).size()
 
-    def focus_all_elements(self):
-        extra_margin = 20
-        items_rect = self.scene.itemsBoundingRect()
-        coords = items_rect.getCoords()
-        new_top_left = QtCore.QPoint(coords[0]-extra_margin, coords[1]-extra_margin)
-        new_bottom_right = QtCore.QPointF(coords[2]+extra_margin, coords[3]+extra_margin)
-        new_rect = QtCore.QRectF(new_top_left, new_bottom_right)
-        self.setSceneRect(new_rect)
-        self.fitInView(self.sceneRect(), QtCore.Qt.KeepAspectRatio)
-
-    def mouseDoubleClickEvent(self, event):
-        self.focus_all_elements()
+    # def focus_all_elements(self):
+    #     extra_margin = 20
+    #     items_rect = self.scene.itemsBoundingRect()
+    #     coords = items_rect.getCoords()
+    #     new_top_left = QtCore.QPoint(coords[0]-extra_margin, coords[1]-extra_margin)
+    #     new_bottom_right = QtCore.QPointF(coords[2]+extra_margin, coords[3]+extra_margin)
+    #     new_rect = QtCore.QRectF(new_top_left, new_bottom_right)
+    #     self.setSceneRect(new_rect)
+    #     self.fitInView(self.sceneRect(), QtCore.Qt.KeepAspectRatio)
+    #
+    # def mouseDoubleClickEvent(self, event):
+    #     self.focus_all_elements()
 
     def keyPressEvent(self, event):
         modifiers = QtGui.QApplication.keyboardModifiers()

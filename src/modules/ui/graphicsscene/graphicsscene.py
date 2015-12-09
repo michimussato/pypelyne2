@@ -80,7 +80,24 @@ class GraphicsScene(QtGui.QGraphicsScene):
     def __init__(self, parent=None):
         super(GraphicsScene, self).__init__(parent)
 
-        self.rect = self.addRect(QtCore.QRectF(0, 0, 512, 512), QtCore.Qt.red)
+        self.base_rect = self.addRect(QtCore.QRectF(0, 0, 500, 500), QtCore.Qt.red)
+
+        self.random_rect = QtCore.QRectF(20, 20, 40, 40)
+        self.random_rect2 = QtCore.QRectF(70, 50, 40, 40)
+        self.random_rect3 = QtCore.QRectF(30, 100, 40, 40)
+        self.random_item = self.addRect(self.random_rect, QtCore.Qt.blue)
+        self.random_item2 = self.addRect(self.random_rect2, QtCore.Qt.blue)
+        self.random_item3 = self.addRect(self.random_rect3, QtCore.Qt.blue)
+
+        self.item_group = QtGui.QGraphicsItemGroup()
+        self.item_group.addToGroup(self.random_item)
+        self.item_group.addToGroup(self.random_item2)
+        self.item_group.addToGroup(self.random_item3)
+
+        self.addItem(self.item_group)
+
+        # self.random_item.setParentItem(self.base_rect)
+
 
         # self.bounding_rect = None
 
@@ -108,7 +125,7 @@ class GraphicsScene(QtGui.QGraphicsScene):
             node_graphics_item = nodegraphicsitem.NodeGraphicsItem(pos.x(), pos.y())
             self.addItem(node_graphics_item)
 
-            node_graphics_item.setParentItem(self.rect)
+            node_graphics_item.setParentItem(self.base_rect)
 
 
             # rect = self.itemsBoundingRect()
@@ -141,19 +158,24 @@ class GraphicsScene(QtGui.QGraphicsScene):
     # def mousePressEvent(self, event):
     #     DraggableMark(position=self.scene.event.scenePos(), scene=self.scene)
 
-    def wheelEvent(self, event):
-        # print dir(self.rect.setRect())
-        factor = 1.2
-        if event.delta() > 0:
-            self.rect.setScale(self.rect.scale()*factor)
-            # for item in self.items():
-            #     print dir(item)
-            #     item.setScale(item.scale()*factor)
-        else:
-            self.rect.setScale(self.rect.scale()/factor)
-            # for item in self.items():
-            #     print dir(item)
-            #     item.setScale(item.scale()/factor)
+    # def wheelEvent(self, event):
+    #     # print dir(self.rect.setRect())
+    #     factor = 1.2
+    #     print event.scenePos()
+    #     print dir(self)
+    #     print self.mapFromScene(self.base_rect, event.scenePos())
+    #     if event.delta() > 0:
+    #         self.random_item.setPos(event.scenePos())
+    #         self.base_rect.setScale(self.base_rect.scale() * factor)
+    #         # for item in self.items():
+    #         #     print dir(item)
+    #         #     item.setScale(item.scale()*factor)
+    #     else:
+    #         self.random_item.setPos(event.scenePos())
+    #         self.base_rect.setScale(self.base_rect.scale() / factor)
+    #         # for item in self.items():
+    #         #     print dir(item)
+    #         #     item.setScale(item.scale()/factor)
 
         # print event
         # # print dir(self)
