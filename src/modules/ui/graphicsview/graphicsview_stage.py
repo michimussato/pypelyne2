@@ -46,7 +46,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # point = QtGui.QGraphicsRectItem(event_pos.x()-10, event_pos.y()-10, 20, 20)
 
         self.point.setPos(event_pos)
-        print event_pos
+        # print event_pos
 
         # self.scene.addItem(point)
 
@@ -59,7 +59,13 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         # self.scene.item_group.setOffset(event_pos)
 
+        # group_pos = self.mapFromScene(self.scene.item_group.pos())
+
         # self.scene.item_group.setParentItem(self.point)
+
+        self.scene.item_group.setTransformOriginPoint(event_pos)
+        # self.scene.item_group.setTransformOriginPoint(event.pos())
+
 
         if event.delta() > 0:
             # self.scene.random_item.setPos(event.pos())
@@ -70,6 +76,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             # group_pos = self.scene.item_group.pos()
 
             self.point.setScale(self.point.scale() * factor)
+
+            # group_pos = self.mapFromScene(self.scene.item_group.pos())
+
+            # new_group_pos = self.mapFromScene(self.scene.item_group.pos())
 
             # self.scene.item_group.setPos(group_pos * 20)
 
@@ -92,12 +102,25 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         print self.point.pos()
 
+        # new_group_pos = self.mapFromScene(self.scene.item_group.pos())
+
+        # print self.map
+
+        # print self.mapFromScene(self.scene.item_group.pos())
+        # print self.mapToScene(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y()))
+        # print self.mapToGlobal(QtCore.QPoint(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y())))
+        # print self.mapFromGlobal(QtCore.QPoint(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y())))
+        #
+        # print self.mapFrom(self.scene.item_group, QtCore.QPoint(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y())))
         scale = self.point.scale()
 
         # print self.scene.random_item.scale()
         # self.scene.random_item.setParentItem(prev_parent)
+        # self.scene.item_group.setParentItem(prev_parent)
+        # self.scene.item_group.setPos(self.mapToScene(new_group_pos))
 
-        # self.scene.item_group.setScale(scale)
+
+        self.scene.item_group.setScale(scale)
         # self.mapToParent(self.scene.item_group, event_pos)
 
         # print group_pos.x()

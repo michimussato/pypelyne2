@@ -82,17 +82,27 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
         self.base_rect = self.addRect(QtCore.QRectF(0, 0, 500, 500), QtCore.Qt.red)
 
-        self.random_rect = QtCore.QRectF(20, 20, 40, 40)
-        self.random_rect2 = QtCore.QRectF(70, 50, 40, 40)
-        self.random_rect3 = QtCore.QRectF(30, 100, 40, 40)
-        self.random_item = self.addRect(self.random_rect, QtCore.Qt.blue)
-        self.random_item2 = self.addRect(self.random_rect2, QtCore.Qt.blue)
-        self.random_item3 = self.addRect(self.random_rect3, QtCore.Qt.blue)
-
         self.item_group = QtGui.QGraphicsItemGroup()
-        self.item_group.addToGroup(self.random_item)
-        self.item_group.addToGroup(self.random_item2)
-        self.item_group.addToGroup(self.random_item3)
+
+        for i in range(20):
+            # if i*20 > self.base_rect.width():
+            rect = self.addRect(QtCore.QRectF(i*20, i*20, 40, 40))
+            self.item_group.addToGroup(rect)
+
+        self.addRect(QtCore.QRectF(10, 10, 480, 480))
+
+
+        # self.random_rect = QtCore.QRectF(20, 20, 40, 40)
+        # self.random_rect2 = QtCore.QRectF(70, 50, 40, 40)
+        # self.random_rect3 = QtCore.QRectF(200, 100, 40, 40)
+        # self.random_item = self.addRect(self.random_rect, QtCore.Qt.blue)
+        # self.random_item2 = self.addRect(self.random_rect2, QtCore.Qt.blue)
+        # self.random_item3 = self.addRect(self.random_rect3, QtCore.Qt.blue)
+
+        # self.item_group = QtGui.QGraphicsItemGroup()
+        # self.item_group.addToGroup(self.random_item)
+        # self.item_group.addToGroup(self.random_item2)
+        # self.item_group.addToGroup(self.random_item3)
 
         self.addItem(self.item_group)
 
