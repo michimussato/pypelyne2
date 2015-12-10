@@ -32,6 +32,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # self.scene.addItem(self.rectangle)
 
     def scale(self, event):
+        print type(self.scene.node_items)
+        group = self.scene.createItemGroup(self.scene.node_items)
+
+        # print self.scene.node_items
         # pseudo code:
         # - group nodes (or maybe use childrenBoundingRect())
         # - set the pivot of the group to mouse cursor point
@@ -39,13 +43,14 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # - ungroup but keep the transformation (scaling and position)
 
         # absolute pos of mouse cursor in scene
-        event_pos = self.mapToScene(event.pos())
+        event_pos_scene = self.mapToScene(event.pos())
+        # event_pos_group = self.map
 
         factor = 1.2
 
         # point = QtGui.QGraphicsRectItem(event_pos.x()-10, event_pos.y()-10, 20, 20)
 
-        self.point.setPos(event_pos)
+        self.point.setPos(event_pos_scene)
         # print event_pos
 
         # self.scene.addItem(point)
@@ -63,9 +68,12 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         # self.scene.item_group.setParentItem(self.point)
 
-        self.scene.item_group.setTransformOriginPoint(event_pos)
+        # self.scene.item_group.setTransformOriginPoint(event_pos_scene)
+        group.setTransformOriginPoint(event_pos_scene)
+        # group.setTransformOriginPoint(group.mapFromParent(event_pos_scene))
+        # event_pos_group = self.mapFrom()
+        # self.scene.item_group.mapRectToItem(self.scene.sceneRect())
         # self.scene.item_group.setTransformOriginPoint(event.pos())
-
 
         if event.delta() > 0:
             # self.scene.random_item.setPos(event.pos())
@@ -83,7 +91,6 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
             # self.scene.item_group.setPos(group_pos * 20)
 
-
             # self.scene.random_item.setPos(event_pos)
             # for item in self.items():
             #     print dir(item)
@@ -100,7 +107,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             #     print dir(item)
             #     item.setScale(item.scale()/factor)
 
-        print self.point.pos()
+        # print self.point.pos()
 
         # new_group_pos = self.mapFromScene(self.scene.item_group.pos())
 
@@ -119,14 +126,17 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # self.scene.item_group.setParentItem(prev_parent)
         # self.scene.item_group.setPos(self.mapToScene(new_group_pos))
 
+        group.setScale(scale)
 
-        self.scene.item_group.setScale(scale)
+        self.scene.destroyItemGroup(group)
         # self.mapToParent(self.scene.item_group, event_pos)
 
         # print group_pos.x()
 
         # print self.scene.random_item.scale()
         # self.scene.removeItem(point)
+        print scale
+        print
 
     def move(self, event):
         # absolute pos of mouse cursor in scene
@@ -139,6 +149,8 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
 
     def wheelEvent(self, event):
+
+        print 'asdf', self.scene.item_group.pos()
 
         self.scale(event)
         # self.move(event)

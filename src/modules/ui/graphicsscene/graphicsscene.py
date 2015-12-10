@@ -84,13 +84,21 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
         self.item_group = QtGui.QGraphicsItemGroup()
 
+        # print dir(self.item_group)
+
+        self.node_items = []
+
+        test_rect = self.addRect(QtCore.QRectF(400, 100, 40, 40), QtCore.Qt.green)
+        # self.addRect(test_rect, QtCore.Qt.green)
+        self.node_items.append(test_rect)
+
         for i in range(20):
             # if i*20 > self.base_rect.width():
             rect = self.addRect(QtCore.QRectF(i*20, i*20, 40, 40))
-            self.item_group.addToGroup(rect)
+            # self.item_group.addToGroup(rect)
+            self.node_items.append(rect)
 
         self.addRect(QtCore.QRectF(10, 10, 480, 480))
-
 
         # self.random_rect = QtCore.QRectF(20, 20, 40, 40)
         # self.random_rect2 = QtCore.QRectF(70, 50, 40, 40)
