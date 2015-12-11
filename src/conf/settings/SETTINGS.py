@@ -117,3 +117,4 @@ AUDIO_EXTENSIONS = [ '.mp3', '.m4a', '.mp4' ]
 # NodeGraphicsItem
 NODE_ROUNDNESS = 5
 COLOR_LABEL = '#080808'
+ZOOM_INCREMENT = 0.100

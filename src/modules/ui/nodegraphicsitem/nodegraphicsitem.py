@@ -58,8 +58,23 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.label_bounding_rect = node_label.boundingRect().width()
 
     def set_icon(self):
-        node_icon = QtGui.QGraphicsPixmapItem(QtGui.QPixmap(SETTINGS.CAPTURE_ICON_START).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation))
-        node_arch = QtGui.QGraphicsPixmapItem(QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation))
+
+        node_icon_pixmap = QtGui.QPixmap(SETTINGS.CAPTURE_ICON_START).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+        node_arch_pixmap = QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+
+        # node_icon_pixmap_temp = node_icon_pixmap
+        #
+        # painter = QtGui.QPainter()
+        # painter.begin(node_icon_pixmap_temp)
+        # painter.setRenderHint(painter.Antialiasing, True)
+        # painter.setRenderHint(painter.HighQualityAntialiasing, True)
+        #
+        # node_icon_pixmap = painter.drawPixmap(0, 0, node_icon_pixmap_temp)
+        #
+        # painter.end()
+
+        node_icon = QtGui.QGraphicsPixmapItem(node_icon_pixmap)
+        node_arch = QtGui.QGraphicsPixmapItem(node_arch_pixmap)
 
         node_icon.setPos(QtCore.QPointF(0, -22))
         node_arch.setPos(QtCore.QPointF(30, -22))

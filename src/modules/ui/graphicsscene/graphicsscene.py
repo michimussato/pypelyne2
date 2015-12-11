@@ -84,13 +84,15 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
         self.item_group = QtGui.QGraphicsItemGroup()
 
+        self.global_scale = 1
+
         # print dir(self.item_group)
 
         self.node_items = []
 
-        test_rect = self.addRect(QtCore.QRectF(400, 100, 40, 40), QtCore.Qt.green)
+        self.test_rect = self.addRect(QtCore.QRectF(400, 100, 40, 40), QtCore.Qt.green)
         # self.addRect(test_rect, QtCore.Qt.green)
-        self.node_items.append(test_rect)
+        self.node_items.append(self.test_rect)
 
         for i in range(20):
             # if i*20 > self.base_rect.width():
@@ -107,7 +109,7 @@ class GraphicsScene(QtGui.QGraphicsScene):
         # self.random_item2 = self.addRect(self.random_rect2, QtCore.Qt.blue)
         # self.random_item3 = self.addRect(self.random_rect3, QtCore.Qt.blue)
 
-        # self.item_group = QtGui.QGraphicsItemGroup()
+        self.item_group = QtGui.QGraphicsItemGroup()
         # self.item_group.addToGroup(self.random_item)
         # self.item_group.addToGroup(self.random_item2)
         # self.item_group.addToGroup(self.random_item3)
@@ -141,11 +143,14 @@ class GraphicsScene(QtGui.QGraphicsScene):
             # print unPickleData.dictKey
             # TODO: map to self.rect
             node_graphics_item = nodegraphicsitem.NodeGraphicsItem(pos.x(), pos.y())
+            node_graphics_item.setScale(self.global_scale)
             self.addItem(node_graphics_item)
 
             node_graphics_item.setParentItem(self.base_rect)
 
             self.node_items.append(node_graphics_item)
+
+
 
 
             # rect = self.itemsBoundingRect()

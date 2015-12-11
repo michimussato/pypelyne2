@@ -3,6 +3,7 @@ import PyQt4.QtCore as QtCore
 
 import src.modules.ui.graphicsview.graphicsview as graphicsview
 import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
+import src.conf.settings.SETTINGS as SETTINGS
 # import src.modules.ui.rectangle.rectangle as rectangle
 
 
@@ -32,6 +33,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # self.rectangle = rectangle.Rectangle()
         # self.scene.addItem(self.rectangle)
 
+
     def scale(self, event):
         # print type(self.scene.node_items)
         group = self.scene.createItemGroup(self.scene.node_items)
@@ -39,20 +41,31 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # absolute pos of mouse cursor in scene
         event_pos_scene = self.mapToScene(event.pos())
 
-        increment = 0.1
+        # increment = 0.1
 
         self.point.setPos(event_pos_scene)
 
         group.setTransformOriginPoint(event_pos_scene)
 
         if event.delta() > 0:
-            self.point.setScale(self.point.scale() + increment)
-            group.setScale(group.scale() + increment)
+            self.point.setScale(self.point.scale() * (1+SETTINGS.ZOOM_INCREMENT))
+            group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
+            # self.scene.item_group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
+            self.scene.global_scale = self.scene.global_scale * (1+SETTINGS.ZOOM_INCREMENT)
         else:
-            self.point.setScale(self.point.scale() - increment)
-            group.setScale(group.scale() - increment)
+            self.point.setScale(self.point.scale() * (1-SETTINGS.ZOOM_INCREMENT))
+            group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
+            # self.scene.item_group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
+            self.scene.global_scale = self.scene.global_scale * (1-SETTINGS.ZOOM_INCREMENT)
 
         self.scene.destroyItemGroup(group)
+
+        print self.scene.global_scale
+        print self.scene.item_group.scale()
+
+        # print dir(self.scene.test_rect)
+
+        # print self.scene.test_rect.mapToScene(self.scene.test_rect.rect()).value()
 
         # print self.scene.node_items[0].scale()
 
@@ -62,7 +75,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         rect_center = QtCore.QPoint((self.scene.random_rect.width()-self.scene.random_rect.x())/2, (self.scene.random_rect.height()-self.scene.random_rect.y())/2)
 
-        print rect_center
+        # print rect_center
         # print self.mapToScene(rect_center)
 
 
