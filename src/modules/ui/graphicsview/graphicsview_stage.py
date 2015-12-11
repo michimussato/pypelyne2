@@ -6,7 +6,6 @@ import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
 # import src.modules.ui.rectangle.rectangle as rectangle
 
 
-
 class GraphicsViewStage(graphicsview.GraphicsView):
     def __init__(self):
         super(GraphicsViewStage, self).__init__()
@@ -16,8 +15,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.point = QtGui.QGraphicsRectItem(-10, -10, 20, 20)
         self.scene.addItem(self.point)
 
-        # self.scene.random_item.setParentItem(self.point)
+        self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
+        # self.scene.random_item.setParentItem(self.point)
 
         # self.setResizeAnchor(self.AnchorUnderMouse)
         # self.setTransformationAnchor(self.AnchorUnderMouse)
@@ -32,111 +33,28 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         # self.scene.addItem(self.rectangle)
 
     def scale(self, event):
-        print type(self.scene.node_items)
+        # print type(self.scene.node_items)
         group = self.scene.createItemGroup(self.scene.node_items)
-
-        # print self.scene.node_items
-        # pseudo code:
-        # - group nodes (or maybe use childrenBoundingRect())
-        # - set the pivot of the group to mouse cursor point
-        # - do the transformation (scaling)
-        # - ungroup but keep the transformation (scaling and position)
 
         # absolute pos of mouse cursor in scene
         event_pos_scene = self.mapToScene(event.pos())
-        # event_pos_group = self.map
 
-        factor = 1.2
-
-        # point = QtGui.QGraphicsRectItem(event_pos.x()-10, event_pos.y()-10, 20, 20)
+        increment = 0.1
 
         self.point.setPos(event_pos_scene)
-        # print event_pos
 
-        # self.scene.addItem(point)
-
-        # point.set
-
-        # print dir(self.scene.random_item)
-        # print dir(self.scene.random_rect)
-
-        # prev_parent = self.scene.random_item.parentItem()
-
-        # self.scene.item_group.setOffset(event_pos)
-
-        # group_pos = self.mapFromScene(self.scene.item_group.pos())
-
-        # self.scene.item_group.setParentItem(self.point)
-
-        # self.scene.item_group.setTransformOriginPoint(event_pos_scene)
         group.setTransformOriginPoint(event_pos_scene)
-        # group.setTransformOriginPoint(group.mapFromParent(event_pos_scene))
-        # event_pos_group = self.mapFrom()
-        # self.scene.item_group.mapRectToItem(self.scene.sceneRect())
-        # self.scene.item_group.setTransformOriginPoint(event.pos())
 
         if event.delta() > 0:
-            # self.scene.random_item.setPos(event.pos())
-            # self.scene.base_rect.setScale(self.scene.base_rect.scale() * factor)
-
-            # self.scene.random_item.setScale(self.scene.random_item.scale() * factor)
-
-            # group_pos = self.scene.item_group.pos()
-
-            self.point.setScale(self.point.scale() * factor)
-
-            # group_pos = self.mapFromScene(self.scene.item_group.pos())
-
-            # new_group_pos = self.mapFromScene(self.scene.item_group.pos())
-
-            # self.scene.item_group.setPos(group_pos * 20)
-
-            # self.scene.random_item.setPos(event_pos)
-            # for item in self.items():
-            #     print dir(item)
-            #     item.setScale(item.scale()*factor)
+            self.point.setScale(self.point.scale() + increment)
+            group.setScale(group.scale() + increment)
         else:
-            # self.scene.random_item.setPos(event.pos())
-            # self.scene.base_rect.setScale(self.scene.base_rect.scale() / factor)
-
-            # self.scene.random_item.setScale(self.scene.random_item.scale() / factor)
-            self.point.setScale(self.point.scale() / factor)
-
-            # self.scene.random_item.setPos(event_pos)
-            # for item in self.items():
-            #     print dir(item)
-            #     item.setScale(item.scale()/factor)
-
-        # print self.point.pos()
-
-        # new_group_pos = self.mapFromScene(self.scene.item_group.pos())
-
-        # print self.map
-
-        # print self.mapFromScene(self.scene.item_group.pos())
-        # print self.mapToScene(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y()))
-        # print self.mapToGlobal(QtCore.QPoint(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y())))
-        # print self.mapFromGlobal(QtCore.QPoint(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y())))
-        #
-        # print self.mapFrom(self.scene.item_group, QtCore.QPoint(int(self.scene.item_group.pos().x()), int(self.scene.item_group.pos().y())))
-        scale = self.point.scale()
-
-        # print self.scene.random_item.scale()
-        # self.scene.random_item.setParentItem(prev_parent)
-        # self.scene.item_group.setParentItem(prev_parent)
-        # self.scene.item_group.setPos(self.mapToScene(new_group_pos))
-
-        group.setScale(scale)
+            self.point.setScale(self.point.scale() - increment)
+            group.setScale(group.scale() - increment)
 
         self.scene.destroyItemGroup(group)
-        # self.mapToParent(self.scene.item_group, event_pos)
 
-        # print group_pos.x()
-
-        # print self.scene.random_item.scale()
-        # self.scene.removeItem(point)
-        print scale
-        print
+        # print self.scene.node_items[0].scale()
 
     def move(self, event):
         # absolute pos of mouse cursor in scene
@@ -150,7 +68,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
     def wheelEvent(self, event):
 
-        print 'asdf', self.scene.item_group.pos()
+        # print 'asdf', self.scene.item_group.pos()
 
         self.scale(event)
         # self.move(event)

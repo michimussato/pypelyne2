@@ -98,7 +98,7 @@ class GraphicsScene(QtGui.QGraphicsScene):
             # self.item_group.addToGroup(rect)
             self.node_items.append(rect)
 
-        self.addRect(QtCore.QRectF(10, 10, 480, 480))
+        # self.addRect(QtCore.QRectF(10, 10, 480, 480))
 
         # self.random_rect = QtCore.QRectF(20, 20, 40, 40)
         # self.random_rect2 = QtCore.QRectF(70, 50, 40, 40)
@@ -144,6 +144,8 @@ class GraphicsScene(QtGui.QGraphicsScene):
             self.addItem(node_graphics_item)
 
             node_graphics_item.setParentItem(self.base_rect)
+
+            self.node_items.append(node_graphics_item)
 
 
             # rect = self.itemsBoundingRect()
