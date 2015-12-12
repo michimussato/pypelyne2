@@ -1,14 +1,18 @@
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import src.conf.settings.SETTINGS as SETTINGS
+import src.modules.ui.compositeicon.compositeicon as compositeicon
 # import os
 
 
 class NodeGraphicsItem(QtGui.QGraphicsItem):
-    def __init__(self, x, y):
+    def __init__(self, position, plugin):
         super(NodeGraphicsItem, self).__init__()
 
         # self.scene = scene
+
+        self.plugin = plugin
+        self.compositor = compositeicon.CompositeIcon(self.plugin)
 
         self.rect = QtCore.QRectF(0, 0, 200, 40)
         # self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
@@ -22,7 +26,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.task_color_item = QtGui.QColor(0, 0, 0)
         self.application_color_item = QtGui.QColor(0, 0, 0)
 
-        self.setPos(QtCore.QPointF(x, y))
+        # print type(position)
+
+        self.setPos(position)
 
         self.hovered = False
         self.output_list = []
@@ -35,8 +41,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         self.task_color = '#FF00FF'
         self.set_task_color()
-        self.set_label('hallo')
+        self.set_label(self.plugin.label)
 
+        self.icon = None
         self.set_icon()
 
         # self.add_button()
@@ -59,28 +66,22 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
     def set_icon(self):
 
-        node_icon_pixmap = QtGui.QPixmap(SETTINGS.CAPTURE_ICON_START).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
-        node_arch_pixmap = QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+        # node_icon_pixmap = QtGui.QPixmap(SETTINGS.CAPTURE_ICON_START).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+        # node_arch_pixmap = QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
 
-        # node_icon_pixmap_temp = node_icon_pixmap
-        #
-        # painter = QtGui.QPainter()
-        # painter.begin(node_icon_pixmap_temp)
-        # painter.setRenderHint(painter.Antialiasing, True)
-        # painter.setRenderHint(painter.HighQualityAntialiasing, True)
-        #
-        # node_icon_pixmap = painter.drawPixmap(0, 0, node_icon_pixmap_temp)
-        #
-        # painter.end()
+        self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_arch)
+        # self.icon.setVisible(False)
+        # node_arch = QtGui.QGraphicsPixmapItem(node_arch_pixmap)
 
-        node_icon = QtGui.QGraphicsPixmapItem(node_icon_pixmap)
-        node_arch = QtGui.QGraphicsPixmapItem(node_arch_pixmap)
+        # node_icon.setPos(QtCore.QPointF(0, -(node_icon.boundingRect().height()/2)))
 
-        node_icon.setPos(QtCore.QPointF(0, -22))
-        node_arch.setPos(QtCore.QPointF(30, -22))
+        # node_arch.setPos(QtCore.QPointF(30, -22))
 
-        node_icon.setParentItem(self)
-        node_arch.setParentItem(self)
+        self.icon.setParentItem(self)
+        self.icon.setScale(SETTINGS.ICON_SCALE)
+        # self.icon.setPos(QtCore.QPointF(0, -(self.icon.boundingRect().height())*SETTINGS.ICON_SCALE))
+        self.icon.setPos(QtCore.QPointF(0, 0))
+        # node_arch.setParentItem(self)
 
     def add_button(self):
         btn = QtGui.QPushButton(self.label)
@@ -93,6 +94,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
     def hoverEnterEvent(self, event):
         self.hovered = True
+        # self.icon.setScale(1)
         # modifiers = QtGui.QApplication.keyboardModifiers()
         # if modifiers == QtCore.Qt.ControlModifier:
         #     print 'disable'
@@ -101,6 +103,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         print 'enter'
 
     def hoverLeaveEvent(self, event):
+        # self.icon.setScale(0.5)
         self.hovered = False
         print 'leave'
 
@@ -113,7 +116,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             self.setFlag(self.ItemIsMovable, False)
 
     def paint(self, painter, option, widget):
-        print 'paint'
+        # print 'paint'
         # painter = QtGui.QPainter()
         painter.setRenderHint(painter.Antialiasing)
 

@@ -47,10 +47,4 @@ class GraphicsView(QtGui.QGraphicsView):
     # def mouseDoubleClickEvent(self, event):
     #     self.focus_all_elements()
 
-    def keyPressEvent(self, event):
-        modifiers = QtGui.QApplication.keyboardModifiers()
-        if modifiers == QtCore.Qt.ControlModifier:
-            self.setDragMode(self.ScrollHandDrag)
 
-    def keyReleaseEvent(self, event):
-        self.setDragMode(self.RubberBandDrag)
