@@ -62,3 +62,8 @@ class PluginWidget(QtGui.QWidget):
                                                                                  plugin.architecture))
 
             self.ui.label.setEnabled(True)
+
+
+class FarmWidget(PluginWidget):
+    def __init__(self):
+        super(FarmWidget, self).__init__()

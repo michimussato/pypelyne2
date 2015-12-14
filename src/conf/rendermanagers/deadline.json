@@ -1,3 +1,6 @@
+
+
+
 {
   "family": {
     "value": "Deadline",
@@ -76,4 +79,153 @@
       ]
     }
   }
+}
+
+{
+  "family_enable": true,
+  "family": "Deadline",
+  "vendor": "Thinkbox",
+  "abbreviation": "DDL",
+  "releases": [
+    {
+      "release_number": "5.2.4949",
+      "icon": null,
+      "default_outputs": [],
+      "component": [
+        {
+          "submitter": true,
+          "label": "DeadlineCommand",
+          "arguments": [
+            {
+              "argument": [
+                {
+                  "flag": "-SubmitCommandLineJob",
+                  "flag_required": true,
+                  "value_required": false,
+                  "datatype": null,
+                  "qwidget": null,
+                  "minimum": null,
+                  "maximum": null,
+                  "default": null,
+                  "value": null,
+                  "description": "submitter"
+                }
+              ],
+              "argument": [
+                {
+                  "flag": "-executable",
+                  "flag_required": true,
+                  "value_required": false,
+                  "datatype": "string",
+                  "qwidget": "QLabel",
+                  "minimum": null,
+                  "maximum": null,
+                  "default": null,
+                  "value": "/Applications/Deadline/Resources/bin/deadlinecommand",
+                  "description": "executable"
+                }
+              ]
+            }
+          ],
+          "platforms": [
+            {
+              "darwin": {
+              #"project_workspace_flag": null,
+              #"project_workspace_parent_directory_level": 1,
+              #"project_file_flag": null,
+              "executable_x32": null,
+              "flags_x32": [],
+              "executable_x64": "/Applications/Nuke7.0v8/Nuke7.0v8.app/Nuke7.0v8",
+              "flags_x64": ["-V", "2"]
+              }
+            },
+            {
+
+            }
+          ]
+        }
+
+      ]
+      "platforms": [
+        {
+          "windows": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 1,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": null,
+            "flags_x64": []
+          }
+        },
+        {
+          "darwin": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 1,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": "/Applications/Nuke7.0v8/Nuke7.0v8.app/Nuke7.0v8",
+            "flags_x64": ["-V", "2"]
+          }
+        },
+        {
+          "linux": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 1,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": null,
+            "flags_x64": []
+          }
+        }
+      ]
+    },
+    {
+      "release_number": "8.0v3",
+      "icon": null,
+      "release_extension": ".nk",
+      "project_template": null,
+      "project_workspace_template": null,
+      "project_directories": [],
+      "default_outputs": [],
+      "architecture_fallback": true,
+      "platforms": [
+        {
+          "windows": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 1,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": "C:\\Program Files\\Nuke8.0v3\\Nuke8.0.exe",
+            "flags_x64": []
+          }
+        },
+        {
+          "darwin": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 1,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": "/Applications/Nuke8.0v3/Nuke8.0v3.app/Nuke8.0v3",
+            "flags_x64": ["-V", "2"]
+          }
+        },
+        {
+          "linux": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 1,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": null,
+            "flags_x64": []
+          }
+        }
+      ]
+    }
+  ]
 }
