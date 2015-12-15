@@ -45,6 +45,8 @@ HIDE_CONSOLE = False
 
 # dockwidget_plugins module
 DISPLAY_ONLY_AVAILABLE = True
+DISPLAY_X32 = True
+DISPLAY_X64 = True
 
 # Task module
 TASKS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks')

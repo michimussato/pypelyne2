@@ -45,7 +45,7 @@ class PluginWidget(QtGui.QWidget):
         self.pixmap_x32.setEnabled(False)
         self.pixmap_x64.setEnabled(False)
 
-        if plugin.executable_x32 is not None:
+        if SETTINGS.DISPLAY_X32 and plugin.executable_x32 is not None:
             self.pixmap_x32.setEnabled(True)
             self.pixmap_x32.setToolTip('double click to launch. '
                                        'drag to create {0} {1} {2} node.'.format(plugin.family,
@@ -54,7 +54,7 @@ class PluginWidget(QtGui.QWidget):
 
             self.ui.label.setEnabled(True)
 
-        if plugin.executable_x64 is not None:
+        if SETTINGS.DISPLAY_X64 and plugin.executable_x64 is not None:
             self.pixmap_x64.setEnabled(True)
             self.pixmap_x64.setToolTip('double click to launch. '
                                        'drag to create {0} {1} {2} node.'.format(plugin.family,
