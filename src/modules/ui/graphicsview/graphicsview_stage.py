@@ -13,35 +13,52 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.scene = graphicsscene.GraphicsScene()
         self.setScene(self.scene)
 
+        self.setMouseTracking(False)
+
         self.point = QtGui.QGraphicsRectItem(-10, -10, 20, 20)
         self.scene.addItem(self.point)
 
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
 
-        # self.scene.random_item.setParentItem(self.point)
+    # def mousePressEvent(self, event):
+    #     pass
+    #
+    # def keyPressEvent(self, event):
+    #     modifiers = QtGui.QApplication.keyboardModifiers()
+    #     if modifiers == QtCore.Qt.AltModifier:
+    #         self.setDragMode(self.ScrollHandDrag)
+    #
+    # def keyReleaseEvent(self, event):
+    #     self.setDragMode(self.RubberBandDrag)
+    #
+    #
+    # def mouseMoveEvent(self, event):
+    #     # dragMode 1: scrollhanddrag
+    #     # dragmode 2: rubberbanddrag
+    #     if self.dragMode() == 1:
+    #         # print self.dragMode()
+    #         group = self.scene.createItemGroup(self.scene.node_items)
+    #         event_pos_scene = self.mapToScene(event.pos())
+    #
+    #         # print event_pos_scene
+    #
+    #         print dir(self.scene.test_rect)
+    #
+    #         # self.scene.test_rect.translate(event_pos_scene)
+    #         group.setPos(event_pos_scene)
+    #
+    #         # print 'moving'
+    #
+    #         self.scene.destroyItemGroup(group)
 
-        # self.setResizeAnchor(self.AnchorUnderMouse)
-        # self.setTransformationAnchor(self.AnchorUnderMouse)
-
-        # self.setResizeAnchor(self.AnchorUnderMouse)
-        # self.setSceneRect(0, 0, 500, 500)
-
-        # self.resize(self.scene.width(), self.scene.height())
-        # self.setCentralWidget(self.view)
-        # self.setAcceptDrops(True)
-        # self.rectangle = rectangle.Rectangle()
-        # self.scene.addItem(self.rectangle)
-
-
-    def scale(self, event):
+    def wheelEvent(self, event):
+        # print 'scaling'
         # print type(self.scene.node_items)
         group = self.scene.createItemGroup(self.scene.node_items)
 
         # absolute pos of mouse cursor in scene
         event_pos_scene = self.mapToScene(event.pos())
-
-        # increment = 0.1
 
         self.point.setPos(event_pos_scene)
 
@@ -51,83 +68,19 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             self.point.setScale(self.point.scale() * (1+SETTINGS.ZOOM_INCREMENT))
             group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
             # self.scene.item_group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
-            self.scene.global_scale = self.scene.global_scale * (1+SETTINGS.ZOOM_INCREMENT)
+            self.scene.global_scale *= (1+SETTINGS.ZOOM_INCREMENT)
         else:
             self.point.setScale(self.point.scale() * (1-SETTINGS.ZOOM_INCREMENT))
             group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
             # self.scene.item_group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
-            self.scene.global_scale = self.scene.global_scale * (1-SETTINGS.ZOOM_INCREMENT)
+            self.scene.global_scale *= (1-SETTINGS.ZOOM_INCREMENT)
 
         self.scene.destroyItemGroup(group)
 
-        print self.scene.global_scale
-        print self.scene.item_group.scale()
-
-        # print dir(self.scene.test_rect)
-
-        # print self.scene.test_rect.mapToScene(self.scene.test_rect.rect()).value()
-
-        # print self.scene.node_items[0].scale()
-
-    def move(self, event):
-        # absolute pos of mouse cursor in scene
-        event_pos = self.mapToScene(event.pos())
-
-        rect_center = QtCore.QPoint((self.scene.random_rect.width()-self.scene.random_rect.x())/2, (self.scene.random_rect.height()-self.scene.random_rect.y())/2)
-
-        # print rect_center
-        # print self.mapToScene(rect_center)
-
-
-    def wheelEvent(self, event):
-
-        # print 'asdf', self.scene.item_group.pos()
-
-        self.scale(event)
-        # self.move(event)
-
-        # # print dir(self.rect.setRect())
-        # factor = 1.2
-        # # print dir(event)
-        # print event.pos()
-        # event_pos = event.pos()
-        # map_to_scene = self.mapToScene(event_pos)
-        # map_to_base_rect = self.scene.base_rect.mapFromItem(self.scene.base_rect, event_pos)
-        #
-        # point = QtCore.QPointF(event_pos)
-        # print point
-        #
-        # print self.mapToScene(event.pos())
-        # # print dir(self)
-        # # print self.mapFromScene(self.scene.base_rect, event.pos())
-        # if event.delta() > 0:
-        #     # self.scene.random_item.setPos(event.pos())
-        #     # self.scene.base_rect.setScale(self.scene.base_rect.scale() * factor)
-        #     self.scene.random_item.setScale(self.scene.random_item.scale() * factor)
-        #     self.scene.random_item.setPos(map_to_base_rect)
-        #     # for item in self.items():
-        #     #     print dir(item)
-        #     #     item.setScale(item.scale()*factor)
-        # else:
-        #     # self.scene.random_item.setPos(event.pos())
-        #     # self.scene.base_rect.setScale(self.scene.base_rect.scale() / factor)
-        #     self.scene.random_item.setScale(self.scene.random_item.scale() / factor)
-        #     self.scene.random_item.setPos(map_to_base_rect)
-        #     # for item in self.items():
-        #     #     print dir(item)
-        #     #     item.setScale(item.scale()/factor)
+        # print self.scene.global_scale
 
     def resizeEvent(self, event):
-        # print dir(self)
-        # print event
-
         self.setSceneRect(0, 0, self.width(), self.height())
-        # print self.graphicssview_stage.sceneRect().width()
-        # print self.graphicssview_stage.sceneRect().height()
-
-        # print self.rect()
-
-        # self.graphicssview_stage.scene.setSceneRect(self.graphicssview_stage.rect())
         self.scene.base_rect.setRect(QtCore.QRectF(self.rect()))
 
     # def wheelEvent(self, event):
