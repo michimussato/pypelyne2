@@ -1,5 +1,6 @@
 {
   "family_enable": true,
+  "type": "standalone",
   "family": "Premiere",
   "vendor": "Adobe",
   "abbreviation": "PRM",

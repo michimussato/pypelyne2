@@ -1,5 +1,6 @@
 {
   "family_enable": true,
+  "type": "standalone",
   "family": "Photoshop",
   "vendor": "Adobe",
   "abbreviation": "PSH",

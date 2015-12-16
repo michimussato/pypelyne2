@@ -1,5 +1,6 @@
 {
   "family_enable": true,
+  "type": "standalone",
   "family": "UVLayout",
   "vendor": "Headus",
   "abbreviation": "UVL",

@@ -32,6 +32,12 @@ class PlugIn(object):
         pass
 
 
+# class PlugInSubmitter(PlugIn):
+#     def __init__(self):
+#         super(PlugInSubmitter, self).__init__()
+
+
+
 # class PlugInX32(PlugIn):
 #     def __init__(self, d):
 #         super(PlugInX32, self).__init__()

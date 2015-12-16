@@ -1,5 +1,6 @@
 {
   "family_enable": true,
+  "type": "standalone",
   "family": "After Effects",
   "vendor": "Adobe",
   "abbreviation": "AFX",

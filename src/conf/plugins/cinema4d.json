@@ -1,5 +1,6 @@
 {
   "family_enable": true,
+  "type": "standalone",
   "family": "CINEMA 4D",
   "vendor": "MAXON",
   "abbreviation": "CIN",
