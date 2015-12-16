@@ -53,6 +53,10 @@ class PluginWidget(QtGui.QWidget):
                                                                                  plugin.architecture))
 
             self.ui.label.setEnabled(True)
+        elif SETTINGS.DISPLAY_X32 and plugin.executable_x32 is None:
+            self.ui.label.setEnabled(True)
+        else:
+            self.pixmap_x32.setVisible(False)
 
         if SETTINGS.DISPLAY_X64 and plugin.executable_x64 is not None:
             self.pixmap_x64.setEnabled(True)
@@ -62,6 +66,10 @@ class PluginWidget(QtGui.QWidget):
                                                                                  plugin.architecture))
 
             self.ui.label.setEnabled(True)
+        elif SETTINGS.DISPLAY_X64 and plugin.executable_x64 is None:
+            self.ui.label.setEnabled(True)
+        else:
+            self.pixmap_x64.setVisible(False)
 
 
 class FarmWidget(PluginWidget):
