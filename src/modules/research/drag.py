@@ -16,10 +16,10 @@ class Button(QtGui.QPushButton):
         mimeData.setText('%d,%d' % (e.x(), e.y()))
 
         # let's make it fancy. we'll show a "ghost" of the button as we drag
-        # grab the button to a pixmap
+        # grab the button to a pixmap_overlay
         pixmap = QtGui.QPixmap.grabWidget(self)
 
-        # below makes the pixmap half transparent
+        # below makes the pixmap_overlay half transparent
         painter = QtGui.QPainter(pixmap)
         painter.setCompositionMode(painter.CompositionMode_DestinationIn)
         painter.fillRect(pixmap.rect(), QtGui.QColor(0, 0, 0, 127))

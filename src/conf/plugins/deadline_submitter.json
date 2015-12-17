@@ -1,0 +1,35 @@
+{
+  "family_enable": true,
+  "type": "submitter",
+  "family": "Deadline Submitter",
+  "vendor": "Thinkbox",
+  "abbreviation": "DDL",
+  "releases": [
+    {
+      "release_number": "5.2.4949",
+      "icon": "icon_thinkbox_deadlinesubmitter_52.png",
+      "project_directories": [],
+      "default_outputs": [],
+      "platforms": [
+        {
+          "windows": {
+            "executable": null,
+            "flags": []
+          }
+        },
+        {
+          "darwin": {
+            "executable": "/Applications/Deadline/Resources/bin/deadlinecommand",
+            "flags": []
+          }
+        },
+        {
+          "linux": {
+            "executable": null,
+            "flags": []
+          }
+        }
+      ]
+    }
+  ]
+}

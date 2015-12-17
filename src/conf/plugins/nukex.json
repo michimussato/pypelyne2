@@ -1,6 +1,7 @@
 {
   "family_enable": true,
   "type": "standalone",
+  "nodeable": true,
   "family": "NukeX",
   "vendor": "The Foundry",
   "abbreviation": "NUX",

@@ -1,0 +1,35 @@
+{
+  "family_enable": true,
+  "type": "submitter",
+  "family": "RoyalRender Submitter",
+  "vendor": "Holger Schoenberger",
+  "abbreviation": "RRN",
+  "releases": [
+    {
+      "release_number": "7.0.29",
+      "icon": "icon_holgerschoenberger_royalrendersubmitter_7029.png",
+      "project_directories": [],
+      "default_outputs": [],
+      "platforms": [
+        {
+          "windows": {
+            "executable": null,
+            "flags": []
+          }
+        },
+        {
+          "darwin": {
+            "executable": "/Applications/rrFolder/bin/mac/rrSubmitter.app/Contents/MacOS/rrSubmitter",
+            "flags": []
+          }
+        },
+        {
+          "linux": {
+            "executable": null,
+            "flags": []
+          }
+        }
+      ]
+    }
+  ]
+}

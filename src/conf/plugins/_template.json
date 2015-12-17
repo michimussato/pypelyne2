@@ -1,6 +1,8 @@
 {
   "family_enable": true or false,
   "type": "standalone" or "submitter" or "plugin",
+  "nodeable": true,
+  "node_only": false,
   "family": "Family",
   "vendor": "Family Foundation",
   "abbreviation": "FAM",

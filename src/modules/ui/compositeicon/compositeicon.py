@@ -17,15 +17,25 @@ class CompositeIcon(QtGui.QPixmap):
 
         self._pixmap = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)
 
-        if self.plugin.architecture == 'x32':
-            self.arch_icon = QtGui.QPixmap(SETTINGS.ICON_X32)
-        elif self.plugin.architecture == 'x64':
-            self.arch_icon = QtGui.QPixmap(SETTINGS.ICON_X64)
-        self.arch_icon = self.arch_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
-                                                       QtCore.Qt.SmoothTransformation)
+        # print self.plugin.type
+        # print self.plugin.family
+
+        if self.plugin.type == 'submitter':
+            self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_SUBMITTER)
+        elif self.plugin.type == 'plugin':
+            pass
+            # TODO: plugin
+            # self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_PLUGIN)
+        elif self.plugin.type == 'standalone':
+            if self.plugin.architecture == 'x32':
+                self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_X32)
+            elif self.plugin.architecture == 'x64':
+                self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_X64)
+        self.overlay_icon = self.overlay_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
+                                                             QtCore.Qt.SmoothTransformation)
 
     @property
-    def pixmap(self):
+    def pixmap_overlay(self):
         color = QtGui.QColor(0, 0, 0, 0)
         _pixmap = self._pixmap
         _pixmap.fill(color)
@@ -34,8 +44,8 @@ class CompositeIcon(QtGui.QPixmap):
         painter.begin(_pixmap)
         painter.drawPixmap(0, 0, self._icon)
         painter.setCompositionMode(painter.CompositionMode_SourceOver)
-        painter.drawPixmap(0, 0, self.arch_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5,
-                                                               QtCore.Qt.SmoothTransformation))
+        painter.drawPixmap(0, 0, self.overlay_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT / 2.5,
+                                                                  QtCore.Qt.SmoothTransformation))
         painter.end()
 
         return _pixmap
@@ -48,8 +58,8 @@ class CompositeIcon(QtGui.QPixmap):
 
         painter_hovered = QtGui.QPainter()
         painter_hovered.begin(_pixmap_hovered)
-        painter_hovered.drawPixmap(0, 0, self.arch_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT/2.5,
-                                                                       QtCore.Qt.SmoothTransformation))
+        painter_hovered.drawPixmap(0, 0, self.overlay_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT / 2.5,
+                                                                          QtCore.Qt.SmoothTransformation))
         painter_hovered.setCompositionMode(painter_hovered.CompositionMode_SourceOver)
         painter_hovered.drawPixmap(0, 0, self._icon)
         painter_hovered.end()
@@ -57,5 +67,5 @@ class CompositeIcon(QtGui.QPixmap):
         return _pixmap_hovered
 
     @property
-    def pixmap_no_arch(self):
+    def pixmap_no_overlay(self):
         return self._icon

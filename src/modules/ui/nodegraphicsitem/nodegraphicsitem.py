@@ -69,7 +69,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # node_icon_pixmap = QtGui.QPixmap(SETTINGS.CAPTURE_ICON_START).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
         # node_arch_pixmap = QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
 
-        self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_arch)
+        self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_overlay)
         # self.icon.setVisible(False)
         # node_arch = QtGui.QGraphicsPixmapItem(node_arch_pixmap)
 

@@ -25,10 +25,10 @@ class PluginConsole(QtGui.QWidget):
         if SETTINGS.HIDE_CONSOLE:
             self.ui.splitter.setVisible(False)
 
-        self.icon = compositeicon.CompositeIcon(self.plugin).pixmap_no_arch.scaledToHeight(SETTINGS.ICON_HEIGHT,
-                                                                                           QtCore.Qt.SmoothTransformation)
-        self.arch_icon = compositeicon.CompositeIcon(self.plugin).arch_icon.scaledToHeight(SETTINGS.ICON_HEIGHT,
-                                                                                           QtCore.Qt.SmoothTransformation)
+        self.icon = compositeicon.CompositeIcon(self.plugin).pixmap_no_overlay.scaledToHeight(SETTINGS.ICON_HEIGHT,
+                                                                                              QtCore.Qt.SmoothTransformation)
+        self.arch_icon = compositeicon.CompositeIcon(self.plugin).overlay_icon.scaledToHeight(SETTINGS.ICON_HEIGHT,
+                                                                                              QtCore.Qt.SmoothTransformation)
 
         self.apply_grabber_settings()
 

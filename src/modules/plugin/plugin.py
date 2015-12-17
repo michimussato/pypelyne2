@@ -21,6 +21,15 @@ class PlugIn(object):
         dict_x64[u'architecture'] = 'x64'
         return PlugIn(dict_x64)
 
+    @property
+    def submitter(self):
+        dict_submitter = self.__dict__
+        dict_submitter[u'executable'] = dict_submitter[u'executable']
+        dict_submitter[u'flags'] = dict_submitter[u'flags']
+        dict_submitter[u'label'] = dict_submitter[u'label']
+        dict_submitter[u'architecture'] = None
+        return PlugIn(dict_submitter)
+
     def create_project(self, location=None):
         pass
 

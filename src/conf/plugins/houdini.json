@@ -1,6 +1,7 @@
 {
   "family_enable": true,
   "type": "standalone",
+  "nodeable": true,
   "family": "Houdini",
   "vendor": "Side Effects Software",
   "abbreviation": "HOU",

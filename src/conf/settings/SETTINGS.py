@@ -29,7 +29,8 @@ QSS_FILE = os.path.join(QSS_DIR, 'dark.css')
 ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
 ICON_X32 = os.path.join(ICONS_DIR, 'icon_x32.png')
 ICON_X64 = os.path.join(ICONS_DIR, 'icon_x64.png')
-EXCLUSIONS = [ '.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini' ]
+ICON_SUBMITTER = os.path.join(ICONS_DIR, 'icon_submit.png')
+EXCLUSIONS = ['.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini']
 
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
@@ -44,8 +45,8 @@ KILL_ICON = os.path.join(ICONS_DIR, 'kill.png')
 HIDE_CONSOLE = False
 
 # dockwidget_plugins module
-DISPLAY_ONLY_AVAILABLE = True
-DISPLAY_X32 = False
+DISPLAY_ONLY_AVAILABLE = False
+DISPLAY_X32 = True
 DISPLAY_X64 = True
 
 # Task module

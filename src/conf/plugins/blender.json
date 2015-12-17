@@ -1,6 +1,7 @@
 {
   "family_enable": true,
   "type": "standalone",
+  "nodeable": true,
   "family": "Blender",
   "vendor": "Blender Foundation",
   "abbreviation": "BLD",
