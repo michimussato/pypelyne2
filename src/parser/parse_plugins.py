@@ -123,7 +123,7 @@ def parse_plugins():
 
                 architecture_fallback = None
 
-                print release
+                # print release
 
                 if release[u'architecture_agnostic']:
                     # if SETTINGS.ARCHITECTURE == 'x64' and release[u'architecture_fallback']:
