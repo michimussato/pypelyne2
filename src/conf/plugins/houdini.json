@@ -14,6 +14,7 @@
       "project_workspace_template": null,
       "project_directories": ["scripts", "otls", "desktop", "toolbar", "gallery"],
       "default_outputs": [],
+      "architecture_agnostic": false,
       "architecture_fallback": true,
       "platforms": [
         {

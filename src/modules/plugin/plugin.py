@@ -22,6 +22,15 @@ class PlugIn(object):
         return PlugIn(dict_x64)
 
     @property
+    def agnostic(self):
+        dict_agnostic = self.__dict__
+        # dict_agnostic[u'executable'] = dict_agnostic[u'executable_x64']
+        # dict_agnostic[u'flags'] = dict_agnostic[u'flags_x64']
+        # dict_agnostic[u'label'] = dict_agnostic[u'label_x64']
+        # dict_agnostic[u'architecture'] = 'x64'
+        return PlugIn(dict_agnostic)
+
+    @property
     def submitter(self):
         dict_submitter = self.__dict__
         dict_submitter[u'executable'] = dict_submitter[u'executable']

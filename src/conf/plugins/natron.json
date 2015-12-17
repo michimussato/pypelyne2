@@ -15,6 +15,7 @@
       "needs_workspace": false,
       "project_directories": [],
       "default_outputs": [],
+      "architecture_agnostic": false,
       "architecture_fallback": true,
       "platforms": [
         {

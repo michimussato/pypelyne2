@@ -29,6 +29,7 @@ QSS_FILE = os.path.join(QSS_DIR, 'dark.css')
 ICONS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'icons')
 ICON_X32 = os.path.join(ICONS_DIR, 'icon_x32.png')
 ICON_X64 = os.path.join(ICONS_DIR, 'icon_x64.png')
+ICON_AGNOSTIC = os.path.join(ICONS_DIR, 'icon_agnostic.png')
 ICON_SUBMITTER = os.path.join(ICONS_DIR, 'icon_submit.png')
 EXCLUSIONS = ['.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini']
 

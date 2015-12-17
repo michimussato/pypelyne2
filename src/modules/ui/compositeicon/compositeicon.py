@@ -27,10 +27,13 @@ class CompositeIcon(QtGui.QPixmap):
             # TODO: plugin
             # self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_PLUGIN)
         elif self.plugin.type == 'standalone':
-            if self.plugin.architecture == 'x32':
-                self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_X32)
-            elif self.plugin.architecture == 'x64':
-                self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_X64)
+            if self.plugin.architecture_agnostic:
+                self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_AGNOSTIC)
+            else:
+                if self.plugin.architecture == 'x32':
+                    self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_X32)
+                elif self.plugin.architecture == 'x64':
+                    self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_X64)
         self.overlay_icon = self.overlay_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
                                                              QtCore.Qt.SmoothTransformation)
 

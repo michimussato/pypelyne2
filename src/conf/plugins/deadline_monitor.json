@@ -14,6 +14,7 @@
       "project_workspace_template": null,
       "project_directories": [],
       "default_outputs": [],
+      "architecture_agnostic": true,
       "architecture_fallback": true,
       "platforms": [
         {
@@ -21,10 +22,8 @@
             "project_workspace_flag": null,
             "project_workspace_parent_directory_level": 0,
             "project_file_flag": null,
-            "executable_x32": null,
-            "flags_x32": [],
-            "executable_x64": null,
-            "flags_x64": []
+            "executable": null,
+            "flags": []
           }
         },
         {
@@ -32,10 +31,8 @@
             "project_workspace_flag": null,
             "project_workspace_parent_directory_level": 0,
             "project_file_flag": null,
-            "executable_x32": "/Applications/Deadline/DeadlineMonitor.app/Contents/MacOS/DeadlineMonitor",
-            "flags_x32": [],
-            "executable_x64": null,
-            "flags_x64": []
+            "executable": "/Applications/Deadline/DeadlineMonitor.app/Contents/MacOS/DeadlineMonitor",
+            "flags": []
           }
         },
         {
@@ -43,10 +40,8 @@
             "project_workspace_flag": null,
             "project_workspace_parent_directory_level": 0,
             "project_file_flag": null,
-            "executable_x32": null,
-            "flags_x32": [],
-            "executable_x64": null,
-            "flags_x64": []
+            "executable": null,
+            "flags": []
           }
         }
       ]
