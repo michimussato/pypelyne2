@@ -7,7 +7,7 @@
   "abbreviation": null,
   "releases": [
     {
-      "release_number": "5.2.4949",
+      "release_number": "5.2",
       "icon": "icon_thinkbox_deadlinemonitor_52.png",
       "release_extension": null,
       "project_template": null,
@@ -32,6 +32,46 @@
             "project_workspace_parent_directory_level": 0,
             "project_file_flag": null,
             "executable": "/Applications/Deadline/DeadlineMonitor.app/Contents/MacOS/DeadlineMonitor",
+            "flags": []
+          }
+        },
+        {
+          "linux": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable": null,
+            "flags": []
+          }
+        }
+      ]
+    },
+    {
+      "release_number": "7.2",
+      "icon": "icon_thinkbox_deadlinemonitor_52.png",
+      "release_extension": null,
+      "project_template": null,
+      "project_workspace_template": null,
+      "project_directories": [],
+      "default_outputs": [],
+      "architecture_agnostic": true,
+      "architecture_fallback": true,
+      "platforms": [
+        {
+          "windows": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable": "C:\\Program Files\\Thinkbox\\Deadline7\\bin\\deadlinemonitor.exe",
+            "flags": []
+          }
+        },
+        {
+          "darwin": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable": null,
             "flags": []
           }
         },

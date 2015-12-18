@@ -47,7 +47,7 @@ HIDE_CONSOLE = False
 
 # dockwidget_plugins module
 DISPLAY_ONLY_AVAILABLE = False
-DISPLAY_X32 = True
+DISPLAY_X32 = False
 DISPLAY_X64 = True
 
 # Task module

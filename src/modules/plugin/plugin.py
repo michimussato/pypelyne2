@@ -27,7 +27,7 @@ class PlugIn(object):
         # dict_agnostic[u'executable'] = dict_agnostic[u'executable_x64']
         # dict_agnostic[u'flags'] = dict_agnostic[u'flags_x64']
         # dict_agnostic[u'label'] = dict_agnostic[u'label_x64']
-        # dict_agnostic[u'architecture'] = 'x64'
+        dict_agnostic[u'architecture'] = None
         return PlugIn(dict_agnostic)
 
     @property
