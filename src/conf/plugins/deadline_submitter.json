@@ -30,6 +30,32 @@
           }
         }
       ]
+    },
+    {
+      "release_number": "7.2",
+      "icon": "icon_thinkbox_deadlinesubmitter_52.png",
+      "project_directories": [],
+      "default_outputs": [],
+      "platforms": [
+        {
+          "windows": {
+            "executable": "C:\\Program Files\\Thinkbox\\Deadline7\\bin\\deadlinecommand.exe",
+            "flags": []
+          }
+        },
+        {
+          "darwin": {
+            "executable": null,
+            "flags": []
+          }
+        },
+        {
+          "linux": {
+            "executable": null,
+            "flags": []
+          }
+        }
+      ]
     }
   ]
 }
