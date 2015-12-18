@@ -56,7 +56,8 @@ def parse_plugins():
                             executable_list.append(executable)
                             logging.info('executable %s found on this machine.' % executable)
                         elif not os.path.exists(executable):
-                            logging.warning('executable %s not found on this machine.' % executable)
+                            logging.warning('executable %s not found on this machine. setting to None' % executable)
+                            executable = None
 
                         plugin_dict[u'family'] = \
                             plugin_object[u'family']
@@ -159,7 +160,8 @@ def parse_plugins():
                                 executable_list.append(executable)
                                 logging.info('executable %s found on this machine.' % executable)
                             elif not os.path.exists(executable):
-                                logging.warning('executable %s not found on this machine.' % executable)
+                                logging.warning('executable %s not found on this machine. setting to None' % executable)
+                                executable = None
 
                             plugin_dict[u'family'] = \
                                 plugin_object[u'family']
