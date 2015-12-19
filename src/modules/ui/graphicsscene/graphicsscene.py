@@ -49,11 +49,14 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
         self.base_rect = self.addRect(QtCore.QRectF(0, 0, 500, 500), QtGui.QColor(255, 0, 0, 0))
 
+        # self.installEventFilter(self)
+
         # self.item_group = QtGui.QGraphicsItemGroup()
 
         self.global_scale = 1
 
         self.node_items = []
+
 
         # self.test_rect = self.addRect(QtCore.QRectF(400, 100, 40, 40), QtCore.Qt.green)
         # self.node_items.append(self.test_rect)
@@ -65,6 +68,12 @@ class GraphicsScene(QtGui.QGraphicsScene):
         self.item_group = QtGui.QGraphicsItemGroup()
 
         # self.addItem(self.item_group)
+
+    # def eventFilter(self, source, event):
+    #     if event.type() == QtCore.QEvent.MouseMove:
+    #         pos = event.pos()
+    #         print('mouse move: (%d, %d)' % (pos.x(), pos.y()))
+    #     return QtGui.QWidget.eventFilter(self, source, event)
 
     def dragEnterEvent(self, event):
         # event.accept()
@@ -86,9 +95,10 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
             # print unPickleData.dictKey
             # TODO: map to self.rect
-            node_graphics_item = nodegraphicsitem.NodeGraphicsItem(pos, unpickled_plugin_object)
+            node_graphics_item = nodegraphicsitem.NodeGraphicsItem(position=pos, plugin=unpickled_plugin_object)
             node_graphics_item.setScale(self.global_scale)
             self.addItem(node_graphics_item)
+            # nodegraphicsitem.installSceneEventFilter(nodegraphicsitem)
 
             node_graphics_item.setParentItem(self.base_rect)
 

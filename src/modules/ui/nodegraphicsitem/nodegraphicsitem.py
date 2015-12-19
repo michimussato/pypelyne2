@@ -2,6 +2,7 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import src.conf.settings.SETTINGS as SETTINGS
 import src.modules.ui.compositeicon.compositeicon as compositeicon
+import src.parser.parse_tasks as parse_tasks
 # import os
 
 
@@ -9,15 +10,17 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
     def __init__(self, position, plugin):
         super(NodeGraphicsItem, self).__init__()
 
+        # self.setParentItem(parent)
+
         # self.scene = scene
 
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
 
         self.rect = QtCore.QRectF(0, 0, 200, 40)
-        # self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
-        self.setFlag(self.ItemIsSelectable, True)
-        self.setFlag(self.ItemIsMovable, True)
+        self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
+        # self.setFlag(self.ItemIsSelectable, True)
+        # self.setFlag(self.ItemIsMovable, True)
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
         self.setAcceptHoverEvents(True)
@@ -46,10 +49,41 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.icon = None
         self.set_icon()
 
-        # self.add_button()
+        # self.installSceneEventFilter(self)
 
-    # def mouseDoubleClickEvent(self, event):
+        self.task_menu = QtGui.QComboBox()
+        self.task_menu_proxy = QtGui.QGraphicsProxyWidget()
+        # self.setVisible(False)
+        self.add_button()
+
+    # def eventFilter(self, source, event):
+    #     if event.type() == QtCore.QEvent.MouseMove and source is self.scene():
+    #         pos = event.pos()
+    #         print('mouse move: (%d, %d)' % (pos.x(), pos.y()))
+    #     return QtGui.QWidget.eventFilter(self, source, event)
+
+    # def mouseMoveEvent(self, event):
     #     print event
+    #     # event_pos_scene = event.pos()
+    #     # previous_pos = self.mouse_position_previous
+    #     # delta = previous_pos - event_pos_scene
+    #     #
+    #     # mouse_modifiers = QtGui.QApplication.mouseButtons()
+    #     # keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+    #     # if mouse_modifiers == QtCore.Qt.MidButton \
+    #     #         or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
+    #     #     group = self.scene.createItemGroup(self.scene.node_items)
+    #     #     self.point.setPos(event_pos_scene)
+    #     #     group.translate(-1*delta.x(), -1*delta.y())
+    #     #     self.scene.destroyItemGroup(group)
+    #     #
+    #     # # else:
+    #     # #     event.ignore()
+    #     #
+    #     # self.mouse_position_previous = event_pos_scene
+    #
+    # # def mouseDoubleClickEvent(self, event):
+    # #     print event
 
     def set_label(self, text):
         # self.setData(0, text)
@@ -84,8 +118,23 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # node_arch.setParentItem(self)
 
     def add_button(self):
-        btn = QtGui.QPushButton(self.label)
-        # self.seta
+        self.task_menu.addItem('')
+
+        self.task_menu_proxy.setWidget(self.task_menu)
+        self.task_menu_proxy.setParentItem(self)
+
+        # import src.parser.parse_tasks as parse_tasks
+
+        tasks = parse_tasks.get_tasks()
+        # print tasks
+
+        for task in tasks:
+            self.task_menu.addItem(task.task)
+
+        proxy_width = self.task_menu_proxy.rect().width()
+
+        self.task_menu_proxy.setPos(self.rect.width()-proxy_width, -20)
+        # self.task_menu_proxy.setVisible(False)
 
     def boundingRect(self):
         self.setFlag(self.ItemIsSelectable, True)
@@ -94,6 +143,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
     def hoverEnterEvent(self, event):
         self.hovered = True
+        # self.task_menu_proxy.setVisible(True)
+        # self.task_menu.setVisible(True)
         # self.icon.setScale(1)
         # modifiers = QtGui.QApplication.keyboardModifiers()
         # if modifiers == QtCore.Qt.ControlModifier:
@@ -105,17 +156,25 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
     def hoverLeaveEvent(self, event):
         # self.icon.setScale(0.5)
         self.hovered = False
+        # self.task_menu_proxy.setVisible(False)
         print 'leave'
 
-    def keyPressEvent(self, event):
-        print 'hee'
-        modifiers = QtGui.QApplication.keyboardModifiers()
-        if self.hovered and modifiers == QtCore.Qt.ControlModifier:
-            print 'disable'
-            self.setFlag(self.ItemIsSelectable, False)
-            self.setFlag(self.ItemIsMovable, False)
+    # def keyPressEvent(self, event):
+    #     print 'hee'
+    #     modifiers = QtGui.QApplication.keyboardModifiers()
+    #     if self.hovered and modifiers == QtCore.Qt.ControlModifier:
+    #         print 'disable'
+    #         self.setFlag(self.ItemIsSelectable, False)
+    #         self.setFlag(self.ItemIsMovable, False)
 
     def paint(self, painter, option, widget):
+
+        proxy_width = self.task_menu_proxy.rect().width()
+
+        # print self.task_menu_proxy.rect()
+
+        self.task_menu_proxy.setPos(self.rect.width()-proxy_width, -1*self.task_menu_proxy.rect().height())
+
         # print 'paint'
         # painter = QtGui.QPainter()
         painter.setRenderHint(painter.Antialiasing)

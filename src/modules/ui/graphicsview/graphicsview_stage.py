@@ -37,6 +37,9 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             group.translate(-1*delta.x(), -1*delta.y())
             self.scene.destroyItemGroup(group)
 
+        # else:
+        #     event.ignore()
+
         self.mouse_position_previous = event_pos_scene
 
     def wheelEvent(self, event):
