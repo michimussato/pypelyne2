@@ -39,22 +39,37 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.outputs = []
         self.inputs = []
 
-        self.label = None
-        self.label_bounding_rect = 0
+        # self.label = None
+        self.label = QtGui.QGraphicsTextItem()
+        # self.label_bounding_rect = 0
+
+
 
         self.task_color = '#FF00FF'
         self.set_task_color()
         self.set_label(self.plugin.label)
 
         self.icon = None
-        self.set_icon()
+        self.arch_icon = None
+        self.lock_icon = None
+        self.maximize_icon = None
+        self.preview_icon = None
+        self.set_task_icon()
+        self.set_arch_icon()
+        self.set_lock_icon()
+        self.set_maximize_icon()
+        self.set_preview_icon()
 
         # self.installSceneEventFilter(self)
 
         self.task_menu = QtGui.QComboBox()
         self.task_menu_proxy = QtGui.QGraphicsProxyWidget()
         # self.setVisible(False)
-        self.add_button()
+        self.add_task_menu()
+
+        self.status_menu = QtGui.QComboBox()
+        self.status_menu_proxy = QtGui.QGraphicsProxyWidget()
+        self.add_status_menu()
 
     # def eventFilter(self, source, event):
     #     if event.type() == QtCore.QEvent.MouseMove and source is self.scene():
@@ -85,56 +100,81 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
     # # def mouseDoubleClickEvent(self, event):
     # #     print event
 
+    def set_preview_icon(self):
+        # TODO: proper alignment
+        import random
+        img = random.choice(SETTINGS.ICON_PREVIEW_PLACEHOLDER)
+        img_pixmap = QtGui.QPixmap(img)
+        if img_pixmap.width() > img_pixmap.height():
+            # print 'wide'
+            img_pixmap = img_pixmap.scaledToWidth(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
+        else:
+            # print 'long'
+            img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
+        self.preview_icon = QtGui.QGraphicsPixmapItem(img_pixmap)
+        self.preview_icon.setParentItem(self)
+        self.preview_icon.setScale(SETTINGS.ICON_SCALE)
+        print self.preview_icon.boundingRect()
+
     def set_label(self, text):
         # self.setData(0, text)
-        node_label = QtGui.QGraphicsTextItem(text)
-        self.label = text
+
+        self.label.setPlainText(text)
+        # self.label = text
         node_label_color = QtGui.QColor(255, 255, 255)
         node_label_color.setNamedColor(SETTINGS.COLOR_LABEL)
-        node_label.setDefaultTextColor(node_label_color)
-        node_label.setPos(QtCore.QPointF(25, 0))
+        self.label.setDefaultTextColor(node_label_color)
 
-        node_label.setParentItem(self)
 
-        self.label_bounding_rect = node_label.boundingRect().width()
+        self.label.setParentItem(self)
 
-    def set_icon(self):
+        self.label_bounding_rect = self.label.boundingRect().width()
 
-        # node_icon_pixmap = QtGui.QPixmap(SETTINGS.CAPTURE_ICON_START).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
-        # node_arch_pixmap = QtGui.QPixmap(SETTINGS.ICON_X64).scaledToHeight(SETTINGS.ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
-
+    def set_task_icon(self):
         self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_overlay)
-        # self.icon.setVisible(False)
-        # node_arch = QtGui.QGraphicsPixmapItem(node_arch_pixmap)
-
-        # node_icon.setPos(QtCore.QPointF(0, -(node_icon.boundingRect().height()/2)))
-
-        # node_arch.setPos(QtCore.QPointF(30, -22))
 
         self.icon.setParentItem(self)
         self.icon.setScale(SETTINGS.ICON_SCALE)
-        # self.icon.setPos(QtCore.QPointF(0, -(self.icon.boundingRect().height())*SETTINGS.ICON_SCALE))
-        self.icon.setPos(QtCore.QPointF(0, 0))
-        # node_arch.setParentItem(self)
 
-    def add_button(self):
-        self.task_menu.addItem('')
+    def set_arch_icon(self):
+        self.arch_icon = QtGui.QGraphicsPixmapItem(self.compositor.arch_icon)
+        self.arch_icon.setParentItem(self)
+        self.arch_icon.setScale(SETTINGS.ICON_SCALE)
+        # print self.icon.boundingRect().width()
+
+    def set_lock_icon(self):
+        self.lock_icon = QtGui.QGraphicsPixmapItem(self.compositor.lock)
+        self.lock_icon.setParentItem(self)
+        self.lock_icon.setScale(SETTINGS.ICON_SCALE)
+
+    def set_maximize_icon(self):
+        self.maximize_icon = QtGui.QGraphicsPixmapItem(self.compositor.maximize)
+        self.maximize_icon.setParentItem(self)
+        self.maximize_icon.setScale(SETTINGS.ICON_SCALE)
+
+    def add_task_menu(self):
+        self.task_menu.addItem('-select task-')
+
+        tasks = parse_tasks.get_tasks()
+
+        for task in tasks:
+            task_menu_item = self.task_menu.addItem(task.task)
+            # task_menu_item.setItemData()
 
         self.task_menu_proxy.setWidget(self.task_menu)
         self.task_menu_proxy.setParentItem(self)
 
-        # import src.parser.parse_tasks as parse_tasks
+    def add_status_menu(self):
+        self.status_menu.addItem('-select status-')
 
-        tasks = parse_tasks.get_tasks()
-        # print tasks
+        states = ['waiting', 'in progress', 'whatever it might be']
 
-        for task in tasks:
-            self.task_menu.addItem(task.task)
+        for status in states:
+            task_menu_item = self.status_menu.addItem(status)
+            # task_menu_item.setItemData()
 
-        proxy_width = self.task_menu_proxy.rect().width()
-
-        self.task_menu_proxy.setPos(self.rect.width()-proxy_width, -20)
-        # self.task_menu_proxy.setVisible(False)
+        self.status_menu_proxy.setWidget(self.status_menu)
+        self.status_menu_proxy.setParentItem(self)
 
     def boundingRect(self):
         self.setFlag(self.ItemIsSelectable, True)
@@ -172,8 +212,24 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         proxy_width = self.task_menu_proxy.rect().width()
 
         # print self.task_menu_proxy.rect()
+        # print dir(self.icon)
 
-        self.task_menu_proxy.setPos(self.rect.width()-proxy_width, -1*self.task_menu_proxy.rect().height())
+        # first row
+        self.icon.setPos(QtCore.QPointF(0, 0))
+        self.arch_icon.setPos(QtCore.QPointF(SETTINGS.ICON_SCALE*SETTINGS.PLUGINS_ICON_HEIGHT, 0))
+        self.label.setPos(QtCore.QPointF((2*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE, 0))
+        self.lock_icon.setPos(QtCore.QPointF((2*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE+self.label.boundingRect().width(), 0))
+        self.maximize_icon.setPos(QtCore.QPointF(3*(SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE+self.label.boundingRect().width(), 0))
+
+        # second row
+        # TODO: proper alignment
+        # self.preview_icon.setPos((((self.icon.boundingRect().width()+self.arch_icon.boundingRect().width())*(2*SETTINGS.ICON_SCALE))-(self.preview_icon.boundingRect().width()))*0.25, self.icon.boundingRect().height()*(2*SETTINGS.ICON_SCALE)+((self.task_menu_proxy.boundingRect().height()+self.status_menu_proxy.boundingRect().height())-self.preview_icon.boundingRect().height())*0.5)
+        self.preview_icon.setPos((((2*SETTINGS.PLUGINS_ICON_HEIGHT)*(2*SETTINGS.ICON_SCALE))-(self.preview_icon.boundingRect().width()))*0.25, ((SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)+0.5*(SETTINGS.PLUGINS_ICON_HEIGHT-self.preview_icon.boundingRect().height()))
+        # print self.task_menu_proxy.boundingRect().height()
+
+        self.task_menu_proxy.setPos((2*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE, SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE)
+        self.status_menu_proxy.setPos((2*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE, SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE+self.task_menu_proxy.boundingRect().height())
+        # self.task_menu_proxy.setPos(0, 0)
 
         # print 'paint'
         # painter = QtGui.QPainter()
@@ -265,11 +321,11 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         for i in self.output_list:
             output_list_text_width.append(int(i.childrenBoundingRect().width()))
 
-        self.rect.setWidth(max((self.label_bounding_rect + 40 + 20),
+        self.rect.setWidth(max((self.icon.boundingRect().width()+self.arch_icon.boundingRect().width()+self.lock_icon.boundingRect().width())*SETTINGS.ICON_SCALE+self.label.boundingRect().width()+self.task_menu_proxy.boundingRect().height(),
                                (max(output_list_text_width) + 80) + (max(input_list_text_width))))
 
     def resize_height(self):
-        self.rect.setHeight(max(len(self.inputs) + 1, len(self.outputs) + 1) * 20)
+        self.rect.setHeight(max([(len(self.inputs)+1)*20, (len(self.outputs)+1)*20, (self.icon.boundingRect().height()*SETTINGS.ICON_SCALE)+self.task_menu_proxy.boundingRect().height()+self.status_menu_proxy.boundingRect().height()]))
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
     def set_task_color(self):

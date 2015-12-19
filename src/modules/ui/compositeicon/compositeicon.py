@@ -20,6 +20,12 @@ class CompositeIcon(QtGui.QPixmap):
         # print self.plugin.type
         # print self.plugin.family
 
+        self.lock_icon = QtGui.QPixmap(SETTINGS.ICON_LOCKED).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
+                                                                           QtCore.Qt.SmoothTransformation)
+
+        self.maximize_icon = QtGui.QPixmap(SETTINGS.ICON_MAXIMIZE).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
+                                                                           QtCore.Qt.SmoothTransformation)
+
         if self.plugin.type == 'submitter':
             self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_SUBMITTER)
         elif self.plugin.type == 'plugin':
@@ -36,6 +42,14 @@ class CompositeIcon(QtGui.QPixmap):
                     self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_X64)
         self.overlay_icon = self.overlay_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
                                                              QtCore.Qt.SmoothTransformation)
+
+    @property
+    def lock(self):
+        return self.lock_icon
+
+    @property
+    def maximize(self):
+        return self.maximize_icon
 
     @property
     def pixmap_overlay(self):
@@ -72,3 +86,7 @@ class CompositeIcon(QtGui.QPixmap):
     @property
     def pixmap_no_overlay(self):
         return self._icon
+
+    @property
+    def arch_icon(self):
+        return self.overlay_icon

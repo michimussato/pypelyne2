@@ -31,6 +31,9 @@ ICON_X32 = os.path.join(ICONS_DIR, 'icon_x32.png')
 ICON_X64 = os.path.join(ICONS_DIR, 'icon_x64.png')
 ICON_AGNOSTIC = os.path.join(ICONS_DIR, 'icon_agnostic.png')
 ICON_SUBMITTER = os.path.join(ICONS_DIR, 'icon_submit.png')
+ICON_LOCKED = os.path.join(ICONS_DIR, 'locked.png')
+ICON_MAXIMIZE = os.path.join(ICONS_DIR, 'maximize.png')
+ICON_PREVIEW_PLACEHOLDER = [os.path.join(ICONS_DIR, 'rand_img', 'h_node_preview_placeholder.png'), os.path.join(ICONS_DIR, 'rand_img', 'v_node_preview_placeholder.png'), os.path.join(ICONS_DIR, 'rand_img', '1.png'), os.path.join(ICONS_DIR, 'rand_img', '2.png'), os.path.join(ICONS_DIR, 'rand_img', '3.png')]
 EXCLUSIONS = ['.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini']
 
 # Plugin module
