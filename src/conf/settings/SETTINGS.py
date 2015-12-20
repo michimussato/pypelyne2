@@ -33,7 +33,7 @@ ICON_AGNOSTIC = os.path.join(ICONS_DIR, 'icon_agnostic.png')
 ICON_SUBMITTER = os.path.join(ICONS_DIR, 'icon_submit.png')
 ICON_LOCKED = os.path.join(ICONS_DIR, 'locked.png')
 ICON_MAXIMIZE = os.path.join(ICONS_DIR, 'maximize.png')
-ICON_PREVIEW_PLACEHOLDER = [os.path.join(ICONS_DIR, 'rand_img', 'h_node_preview_placeholder.png'), os.path.join(ICONS_DIR, 'rand_img', 'v_node_preview_placeholder.png'), os.path.join(ICONS_DIR, 'rand_img', '1.png'), os.path.join(ICONS_DIR, 'rand_img', '2.png'), os.path.join(ICONS_DIR, 'rand_img', '3.png')]
+ICON_PREVIEW_PLACEHOLDER = [x for x in os.listdir(os.path.join(ICONS_DIR, 'rand_img')) if not x.startswith('.')]
 EXCLUSIONS = ['.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini']
 
 # Plugin module
@@ -129,4 +129,4 @@ ZOOM_INCREMENT = 0.100
 # ZOOM_MAX = 10.0
 
 # Node
-ICON_SCALE = 0.5
+ICON_SCALE = float(0.5)
