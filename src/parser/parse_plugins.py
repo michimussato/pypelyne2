@@ -10,7 +10,7 @@ def parse_plugins():
 
     for plugin_file in SETTINGS.PLUGINS_FILES:
 
-        logging.info('processing source file: %s' % plugin_file)
+        logging.info('processing source file: {0}'.format(plugin_file))
         with open(os.path.join(SETTINGS.PLUGINS_DIR, plugin_file), 'r') as f:
             plugin_object = json.load(f)
         # f.close()
@@ -18,7 +18,7 @@ def parse_plugins():
         plugin_dict = {}
 
         for release in plugin_object[u'releases']:
-            logging.info('checking system for release: %s' % release[u'release_number'])
+            logging.info('checking system for release: {0}'.format(release[u'release_number']))
 
             if plugin_object[u'type'] == 'submitter':
                 # architecture_fallback = None

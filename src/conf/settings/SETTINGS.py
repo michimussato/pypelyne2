@@ -33,7 +33,9 @@ ICON_AGNOSTIC = os.path.join(ICONS_DIR, 'icon_agnostic.png')
 ICON_SUBMITTER = os.path.join(ICONS_DIR, 'icon_submit.png')
 ICON_LOCKED = os.path.join(ICONS_DIR, 'locked.png')
 ICON_MAXIMIZE = os.path.join(ICONS_DIR, 'maximize.png')
-ICON_PREVIEW_PLACEHOLDER = [x for x in os.listdir(os.path.join(ICONS_DIR, 'rand_img')) if not x.startswith('.')]
+ICON_THUMBNAIL_PLACEHOLDER = [x for x in os.listdir(os.path.join(ICONS_DIR, 'rand_img')) if not x.startswith('.')]
+ICON_THUMBNAIL_DEFAULT = os.path.join(ICONS_DIR, 'no_thumbnail.png')
+ICON_FORMATS = ['.jpeg', '.jpg', '.png', '.gif']
 EXCLUSIONS = ['.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini']
 
 # Plugin module

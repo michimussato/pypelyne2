@@ -1,0 +1,110 @@
+#! /Applications/Nuke7.0v8/Nuke7.0v8.app/Contents/MacOS/Nuke7.0v8 -nx
+version 7.0 v8
+define_window_layout_xml {<?xml version="1.0" encoding="UTF-8"?>
+<layout version="1.0">
+    <window x="4" y="22" w="1276" h="778" screen="0">
+        <splitter orientation="1">
+            <split size="806"/>
+            <splitter orientation="1">
+                <split size="40"/>
+                <dock id="" hideTitles="1" activePageId="Toolbar.1">
+                    <page id="Toolbar.1"/>
+                </dock>
+                <split size="762"/>
+                <splitter orientation="2">
+                    <split size="442"/>
+                    <dock id="" activePageId="Viewer.1">
+                        <page id="Viewer.1"/>
+                    </dock>
+                    <split size="310"/>
+                    <dock id="" activePageId="DAG.1">
+                        <page id="DAG.1"/>
+                        <page id="Curve Editor.1"/>
+                        <page id="DopeSheet.1"/>
+                    </dock>
+                </splitter>
+            </splitter>
+            <split size="466"/>
+            <dock id="" activePageId="Properties.1">
+                <page id="Properties.1"/>
+            </dock>
+        </splitter>
+    </window>
+</layout>
+}
+Root {
+ inputs 0
+ name /Users/michaelmussato/Desktop/hole.nk
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+}
+Read {
+ inputs 0
+ file /Users/michaelmussato/Desktop/cutie_mark_black_hole_by_d4v1n5-d67o467.png
+ format "1994 1147 0 0 1994 1147 1 "
+ origset true
+ name Read1
+ xpos 67
+ ypos -124
+}
+Read {
+ inputs 0
+ file /Users/michaelmussato/Desktop/blackhole.png
+ format "500 288 0 0 500 288 1 "
+ origset true
+ name Read2
+ xpos -239
+ ypos -170
+}
+Shuffle {
+ red black
+ green black
+ blue black
+ name Shuffle1
+ xpos -239
+ ypos -88
+}
+Crop {
+ box {0 0 500 288}
+ name Crop1
+ xpos -256
+ ypos -57
+}
+Reformat {
+ format "512 512 0 0 512 512 1 square_512"
+ name Reformat1
+ xpos -234
+ ypos -17
+}
+Constant {
+ inputs 0
+ channels rgb
+ format "512 512 0 0 512 512 1 square_512"
+ name Constant1
+ xpos -379
+ ypos -139
+}
+Merge2 {
+ inputs 2
+ name Merge1
+ xpos -346
+ ypos 41
+}
+Write {
+ channels rgba
+ file /Users/michaelmussato/Desktop/hole.png
+ file_type png
+ checkHashOnRead false
+ version 1
+ name Write1
+ xpos -346
+ ypos 65
+}
+Viewer {
+ frame 1
+ input_process false
+ name Viewer1
+ xpos -40
+ ypos -9
+}
