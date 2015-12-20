@@ -46,6 +46,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.label = QtGui.QGraphicsTextItem()
         # self.label_bounding_rect = 0
 
+        self.task_color_default = '#FFFFFF'
         self.task_color = '#FF00FF'
         self.set_task_color()
         self.set_label(self.plugin.abbreviation)
@@ -169,16 +170,19 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
     def add_task_menu(self):
         self.task_menu.addItem('-select task-')
 
+        index = 0
+
         tasks = parse_tasks.get_tasks()
 
         for task in tasks:
+            index += 1
             # menu_item = QtGui.QAction()
             # menu_item.setText(task.task)
             # menu_item.setData(task)
-            menu_item = self.task_menu.addItem(task.task)
-            # menu_item.setData(task)
+            self.task_menu.addItem(task.task)
+            self.task_menu.setItemData(index, task)
 
-            # self.task_menu.changed.connect(self.change_task_color)
+            self.task_menu.currentIndexChanged.connect(self.change_task_color)
 
             # task_menu_item.setItemData()
 
@@ -309,7 +313,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             pen.setWidth(2)
             pen.setColor(QtCore.Qt.green)
             self.gradient.setColorAt(0, self.task_color_item)
-            self.gradient.setColorAt(1, self.application_color_item.darker(160))
+            # self.gradient.setColorAt(1, self.application_color_item.darker(160))
+            self.gradient.setColorAt(1, self.task_color_item.darker(160))
 
             # if os.path.exists(os.path.join(self.location, 'locked')):
             #     self.gradient.setColorAt(0, self.task_color_item)
@@ -323,7 +328,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             pen.setWidth(5)
             pen.setColor(QtCore.Qt.yellow)
             self.gradient.setColorAt(0, self.task_color_item)
-            self.gradient.setColorAt(1, self.application_color_item.darker(160))
+            # self.gradient.setColorAt(1, self.application_color_item.darker(160))
+            self.gradient.setColorAt(1, self.task_color_item.darker(160))
 
             # if os.path.exists(os.path.join(self.location, 'locked')):
             #     self.gradient.setColorAt(0, self.task_color_item)
@@ -345,7 +351,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             pen.setWidth(0)
             self.setZValue(0)
             self.gradient.setColorAt(0, self.task_color_item)
-            self.gradient.setColorAt(1, self.application_color_item.darker(160))
+            # self.gradient.setColorAt(1, self.application_color_item.darker(160))
+            self.gradient.setColorAt(1, self.task_color_item.darker(160))
 
         painter.setBrush(self.gradient)
 
@@ -404,7 +411,18 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
     def change_task_color(self):
-        self.task_color = self.task_menu.itemData(self.task_menu.currentIndex())
+        index = self.task_menu.currentIndex()
+        # print index
+        if index == 0:
+            self.task_color = self.task_color_default
+            self.set_task_color()
+        else:
+            # print index
+            task_data = self.task_menu.itemData(index).toPyObject()
+            # print dir(task_data)
+            # print task_data.color
+            self.task_color = task_data.color
+            self.set_task_color()
 
     def set_task_color(self):
         # self.task_color = self.task_menu.itemData(self.task_menu.currentIndex())
