@@ -4,7 +4,34 @@ import logging
 import src.conf.settings.SETTINGS as SETTINGS
 import src.modules.ui.compositeicon.compositeicon as compositeicon
 import src.parser.parse_tasks as parse_tasks
-# import os
+
+
+class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
+    def __init__(self):
+        super(QGraphicsProxyWidgetNoWheel, self).__init__()
+        # self.setAcceptTouchEvents(True)
+        # self.setAcceptHoverEvents(True)
+
+    # def hoverEnterEvent(self, event):
+    #     print 'enter'
+    #     print self.zValue()
+    #     # self.setZValue(self.z_delta)
+
+    def wheelEvent(self, event):
+        event.ignore()
+
+    def mousePressEvent(self, event):
+        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+        mouse_modifiers = QtGui.QApplication.mouseButtons()
+        if mouse_modifiers == QtCore.Qt.MidButton \
+                or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
+            event.ignore()
+            return
+
+        return QtGui.QGraphicsProxyWidget.mouseMoveEvent(self, event)
+    # def hoverLeaveEvent(self, event):
+    #     print 'leave'
+    #     self.setZValue(self.zValue()-self.z_delta)
 
 
 class NodeGraphicsItem(QtGui.QGraphicsItem):
@@ -47,7 +74,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # self.label_bounding_rect = 0
 
         self.task_color_default = '#FFFFFF'
-        self.task_color = '#FF00FF'
+        self.task_color = None
         self.set_task_color()
         self.set_label(self.plugin.abbreviation)
 
@@ -65,42 +92,13 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # self.installSceneEventFilter(self)
 
         self.task_menu = QtGui.QComboBox()
-        self.task_menu_proxy = QtGui.QGraphicsProxyWidget()
+        self.task_menu_proxy = QGraphicsProxyWidgetNoWheel()
         # self.setVisible(False)
         self.add_task_menu()
 
         self.status_menu = QtGui.QComboBox()
-        self.status_menu_proxy = QtGui.QGraphicsProxyWidget()
+        self.status_menu_proxy = QGraphicsProxyWidgetNoWheel()
         self.add_status_menu()
-
-    # def eventFilter(self, source, event):
-    #     if event.type() == QtCore.QEvent.MouseMove and source is self.scene():
-    #         pos = event.pos()
-    #         print('mouse move: (%d, %d)' % (pos.x(), pos.y()))
-    #     return QtGui.QWidget.eventFilter(self, source, event)
-
-    # def mouseMoveEvent(self, event):
-    #     print event
-    #     # event_pos_scene = event.pos()
-    #     # previous_pos = self.mouse_position_previous
-    #     # delta = previous_pos - event_pos_scene
-    #     #
-    #     # mouse_modifiers = QtGui.QApplication.mouseButtons()
-    #     # keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-    #     # if mouse_modifiers == QtCore.Qt.MidButton \
-    #     #         or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
-    #     #     group = self.scene.createItemGroup(self.scene.node_items)
-    #     #     self.point.setPos(event_pos_scene)
-    #     #     group.translate(-1*delta.x(), -1*delta.y())
-    #     #     self.scene.destroyItemGroup(group)
-    #     #
-    #     # # else:
-    #     # #     event.ignore()
-    #     #
-    #     # self.mouse_position_previous = event_pos_scene
-    #
-    # # def mouseDoubleClickEvent(self, event):
-    # #     print event
 
     def set_thumbnail_icon(self):
         import random
@@ -182,12 +180,21 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             self.task_menu.addItem(task.task)
             self.task_menu.setItemData(index, task)
 
-            self.task_menu.currentIndexChanged.connect(self.change_task_color)
+        self.task_menu.activated.connect(self.change_task_color)
+        # self.task_menu.activated.connect(self.restore_z)
 
-            # task_menu_item.setItemData()
+        # task_menu_item.setItemData()
+
+        # self.task_menu.highlighted.connect(self.foo)
 
         self.task_menu_proxy.setWidget(self.task_menu)
         self.task_menu_proxy.setParentItem(self)
+
+    # def restore_z(self):
+    #     self.task_menu_proxy.setZValue(0)
+
+    # def foo(self):
+    #     print 'bar'
 
     def add_status_menu(self):
         self.status_menu.addItem('-select status-')
@@ -196,7 +203,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         for status in states:
             self.status_menu.addItem(status)
-            # task_menu_item.setItemData()
+        # self.status_menu.activated.connect(self.restore_z)
+        # task_menu_item.setItemData()
 
         self.status_menu_proxy.setWidget(self.status_menu)
         self.status_menu_proxy.setParentItem(self)
@@ -219,12 +227,16 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # print 'enter'
         logging.info('enter event: {0}'.format(self))
 
+        return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
+
     def hoverLeaveEvent(self, event):
         # self.icon.setScale(0.5)
         self.hovered = False
         # self.task_menu_proxy.setVisible(False)
         # print 'leave'
         logging.info('leave event: {0}'.format(self))
+
+        return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)
 
     # def keyPressEvent(self, event):
     #     print 'hee'
@@ -307,14 +319,16 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         pen.setColor(QtCore.Qt.black)
         pen.setWidth(0)
 
+        hover_color = QtGui.QColor(255, 160, 0)
+
         if option.state & QtGui.QStyle.State_Selected:
             # self.update_meta_task()
             self.setZValue(1)
-            pen.setWidth(2)
-            pen.setColor(QtCore.Qt.green)
+            pen.setWidth(3)
+            pen.setColor(hover_color)
             self.gradient.setColorAt(0, self.task_color_item)
             # self.gradient.setColorAt(1, self.application_color_item.darker(160))
-            self.gradient.setColorAt(1, self.task_color_item.darker(160))
+            self.gradient.setColorAt(1, self.task_color_item)
 
             # if os.path.exists(os.path.join(self.location, 'locked')):
             #     self.gradient.setColorAt(0, self.task_color_item)
@@ -325,8 +339,10 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             #     self.gradient.setColorAt(1, QtCore.Qt.white)
 
         elif option.state & QtGui.QStyle.State_MouseOver or self.hovered:
-            pen.setWidth(5)
-            pen.setColor(QtCore.Qt.yellow)
+            pen.setWidth(2)
+            self.setZValue(3)
+
+            pen.setColor(hover_color)
             self.gradient.setColorAt(0, self.task_color_item)
             # self.gradient.setColorAt(1, self.application_color_item.darker(160))
             self.gradient.setColorAt(1, self.task_color_item.darker(160))
@@ -406,21 +422,17 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                                  self.task_menu_proxy.boundingRect().height() +
                                  self.status_menu_proxy.boundingRect().height(),
                                  ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
-                                 max([(len(self.inputs))*20,
-                                      (len(self.outputs))*20]))
+                            max([(len(self.inputs))*20,
+                                 (len(self.outputs))*20]))
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
     def change_task_color(self):
         index = self.task_menu.currentIndex()
-        # print index
         if index == 0:
             self.task_color = self.task_color_default
             self.set_task_color()
         else:
-            # print index
             task_data = self.task_menu.itemData(index).toPyObject()
-            # print dir(task_data)
-            # print task_data.color
             self.task_color = task_data.color
             self.set_task_color()
 
@@ -451,7 +463,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         #             self.task_color = task[u'color']
         #             break
 
-        self.task_color_item.setNamedColor(self.task_color)
+        task_color = self.task_color or self.task_color_default
+
+        self.task_color_item.setNamedColor(task_color)
 
     # def add_text(self, text):
     #     # self.setData(0, text)

@@ -83,7 +83,6 @@ class GraphicsScene(QtGui.QGraphicsScene):
         print 'here'
         # print dir(event.mimeData())
         if event.mimeData().hasFormat('node/draggable-pixmap'):
-            # reload()
             event.accept()
             pos = event.scenePos()
             print 'accepted'

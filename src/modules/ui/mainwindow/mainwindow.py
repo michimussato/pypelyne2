@@ -14,10 +14,6 @@ class MainWindow(QtGui.QMainWindow):
             self.splash = None
             self.setup_splash_screen()
 
-        # self.setWindowFlags(QtCore.Qt.WindowMinimizeButtonHint)
-
-        # self.background =
-
         self.dock_output_widgets = []
 
         self.graphicssview_stage = graphicsview_stage.GraphicsViewStage()

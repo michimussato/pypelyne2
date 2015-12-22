@@ -1,10 +1,8 @@
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-
 import src.modules.ui.graphicsview.graphicsview as graphicsview
 import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
 import src.conf.settings.SETTINGS as SETTINGS
-# import src.modules.ui.rectangle.rectangle as rectangle
 
 
 class GraphicsViewStage(graphicsview.GraphicsView):
@@ -15,6 +13,8 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         self.setMouseTracking(False)
 
+        self.setDragMode(self.RubberBandDrag)
+
         self.point = QtGui.QGraphicsRectItem(-10, -10, 20, 20)
         self.scene.addItem(self.point)
 
@@ -24,23 +24,34 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.mouse_position_previous = QtCore.QPoint(0, 0)
 
     def mouseMoveEvent(self, event):
+        self.setDragMode(self.RubberBandDrag)
         event_pos_scene = event.pos()
         previous_pos = self.mouse_position_previous
         delta = previous_pos - event_pos_scene
 
         mouse_modifiers = QtGui.QApplication.mouseButtons()
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+
         if mouse_modifiers == QtCore.Qt.MidButton \
                 or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
+            self.setDragMode(self.NoDrag)
             group = self.scene.createItemGroup(self.scene.node_items)
             self.point.setPos(event_pos_scene)
             group.translate(-1*delta.x(), -1*delta.y())
             self.scene.destroyItemGroup(group)
+            # self.setDragMode(self.RubberBandDrag)
 
-        # else:
-        #     event.ignore()
+            # return
 
         self.mouse_position_previous = event_pos_scene
+
+        return QtGui.QGraphicsView.mouseMoveEvent(self, event)
+
+    # def mouseReleaseEvent(self, event):
+    #     if self.dragMode() != self.RubberBandDrag:
+    #         self.setDragMode(self.RubberBandDrag)
+
+        return QtGui.QGraphicsView.mousePressEvent(self, event)
 
     def wheelEvent(self, event):
         group = self.scene.createItemGroup(self.scene.node_items)
@@ -65,6 +76,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         self.scene.destroyItemGroup(group)
 
+        return QtGui.QGraphicsView.wheelEvent(self, event)
+
     def resizeEvent(self, event):
         self.setSceneRect(0, 0, self.width(), self.height())
         self.scene.base_rect.setRect(QtCore.QRectF(self.rect()))
+
+        return QtGui.QGraphicsView.resizeEvent(self, event)
