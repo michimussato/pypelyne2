@@ -16,6 +16,9 @@ class MainWindow(QtGui.QMainWindow):
 
         self.dock_output_widgets = []
 
+        self.setAnimated(SETTINGS.DOCK_ANIMATED)
+        self.setDockNestingEnabled(SETTINGS.DOCK_NESTING)
+
         self.graphicssview_stage = graphicsview_stage.GraphicsViewStage()
 
         self.dock_widget_plugins = dockwidget_plugins.DockWidgetPlugins(mainwindow=self)
