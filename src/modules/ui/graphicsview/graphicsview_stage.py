@@ -75,7 +75,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
     #     if self.dragMode() != self.RubberBandDrag:
     #         self.setDragMode(self.RubberBandDrag)
 
-        return QtGui.QGraphicsView.mousePressEvent(self, event)
+        # return QtGui.QGraphicsView.mousePressEvent(self, event)
 
     def wheelEvent(self, event):
         group = self.scene.createItemGroup(self.scene.node_items)
