@@ -23,6 +23,30 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         self.mouse_position_previous = QtCore.QPoint(0, 0)
 
+
+
+        self.navigator()
+
+    def navigator(self):
+        nav_width = 30
+        nav_height = 20
+        self.navigator_rect = QtGui.QGraphicsRectItem(0, 0, nav_width, nav_height)
+        self.navigator_rect.setPos(self.rect().width()-nav_width, self.rect().height()-nav_height)
+        self.scene.addItem(self.navigator_rect)
+
+    def adjust_navigator(self):
+        # nav_width = 30
+        # nav_height = 20
+
+        self.navigator_rect.setRect(0,
+                                    0,
+                                    self.scene.itemsBoundingRect().width()*0.1,
+                                    self.scene.itemsBoundingRect().height()*0.1)
+
+        self.navigator_rect.setPos(self.rect().width()-self.navigator_rect.rect().width(),
+                                   self.rect().height()-self.navigator_rect.rect().height())
+
+
     def mouseMoveEvent(self, event):
         self.setDragMode(self.RubberBandDrag)
         event_pos_scene = event.pos()
@@ -81,5 +105,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
     def resizeEvent(self, event):
         self.setSceneRect(0, 0, self.width(), self.height())
         self.scene.base_rect.setRect(QtCore.QRectF(self.rect()))
+
+        self.adjust_navigator()
 
         return QtGui.QGraphicsView.resizeEvent(self, event)

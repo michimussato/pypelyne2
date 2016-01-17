@@ -115,6 +115,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                 logging.info('bad thumbnail: {0}'.format(img))
                 img = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
+        # if os.path.splitext(img)[1] == '.gif':
+        #     img_pixmap = QtGui.QMovie(img)
+        # else:
         img_pixmap = QtGui.QPixmap(img)
 
         if img_pixmap.width() > img_pixmap.height():
@@ -432,6 +435,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             self.task_color = self.task_color_default
             self.set_task_color()
         else:
+            # print index
             task_data = self.task_menu.itemData(index).toPyObject()
             self.task_color = task_data.color
             self.set_task_color()
