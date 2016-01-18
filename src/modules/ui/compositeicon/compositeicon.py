@@ -3,6 +3,12 @@ import PyQt4.QtGui as QtGui
 import src.conf.settings.SETTINGS as SETTINGS
 
 
+class ExpandCollapse(QtGui.QPixmap):
+    def __init__(self):
+        super(ExpandCollapse, self).__init__()
+
+
+
 class CompositeIcon(QtGui.QPixmap):
     def __init__(self, plugin=None, *__args):
         super(CompositeIcon, self).__init__()
@@ -25,6 +31,12 @@ class CompositeIcon(QtGui.QPixmap):
 
         self.maximize_icon = QtGui.QPixmap(SETTINGS.ICON_MAXIMIZE).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
                                                                            QtCore.Qt.SmoothTransformation)
+
+        self.expand_icon = QtGui.QPixmap(SETTINGS.ICON_EXPAND).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE,
+                                                                              QtCore.Qt.SmoothTransformation)
+
+        self.collapse_icon = QtGui.QPixmap(SETTINGS.ICON_COLLAPSE).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE,
+                                                                                  QtCore.Qt.SmoothTransformation)
 
         if self.plugin.type == 'submitter':
             self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_SUBMITTER)
@@ -50,6 +62,14 @@ class CompositeIcon(QtGui.QPixmap):
     @property
     def maximize(self):
         return self.maximize_icon
+
+    @property
+    def expand(self):
+        return self.expand_icon
+
+    @property
+    def collapse(self):
+        return self.collapse_icon
 
     @property
     def pixmap_overlay(self):
