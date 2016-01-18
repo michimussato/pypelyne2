@@ -12,71 +12,80 @@ class QLabelCollapseExpand(QtGui.QLabel):
     def __init__(self):
         super(QLabelCollapseExpand, self).__init__()
 
-        # self.connect(self, QtCore.SIGNAL('clicked'), self.emission)
-
-    # def emission(self):
-    #     self.emit(QtCore.SIGNAL('clicked'))
-    #     print 'emit'
-
     def mousePressEvent(self, event):
         self.emit(QtCore.SIGNAL('clicked'))
-        # print 'emit'
 
 
-class UiElements(QtGui.QWidget):
+class QWidgetNode(QtGui.QWidget):
     def __init__(self):
-        super(UiElements, self).__init__()
+        super(QWidgetNode, self).__init__()
 
-        self.ui_elements = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-                                                   'src',
-                                                   'modules',
-                                                   'ui',
-                                                   'nodegraphicsitem',
-                                                   'nodegraphicsitem_ui_elements.ui'), self)
-
-        self.setup_title()
-
-        self.ui_elements.label_title_edit.returnPressed.connect(self.update_title)
+        self.ui = None
 
         self.palette = QtGui.QPalette()
-        # print dir(self.palette)
-        # self.palette.setBrush(self.palette.NoRole, QtGui.QColor(50, 50, 50, 0))
-        # self.palette.setBrush(QtGui.QWidget().windowRole(), QtGui.QColor(50, 50, 50, 0))
+
+    def set_palette(self):
         self.palette.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(50, 50, 50, 0))
-        # self.palette.setColor(QtGui.QWidget().foregroundRole(), QtGui.QColor(50, 50, 50, 100))
-        self.ui_elements.setPalette(self.palette)
-
-    # def set_task_icon(self):
-    #     self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_overlay)
-    #     self.icon.setParentItem(self)
-    #     self.icon.setScale(SETTINGS.ICON_SCALE)
-
-    def update_title(self):
-        new_title = self.ui_elements.label_title_edit.text()
-        self.ui_elements.label_title_edit.setText(self.ui_elements.label_title_edit.text())
-        self.ui_elements.label_title.setText(new_title)
-        self.ui_elements.label_title.setVisible(True)
-        self.ui_elements.label_title_edit.setVisible(False)
-
-    def setup_title(self):
-        self.ui_elements.label_title.setToolTip('shift click to change name')
-        self.ui_elements.label_title.setText('no name')
-        self.ui_elements.label_title_edit.setToolTip('enter to submit')
-        self.ui_elements.label_title_edit.setText(self.ui_elements.label_title.text())
-        # self.title = QtGui.QLabel()
-        # self.title
-        # self.ui_elements.vlayout_title.addWidget(self.title)
-
-        # self.title_input = QtGui.QLineEdit()
-        # self.ui_elements.vlayout_title.addWidget(self.title_input)
-
-        self.ui_elements.label_title.setVisible(True)
-        self.ui_elements.label_title_edit.setVisible(False)
-        # self.title_input.setVisible(False)
+        self.ui.setPalette(self.palette)
 
     def wheelEvent(self, event):
-        # print event
         event.ignore()
+
+
+class QWidgetTitle(QWidgetNode):
+    def __init__(self):
+        super(QWidgetTitle, self).__init__()
+
+        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+                                          'src',
+                                          'modules',
+                                          'ui',
+                                          'nodegraphicsitem',
+                                          'nodegraphicsitem_widget_title.ui'), self)
+
+        self.set_palette()
+
+        self.setup_title()
+        self.ui.label_title_edit.returnPressed.connect(self.update_title)
+
+    def setup_title(self):
+        self.ui.label_title.setToolTip('shift click to change name')
+        self.ui.label_title.setText('no name')
+        self.ui.label_title_edit.setToolTip('enter to submit')
+        self.ui.label_title_edit.setText(self.ui.label_title.text())
+
+        self.ui.label_title.setVisible(True)
+        self.ui.label_title_edit.setVisible(False)
+
+    def update_title(self):
+        new_title = self.ui.label_title_edit.text()
+        self.ui.label_title_edit.setText(self.ui.label_title_edit.text())
+        self.ui.label_title.setText(new_title)
+        self.ui.label_title.setVisible(True)
+        self.ui.label_title_edit.setVisible(False)
+
+    def mousePressEvent(self, event):
+        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+
+        if keyboard_modifiers == QtCore.Qt.ShiftModifier:
+            self.ui.label_title.setVisible(False)
+            self.ui.label_title_edit.setVisible(True)
+
+        return QWidgetNode.mouseMoveEvent(self, event)
+
+
+class QWidgetElements(QWidgetNode):
+    def __init__(self):
+        super(QWidgetElements, self).__init__()
+
+        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+                                          'src',
+                                          'modules',
+                                          'ui',
+                                          'nodegraphicsitem',
+                                          'nodegraphicsitem_widget_elements.ui'), self)
+
+        self.set_palette()
 
     def mousePressEvent(self, event):
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
@@ -86,67 +95,12 @@ class UiElements(QtGui.QWidget):
             event.ignore()
             return
 
-        if keyboard_modifiers == QtCore.Qt.ShiftModifier:
-            self.ui_elements.label_title.setVisible(False)
-            self.ui_elements.label_title_edit.setVisible(True)
-            # print event
-
-        return QtGui.QWidget.mouseMoveEvent(self, event)
-
-
-# class QLineEditTitle(QtGui.QLineEdit):
-#     def __init__(self):
-#         super(QLineEditTitle, self).__init__()
-#
-#         self.setVisible(False)
-
-        # self.title_input = QtGui.QLineEdit()
-        # self.title_input.setVisible(False)
-        # self.ui_elements.vlayout_title.addWidget(self.title_input)
-
-    # def mousePressEvent(self, event):
-    #     keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-    #     if keyboard_modifiers == QtCore.Qt.ShiftModifier:
-    #         self.setVisible(True)
-    #         print event
-
-
-# class QLabelTitle(QtGui.QLabel):
-#     def __init__(self):
-#         super(QLabelTitle, self).__init__()
-#
-#         self.setVisible(True)
-
-        # self.title_input = QtGui.QLineEdit()
-        # self.title_input.setVisible(False)
-        # self.ui_elements.vlayout_title.addWidget(self.title_input)
-
-    # def mousePressEvent(self, event):
-    #     keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-    #     if keyboard_modifiers == QtCore.Qt.ShiftModifier:
-    #         self.setVisible(False)
-    #         print event
-
-    # def mouseDoubleClickEvent(self, event):
-    #     print event
-    #     return QtGui.QLabel.mouseDoubleClickEvent(self, event)
-
-
-# class TitleTextItem(QtGui.QGraphicsTextItem):
-#     def __init__(self):
-#         super(TitleTextItem, self).__init__()
+        return QWidgetNode.mouseMoveEvent(self, event)
 
 
 class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
     def __init__(self):
         super(QGraphicsProxyWidgetNoWheel, self).__init__()
-        # self.setAcceptTouchEvents(True)
-        # self.setAcceptHoverEvents(True)
-
-    # def hoverEnterEvent(self, event):
-    #     print 'enter'
-    #     print self.zValue()
-    #     # self.setZValue(self.z_delta)
 
     def wheelEvent(self, event):
         event.ignore()
@@ -160,9 +114,6 @@ class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
             return
 
         return QtGui.QGraphicsProxyWidget.mouseMoveEvent(self, event)
-    # def hoverLeaveEvent(self, event):
-    #     print 'leave'
-    #     self.setZValue(self.zValue()-self.z_delta)
 
 
 class NodeGraphicsItem(QtGui.QGraphicsItem):
@@ -170,10 +121,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         super(NodeGraphicsItem, self).__init__()
 
         reload(SETTINGS)
-
-        # self.setParentItem(parent)
-
-        # self.scene = scene
 
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
@@ -211,9 +158,11 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         # print dir(self.plugin)
 
-        self.ui_elements = UiElements()
+        self.widget_title = QWidgetTitle()
+        self.widget_title_proxy = QGraphicsProxyWidgetNoWheel()
 
-        self.ui_elements_proxy = QGraphicsProxyWidgetNoWheel()
+        self.widget_elements = QWidgetElements()
+        self.widget_elements_proxy = QGraphicsProxyWidgetNoWheel()
 
         self.collapse = QLabelCollapseExpand()
         self.expand = QLabelCollapseExpand()
@@ -247,26 +196,13 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.widget_proxy.setParentItem(self)
         '''
 
-        # self.task_menu = QtGui.QComboBox()
-        # self.task_menu_proxy = QGraphicsProxyWidgetNoWheel()
-        # # self.setVisible(False)
-        # self.add_task_menu()
-        #
-        # self.status_menu = QtGui.QComboBox()
-        # self.status_menu_proxy = QGraphicsProxyWidgetNoWheel()
-        # self.add_status_menu()
-
     def setup_expand_collapse(self):
 
         self.collapse.setToolTip('collapse combo boxes')
         self.expand.setToolTip('expand combo boxes')
 
-        self.ui_elements.hlayout_expand_collapse.addWidget(self.collapse)
-        self.ui_elements.hlayout_expand_collapse.addWidget(self.expand)
-        # self.collapse.setText('collapse')
-
-        # self.ui_elements.hlayout_expand.addWidget(self.expand)
-        # self.expand.setText('expand')
+        self.widget_title.hlayout_expand_collapse.addWidget(self.collapse)
+        self.widget_title.hlayout_expand_collapse.addWidget(self.expand)
 
         self.expand.setPixmap(self.compositor.expand_icon)
         self.collapse.setPixmap(self.compositor.collapse_icon)
@@ -280,18 +216,22 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.expand.setVisible(False)
         self.collapse.setVisible(False)
 
-        self.expand.setVisible(bool(not self.ui_elements.widget_comboboxes.isVisible()))
-        self.collapse.setVisible(bool(self.ui_elements.widget_comboboxes.isVisible()))
+        self.expand.setVisible(bool(not self.widget_elements.widget_comboboxes.isVisible()))
+        self.collapse.setVisible(bool(self.widget_elements.widget_comboboxes.isVisible()))
 
     def expand_layout(self):
-        self.ui_elements.widget_comboboxes.setVisible(False)
+        self.widget_elements.widget_comboboxes.setVisible(False)
         self.update_expand_collapse()
+        # print self.widget_elements_proxy.boundingRect().width()
         self.resize()
+        # print self.widget_elements_proxy.boundingRect().width()
 
     def collapse_layout(self):
-        self.ui_elements.widget_comboboxes.setVisible(True)
+        self.widget_elements.widget_comboboxes.setVisible(True)
         self.update_expand_collapse()
+        # print self.widget_elements_proxy.boundingRect().width()
         self.resize()
+        # print self.widget_elements_proxy.boundingRect().width()
 
     def set_thumbnail_icon(self):
         import random
@@ -323,7 +263,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             logging.info('thumbnail has portrait format')
             img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
 
-        self.ui_elements.preview_icon.setPixmap(img_pixmap)
+        self.widget_elements.preview_icon.setPixmap(img_pixmap)
 
         # self.preview_icon = QtGui.QGraphicsPixmapItem(img_pixmap)
         # self.preview_icon.setParentItem(self)
@@ -364,11 +304,14 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.maximize_icon.setScale(SETTINGS.ICON_SCALE)
 
     def add_ui_elements(self):
-        self.ui_elements_proxy.setWidget(self.ui_elements)
-        self.ui_elements_proxy.setParentItem(self)
+        self.widget_title_proxy.setWidget(self.widget_title)
+        self.widget_title_proxy.setParentItem(self)
+
+        self.widget_elements_proxy.setWidget(self.widget_elements)
+        self.widget_elements_proxy.setParentItem(self)
 
     def add_task_menu_items(self):
-        combobox = self.ui_elements.combobox_task
+        combobox = self.widget_elements.combobox_task
         combobox.addItem('-select task-')
 
         index = 0
@@ -384,34 +327,15 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             combobox.setItemData(index, task)
 
         combobox.activated.connect(self.change_task_color)
-        # self.task_menu.activated.connect(self.restore_z)
-
-        # task_menu_item.setItemData()
-
-        # self.task_menu.highlighted.connect(self.foo)
-
-        # self.task_menu_proxy.setWidget(self.task_menu)
-        # self.task_menu_proxy.setParentItem(self)
-
-    # def restore_z(self):
-    #     self.task_menu_proxy.setZValue(0)
-
-    # def foo(self):
-    #     print 'bar'
 
     def add_status_menu_items(self):
-        combobox = self.ui_elements.combobox_status
+        combobox = self.widget_elements.combobox_status
         combobox.addItem('-select status-')
 
         states = ['waiting', 'in progress', 'whatever it might be', 'or even something very different']
 
         for status in states:
             combobox.addItem(status)
-        # self.status_menu.activated.connect(self.restore_z)
-        # task_menu_item.setItemData()
-
-        # self.status_menu_proxy.setWidget(self.status_menu)
-        # self.status_menu_proxy.setParentItem(self)
 
     def boundingRect(self):
         self.setFlag(self.ItemIsSelectable, True)
@@ -420,15 +344,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
     def hoverEnterEvent(self, event):
         self.hovered = True
-        # self.task_menu_proxy.setVisible(True)
-        # self.task_menu.setVisible(True)
-        # self.icon.setScale(1)
-        # modifiers = QtGui.QApplication.keyboardModifiers()
-        # if modifiers == QtCore.Qt.ControlModifier:
-        #     print 'disable'
-        #     self.setFlag(self.ItemIsSelectable, False)
-        #     self.setFlag(self.ItemIsMovable, False)
-        # print 'enter'
         logging.info('enter event: {0}'.format(self))
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
@@ -442,20 +357,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)
 
-    # def keyPressEvent(self, event):
-    #     print 'hee'
-    #     modifiers = QtGui.QApplication.keyboardModifiers()
-    #     if self.hovered and modifiers == QtCore.Qt.ControlModifier:
-    #         print 'disable'
-    #         self.setFlag(self.ItemIsSelectable, False)
-    #         self.setFlag(self.ItemIsMovable, False)
-
     def paint(self, painter, option, widget):
-
-        # proxy_width = self.task_menu_proxy.rect().width()
-
-        # print self.task_menu_proxy.rect()
-        # print dir(self.icon)
 
         # first row
         self.icon.setPos(QtCore.QPointF(0, 0))
@@ -485,36 +387,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                                                  0))
 
         # second row
-        # if self.preview_icon.boundingRect().width() < self.preview_icon.boundingRect().height():
-        #     # portrait
-        #     self.preview_icon.setPos((2 *
-        #                              SETTINGS.PLUGINS_ICON_HEIGHT -
-        #                              self.preview_icon.boundingRect().width()) *
-        #                              0.5 *
-        #                              SETTINGS.ICON_SCALE,
-        #                              SETTINGS.PLUGINS_ICON_HEIGHT *
-        #                              SETTINGS.ICON_SCALE)
-        # elif self.preview_icon.boundingRect().width() == self.preview_icon.boundingRect().height():
-        #     # square
-        #     self.preview_icon.setPos(0, SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE)
-        # else:
-        #     # landscape
-        #     self.preview_icon.setPos(0,
-        #                              (2 *
-        #                               SETTINGS.PLUGINS_ICON_HEIGHT -
-        #                               self.preview_icon.boundingRect().height()) *
-        #                              0.5 *
-        #                              SETTINGS.ICON_SCALE +
-        #                              SETTINGS.PLUGINS_ICON_HEIGHT *
-        #                              SETTINGS.ICON_SCALE)
-
-        self.ui_elements_proxy.setPos(0,
-                                      self.label.boundingRect().height())
-        # self.status_menu_proxy.setPos((2 *
-        #                                SETTINGS.PLUGINS_ICON_HEIGHT) *
-        #                               SETTINGS.ICON_SCALE,
-        #                               self.label.boundingRect().height() +
-        #                               self.task_menu_proxy.boundingRect().height())
+        self.widget_title_proxy.setPos(0, self.label.boundingRect().height())
+        self.widget_elements_proxy.setPos(0, self.widget_title_proxy.boundingRect().height() + self.label.boundingRect().height())
 
         painter.setRenderHint(painter.Antialiasing)
 
@@ -615,26 +489,45 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # 4* SETTINGS.PLUGINS_ICON_HEIGHT * SETTINGS.ICON_SCALE + self.label.textWidth()
         # self.ui_elements_proxy.boundingRect().width()
 
-        self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
-                               SETTINGS.ICON_SCALE +
-                               max([self.label.boundingRect().width(),
-                                    self.ui_elements_proxy.boundingRect().width()]),
-                               (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
+        if self.widget_elements.widget_comboboxes.isVisible():
+            self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
+                                   SETTINGS.ICON_SCALE +
+                                   max([self.label.boundingRect().width(),
+                                        self.widget_title_proxy.boundingRect().width(),
+                                        self.widget_elements_proxy.boundingRect().width()]),
+                                   (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
+
+        elif not self.widget_elements.widget_comboboxes.isVisible():
+            self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
+                                   SETTINGS.ICON_SCALE +
+                                   max([self.label.boundingRect().width(),
+                                        self.widget_title_proxy.boundingRect().width()]),
+                                   (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
 
     def resize_height(self):
-        self.rect.setHeight(max([self.label.boundingRect().height() +
-                                 self.ui_elements_proxy.boundingRect().height(),
-                                 ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
-                            max([(len(self.inputs))*20,
-                                 (len(self.outputs))*20]))
+        if self.widget_elements.widget_comboboxes.isVisible():
+            self.rect.setHeight(max([self.label.boundingRect().height() +
+                                     self.widget_title_proxy.boundingRect().height() +
+                                     self.widget_elements_proxy.boundingRect().height(),
+                                     ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
+                                max([(len(self.inputs))*20,
+                                     (len(self.outputs))*20]))
+
+        elif not self.widget_elements.widget_comboboxes.isVisible():
+            self.rect.setHeight(max([self.label.boundingRect().height() +
+                                     self.widget_title_proxy.boundingRect().height(),
+                                     ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
+                                max([(len(self.inputs))*20,
+                                     (len(self.outputs))*20]))
+
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
     @property
     def current_task_type(self):
-        return self.ui_elements.combobox_task.currentIndex()
+        return self.widget_elements.combobox_task.currentIndex()
 
     def change_task_color(self):
-        combobox = self.ui_elements.combobox_task
+        combobox = self.widget_elements.combobox_task
         index = self.current_task_type
 
         # palette = QtGui.QPalette()
@@ -653,12 +546,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             task_data = combobox.itemData(index).toPyObject()
             self.task_color = task_data.color
             self.set_task_color()
-
-        # print self.task_color_item.getRgb()
-
-        # palette.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(255, 0, 0, 0))
-        # palette.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(self.task_color_item.getRgb()))
-        # self.ui_elements.setPalette(palette)
 
     def set_task_color(self):
         # self.task_color = self.task_menu.itemData(self.task_menu.currentIndex())
