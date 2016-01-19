@@ -6,6 +6,7 @@ import logging
 import src.conf.settings.SETTINGS as SETTINGS
 import src.modules.ui.compositeicon.compositeicon as compositeicon
 import src.parser.parse_tasks as parse_tasks
+import src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 
 
 class QLabelCollapseExpand(QtGui.QLabel):
@@ -48,7 +49,7 @@ class QWidgetTitle(QWidgetNode):
         self.ui.label_lock_icon.setText('')
 
         self.setup_title()
-        self.ui.label_title_edit.returnPressed.connect(self.update_title)
+        # self.ui.label_title_edit.returnPressed.connect(self.update_title)
 
     def setup_title(self):
         self.ui.label_title.setToolTip('shift click to change name')
@@ -59,12 +60,18 @@ class QWidgetTitle(QWidgetNode):
         self.ui.label_title.setVisible(True)
         self.ui.label_title_edit.setVisible(False)
 
-    def update_title(self):
-        new_title = self.ui.label_title_edit.text()
-        self.ui.label_title_edit.setText(self.ui.label_title_edit.text())
-        self.ui.label_title.setText(new_title)
-        self.ui.label_title.setVisible(True)
-        self.ui.label_title_edit.setVisible(False)
+    # def update_title(self):
+    #     new_title = self.ui.label_title_edit.text()
+    #     self.ui.label_title_edit.setText(self.ui.label_title_edit.text())
+    #     # self.ui.label_title_edit.resize(0, 0)
+    #     # self.ui.label_title_edit.adjustSize()
+    #     self.ui.label_title.setText(new_title)
+    #     # self.ui.label_title.resize(0, 0)
+    #     # self.ui.label_title.adjustSize()
+    #     self.ui.label_title.setVisible(True)
+    #     self.ui.label_title_edit.setVisible(False)
+    #     # self.widget_title.adjustSize()
+    #     # self.widget_elements.adjustSize()
 
     def mousePressEvent(self, event):
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
@@ -113,10 +120,6 @@ class QWidgetHeader(QWidgetNode):
 
         self.set_palette()
 
-        # self.ui.label_arch_icon.setText('')
-        # self.ui.label_icon.setText('')
-        # self.ui.label_label.setText('')
-
 
 class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
     def __init__(self):
@@ -147,8 +150,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         self.rect = QtCore.QRectF(0, 0, 200, 40)
         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
-        # self.setFlag(self.ItemIsSelectable, True)
-        # self.setFlag(self.ItemIsMovable, True)
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
         self.setAcceptHoverEvents(True)
@@ -177,11 +178,14 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         self.widget_title = QWidgetTitle()
         self.widget_elements = QWidgetElements()
-        # self.widget_header = QWidgetHeader()
 
         self.widget_title_proxy = QGraphicsProxyWidgetNoWheel()
         self.widget_elements_proxy = QGraphicsProxyWidgetNoWheel()
-        # self.widget_header_proxy = QGraphicsProxyWidgetNoWheel()
+
+        self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
+        self.widget_title.vlayout_title.addWidget(self.progress_bar)
+        self.widget_title.vlayout_title.insertStretch(-1)
+        # self.progress_bar_proxy = QGraphicsProxyWidgetNoWheel()
 
         self.collapse = QLabelCollapseExpand()
         self.expand = QLabelCollapseExpand()
@@ -204,17 +208,17 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.add_task_menu_items()
         self.add_status_menu_items()
 
-        '''
-        self.widget = QtGui.QWidget()
+        self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
-        self.layout = QtGui.QHBoxLayout()
-        self.layout.addWidget(QtGui.QPushButton('1'))
-        self.layout.addWidget(QtGui.QPushButton('2'))
-        self.widget.setLayout(self.layout)
-        self.widget_proxy = QtGui.QGraphicsProxyWidget()
-        self.widget_proxy.setWidget(self.widget)
-        self.widget_proxy.setParentItem(self)
-        '''
+        self.reset_proxy_sizes()
+
+    def update_title(self):
+        new_title = self.widget_title.label_title_edit.text()
+        self.widget_title.label_title_edit.setText(self.widget_title.label_title_edit.text())
+        self.widget_title.label_title.setText(new_title)
+        self.widget_title.label_title.setVisible(True)
+        self.widget_title.label_title_edit.setVisible(False)
+        self.reset_proxy_sizes()
 
     def setup_expand_collapse(self):
 
@@ -240,16 +244,24 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.collapse.setVisible(bool(self.widget_elements.widget_comboboxes.isVisible()))
 
     def expand_layout(self):
-        self.widget_elements.widget_comboboxes.setVisible(False)
+        self.widget_elements_proxy.setVisible(False)
         self.update_expand_collapse()
         # print self.widget_elements_proxy.boundingRect().width()
+        self.reset_proxy_sizes()
         self.resize()
         # print self.widget_elements_proxy.boundingRect().width()
 
+    def reset_proxy_sizes(self):
+        self.widget_title_proxy.resize(0, 0)
+        self.widget_elements_proxy.resize(0, 0)
+        self.widget_title_proxy.adjustSize()
+        self.widget_elements_proxy.adjustSize()
+
     def collapse_layout(self):
-        self.widget_elements.widget_comboboxes.setVisible(True)
+        self.widget_elements_proxy.setVisible(True)
         self.update_expand_collapse()
         # print self.widget_elements_proxy.boundingRect().width()
+        self.reset_proxy_sizes()
         self.resize()
         # print self.widget_elements_proxy.boundingRect().width()
 
@@ -268,79 +280,57 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                 logging.info('bad thumbnail: {0}'.format(img))
                 img = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
-        # if os.path.splitext(img)[1] == '.gif':
-        #     img_pixmap = QtGui.QMovie(img)
-        # else:
+        # gif animation
+        # http://stackoverflow.com/questions/3248243/gif-animation-in-qt
+        # http://doc.qt.io/qt-4.8/qmovie.html
+
         img_pixmap = QtGui.QPixmap(img)
 
-        if img_pixmap.width() > img_pixmap.height():
+        pixmap_width = img_pixmap.width()
+        pixmap_height = img_pixmap.height()
+
+        if pixmap_width > pixmap_height:
             logging.info('thumbnail has landscape format')
             img_pixmap = img_pixmap.scaledToWidth(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
-        elif img_pixmap.width() == img_pixmap.height():
+        elif pixmap_width == pixmap_height:
             logging.info('thumbnail has square format')
             img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
-        elif img_pixmap.width() < img_pixmap.height():
+        elif pixmap_width < pixmap_height:
             logging.info('thumbnail has portrait format')
             img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
 
-        self.widget_title.preview_icon.setPixmap(img_pixmap)
+        # draw rounded preview icon
+        new_width = img_pixmap.width()
+        new_height = img_pixmap.height()
 
-        # self.preview_icon = QtGui.QGraphicsPixmapItem(img_pixmap)
-        # self.preview_icon.setParentItem(self)
-        # self.preview_icon.setScale(SETTINGS.ICON_SCALE)
-        # print self.preview_icon.boundingRect()
+        color = QtGui.QColor(0, 0, 0, 0)
+
+        new_pixmap = QtGui.QPixmap(new_width, new_height)
+        new_pixmap.fill(color)
+
+        rect = QtCore.QRect(0, 0, new_width-1, new_height-1)
+
+        brush = QtGui.QBrush(img_pixmap)
+        painter = QtGui.QPainter()
+        painter.begin(new_pixmap)
+        # painter.setRenderHint(painter.HighQualityAntialiasing)
+        painter.setBrush(brush)
+        painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
+        painter.end()
+
+        self.widget_title.preview_icon.setPixmap(new_pixmap)
 
     def set_label(self, text):
-        # # self.setData(0, text)
-        #
-        # self.label.setPlainText(text)
-        # # self.label = text
-        # node_label_color = QtGui.QColor(255, 255, 255)
-        # node_label_color.setNamedColor(SETTINGS.COLOR_LABEL)
-        # self.label.setDefaultTextColor(node_label_color)
-        #
-        # self.label.setParentItem(self)
-
-        # self.label_bounding_rect = self.label.boundingRect().width()
-
-        # self.widget_header.label_label.setText('')
         self.widget_title.label_label.setText(text)
 
     def set_task_icon(self):
-        # self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_overlay)
-        # self.icon.setParentItem(self)
-        # self.icon.setScale(SETTINGS.ICON_SCALE)
-
-        # self.widget_header.label_icon.setText('')
         self.widget_title.label_icon.setPixmap(self.compositor.pixmap_no_overlay.scaled(self.compositor.pixmap_no_overlay.size() * SETTINGS.ICON_SCALE))
-        # print self.compositor.pixmap_no_overlay.size()
-        # print type(self.compositor.pixmap_no_overlay)
-        # print dir(self.compositor.pixmap_no_overlay)
 
     def set_arch_icon(self):
-        # self.arch_icon = QtGui.QGraphicsPixmapItem(self.compositor.arch_icon)
-        # self.arch_icon.setParentItem(self)
-        # self.arch_icon.setScale(SETTINGS.ICON_SCALE)
-
-        # print dir(self.compositor.arch_icon)
-
-        # self.widget_header.label_arch_icon.setText('')
         self.widget_title.label_arch_icon.setPixmap(self.compositor.arch_icon.scaled(self.compositor.arch_icon.size() * SETTINGS.ICON_SCALE))
 
     def set_lock_icon(self):
-        # self.lock_icon = QtGui.QGraphicsPixmapItem(self.compositor.lock)
-        # self.lock_icon.setParentItem(self)
-        # self.lock_icon.setScale(SETTINGS.ICON_SCALE)
-
-        # self.widget_header.label_lock_icon.setText('')
         self.widget_title.label_lock_icon.setPixmap(self.compositor.lock.scaled(self.compositor.lock.size() * SETTINGS.ICON_SCALE))
-
-    # def set_maximize_icon(self):
-    #     # self.maximize_icon = QtGui.QGraphicsPixmapItem(self.compositor.maximize)
-    #     # self.maximize_icon.setParentItem(self)
-    #     # self.maximize_icon.setScale(SETTINGS.ICON_SCALE)
-    #
-    #     self.widget_header.label_maximize_icon.setPixmap(self.compositor.maximize.scaled(self.compositor.maximize.size() * SETTINGS.ICON_SCALE))
 
     def add_ui_elements(self):
         self.widget_title_proxy.setWidget(self.widget_title)
@@ -380,8 +370,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             combobox.addItem(status)
 
     def boundingRect(self):
-        self.setFlag(self.ItemIsSelectable, True)
-        self.setFlag(self.ItemIsMovable, True)
         return self.rect
 
     def hoverEnterEvent(self, event):
@@ -401,39 +389,10 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
     def paint(self, painter, option, widget):
 
-        # first row
+        # title widget
         self.widget_title_proxy.setPos(0, 0)
-        # self.icon.setPos(QtCore.QPointF(0, 0))
-        # self.arch_icon.setPos(QtCore.QPointF(SETTINGS.ICON_SCALE * SETTINGS.PLUGINS_ICON_HEIGHT, 0))
-        # self.label.setPos(QtCore.QPointF((2 *
-        #                                  SETTINGS.PLUGINS_ICON_HEIGHT) *
-        #                                  SETTINGS.ICON_SCALE,
-        #                                  0))
-        # # self.lock_icon.setPos(QtCore.QPointF((2 *
-        # #                                      SETTINGS.PLUGINS_ICON_HEIGHT) *
-        # #                                      SETTINGS.ICON_SCALE +
-        # #                                      self.label.boundingRect().width(),
-        # #                                      0))
-        # self.lock_icon.setPos(QtCore.QPointF(self.rect.width() -
-        #                                      SETTINGS.PLUGINS_ICON_HEIGHT *
-        #                                      SETTINGS.ICON_SCALE *
-        #                                      2,
-        #                                      0))
-        # # self.maximize_icon.setPos(QtCore.QPointF(3 *
-        # #                                          SETTINGS.PLUGINS_ICON_HEIGHT *
-        # #                                          SETTINGS.ICON_SCALE +
-        # #                                          self.label.boundingRect().width(),
-        # #                                          0))
-        # self.maximize_icon.setPos(QtCore.QPointF(self.rect.width() -
-        #                                          SETTINGS.PLUGINS_ICON_HEIGHT *
-        #                                          SETTINGS.ICON_SCALE,
-        #                                          0))
 
-        # second row
-        # self.widget_title_proxy.setPos(0, self.widget_header_proxy.boundingRect().height())
-        # print self.widget_header_proxy.boundingRect()
-
-        # third row
+        # elements widget
         self.widget_elements_proxy.setPos(0, self.widget_title_proxy.boundingRect().height())
 
         painter.setRenderHint(painter.Antialiasing)
@@ -503,6 +462,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             i.setPos(self.boundingRect().width() - i.rect.width(), i.pos().y())
 
         self.rect.setWidth(self.rect.width())
+        self.rect.setHeight(self.rect.height())
         self.arrange_outputs()
         self.arrange_inputs()
         self.resize()
@@ -532,9 +492,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         for i in self.output_list:
             output_list_text_width.append(int(i.childrenBoundingRect().width()))
 
-        # 4* SETTINGS.PLUGINS_ICON_HEIGHT * SETTINGS.ICON_SCALE + self.label.textWidth()
-        # self.ui_elements_proxy.boundingRect().width()
-
         if self.widget_elements.widget_comboboxes.isVisible():
             self.rect.setWidth(max([
                                    max([self.widget_title_proxy.boundingRect().width(),
@@ -542,9 +499,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                                    (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
 
         elif not self.widget_elements.widget_comboboxes.isVisible():
-            # print self.widget_header_proxy.boundingRect().width()
-            # print self.widget_title_proxy.boundingRect().width()
-            # print self.widget_elements_proxy.boundingRect().width()
             self.rect.setWidth(max([self.widget_title_proxy.boundingRect().width(), self.widget_elements_proxy.boundingRect().width()]))
             # self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
             #                        SETTINGS.ICON_SCALE +
@@ -624,16 +578,3 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         task_color = self.task_color or self.task_color_default
 
         self.task_color_item.setNamedColor(task_color)
-
-    # def add_text(self, text):
-    #     # self.setData(0, text)
-    #     node_label = QtGui.QGraphicsTextItem(text)
-    #     self.label = text
-    #     node_label_color = (QtGui.QColor(255, 255, 255))
-    #     node_label_color.setNamedColor('#080808')
-    #     node_label.setDefaultTextColor(node_label_color)
-    #     node_label.setPos(QtCore.QPointF(25, 0))
-    #     node_label.setParentItem(self)
-    #     self.label_bounding_rect = node_label.boundingRect().width()
-    #
-    #     self.resize_width()

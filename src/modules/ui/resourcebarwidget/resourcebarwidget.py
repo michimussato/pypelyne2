@@ -136,6 +136,41 @@ class Worker(QtCore.QObject):
         pass
 
 
+class NodeBarWidget(QtGui.QWidget):
+    def __init__(self, monitor_item, maximum):
+        super(NodeBarWidget, self).__init__()
+
+        self.c = None
+        self.wid = None
+        self.layout = QtGui.QVBoxLayout()
+
+        self.monitor_item = monitor_item
+
+        self.maximum = maximum
+
+        self.c = Communicate()
+        self.wid = BurningWidget(self.maximum, self.monitor_item)
+        self.c.updateBW[int].connect(self.wid.set_value)
+
+        self.layout.addWidget(self.wid)
+
+        self.setLayout(self.layout)
+
+        self.timer = QtCore.QTimer()
+        self.t = QtCore.QThread()
+        self.worker = Worker(self, self.monitor_item)
+        self.connect(self.timer, QtCore.SIGNAL('timeout()'), self.worker.update)
+
+        self.timer.start(SETTINGS.REFRESH_INTERVAL)
+
+        self.worker.moveToThread(self.t)
+
+        self.t.start()
+
+    def closeEvent(self, event):
+        self.timer.stop()
+
+
 class BarWidget(QtGui.QWidget):
     def __init__(self, monitor_item, maximum):
         super(BarWidget, self).__init__()
@@ -187,8 +222,6 @@ class ResourceBarWidget(QtGui.QWidget):
         self.scroll_layout = QtGui.QVBoxLayout()
         spacer = QtGui.QSpacerItem(20, 40, QtGui.QSizePolicy.Minimum, QtGui.QSizePolicy.Expanding)
 
-
-
         if SETTINGS.ENABLE_CPU:
             widget = QtGui.QWidget()
             label = QtGui.QLabel('')
@@ -202,6 +235,7 @@ class ResourceBarWidget(QtGui.QWidget):
             layout.addWidget(self.cpu_bar)
             widget.setLayout(layout)
             self.ui.scroll_layout.addWidget(widget)
+
         if SETTINGS.ENABLE_MEM:
             widget = QtGui.QWidget()
             label = QtGui.QLabel('')
@@ -211,11 +245,11 @@ class ResourceBarWidget(QtGui.QWidget):
             label.setPixmap(pixmap)
             layout.addWidget(label)
 
-
             self.mem_bar = BarWidget(monitor_item='mem', maximum=SETTINGS.TOTAL_MEM/SETTINGS.MEM_MULT)
             layout.addWidget(self.mem_bar)
             widget.setLayout(layout)
             self.ui.scroll_layout.addWidget(widget)
+
         if SETTINGS.ENABLE_DSK:
             widget = QtGui.QWidget()
             label = QtGui.QLabel('')

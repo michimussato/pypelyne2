@@ -8,7 +8,6 @@ class ExpandCollapse(QtGui.QPixmap):
         super(ExpandCollapse, self).__init__()
 
 
-
 class CompositeIcon(QtGui.QPixmap):
     def __init__(self, plugin=None, *__args):
         super(CompositeIcon, self).__init__()
