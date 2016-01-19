@@ -45,6 +45,8 @@ class QWidgetTitle(QWidgetNode):
 
         self.set_palette()
 
+        self.ui.label_lock_icon.setText('')
+
         self.setup_title()
         self.ui.label_title_edit.returnPressed.connect(self.update_title)
 
@@ -96,6 +98,24 @@ class QWidgetElements(QWidgetNode):
             return
 
         return QWidgetNode.mouseMoveEvent(self, event)
+
+
+class QWidgetHeader(QWidgetNode):
+    def __init__(self):
+        super(QWidgetHeader, self).__init__()
+
+        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+                                          'src',
+                                          'modules',
+                                          'ui',
+                                          'nodegraphicsitem',
+                                          'nodegraphicsitem_widget_header.ui'), self)
+
+        self.set_palette()
+
+        # self.ui.label_arch_icon.setText('')
+        # self.ui.label_icon.setText('')
+        # self.ui.label_label.setText('')
 
 
 class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
@@ -154,28 +174,28 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.task_color = None
         self.set_task_color()
         # self.set_label(self.plugin.abbreviation)
-        self.set_label(str(' '.join([self.plugin.family, self.plugin.release_number])))
-
-        # print dir(self.plugin)
 
         self.widget_title = QWidgetTitle()
-        self.widget_title_proxy = QGraphicsProxyWidgetNoWheel()
-
         self.widget_elements = QWidgetElements()
+        # self.widget_header = QWidgetHeader()
+
+        self.widget_title_proxy = QGraphicsProxyWidgetNoWheel()
         self.widget_elements_proxy = QGraphicsProxyWidgetNoWheel()
+        # self.widget_header_proxy = QGraphicsProxyWidgetNoWheel()
 
         self.collapse = QLabelCollapseExpand()
         self.expand = QLabelCollapseExpand()
 
         self.icon = None
         self.arch_icon = None
+        self.set_label(str(' '.join([self.plugin.family, self.plugin.release_number])))
         self.lock_icon = None
         self.maximize_icon = None
         # self.preview_icon = None
         self.set_task_icon()
         self.set_arch_icon()
         self.set_lock_icon()
-        self.set_maximize_icon()
+        # self.set_maximize_icon()
         self.set_thumbnail_icon()
 
         # self.set_ui_icons()
@@ -263,7 +283,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             logging.info('thumbnail has portrait format')
             img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
 
-        self.widget_elements.preview_icon.setPixmap(img_pixmap)
+        self.widget_title.preview_icon.setPixmap(img_pixmap)
 
         # self.preview_icon = QtGui.QGraphicsPixmapItem(img_pixmap)
         # self.preview_icon.setParentItem(self)
@@ -271,37 +291,56 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # print self.preview_icon.boundingRect()
 
     def set_label(self, text):
-        # self.setData(0, text)
-
-        self.label.setPlainText(text)
-        # self.label = text
-        node_label_color = QtGui.QColor(255, 255, 255)
-        node_label_color.setNamedColor(SETTINGS.COLOR_LABEL)
-        self.label.setDefaultTextColor(node_label_color)
-
-        self.label.setParentItem(self)
+        # # self.setData(0, text)
+        #
+        # self.label.setPlainText(text)
+        # # self.label = text
+        # node_label_color = QtGui.QColor(255, 255, 255)
+        # node_label_color.setNamedColor(SETTINGS.COLOR_LABEL)
+        # self.label.setDefaultTextColor(node_label_color)
+        #
+        # self.label.setParentItem(self)
 
         # self.label_bounding_rect = self.label.boundingRect().width()
 
+        # self.widget_header.label_label.setText('')
+        self.widget_title.label_label.setText(text)
+
     def set_task_icon(self):
-        self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_overlay)
-        self.icon.setParentItem(self)
-        self.icon.setScale(SETTINGS.ICON_SCALE)
+        # self.icon = QtGui.QGraphicsPixmapItem(self.compositor.pixmap_no_overlay)
+        # self.icon.setParentItem(self)
+        # self.icon.setScale(SETTINGS.ICON_SCALE)
+
+        # self.widget_header.label_icon.setText('')
+        self.widget_title.label_icon.setPixmap(self.compositor.pixmap_no_overlay.scaled(self.compositor.pixmap_no_overlay.size() * SETTINGS.ICON_SCALE))
+        # print self.compositor.pixmap_no_overlay.size()
+        # print type(self.compositor.pixmap_no_overlay)
+        # print dir(self.compositor.pixmap_no_overlay)
 
     def set_arch_icon(self):
-        self.arch_icon = QtGui.QGraphicsPixmapItem(self.compositor.arch_icon)
-        self.arch_icon.setParentItem(self)
-        self.arch_icon.setScale(SETTINGS.ICON_SCALE)
+        # self.arch_icon = QtGui.QGraphicsPixmapItem(self.compositor.arch_icon)
+        # self.arch_icon.setParentItem(self)
+        # self.arch_icon.setScale(SETTINGS.ICON_SCALE)
+
+        # print dir(self.compositor.arch_icon)
+
+        # self.widget_header.label_arch_icon.setText('')
+        self.widget_title.label_arch_icon.setPixmap(self.compositor.arch_icon.scaled(self.compositor.arch_icon.size() * SETTINGS.ICON_SCALE))
 
     def set_lock_icon(self):
-        self.lock_icon = QtGui.QGraphicsPixmapItem(self.compositor.lock)
-        self.lock_icon.setParentItem(self)
-        self.lock_icon.setScale(SETTINGS.ICON_SCALE)
+        # self.lock_icon = QtGui.QGraphicsPixmapItem(self.compositor.lock)
+        # self.lock_icon.setParentItem(self)
+        # self.lock_icon.setScale(SETTINGS.ICON_SCALE)
 
-    def set_maximize_icon(self):
-        self.maximize_icon = QtGui.QGraphicsPixmapItem(self.compositor.maximize)
-        self.maximize_icon.setParentItem(self)
-        self.maximize_icon.setScale(SETTINGS.ICON_SCALE)
+        # self.widget_header.label_lock_icon.setText('')
+        self.widget_title.label_lock_icon.setPixmap(self.compositor.lock.scaled(self.compositor.lock.size() * SETTINGS.ICON_SCALE))
+
+    # def set_maximize_icon(self):
+    #     # self.maximize_icon = QtGui.QGraphicsPixmapItem(self.compositor.maximize)
+    #     # self.maximize_icon.setParentItem(self)
+    #     # self.maximize_icon.setScale(SETTINGS.ICON_SCALE)
+    #
+    #     self.widget_header.label_maximize_icon.setPixmap(self.compositor.maximize.scaled(self.compositor.maximize.size() * SETTINGS.ICON_SCALE))
 
     def add_ui_elements(self):
         self.widget_title_proxy.setWidget(self.widget_title)
@@ -309,6 +348,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         self.widget_elements_proxy.setWidget(self.widget_elements)
         self.widget_elements_proxy.setParentItem(self)
+
+        self.widget_title_proxy.setWidget(self.widget_title)
+        self.widget_title_proxy.setParentItem(self)
 
     def add_task_menu_items(self):
         combobox = self.widget_elements.combobox_task
@@ -360,35 +402,39 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
     def paint(self, painter, option, widget):
 
         # first row
-        self.icon.setPos(QtCore.QPointF(0, 0))
-        self.arch_icon.setPos(QtCore.QPointF(SETTINGS.ICON_SCALE * SETTINGS.PLUGINS_ICON_HEIGHT, 0))
-        self.label.setPos(QtCore.QPointF((2 *
-                                         SETTINGS.PLUGINS_ICON_HEIGHT) *
-                                         SETTINGS.ICON_SCALE,
-                                         0))
-        # self.lock_icon.setPos(QtCore.QPointF((2 *
-        #                                      SETTINGS.PLUGINS_ICON_HEIGHT) *
-        #                                      SETTINGS.ICON_SCALE +
-        #                                      self.label.boundingRect().width(),
+        self.widget_title_proxy.setPos(0, 0)
+        # self.icon.setPos(QtCore.QPointF(0, 0))
+        # self.arch_icon.setPos(QtCore.QPointF(SETTINGS.ICON_SCALE * SETTINGS.PLUGINS_ICON_HEIGHT, 0))
+        # self.label.setPos(QtCore.QPointF((2 *
+        #                                  SETTINGS.PLUGINS_ICON_HEIGHT) *
+        #                                  SETTINGS.ICON_SCALE,
+        #                                  0))
+        # # self.lock_icon.setPos(QtCore.QPointF((2 *
+        # #                                      SETTINGS.PLUGINS_ICON_HEIGHT) *
+        # #                                      SETTINGS.ICON_SCALE +
+        # #                                      self.label.boundingRect().width(),
+        # #                                      0))
+        # self.lock_icon.setPos(QtCore.QPointF(self.rect.width() -
+        #                                      SETTINGS.PLUGINS_ICON_HEIGHT *
+        #                                      SETTINGS.ICON_SCALE *
+        #                                      2,
         #                                      0))
-        self.lock_icon.setPos(QtCore.QPointF(self.rect.width() -
-                                             SETTINGS.PLUGINS_ICON_HEIGHT *
-                                             SETTINGS.ICON_SCALE *
-                                             2,
-                                             0))
-        # self.maximize_icon.setPos(QtCore.QPointF(3 *
+        # # self.maximize_icon.setPos(QtCore.QPointF(3 *
+        # #                                          SETTINGS.PLUGINS_ICON_HEIGHT *
+        # #                                          SETTINGS.ICON_SCALE +
+        # #                                          self.label.boundingRect().width(),
+        # #                                          0))
+        # self.maximize_icon.setPos(QtCore.QPointF(self.rect.width() -
         #                                          SETTINGS.PLUGINS_ICON_HEIGHT *
-        #                                          SETTINGS.ICON_SCALE +
-        #                                          self.label.boundingRect().width(),
+        #                                          SETTINGS.ICON_SCALE,
         #                                          0))
-        self.maximize_icon.setPos(QtCore.QPointF(self.rect.width() -
-                                                 SETTINGS.PLUGINS_ICON_HEIGHT *
-                                                 SETTINGS.ICON_SCALE,
-                                                 0))
 
         # second row
-        self.widget_title_proxy.setPos(0, self.label.boundingRect().height())
-        self.widget_elements_proxy.setPos(0, self.widget_title_proxy.boundingRect().height() + self.label.boundingRect().height())
+        # self.widget_title_proxy.setPos(0, self.widget_header_proxy.boundingRect().height())
+        # print self.widget_header_proxy.boundingRect()
+
+        # third row
+        self.widget_elements_proxy.setPos(0, self.widget_title_proxy.boundingRect().height())
 
         painter.setRenderHint(painter.Antialiasing)
 
@@ -490,24 +536,25 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         # self.ui_elements_proxy.boundingRect().width()
 
         if self.widget_elements.widget_comboboxes.isVisible():
-            self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
-                                   SETTINGS.ICON_SCALE +
-                                   max([self.label.boundingRect().width(),
-                                        self.widget_title_proxy.boundingRect().width(),
+            self.rect.setWidth(max([
+                                   max([self.widget_title_proxy.boundingRect().width(),
                                         self.widget_elements_proxy.boundingRect().width()]),
                                    (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
 
         elif not self.widget_elements.widget_comboboxes.isVisible():
-            self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
-                                   SETTINGS.ICON_SCALE +
-                                   max([self.label.boundingRect().width(),
-                                        self.widget_title_proxy.boundingRect().width()]),
-                                   (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
+            # print self.widget_header_proxy.boundingRect().width()
+            # print self.widget_title_proxy.boundingRect().width()
+            # print self.widget_elements_proxy.boundingRect().width()
+            self.rect.setWidth(max([self.widget_title_proxy.boundingRect().width(), self.widget_elements_proxy.boundingRect().width()]))
+            # self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
+            #                        SETTINGS.ICON_SCALE +
+            #                        max([self.label.boundingRect().width(),
+            #                             self.widget_title_proxy.boundingRect().width()]),
+            #                        (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
 
     def resize_height(self):
         if self.widget_elements.widget_comboboxes.isVisible():
-            self.rect.setHeight(max([self.label.boundingRect().height() +
-                                     self.widget_title_proxy.boundingRect().height() +
+            self.rect.setHeight(max([self.widget_title_proxy.boundingRect().height() +
                                      self.widget_elements_proxy.boundingRect().height(),
                                      ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
                                 max([(len(self.inputs))*20,
