@@ -4,6 +4,7 @@ import src.conf.settings.SETTINGS as SETTINGS
 import src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
 import src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plugins
 import src.modules.ui.dockwidget.dockwidget_resourcebar as dockwidget_resourcebar
+import src.modules.ui.dockwidget.dockwidget_output_channels as dockwidget_output_channels
 
 
 class MainWindow(QtGui.QMainWindow):
@@ -22,15 +23,18 @@ class MainWindow(QtGui.QMainWindow):
         self.graphicssview_stage = graphicsview_stage.GraphicsViewStage()
 
         self.dock_widget_plugins = dockwidget_plugins.DockWidgetPlugins(mainwindow=self)
-
+        self.dock_widget_output_channels = dockwidget_output_channels.DockWidgetOutputChannels(mainwindow=self)
         self.resource_bar_widget = dockwidget_resourcebar.DockWidgetResourceBar(mainwindow=self)
 
         if SETTINGS.SHOW_PLUGINS:
             self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_plugins)
+        if SETTINGS.SHOW_OUTPUT_CHANNELS:
+            self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_output_channels)
         if SETTINGS.SHOW_RESOURCES:
             self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.resource_bar_widget)
-        if SETTINGS.SHOW_PLAYER:
-            pass
+
+        # if SETTINGS.SHOW_PLAYER:
+        #     pass
 
         self.setCentralWidget(self.graphicssview_stage)
 

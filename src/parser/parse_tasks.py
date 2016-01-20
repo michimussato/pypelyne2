@@ -5,16 +5,16 @@ import src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_tasks():
-    print 'def _tasks(self):'
     logging.info('parsing tasks')
 
     with open(SETTINGS.TASKS_FILE, 'r') as f:
         json_object = json.load(f)
-    f.close()
+    # f.close()
 
     tasks = [task for task in json_object if task['task_enable']]
 
     return tasks
+
 
 def get_tasks():
     task_objects = []

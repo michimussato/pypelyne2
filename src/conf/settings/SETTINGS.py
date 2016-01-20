@@ -55,6 +55,13 @@ CAPTURE_ICON_STOP = os.path.join(ICONS_DIR, 'capture_stop.png')
 KILL_ICON = os.path.join(ICONS_DIR, 'kill.png')
 HIDE_CONSOLE = False
 
+# Output module
+OUTPUTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'outputs')
+OUTPUTS_FILE = os.path.join(OUTPUTS_DIR, 'outputs.json')
+OUTPUTS_ICONS = os.path.join(OUTPUTS_DIR, '_icons')
+OUTPUTS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_output_icon.png')
+OUTPUTS_ICON_HEIGHT = PLUGINS_ICON_HEIGHT
+
 # dockwidget_plugins module
 DISPLAY_ONLY_AVAILABLE = False
 DISPLAY_X32 = False
@@ -64,6 +71,8 @@ DISPLAY_X64 = True
 TASKS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks')
 TASKS_FILE = os.path.join(TASKS_DIR, 'tasks.json')
 # TASKS_FILE = [x for x in os.listdir(TASKS_DIR) if x.endswith('.json')]
+
+
 
 # Server and Client modules
 try:
@@ -97,10 +106,11 @@ GRABBER_AUTO_START = False
 SPLASH = True
 SPLASH_ICON = os.path.join(ICONS_DIR, 'pypelyne.png')
 SHOW_PLUGINS = True
-SHOW_PLAYER = True
+# SHOW_PLAYER = True
 SHOW_OUTPUT_WINDOWS = True
 TABIFY_OUTPUT_WINDOWS = True
 CLOSE_DOCK_AFTER_PLUGIN_CLOSE = False
+SHOW_OUTPUT_CHANNELS = True
 
 # Resources
 ENABLE_CPU = True

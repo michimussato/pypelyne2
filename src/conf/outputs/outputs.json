@@ -4,6 +4,7 @@
     "output": "model",
     "abbreviation": "MDL",
     "color": "#B38B8B",
+    "icon": null,
     "formats": []
   },
   {
@@ -11,6 +12,7 @@
     "output": "file sequence",
     "abbreviation": "SEQ",
     "color": "#93A477",
+    "icon": null,
     "formats": []
   },
   {
@@ -18,6 +20,7 @@
     "output": "playblast",
     "abbreviation": "PLB",
     "color": "#B3B3B3",
+    "icon": null,
     "formats": []
   },
   {
@@ -25,6 +28,7 @@
     "output": "camera",
     "abbreviation": "CAM",
     "color": "#898BB3",
+    "icon": null,
     "formats": []
   },
   {
@@ -32,6 +36,7 @@
     "output": "texture",
     "abbreviation": "TEX",
     "color": "#8297B3",
+    "icon": null,
     "formats": []
   },
   {
@@ -39,6 +44,7 @@
     "output": "cache",
     "abbreviation": "CCH",
     "color": "#B3A78B",
+    "icon": null,
     "formats": []
   },
   {
@@ -46,6 +52,7 @@
     "output": "shader",
     "abbreviation": "SHD",
     "color": "#8C7FB2",
+    "icon": null,
     "formats": []
   },
   {
@@ -53,6 +60,7 @@
     "output": "rig",
     "abbreviation": "RIG",
     "color": "#B3B17B",
+    "icon": null,
     "formats": []
   },
   {
@@ -60,6 +68,7 @@
     "output": "fur groom",
     "abbreviation": "FUR",
     "color": "#B286A4",
+    "icon": null,
     "formats": []
   },
   {
@@ -67,6 +76,7 @@
     "output": "alembic",
     "abbreviation": "ABC",
     "color": "#7FA9A7",
+    "icon": null,
     "formats": []
   },
   {
@@ -74,6 +84,7 @@
     "output": "light setup",
     "abbreviation": "LIT",
     "color": "#77A483",
+    "icon": null,
     "formats": []
   },
   {
@@ -81,6 +92,7 @@
     "output": "zbrush tool",
     "abbreviation": "ZBR",
     "color": "#79A491",
+    "icon": null,
     "formats": []
   },
   {
@@ -88,6 +100,7 @@
     "output": "script",
     "abbreviation": "SCR",
     "color": "#9279A4",
+    "icon": null,
     "formats": []
   }
 ]
