@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>396</width>
-    <height>58</height>
+    <width>270</width>
+    <height>55</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -202,15 +202,7 @@
       </spacer>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="verticalLayout">
-       <item>
-        <widget class="QLabel" name="preview_icon">
-         <property name="text">
-          <string>&lt;preview&gt;</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <layout class="QVBoxLayout" name="vlayout_preview"/>
      </item>
      <item>
       <spacer name="horizontalSpacer_4">

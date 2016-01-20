@@ -17,6 +17,16 @@ class QLabelCollapseExpand(QtGui.QLabel):
         self.emit(QtCore.SIGNAL('clicked'))
 
 
+class QLabelGif(QtGui.QLabel):
+    def __init__(self):
+        super(QLabelGif, self).__init__()
+
+    def mousePressEvent(self, event):
+        self.emit(QtCore.SIGNAL('clicked'))
+
+        return QtGui.QLabel.mousePressEvent(self, event)
+
+
 class QWidgetNode(QtGui.QWidget):
     def __init__(self):
         super(QWidgetNode, self).__init__()
@@ -59,6 +69,9 @@ class QWidgetTitle(QWidgetNode):
 
         self.ui.label_title.setVisible(True)
         self.ui.label_title_edit.setVisible(False)
+
+        self.preview_icon = QLabelGif()
+        self.ui.vlayout_preview.addWidget(self.preview_icon)
 
     # def update_title(self):
     #     new_title = self.ui.label_title_edit.text()
@@ -206,7 +219,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.add_ui_elements()
         self.setup_expand_collapse()
         self.add_task_menu_items()
+        self.add_assignee_menu_items()
         self.add_status_menu_items()
+        self.add_supervisor_menu_items()
 
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
@@ -216,8 +231,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         new_title = self.widget_title.label_title_edit.text()
         self.widget_title.label_title_edit.setText(self.widget_title.label_title_edit.text())
         self.widget_title.label_title.setText(new_title)
-        self.widget_title.label_title.setVisible(True)
         self.widget_title.label_title_edit.setVisible(False)
+        self.widget_title.label_title.setVisible(True)
         self.reset_proxy_sizes()
 
     def setup_expand_collapse(self):
@@ -276,49 +291,84 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         except IndexError, e:
             logging.info('no thumbnail for node found: {0}'.format(e))
         finally:
-            if os.path.splitext(img)[1] not in SETTINGS.ICON_FORMATS:
+            extension = os.path.splitext(img)[1]
+            if extension not in SETTINGS.ICON_FORMATS:
                 logging.info('bad thumbnail: {0}'.format(img))
                 img = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
-        # gif animation
-        # http://stackoverflow.com/questions/3248243/gif-animation-in-qt
-        # http://doc.qt.io/qt-4.8/qmovie.html
-
         img_pixmap = QtGui.QPixmap(img)
-
         pixmap_width = img_pixmap.width()
         pixmap_height = img_pixmap.height()
 
-        if pixmap_width > pixmap_height:
-            logging.info('thumbnail has landscape format')
-            img_pixmap = img_pixmap.scaledToWidth(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
-        elif pixmap_width == pixmap_height:
-            logging.info('thumbnail has square format')
-            img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
-        elif pixmap_width < pixmap_height:
-            logging.info('thumbnail has portrait format')
-            img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
+        if extension == '.gif' and SETTINGS.ENABLE_GIF_PREVIEW:
+            movie = QtGui.QMovie(img)
+            movie.setCacheMode(movie.CacheAll)
 
-        # draw rounded preview icon
-        new_width = img_pixmap.width()
-        new_height = img_pixmap.height()
+            # self.frame_count = movie.frameCount()
 
-        color = QtGui.QColor(0, 0, 0, 0)
+            if pixmap_width > pixmap_height:
+                logging.info('gif has landscape format')
+                ratio = pixmap_height/float(pixmap_width)
+                movie.setScaledSize(QtCore.QSize(SETTINGS.PLUGINS_ICON_HEIGHT*2,
+                                                 int(round(SETTINGS.PLUGINS_ICON_HEIGHT*2*ratio))))
+            elif pixmap_width == pixmap_height:
+                logging.info('gif has square format')
+                movie.setScaledSize(QtCore.QSize(SETTINGS.PLUGINS_ICON_HEIGHT*2,
+                                                 SETTINGS.PLUGINS_ICON_HEIGHT*2))
+            elif pixmap_width < pixmap_height:
+                logging.info('gif has portrait format')
+                ratio = pixmap_width/float(pixmap_height)
+                movie.setScaledSize(QtCore.QSize(int(round(SETTINGS.PLUGINS_ICON_HEIGHT*2*ratio)),
+                                                 SETTINGS.PLUGINS_ICON_HEIGHT*2))
 
-        new_pixmap = QtGui.QPixmap(new_width, new_height)
-        new_pixmap.fill(color)
+            self.widget_title.preview_icon.setMovie(movie)
+            # self.widget_title.preview_icon.clicked.connect(self.set_lock_icon)
+            self.widget_title.preview_icon.connect(self.widget_title.preview_icon, QtCore.SIGNAL('clicked'), self.change_movie_state)
+            self.widget_title.preview_icon.setToolTip('click me play animation')
+            movie.start()
+            movie.setPaused(SETTINGS.DISABLE_GIF_AUTOSTART)
 
-        rect = QtCore.QRect(0, 0, new_width-1, new_height-1)
+        else:
+            if pixmap_width > pixmap_height:
+                logging.info('thumbnail has landscape format')
+                img_pixmap = img_pixmap.scaledToWidth(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
+            elif pixmap_width == pixmap_height:
+                logging.info('thumbnail has square format')
+                img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
+            elif pixmap_width < pixmap_height:
+                logging.info('thumbnail has portrait format')
+                img_pixmap = img_pixmap.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*2, QtCore.Qt.SmoothTransformation)
 
-        brush = QtGui.QBrush(img_pixmap)
-        painter = QtGui.QPainter()
-        painter.begin(new_pixmap)
-        # painter.setRenderHint(painter.HighQualityAntialiasing)
-        painter.setBrush(brush)
-        painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
-        painter.end()
+            # draw  rounded preview icon
+            new_width = img_pixmap.width()
+            new_height = img_pixmap.height()
 
-        self.widget_title.preview_icon.setPixmap(new_pixmap)
+            color = QtGui.QColor(0, 0, 0, 0)
+
+            new_pixmap = QtGui.QPixmap(new_width, new_height)
+            new_pixmap.fill(color)
+
+            rect = QtCore.QRect(0, 0, new_width-1, new_height-1)
+
+            brush = QtGui.QBrush(img_pixmap)
+            painter = QtGui.QPainter()
+            painter.begin(new_pixmap)
+            # painter.setRenderHint(painter.HighQualityAntialiasing)
+            painter.setBrush(brush)
+            painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
+            painter.end()
+
+            self.widget_title.preview_icon.setPixmap(new_pixmap)
+
+    def change_movie_state(self):
+        movie = self.widget_title.preview_icon.movie()
+        state = movie.state()
+        if state == 0:
+            movie.start()
+        elif state == 1:
+            movie.setPaused(False)
+        elif state == 2:
+            movie.setPaused(True)
 
     def set_label(self, text):
         self.widget_title.label_label.setText(text)
@@ -364,9 +414,27 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         combobox = self.widget_elements.combobox_status
         combobox.addItem('-select status-')
 
-        states = ['waiting', 'in progress', 'whatever it might be', 'or even something very different']
+        states = ['on hold', 'ready', 'in progress', 'awaiting approval', 'approved', 'rejected']
 
         for status in states:
+            combobox.addItem(status)
+
+    def add_assignee_menu_items(self):
+        combobox = self.widget_elements.combobox_assignee
+        combobox.addItem('-select assignee-')
+
+        assignees = ['Mark', 'Peter', 'Frank', 'David']
+
+        for status in assignees:
+            combobox.addItem(status)
+
+    def add_supervisor_menu_items(self):
+        combobox = self.widget_elements.combobox_supervisor
+        combobox.addItem('-select supervisor-')
+
+        supervisors = ['Mark', 'Peter', 'Frank', 'David']
+
+        for status in supervisors:
             combobox.addItem(status)
 
     def boundingRect(self):
@@ -499,7 +567,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                                    (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
 
         elif not self.widget_elements.widget_comboboxes.isVisible():
-            self.rect.setWidth(max([self.widget_title_proxy.boundingRect().width(), self.widget_elements_proxy.boundingRect().width()]))
+            self.rect.setWidth(self.widget_title_proxy.boundingRect().width())
             # self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
             #                        SETTINGS.ICON_SCALE +
             #                        max([self.label.boundingRect().width(),
