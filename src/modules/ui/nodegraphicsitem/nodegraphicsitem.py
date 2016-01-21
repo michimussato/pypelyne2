@@ -22,6 +22,8 @@ class QLabelGif(QtGui.QLabel):
     def __init__(self):
         super(QLabelGif, self).__init__()
 
+        self.setToolTip('right click me to play animation')
+
     def mousePressEvent(self, event):
         if event.button() == QtCore.Qt.RightButton:
             print 'right button press'
@@ -68,6 +70,8 @@ class QWidgetTitle(QWidgetNode):
 
         self.ui.label_lock_icon.setText('')
 
+        self.preview_icon = QLabelGif()
+
         self.setup_title()
 
         # self.setAcceptDrops(True)
@@ -82,7 +86,6 @@ class QWidgetTitle(QWidgetNode):
         self.ui.label_title.setVisible(True)
         self.ui.label_title_edit.setVisible(False)
 
-        self.preview_icon = QLabelGif()
         self.ui.vlayout_preview.addWidget(self.preview_icon)
 
     # def update_title(self):
@@ -378,6 +381,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.expand.connect(self.expand, QtCore.SIGNAL('clicked'), self.collapse_layout)
         self.collapse.connect(self.collapse, QtCore.SIGNAL('clicked'), self.expand_layout)
 
+
+
+
     def update_expand_collapse(self):
         self.expand.setVisible(False)
         self.collapse.setVisible(False)
@@ -451,7 +457,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             self.widget_title.preview_icon.setMovie(movie)
             # self.widget_title.preview_icon.clicked.connect(self.set_lock_icon)
             self.widget_title.preview_icon.connect(self.widget_title.preview_icon, QtCore.SIGNAL('right_mouse_button_pressed'), self.change_movie_state)
-            self.widget_title.preview_icon.setToolTip('click me play animation')
+
             movie.start()
             movie.setPaused(SETTINGS.DISABLE_GIF_AUTOSTART)
 
