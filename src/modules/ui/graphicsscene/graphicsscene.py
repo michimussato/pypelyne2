@@ -57,11 +57,11 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
         self.item_group = QtGui.QGraphicsItemGroup()
 
-        item1 = QtGui.QGraphicsRectItem(0, 0, 100, 100)
-        item1.setBrush(QtGui.QBrush(QtCore.Qt.red))
-        item1.setAcceptDrops(True)
-        item1.setFlags(item1.ItemIsSelectable | item1.ItemIsMovable)
-        self.addItem(item1)
+        # item1 = QtGui.QGraphicsRectItem(0, 0, 100, 100)
+        # item1.setBrush(QtGui.QBrush(QtCore.Qt.red))
+        # item1.setAcceptDrops(True)
+        # item1.setFlags(item1.ItemIsSelectable | item1.ItemIsMovable)
+        # self.addItem(item1)
         # print item1.zValue()
         # print item1.acceptDrops()
 

@@ -1,4 +1,5 @@
 import os
+import cPickle
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
@@ -172,21 +173,83 @@ class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
         return QtGui.QGraphicsProxyWidget.mouseMoveEvent(self, event)
 
 
-class NodeGroup(QtGui.QGraphicsItemGroup):
-    def __init__(self, position, plugin):
-        super(NodeGroup, self).__init__()
+# class NodeGroup(QtGui.QGraphicsItemGroup):
+#     def __init__(self, position, plugin):
+#         super(NodeGroup, self).__init__()
+#
+#         self.setAcceptDrops(True)
+#
+#         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
+#
+#         self.node = NodeGraphicsItem(position, plugin)
+#
+#         self.addToGroup(self.node)
+#
+#     def mousePressEvent(self, event):
+#         print 'press'
+#         return QtGui.QGraphicsItemGroup.mousePressEvent(self, event)
+
+
+class NodeDropArea(QtGui.QGraphicsRectItem):
+    def __init__(self, node):
+        super(NodeDropArea, self).__init__()
+
+        self.node = node
+
+        self.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0, 0)))
+
+        # self.brush = QtGui.QBrush(QtGui.QColor(255, 0, 0, 100))
+        self.brush_active = QtGui.QColor(0, 255, 0, 100)
+        self.brush_inactive = QtGui.QColor(0, 0, 0, 0)
+
+        # self.brush.setColor(self.brush_inactive)
+
+        # self.setBrush(QtGui.QBrush(self.brush_inactive))
 
         self.setAcceptDrops(True)
 
-        self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
+        self.set_inactive()
 
-        self.node = NodeGraphicsItem(position, plugin)
+    def set_active(self):
+        self.setBrush(QtGui.QBrush(self.brush_active))
 
-        self.addToGroup(self.node)
+    def set_inactive(self):
+        self.setBrush(QtGui.QBrush(self.brush_inactive))
 
-    def mousePressEvent(self, event):
-        print 'press'
-        return QtGui.QGraphicsItemGroup.mousePressEvent(self, event)
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasFormat('output/draggable-pixmap'):
+            # event.accept()
+            self.set_active()
+            print 'and here (node)', event
+
+    def dragLeaveEvent(self, event):
+        self.set_inactive()
+
+    def dragMoveEvent(self, event):
+        print 'dragMove'
+
+    def dropEvent(self, event):
+        print 'dropped onto node'
+        self.set_inactive()
+
+        if event.mimeData().hasFormat('output/draggable-pixmap'):
+            event.accept()
+            # pos = event.scenePos()
+            print 'accepted'
+
+            data = event.mimeData().data('output/draggable-pixmap')
+            data = data.data()
+
+            unpickled_output_object = cPickle.loads(data)
+
+            logging.info('{0} ({1}) output dropped onto node {2}'.format(unpickled_output_object.output,
+                                                                         unpickled_output_object.abbreviation,
+                                                                         self.node))
+
+            # print dir(unpickled_output_object)
+
+        else:
+            return QtGui.QGraphicsRectItem.dropEvent(self, event)
 
 
 class NodeGraphicsItem(QtGui.QGraphicsItem):
@@ -195,20 +258,22 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         reload(SETTINGS)
 
-        # print self.zValue()
-        #
-        # self.setZValue(1.0)
-
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
 
-        self.rect = QtCore.QRectF(0, 0, 200, 40)
+        self.rect = QtCore.QRectF(0, 0, 0, 0)
+
+        self.drop_area = NodeDropArea(self)
+
+        self.drop_area.setZValue(self.zValue() + 1)
+        self.drop_area.setParentItem(self)
+
         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
         self.setAcceptHoverEvents(True)
         self.setAcceptTouchEvents(True)
-        self.setAcceptDrops(True)
+        # self.setAcceptDrops(True)
 
         self.task_color_item = QtGui.QColor(0, 0, 0)
         self.application_color_item = QtGui.QColor(0, 0, 0)
@@ -271,19 +336,23 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         # print self.acceptDrops()
 
-        for i in self.childItems():
-            i.setAcceptDrops(True)
+        # for i in self.childItems():
+        #     i.setAcceptDrops(True)
 
-    def dragMoveEvent(self, event):
-        print 'dragMove'
-
-    def dropEvent(self, event):
-        print 'dropped onto node'
-
-    def dragEnterEvent(self, event):
-        if event.mimeData().hasFormat('output/draggable-pixmap'):
-        # event.accept()
-            print 'and here (node)', event
+    # def dragMoveEvent(self, event):
+    #     print 'dragMove'
+    #
+    # def dropEvent(self, event):
+    #     print 'dropped onto node'
+    #
+    # def dragEnterEvent(self, event):
+    #     # if event.mimeData().hasFormat('output/draggable-pixmap'):
+    #     # event.accept()
+    #     self.drop_area.set_active()
+    #     print 'and here (node)', event
+    #
+    # def dragLeaveEvent(self, event):
+    #     self.drop_area.set_inactive()
 
     def update_title(self):
         new_title = self.widget_title.label_title_edit.text()
@@ -588,10 +657,13 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             i.setPos(self.boundingRect().width() - i.rect.width(), i.pos().y())
 
         self.rect.setWidth(self.rect.width())
+        # self.drop_area.rect.set
         self.rect.setHeight(self.rect.height())
         self.arrange_outputs()
         self.arrange_inputs()
         self.resize()
+        self.drop_area.setRect(self.boundingRect())
+        # print dir(self.drop_area)
 
     def arrange_outputs(self):
         for output in self.outputs:
