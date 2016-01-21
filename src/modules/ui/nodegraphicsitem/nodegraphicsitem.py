@@ -22,9 +22,11 @@ class QLabelGif(QtGui.QLabel):
         super(QLabelGif, self).__init__()
 
     def mousePressEvent(self, event):
-        self.emit(QtCore.SIGNAL('clicked'))
-
-        return QtGui.QLabel.mousePressEvent(self, event)
+        if event.button() == QtCore.Qt.RightButton:
+            print 'right button press'
+            self.emit(QtCore.SIGNAL('right_mouse_button_pressed'))
+        else:
+            return QtGui.QLabel.mousePressEvent(self, event)
 
 
 class QWidgetNode(QtGui.QWidget):
@@ -34,6 +36,13 @@ class QWidgetNode(QtGui.QWidget):
         self.ui = None
 
         self.palette = QtGui.QPalette()
+
+        self.setAcceptDrops(True)
+
+    def dragMoveEvent(self, event):
+        print 'dragMove UI'
+
+        return QtGui.QWidget.dragMoveEvent(self, event)
 
     def set_palette(self):
         self.palette.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(50, 50, 50, 0))
@@ -59,6 +68,8 @@ class QWidgetTitle(QWidgetNode):
         self.ui.label_lock_icon.setText('')
 
         self.setup_title()
+
+        # self.setAcceptDrops(True)
         # self.ui.label_title_edit.returnPressed.connect(self.update_title)
 
     def setup_title(self):
@@ -109,6 +120,8 @@ class QWidgetElements(QWidgetNode):
 
         self.set_palette()
 
+        # self.setAcceptDrops(True)
+
     def mousePressEvent(self, event):
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
         mouse_modifiers = QtGui.QApplication.mouseButtons()
@@ -133,10 +146,17 @@ class QWidgetHeader(QWidgetNode):
 
         self.set_palette()
 
+        # self.setAcceptDrops(True)
+
 
 class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
     def __init__(self):
         super(QGraphicsProxyWidgetNoWheel, self).__init__()
+
+        self.setAcceptDrops(True)
+
+    def dragMoveEvent(self, event):
+        return QtGui.QGraphicsProxyWidget.dragMoveEvent(self, event)
 
     def wheelEvent(self, event):
         event.ignore()
@@ -152,11 +172,32 @@ class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
         return QtGui.QGraphicsProxyWidget.mouseMoveEvent(self, event)
 
 
+class NodeGroup(QtGui.QGraphicsItemGroup):
+    def __init__(self, position, plugin):
+        super(NodeGroup, self).__init__()
+
+        self.setAcceptDrops(True)
+
+        self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
+
+        self.node = NodeGraphicsItem(position, plugin)
+
+        self.addToGroup(self.node)
+
+    def mousePressEvent(self, event):
+        print 'press'
+        return QtGui.QGraphicsItemGroup.mousePressEvent(self, event)
+
+
 class NodeGraphicsItem(QtGui.QGraphicsItem):
     def __init__(self, position, plugin):
         super(NodeGraphicsItem, self).__init__()
 
         reload(SETTINGS)
+
+        # print self.zValue()
+        #
+        # self.setZValue(1.0)
 
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
@@ -167,6 +208,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         self.setAcceptHoverEvents(True)
         self.setAcceptTouchEvents(True)
+        self.setAcceptDrops(True)
 
         self.task_color_item = QtGui.QColor(0, 0, 0)
         self.application_color_item = QtGui.QColor(0, 0, 0)
@@ -226,6 +268,22 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
         self.reset_proxy_sizes()
+
+        # print self.acceptDrops()
+
+        for i in self.childItems():
+            i.setAcceptDrops(True)
+
+    def dragMoveEvent(self, event):
+        print 'dragMove'
+
+    def dropEvent(self, event):
+        print 'dropped onto node'
+
+    def dragEnterEvent(self, event):
+        if event.mimeData().hasFormat('output/draggable-pixmap'):
+        # event.accept()
+            print 'and here (node)', event
 
     def update_title(self):
         new_title = self.widget_title.label_title_edit.text()
@@ -323,7 +381,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
             self.widget_title.preview_icon.setMovie(movie)
             # self.widget_title.preview_icon.clicked.connect(self.set_lock_icon)
-            self.widget_title.preview_icon.connect(self.widget_title.preview_icon, QtCore.SIGNAL('clicked'), self.change_movie_state)
+            self.widget_title.preview_icon.connect(self.widget_title.preview_icon, QtCore.SIGNAL('right_mouse_button_pressed'), self.change_movie_state)
             self.widget_title.preview_icon.setToolTip('click me play animation')
             movie.start()
             movie.setPaused(SETTINGS.DISABLE_GIF_AUTOSTART)

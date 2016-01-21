@@ -20,6 +20,9 @@ class PluginWidget(QtGui.QWidget):
                                           'pluginwidget',
                                           'pluginwidget.ui'), self)
 
+        # print dir(plugin)
+        # print plugin.icon
+
         if plugin.icon is None:
             self.icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
         else:

@@ -13,8 +13,6 @@ class GraphicsView(QtGui.QGraphicsView):
         # self.setResizeAnchor(QtGui.QGraphicsView.AnchorUnderMouse)
         self.setTransformationAnchor(self.AnchorUnderMouse)
 
-
-
         self.setViewport(QtOpenGL.QGLWidget(QtOpenGL.QGLFormat(QtOpenGL.QGL.SampleBuffers)))
         self.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)
         self.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOn)

@@ -2,6 +2,8 @@ import cPickle
 from PyQt4 import QtGui
 from PyQt4 import QtCore
 import src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
+import src.parser.parse_plugins as parse_plugins
+import src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
 
 
 class DraggableMark(QtGui.QGraphicsItem):
@@ -45,44 +47,50 @@ class GraphicsScene(QtGui.QGraphicsScene):
     def __init__(self, parent=None):
         super(GraphicsScene, self).__init__(parent)
 
-        # self.base_rect_color = QtGui.QColor(255, 0, 0)
+        self.graphicsview = parent
 
         self.base_rect = self.addRect(QtCore.QRectF(0, 0, 500, 500), QtGui.QColor(255, 0, 0, 0))
-
-        # self.installEventFilter(self)
-
-        # self.item_group = QtGui.QGraphicsItemGroup()
 
         self.global_scale = 1
 
         self.node_items = []
 
-
-        # self.test_rect = self.addRect(QtCore.QRectF(400, 100, 40, 40), QtCore.Qt.green)
-        # self.node_items.append(self.test_rect)
-        #
-        # for i in range(20):
-        #     rect = self.addRect(QtCore.QRectF(i*20, i*20, 40, 40))
-        #     self.node_items.append(rect)
-
         self.item_group = QtGui.QGraphicsItemGroup()
 
-        # self.addItem(self.item_group)
+        item1 = QtGui.QGraphicsRectItem(0, 0, 100, 100)
+        item1.setBrush(QtGui.QBrush(QtCore.Qt.red))
+        item1.setAcceptDrops(True)
+        item1.setFlags(item1.ItemIsSelectable | item1.ItemIsMovable)
+        self.addItem(item1)
+        # print item1.zValue()
+        # print item1.acceptDrops()
 
-    # def eventFilter(self, source, event):
-    #     if event.type() == QtCore.QEvent.MouseMove:
-    #         pos = event.pos()
-    #         print('mouse move: (%d, %d)' % (pos.x(), pos.y()))
-    #     return QtGui.QWidget.eventFilter(self, source, event)
+        # plugins = parse_plugins.get_plugins()
+
+        # plugins = parse_plugins.get_plugins()
+
+        # attributes = dir(plugins[0])
+        # for attribute in attributes:
+        #     print '%s = %s' % (attribute, getattr(plugins[1], attribute))
+
+        # plugin = pixmapdraggable.PixmapFullFeature(plugin=plugins[0], mainwindow=None)
+        #
+        # node = nodegraphicsitem.NodeGraphicsItem(position=QtCore.QPoint(100, 100), plugin=plugin)
+        # self.addItem(node)
 
     def dragEnterEvent(self, event):
         # event.accept()
-        print 'and here', event
+        if event.mimeData().hasFormat('node/draggable-pixmap'):
+            print 'and here (canvas)', event
+            event.accept()
+        else:
+            return QtGui.QGraphicsScene.dragEnterEvent(self, event)
 
     def dropEvent(self, event):
-        print 'here'
+        print 'something was dropped'
         # print dir(event.mimeData())
         if event.mimeData().hasFormat('node/draggable-pixmap'):
+            print 'node dropped onto canvas'
             event.accept()
             pos = event.scenePos()
             print 'accepted'
@@ -95,14 +103,20 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
             # print unPickleData.dictKey
             # TODO: map to self.rect
+
             node_graphics_item = nodegraphicsitem.NodeGraphicsItem(position=pos, plugin=unpickled_plugin_object)
             node_graphics_item.setScale(self.global_scale)
             self.addItem(node_graphics_item)
-            # nodegraphicsitem.installSceneEventFilter(nodegraphicsitem)
-
             node_graphics_item.setParentItem(self.base_rect)
-
             self.node_items.append(node_graphics_item)
+
+            # node_group = nodegraphicsitem.NodeGroup(position=pos, plugin=unpickled_plugin_object)
+            # self.addItem(node_group)
+            # node_group.setParentItem(self.base_rect)
+            # node_group.setParentItem(self.base_rect)
+            # self.node_items.append(node_group)
+
+            # self.graphicsview.setAcceptDrops(False)
 
             # rect = self.itemsBoundingRect()
             # rect.adjust(-20, -20, 20, 20)
@@ -126,7 +140,26 @@ class GraphicsScene(QtGui.QGraphicsScene):
             #     # behaviorNode = mayaNodesModule.MayaNodes['behaviorCat']
             #     # self.createNode(behaviorNode, newPos)
 
+        else:
+            return QtGui.QGraphicsScene.dropEvent(self, event)
+
+        # elif event.mimeData().hasFormat('output/draggable-pixmap'):
+        #     print 'output'
+        #     # event.ignore()
+        #     return QtGui.QGraphicsScene.dropEvent(self, event)
+
     def dragMoveEvent(self, event):
-        print 'there'
-        if event.mimeData().hasFormat("application/x-imgname"):
+        # print dir(event.mimeData().formats())
+        # print event.mimeData().formats()
+        # print 'there'
+        if event.mimeData().hasFormat("node/draggable-pixmap"):
+            print 'dragMove accept'
             event.accept()
+        else:
+            # event.accept()
+            return QtGui.QGraphicsScene.dragMoveEvent(self, event)
+
+    # def eventFilter(self, source, event):
+    #     print source, event
+    #
+    #     # return QtGui.QGraphicsScene.eventFilter(self, source, event)

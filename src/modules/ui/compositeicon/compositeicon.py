@@ -8,9 +8,45 @@ class ExpandCollapse(QtGui.QPixmap):
         super(ExpandCollapse, self).__init__()
 
 
+class CompositeIconOutput(QtGui.QPixmap):
+    def __init__(self, output=None, *__args):
+        super(CompositeIconOutput, self).__init__(*__args)
+
+        self.output = output
+
+        if self.output.icon is None:
+            icon = QtGui.QPixmap(SETTINGS.OUTPUTS_DEFAULT_ICON)
+        else:
+            icon = QtGui.QPixmap(self.output.icon)
+
+        self._icon = icon.scaledToHeight(SETTINGS.OUTPUTS_ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+
+        self._pixmap = QtGui.QPixmap(SETTINGS.OUTPUTS_ICON_HEIGHT, SETTINGS.OUTPUTS_ICON_HEIGHT)
+
+    @property
+    def output_icon(self):
+        return self._icon
+
+    # @property
+    # def output_icon_hovered(self):
+    #     color_hovered = QtGui.QColor(0, 0, 0, 0)
+    #     _pixmap_hovered = self._icon.alphaChannel()
+    #     _pixmap_hovered.fill(color_hovered)
+    #
+    #     painter_hovered = QtGui.QPainter()
+    #     painter_hovered.begin(_pixmap_hovered)
+    #     painter_hovered.drawPixmap(0, 0, self.overlay_icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT / 2.5,
+    #                                                                       QtCore.Qt.SmoothTransformation))
+    #     painter_hovered.setCompositionMode(painter_hovered.CompositionMode_SourceOver)
+    #     painter_hovered.drawPixmap(0, 0, self._icon)
+    #     painter_hovered.end()
+    #
+    #     return _pixmap_hovered
+
+
 class CompositeIcon(QtGui.QPixmap):
     def __init__(self, plugin=None, *__args):
-        super(CompositeIcon, self).__init__()
+        super(CompositeIcon, self).__init__(*__args)
 
         self.plugin = plugin
 
@@ -18,6 +54,7 @@ class CompositeIcon(QtGui.QPixmap):
             icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON)
         else:
             icon = QtGui.QPixmap(self.plugin.icon)
+
         self._icon = icon.scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
 
         self._pixmap = QtGui.QPixmap(SETTINGS.PLUGINS_ICON_HEIGHT, SETTINGS.PLUGINS_ICON_HEIGHT)

@@ -8,7 +8,7 @@ import src.conf.settings.SETTINGS as SETTINGS
 class GraphicsViewStage(graphicsview.GraphicsView):
     def __init__(self):
         super(GraphicsViewStage, self).__init__()
-        self.scene = graphicsscene.GraphicsScene()
+        self.scene = graphicsscene.GraphicsScene(self)
         self.setScene(self.scene)
 
         self.setMouseTracking(False)
@@ -23,7 +23,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         self.mouse_position_previous = QtCore.QPoint(0, 0)
 
-
+        self.navigator_rect = None
 
         self.navigator()
 
@@ -45,7 +45,6 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         self.navigator_rect.setPos(self.rect().width()-self.navigator_rect.rect().width(),
                                    self.rect().height()-self.navigator_rect.rect().height())
-
 
     def mouseMoveEvent(self, event):
         self.setDragMode(self.RubberBandDrag)

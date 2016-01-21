@@ -7,6 +7,40 @@ import src.modules.ui.dockwidget.dockwidget_output as dockwidget_output
 import src.modules.ui.compositeicon.compositeicon as compositeicon
 
 
+class PixmapOutput(QtGui.QLabel):
+    def __init__(self, output=None, mainwindow=None, *args, **kwargs):
+        super(PixmapOutput, self).__init__(*args, **kwargs)
+
+        self.output = output
+        self.mainwindow = mainwindow
+
+        self.pixmap = compositeicon.CompositeIconOutput(self.output).output_icon
+        # self.pixmap_hovered
+
+        self.setPixmap(self.pixmap)
+
+    def mouseMoveEvent(self, e):
+        # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
+        mime_data = QtCore.QMimeData()
+        mime_data.setObjectName('output/draggable-pixmap')
+
+        pickled_output_object = cPickle.dumps(self.output)
+        mime_data.setData('output/draggable-pixmap', pickled_output_object)
+        # print mime_data.objectName()
+
+        drag = QtGui.QDrag(self)
+        drag.setMimeData(mime_data)
+        drag.setPixmap(self.pixmap)
+        drag.setHotSpot(e.pos())
+
+        if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
+            print 'moved'
+        else:
+            print 'copied'
+
+        return QtGui.QLabel.mouseMoveEvent(self, e)
+
+
 # pixmap icon base class
 class PixmapBase(QtGui.QLabel):
     def __init__(self, plugin=None, mainwindow=None, *args, **kwargs):
@@ -92,7 +126,7 @@ class PixmapDragAndDrop(PixmapBase):
 
         pickled_plugin_object = cPickle.dumps(self.plugin)
         mime_data.setData('node/draggable-pixmap', pickled_plugin_object)
-        print mime_data.objectName()
+        # print mime_data.objectName()
 
         drag = QtGui.QDrag(self)
         drag.setMimeData(mime_data)
