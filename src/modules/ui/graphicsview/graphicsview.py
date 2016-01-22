@@ -1,6 +1,6 @@
-from PyQt4 import QtGui
-from PyQt4 import QtCore
-from PyQt4 import QtOpenGL
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
+import PyQt4.QtOpenGL as QtOpenGL
 
 # import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
 

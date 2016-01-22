@@ -1,5 +1,5 @@
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
 import src.conf.settings.SETTINGS as SETTINGS
 import src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
 import src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plugins

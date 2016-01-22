@@ -1,6 +1,6 @@
 import cPickle
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
 import src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
 import src.conf.settings.SETTINGS as SETTINGS
 import src.parser.parse_plugins as parse_plugins
@@ -106,6 +106,7 @@ class GraphicsScene(QtGui.QGraphicsScene):
             # TODO: map to self.rect
 
             node_graphics_item = nodegraphicsitem.NodeGraphicsItem(position=pos, plugin=unpickled_plugin_object)
+            # print unpickled_plugin_object
             if SETTINGS.NODE_CREATE_COLLAPSED:
                 node_graphics_item.expand_layout()
             node_graphics_item.setScale(self.global_scale)
