@@ -1,4 +1,5 @@
 import os
+import random
 import cPickle
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
@@ -88,25 +89,13 @@ class QWidgetTitle(QWidgetNode):
 
         self.ui.vlayout_preview.addWidget(self.preview_icon)
 
-    # def update_title(self):
-    #     new_title = self.ui.label_title_edit.text()
-    #     self.ui.label_title_edit.setText(self.ui.label_title_edit.text())
-    #     # self.ui.label_title_edit.resize(0, 0)
-    #     # self.ui.label_title_edit.adjustSize()
-    #     self.ui.label_title.setText(new_title)
-    #     # self.ui.label_title.resize(0, 0)
-    #     # self.ui.label_title.adjustSize()
-    #     self.ui.label_title.setVisible(True)
-    #     self.ui.label_title_edit.setVisible(False)
-    #     # self.widget_title.adjustSize()
-    #     # self.widget_elements.adjustSize()
-
     def mousePressEvent(self, event):
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
 
         if keyboard_modifiers == QtCore.Qt.ShiftModifier:
             self.ui.label_title.setVisible(False)
             self.ui.label_title_edit.setVisible(True)
+            self.ui.label_title_edit.setReadOnly(False)
 
         return QWidgetNode.mouseMoveEvent(self, event)
 
@@ -318,14 +307,11 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.set_label(str(' '.join([self.plugin.family, self.plugin.release_number])))
         self.lock_icon = None
         self.maximize_icon = None
-        # self.preview_icon = None
         self.set_task_icon()
         self.set_arch_icon()
         self.set_lock_icon()
-        # self.set_maximize_icon()
         self.set_thumbnail_icon()
 
-        # self.set_ui_icons()
         self.add_ui_elements()
         self.setup_expand_collapse()
         self.add_task_menu_items()
@@ -335,38 +321,23 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
-        self.reset_proxy_sizes()
-
-        # print self.acceptDrops()
-
-        # for i in self.childItems():
-        #     i.setAcceptDrops(True)
-
-    # def dragMoveEvent(self, event):
-    #     print 'dragMove'
-    #
-    # def dropEvent(self, event):
-    #     print 'dropped onto node'
-    #
-    # def dragEnterEvent(self, event):
-    #     # if event.mimeData().hasFormat('output/draggable-pixmap'):
-    #     # event.accept()
-    #     self.drop_area.set_active()
-    #     print 'and here (node)', event
-    #
-    # def dragLeaveEvent(self, event):
-    #     self.drop_area.set_inactive()
+        self.set_ui_widgets_position()
+        self.resize()
 
     def update_title(self):
-        new_title = self.widget_title.label_title_edit.text()
-        self.widget_title.label_title_edit.setText(self.widget_title.label_title_edit.text())
-        self.widget_title.label_title.setText(new_title)
-        self.widget_title.label_title_edit.setVisible(False)
-        self.widget_title.label_title.setVisible(True)
-        self.reset_proxy_sizes()
+        title = self.widget_title.label_title
+        title_edit = self.widget_title.label_title_edit
+
+        title_edit.setReadOnly(True)
+
+        new_title = title_edit.text()
+
+        title.setText(new_title)
+        title_edit.setVisible(False)
+        title.setVisible(True)
+        self.resize()
 
     def setup_expand_collapse(self):
-
         self.collapse.setToolTip('collapse combo boxes')
         self.expand.setToolTip('expand combo boxes')
 
@@ -381,9 +352,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.expand.connect(self.expand, QtCore.SIGNAL('clicked'), self.collapse_layout)
         self.collapse.connect(self.collapse, QtCore.SIGNAL('clicked'), self.expand_layout)
 
-
-
-
     def update_expand_collapse(self):
         self.expand.setVisible(False)
         self.collapse.setVisible(False)
@@ -394,10 +362,12 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
     def expand_layout(self):
         self.widget_elements_proxy.setVisible(False)
         self.update_expand_collapse()
-        # print self.widget_elements_proxy.boundingRect().width()
-        self.reset_proxy_sizes()
         self.resize()
-        # print self.widget_elements_proxy.boundingRect().width()
+
+    def collapse_layout(self):
+        self.widget_elements_proxy.setVisible(True)
+        self.update_expand_collapse()
+        self.resize()
 
     def reset_proxy_sizes(self):
         self.widget_title_proxy.resize(0, 0)
@@ -405,18 +375,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.widget_title_proxy.adjustSize()
         self.widget_elements_proxy.adjustSize()
 
-    def collapse_layout(self):
-        self.widget_elements_proxy.setVisible(True)
-        self.update_expand_collapse()
-        # print self.widget_elements_proxy.boundingRect().width()
-        self.reset_proxy_sizes()
-        self.resize()
-        # print self.widget_elements_proxy.boundingRect().width()
-
     def set_thumbnail_icon(self):
-        import random
-        import os
-
         img = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
         try:
@@ -437,8 +396,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             movie = QtGui.QMovie(img)
             movie.setCacheMode(movie.CacheAll)
 
-            # self.frame_count = movie.frameCount()
-
             if pixmap_width > pixmap_height:
                 logging.info('gif has landscape format')
                 ratio = pixmap_height/float(pixmap_width)
@@ -455,8 +412,9 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                                                  SETTINGS.PLUGINS_ICON_HEIGHT*2))
 
             self.widget_title.preview_icon.setMovie(movie)
-            # self.widget_title.preview_icon.clicked.connect(self.set_lock_icon)
-            self.widget_title.preview_icon.connect(self.widget_title.preview_icon, QtCore.SIGNAL('right_mouse_button_pressed'), self.change_movie_state)
+            self.widget_title.preview_icon.connect(self.widget_title.preview_icon,
+                                                   QtCore.SIGNAL('right_mouse_button_pressed'),
+                                                   self.change_movie_state)
 
             movie.start()
             movie.setPaused(SETTINGS.DISABLE_GIF_AUTOSTART)
@@ -507,13 +465,16 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.widget_title.label_label.setText(text)
 
     def set_task_icon(self):
-        self.widget_title.label_icon.setPixmap(self.compositor.pixmap_no_overlay.scaled(self.compositor.pixmap_no_overlay.size() * SETTINGS.ICON_SCALE))
+        scale = self.compositor.pixmap_no_overlay.size() * SETTINGS.ICON_SCALE
+        self.widget_title.label_icon.setPixmap(self.compositor.pixmap_no_overlay.scaled(scale))
 
     def set_arch_icon(self):
-        self.widget_title.label_arch_icon.setPixmap(self.compositor.arch_icon.scaled(self.compositor.arch_icon.size() * SETTINGS.ICON_SCALE))
+        scale = self.compositor.arch_icon.size() * SETTINGS.ICON_SCALE
+        self.widget_title.label_arch_icon.setPixmap(self.compositor.arch_icon.scaled(scale))
 
     def set_lock_icon(self):
-        self.widget_title.label_lock_icon.setPixmap(self.compositor.lock.scaled(self.compositor.lock.size() * SETTINGS.ICON_SCALE))
+        scale = self.compositor.lock.size() * SETTINGS.ICON_SCALE
+        self.widget_title.label_lock_icon.setPixmap(self.compositor.lock.scaled(scale))
 
     def add_ui_elements(self):
         self.widget_title_proxy.setWidget(self.widget_title)
@@ -541,7 +502,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             combobox.addItem(task.task)
             combobox.setItemData(index, task)
 
-        combobox.activated.connect(self.change_task_color)
+        combobox.activated.connect(self.set_task_color)
 
     def add_status_menu_items(self):
         combobox = self.widget_elements.combobox_status
@@ -575,26 +536,24 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
     def hoverEnterEvent(self, event):
         self.hovered = True
-        logging.info('enter event: {0}'.format(self))
+        # logging.info('enter event: {0}'.format(self))
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
     def hoverLeaveEvent(self, event):
-        # self.icon.setScale(0.5)
         self.hovered = False
-        # self.task_menu_proxy.setVisible(False)
-        # print 'leave'
-        logging.info('leave event: {0}'.format(self))
+        # logging.info('leave event: {0}'.format(self))
 
         return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)
 
-    def paint(self, painter, option, widget):
-
+    def set_ui_widgets_position(self):
         # title widget
         self.widget_title_proxy.setPos(0, 0)
 
         # elements widget
         self.widget_elements_proxy.setPos(0, self.widget_title_proxy.boundingRect().height())
+
+    def paint(self, painter, option, widget):
 
         painter.setRenderHint(painter.Antialiasing)
 
@@ -605,21 +564,11 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         hover_color = QtGui.QColor(255, 160, 0)
 
         if option.state & QtGui.QStyle.State_Selected:
-            # self.update_meta_task()
             self.setZValue(1)
             pen.setWidth(3)
             pen.setColor(hover_color)
             self.gradient.setColorAt(0, self.task_color_item)
-            # self.gradient.setColorAt(1, self.application_color_item.darker(160))
             self.gradient.setColorAt(1, self.task_color_item)
-
-            # if os.path.exists(os.path.join(self.location, 'locked')):
-            #     self.gradient.setColorAt(0, self.task_color_item)
-            #     self.gradient.setColorAt(1, QtCore.Qt.red)
-            #
-            # elif os.path.exists(os.path.join(self.location, 'checkedOut')):
-            #     self.gradient.setColorAt(0, self.task_color_item)
-            #     self.gradient.setColorAt(1, QtCore.Qt.white)
 
         elif option.state & QtGui.QStyle.State_MouseOver or self.hovered:
             pen.setWidth(2)
@@ -627,30 +576,12 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
             pen.setColor(hover_color)
             self.gradient.setColorAt(0, self.task_color_item)
-            # self.gradient.setColorAt(1, self.application_color_item.darker(160))
             self.gradient.setColorAt(1, self.task_color_item.darker(160))
-
-            # if os.path.exists(os.path.join(self.location, 'locked')):
-            #     self.gradient.setColorAt(0, self.task_color_item)
-            #     self.gradient.setColorAt(1, QtCore.Qt.red)
-            #
-            # elif os.path.exists(os.path.join(self.location, 'checkedOut')):
-            #     self.gradient.setColorAt(0, self.task_color_item)
-            #     self.gradient.setColorAt(1, QtCore.Qt.white)
-
-        # elif os.path.exists(os.path.join(self.location, 'locked')):
-        #     self.gradient.setColorAt(0, self.task_color_item)
-        #     self.gradient.setColorAt(1, QtCore.Qt.red)
-        #
-        # elif os.path.exists(os.path.join(self.location, 'checkedOut')):
-        #     self.gradient.setColorAt(0, self.task_color_item)
-        #     self.gradient.setColorAt(1, QtCore.Qt.white)
 
         else:
             pen.setWidth(0)
             self.setZValue(0)
             self.gradient.setColorAt(0, self.task_color_item)
-            # self.gradient.setColorAt(1, self.application_color_item.darker(160))
             self.gradient.setColorAt(1, self.task_color_item.darker(160))
 
         painter.setBrush(self.gradient)
@@ -662,14 +593,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         for i in self.output_list:
             i.setPos(self.boundingRect().width() - i.rect.width(), i.pos().y())
 
-        self.rect.setWidth(self.rect.width())
-        # self.drop_area.rect.set
-        self.rect.setHeight(self.rect.height())
         self.arrange_outputs()
         self.arrange_inputs()
-        self.resize()
-        self.drop_area.setRect(self.boundingRect())
-        # print dir(self.drop_area)
 
     def arrange_outputs(self):
         for output in self.outputs:
@@ -683,8 +608,13 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             input_item.setPos(position)
 
     def resize(self):
+        # self.reset_proxy_sizes()
+        self.rect.setWidth(self.rect.width())
+        self.rect.setHeight(self.rect.height())
+        self.reset_proxy_sizes()
         self.resize_height()
         self.resize_width()
+        self.drop_area.setRect(self.boundingRect())
 
     def resize_width(self):
         output_list_text_width = [0]
@@ -728,57 +658,27 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
     @property
-    def current_task_type(self):
-        return self.widget_elements.combobox_task.currentIndex()
-
-    def change_task_color(self):
+    def current_combobox_task_index(self):
+        """returns the combobox_task index. False if task is not set"""
         combobox = self.widget_elements.combobox_task
-        index = self.current_task_type
-
-        # palette = QtGui.QPalette()
-
-        if index == 0:
-
-            # color = QtGui.QColor()
-
-            self.task_color = self.task_color_default
-            self.set_task_color()
-
-            # print self.task_color_item.getRgb()
-
-            # print dir(self.ui_elements)
+        if combobox.currentIndex() == 0:
+            return False
         else:
-            task_data = combobox.itemData(index).toPyObject()
-            self.task_color = task_data.color
-            self.set_task_color()
+            return combobox.currentIndex()
+
+    @property
+    def current_combobox_task_color(self):
+        """returns the current task color. False if task is not set."""
+        try:
+            combobox = self.widget_elements.combobox_task
+            index = self.current_combobox_task_index
+            if index:
+                return combobox.itemData(index).toPyObject().color
+            else:
+                raise AttributeError
+        except AttributeError:
+            return False
 
     def set_task_color(self):
-        # self.task_color = self.task_menu.itemData(self.task_menu.currentIndex())
-        # self.task_color = '#FF00FF'
-
-        # if os.path.basename(self.location)[:7].startswith('LDR'):
-        #     if os.path.basename(self.location)[:7].endswith('LIB'):
-        #         self.task_color = '#00FF00'
-        #     else:
-        #         for tab in self.main_window.content_tabs:
-        #             if os.path.basename(self.location)[:7].endswith(tab['abbreviation']):
-        #                 self.task_color = tab['loader_color']
-        #                 break
-        #
-        # elif os.path.basename(self.location)[:7].startswith('SVR'):
-        #     for tab in self.main_window.content_tabs:
-        #         if os.path.basename(self.location)[:7].endswith(tab['abbreviation']):
-        #             self.task_color = tab['saver_color']
-        #
-        # else:
-        #     for task in self.main_window._tasks:
-        #         # print task[u'abbreviation']
-        #         # print self.nodeTask
-        #         if self.nodeTask == task[u'task']:
-        #             logging.info('task color description for task %s found' % task[u'abbreviation'])
-        #             self.task_color = task[u'color']
-        #             break
-
-        task_color = self.task_color or self.task_color_default
-
+        task_color = self.current_combobox_task_color or self.task_color_default
         self.task_color_item.setNamedColor(task_color)

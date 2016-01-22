@@ -20,22 +20,13 @@ class OutputWidget(QtGui.QWidget):
                                           'outputwidget',
                                           'outputwidget.ui'), self)
 
-        # print dir(output)
-        # print output.icon
-
         if output.icon is None:
             self.icon = QtGui.QPixmap(SETTINGS.OUTPUTS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
         else:
             self.icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS,
                                                    output.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
-        # print output
-
         self.pixmap = pixmapdraggable.PixmapOutput(output, self.mainwindow)
-        # self.pixmap = QtGui.QPixmap()
-
-        # self.pixmap.setToolTip('{0} {1} is not available'.format(output.family,
-        #                                                          output.release_number))
 
         self.ui.label.setText('{0} {1}'.format(output.output, output.abbreviation))
         self.ui.label.setEnabled(False)
