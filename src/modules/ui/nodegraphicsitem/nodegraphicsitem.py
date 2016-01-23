@@ -188,55 +188,76 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
         self.node = node
 
-        self.setPen(QtGui.QPen(QtGui.QColor(0, 0, 0, 0)))
+        self.pen = QtGui.QPen(QtGui.QColor(0, 0, 0, 0))
+        self.setPen(self.pen)
+        # self.pen_active = QtGui.QPen(QtGui.QColor(0, 255, 0, 255))
+        # self.pen_active.setWidth(3)
+        # self.pen_inactive = QtGui.QPen(QtGui.QColor(255, 0, 0, 0))
 
-        # self.brush = QtGui.QBrush(QtGui.QColor(255, 0, 0, 100))
+
+        self.brush = QtGui.QBrush()
+        self.setBrush(self.brush)
+
         self.brush_active = QtGui.QColor(0, 255, 0, 100)
-        self.brush_inactive = QtGui.QColor(0, 0, 0, 0)
-
-        # self.brush.setColor(self.brush_inactive)
-
-        # self.setBrush(QtGui.QBrush(self.brush_inactive))
+        self.brush_inactive = QtGui.QColor(255, 0, 0, 0)
 
         self.setAcceptDrops(True)
 
         self.set_inactive()
 
+    # def paint(self, painter, option, widget=None):
+    #     painter.setPen(self.pen)
+    #     painter.setBrush(self.brush)
+    #     painter.setRenderHint(painter.Antialiasing)
+    #     painter.drawRoundedRect(self.boundingRect(), SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
+
     def set_active(self):
-        self.setBrush(QtGui.QBrush(self.brush_active))
+        self.setBrush(self.brush_active)
+        # self.setPen(self.pen_active)
+        # self.setBrush(QtGui.QBrush(self.brush_active))
+        logging.info('setting drop area active on {0}'.format(self))
 
     def set_inactive(self):
-        self.setBrush(QtGui.QBrush(self.brush_inactive))
+        self.setBrush(self.brush_inactive)
+        # self.setPen(self.pen_inactive)
+        # self.setBrush(QtGui.QBrush(self.brush_inactive))
+        logging.info('setting drop area inactive on {0}'.format(self))
 
     def dragEnterEvent(self, event):
+        logging.info('dragEnterEvent on {0}'.format(self))
         if event.mimeData().hasFormat('output/draggable-pixmap'):
             # event.accept()
             self.set_active()
-            print 'and here (node)', event
+            logging.info('mimeData of event {0} data has format output/draggable-pixmap'.format(event))
 
     def dragLeaveEvent(self, event):
+        logging.info('dragLeaveEvent on {0}'.format(self))
         self.set_inactive()
 
     def dragMoveEvent(self, event):
-        print 'dragMove'
+        logging.info('dragMoveEvent on {0}'.format(self))
 
     def dropEvent(self, event):
-        print 'dropped onto node'
+        logging.info('dropEvent on {0}'.format(self))
         self.set_inactive()
 
         if event.mimeData().hasFormat('output/draggable-pixmap'):
             event.accept()
             # pos = event.scenePos()
-            print 'accepted'
 
             data = event.mimeData().data('output/draggable-pixmap')
             data = data.data()
 
             unpickled_output_object = cPickle.loads(data)
 
-            logging.info('{0} ({1}) output dropped onto node {2}'.format(unpickled_output_object.output,
-                                                                         unpickled_output_object.abbreviation,
-                                                                         self.node))
+            logging.info('mimeData of event {0} data has format output/draggable-pixmap'.format(event))
+            logging.info('{0}/{1} --> {2}'.format(unpickled_output_object.output,
+                                                  unpickled_output_object.abbreviation,
+                                                  self.node))
+
+            # logging.info('{0} ({1}) output dropped onto node {2}'.format(unpickled_output_object.output,
+            #                                                              unpickled_output_object.abbreviation,
+            #                                                              self.node))
 
             # print dir(unpickled_output_object)
 

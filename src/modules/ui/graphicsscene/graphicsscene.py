@@ -1,4 +1,5 @@
 import cPickle
+import logging
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
@@ -82,28 +83,24 @@ class GraphicsScene(QtGui.QGraphicsScene):
     def dragEnterEvent(self, event):
         # event.accept()
         if event.mimeData().hasFormat('node/draggable-pixmap'):
-            print 'and here (canvas)', event
+            # print 'and here (canvas)', event
+            logging.info('dragEnterEvent accepted')
             event.accept()
         else:
             return QtGui.QGraphicsScene.dragEnterEvent(self, event)
 
     def dropEvent(self, event):
-        print 'something was dropped'
-        # print dir(event.mimeData())
+        logging.info('something was dropped onto {0}'.format(self))
         if event.mimeData().hasFormat('node/draggable-pixmap'):
-            print 'node dropped onto canvas'
             event.accept()
+
             pos = event.scenePos()
-            print 'accepted'
             data = event.mimeData().data('node/draggable-pixmap')
             data = data.data()
 
             unpickled_plugin_object = cPickle.loads(data)
 
-            # print dir(unpickled_plugin_object)
-
-            # print unPickleData.dictKey
-            # TODO: map to self.rect
+            logging.info('{0} dropped onto canvas (drop event accepted)'.format(unpickled_plugin_object))
 
             node_graphics_item = nodegraphicsitem.NodeGraphicsItem(position=pos, plugin=unpickled_plugin_object)
             # print unpickled_plugin_object
@@ -147,23 +144,10 @@ class GraphicsScene(QtGui.QGraphicsScene):
         else:
             return QtGui.QGraphicsScene.dropEvent(self, event)
 
-        # elif event.mimeData().hasFormat('output/draggable-pixmap'):
-        #     print 'output'
-        #     # event.ignore()
-        #     return QtGui.QGraphicsScene.dropEvent(self, event)
-
     def dragMoveEvent(self, event):
-        # print dir(event.mimeData()._formats())
-        # print event.mimeData()._formats()
-        # print 'there'
-        if event.mimeData().hasFormat("node/draggable-pixmap"):
-            print 'dragMove accept'
+        logging.info('dragMoveEvent on {0}'.format(self))
+        if event.mimeData().hasFormat('node/draggable-pixmap'):
             event.accept()
+            logging.info('mimeData of event {0} data has format node/draggable-pixmap'.format(event))
         else:
-            # event.accept()
             return QtGui.QGraphicsScene.dragMoveEvent(self, event)
-
-    # def eventFilter(self, source, event):
-    #     print source, event
-    #
-    #     # return QtGui.QGraphicsScene.eventFilter(self, source, event)

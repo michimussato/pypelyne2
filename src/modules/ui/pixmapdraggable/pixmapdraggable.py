@@ -19,7 +19,8 @@ class PixmapOutput(QtGui.QLabel):
 
         self.setPixmap(self.pixmap)
 
-    def mouseMoveEvent(self, e):
+    def mouseMoveEvent(self, event):
+        logging.info('mouseMoveEvent on {0}'.format(self))
         # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
         mime_data = QtCore.QMimeData()
         mime_data.setObjectName('output/draggable-pixmap')
@@ -31,14 +32,15 @@ class PixmapOutput(QtGui.QLabel):
         drag = QtGui.QDrag(self)
         drag.setMimeData(mime_data)
         drag.setPixmap(self.pixmap)
-        drag.setHotSpot(e.pos())
+        drag.setHotSpot(event.pos())
 
         if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
-            print 'moved'
-        else:
-            print 'copied'
+            pass
+        #     print 'moved'
+        # else:
+        #     print 'copied'
 
-        return QtGui.QLabel.mouseMoveEvent(self, e)
+        return QtGui.QLabel.mouseMoveEvent(self, event)
 
 
 # pixmap icon base class
@@ -119,7 +121,8 @@ class PixmapDragAndDrop(PixmapBase):
     def __init__(self, plugin=None, mainwindow=None, *args, **kwargs):
         super(PixmapDragAndDrop, self).__init__(plugin, mainwindow, *args, **kwargs)
 
-    def mouseMoveEvent(self, e):
+    def mouseMoveEvent(self, event):
+        logging.info('mouseMoveEvent on {0}'.format(self))
         # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
         mime_data = QtCore.QMimeData()
         mime_data.setObjectName('node/draggable-pixmap')
@@ -131,15 +134,19 @@ class PixmapDragAndDrop(PixmapBase):
         drag = QtGui.QDrag(self)
         drag.setMimeData(mime_data)
         drag.setPixmap(self.pixmap_no_overlay)
-        drag.setHotSpot(e.pos())
+        drag.setHotSpot(event.pos())
 
         if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
-            print 'moved'
-        else:
-            print 'copied'
+            pass
+        #     print 'moved'
+        # else:
+        #     print 'copied'
+
+        return QtGui.QLabel.mouseMoveEvent(self, event)
+        # return PixmapBase.mouseMoveEvent(self, event)
 
     def dropEvent(self, event):
-        print 'drop'
+        logging.info('dropEvent on {0}'.format(self))
 
 
 # pixmap double click, no drag and drop (plugin type)

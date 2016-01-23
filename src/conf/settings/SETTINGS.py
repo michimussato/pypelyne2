@@ -8,7 +8,7 @@ import psutil
 # import src.modules.psutil221 as psutil
 
 # global logging setting
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.CRITICAL)
 
 # system information
 platform = platform.system()
