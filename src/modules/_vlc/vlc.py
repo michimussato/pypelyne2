@@ -3097,7 +3097,7 @@ class MediaPlayer(_Ctype):
     
     def set_time(self, i_time):
         '''Set the movie time (in ms). This has no effect if no media is being played.
-        Not all formats and protocols support this.
+        Not all _formats and protocols support this.
         @param i_time: the movie time (in ms).
         '''
         return libvlc_media_player_set_time(self, i_time)
@@ -5303,7 +5303,7 @@ def libvlc_media_player_get_time(p_mi):
 
 def libvlc_media_player_set_time(p_mi, i_time):
     '''Set the movie time (in ms). This has no effect if no media is being played.
-    Not all formats and protocols support this.
+    Not all _formats and protocols support this.
     @param p_mi: the Media Player.
     @param i_time: the movie time (in ms).
     '''

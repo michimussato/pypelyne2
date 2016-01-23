@@ -24,7 +24,7 @@ class ParseOutputsTester(unittest.TestCase):
 
     def test_formats(self):
         """ Test checks if the output object has this method """
-        self.assertTrue('formats' in dir(self.output_objects[0]))
+        self.assertTrue('_formats' in dir(self.output_objects[0]))
 
     def test_icon(self):
         """ Test checks if the output object has this method """

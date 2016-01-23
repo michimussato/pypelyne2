@@ -14,4 +14,5 @@ app = QtGui.QApplication(sys.argv)
 scene = pluginwidget.PluginWidget(plugins[1])
 
 scene.show()
+scene.raise_()
 app.exec_()

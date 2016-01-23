@@ -8,4 +8,5 @@ scene = resourcebarwidget.ResourceBarWidget()
 
 # scene.resize(int(screen_size.width()), int(screen_size.height()))
 scene.show()
+scene.raise_()
 app.exec_()

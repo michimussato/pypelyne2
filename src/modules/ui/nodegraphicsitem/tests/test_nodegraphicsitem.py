@@ -1,8 +1,9 @@
 import sys
-import os
+# import os
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
-import src.conf.settings.SETTINGS as SETTINGS
+# import src.conf.settings.SETTINGS as SETTINGS
+# import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
 import src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
 import src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
 import src.parser.parse_plugins as parse_plugins
@@ -21,11 +22,17 @@ plugins = parse_plugins.get_plugins()
 for attribute in dir(plugins[0]):
     print '%s = %s' % (attribute, getattr(plugins[1].x64, attribute))
 
-node_graphics_item = nodegraphicsitem.NodeGraphicsItem(position=QtCore.QPoint(0, 0), plugin=plugins[1].x64)
-if SETTINGS.NODE_CREATE_COLLAPSED:
-    node_graphics_item.expand_layout()
+node_graphics_item_x32 = nodegraphicsitem.NodeGraphicsItem(position=QtCore.QPoint(0, 0), plugin=plugins[1].x32)
+node_graphics_item_x64 = nodegraphicsitem.NodeGraphicsItem(position=QtCore.QPoint(10, 10), plugin=plugins[2].x64)
+# node_graphics_item_submitter = nodegraphicsitem.NodeGraphicsItem(position=QtCore.QPoint(20, 20), plugin=plugins[2].submitter)
 
-scene.addItem(node_graphics_item)
+node_graphics_item_x32.collapse_layout()
+node_graphics_item_x64.expand_layout()
+# node_graphics_item_submitter.expand_layout()
+
+scene.addItem(node_graphics_item_x32)
+scene.addItem(node_graphics_item_x64)
+# scene.addItem(node_graphics_item_submitter)
 
 # if SETTINGS.QSS_ENABLE:
 #     with open(os.path.join(SETTINGS.QSS_FILE), 'r') as qss:

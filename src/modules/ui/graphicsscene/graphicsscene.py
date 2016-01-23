@@ -153,8 +153,8 @@ class GraphicsScene(QtGui.QGraphicsScene):
         #     return QtGui.QGraphicsScene.dropEvent(self, event)
 
     def dragMoveEvent(self, event):
-        # print dir(event.mimeData().formats())
-        # print event.mimeData().formats()
+        # print dir(event.mimeData()._formats())
+        # print event.mimeData()._formats()
         # print 'there'
         if event.mimeData().hasFormat("node/draggable-pixmap"):
             print 'dragMove accept'
