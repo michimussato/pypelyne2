@@ -1,0 +1,56 @@
+{
+  "id": 1,
+  "user_enable": true,
+  "name_full": "Peter Mueller",
+  "name_login": "petermueller",
+  "name_short": "pete",
+  "password": "654321",
+  "email": "pmueller@mail.com",
+  "phone": "06454434",
+  "workstation": "everest.local",
+  "icon": null,
+  "department_roles": [
+    {
+      "department": "lookdev",
+      "role": "artist",
+      "reports_to_user_id": 1
+    },
+    {
+      "department": "lrc",
+      "role": "senior lighter",
+      "reports_to_user_id": 2
+    }
+  ],
+  "project_roles": [
+    {
+      "project": "project_1",
+      "roles": [
+        {
+          "department": "animation",
+          "role": "trainee",
+          "reports_to_user_id": 2
+        },
+        {
+          "department": "fx",
+          "role": "head",
+          "reports_to_user_id": 2
+        }
+      ]
+    },
+    {
+      "project": "project_3",
+      "roles": [
+        {
+          "department": "animation",
+          "role": "lead",
+          "reports_to_user_id": 2
+        },
+        {
+          "department": "layout",
+          "role": "consultant",
+          "reports_to_user_id": 2
+        }
+      ]
+    }
+  ]
+}

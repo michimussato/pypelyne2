@@ -1,5 +1,8 @@
+import uuid
+
+
 class Node(object):
-    def __init__(self):
+    def __init__(self, id=None):
         super(Node, self).__init__()
         # self.container = False
         self.children = []  # nodes living inside as children
@@ -9,7 +12,7 @@ class Node(object):
         self.inputs = []
         self.task = None
         self.tool = None
-        self.id = None
+        self.uuid = id or str(uuid.uuid4())
         self.name = None
         # self.icon = None
         self.dependenies_req = None

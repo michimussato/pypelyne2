@@ -6,8 +6,10 @@ import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
 import logging
 import src.conf.settings.SETTINGS as SETTINGS
+import src.modules.node.node as node
 import src.modules.ui.compositeicon.compositeicon as compositeicon
 import src.parser.parse_tasks as parse_tasks
+import src.parser.parse_users as parse_users
 import src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 
 
@@ -28,6 +30,7 @@ class QLabelGif(QtGui.QLabel):
         super(QLabelGif, self).__init__()
 
         self.dialog = QtGui.QFileDialog()
+        # self.dialog.setNameFilter('*.jpg')
 
         self.node = node
 
@@ -41,7 +44,10 @@ class QLabelGif(QtGui.QLabel):
         if event.button() == QtCore.Qt.RightButton:
             if keyboard_modifiers == QtCore.Qt.ShiftModifier:
                 # print self.node.preview_icon_path
+                # self.dialog.setFileMode(self.dialog.fileMode())
+                # self.dialog.setFilter(QtCore.QDir.Files | QtCore.QDir.NoDotAndDotDot)
                 dialog = self.dialog.getOpenFileName(self, 'get preview icon', SETTINGS.PYPELYNE2_ROOT)
+                # print ok
                 self.node.update_thumbnail_icon(dialog)
                 # self.dialog.getOpenFileName()
             else:
@@ -103,10 +109,11 @@ class QWidgetTitle(QWidgetNode):
         self.setup_title()
 
     def setup_title(self):
-        self.ui.label_title.setToolTip('shift-left click to change name')
-        self.ui.label_title.setText('no name')
+        self.ui.label_title.setToolTip('shift+left click to change name')
+        # self.ui.label_title.setText('no name')
         self.ui.label_title_edit.setToolTip('enter to submit')
         self.ui.label_title_edit.setText(self.ui.label_title.text())
+        # self.emit(QtCore.SIGNAL('activated'))
 
         self.ui.label_title.setVisible(True)
         self.ui.label_title_edit.setVisible(False)
@@ -121,6 +128,8 @@ class QWidgetTitle(QWidgetNode):
             self.ui.label_title.setVisible(False)
             self.ui.label_title_edit.setVisible(True)
             self.ui.label_title_edit.setReadOnly(False)
+            self.ui.label_title_edit.setFocus()
+            self.ui.label_title_edit.selectAll()
 
         return QWidgetNode.mouseMoveEvent(self, event)
 
@@ -259,7 +268,7 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
             return QtGui.QGraphicsRectItem.dropEvent(self, event)
 
 
-class NodeGraphicsItem(QtGui.QGraphicsItem):
+class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def __init__(self, position, plugin):
         super(NodeGraphicsItem, self).__init__()
 
@@ -337,20 +346,31 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.add_status_menu_items()
         self.add_supervisor_menu_items()
 
+        self.update_title(init=True)
+
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
         self.set_ui_widgets_position()
         self.resize()
 
-    def update_title(self):
+    # def init_title(self):
+    #     title = self.widget_title.label_title
+    #     title.setText(self.uuid)
+
+    def update_title(self, init=False):
+        # new_title = text or self.uuid
         title = self.widget_title.label_title
         title_edit = self.widget_title.label_title_edit
 
         title_edit.setReadOnly(True)
 
-        new_title = title_edit.text()
+        if init:
+            new_title = self.uuid
+        else:
+            new_title = title_edit.text()
 
         title.setText(new_title)
+        title_edit.setText(new_title)
         title_edit.setVisible(False)
         title.setVisible(True)
         self.resize()
@@ -544,7 +564,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         states = ['on hold', 'ready', 'in progress', 'awaiting approval', 'approved', 'rejected']
 
-        for status in states:
+        for status in SETTINGS.NODE_STATES:
             combobox.addItem(status)
 
         combobox.activated.connect(self.set_label_status)
@@ -553,10 +573,19 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         combobox = self.widget_elements.combobox_assignee
         combobox.addItem('-select assignee-')
 
-        assignees = ['Mark', 'Peter', 'Frank', 'David', 'Hieronimus Bosch']
+        index = 0
 
-        for status in assignees:
-            combobox.addItem(status)
+        users = parse_users.get_users()
+
+        for user in users:
+            index += 1
+            combobox.addItem(user.name_full)
+            combobox.setItemData(index, user.id)
+
+        # assignees = ['Mark', 'Peter', 'Frank', 'David', 'Hieronimus Bosch']
+        #
+        # for status in assignees:
+        #     combobox.addItem(status)
 
         combobox.activated.connect(self.set_label_assignee)
 

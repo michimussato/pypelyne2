@@ -2,7 +2,7 @@ import unittest
 import src.parser.parse_tasks as parse_tasks
 
 
-class TastTester(unittest.TestCase):
+class TaskTester(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):

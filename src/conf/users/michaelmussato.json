@@ -1,0 +1,56 @@
+{
+  "id": 0,
+  "user_enable": true,
+  "name_full": "Michael Mussato",
+  "name_login": "michaelmussato",
+  "name_short": "michi",
+  "password": "123456",
+  "email": "michimussato@gmail.com",
+  "phone": "09877654",
+  "workstation": "cerrotorre.local",
+  "icon": null,
+  "department_roles": [
+    {
+      "department": "rnd",
+      "role": "junior",
+      "reports_to_user_id": 1
+    },
+    {
+      "department": "lrc",
+      "role": "trainee",
+      "reports_to_user_id": 2
+    }
+  ],
+  "project_roles": [
+    {
+      "project": "project_1",
+      "roles": [
+        {
+          "department": "animation",
+          "role": "artist",
+          "reports_to_user_id": 2
+        },
+        {
+          "department": "fx",
+          "role": "trainee",
+          "reports_to_user_id": 2
+        }
+      ]
+    },
+    {
+      "project": "project_2",
+      "roles": [
+        {
+          "department": "lrc",
+          "role": "supervisor",
+          "reports_to_user_id": 2
+        },
+        {
+          "department": "layout",
+          "role": "head",
+          "reports_to_user_id": 2
+        }
+      ]
+    }
+  ]
+}

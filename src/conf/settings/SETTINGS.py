@@ -7,7 +7,7 @@ import platform
 import psutil
 
 # global logging setting
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.CRITICAL)
 
 logging.info('reading settings file')
 
@@ -40,9 +40,17 @@ ICON_THUMBNAIL_PLACEHOLDER = [x for x in os.listdir(os.path.join(ICONS_DIR, 'ran
 ICON_THUMBNAIL_DEFAULT = os.path.join(ICONS_DIR, 'no_thumbnail.png')
 ICON_FORMATS = ['.jpeg', '.jpg', '.png', '.gif']
 EXCLUSIONS = ['.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini']
+DEPARTMENTS = ['LRC', 'RND', 'Layout', 'Animation']
+ROLES = ['Head', 'Lead', 'Senior Artist', 'Artist', 'Junior Artist', 'Trainee', 'Intern', 'Consultant']
 
 DOCK_ANIMATED = False
 DOCK_NESTING = True
+
+# Users module
+USERS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'users')
+USERS_FILES = [x for x in os.listdir(USERS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+USERS_ICONS = os.path.join(USERS_DIR, '_icons')
+USERS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_user_icon.png')
 
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
@@ -55,6 +63,7 @@ CAPTURE_ICON_START = os.path.join(ICONS_DIR, 'capture_start.png')
 CAPTURE_ICON_STOP = os.path.join(ICONS_DIR, 'capture_stop.png')
 KILL_ICON = os.path.join(ICONS_DIR, 'kill.png')
 HIDE_CONSOLE = False
+NODE_STATES = ['on hold', 'start', 'in progress', 'awaiting data', 'awaiting approval', 'approved', 'rejected']
 
 # Output module
 OUTPUTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'outputs')

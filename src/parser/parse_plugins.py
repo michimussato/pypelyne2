@@ -10,10 +10,9 @@ def parse_plugins():
 
     for plugin_file in SETTINGS.PLUGINS_FILES:
 
-        logging.info('processing source file: {0}'.format(plugin_file))
+        logging.info('processing plugin source file: {0}'.format(plugin_file))
         with open(os.path.join(SETTINGS.PLUGINS_DIR, plugin_file), 'r') as f:
             plugin_object = json.load(f)
-        # f.close()
 
         plugin_dict = {}
 
@@ -29,8 +28,8 @@ def parse_plugins():
                 #     architecture_fallback = False
 
                 label = str(plugin_object[u'vendor'] + ' ' +
-                                plugin_object[u'family'] + ' ' +
-                                release[u'release_number'])
+                            plugin_object[u'family'] + ' ' +
+                            release[u'release_number'])
                 # label_x64 = str(plugin_object[u'vendor'] + ' ' +
                 #                 plugin_object[u'family'] + ' ' +
                 #                 release[u'release_number'] +
