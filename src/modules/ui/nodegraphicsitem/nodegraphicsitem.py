@@ -16,35 +16,57 @@ class QLabelCollapseExpand(QtGui.QLabel):
         super(QLabelCollapseExpand, self).__init__()
 
     def mousePressEvent(self, event):
-        self.emit(QtCore.SIGNAL('clicked'))
+        logging.info('mousePressEvent on QLabelCollapseExpand ({0})'.format(self))
+        if event.button() == QtCore.Qt.RightButton:
+            self.emit(QtCore.SIGNAL('clicked'))
+        else:
+            return QtGui.QLabel.mousePressEvent(self, event)
 
 
 class QLabelGif(QtGui.QLabel):
-    def __init__(self):
+    def __init__(self, node=None):
         super(QLabelGif, self).__init__()
 
-        self.setToolTip('right click me to play animation')
+        self.dialog = QtGui.QFileDialog()
+
+        self.node = node
+
+        # self.node.preview
+
+        # self.setToolTip('right click me to play animation')
 
     def mousePressEvent(self, event):
+        logging.info('mousePressEvent on QLabelGif ({0})'.format(self))
+        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
         if event.button() == QtCore.Qt.RightButton:
-            print 'right button press'
-            self.emit(QtCore.SIGNAL('right_mouse_button_pressed'))
+            if keyboard_modifiers == QtCore.Qt.ShiftModifier:
+                # print self.node.preview_icon_path
+                dialog = self.dialog.getOpenFileName(self, 'get preview icon', SETTINGS.PYPELYNE2_ROOT)
+                self.node.update_thumbnail_icon(dialog)
+                # self.dialog.getOpenFileName()
+            else:
+                # print 'right button press'
+                self.emit(QtCore.SIGNAL('right_mouse_button_pressed'))
+
         else:
             return QtGui.QLabel.mousePressEvent(self, event)
 
 
 class QWidgetNode(QtGui.QWidget):
-    def __init__(self):
+    def __init__(self, node=None):
         super(QWidgetNode, self).__init__()
+
+        self.node = node
 
         self.ui = None
 
         self.palette = QtGui.QPalette()
 
+        # TODO: is this needed?
         self.setAcceptDrops(True)
 
     def dragMoveEvent(self, event):
-        print 'dragMove UI'
+        logging.info('dragMoveEvent on QWidgetNode ({0})'.format(self))
 
         return QtGui.QWidget.dragMoveEvent(self, event)
 
@@ -53,12 +75,17 @@ class QWidgetNode(QtGui.QWidget):
         self.ui.setPalette(self.palette)
 
     def wheelEvent(self, event):
+        logging.info('wheelEvent on QWidgetNode ({0})'.format(self))
         event.ignore()
 
 
 class QWidgetTitle(QWidgetNode):
-    def __init__(self):
+    def __init__(self, node=None):
         super(QWidgetTitle, self).__init__()
+
+        self.node = node
+
+        # print dir(self.node)
 
         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
                                           'src',
@@ -71,15 +98,12 @@ class QWidgetTitle(QWidgetNode):
 
         self.ui.label_lock_icon.setText('')
 
-        self.preview_icon = QLabelGif()
+        self.preview_icon = QLabelGif(self.node)
 
         self.setup_title()
 
-        # self.setAcceptDrops(True)
-        # self.ui.label_title_edit.returnPressed.connect(self.update_title)
-
     def setup_title(self):
-        self.ui.label_title.setToolTip('shift click to change name')
+        self.ui.label_title.setToolTip('shift-left click to change name')
         self.ui.label_title.setText('no name')
         self.ui.label_title_edit.setToolTip('enter to submit')
         self.ui.label_title_edit.setText(self.ui.label_title.text())
@@ -90,9 +114,10 @@ class QWidgetTitle(QWidgetNode):
         self.ui.vlayout_preview.addWidget(self.preview_icon)
 
     def mousePressEvent(self, event):
+        logging.info('mousePressEvent on QWidgetTitle ({0})'.format(self))
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
 
-        if keyboard_modifiers == QtCore.Qt.ShiftModifier:
+        if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
             self.ui.label_title.setVisible(False)
             self.ui.label_title_edit.setVisible(True)
             self.ui.label_title_edit.setReadOnly(False)
@@ -113,9 +138,8 @@ class QWidgetElements(QWidgetNode):
 
         self.set_palette()
 
-        # self.setAcceptDrops(True)
-
     def mousePressEvent(self, event):
+        logging.info('mousePressEvent on QWidgetElements ({0})'.format(self))
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
         mouse_modifiers = QtGui.QApplication.mouseButtons()
         if mouse_modifiers == QtCore.Qt.MidButton \
@@ -139,8 +163,6 @@ class QWidgetHeader(QWidgetNode):
 
         self.set_palette()
 
-        # self.setAcceptDrops(True)
-
 
 class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
     def __init__(self):
@@ -149,12 +171,15 @@ class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
         self.setAcceptDrops(True)
 
     def dragMoveEvent(self, event):
+        logging.info('dragMoveEvent on QGraphicsProxyWidgetNoWheel ({0})'.format(self))
         return QtGui.QGraphicsProxyWidget.dragMoveEvent(self, event)
 
     def wheelEvent(self, event):
+        logging.info('wheelEvent on QGraphicsProxyWidgetNoWheel ({0})'.format(self))
         event.ignore()
 
     def mousePressEvent(self, event):
+        logging.info('mousePressEvent on QGraphicsProxyWidgetNoWheel ({0})'.format(self))
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
         mouse_modifiers = QtGui.QApplication.mouseButtons()
         if mouse_modifiers == QtCore.Qt.MidButton \
@@ -165,23 +190,6 @@ class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
         return QtGui.QGraphicsProxyWidget.mouseMoveEvent(self, event)
 
 
-# class NodeGroup(QtGui.QGraphicsItemGroup):
-#     def __init__(self, position, plugin):
-#         super(NodeGroup, self).__init__()
-#
-#         self.setAcceptDrops(True)
-#
-#         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
-#
-#         self.node = NodeGraphicsItem(position, plugin)
-#
-#         self.addToGroup(self.node)
-#
-#     def mousePressEvent(self, event):
-#         print 'press'
-#         return QtGui.QGraphicsItemGroup.mousePressEvent(self, event)
-
-
 class NodeDropArea(QtGui.QGraphicsRectItem):
     def __init__(self, node):
         super(NodeDropArea, self).__init__()
@@ -190,10 +198,6 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
         self.pen = QtGui.QPen(QtGui.QColor(0, 0, 0, 0))
         self.setPen(self.pen)
-        # self.pen_active = QtGui.QPen(QtGui.QColor(0, 255, 0, 255))
-        # self.pen_active.setWidth(3)
-        # self.pen_inactive = QtGui.QPen(QtGui.QColor(255, 0, 0, 0))
-
 
         self.brush = QtGui.QBrush()
         self.setBrush(self.brush)
@@ -213,32 +217,28 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
     def set_active(self):
         self.setBrush(self.brush_active)
-        # self.setPen(self.pen_active)
-        # self.setBrush(QtGui.QBrush(self.brush_active))
         logging.info('setting drop area active on {0}'.format(self))
 
     def set_inactive(self):
         self.setBrush(self.brush_inactive)
-        # self.setPen(self.pen_inactive)
-        # self.setBrush(QtGui.QBrush(self.brush_inactive))
         logging.info('setting drop area inactive on {0}'.format(self))
 
     def dragEnterEvent(self, event):
-        logging.info('dragEnterEvent on {0}'.format(self))
+        logging.info('dragEnterEvent on NodeDropArea ({0})'.format(self))
         if event.mimeData().hasFormat('output/draggable-pixmap'):
             # event.accept()
             self.set_active()
             logging.info('mimeData of event {0} data has format output/draggable-pixmap'.format(event))
 
     def dragLeaveEvent(self, event):
-        logging.info('dragLeaveEvent on {0}'.format(self))
+        logging.info('dragLeaveEvent on NodeDropArea ({0})'.format(self))
         self.set_inactive()
 
     def dragMoveEvent(self, event):
-        logging.info('dragMoveEvent on {0}'.format(self))
+        logging.info('dragMoveEvent on NodeDropArea ({0})'.format(self))
 
     def dropEvent(self, event):
-        logging.info('dropEvent on {0}'.format(self))
+        logging.info('dropEvent on NodeDropArea ({0})'.format(self))
         self.set_inactive()
 
         if event.mimeData().hasFormat('output/draggable-pixmap'):
@@ -254,12 +254,6 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
             logging.info('{0}/{1} --> {2}'.format(unpickled_output_object.output,
                                                   unpickled_output_object.abbreviation,
                                                   self.node))
-
-            # logging.info('{0} ({1}) output dropped onto node {2}'.format(unpickled_output_object.output,
-            #                                                              unpickled_output_object.abbreviation,
-            #                                                              self.node))
-
-            # print dir(unpickled_output_object)
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)
@@ -286,7 +280,6 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
 
         self.setAcceptHoverEvents(True)
         self.setAcceptTouchEvents(True)
-        # self.setAcceptDrops(True)
 
         self.task_color_item = QtGui.QColor(0, 0, 0)
         self.application_color_item = QtGui.QColor(0, 0, 0)
@@ -299,17 +292,13 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.outputs = []
         self.inputs = []
 
-        # self.label = None
         self.label = QtGui.QGraphicsTextItem()
-        # self.label = TitleTextItem()
-        # self.label_bounding_rect = 0
 
-        self.task_color_default = '#FFFFFF'
-        self.task_color = None
-        self.set_task_color()
+
+
         # self.set_label(self.plugin.abbreviation)
 
-        self.widget_title = QWidgetTitle()
+        self.widget_title = QWidgetTitle(self)
         self.widget_elements = QWidgetElements()
 
         self.widget_title_proxy = QGraphicsProxyWidgetNoWheel()
@@ -331,7 +320,15 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.set_task_icon()
         self.set_arch_icon()
         self.set_lock_icon()
+        self.preview_icon_path = None
         self.set_thumbnail_icon()
+        # self.task = None
+        self.task_color_default = '#FFFFFF'
+        self.task_color = None
+        self.set_task_color()
+        self.set_label_task()
+        self.set_label_assignee()
+        self.set_label_status()
 
         self.add_ui_elements()
         self.setup_expand_collapse()
@@ -359,8 +356,8 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.resize()
 
     def setup_expand_collapse(self):
-        self.collapse.setToolTip('collapse combo boxes')
-        self.expand.setToolTip('expand combo boxes')
+        self.collapse.setToolTip('right click to collapse combo boxes')
+        self.expand.setToolTip('right click to expand combo boxes')
 
         self.widget_title.hlayout_expand_collapse.addWidget(self.collapse)
         self.widget_title.hlayout_expand_collapse.addWidget(self.expand)
@@ -396,17 +393,22 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         self.widget_title_proxy.adjustSize()
         self.widget_elements_proxy.adjustSize()
 
+    def update_thumbnail_icon(self, path):
+        path = str(path)
+        self.preview_icon_path = path
+        self.set_thumbnail_icon()
+
     def set_thumbnail_icon(self):
-        img = SETTINGS.ICON_THUMBNAIL_DEFAULT
+        img = self.preview_icon_path or SETTINGS.ICON_THUMBNAIL_DEFAULT
 
         try:
-            img = os.path.join(SETTINGS.ICONS_DIR, 'rand_img', random.choice(SETTINGS.ICON_THUMBNAIL_PLACEHOLDER))
+            img = self.preview_icon_path or os.path.join(SETTINGS.ICONS_DIR, 'rand_img', random.choice(SETTINGS.ICON_THUMBNAIL_PLACEHOLDER))
         except IndexError, e:
             logging.info('no thumbnail for node found: {0}'.format(e))
         finally:
             extension = os.path.splitext(img)[1]
             if extension not in SETTINGS.ICON_FORMATS:
-                logging.info('bad thumbnail: {0}'.format(img))
+                logging.warning('bad thumbnail: {0} (using default)'.format(img))
                 img = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
         img_pixmap = QtGui.QPixmap(img)
@@ -432,6 +434,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
                 movie.setScaledSize(QtCore.QSize(int(round(SETTINGS.PLUGINS_ICON_HEIGHT*2*ratio)),
                                                  SETTINGS.PLUGINS_ICON_HEIGHT*2))
 
+            self.widget_title.preview_icon.setToolTip('right click me to play {0}'.format(img))
             self.widget_title.preview_icon.setMovie(movie)
             self.widget_title.preview_icon.connect(self.widget_title.preview_icon,
                                                    QtCore.SIGNAL('right_mouse_button_pressed'),
@@ -470,7 +473,16 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
             painter.end()
 
+            self.widget_title.preview_icon.setToolTip(img)
             self.widget_title.preview_icon.setPixmap(new_pixmap)
+            self.widget_title.preview_icon.disconnect(self.widget_title.preview_icon,
+                                                      QtCore.SIGNAL('right_mouse_button_pressed'),
+                                                      self.change_movie_state)
+
+    # @property
+    # def preview_icon_path(self):
+    #     print self.widget_title.preview_icon.pixmap()
+    #     # return extension = os.path.splitext(img)[1]
 
     def change_movie_state(self):
         movie = self.widget_title.preview_icon.movie()
@@ -524,6 +536,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             combobox.setItemData(index, task)
 
         combobox.activated.connect(self.set_task_color)
+        combobox.activated.connect(self.set_label_task)
 
     def add_status_menu_items(self):
         combobox = self.widget_elements.combobox_status
@@ -534,14 +547,18 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         for status in states:
             combobox.addItem(status)
 
+        combobox.activated.connect(self.set_label_status)
+
     def add_assignee_menu_items(self):
         combobox = self.widget_elements.combobox_assignee
         combobox.addItem('-select assignee-')
 
-        assignees = ['Mark', 'Peter', 'Frank', 'David']
+        assignees = ['Mark', 'Peter', 'Frank', 'David', 'Hieronimus Bosch']
 
         for status in assignees:
             combobox.addItem(status)
+
+        combobox.activated.connect(self.set_label_assignee)
 
     def add_supervisor_menu_items(self):
         combobox = self.widget_elements.combobox_supervisor
@@ -556,12 +573,14 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         return self.rect
 
     def hoverEnterEvent(self, event):
+        logging.info('hoverEnterEvent on NodeGraphicsItem ({0})'.format(self))
         self.hovered = True
         # logging.info('enter event: {0}'.format(self))
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
     def hoverLeaveEvent(self, event):
+        logging.info('hoverLeaveEvent on NodeGraphicsItem ({0})'.format(self))
         self.hovered = False
         # logging.info('leave event: {0}'.format(self))
 
@@ -629,6 +648,7 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
             input_item.setPos(position)
 
     def resize(self):
+        logging.info('node.resize() ({0})'.format(self))
         # self.reset_proxy_sizes()
         self.rect.setWidth(self.rect.width())
         self.rect.setHeight(self.rect.height())
@@ -700,6 +720,113 @@ class NodeGraphicsItem(QtGui.QGraphicsItem):
         except AttributeError:
             return False
 
+    @property
+    def current_combobox_task(self):
+        """returns the current task color. empty string if task is not set."""
+        combobox = self.widget_elements.combobox_task
+        try:
+            index = self.current_combobox_task_index
+            if index:
+                return combobox.itemData(index).toPyObject().abbreviation
+            else:
+                raise AttributeError
+        except AttributeError:
+            return ''
+
+    @property
+    def current_combobox_assignee_index(self):
+        """returns the combobox_assignee index. False if task is not set"""
+        combobox = self.widget_elements.combobox_assignee
+        if combobox.currentIndex() == 0:
+            return False
+        else:
+            return combobox.currentIndex()
+
+    @property
+    def current_combobox_assignee(self):
+        """returns the current assignee. empty string if task is not set."""
+        combobox = self.widget_elements.combobox_assignee
+        try:
+            index = self.current_combobox_assignee_index
+            if index:
+                return combobox.currentText()
+            else:
+                raise AttributeError
+        except AttributeError:
+            return ''
+
+    @property
+    def current_combobox_status_index(self):
+        """returns the combobox_status index. False if task is not set"""
+        combobox = self.widget_elements.combobox_status
+        if combobox.currentIndex() == 0:
+            return False
+        else:
+            return combobox.currentIndex()
+
+    @property
+    def current_combobox_status(self):
+        """returns the current assignee. empty string if task is not set."""
+        combobox = self.widget_elements.combobox_status
+        try:
+            index = self.current_combobox_status_index
+            if index:
+                return combobox.currentText()
+            else:
+                raise AttributeError
+        except AttributeError:
+            return ''
+
+    # def set_label_assignee(self):
+    #     pass
+
     def set_task_color(self):
+        logging.info('node.set_task_color() ({0})'.format(self))
+        # self.task = self.current_combobox_task
         task_color = self.current_combobox_task_color or self.task_color_default
         self.task_color_item.setNamedColor(task_color)
+
+    def set_label_task(self):
+        logging.info('node.set_label_task() ({0})'.format(self))
+
+        text = self.current_combobox_task
+        label = self.widget_title.label_task
+        label.setText(self.current_combobox_task)
+        if text == '':
+            label.setVisible(False)
+        else:
+            label.setVisible(True)
+
+        self.resize()
+        # task_color = self.current_combobox_task_color or self.task_color_default
+        # self.task_color_item.setNamedColor(task_color)
+
+    def set_label_assignee(self):
+        logging.info('node.set_label_assignee() ({0})'.format(self))
+
+        text = self.current_combobox_assignee
+        label = self.widget_title.label_assignee
+        label.setText(text)
+        if text == '':
+            label.setVisible(False)
+        else:
+            label.setVisible(True)
+
+        self.resize()
+        # task_color = self.current_combobox_task_color or self.task_color_default
+        # self.task_color_item.setNamedColor(task_color)
+
+    def set_label_status(self):
+        logging.info('node.set_label_status() ({0})'.format(self))
+
+        text = self.current_combobox_status
+        label = self.widget_title.label_status
+        label.setText(text)
+        if text == '':
+            label.setVisible(False)
+        else:
+            label.setVisible(True)
+
+        self.resize()
+        # task_color = self.current_combobox_task_color or self.task_color_default
+        # self.task_color_item.setNamedColor(task_color)

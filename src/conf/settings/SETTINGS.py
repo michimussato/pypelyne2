@@ -5,10 +5,11 @@ import sys
 import os
 import platform
 import psutil
-# import src.modules.psutil221 as psutil
 
 # global logging setting
-logging.basicConfig(level=logging.CRITICAL)
+logging.basicConfig(level=logging.INFO)
+
+logging.info('reading settings file')
 
 # system information
 platform = platform.system()
