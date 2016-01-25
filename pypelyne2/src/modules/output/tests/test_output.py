@@ -1,5 +1,5 @@
 import unittest
-import src.parser.parse_outputs as parse_outputs
+import pypelyne2.src.parser.parse_outputs as parse_outputs
 
 
 class OutputTester(unittest.TestCase):

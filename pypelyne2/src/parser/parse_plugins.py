@@ -1,8 +1,8 @@
 import os
 import json
 import logging
-import src.modules.plugin.plugin as class_plugin
-import src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.plugin.plugin as class_plugin
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_plugins():

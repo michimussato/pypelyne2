@@ -1,8 +1,8 @@
 import os
 import PyQt4.QtGui as QtGui
 import PyQt4.uic as uic
-import src.conf.settings.SETTINGS as SETTINGS
-import src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
 
 
 class OutputWidget(QtGui.QWidget):

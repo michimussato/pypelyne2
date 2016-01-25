@@ -1,8 +1,20 @@
+import logging
 import sys
 import os
 import PyQt4.QtGui as QtGui
-import src.modules.ui.mainwindow.mainwindow as mainwindow
-import src.conf.settings.SETTINGS as SETTINGS
+# from PyQt4.QtCore import QT_VERSION_STR
+from PyQt4.QtCore import QT_VERSION_STR
+from PyQt4.Qt import PYQT_VERSION_STR
+from sip import SIP_VERSION_STR
+# from PyQt4.Qt import PYQT_VERSION_STR
+# from sip import SIP_VERSION_STR
+import pypelyne2.src.modules.ui.mainwindow.mainwindow as mainwindow
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+
+
+logging.info('Qt version:'.format(QT_VERSION_STR))
+logging.info('SIP version:'.format(SIP_VERSION_STR))
+logging.info('PyQt version:'.format(PYQT_VERSION_STR))
 
 
 app = QtGui.QApplication(sys.argv)

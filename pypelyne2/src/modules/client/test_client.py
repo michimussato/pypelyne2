@@ -1,5 +1,5 @@
-import src.modules.server.server as server
-import src.modules.client.client as client
+import pypelyne2.src.modules.server.server as server
+import pypelyne2.src.modules.client.client as client
 
 # server = server.Server()
 

@@ -2,10 +2,10 @@ import cPickle
 import logging
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-import src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
-import src.conf.settings.SETTINGS as SETTINGS
-import src.parser.parse_plugins as parse_plugins
-import src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
+import pypelyne2.src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+# import pypelyne2.src.parser.parse_plugins as parse_plugins
+# import pypelyne2.src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
 
 
 class DraggableMark(QtGui.QGraphicsItem):

@@ -5,12 +5,12 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
 import logging
-import src.conf.settings.SETTINGS as SETTINGS
-import src.modules.node.node as node
-import src.modules.ui.compositeicon.compositeicon as compositeicon
-import src.parser.parse_tasks as parse_tasks
-import src.parser.parse_users as parse_users
-import src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.node.node as node
+import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
+import pypelyne2.src.parser.parse_tasks as parse_tasks
+import pypelyne2.src.parser.parse_users as parse_users
+import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 
 
 class QLabelCollapseExpand(QtGui.QLabel):

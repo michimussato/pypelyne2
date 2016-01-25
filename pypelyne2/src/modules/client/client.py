@@ -3,7 +3,7 @@ import logging
 import os
 import json
 import sys
-import src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class Client:

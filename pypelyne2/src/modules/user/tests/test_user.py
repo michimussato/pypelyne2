@@ -1,5 +1,5 @@
 import unittest
-import src.parser.parse_users as parse_users
+import pypelyne2.src.parser.parse_users as parse_users
 
 
 class UserTester(unittest.TestCase):

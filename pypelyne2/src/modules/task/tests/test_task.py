@@ -1,5 +1,5 @@
 import unittest
-import src.parser.parse_tasks as parse_tasks
+import pypelyne2.src.parser.parse_tasks as parse_tasks
 
 
 class TaskTester(unittest.TestCase):

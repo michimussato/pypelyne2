@@ -1,10 +1,10 @@
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-import src.conf.settings.SETTINGS as SETTINGS
-import src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
-import src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plugins
-import src.modules.ui.dockwidget.dockwidget_resourcebar as dockwidget_resourcebar
-import src.modules.ui.dockwidget.dockwidget_output_channels as dockwidget_output_channels
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
+import pypelyne2.src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plugins
+import pypelyne2.src.modules.ui.dockwidget.dockwidget_resourcebar as dockwidget_resourcebar
+import pypelyne2.src.modules.ui.dockwidget.dockwidget_output_channels as dockwidget_output_channels
 
 
 class MainWindow(QtGui.QMainWindow):

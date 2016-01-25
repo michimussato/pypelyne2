@@ -2,7 +2,7 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.QtOpenGL as QtOpenGL
 
-# import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
+# import pypelyne2.src.modules.ui.graphicsscene.graphicsscene as graphicsscene
 
 
 class GraphicsView(QtGui.QGraphicsView):

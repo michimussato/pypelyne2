@@ -7,7 +7,7 @@ import platform
 import psutil
 
 # global logging setting
-logging.basicConfig(level=logging.CRITICAL)
+logging.basicConfig(level=logging.INFO)
 
 logging.info('reading settings file')
 

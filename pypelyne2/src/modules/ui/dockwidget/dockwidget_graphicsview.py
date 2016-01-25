@@ -1,5 +1,5 @@
-import src.modules.ui.dockwidget.dockwidget as dockwidget
-import src.modules.ui.graphicsview.graphicsview as graphicsview
+import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
+import pypelyne2.src.modules.ui.graphicsview.graphicsview as graphicsview
 
 
 class DockWidgetGraphicsView(dockwidget.DockWidget):

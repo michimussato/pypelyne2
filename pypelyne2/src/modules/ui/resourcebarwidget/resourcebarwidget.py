@@ -4,7 +4,7 @@ import psutil
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
-import src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class Communicate(QtCore.QObject):

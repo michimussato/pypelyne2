@@ -2,8 +2,9 @@ import time
 import sys
 import Queue
 import datetime
-import src.conf.settings.SETTINGS as SETTINGS
-from PyQt4 import QtGui, QtCore
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
 
 
 # http://www.ifnamemain.com/posts/2014/Jul/11/screen_capture_1/

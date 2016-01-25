@@ -1,6 +1,6 @@
-from PyQt4 import QtCore
-import src.modules.ui.dockwidget.dockwidget as dockwidget
-import src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
+import PyQt4.QtCore as QtCore
+import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
+import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 
 
 class DockWidgetResourceBar(dockwidget.DockWidget):

@@ -1,6 +1,6 @@
 import sys
 import PyQt4.QtGui as QtGui
-import src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
+import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
 
 
 app = QtGui.QApplication(sys.argv)

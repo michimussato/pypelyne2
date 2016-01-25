@@ -4,9 +4,9 @@ import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
 # import src.conf.settings.SETTINGS as SETTINGS
 # import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
-import src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
-import src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
-import src.parser.parse_plugins as parse_plugins
+import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
+import pypelyne2.src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
+import pypelyne2.src.parser.parse_plugins as parse_plugins
 
 
 app = QtGui.QApplication(sys.argv)

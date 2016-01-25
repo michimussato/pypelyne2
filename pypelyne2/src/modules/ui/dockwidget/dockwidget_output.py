@@ -1,7 +1,7 @@
 import datetime
 import PyQt4.QtCore as QtCore
-import src.modules.ui.dockwidget.dockwidget as dockwidget
-import src.modules.ui.pluginconsole.pluginconsole as pluginconsole
+import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
+import pypelyne2.src.modules.ui.pluginconsole.pluginconsole as pluginconsole
 
 
 class DockWidgetOutput(dockwidget.DockWidget):

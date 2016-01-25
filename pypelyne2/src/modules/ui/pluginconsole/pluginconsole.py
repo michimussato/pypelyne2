@@ -2,9 +2,9 @@ import os
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
-import src.conf.settings.SETTINGS as SETTINGS
-import src.modules.ui.compositeicon.compositeicon as compositeicon
-import src.modules.screengrabber2.screengrabber2 as screengrabber
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
+import pypelyne2.src.modules.screengrabber2.screengrabber2 as screengrabber
 
 
 class PluginConsole(QtGui.QWidget):

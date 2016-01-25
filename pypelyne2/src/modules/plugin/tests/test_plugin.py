@@ -1,5 +1,5 @@
 import unittest
-import src.parser.parse_plugins as parse_plugins
+import pypelyne2.src.parser.parse_plugins as parse_plugins
 
 
 class PluginTester(unittest.TestCase):

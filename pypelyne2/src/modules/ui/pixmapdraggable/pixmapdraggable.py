@@ -2,9 +2,9 @@ import logging
 import cPickle
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-import src.conf.settings.SETTINGS as SETTINGS
-import src.modules.ui.dockwidget.dockwidget_output as dockwidget_output
-import src.modules.ui.compositeicon.compositeicon as compositeicon
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.ui.dockwidget.dockwidget_output as dockwidget_output
+import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 
 
 class PixmapOutput(QtGui.QLabel):

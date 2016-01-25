@@ -1,8 +1,8 @@
-from PyQt4 import QtGui
-from PyQt4 import QtCore
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
 from PyQt4 import uic
 import os
-import src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 # import pathlib
 
 

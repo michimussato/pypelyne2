@@ -1,11 +1,11 @@
-from PyQt4 import QtGui
-from PyQt4 import QtCore
-import src.modules.ui.dockwidget.dockwidget as dockwidget
-# import src.modules.ui.pluginwidget.pluginwidget as pluginwidget
-import src.modules.ui.outputwidget.outputwidget as outputwidget
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
+import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
+# import pypelyne2.src.modules.ui.pluginwidget.pluginwidget as pluginwidget
+import pypelyne2.src.modules.ui.outputwidget.outputwidget as outputwidget
 
-import src.parser.parse_outputs as parse_outputs
-import src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.parser.parse_outputs as parse_outputs
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class DockWidgetOutputChannels(dockwidget.DockWidget):

@@ -1,6 +1,6 @@
 import sys
 import PyQt4.QtGui as QtGui
-import src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
+import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 
 app = QtGui.QApplication(sys.argv)
 # screen_size = QtGui.QApplication.desktop().availableGeometry()

@@ -1,9 +1,9 @@
-from PyQt4 import QtGui
-from PyQt4 import QtCore
-import src.modules.ui.dockwidget.dockwidget as dockwidget
-import src.modules.ui.pluginwidget.pluginwidget as pluginwidget
-import src.parser.parse_plugins as parse_plugins
-import src.conf.settings.SETTINGS as SETTINGS
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
+import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
+import pypelyne2.src.modules.ui.pluginwidget.pluginwidget as pluginwidget
+import pypelyne2.src.parser.parse_plugins as parse_plugins
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class DockWidgetPlugins(dockwidget.DockWidget):

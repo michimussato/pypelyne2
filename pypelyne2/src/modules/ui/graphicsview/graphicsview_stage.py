@@ -1,8 +1,8 @@
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-import src.modules.ui.graphicsview.graphicsview as graphicsview
-import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
-import src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.ui.graphicsview.graphicsview as graphicsview
+import pypelyne2.src.modules.ui.graphicsscene.graphicsscene as graphicsscene
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class GraphicsViewStage(graphicsview.GraphicsView):

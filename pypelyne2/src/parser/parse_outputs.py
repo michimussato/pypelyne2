@@ -1,8 +1,8 @@
 import os
 import json
 import logging
-import src.modules.output.output as class_output
-import src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.output.output as class_output
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_outputs():
