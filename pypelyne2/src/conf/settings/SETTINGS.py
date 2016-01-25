@@ -82,8 +82,6 @@ TASKS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'tasks')
 TASKS_FILE = os.path.join(TASKS_DIR, 'tasks.json')
 # TASKS_FILE = [x for x in os.listdir(TASKS_DIR) if x.endswith('.json')]
 
-
-
 # Server and Client modules
 try:
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -144,9 +142,9 @@ if TOTAL_MEM > 9000:
 disks = psutil.disk_partitions(all=False)
 TOTAL_DSK = int(float(psutil.disk_usage(disks[0].mountpoint).total)/1000/1000/1000)
 
-# Player
-MP3_ROOT = r'/Users/michaelmussato/Music/mp3'
-AUDIO_EXTENSIONS = [ '.mp3', '.m4a', '.mp4' ]
+# # Player
+# MP3_ROOT = r'/Users/michaelmussato/Music/mp3'
+# AUDIO_EXTENSIONS = ['.mp3', '.m4a', '.mp4']
 
 # NodeGraphicsItem
 NODE_ROUNDNESS = 5
