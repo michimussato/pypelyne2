@@ -1,0 +1,5 @@
+# This is an implicit value, here for clarity
+--index-url https://pypi.python.org/simple/
+
+PyQt4==4.11
+psutil==3.4.2
