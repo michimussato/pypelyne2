@@ -5,6 +5,7 @@ class Node(object):
     def __init__(self, id=None):
         super(Node, self).__init__()
         # self.container = False
+        self.dirty = False
         self.children = []  # nodes living inside as children
         self.siblings = []
         self.parents = []  # this node living in what nodes
