@@ -434,6 +434,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                 logging.warning('bad thumbnail: {0} (using default)'.format(img))
                 img = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
+        print img
+
         img_pixmap = QtGui.QPixmap(img)
         pixmap_width = img_pixmap.width()
         pixmap_height = img_pixmap.height()
