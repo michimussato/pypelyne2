@@ -7,18 +7,20 @@
   "password": "654321",
   "email": "pmueller@mail.com",
   "phone": "06454434",
-  "workstation": "everest.local",
+  "workstation": "wkspetermueller.local",
   "icon": null,
   "department_roles": [
     {
-      "department": "lookdev",
+      "department": "rnd",
       "role": "artist",
-      "reports_to_user_id": 1
+      "reports_to_users": [
+        "e2895852-8909-4fa9-b6bd-910698a7db77"
+      ]
     },
     {
       "department": "lrc",
-      "role": "senior lighter",
-      "reports_to_user_id": 2
+      "role": "head",
+      "reports_to_users": []
     }
   ],
   "project_roles": [
@@ -28,12 +30,12 @@
         {
           "department": "animation",
           "role": "trainee",
-          "reports_to_user_id": 2
+          "reports_to_users": 2
         },
         {
           "department": "fx",
           "role": "head",
-          "reports_to_user_id": 2
+          "reports_to_users": 2
         }
       ]
     },
@@ -43,12 +45,12 @@
         {
           "department": "animation",
           "role": "lead",
-          "reports_to_user_id": 2
+          "reports_to_users": 2
         },
         {
           "department": "layout",
           "role": "consultant",
-          "reports_to_user_id": 2
+          "reports_to_users": 2
         }
       ]
     }

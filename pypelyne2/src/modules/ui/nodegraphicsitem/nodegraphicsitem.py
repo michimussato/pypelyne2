@@ -302,6 +302,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.outputs = []
         self.inputs = []
 
+        self._users = []
+
         self.label = QtGui.QGraphicsTextItem()
 
         # self.set_label(self.plugin.abbreviation)
@@ -313,7 +315,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.widget_elements_proxy = QGraphicsProxyWidgetNoWheel()
 
         self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
-        self.widget_title.vlayout_title.addWidget(self.progress_bar)
+        self.widget_title.vlayout_performance.addWidget(self.progress_bar)
+        # self.widget_title.vlayout_title.addWidget(self.progress_bar)
         self.widget_title.vlayout_title.insertStretch(-1)
         # self.progress_bar_proxy = QGraphicsProxyWidgetNoWheel()
 
@@ -575,9 +578,9 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         index = 0
 
-        users = parse_users.get_users()
+        # users = parse_users.get_users()
 
-        for user in users:
+        for user in self.get_users:
             index += 1
             combobox.addItem(user.name_full)
             combobox.setItemData(index, user.id)
@@ -588,6 +591,119 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         #     combobox.addItem(status)
 
         combobox.activated.connect(self.set_label_assignee)
+        combobox.activated.connect(self.set_combobox_department)
+        combobox.activated.connect(self.clear_reports_to)
+        # combobox.activated.connect(self.set_label_report_to)
+
+    def clear_reports_to(self):
+        layout_reports_to = self.widget_elements.vlayout_reports_to
+
+        # self.clear_reports_to()
+
+        while layout_reports_to.count():
+            child = layout_reports_to.takeAt(0)
+            if child.widget() is not None:
+                child.widget().deleteLater()
+
+    @property
+    def get_users(self):
+        if not bool(self._users):
+            print 'getting users...'
+            self._users = parse_users.get_users()
+        return self._users
+
+    def set_combobox_department(self):
+
+        # index = 0
+        combobox_department = self.widget_elements.combobox_department
+
+        combobox_department.clear()
+
+        combobox_department.addItem('-select department-')
+
+        if self.current_combobox_assignee_index == 0:
+            return
+
+        else:
+
+            index = 0
+
+            # users = parse_users.get_users()
+            combobox_assignee = self.widget_elements.combobox_assignee
+
+            data = combobox_assignee.itemData(self.current_combobox_assignee_index)
+
+            id = data.toPyObject()
+            for user in self.get_users:
+                if user.id == id:
+                    reports_to_list = user.department_reports_to
+
+            for reports_to in reports_to_list:
+                index += 1
+                # print reports_to[u'department']
+                # print reports_to
+                combobox_department.addItem(reports_to[u'department'])
+                combobox_department.setItemData(index, reports_to[u'reports_to_users'])
+
+            combobox_department.activated.connect(self.set_label_report_to)
+
+    def set_label_report_to(self):
+        # users = parse_users.get_users()
+        combobox_assignee = self.widget_elements.combobox_assignee
+        combobox_department = self.widget_elements.combobox_department
+        layout_reports_to = self.widget_elements.vlayout_reports_to
+
+        self.clear_reports_to()
+
+        # vl = self.ui.verticalLayout
+        while layout_reports_to.count():
+            child = layout_reports_to.takeAt(0)
+            if child.widget() is not None:
+                child.widget().deleteLater()
+            # elif child.layout() is not None:
+            #     clearLayout(child.layout())
+
+
+
+        # children = layout_reports_to.children()
+        #
+        # for child in children:
+        #     layout_reports_to.removeWidget(child)
+
+        if self.current_combobox_deparment_index == 0:
+            widget = QtGui.QLabel('-none-')
+
+            layout_reports_to.addWidget(widget)
+            # return
+
+        else:
+
+            print self.current_combobox_deparment_index
+            data = combobox_department.itemData(self.current_combobox_deparment_index)
+            print data.toPyObject()
+
+            reports_to_id_list = data.toPyObject()
+
+            for reports_to_id in reports_to_id_list:
+                widget = QtGui.QLabel(reports_to_id)
+
+                layout_reports_to.addWidget(widget)
+
+                # print reports_to_id
+
+        layout_reports_to.addStretch()
+
+        self.resize()
+
+
+
+
+
+
+
+
+
+
 
     def add_supervisor_menu_items(self):
         combobox = self.widget_elements.combobox_supervisor
@@ -766,6 +882,15 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def current_combobox_assignee_index(self):
         """returns the combobox_assignee index. False if task is not set"""
         combobox = self.widget_elements.combobox_assignee
+        if combobox.currentIndex() == 0:
+            return False
+        else:
+            return combobox.currentIndex()
+
+    @property
+    def current_combobox_deparment_index(self):
+        """returns the deparment index. False if assignee is not set"""
+        combobox = self.widget_elements.combobox_department
         if combobox.currentIndex() == 0:
             return False
         else:

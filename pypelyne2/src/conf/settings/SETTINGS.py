@@ -1,10 +1,15 @@
-import PyQt4.QtGui as QtGui
 import logging
 import socket
 import sys
 import os
 import platform
 import psutil
+import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
+import sip as sip
+
+
+here = os.path.dirname(os.path.realpath(__file__))
 
 # global logging setting
 logging.basicConfig(level=logging.INFO)
@@ -12,8 +17,8 @@ logging.basicConfig(level=logging.INFO)
 logging.info('reading settings file')
 
 # system information
-platform = platform.system()
-OPERATING_SYSTEM = str(platform).lower()
+platform_os = platform.system()
+OPERATING_SYSTEM = str(platform_os).lower()
 ARCHITECTURES = ['x32', 'x64']
 ARCHITECTURE = None
 if sys.maxsize <= 2**32:
@@ -21,7 +26,10 @@ if sys.maxsize <= 2**32:
 elif sys.maxsize > 2**32:
     ARCHITECTURE = ARCHITECTURES[1]
 
-here = os.path.dirname(os.path.realpath(__file__))
+VERSION_PYTHON = platform.python_version()
+VERSION_QT = QtCore.QT_VERSION_STR
+VERSION_PYQT = QtCore.PYQT_VERSION_STR
+VERSION_SIP = sip.SIP_VERSION_STR
 
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 QSS_ENABLE = False

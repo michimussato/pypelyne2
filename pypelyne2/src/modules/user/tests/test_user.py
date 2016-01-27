@@ -19,7 +19,8 @@ class UserTester(unittest.TestCase):
             print '%s = %s' % (attribute, getattr(self.users[0], attribute))
 
     def test_properties(self):
-        print self.users[0].id
-        print self.users[0].project_roles
-        print self.users[0].department_roles
-        print self.users[0].name_login
+        print 'id =', self.users[0].id
+        print 'project_roles =', self.users[0].project_roles
+        print 'department_roles =', self.users[0].department_roles
+        print 'name_login =', self.users[0].name_login
+        print 'department_reports_to =', self.users[0].department_reports_to

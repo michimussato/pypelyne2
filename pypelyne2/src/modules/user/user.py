@@ -26,3 +26,11 @@ class User(object):
     @property
     def name_full(self):
         return self.__dict__[u'name_full']
+
+    @property
+    def department_reports_to(self):
+        department_reports_to_list = []
+        for department in self.department_roles:
+            department_reports_to_list.append(department)
+
+        return department_reports_to_list

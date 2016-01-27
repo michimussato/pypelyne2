@@ -1,29 +1,32 @@
 {
-  "id": "a7029f30-4686-4f51-bbd6-fc340532d3a1",
+  "id": "e2895852-8909-4fa9-b6bd-910698a7db77",
   "user_enable": true,
-  "name_full": "Michael Mussato",
-  "name_login": "michaelmussato",
-  "name_short": "michi",
+  "name_full": "Samuel King",
+  "name_login": "samuelking",
+  "name_short": "sam",
   "password": "123456",
-  "email": "michimussato@gmail.com",
+  "email": "samuelking@mail.com",
   "phone": "09877654",
-  "workstation": "cerrotorre.local",
+  "workstation": "wkssamking.local",
   "icon": null,
   "department_roles": [
     {
       "department": "rnd",
-      "role": "junior",
+      "role": "head",
+      "reports_to_users": []
+    },
+    {
+      "department": "lrc",
+      "role": "supervisor",
       "reports_to_users": [
-        "e2895852-8909-4fa9-b6bd-910698a7db77",
         "1b61f2a0-e2e2-4809-8eed-b7ef8e3966fb"
       ]
     },
     {
-      "department": "lrc",
-      "role": "trainee",
+      "department": "animation",
+      "role": "supervisor",
       "reports_to_users": [
-        "1b61f2a0-e2e2-4809-8eed-b7ef8e3966fb",
-        "e2895852-8909-4fa9-b6bd-910698a7db77"
+        "1b61f2a0-e2e2-4809-8eed-b7ef8e3966fb"
       ]
     }
   ],
