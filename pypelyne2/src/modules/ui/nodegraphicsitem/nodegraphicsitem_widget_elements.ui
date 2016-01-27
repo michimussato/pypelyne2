@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>279</width>
-    <height>469</height>
+    <width>330</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -680,15 +680,15 @@
              </spacer>
             </item>
             <item>
-             <widget class="QCalendarWidget" name="calendarWidget">
-              <property name="firstDayOfWeek">
-               <enum>Qt::Monday</enum>
+             <widget class="QDateEdit" name="dateEdit">
+              <property name="alignment">
+               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-              <property name="horizontalHeaderFormat">
-               <enum>QCalendarWidget::SingleLetterDayNames</enum>
+              <property name="displayFormat">
+               <string>dddd, MMMM yyyy</string>
               </property>
-              <property name="verticalHeaderFormat">
-               <enum>QCalendarWidget::NoVerticalHeader</enum>
+              <property name="calendarPopup">
+               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -825,7 +825,7 @@
                   <rect>
                    <x>0</x>
                    <y>0</y>
-                   <width>198</width>
+                   <width>249</width>
                    <height>76</height>
                   </rect>
                  </property>
