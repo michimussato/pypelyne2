@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>451</width>
-    <height>64</height>
+    <width>395</width>
+    <height>83</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -20,12 +20,6 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="margin">
-    <number>2</number>
-   </property>
-   <property name="spacing">
-    <number>2</number>
-   </property>
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="vlayout_performance">
      <property name="spacing">
@@ -76,19 +70,6 @@
                </item>
               </layout>
              </item>
-             <item>
-              <spacer name="verticalSpacer">
-               <property name="orientation">
-                <enum>Qt::Vertical</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>0</width>
-                 <height>0</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
             </layout>
            </item>
            <item>
@@ -110,98 +91,101 @@
           </layout>
          </item>
          <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_13">
+          <layout class="QVBoxLayout" name="verticalLayout_2">
            <property name="spacing">
             <number>2</number>
            </property>
            <item>
-            <widget class="QWidget" name="widget_expand_collapse" native="true">
-             <layout class="QGridLayout" name="gridLayout_4">
-              <property name="margin">
-               <number>0</number>
-              </property>
-              <property name="spacing">
-               <number>0</number>
-              </property>
-              <item row="0" column="0">
-               <layout class="QHBoxLayout" name="hlayout_expand_collapse">
-                <property name="spacing">
-                 <number>2</number>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="label_lock_icon">
+               <property name="text">
+                <string>&lt;lock&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_expand_collapse" native="true">
+               <layout class="QGridLayout" name="gridLayout_4">
+                <property name="margin">
+                 <number>0</number>
                 </property>
+                <property name="spacing">
+                 <number>0</number>
+                </property>
+                <item row="0" column="0">
+                 <layout class="QHBoxLayout" name="hlayout_expand_collapse">
+                  <property name="spacing">
+                   <number>0</number>
+                  </property>
+                 </layout>
+                </item>
                </layout>
-              </item>
-             </layout>
-            </widget>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_title">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <property name="font">
+                <font>
+                 <pointsize>15</pointsize>
+                 <weight>75</weight>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="text">
+                <string>&lt;placeholder_title&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="label_title_edit">
+               <property name="text">
+                <string>&lt;title_edit&gt;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_5">
+               <property name="orientation">
+                <enum>Qt::Horizontal</enum>
+               </property>
+               <property name="sizeType">
+                <enum>QSizePolicy::MinimumExpanding</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
            </item>
            <item>
-            <widget class="QLabel" name="label_lock_icon">
-             <property name="text">
-              <string>&lt;lock&gt;</string>
+            <spacer name="verticalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
              </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label_title">
-             <property name="minimumSize">
+             <property name="sizeHint" stdset="0">
               <size>
                <width>0</width>
                <height>0</height>
               </size>
              </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>15</pointsize>
-               <weight>75</weight>
-               <bold>true</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>&lt;placeholder_title&gt;</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="label_title_edit">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>0</height>
-              </size>
-             </property>
-             <property name="maximumSize">
-              <size>
-               <width>16777215</width>
-               <height>16777215</height>
-              </size>
-             </property>
-             <property name="font">
-              <font>
-               <weight>50</weight>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="text">
-              <string>&lt;title_edit&gt;</string>
-             </property>
-             <property name="frame">
-              <bool>true</bool>
-             </property>
-             <property name="dragEnabled">
-              <bool>true</bool>
-             </property>
-            </widget>
+            </spacer>
            </item>
            <item>
             <spacer name="horizontalSpacer">
@@ -237,8 +221,11 @@
         </spacer>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
+        <layout class="QVBoxLayout" name="status_layout">
          <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
           <number>0</number>
          </property>
          <item>
@@ -262,25 +249,29 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_status">
+          <widget class="QLineEdit" name="label_status">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>14</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>10</pointsize>
-             <weight>50</weight>
-             <bold>false</bold>
             </font>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
            </property>
            <property name="text">
             <string>&lt;status&gt;</string>
            </property>
+           <property name="frame">
+            <bool>false</bool>
+           </property>
            <property name="alignment">
             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
            </property>
           </widget>
          </item>
@@ -332,30 +323,14 @@
          </property>
          <property name="sizeHint" stdset="0">
           <size>
-           <width>13</width>
-           <height>13</height>
+           <width>3</width>
+           <height>0</height>
           </size>
          </property>
         </spacer>
        </item>
        <item>
         <layout class="QVBoxLayout" name="vlayout_preview"/>
-       </item>
-       <item>
-        <spacer name="horizontalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-         <property name="sizeType">
-          <enum>QSizePolicy::Fixed</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>13</width>
-           <height>13</height>
-          </size>
-         </property>
-        </spacer>
        </item>
       </layout>
      </item>

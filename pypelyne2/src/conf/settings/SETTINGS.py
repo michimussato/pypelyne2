@@ -71,7 +71,14 @@ CAPTURE_ICON_START = os.path.join(ICONS_DIR, 'capture_start.png')
 CAPTURE_ICON_STOP = os.path.join(ICONS_DIR, 'capture_stop.png')
 KILL_ICON = os.path.join(ICONS_DIR, 'kill.png')
 HIDE_CONSOLE = False
-NODE_STATES = ['on hold', 'start', 'in progress', 'awaiting data', 'awaiting approval', 'approved', 'rejected']
+NODE_STATES = [{'state': 'on hold', 'color': '#FF0000'},
+               {'state': 'start', 'color': '#00FF00'},
+               {'state': 'in progress', 'color': '#FFFF00'},
+               {'state': 'awaiting data', 'color': '#AAAAFF'},
+               {'state': 'awaiting approval', 'color': '#FFFF00'},
+               {'state': 'approved', 'color': '#00FF00'},
+               {'state': 'rejected', 'color': '#FF0000'}]
+# NODE_STATES = [{'state': 'on hold', 'color': '#FFC6C6'}, 'start', 'in progress', 'awaiting data', 'awaiting approval', 'approved', 'rejected']
 
 # Output module
 OUTPUTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'outputs')

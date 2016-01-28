@@ -1,5 +1,4 @@
 import os
-import random
 import cPickle
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
@@ -8,8 +7,6 @@ import logging
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.modules.node.node as node
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
-import pypelyne2.src.parser.parse_tasks as parse_tasks
-import pypelyne2.src.parser.parse_users as parse_users
 import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 
 
@@ -116,8 +113,8 @@ class QWidgetTitle(QWidgetNode):
         self.ui.label_title_edit.setText(self.ui.label_title.text())
         # self.emit(QtCore.SIGNAL('activated'))
 
-        self.ui.label_title.setVisible(True)
-        self.ui.label_title_edit.setVisible(False)
+        self.ui.label_title.setVisible(False)
+        self.ui.label_title_edit.setVisible(True)
 
         self.ui.vlayout_preview.addWidget(self.preview_icon)
 
@@ -201,10 +198,10 @@ class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
 
 
 class NodeDropArea(QtGui.QGraphicsRectItem):
-    def __init__(self, node):
+    def __init__(self, node_object):
         super(NodeDropArea, self).__init__()
 
-        self.node = node
+        self.node = node_object
 
         self.pen = QtGui.QPen(QtGui.QColor(0, 0, 0, 0))
         self.setPen(self.pen)
@@ -253,7 +250,6 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
         if event.mimeData().hasFormat('output/draggable-pixmap'):
             event.accept()
-            # pos = event.scenePos()
 
             data = event.mimeData().data('output/draggable-pixmap')
             data = data.data()
@@ -302,7 +298,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.outputs = []
         self.inputs = []
 
-        self._users = []
+        # self._users = []
 
         self.label = QtGui.QGraphicsTextItem()
 
@@ -315,7 +311,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.widget_elements_proxy = QGraphicsProxyWidgetNoWheel()
 
         self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
-        self.widget_title.vlayout_performance.addWidget(self.progress_bar)
+        # self.widget_title.status_layout.insertWidget(0, self.progress_bar)
+        # self.widget_title.vlayout_performance.addWidget(self.progress_bar)
         # self.widget_title.vlayout_title.addWidget(self.progress_bar)
         self.widget_title.vlayout_title.insertStretch(-1)
         # self.progress_bar_proxy = QGraphicsProxyWidgetNoWheel()
@@ -353,7 +350,23 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
         self.set_ui_widgets_position()
+
+        # self.add_qgraphicsstuff()
+
         self.resize()
+
+    # def add_qgraphicsstuff(self):
+    #     # layout = QtGui.QGraphicsLayoutItem
+    #     widget = QtGui.QGraphicsWidget()
+    #
+    #     layout = QtGui.QGraphicsLinearLayout()
+    #
+    #     for i in range(10):
+    #         label = QtGui.QPushButton(str(i))
+    #         # w = self.scene().addWidget(label)
+    #         layout.addItem(w)
+    #
+    #     widget.setLayout(layout)
 
     # def init_title(self):
     #     title = self.widget_title.label_title
@@ -422,26 +435,15 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         # self.resize()
 
     def set_thumbnail_icon(self):
-        img = self.preview_icon_path or SETTINGS.ICON_THUMBNAIL_DEFAULT
 
-        try:
-            img = self.preview_icon_path or os.path.join(SETTINGS.ICONS_DIR, 'rand_img', random.choice(SETTINGS.ICON_THUMBNAIL_PLACEHOLDER))
-        except IndexError, e:
-            logging.info('no thumbnail for node found: {0}'.format(e))
-        finally:
-            extension = os.path.splitext(img)[1]
-            if extension not in SETTINGS.ICON_FORMATS:
-                logging.warning('bad thumbnail: {0} (using default)'.format(img))
-                img = SETTINGS.ICON_THUMBNAIL_DEFAULT
+        thumbnail_dict = self.get_thumbnail_icon
 
-        print img
-
-        img_pixmap = QtGui.QPixmap(img)
+        img_pixmap = QtGui.QPixmap(thumbnail_dict[u'thumbnail'])
         pixmap_width = img_pixmap.width()
         pixmap_height = img_pixmap.height()
 
-        if extension == '.gif' and SETTINGS.ENABLE_GIF_PREVIEW:
-            movie = QtGui.QMovie(img)
+        if thumbnail_dict[u'extension'] == '.gif' and SETTINGS.ENABLE_GIF_PREVIEW:
+            movie = QtGui.QMovie(thumbnail_dict[u'thumbnail'])
             movie.setCacheMode(movie.CacheAll)
 
             if pixmap_width > pixmap_height:
@@ -459,7 +461,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                 movie.setScaledSize(QtCore.QSize(int(round(SETTINGS.PLUGINS_ICON_HEIGHT*2*ratio)),
                                                  SETTINGS.PLUGINS_ICON_HEIGHT*2))
 
-            self.widget_title.preview_icon.setToolTip('right click me to play {0}'.format(img))
+            self.widget_title.preview_icon.setToolTip('right click me to play {0}'.format(thumbnail_dict[u'thumbnail']))
             self.widget_title.preview_icon.setMovie(movie)
             self.widget_title.preview_icon.connect(self.widget_title.preview_icon,
                                                    QtCore.SIGNAL('right_mouse_button_pressed'),
@@ -498,16 +500,11 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
             painter.end()
 
-            self.widget_title.preview_icon.setToolTip(img)
+            self.widget_title.preview_icon.setToolTip(thumbnail_dict[u'thumbnail'])
             self.widget_title.preview_icon.setPixmap(new_pixmap)
             self.widget_title.preview_icon.disconnect(self.widget_title.preview_icon,
                                                       QtCore.SIGNAL('right_mouse_button_pressed'),
                                                       self.change_movie_state)
-
-    # @property
-    # def preview_icon_path(self):
-    #     print self.widget_title.preview_icon.pixmap()
-    #     # return extension = os.path.splitext(img)[1]
 
     def change_movie_state(self):
         movie = self.widget_title.preview_icon.movie()
@@ -550,13 +547,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         index = 0
 
-        tasks = parse_tasks.get_tasks()
-
-        for task in tasks:
+        for task in self.get_tasks:
             index += 1
-            # menu_item = QtGui.QAction()
-            # menu_item.setText(task.task)
-            # menu_item.setData(task)
             combobox.addItem(task.task)
             combobox.setItemData(index, task)
 
@@ -567,10 +559,12 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         combobox = self.widget_elements.combobox_status
         combobox.addItem('-select status-')
 
-        states = ['on hold', 'ready', 'in progress', 'awaiting approval', 'approved', 'rejected']
+        index = 0
 
         for status in SETTINGS.NODE_STATES:
-            combobox.addItem(status)
+            index += 1
+            combobox.addItem(status[u'state'])
+            combobox.setItemData(index, status[u'color'])
 
         combobox.activated.connect(self.set_label_status)
 
@@ -580,43 +574,25 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         index = 0
 
-        # users = parse_users.get_users()
-
         for user in self.get_users:
             index += 1
             combobox.addItem(user.name_full)
             combobox.setItemData(index, user.id)
 
-        # assignees = ['Mark', 'Peter', 'Frank', 'David', 'Hieronimus Bosch']
-        #
-        # for status in assignees:
-        #     combobox.addItem(status)
-
         combobox.activated.connect(self.set_label_assignee)
         combobox.activated.connect(self.set_combobox_department)
         combobox.activated.connect(self.clear_reports_to)
-        # combobox.activated.connect(self.set_label_report_to)
 
     def clear_reports_to(self):
         layout_reports_to = self.widget_elements.vlayout_reports_to
-
-        # self.clear_reports_to()
 
         while layout_reports_to.count():
             child = layout_reports_to.takeAt(0)
             if child.widget() is not None:
                 child.widget().deleteLater()
 
-    @property
-    def get_users(self):
-        if not bool(self._users):
-            print 'getting users...'
-            self._users = parse_users.get_users()
-        return self._users
-
     def set_combobox_department(self):
 
-        # index = 0
         combobox_department = self.widget_elements.combobox_department
 
         combobox_department.clear()
@@ -627,59 +603,40 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             return
 
         else:
-
             index = 0
 
-            # users = parse_users.get_users()
             combobox_assignee = self.widget_elements.combobox_assignee
 
             data = combobox_assignee.itemData(self.current_combobox_assignee_index)
 
-            id = data.toPyObject()
+            user_id = data.toPyObject()
             for user in self.get_users:
-                if user.id == id:
+                if user.id == user_id:
                     reports_to_list = user.department_reports_to
 
             for reports_to in reports_to_list:
                 index += 1
-                # print reports_to[u'department']
-                # print reports_to
                 combobox_department.addItem(reports_to[u'department'])
                 combobox_department.setItemData(index, reports_to[u'reports_to_users'])
 
             combobox_department.activated.connect(self.set_label_report_to)
 
     def set_label_report_to(self):
-        # users = parse_users.get_users()
-        combobox_assignee = self.widget_elements.combobox_assignee
         combobox_department = self.widget_elements.combobox_department
         layout_reports_to = self.widget_elements.vlayout_reports_to
 
         self.clear_reports_to()
 
-        # vl = self.ui.verticalLayout
         while layout_reports_to.count():
             child = layout_reports_to.takeAt(0)
             if child.widget() is not None:
                 child.widget().deleteLater()
-            # elif child.layout() is not None:
-            #     clearLayout(child.layout())
-
-
-
-        # children = layout_reports_to.children()
-        #
-        # for child in children:
-        #     layout_reports_to.removeWidget(child)
 
         if self.current_combobox_deparment_index == 0:
             widget = QtGui.QLabel('-none-')
-
             layout_reports_to.addWidget(widget)
-            # return
 
         else:
-
             print self.current_combobox_deparment_index
             data = combobox_department.itemData(self.current_combobox_deparment_index)
             print data.toPyObject()
@@ -691,21 +648,9 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
                 layout_reports_to.addWidget(widget)
 
-                # print reports_to_id
-
         layout_reports_to.addStretch()
 
         self.resize()
-
-
-
-
-
-
-
-
-
-
 
     def add_supervisor_menu_items(self):
         combobox = self.widget_elements.combobox_supervisor
@@ -777,11 +722,11 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         painter.drawRoundedRect(self.rect, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
 
-        for i in self.output_list:
-            i.setPos(self.boundingRect().width() - i.rect.width(), i.pos().y())
+        # for i in self.output_list:
+        #     i.setPos(self.boundingRect().width() - i.rect.width(), i.pos().y())
 
-        self.arrange_outputs()
-        self.arrange_inputs()
+        # self.arrange_outputs()
+        # self.arrange_inputs()
 
     def arrange_outputs(self):
         for output in self.outputs:
@@ -933,13 +878,11 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         except AttributeError:
             return ''
 
-    # def set_label_assignee(self):
-    #     pass
-
     def set_task_color(self):
         logging.info('node.set_task_color() ({0})'.format(self))
         # self.task = self.current_combobox_task
         task_color = self.current_combobox_task_color or self.task_color_default
+        print task_color
         self.task_color_item.setNamedColor(task_color)
 
     def set_label_task(self):
@@ -975,12 +918,26 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def set_label_status(self):
         logging.info('node.set_label_status() ({0})'.format(self))
 
+        combobox = self.widget_elements.combobox_status
+
         text = self.current_combobox_status
         label = self.widget_title.label_status
         label.setText(text)
+        palette = QtGui.QPalette()
         if text == '':
             label.setVisible(False)
         else:
+            print self.current_combobox_status_index
+            data = combobox.itemData(self.current_combobox_status_index)
+
+            color_value = data.toPyObject()
+            color = QtGui.QColor(0, 0, 0, 255)
+            color.setNamedColor(color_value)
+
+            print color
+            print color_value
+            palette.setColor(QtGui.QPalette.Base, color)
+            label.setPalette(palette)
             label.setVisible(True)
 
         self.resize()
