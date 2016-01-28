@@ -11,6 +11,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.scene = graphicsscene.GraphicsScene(self)
         self.setScene(self.scene)
 
+        self.cursor = QtGui.QCursor(QtCore.Qt.CrossCursor)
+        # QtGui.QApplication.setCur(QtGui.QCursor(QtCore.Qt.CrossCursor))
+        self.viewport().setCursor(self.cursor)
+
         self.setMouseTracking(False)
 
         self.setDragMode(self.RubberBandDrag)
@@ -57,6 +61,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         if mouse_modifiers == QtCore.Qt.MidButton \
                 or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
+            # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.SizeAllCursor))
             self.setDragMode(self.NoDrag)
             group = self.scene.createItemGroup(self.scene.node_items)
             self.point.setPos(event_pos_scene)
@@ -68,15 +73,32 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         self.mouse_position_previous = event_pos_scene
 
+        # QtGui.QApplication.restoreOverrideCursor()
+
         return QtGui.QGraphicsView.mouseMoveEvent(self, event)
 
+    # def mousePressEvent(self, event):
+    #     mouse_modifiers = QtGui.QApplication.mouseButtons()
+    #     keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+    #
+    #     if mouse_modifiers == QtCore.Qt.MidButton \
+    #             or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
+    #         QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.SizeAllCursor))
+    #
+    #     return QtGui.QGraphicsView.mousePressEvent(self, event)
+    #
     # def mouseReleaseEvent(self, event):
-    #     if self.dragMode() != self.RubberBandDrag:
-    #         self.setDragMode(self.RubberBandDrag)
-
-        # return QtGui.QGraphicsView.mousePressEvent(self, event)
+    #     QtGui.QApplication.restoreOverrideCursor()
+    # #     if self.dragMode() != self.RubberBandDrag:
+    # #         self.setDragMode(self.RubberBandDrag)
+    #
+    #     return QtGui.QGraphicsView.mousePressEvent(self, event)
 
     def wheelEvent(self, event):
+        # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
+
+        self.adjust_navigator()
+
         group = self.scene.createItemGroup(self.scene.node_items)
 
         # absolute pos of mouse cursor in scene
@@ -98,6 +120,8 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             self.scene.global_scale *= (1-SETTINGS.ZOOM_INCREMENT)
 
         self.scene.destroyItemGroup(group)
+
+        # QtGui.QApplication.restoreOverrideCursor()
 
         return QtGui.QGraphicsView.wheelEvent(self, event)
 

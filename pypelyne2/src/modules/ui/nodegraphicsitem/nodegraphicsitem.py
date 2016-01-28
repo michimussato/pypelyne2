@@ -461,7 +461,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                 movie.setScaledSize(QtCore.QSize(int(round(SETTINGS.PLUGINS_ICON_HEIGHT*2*ratio)),
                                                  SETTINGS.PLUGINS_ICON_HEIGHT*2))
 
-            self.widget_title.preview_icon.setToolTip('right click me to play {0}'.format(thumbnail_dict[u'thumbnail']))
+            self.widget_title.preview_icon.setToolTip('keep right click pressed to play gif')
             self.widget_title.preview_icon.setMovie(movie)
             self.widget_title.preview_icon.connect(self.widget_title.preview_icon,
                                                    QtCore.SIGNAL('right_mouse_button_pressed'),
@@ -500,7 +500,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
             painter.end()
 
-            self.widget_title.preview_icon.setToolTip(thumbnail_dict[u'thumbnail'])
+            self.widget_title.preview_icon.setToolTip('this is not a gif animation')
             self.widget_title.preview_icon.setPixmap(new_pixmap)
             self.widget_title.preview_icon.disconnect(self.widget_title.preview_icon,
                                                       QtCore.SIGNAL('right_mouse_button_pressed'),

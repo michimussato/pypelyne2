@@ -13,6 +13,7 @@ class DraggableMark(QtGui.QGraphicsItem):
         super(DraggableMark, self).__init__(None, scene)
         # self.setObjectName( 'fuck' )
         self.setFlags(QtGui.QGraphicsItem.ItemIsSelectable | QtGui.QGraphicsItem.ItemIsMovable)
+
         # now = datetime.datetime.now()
         # self.setData( 0, 'Das ist mein Name' )
         # self.setData( 1, 'fuck' )

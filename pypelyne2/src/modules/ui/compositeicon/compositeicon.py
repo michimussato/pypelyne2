@@ -74,6 +74,7 @@ class CompositeIcon(QtGui.QPixmap):
         self.collapse_icon = QtGui.QPixmap(SETTINGS.ICON_COLLAPSE).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE,
                                                                                   QtCore.Qt.SmoothTransformation)
 
+        # TODO: cursor?
         if self.plugin.type == 'submitter':
             self.overlay_icon = QtGui.QPixmap(SETTINGS.ICON_SUBMITTER)
         elif self.plugin.type == 'plugin':

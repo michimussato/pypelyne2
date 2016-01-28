@@ -42,6 +42,20 @@ class PixmapOutput(QtGui.QLabel):
 
         return QtGui.QLabel.mouseMoveEvent(self, event)
 
+    def enterEvent(self, *args, **kwargs):
+        # print 'entered'
+        QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+        # self.setPixmap(self.pixmap_hovered)
+
+        # self.emit(QtCore.SIGNAL('PixmapOutput'))
+
+    def leaveEvent(self, *args, **kwargs):
+        QtGui.QApplication.restoreOverrideCursor()
+        # self.setPixmap(self.pixmap)
+        # print 'left'
+
+        # self.emit(QtCore.SIGNAL('PixmapOutput'))
+
 
 # pixmap icon base class
 class PixmapBase(QtGui.QLabel):
@@ -63,9 +77,13 @@ class PixmapBase(QtGui.QLabel):
         # print 'entered'
         self.setPixmap(self.pixmap_hovered)
 
+        self.emit(QtCore.SIGNAL('PixmapBaseHoverEnter'))
+
     def leaveEvent(self, *args, **kwargs):
         self.setPixmap(self.pixmap)
         # print 'left'
+
+        self.emit(QtCore.SIGNAL('PixmapBaseHoverLeave'))
 
     def started(self, plugin, dock):
         if SETTINGS.SHOW_OUTPUT_WINDOWS:
@@ -121,6 +139,19 @@ class PixmapDragAndDrop(PixmapBase):
     def __init__(self, plugin=None, mainwindow=None, *args, **kwargs):
         super(PixmapDragAndDrop, self).__init__(plugin, mainwindow, *args, **kwargs)
 
+        self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
+
+        self.connect(self, QtCore.SIGNAL('PixmapBaseHoverEnter'), self.hover_enter)
+        self.connect(self, QtCore.SIGNAL('PixmapBaseHoverLeave'), self.hover_leave)
+
+    def hover_enter(self):
+        QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+        print 'hover enter'
+
+    def hover_leave(self):
+        QtGui.QApplication.restoreOverrideCursor()
+        print 'hover enter'
+
     def mouseMoveEvent(self, event):
         logging.info('mouseMoveEvent on {0}'.format(self))
         # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
@@ -144,6 +175,12 @@ class PixmapDragAndDrop(PixmapBase):
 
         return QtGui.QLabel.mouseMoveEvent(self, event)
         # return PixmapBase.mouseMoveEvent(self, event)
+
+    # def enterEvent(self, *args, **kwargs):
+    #     QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+    #
+    # def leaveEvent(self, *args, **kwargs):
+    #     QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
 
     def dropEvent(self, event):
         logging.info('dropEvent on {0}'.format(self))

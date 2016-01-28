@@ -1,5 +1,6 @@
 import os
 import PyQt4.QtGui as QtGui
+import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
@@ -13,15 +14,14 @@ class PluginWidget(QtGui.QWidget):
 
         self.processes = []
 
+        # self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
+
         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
                                           'src',
                                           'modules',
                                           'ui',
                                           'pluginwidget',
                                           'pluginwidget.ui'), self)
-
-        # print dir(plugin)
-        # print plugin.icon
 
         if plugin.icon is None:
             self.icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
@@ -30,6 +30,7 @@ class PluginWidget(QtGui.QWidget):
                                                    plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
         if plugin.type == 'submitter':
+            # self.ui.label.setCursor(self.drag_cursor)
             self.pixmap = pixmapdraggable.PixmapDragAndDrop(plugin.submitter, self.mainwindow)
 
             self.pixmap.setToolTip('{0} {1} is not available'.format(plugin.family,
@@ -82,6 +83,7 @@ class PluginWidget(QtGui.QWidget):
 
             else:
                 if plugin.nodeable:
+                    # self.ui.label.setCursor(self.drag_cursor)
                     self.pixmap_x32 = pixmapdraggable.PixmapFullFeature(plugin.x32, self.mainwindow)
                     self.pixmap_x64 = pixmapdraggable.PixmapFullFeature(plugin.x64, self.mainwindow)
 
