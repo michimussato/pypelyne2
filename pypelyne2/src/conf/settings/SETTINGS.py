@@ -31,6 +31,15 @@ VERSION_QT = QtCore.QT_VERSION_STR
 VERSION_PYQT = QtCore.PYQT_VERSION_STR
 VERSION_SIP = sip.SIP_VERSION_STR
 
+SORT_PLUGINS = 'family'
+SORT_PLUGINS_REVERSE = False
+SORT_OUTPUTS = 'output'
+SORT_OUTPUTS_REVERSE = False
+SORT_TASKS = 'task'
+SORT_TASKS_REVERSE = False
+SORT_USERS = 'name_login'
+SORT_USERS_REVERSE = False
+
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 QSS_ENABLE = False
 QSS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'qss')
@@ -48,8 +57,22 @@ ICON_THUMBNAIL_PLACEHOLDER = [x for x in os.listdir(os.path.join(ICONS_DIR, 'ran
 ICON_THUMBNAIL_DEFAULT = os.path.join(ICONS_DIR, 'no_thumbnail.png')
 ICON_FORMATS = ['.jpeg', '.jpg', '.png', '.gif']
 EXCLUSIONS = ['.mayaSwatches', '.DS_Store', 'Thumbs.db', '.com.apple.timemachine.supported', 'desktop.ini']
-DEPARTMENTS = ['LRC', 'RND', 'Layout', 'Animation']
-ROLES = ['Head', 'Lead', 'Senior Artist', 'Artist', 'Junior Artist', 'Trainee', 'Intern', 'Consultant']
+DEPARTMENTS = [{'id': '05febf4a-8586-499f-93b7-8af37c2fccdd', 'department': 'Concept'},
+               {'id': 'a5b4cfd1-6aca-4e08-bf79-6a49738d1846', 'department': 'Modelling'},
+               {'id': '4965874d-10aa-4b8a-a50c-611ab4c0689d', 'department': 'Texturing'},
+               {'id': '1a8e743f-3e7e-4c82-8049-dac02fa51962', 'department': 'Layout'},
+               {'id': '09da04d1-5ebe-4634-ac5f-cae344a82790', 'department': 'Animation'},
+               {'id': '2ed6e13d-a2fd-422f-9e45-9c2f012fba0e', 'department': 'Lighting'},
+               {'id': 'f7512556-0b5a-421e-af41-8799831bc720', 'department': 'Rendering'},
+               {'id': 'c256b482-2fc6-4b57-b89e-56206880cd97', 'department': 'Effects'}]
+
+ROLES = [{'id': '4a2a13fa-30c2-4498-8e8d-902fc3ef363f', 'role': 'Head'},
+         {'id': '4c86f3c5-ff3f-4499-9435-725b8216449c', 'role': 'Lead'},
+         {'id': 'e1c33945-2fa6-4b18-b39b-b29c26301c03', 'role': 'Senior Artist'},
+         {'id': '99cb0fad-cb01-40cc-ab4e-960a90523d3e', 'role': 'Artist'},
+         {'id': 'f6448cfd-497c-4b68-81f5-1d305c7df39c', 'role': 'Junior Artist'},
+         {'id': '276b79eb-dbe6-45c2-82ec-3f73efcecf0f', 'role': 'Trainee'},
+         {'id': '757ac2b7-fcb9-4e19-81f6-bee1729d93bd', 'role': 'Consultant'}]
 
 DOCK_ANIMATED = False
 DOCK_NESTING = True
@@ -78,7 +101,6 @@ NODE_STATES = [{'state': 'on hold', 'color': '#FF0000'},
                {'state': 'awaiting approval', 'color': '#FFFF00'},
                {'state': 'approved', 'color': '#00FF00'},
                {'state': 'rejected', 'color': '#FF0000'}]
-# NODE_STATES = [{'state': 'on hold', 'color': '#FFC6C6'}, 'start', 'in progress', 'awaiting data', 'awaiting approval', 'approved', 'rejected']
 
 # Output module
 OUTPUTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'outputs')
@@ -163,12 +185,13 @@ TOTAL_DSK = int(float(psutil.disk_usage(disks[0].mountpoint).total)/1000/1000/10
 
 # NodeGraphicsItem
 NODE_ROUNDNESS = 5
-NODE_CREATE_COLLAPSED = False
+NODE_CREATE_COLLAPSED = True
 PREVIEW_ROUNDNESS = 7
 ENABLE_GIF_PREVIEW = True
 DISABLE_GIF_AUTOSTART = True
 COLOR_LABEL = '#080808'
 ZOOM_INCREMENT = 0.100
+OUTPUT_RADIUS = 16
 # ZOOM_MIN = 0.01
 # ZOOM_MAX = 10.0
 

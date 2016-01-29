@@ -1,5 +1,6 @@
 import json
 import logging
+import operator
 import pypelyne2.src.modules.task.task as class_task
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
@@ -13,12 +14,15 @@ def parse_tasks():
 
     tasks = [task for task in json_object if task['task_enable']]
 
-    return tasks
+    return sorted(tasks,
+                  key=operator.itemgetter(SETTINGS.SORT_TASKS),
+                  reverse=SETTINGS.SORT_TASKS_REVERSE)
 
 
 def get_tasks():
     task_objects = []
     tasks = parse_tasks()
+    print tasks
     for task in tasks:
         new_task_object = class_task.Task(task)
         task_objects.append(new_task_object)

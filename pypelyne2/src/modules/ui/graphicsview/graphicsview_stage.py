@@ -39,9 +39,6 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.scene.addItem(self.navigator_rect)
 
     def adjust_navigator(self):
-        # nav_width = 30
-        # nav_height = 20
-
         self.navigator_rect.setRect(0,
                                     0,
                                     self.scene.itemsBoundingRect().width()*0.1,
@@ -51,31 +48,34 @@ class GraphicsViewStage(graphicsview.GraphicsView):
                                    self.rect().height()-self.navigator_rect.rect().height())
 
     def mouseMoveEvent(self, event):
-        self.setDragMode(self.RubberBandDrag)
-        event_pos_scene = event.pos()
-        previous_pos = self.mouse_position_previous
-        delta = previous_pos - event_pos_scene
+        if self.hasFocus():
+            self.setDragMode(self.RubberBandDrag)
+            event_pos_scene = event.pos()
+            previous_pos = self.mouse_position_previous
+            delta = previous_pos - event_pos_scene
 
-        mouse_modifiers = QtGui.QApplication.mouseButtons()
-        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+            mouse_modifiers = QtGui.QApplication.mouseButtons()
+            keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
 
-        if mouse_modifiers == QtCore.Qt.MidButton \
-                or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
-            # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.SizeAllCursor))
-            self.setDragMode(self.NoDrag)
-            group = self.scene.createItemGroup(self.scene.node_items)
-            self.point.setPos(event_pos_scene)
-            group.translate(-1*delta.x(), -1*delta.y())
-            self.scene.destroyItemGroup(group)
-            # self.setDragMode(self.RubberBandDrag)
+            if mouse_modifiers == QtCore.Qt.MidButton \
+                    or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
+                # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.SizeAllCursor))
+                self.setDragMode(self.NoDrag)
+                group = self.scene.createItemGroup(self.scene.node_items)
+                self.point.setPos(event_pos_scene)
+                group.translate(-1*delta.x(), -1*delta.y())
+                self.scene.destroyItemGroup(group)
+                # self.setDragMode(self.RubberBandDrag)
 
-            # return
+                # return
 
-        self.mouse_position_previous = event_pos_scene
+            self.mouse_position_previous = event_pos_scene
 
-        # QtGui.QApplication.restoreOverrideCursor()
+            self.adjust_navigator()
 
-        return QtGui.QGraphicsView.mouseMoveEvent(self, event)
+            # QtGui.QApplication.restoreOverrideCursor()
+
+            return QtGui.QGraphicsView.mouseMoveEvent(self, event)
 
     # def mousePressEvent(self, event):
     #     mouse_modifiers = QtGui.QApplication.mouseButtons()
@@ -95,35 +95,36 @@ class GraphicsViewStage(graphicsview.GraphicsView):
     #     return QtGui.QGraphicsView.mousePressEvent(self, event)
 
     def wheelEvent(self, event):
-        # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
+        if self.hasFocus():
+            # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
 
-        self.adjust_navigator()
+            group = self.scene.createItemGroup(self.scene.node_items)
 
-        group = self.scene.createItemGroup(self.scene.node_items)
+            # absolute pos of mouse cursor in scene
+            event_pos_scene = self.mapToScene(event.pos())
 
-        # absolute pos of mouse cursor in scene
-        event_pos_scene = self.mapToScene(event.pos())
+            self.point.setPos(event_pos_scene)
 
-        self.point.setPos(event_pos_scene)
+            group.setTransformOriginPoint(event_pos_scene)
 
-        group.setTransformOriginPoint(event_pos_scene)
+            if event.delta() > 0:
+                self.point.setScale(self.point.scale() * (1+SETTINGS.ZOOM_INCREMENT))
+                group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
+                # self.scene.item_group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
+                self.scene.global_scale *= (1+SETTINGS.ZOOM_INCREMENT)
+            else:
+                self.point.setScale(self.point.scale() * (1-SETTINGS.ZOOM_INCREMENT))
+                group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
+                # self.scene.item_group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
+                self.scene.global_scale *= (1-SETTINGS.ZOOM_INCREMENT)
 
-        if event.delta() > 0:
-            self.point.setScale(self.point.scale() * (1+SETTINGS.ZOOM_INCREMENT))
-            group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
-            # self.scene.item_group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
-            self.scene.global_scale *= (1+SETTINGS.ZOOM_INCREMENT)
-        else:
-            self.point.setScale(self.point.scale() * (1-SETTINGS.ZOOM_INCREMENT))
-            group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
-            # self.scene.item_group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
-            self.scene.global_scale *= (1-SETTINGS.ZOOM_INCREMENT)
+            self.scene.destroyItemGroup(group)
 
-        self.scene.destroyItemGroup(group)
+            # QtGui.QApplication.restoreOverrideCursor()
 
-        # QtGui.QApplication.restoreOverrideCursor()
+            self.adjust_navigator()
 
-        return QtGui.QGraphicsView.wheelEvent(self, event)
+            return QtGui.QGraphicsView.wheelEvent(self, event)
 
     def resizeEvent(self, event):
         self.setSceneRect(0, 0, self.width(), self.height())

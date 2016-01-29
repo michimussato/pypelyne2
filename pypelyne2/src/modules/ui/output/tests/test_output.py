@@ -15,17 +15,9 @@ graphicssview_stage = graphicsview_stage.GraphicsViewStage()
 graphicssview_stage.setScene(scene)
 mainwindow.setCentralWidget(graphicssview_stage)
 
-widget = QtGui.QGraphicsWidget()
+output = output.Output()
 
-layout = QtGui.QGraphicsLinearLayout()
-
-for i in range(10):
-    label = QtGui.QPushButton(str(i))
-    w = scene.addWidget(label)
-    layout.addItem(w)
-
-widget.setLayout(layout)
-scene.addItem(widget)
+scene.addItem(output)
 
 
 # item1 = output.Output()

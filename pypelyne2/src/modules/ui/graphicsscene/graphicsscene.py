@@ -103,7 +103,7 @@ class GraphicsScene(QtGui.QGraphicsScene):
 
             logging.info('{0} dropped onto canvas (drop event accepted)'.format(unpickled_plugin_object))
 
-            node_graphics_item = nodegraphicsitem.NodeGraphicsItem(position=pos, plugin=unpickled_plugin_object)
+            node_graphics_item = nodegraphicsitem.NodeGraphicsItem(position=pos, plugin=unpickled_plugin_object, scene=self)
             # print unpickled_plugin_object
             if SETTINGS.NODE_CREATE_COLLAPSED:
                 node_graphics_item.expand_layout()

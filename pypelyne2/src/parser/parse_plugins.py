@@ -1,6 +1,9 @@
 import os
 import json
 import logging
+
+import operator
+
 import pypelyne2.src.modules.plugin.plugin as class_plugin
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
@@ -319,7 +322,9 @@ def parse_plugins():
 
                             plugin_list.append(plugin_dict.copy())
 
-    return plugin_list
+    return sorted(plugin_list,
+                  key=operator.itemgetter(SETTINGS.SORT_PLUGINS),
+                  reverse=SETTINGS.SORT_PLUGINS_REVERSE)
 
 
 def get_plugins():

@@ -1,6 +1,9 @@
 import os
 import json
 import logging
+
+import operator
+
 import pypelyne2.src.modules.user.user as class_user
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
@@ -16,7 +19,9 @@ def parse_users():
 
         user_list.append(user_object)
 
-    return user_list
+    return sorted(user_list,
+                  key=operator.itemgetter(SETTINGS.SORT_USERS),
+                  reverse=SETTINGS.SORT_USERS_REVERSE)
 
 
 def get_users():

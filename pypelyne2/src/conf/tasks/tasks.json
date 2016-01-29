@@ -112,5 +112,11 @@
     "task": "tutorial",
     "abbreviation": "TUT",
     "color": "#333333"
+  },
+  {
+    "task_enable": true,
+    "task": "matte painting",
+    "abbreviation": "MTP",
+    "color": "#ABC1D7"
   }
 ]

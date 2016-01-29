@@ -8,6 +8,7 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.modules.node.node as node
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
+import pypelyne2.src.modules.ui.output.output as output
 
 
 class QLabelCollapseExpand(QtGui.QLabel):
@@ -265,11 +266,19 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
             return QtGui.QGraphicsRectItem.dropEvent(self, event)
 
 
+# class PortContainer(QtGui.QGraphicsItem):
+#     def __init__(self):
+#         super(PortContainer, self).__init__()
+#         self.rect = QtCore.QRectF(0, 0, 0, 0)
+
+
 class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
-    def __init__(self, position, plugin):
+    def __init__(self, position, plugin, scene=None):
         super(NodeGraphicsItem, self).__init__()
 
         reload(SETTINGS)
+
+        self.scene = scene
 
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
@@ -355,6 +364,17 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.resize()
 
+        # self.input_container = PortContainer()
+
+        self.add_output()
+
+    def add_output(self):
+        port = output.Output()
+        # print self.scene
+        self.scene.addItem(port)
+        port.setParentItem(self)
+        # print port.parentItem()
+
     # def add_qgraphicsstuff(self):
     #     # layout = QtGui.QGraphicsLayoutItem
     #     widget = QtGui.QGraphicsWidget()
@@ -413,11 +433,16 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.collapse.setVisible(bool(self.widget_elements.widget_comboboxes.isVisible()))
 
     def expand_layout(self):
+        self.widget_elements_proxy.setMaximumHeight(0.0)
+        self.widget_elements_proxy.setMaximumWidth(0.0)
         self.widget_elements_proxy.setVisible(False)
         self.update_expand_collapse()
         self.resize()
 
     def collapse_layout(self):
+        self.widget_elements_proxy.setMaximumHeight(16777215.0)
+        self.widget_elements_proxy.setMaximumWidth(16777215.0)
+        self.widget_elements_proxy.adjustSize()
         self.widget_elements_proxy.setVisible(True)
         self.update_expand_collapse()
         self.resize()
@@ -637,9 +662,9 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             layout_reports_to.addWidget(widget)
 
         else:
-            print self.current_combobox_deparment_index
+            # print self.current_combobox_deparment_index
             data = combobox_department.itemData(self.current_combobox_deparment_index)
-            print data.toPyObject()
+            # print data.toPyObject()
 
             reports_to_id_list = data.toPyObject()
 
@@ -662,6 +687,10 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             combobox.addItem(status)
 
     def boundingRect(self):
+        # print self.rect
+        # print self.boundingRect()
+        # print self.rect
+        # print self.rect.getRect()
         return self.rect
 
     def hoverEnterEvent(self, event):
@@ -729,10 +758,10 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         # self.arrange_inputs()
 
     def arrange_outputs(self):
-        for output in self.outputs:
-            position = QtCore.QPointF(self.boundingRect().width() - output.rect.width(),
-                                      (output.boundingRect().height() * (self.outputs.index(output) + 1)))
-            output.setPos(position)
+        for output_item in self.outputs:
+            position = QtCore.QPointF(self.boundingRect().width() - output_item.rect.width(),
+                                      (output_item.boundingRect().height() * (self.outputs.index(output_item) + 1)))
+            output_item.setPos(position)
 
     def arrange_inputs(self):
         for input_item in self.inputs:
@@ -765,7 +794,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                                         self.widget_elements_proxy.boundingRect().width()]),
                                    (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
 
-        elif not self.widget_elements.widget_comboboxes.isVisible():
+        else:
             self.rect.setWidth(self.widget_title_proxy.boundingRect().width())
             # self.rect.setWidth(max([4*SETTINGS.PLUGINS_ICON_HEIGHT *
             #                        SETTINGS.ICON_SCALE +
@@ -774,6 +803,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             #                        (max(output_list_text_width) + 80) + (max(input_list_text_width))]))
 
     def resize_height(self):
+        # print self.widget_elements.widget_comboboxes.isVisible()
         if self.widget_elements.widget_comboboxes.isVisible():
             self.rect.setHeight(max([self.widget_title_proxy.boundingRect().height() +
                                      self.widget_elements_proxy.boundingRect().height(),
@@ -781,7 +811,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                                 max([(len(self.inputs))*20,
                                      (len(self.outputs))*20]))
 
-        elif not self.widget_elements.widget_comboboxes.isVisible():
+        else:
             self.rect.setHeight(max([self.label.boundingRect().height() +
                                      self.widget_title_proxy.boundingRect().height(),
                                      ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
@@ -882,7 +912,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         logging.info('node.set_task_color() ({0})'.format(self))
         # self.task = self.current_combobox_task
         task_color = self.current_combobox_task_color or self.task_color_default
-        print task_color
+        # print task_color
         self.task_color_item.setNamedColor(task_color)
 
     def set_label_task(self):
@@ -927,15 +957,15 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         if text == '':
             label.setVisible(False)
         else:
-            print self.current_combobox_status_index
+            # print self.current_combobox_status_index
             data = combobox.itemData(self.current_combobox_status_index)
 
             color_value = data.toPyObject()
             color = QtGui.QColor(0, 0, 0, 255)
             color.setNamedColor(color_value)
 
-            print color
-            print color_value
+            # print color
+            # print color_value
             palette.setColor(QtGui.QPalette.Base, color)
             label.setPalette(palette)
             label.setVisible(True)

@@ -8,7 +8,7 @@ import pypelyne2.src.parser.parse_tasks as parse_tasks
 
 
 class Node(object):
-    def __init__(self, id=None):
+    def __init__(self, node_id=None):
         super(Node, self).__init__()
         # self.container = False
         self.dirty = False
@@ -22,7 +22,7 @@ class Node(object):
         self.inputs = []
         self.task = None
         self.tool = None
-        self.uuid = id or str(uuid.uuid4())
+        self.uuid = node_id or str(uuid.uuid4())
         self.name = None
         # self.icon = None
         self.dependenies_req = None

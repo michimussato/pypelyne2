@@ -1,6 +1,9 @@
 import os
 import json
 import logging
+
+import operator
+
 import pypelyne2.src.modules.output.output as class_output
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
@@ -21,7 +24,9 @@ def parse_outputs():
                 logging.error(e)
                 output[u'icon'] = None
 
-    return outputs
+    return sorted(outputs,
+                  key=operator.itemgetter(SETTINGS.SORT_OUTPUTS),
+                  reverse=SETTINGS.SORT_OUTPUTS_REVERSE)
 
 
 def get_outputs():
