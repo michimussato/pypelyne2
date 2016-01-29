@@ -28,6 +28,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.mouse_position_previous = QtCore.QPoint(0, 0)
 
         self.navigator_rect = None
+        self.screen_rect = None
 
         self.navigator()
 
@@ -38,6 +39,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.navigator_rect.setPos(self.rect().width()-nav_width, self.rect().height()-nav_height)
         self.scene.addItem(self.navigator_rect)
 
+        self.screen_rect = QtGui.QGraphicsRectItem(0, 0, nav_width, nav_height)
+        self.screen_rect.setPos(self.rect().width()-nav_width, self.rect().height()-nav_height)
+        self.scene.addItem(self.screen_rect)
+
     def adjust_navigator(self):
         self.navigator_rect.setRect(0,
                                     0,
@@ -46,6 +51,8 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         self.navigator_rect.setPos(self.rect().width()-self.navigator_rect.rect().width(),
                                    self.rect().height()-self.navigator_rect.rect().height())
+
+        print self.navigator_rect.rect()
 
     def mouseMoveEvent(self, event):
         if self.hasFocus():

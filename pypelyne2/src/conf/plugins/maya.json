@@ -147,7 +147,7 @@
     },
     {
       "release_number": "2015",
-      "icon": null,
+      "icon": "icon_autodesk_maya_2015.png",
       "release_extension": ".ma",
       "project_template": null,
       "project_workspace_template": null,

@@ -915,6 +915,16 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         # print task_color
         self.task_color_item.setNamedColor(task_color)
 
+    # @staticmethod
+    # def _create_pushbutton(ui, text, icon, flat, focus_policy, tool_tip):
+    #     ui.setText(text)
+    #     ui.setIcon(icon)
+    #     ui.setFlat(flat)
+    #     ui.setFocusPolicy(focus_policy)
+    #     ui.setToolTip(tool_tip)
+    #
+    # self._create_pushbutton(self.ui.pushButtonClearSearchProjects, '', cancel_icon, True, QtCore.Qt.NoFocus, 'clear filter')
+
     def set_label_task(self):
         logging.info('node.set_label_task() ({0})'.format(self))
 

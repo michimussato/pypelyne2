@@ -119,7 +119,7 @@ def parse_plugins():
 
                         plugin_list.append(plugin_dict.copy())
 
-            elif plugin_object[u'type'] == 'plugin':
+            elif plugin_object[u'type'] == 'addon':
                 pass
 
             elif plugin_object[u'type'] == 'standalone':

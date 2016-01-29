@@ -1,4 +1,7 @@
-class PlugIn(object):
+import pypelyne2.src.modules.api.plugin as plugin
+
+
+class PlugIn(plugin.PlugIn):
     def __init__(self, d):
         super(PlugIn, self).__init__()
         self.__dict__ = d.copy()
@@ -38,13 +41,3 @@ class PlugIn(object):
         dict_submitter[u'label'] = dict_submitter[u'label']
         dict_submitter[u'architecture'] = None
         return PlugIn(dict_submitter)
-
-    def create_project(self, location=None):
-        pass
-
-    def launch_instance(self, location=None):
-        self.create_project(location=location)
-        pass
-
-    def launch_task(self, node=None):
-        pass

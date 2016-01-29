@@ -39,6 +39,10 @@ SORT_TASKS = 'task'
 SORT_TASKS_REVERSE = False
 SORT_USERS = 'name_login'
 SORT_USERS_REVERSE = False
+SORT_DEPARTMENTS = 'department'
+SORT_DEPARTMENTS_REVERSE = False
+SORT_ROLES = 'role'
+SORT_ROLES_REVERSE = False
 
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 QSS_ENABLE = False
@@ -82,6 +86,14 @@ USERS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'users')
 USERS_FILES = [x for x in os.listdir(USERS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
 USERS_ICONS = os.path.join(USERS_DIR, '_icons')
 USERS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'default_user_icon.png')
+
+# Roles module
+ROLES_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'roles')
+ROLES_FILE = os.path.join(ROLES_DIR, 'roles.json')
+
+# Departments module
+DEPARTMENTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'departments')
+DEPARTMENTS_FILE = os.path.join(DEPARTMENTS_DIR, 'departments.json')
 
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
