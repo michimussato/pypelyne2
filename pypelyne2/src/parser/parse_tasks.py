@@ -10,7 +10,6 @@ def parse_tasks():
 
     with open(SETTINGS.TASKS_FILE, 'r') as f:
         json_object = json.load(f)
-    # f.close()
 
     tasks = [task for task in json_object if task['task_enable']]
 
@@ -22,7 +21,6 @@ def parse_tasks():
 def get_tasks():
     task_objects = []
     tasks = parse_tasks()
-    print tasks
     for task in tasks:
         new_task_object = class_task.Task(task)
         task_objects.append(new_task_object)

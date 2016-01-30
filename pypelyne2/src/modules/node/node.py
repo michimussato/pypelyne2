@@ -2,6 +2,7 @@ import os
 import uuid
 import logging
 import random
+# import pypelyne2.src.modules.node.abc_node as abc_node
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.parser.parse_users as parse_users
 import pypelyne2.src.parser.parse_tasks as parse_tasks
@@ -32,15 +33,17 @@ class Node(object):
 
     @property
     def get_users(self):
+        logging.info('getting users...')
         if not bool(self._users):
-            print 'getting users...'
+            logging.info('no users cache found')
             self._users = parse_users.get_users()
         return self._users
 
     @property
     def get_tasks(self):
+        logging.info('getting tasks...')
         if not bool(self._tasks):
-            print 'getting tasks...'
+            logging.info('no tasks cache found')
             self._tasks = parse_tasks.get_tasks()
         return self._tasks
 

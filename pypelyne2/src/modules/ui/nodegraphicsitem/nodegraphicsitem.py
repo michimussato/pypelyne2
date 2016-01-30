@@ -1,11 +1,13 @@
 import os
+import logging
 import cPickle
+import uuid
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
-import logging
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.modules.node.node as node
+import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 import pypelyne2.src.modules.ui.output.output as output
@@ -24,33 +26,24 @@ class QLabelCollapseExpand(QtGui.QLabel):
 
 
 class QLabelGif(QtGui.QLabel):
-    def __init__(self, node=None):
+    def __init__(self, node_object=None):
         super(QLabelGif, self).__init__()
 
         self.dialog = QtGui.QFileDialog()
-        # self.dialog.setNameFilter('*.jpg')
 
-        self.node = node
-
-        # self.node.preview
-
-        # self.setToolTip('right click me to play animation')
+        self.node = node_object
 
     def mousePressEvent(self, event):
         logging.info('mousePressEvent on QLabelGif ({0})'.format(self))
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
         if event.button() == QtCore.Qt.RightButton:
             if keyboard_modifiers == QtCore.Qt.ShiftModifier:
-                # print self.node.preview_icon_path
                 # self.dialog.setFileMode(self.dialog.fileMode())
                 # self.dialog.setFilter(QtCore.QDir.Files | QtCore.QDir.NoDotAndDotDot)
                 dialog = self.dialog.getOpenFileName(self, 'get preview icon', SETTINGS.PYPELYNE2_ROOT)
                 # print ok
                 self.node.update_thumbnail_icon(dialog)
-                # self.node.resize()
-                # self.dialog.getOpenFileName()
             else:
-                # print 'right button press'
                 self.emit(QtCore.SIGNAL('right_mouse_button_pressed'))
 
         else:
@@ -58,17 +51,17 @@ class QLabelGif(QtGui.QLabel):
 
 
 class QWidgetNode(QtGui.QWidget):
-    def __init__(self, node=None):
+    def __init__(self, node_object=None):
         super(QWidgetNode, self).__init__()
 
-        self.node = node
+        self.node = node_object
 
         self.ui = None
 
         self.palette = QtGui.QPalette()
 
         # TODO: is this needed?
-        self.setAcceptDrops(True)
+        # self.setAcceptDrops(True)
 
     def dragMoveEvent(self, event):
         logging.info('dragMoveEvent on QWidgetNode ({0})'.format(self))
@@ -85,12 +78,10 @@ class QWidgetNode(QtGui.QWidget):
 
 
 class QWidgetTitle(QWidgetNode):
-    def __init__(self, node=None):
+    def __init__(self, node_object=None):
         super(QWidgetTitle, self).__init__()
 
-        self.node = node
-
-        # print dir(self.node)
+        self.node = node_object
 
         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
                                           'src',
@@ -109,10 +100,8 @@ class QWidgetTitle(QWidgetNode):
 
     def setup_title(self):
         self.ui.label_title.setToolTip('shift+left click to change name')
-        # self.ui.label_title.setText('no name')
         self.ui.label_title_edit.setToolTip('enter to submit')
         self.ui.label_title_edit.setText(self.ui.label_title.text())
-        # self.emit(QtCore.SIGNAL('activated'))
 
         self.ui.label_title.setVisible(False)
         self.ui.label_title_edit.setVisible(True)
@@ -172,32 +161,6 @@ class QWidgetHeader(QWidgetNode):
         self.set_palette()
 
 
-class QGraphicsProxyWidgetNoWheel(QtGui.QGraphicsProxyWidget):
-    def __init__(self):
-        super(QGraphicsProxyWidgetNoWheel, self).__init__()
-
-        self.setAcceptDrops(True)
-
-    def dragMoveEvent(self, event):
-        logging.info('dragMoveEvent on QGraphicsProxyWidgetNoWheel ({0})'.format(self))
-        return QtGui.QGraphicsProxyWidget.dragMoveEvent(self, event)
-
-    def wheelEvent(self, event):
-        logging.info('wheelEvent on QGraphicsProxyWidgetNoWheel ({0})'.format(self))
-        event.ignore()
-
-    def mousePressEvent(self, event):
-        logging.info('mousePressEvent on QGraphicsProxyWidgetNoWheel ({0})'.format(self))
-        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-        mouse_modifiers = QtGui.QApplication.mouseButtons()
-        if mouse_modifiers == QtCore.Qt.MidButton \
-                or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
-            event.ignore()
-            return
-
-        return QtGui.QGraphicsProxyWidget.mouseMoveEvent(self, event)
-
-
 class NodeDropArea(QtGui.QGraphicsRectItem):
     def __init__(self, node_object):
         super(NodeDropArea, self).__init__()
@@ -216,12 +179,6 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
         self.setAcceptDrops(True)
 
         self.set_inactive()
-
-    # def paint(self, painter, option, widget=None):
-    #     painter.setPen(self.pen)
-    #     painter.setBrush(self.brush)
-    #     painter.setRenderHint(painter.Antialiasing)
-    #     painter.drawRoundedRect(self.boundingRect(), SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
 
     def set_active(self):
         self.setBrush(self.brush_active)
@@ -261,36 +218,23 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
             logging.info('{0}/{1} --> {2}'.format(unpickled_output_object.output,
                                                   unpickled_output_object.abbreviation,
                                                   self.node))
-            self.node.add_output(data=unpickled_output_object)
+            self.node.add_output(output_object=unpickled_output_object,
+                                 port_id=str(uuid.uuid4()))
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)
 
 
-# class PortContainer(QtGui.QGraphicsItem):
-#     def __init__(self):
-#         super(PortContainer, self).__init__()
-#         self.rect = QtCore.QRectF(0, 0, 0, 0)
-
-
 class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
-    def __init__(self, position, plugin, scene=None):
+    def __init__(self, position, plugin):
         super(NodeGraphicsItem, self).__init__()
 
         reload(SETTINGS)
 
-        self.scene = scene
-
-        # self.shadow = QtGui.QGraphicsDropShadowEffect()
-        # self.shadow.setOffset(10*self.scene.global_scale, 10*self.scene.global_scale)
-        # self.shadow.setColor(QtGui.QColor(0, 0, 0, 100))
-        # self.shadow.setBlurRadius(20)
-        # self.setGraphicsEffect(self.shadow)
-
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
 
-        self.rect = QtCore.QRectF(0, 0, 0, 0)
+        self.rect = QtCore.QRectF()
 
         self.drop_area = NodeDropArea(self)
 
@@ -301,7 +245,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
         self.setAcceptHoverEvents(True)
-        self.setAcceptTouchEvents(True)
+        # self.setAcceptTouchEvents(True)
 
         self.task_color_item = QtGui.QColor(0, 0, 0)
         self.application_color_item = QtGui.QColor(0, 0, 0)
@@ -316,15 +260,15 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         # self._users = []
 
-        self.label = QtGui.QGraphicsTextItem()
+        # self.label = QtGui.QGraphicsTextItem()
 
         # self.set_label(self.plugin.abbreviation)
 
         self.widget_title = QWidgetTitle(self)
         self.widget_elements = QWidgetElements()
 
-        self.widget_title_proxy = QGraphicsProxyWidgetNoWheel()
-        self.widget_elements_proxy = QGraphicsProxyWidgetNoWheel()
+        self.widget_title_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
+        self.widget_elements_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
         self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
         # self.widget_title.status_layout.insertWidget(0, self.progress_bar)
@@ -367,53 +311,20 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.set_ui_widgets_position()
 
-        # self.add_qgraphicsstuff()
-
         self.resize()
 
-        # self.input_container = PortContainer()
+        for i in range(10):
+            self.add_output()
 
-        # self.output_group = QtGui.QGraphicsItem()
-        # self.output_group = QtGui.QGraphicsItemGroup()
-        # self.output_group.setParentItem(self)
-        # self.scene.addItem(self.output_group)
-
-        # for i in range(10):
-        #     self.add_output()
-
-        # self.output_group.setPos(self.rect.width(), 0)
-
-    def add_output(self, data=None):
-        port = output.Output()
+    def add_output(self, output_object=None, port_id=None):
+        port = output.Output(node_object=self,
+                             output_object=output_object,
+                             port_id=port_id)
         self.outputs.append(port)
-        port.setPos(self.rect.width(), 200)
-        # self.output_group.addToGroup(port)
-        # self.setPos(self.output_group.mapFromScene(self.scenePos()))
-        # print self.scene
-        self.scene.addItem(port)
         port.setParentItem(self)
-        # print port.parentItem()
         self.resize()
-
-    # def add_qgraphicsstuff(self):
-    #     # layout = QtGui.QGraphicsLayoutItem
-    #     widget = QtGui.QGraphicsWidget()
-    #
-    #     layout = QtGui.QGraphicsLinearLayout()
-    #
-    #     for i in range(10):
-    #         label = QtGui.QPushButton(str(i))
-    #         # w = self.scene().addWidget(label)
-    #         layout.addItem(w)
-    #
-    #     widget.setLayout(layout)
-
-    # def init_title(self):
-    #     title = self.widget_title.label_title
-    #     title.setText(self.uuid)
 
     def update_title(self, init=False):
-        # new_title = text or self.uuid
         title = self.widget_title.label_title
         title_edit = self.widget_title.label_title_edit
 
@@ -453,7 +364,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.collapse.setVisible(bool(self.widget_elements.widget_comboboxes.isVisible()))
 
     def expand_layout(self):
-        self.collapse_layout_widgets(layout=self.widget_elements, size=0.0)
+        self.collapse_layout_widgets(layout=self.widget_elements,
+                                     size=0.0)
         self.widget_elements_proxy.setMaximumHeight(0.0)
         self.widget_elements_proxy.setMaximumWidth(0.0)
         self.widget_elements_proxy.setVisible(False)
@@ -461,7 +373,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.resize()
 
     def collapse_layout(self):
-        self.collapse_layout_widgets(layout=self.widget_elements, size=16777215.0)
+        self.collapse_layout_widgets(layout=self.widget_elements,
+                                     size=16777215.0)
         self.widget_elements_proxy.setMaximumHeight(16777215.0)
         self.widget_elements_proxy.setMaximumWidth(16777215.0)
         self.widget_elements_proxy.adjustSize()
@@ -469,22 +382,19 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.update_expand_collapse()
         self.resize()
 
-    @staticmethod
-    def collapse_layout_widgets(layout, size):
+    def collapse_layout_widgets(self, layout, size):
         for i in layout.findChildren(QtCore.QObject):
             try:
                 i.setMaximumHeight(float(size))
             except AttributeError, e:
-                print e
+                logging.info('{0} (occurred on {1})'.format(e, self))
             try:
                 i.setMaximumWidth(float(size))
             except AttributeError, e:
-                print e
+                logging.info('{0} (occurred on {1})'.format(e, self))
 
     def reset_proxy_sizes(self):
 
-        # self.widget_elements_proxy.setMaximumHeight(0.0)
-        # self.widget_elements_proxy.setMaximumWidth(0.0)
         self.widget_title_proxy.resize(0, 0)
         self.widget_elements_proxy.resize(0, 0)
         self.widget_title_proxy.adjustSize()
@@ -494,7 +404,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         path = str(path)
         self.preview_icon_path = path
         self.set_thumbnail_icon()
-        # self.resize()
 
     def set_thumbnail_icon(self):
 
@@ -557,7 +466,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             brush = QtGui.QBrush(img_pixmap)
             painter = QtGui.QPainter()
             painter.begin(new_pixmap)
-            # painter.setRenderHint(painter.HighQualityAntialiasing)
             painter.setBrush(brush)
             painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
             painter.end()
@@ -599,9 +507,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.widget_elements_proxy.setWidget(self.widget_elements)
         self.widget_elements_proxy.setParentItem(self)
-
-        self.widget_title_proxy.setWidget(self.widget_title)
-        self.widget_title_proxy.setParentItem(self)
 
     def add_task_menu_items(self):
         combobox = self.widget_elements.combobox_task
@@ -733,14 +638,12 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def hoverEnterEvent(self, event):
         logging.info('hoverEnterEvent on NodeGraphicsItem ({0})'.format(self))
         self.hovered = True
-        # logging.info('enter event: {0}'.format(self))
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
     def hoverLeaveEvent(self, event):
         logging.info('hoverLeaveEvent on NodeGraphicsItem ({0})'.format(self))
         self.hovered = False
-        # logging.info('leave event: {0}'.format(self))
 
         return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)
 
@@ -787,6 +690,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         painter.setPen(pen)
 
         painter.drawRoundedRect(self.rect, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
+        # painter.drawRoundedRect(self.test, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
 
         # for i in self.output_list:
         #     i.setPos(self.boundingRect().width() - i.rect.width(), i.pos().y())
@@ -860,7 +764,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             # print (3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE
             # print SETTINGS.OUTPUT_OFFSET + len(self.outputs)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING)
 
-            self.rect.setHeight(max([self.label.boundingRect().height() + self.widget_title_proxy.boundingRect().height(),
+            self.rect.setHeight(max([self.widget_title_proxy.boundingRect().height(),
                                      (3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE,
                                      SETTINGS.OUTPUT_OFFSET + len(self.outputs)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING)]))
 
@@ -969,7 +873,12 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     #     ui.setFocusPolicy(focus_policy)
     #     ui.setToolTip(tool_tip)
     #
-    # self._create_pushbutton(self.ui.pushButtonClearSearchProjects, '', cancel_icon, True, QtCore.Qt.NoFocus, 'clear filter')
+    # self._create_pushbutton(self.ui.pushButtonClearSearchProjects,
+    #                         '',
+    #                         cancel_icon,
+    #                         True,
+    #                         QtCore.Qt.NoFocus,
+    #                         'clear filter')
 
     def set_label_task(self):
         logging.info('node.set_label_task() ({0})'.format(self))

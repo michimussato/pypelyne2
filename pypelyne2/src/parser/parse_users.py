@@ -1,9 +1,7 @@
 import os
 import json
 import logging
-
 import operator
-
 import pypelyne2.src.modules.user.user as class_user
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 

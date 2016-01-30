@@ -74,14 +74,12 @@ class PixmapBase(QtGui.QLabel):
         self.setPixmap(self.pixmap)
 
     def enterEvent(self, *args, **kwargs):
-        # print 'entered'
         self.setPixmap(self.pixmap_hovered)
 
         self.emit(QtCore.SIGNAL('PixmapBaseHoverEnter'))
 
     def leaveEvent(self, *args, **kwargs):
         self.setPixmap(self.pixmap)
-        # print 'left'
 
         self.emit(QtCore.SIGNAL('PixmapBaseHoverLeave'))
 
@@ -145,12 +143,12 @@ class PixmapDragAndDrop(PixmapBase):
         self.connect(self, QtCore.SIGNAL('PixmapBaseHoverLeave'), self.hover_leave)
 
     def hover_enter(self):
+        logging.info('hover_enter on PixmapDragAndDrop ({0})'.format(self))
         QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
-        print 'hover enter'
 
     def hover_leave(self):
+        logging.info('hover_leave on PixmapDragAndDrop ({0})'.format(self))
         QtGui.QApplication.restoreOverrideCursor()
-        print 'hover enter'
 
     def mouseMoveEvent(self, event):
         logging.info('mouseMoveEvent on {0}'.format(self))
@@ -160,7 +158,6 @@ class PixmapDragAndDrop(PixmapBase):
 
         pickled_plugin_object = cPickle.dumps(self.plugin)
         mime_data.setData('node/draggable-pixmap', pickled_plugin_object)
-        # print mime_data.objectName()
 
         drag = QtGui.QDrag(self)
         drag.setMimeData(mime_data)
@@ -174,7 +171,6 @@ class PixmapDragAndDrop(PixmapBase):
         #     print 'copied'
 
         return QtGui.QLabel.mouseMoveEvent(self, event)
-        # return PixmapBase.mouseMoveEvent(self, event)
 
     # def enterEvent(self, *args, **kwargs):
     #     QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))

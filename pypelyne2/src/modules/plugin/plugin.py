@@ -1,4 +1,4 @@
-import pypelyne2.src.modules.api.plugin as plugin
+import pypelyne2.src.modules.api.abc_plugin as plugin
 
 
 class PlugIn(plugin.PlugIn):
