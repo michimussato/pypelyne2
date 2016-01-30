@@ -1,5 +1,5 @@
 # pypelyne2
-
+![overview](/pypelyne2/doc/gitimg/pypelyne2.png)
 
 3D animation pipeline software written in Python and Qt
 
