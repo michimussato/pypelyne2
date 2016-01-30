@@ -28,10 +28,12 @@ class OutputWidget(QtGui.QWidget):
 
         self.pixmap = pixmapdraggable.PixmapOutput(output, self.mainwindow)
 
-        self.ui.label.setText('{0} {1}'.format(output.output, output.abbreviation))
+        self.ui.label.setText('{0} ({1})'.format(output.output, output.abbreviation))
         self.ui.label.setEnabled(False)
 
         self.ui.pixmaps_layout.addWidget(self.pixmap)
+
+        self.pixmap.setToolTip('drag me onto node to create a new {0} output'.format(output.output))
 
         # self.pixmap.setEnabled(False)
 

@@ -33,26 +33,43 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.navigator()
 
     def navigator(self):
-        nav_width = 30
-        nav_height = 20
-        self.navigator_rect = QtGui.QGraphicsRectItem(0, 0, nav_width, nav_height)
-        self.navigator_rect.setPos(self.rect().width()-nav_width, self.rect().height()-nav_height)
-        self.scene.addItem(self.navigator_rect)
+        self.navigator_rect = QtGui.QGraphicsRectItem(0,
+                                                      0,
+                                                      self.scene.itemsBoundingRect().width()*SETTINGS.NAVIGATOR_SCALE,
+                                                      self.scene.itemsBoundingRect().height()*SETTINGS.NAVIGATOR_SCALE)
 
-        self.screen_rect = QtGui.QGraphicsRectItem(0, 0, nav_width, nav_height)
-        self.screen_rect.setPos(self.rect().width()-nav_width, self.rect().height()-nav_height)
+        self.scene.addItem(self.navigator_rect)
+        self.navigator_rect.setZValue(1000.0)
+
+        self.screen_rect = QtGui.QGraphicsRectItem(0,
+                                                   0,
+                                                   self.scene.itemsBoundingRect().width()*SETTINGS.NAVIGATOR_SCALE,
+                                                   self.scene.itemsBoundingRect().height()*SETTINGS.NAVIGATOR_SCALE)
+
         self.scene.addItem(self.screen_rect)
+        self.screen_rect.setZValue(1000.0)
+        self.navigator_rect.setParentItem(self.screen_rect)
 
     def adjust_navigator(self):
+
         self.navigator_rect.setRect(0,
                                     0,
-                                    self.scene.itemsBoundingRect().width()*0.1,
-                                    self.scene.itemsBoundingRect().height()*0.1)
+                                    self.viewport().width()*SETTINGS.NAVIGATOR_SCALE,
+                                    self.viewport().height()*SETTINGS.NAVIGATOR_SCALE)
 
-        self.navigator_rect.setPos(self.rect().width()-self.navigator_rect.rect().width(),
-                                   self.rect().height()-self.navigator_rect.rect().height())
+        relative_rect = self.mapFromScene(self.scene.itemsBoundingRect()).boundingRect()
+        # print relative_rect.topLeft()
+        # print relative_rect.bottomLeft()
+        # print relative_rect.topRight()
+        # print relative_rect.bottomRight()
 
-        print self.navigator_rect.rect()
+        self.screen_rect.setRect(relative_rect.x()*SETTINGS.NAVIGATOR_SCALE,
+                                 relative_rect.y()*SETTINGS.NAVIGATOR_SCALE,
+                                 relative_rect.width()*SETTINGS.NAVIGATOR_SCALE,
+                                 relative_rect.height()*SETTINGS.NAVIGATOR_SCALE)
+
+        self.screen_rect.setPos(self.viewport().width()-self.screen_rect.rect().width()-self.screen_rect.rect().topLeft().x(),
+                                self.viewport().height()-self.screen_rect.rect().height()-self.screen_rect.rect().topLeft().y())
 
     def mouseMoveEvent(self, event):
         if self.hasFocus():

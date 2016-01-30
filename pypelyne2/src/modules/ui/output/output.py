@@ -10,8 +10,6 @@ class Output(QtGui.QGraphicsItem):
     def __init__(self):
         super(Output, self).__init__()
 
-        # self.setParentItem(parent)
-
         self.setAcceptHoverEvents(True)
 
         # self.setFlags(self.ItemIsSelectable)

@@ -44,7 +44,7 @@
     "output": "cache",
     "abbreviation": "CCH",
     "color": "#B3A78B",
-    "icon": "cache.jpg",
+    "icon": "cache.png",
     "formats": []
   },
   {
@@ -76,7 +76,7 @@
     "output": "alembic",
     "abbreviation": "ABC",
     "color": "#7FA9A7",
-    "icon": "alembic.jpg",
+    "icon": "alembic.png",
     "formats": []
   },
   {

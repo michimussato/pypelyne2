@@ -261,6 +261,7 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
             logging.info('{0}/{1} --> {2}'.format(unpickled_output_object.output,
                                                   unpickled_output_object.abbreviation,
                                                   self.node))
+            self.node.add_output(data=unpickled_output_object)
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)
@@ -279,6 +280,12 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         reload(SETTINGS)
 
         self.scene = scene
+
+        # self.shadow = QtGui.QGraphicsDropShadowEffect()
+        # self.shadow.setOffset(10*self.scene.global_scale, 10*self.scene.global_scale)
+        # self.shadow.setColor(QtGui.QColor(0, 0, 0, 100))
+        # self.shadow.setBlurRadius(20)
+        # self.setGraphicsEffect(self.shadow)
 
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
@@ -366,14 +373,27 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         # self.input_container = PortContainer()
 
-        self.add_output()
+        # self.output_group = QtGui.QGraphicsItem()
+        # self.output_group = QtGui.QGraphicsItemGroup()
+        # self.output_group.setParentItem(self)
+        # self.scene.addItem(self.output_group)
 
-    def add_output(self):
+        # for i in range(10):
+        #     self.add_output()
+
+        # self.output_group.setPos(self.rect.width(), 0)
+
+    def add_output(self, data=None):
         port = output.Output()
+        self.outputs.append(port)
+        port.setPos(self.rect.width(), 200)
+        # self.output_group.addToGroup(port)
+        # self.setPos(self.output_group.mapFromScene(self.scenePos()))
         # print self.scene
         self.scene.addItem(port)
         port.setParentItem(self)
         # print port.parentItem()
+        self.resize()
 
     # def add_qgraphicsstuff(self):
     #     # layout = QtGui.QGraphicsLayoutItem
@@ -433,6 +453,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.collapse.setVisible(bool(self.widget_elements.widget_comboboxes.isVisible()))
 
     def expand_layout(self):
+        self.collapse_layout_widgets(layout=self.widget_elements, size=0.0)
         self.widget_elements_proxy.setMaximumHeight(0.0)
         self.widget_elements_proxy.setMaximumWidth(0.0)
         self.widget_elements_proxy.setVisible(False)
@@ -440,6 +461,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.resize()
 
     def collapse_layout(self):
+        self.collapse_layout_widgets(layout=self.widget_elements, size=16777215.0)
         self.widget_elements_proxy.setMaximumHeight(16777215.0)
         self.widget_elements_proxy.setMaximumWidth(16777215.0)
         self.widget_elements_proxy.adjustSize()
@@ -447,7 +469,22 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.update_expand_collapse()
         self.resize()
 
+    @staticmethod
+    def collapse_layout_widgets(layout, size):
+        for i in layout.findChildren(QtCore.QObject):
+            try:
+                i.setMaximumHeight(float(size))
+            except AttributeError, e:
+                print e
+            try:
+                i.setMaximumWidth(float(size))
+            except AttributeError, e:
+                print e
+
     def reset_proxy_sizes(self):
+
+        # self.widget_elements_proxy.setMaximumHeight(0.0)
+        # self.widget_elements_proxy.setMaximumWidth(0.0)
         self.widget_title_proxy.resize(0, 0)
         self.widget_elements_proxy.resize(0, 0)
         self.widget_title_proxy.adjustSize()
@@ -759,8 +796,15 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
     def arrange_outputs(self):
         for output_item in self.outputs:
-            position = QtCore.QPointF(self.boundingRect().width() - output_item.rect.width(),
-                                      (output_item.boundingRect().height() * (self.outputs.index(output_item) + 1)))
+            # position = QtCore.QPointF(self.boundingRect().width() - output_item.rect.width(),
+            #                           (output_item.boundingRect().height() * (self.outputs.index(output_item) + 1)))
+            # output_item.setPos(position)
+            if self.widget_elements.widget_comboboxes.isVisible():
+                position = QtCore.QPointF(self.boundingRect().width(),
+                                          (self.outputs.index(output_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+self.widget_title.height())
+            else:
+                position = QtCore.QPointF(self.boundingRect().width(),
+                                          (self.outputs.index(output_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+SETTINGS.OUTPUT_OFFSET)
             output_item.setPos(position)
 
     def arrange_inputs(self):
@@ -770,12 +814,14 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
     def resize(self):
         logging.info('node.resize() ({0})'.format(self))
+        self.arrange_outputs()
         # self.reset_proxy_sizes()
         self.rect.setWidth(self.rect.width())
         self.rect.setHeight(self.rect.height())
         self.reset_proxy_sizes()
         self.resize_height()
         self.resize_width()
+        self.arrange_outputs()
         self.drop_area.setRect(self.boundingRect())
 
     def resize_width(self):
@@ -805,18 +851,18 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def resize_height(self):
         # print self.widget_elements.widget_comboboxes.isVisible()
         if self.widget_elements.widget_comboboxes.isVisible():
-            self.rect.setHeight(max([self.widget_title_proxy.boundingRect().height() +
-                                     self.widget_elements_proxy.boundingRect().height(),
-                                     ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
-                                max([(len(self.inputs))*20,
-                                     (len(self.outputs))*20]))
+            self.rect.setHeight(max([self.widget_title_proxy.boundingRect().height() + self.widget_elements_proxy.boundingRect().height(),
+                                     ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE),
+                                     SETTINGS.OUTPUT_OFFSET + len(self.outputs)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING) + self.widget_title_proxy.boundingRect().height()]))
 
         else:
-            self.rect.setHeight(max([self.label.boundingRect().height() +
-                                     self.widget_title_proxy.boundingRect().height(),
-                                     ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE)]) +
-                                max([(len(self.inputs))*20,
-                                     (len(self.outputs))*20]))
+            # print self.label.boundingRect().height() + self.widget_title_proxy.boundingRect().height()
+            # print (3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE
+            # print SETTINGS.OUTPUT_OFFSET + len(self.outputs)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING)
+
+            self.rect.setHeight(max([self.label.boundingRect().height() + self.widget_title_proxy.boundingRect().height(),
+                                     (3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE,
+                                     SETTINGS.OUTPUT_OFFSET + len(self.outputs)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING)]))
 
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
