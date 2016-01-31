@@ -1,0 +1,17 @@
+[
+  {
+    "type": "character"
+  },
+  {
+    "type": "location"
+  },
+  {
+    "type": "shot"
+  },
+  {
+    "type": "prop"
+  },
+  {
+    "type": "sequence"
+  }
+]

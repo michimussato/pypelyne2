@@ -167,6 +167,8 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
         self.node = node_object
 
+        # self.allowed = True
+
         self.pen = QtGui.QPen(QtGui.QColor(0, 0, 0, 0))
         self.setPen(self.pen)
 
@@ -174,6 +176,7 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
         self.setBrush(self.brush)
 
         self.brush_active = QtGui.QColor(0, 255, 0, 100)
+        self.brush_forbidden = QtGui.QColor(255, 0, 0, 100)
         self.brush_inactive = QtGui.QColor(255, 0, 0, 0)
 
         self.setAcceptDrops(True)
@@ -184,16 +187,26 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
         self.setBrush(self.brush_active)
         logging.info('setting drop area active on {0}'.format(self))
 
+    def set_forbidden(self):
+        self.setBrush(self.brush_forbidden)
+        logging.info('setting drop area forbidden on {0}'.format(self))
+
     def set_inactive(self):
         self.setBrush(self.brush_inactive)
         logging.info('setting drop area inactive on {0}'.format(self))
 
     def dragEnterEvent(self, event):
+
         logging.info('dragEnterEvent on NodeDropArea ({0})'.format(self))
         if event.mimeData().hasFormat('output/draggable-pixmap'):
-            # event.accept()
             self.set_active()
             logging.info('mimeData of event {0} data has format output/draggable-pixmap'.format(event))
+
+        elif event.mimeData().hasFormat('nodeoutput/draggable-output'):
+            if self.node.hovered:
+                self.set_forbidden()
+            else:
+                self.set_active()
 
     def dragLeaveEvent(self, event):
         logging.info('dragLeaveEvent on NodeDropArea ({0})'.format(self))
@@ -220,6 +233,19 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
                                                   self.node))
             self.node.add_output(output_object=unpickled_output_object,
                                  port_id=str(uuid.uuid4()))
+
+        elif event.mimeData().hasFormat('nodeoutput/draggable-output'):
+            data = event.mimeData().data('nodeoutput/draggable-output')
+            data = data.data()
+
+            unpickled_output_object = cPickle.loads(data)
+
+            # print unpickled_output_object[u'output_object']
+            # print unpickled_output_object[u'output_graphicsitem_uuid']
+
+            # Should actually be add_input. but to test this it's okay for now
+            self.node.add_input(output_object=unpickled_output_object[u'output_object'],
+                                port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)
@@ -313,8 +339,21 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.resize()
 
-        for i in range(10):
-            self.add_output()
+        if SETTINGS.AUTO_GENERATE_RANDOM_OUTPUTS:
+            for i in range(SETTINGS.AUTO_GENERATE_RANDOM_OUTPUTS_COUNT):
+                self.add_output()
+
+        if SETTINGS.AUTO_GENERATE_RANDOM_INPUTS:
+            for i in range(SETTINGS.AUTO_GENERATE_RANDOM_INPUTS_COUNT):
+                self.add_input()
+
+    def add_input(self, output_object=None, port_id=None):
+        port = output.Input(node_object=self,
+                            output_object=output_object,
+                            port_id=port_id)
+        self.inputs.append(port)
+        port.setParentItem(self)
+        self.resize()
 
     def add_output(self, output_object=None, port_id=None):
         port = output.Output(node_object=self,
@@ -712,8 +751,19 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             output_item.setPos(position)
 
     def arrange_inputs(self):
+        # for input_item in self.inputs:
+        #     position = QtCore.QPointF(0, ((self.inputs.index(input_item) + 1) * input_item.boundingRect().height()))
+        #     input_item.setPos(position)
         for input_item in self.inputs:
-            position = QtCore.QPointF(0, ((self.inputs.index(input_item) + 1) * input_item.boundingRect().height()))
+            # position = QtCore.QPointF(self.boundingRect().width() - output_item.rect.width(),
+            #                           (output_item.boundingRect().height() * (self.outputs.index(output_item) + 1)))
+            # output_item.setPos(position)
+            if self.widget_elements.widget_comboboxes.isVisible():
+                position = QtCore.QPointF(0,
+                                          (self.inputs.index(input_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+self.widget_title.height())
+            else:
+                position = QtCore.QPointF(0,
+                                          (self.inputs.index(input_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+SETTINGS.OUTPUT_OFFSET)
             input_item.setPos(position)
 
     def resize(self):
@@ -726,6 +776,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.resize_height()
         self.resize_width()
         self.arrange_outputs()
+        self.arrange_inputs()
         self.drop_area.setRect(self.boundingRect())
 
     def resize_width(self):
@@ -757,7 +808,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         if self.widget_elements.widget_comboboxes.isVisible():
             self.rect.setHeight(max([self.widget_title_proxy.boundingRect().height() + self.widget_elements_proxy.boundingRect().height(),
                                      ((3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE),
-                                     SETTINGS.OUTPUT_OFFSET + len(self.outputs)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING) + self.widget_title_proxy.boundingRect().height()]))
+                                     SETTINGS.OUTPUT_OFFSET + max(len(self.outputs), len(self.inputs))*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING) + self.widget_title_proxy.boundingRect().height()]))
 
         else:
             # print self.label.boundingRect().height() + self.widget_title_proxy.boundingRect().height()
@@ -766,7 +817,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
             self.rect.setHeight(max([self.widget_title_proxy.boundingRect().height(),
                                      (3*SETTINGS.PLUGINS_ICON_HEIGHT)*SETTINGS.ICON_SCALE,
-                                     SETTINGS.OUTPUT_OFFSET + len(self.outputs)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING)]))
+                                     SETTINGS.OUTPUT_OFFSET + max(len(self.outputs), len(self.inputs))*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING)]))
 
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
 
