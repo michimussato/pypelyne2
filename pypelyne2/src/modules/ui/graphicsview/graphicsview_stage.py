@@ -89,6 +89,11 @@ class GraphicsViewStage(graphicsview.GraphicsView):
                                                self.viewport().width() * SETTINGS.NAVIGATOR_SCALE,
                                                self.viewport().height() * SETTINGS.NAVIGATOR_SCALE)
 
+            # self.screen_representation.setRect(0,
+            #                                    0,
+            #                                    self.scene.itemsBoundingRect().width() * SETTINGS.NAVIGATOR_SCALE,
+            #                                    self.scene.itemsBoundingRect().height() * SETTINGS.NAVIGATOR_SCALE)
+
             # magic function:
             relative_rect = self.mapFromScene(self.scene.itemsBoundingRect()).boundingRect()
             # print relative_rect.topLeft()

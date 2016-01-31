@@ -202,6 +202,8 @@ class Input(Port):
     def __init__(self, node_object=None, output_object=None, port_id=None):
         super(Input, self).__init__(node_object, output_object, port_id)
 
+        # self.output_object = output_object
+
         self.set_label_pos()
 
     def set_label_pos(self):

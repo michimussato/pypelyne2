@@ -11,6 +11,7 @@ import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidget
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 import pypelyne2.src.modules.ui.output.output as output
+import pypelyne2.src.modules.ui.connection.connection as connection
 
 
 class QLabelCollapseExpand(QtGui.QLabel):
@@ -203,17 +204,33 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
             logging.info('mimeData of event {0} data has format output/draggable-pixmap'.format(event))
 
         elif event.mimeData().hasFormat('nodeoutput/draggable-output'):
-            if self.node.hovered:
+
+            data = event.mimeData().data('nodeoutput/draggable-output')
+            data = data.data()
+
+            unpickled_output_object = cPickle.loads(data)
+
+            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.uuid for x in self.node.inputs]:
+                logging.warning('output with uuid {0} {1} is already connected to {2}'.format(unpickled_output_object[u'output_graphicsitem_uuid'],
+                                                                                              unpickled_output_object[u'output_object'],
+                                                                                              self.node))
+                self.set_forbidden()
+
+            elif self.node.hovered:
                 self.set_forbidden()
             else:
                 self.set_active()
 
+        return QtGui.QGraphicsRectItem.dragEnterEvent(self, event)
+
     def dragLeaveEvent(self, event):
         logging.info('dragLeaveEvent on NodeDropArea ({0})'.format(self))
         self.set_inactive()
+        # self.setAcceptDrops(True)
 
     def dragMoveEvent(self, event):
         logging.info('dragMoveEvent on NodeDropArea ({0})'.format(self))
+        # self.setAcceptDrops(False)
 
     def dropEvent(self, event):
         logging.info('dropEvent on NodeDropArea ({0})'.format(self))
@@ -235,15 +252,13 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
                                  port_id=str(uuid.uuid4()))
 
         elif event.mimeData().hasFormat('nodeoutput/draggable-output'):
+            event.accept()
+
             data = event.mimeData().data('nodeoutput/draggable-output')
             data = data.data()
 
             unpickled_output_object = cPickle.loads(data)
 
-            # print unpickled_output_object[u'output_object']
-            # print unpickled_output_object[u'output_graphicsitem_uuid']
-
-            # Should actually be add_input. but to test this it's okay for now
             self.node.add_input(output_object=unpickled_output_object[u'output_object'],
                                 port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
 
@@ -252,10 +267,12 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
 
 class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
-    def __init__(self, position, plugin):
+    def __init__(self, position, plugin, scene):
         super(NodeGraphicsItem, self).__init__()
 
         reload(SETTINGS)
+
+        self.scene = scene
 
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
@@ -283,6 +300,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.input_list = []
         self.outputs = []
         self.inputs = []
+        self.connections = []
 
         # self._users = []
 
@@ -297,8 +315,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.widget_elements_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
         self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
-        # self.widget_title.status_layout.insertWidget(0, self.progress_bar)
-        # self.widget_title.vlayout_performance.addWidget(self.progress_bar)
+        # # self.widget_title.status_layout.insertWidget(0, self.progress_bar)
+        self.widget_title.vlayout_performance.addWidget(self.progress_bar)
         # self.widget_title.vlayout_title.addWidget(self.progress_bar)
         self.widget_title.vlayout_title.insertStretch(-1)
         # self.progress_bar_proxy = QGraphicsProxyWidgetNoWheel()
@@ -345,14 +363,34 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         if SETTINGS.AUTO_GENERATE_RANDOM_INPUTS:
             for i in range(SETTINGS.AUTO_GENERATE_RANDOM_INPUTS_COUNT):
-                self.add_input()
+                self.add_input(connection=False)
 
-    def add_input(self, output_object=None, port_id=None):
+    def add_connection(self, start_item, end_item):
+        connection_line = connection.Connection(start_item, end_item)
+        self.connections.append(connection_line)
+        self.scene.addItem(connection_line)
+
+    def find_output_graphics_item(self, port_id):
+        for node_item in self.scene.node_items:
+            for output_graphics_item in node_item.outputs:
+                # print port_id
+                # print output_graphics_item.uuid
+                if output_graphics_item.uuid == port_id:
+                    # print 'item found'
+                    return output_graphics_item
+
+    def add_input(self, output_object=None, port_id=None, connection=True):
         port = output.Input(node_object=self,
                             output_object=output_object,
                             port_id=port_id)
         self.inputs.append(port)
         port.setParentItem(self)
+
+        start_item = self.find_output_graphics_item(port_id=port_id)
+
+        if connection:
+            self.add_connection(start_item=start_item, end_item=port)
+
         self.resize()
 
     def add_output(self, output_object=None, port_id=None):
@@ -668,10 +706,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             combobox.addItem(status)
 
     def boundingRect(self):
-        # print self.rect
-        # print self.boundingRect()
-        # print self.rect
-        # print self.rect.getRect()
         return self.rect
 
     def hoverEnterEvent(self, event):
@@ -739,9 +773,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
     def arrange_outputs(self):
         for output_item in self.outputs:
-            # position = QtCore.QPointF(self.boundingRect().width() - output_item.rect.width(),
-            #                           (output_item.boundingRect().height() * (self.outputs.index(output_item) + 1)))
-            # output_item.setPos(position)
             if self.widget_elements.widget_comboboxes.isVisible():
                 position = QtCore.QPointF(self.boundingRect().width(),
                                           (self.outputs.index(output_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+self.widget_title.height())
@@ -751,13 +782,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             output_item.setPos(position)
 
     def arrange_inputs(self):
-        # for input_item in self.inputs:
-        #     position = QtCore.QPointF(0, ((self.inputs.index(input_item) + 1) * input_item.boundingRect().height()))
-        #     input_item.setPos(position)
         for input_item in self.inputs:
-            # position = QtCore.QPointF(self.boundingRect().width() - output_item.rect.width(),
-            #                           (output_item.boundingRect().height() * (self.outputs.index(output_item) + 1)))
-            # output_item.setPos(position)
             if self.widget_elements.widget_comboboxes.isVisible():
                 position = QtCore.QPointF(0,
                                           (self.inputs.index(input_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+self.widget_title.height())
@@ -943,8 +968,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             label.setVisible(True)
 
         self.resize()
-        # task_color = self.current_combobox_task_color or self.task_color_default
-        # self.task_color_item.setNamedColor(task_color)
 
     def set_label_assignee(self):
         logging.info('node.set_label_assignee() ({0})'.format(self))
@@ -958,8 +981,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             label.setVisible(True)
 
         self.resize()
-        # task_color = self.current_combobox_task_color or self.task_color_default
-        # self.task_color_item.setNamedColor(task_color)
 
     def set_label_status(self):
         logging.info('node.set_label_status() ({0})'.format(self))
@@ -973,19 +994,14 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         if text == '':
             label.setVisible(False)
         else:
-            # print self.current_combobox_status_index
             data = combobox.itemData(self.current_combobox_status_index)
 
             color_value = data.toPyObject()
             color = QtGui.QColor(0, 0, 0, 255)
             color.setNamedColor(color_value)
 
-            # print color
-            # print color_value
             palette.setColor(QtGui.QPalette.Base, color)
             label.setPalette(palette)
             label.setVisible(True)
 
         self.resize()
-        # task_color = self.current_combobox_task_color or self.task_color_default
-        # self.task_color_item.setNamedColor(task_color)
