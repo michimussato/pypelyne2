@@ -259,6 +259,8 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
             unpickled_output_object = cPickle.loads(data)
 
+            # self.scene
+
             self.node.add_input(output_object=unpickled_output_object[u'output_object'],
                                 port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
 

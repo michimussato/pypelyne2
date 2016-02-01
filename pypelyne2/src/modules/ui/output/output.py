@@ -115,7 +115,10 @@ class QWidgetInput(QWidgetTitle):
         return QWidgetTitle.mouseMoveEvent(self, event)
 
 
-class Port(QtGui.QGraphicsItem):
+class Port(QtGui.QGraphicsObject):
+
+    # title_changed = QtCore.pyqtSignal(str)
+
     def __init__(self, node_object=None, output_object=None, port_id=None):
         super(Port, self).__init__()
 
@@ -144,23 +147,12 @@ class Port(QtGui.QGraphicsItem):
         self.set_label()
         self.set_color()
 
-    def update_title(self, init=False):
-        title = self.widget_title.label_title
-        title_edit = self.widget_title.label_title_edit
+    # def update_label_from_output(self, name=None):
+    #     pass
 
-        title_edit.setReadOnly(True)
 
-        if init:
-            new_title = self.uuid
-        else:
-            new_title = title_edit.text()
 
-        title.setText(new_title)
-        title_edit.setText(new_title)
-        title_edit.setVisible(False)
-        title.setVisible(True)
-        self.widget_title_proxy.resize(0, 0)
-        self.widget_title_proxy.adjustSize()
+        # self.title_changed.emit(new_title)
 
         # while True:
 
@@ -207,7 +199,7 @@ class Port(QtGui.QGraphicsItem):
 
 class Output(Port):
 
-    # title_changed = QtCore.pyqtSignal(str)
+    titleChangedSignal = QtCore.pyqtSignal()
 
         # self.emit(QtCore.SIGNAL('clicked'))
 
@@ -217,11 +209,37 @@ class Output(Port):
         self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
 
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
+
+        # self.connect(self, QtCore.SIGNAL('title_changed'), self.title_changed_sender)
         # self.widget_title.label_title_edit.returnPressed.connect(self.emit_title_changed)
 
     # def emit_title_changed(self):
     #     self.title_changed.emit(self.widget_title.label_title.text())
     #     self.emit(QtCore.SIGNAL('title_changed'), self.widget_title.label_title.text())
+
+    # def title_changed_sender(self):
+    #     self.titleChangedSignal.emit()
+    #     print 'signal emitted'
+
+    def update_title(self, init=False):
+        title = self.widget_title.label_title
+        title_edit = self.widget_title.label_title_edit
+
+        title_edit.setReadOnly(True)
+
+        if init:
+            new_title = self.uuid
+        else:
+            new_title = title_edit.text()
+
+        title.setText(new_title)
+        title_edit.setText(new_title)
+        title_edit.setVisible(False)
+        title.setVisible(True)
+        self.widget_title_proxy.resize(0, 0)
+        self.widget_title_proxy.adjustSize()
+
+        # self.title_changed_sender()
 
     def set_label_pos(self):
         self.widget_title_proxy.setPos(-self.widget_title_proxy.rect().width()-SETTINGS.OUTPUT_RADIUS/2-SETTINGS.OUTPUT_SPACING,
@@ -302,16 +320,26 @@ class Input(Port):
         self.widget_title = QWidgetInput(self.output_object)
         self.add_ui_elements()
 
-        output_graphics_item = node_object.find_output_graphics_item(port_id)
+        self.output_graphics_item = node_object.find_output_graphics_item(port_id)
 
-        self.set_label(name=output_graphics_item.widget_title.label_title.text())
+        self.set_label(name=self.output_graphics_item.widget_title.label_title.text())
+
+        # self.output_graphics_item.titleChangedSignal.connect(self.title_changed_receiver)
+        # self.connect(self, QtCore.SIGNAL('title_changed'), self.title_changed_receiver)
+
         # self.connect(self, QtCore.SIGNAL('title_changed'), self.foo)
 
-    # @pyqtSlot()
-    # def title_changed_receiver(self, str):
-    #     print str
+    # # @QtCore.pyqtSlot()
+    # def title_changed_receiver(self):
+    #     new_title = self.output_graphics_item.widget_title.label_title.text()
+    #     self.widget_title.label_title.setText(new_title)
+    #     # print new_title
+
     # def foo(self, arg):
     #     print arg
+
+    # def update_label_from_output(self, name=None):
+    #     self.widget_title.label_title.setText(name or self.uuid)
 
     def set_label_pos(self):
         self.widget_title_proxy.setPos(SETTINGS.OUTPUT_RADIUS/2+SETTINGS.OUTPUT_SPACING,
@@ -321,6 +349,9 @@ class Input(Port):
         logging.info('hoverEnterEvent on Input ({0})'.format(self))
 
         self.hovered = True
+
+        title = self.output_graphics_item.widget_title.label_title.text()
+        self.widget_title.label_title.setText(title)
 
         self.set_label_pos()
 

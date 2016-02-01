@@ -12,7 +12,7 @@ import sip as sip
 here = os.path.dirname(os.path.realpath(__file__))
 
 # global logging setting
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.CRITICAL)
 
 logging.info('reading settings file')
 
@@ -212,12 +212,12 @@ OUTPUT_OFFSET = OUTPUT_RADIUS
 # Node
 ICON_SCALE = float(0.5)
 AUTO_GENERATE_RANDOM_OUTPUTS = True
-AUTO_GENERATE_RANDOM_OUTPUTS_COUNT = 20
+AUTO_GENERATE_RANDOM_OUTPUTS_COUNT = 10
 DISPLAY_OUTPUT_NAME = False
 TRANSPARENT_OUTPUT_LABEL = False
 
 AUTO_GENERATE_RANDOM_INPUTS = False
-AUTO_GENERATE_RANDOM_INPUTS_COUNT = 20
+AUTO_GENERATE_RANDOM_INPUTS_COUNT = 10
 
 # Node editor
 ENABLE_NAVIGATOR = True
