@@ -112,7 +112,7 @@ class QWidgetInput(QWidgetTitle):
         return QWidgetTitle.mouseMoveEvent(self, event)
 
 
-class Port(QtGui.QGraphicsObject):
+class Port(QtGui.QGraphicsItem):
 
     def __init__(self, node_object=None, output_object=None, port_id=None):
         super(Port, self).__init__()
