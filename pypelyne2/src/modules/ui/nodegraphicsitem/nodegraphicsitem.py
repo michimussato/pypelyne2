@@ -93,7 +93,7 @@ class QWidgetTitle(QWidgetNode):
 
         self.set_palette()
 
-        self.ui.label_lock_icon.setText('')
+        # self.ui.label_lock_icon.setText('')
 
         self.preview_icon = QLabelGif(self.node)
 
@@ -366,9 +366,12 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                 self.add_input(connection=False)
 
     def add_connection(self, start_item, end_item):
-        connection_line = connection.Connection(start_item, end_item)
+        connection_line = connection.Connection(start_item=start_item,
+                                                end_item=end_item,
+                                                scene_object=self.scene)
         self.connections.append(connection_line)
         self.scene.addItem(connection_line)
+        self.scene.connection_items.append(connection_line)
 
     def find_output_graphics_item(self, port_id):
         for node_item in self.scene.node_items:
@@ -377,6 +380,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                 # print output_graphics_item.uuid
                 if output_graphics_item.uuid == port_id:
                     # print 'item found'
+                    # print node_item
                     return output_graphics_item
 
     def add_input(self, output_object=None, port_id=None, connection=True):
@@ -728,6 +732,9 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.widget_elements_proxy.setPos(0, self.widget_title_proxy.boundingRect().height())
 
     def paint(self, painter, option, widget):
+
+        # for i in self.connections:
+        #     print i
 
         painter.setRenderHint(painter.Antialiasing)
 

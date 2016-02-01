@@ -17,39 +17,102 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 from pypelyne2.src.modules.ui import pixmapdraggable
 
 
-# class QWidgetOutput(QtGui.QWidget):
-#     def __init__(self, output_object=None):
-#         super(QWidgetOutput, self).__init__()
-#
-#         self.output = output_object
-#
-#         self.palette = QtGui.QPalette()
-#
-#     def set_palette(self):
-#         self.palette.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(50, 50, 50, 0))
-#         self.ui.setPalette(self.palette)
-#
-#     def wheelEvent(self, event):
-#         logging.info('wheelEvent on QWidgetOutput ({0})'.format(self))
-#         event.ignore()
-#
-#
-# class QWidgetTitle(QWidgetOutput):
-#     def __init__(self, output_object=None):
-#         super(QWidgetTitle, self).__init__()
-#
-#         self.output = output_object
-#
-#         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-#                                           'src',
-#                                           'modules',
-#                                           'ui',
-#                                           'output',
-#                                           'output_widget.ui'))
-#
-#         self.set_palette()
-#
-#         self.ui.label_title.setText('hallo')
+class QWidgetOutput(QtGui.QWidget):
+    def __init__(self, output_object=None):
+        super(QWidgetOutput, self).__init__()
+
+        self.output = output_object
+
+        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+                                          'src',
+                                          'modules',
+                                          'ui',
+                                          'output',
+                                          'output_widget.ui'), self)
+
+        self.palette = QtGui.QPalette()
+
+    def set_palette(self):
+        self.palette.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(50, 50, 50, 0))
+        if SETTINGS.TRANSPARENT_OUTPUT_LABEL:
+            self.ui.setPalette(self.palette)
+
+    def wheelEvent(self, event):
+        logging.info('wheelEvent on QWidgetOutput ({0})'.format(self))
+        event.ignore()
+
+
+class QWidgetTitle(QWidgetOutput):
+    def __init__(self, output_object=None):
+        super(QWidgetTitle, self).__init__()
+
+        self.output = output_object
+
+        # self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+        #                                   'src',
+        #                                   'modules',
+        #                                   'ui',
+        #                                   'output',
+        #                                   'output_widget.ui'), self)
+
+        # self.set_palette()
+        #
+        # self.setup_title()
+
+    def setup_title(self):
+        self.ui.label_title.setToolTip('shift+left click to change name')
+        self.ui.label_title_edit.setToolTip('enter to submit')
+        self.ui.label_title_edit.setText(self.ui.label_title.text())
+
+        self.ui.label_title_edit.setVisible(False)
+        self.ui.label_title.setVisible(True)
+
+    def mousePressEvent(self, event):
+        logging.info('mousePressEvent on QWidgetTitle ({0})'.format(self))
+        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+
+        if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
+            self.ui.label_title.setVisible(False)
+            self.ui.label_title_edit.setVisible(True)
+            self.ui.label_title_edit.setReadOnly(False)
+            self.ui.label_title_edit.setFocus()
+            self.ui.label_title_edit.selectAll()
+            return
+
+        return QWidgetTitle.mouseMoveEvent(self, event)
+
+
+class QWidgetInput(QWidgetTitle):
+    def __init__(self, output_object=None):
+        super(QWidgetTitle, self).__init__()
+
+        self.output = output_object
+
+        self.set_palette()
+
+        self.setup_title()
+
+    def setup_title(self):
+        self.ui.label_title.setToolTip('change name at output port')
+        # self.ui.label_title_edit.setToolTip('enter to submit')
+        self.ui.label_title_edit.setText(self.ui.label_title.text())
+
+        self.ui.label_title_edit.setVisible(False)
+        self.ui.label_title.setVisible(True)
+
+    def mousePressEvent(self, event):
+        logging.info('mousePressEvent on QWidgetTitle ({0})'.format(self))
+        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+
+        if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
+            return
+        #     self.ui.label_title.setVisible(False)
+        #     self.ui.label_title_edit.setVisible(True)
+        #     self.ui.label_title_edit.setReadOnly(False)
+        #     self.ui.label_title_edit.setFocus()
+        #     self.ui.label_title_edit.selectAll()
+
+        return QWidgetTitle.mouseMoveEvent(self, event)
 
 
 class Port(QtGui.QGraphicsItem):
@@ -62,12 +125,11 @@ class Port(QtGui.QGraphicsItem):
 
         self.setAcceptsHoverEvents(True)
 
-        # self.z = self.zValue()
-
-        self.palette_temp = QtGui.QPalette()
         self.color_item = QtGui.QColor(255, 0, 0)
 
         self.output_object = output_object or parse_outputs.get_outputs()[random.randint(0, len(parse_outputs.get_outputs())-1)]
+
+        self.pixmap = compositeicon.CompositeIconOutput(self.output_object).output_icon
 
         self.hovered = False
 
@@ -76,17 +138,41 @@ class Port(QtGui.QGraphicsItem):
                                   SETTINGS.OUTPUT_RADIUS,
                                   SETTINGS.OUTPUT_RADIUS)
 
-        # self.widget_title = QWidgetTitle()
-
-        self.widget_title = None
-        self.widget_title_proxy = None
+        self.widget_title = QWidgetTitle(self.output_object)
+        self.widget_title_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
+        self.add_ui_elements()
         self.set_label()
         self.set_color()
 
-    def set_palette_temp(self):
-        self.palette_temp.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(50, 50, 50, 0))
-        if SETTINGS.TRANSPARENT_OUTPUT_LABEL:
-            self.widget_title.setPalette(self.palette_temp)
+    def update_title(self, init=False):
+        title = self.widget_title.label_title
+        title_edit = self.widget_title.label_title_edit
+
+        title_edit.setReadOnly(True)
+
+        if init:
+            new_title = self.uuid
+        else:
+            new_title = title_edit.text()
+
+        title.setText(new_title)
+        title_edit.setText(new_title)
+        title_edit.setVisible(False)
+        title.setVisible(True)
+        self.widget_title_proxy.resize(0, 0)
+        self.widget_title_proxy.adjustSize()
+
+        # while True:
+
+        # node_object = self.node_object.find_output_graphics_item(self.uuid)
+            # print node_object
+
+        self.set_label_pos()
+
+    def add_ui_elements(self):
+
+        self.widget_title_proxy.setWidget(self.widget_title)
+        self.widget_title_proxy.setParentItem(self)
 
     def set_color(self):
         self.color_item.setNamedColor(self.output_object.color)
@@ -94,17 +180,17 @@ class Port(QtGui.QGraphicsItem):
     def boundingRect(self):
         return self.rect
 
-    def set_label(self):
-        self.widget_title = QtGui.QLabel(str(self.output_object.abbreviation + ' ' + self.uuid))
+    def set_label(self, name=None):
+        # print dir(self)
+        # print dir(self.output_object)
+        # print self.output_object.abbreviation
 
-        # self.widget_title.setVisible(False)
-        self.set_palette_temp()
-        self.widget_title_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
-
-        self.widget_title_proxy.setWidget(self.widget_title)
-        self.widget_title_proxy.setParentItem(self)
+        self.widget_title.label_lock_icon.setPixmap(self.pixmap)
 
         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
+        self.widget_title.label_title.setText(name or self.uuid)
+        self.widget_title.label_title_edit.setText(name or self.uuid)
+        self.widget_title.label_output.setText(self.output_object.abbreviation)
 
     def paint(self, painter, option, widget):
         painter.setRenderHint(QtGui.QPainter.Antialiasing)
@@ -120,15 +206,22 @@ class Port(QtGui.QGraphicsItem):
 
 
 class Output(Port):
+
+    # title_changed = QtCore.pyqtSignal(str)
+
+        # self.emit(QtCore.SIGNAL('clicked'))
+
     def __init__(self, node_object=None, output_object=None, port_id=None):
         super(Output, self).__init__(node_object, output_object, port_id)
 
         self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
 
-        self.set_label_pos()
+        self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
+        # self.widget_title.label_title_edit.returnPressed.connect(self.emit_title_changed)
 
-        # print self.z
-        # print self.zValue()
+    # def emit_title_changed(self):
+    #     self.title_changed.emit(self.widget_title.label_title.text())
+    #     self.emit(QtCore.SIGNAL('title_changed'), self.widget_title.label_title.text())
 
     def set_label_pos(self):
         self.widget_title_proxy.setPos(-self.widget_title_proxy.rect().width()-SETTINGS.OUTPUT_RADIUS/2-SETTINGS.OUTPUT_SPACING,
@@ -137,24 +230,26 @@ class Output(Port):
     def hoverEnterEvent(self, event):
         logging.info('hoverEnterEvent on Output ({0})'.format(self))
 
+        self.hovered = True
+
+        self.set_label_pos()
+
         QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
 
         self.widget_title.setVisible(True)
-        # self.widget_title_proxy.setZValue(500)
-
-        self.hovered = True
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
     def hoverLeaveEvent(self, event):
         logging.info('hoverLeaveEvent on Output ({0})'.format(self))
 
+        self.hovered = False
+
+        self.widget_title_proxy.resize(0, 0)
+
         QtGui.QApplication.restoreOverrideCursor()
-        # self.widget_title_proxy.setZValue(self.z)
 
         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
-
-        self.hovered = False
 
         return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)
 
@@ -177,14 +272,11 @@ class Output(Port):
 
         icon = QtGui.QLabel()
 
-        pixmap = compositeicon.CompositeIconOutput(self.output_object).output_icon
-
-        icon.setPixmap(pixmap)
+        icon.setPixmap(self.pixmap)
 
         drag = QtGui.QDrag(icon)
         drag.setMimeData(mime_data)
-        drag.setPixmap(pixmap)
-        # drag.setHotSpot(event.pos())
+        drag.setPixmap(self.pixmap)
 
         if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
             pass
@@ -199,12 +291,27 @@ class Output(Port):
 
 
 class Input(Port):
+    # TODO: fix inheritance structure
     def __init__(self, node_object=None, output_object=None, port_id=None):
         super(Input, self).__init__(node_object, output_object, port_id)
 
-        # self.output_object = output_object
+        # print dir(output_object)
+        #
+        # print dir(output_object.widget_title)
 
-        self.set_label_pos()
+        self.widget_title = QWidgetInput(self.output_object)
+        self.add_ui_elements()
+
+        output_graphics_item = node_object.find_output_graphics_item(port_id)
+
+        self.set_label(name=output_graphics_item.widget_title.label_title.text())
+        # self.connect(self, QtCore.SIGNAL('title_changed'), self.foo)
+
+    # @pyqtSlot()
+    # def title_changed_receiver(self, str):
+    #     print str
+    # def foo(self, arg):
+    #     print arg
 
     def set_label_pos(self):
         self.widget_title_proxy.setPos(SETTINGS.OUTPUT_RADIUS/2+SETTINGS.OUTPUT_SPACING,
@@ -213,28 +320,22 @@ class Input(Port):
     def hoverEnterEvent(self, event):
         logging.info('hoverEnterEvent on Input ({0})'.format(self))
 
-        # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
-        # self.widget_title_proxy.setZValue(500)
-        self.widget_title.setVisible(True)
-
-        # print 'there'
-
         self.hovered = True
+
+        self.set_label_pos()
+
+        self.widget_title.setVisible(True)
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
     def hoverLeaveEvent(self, event):
         logging.info('hoverLeaveEvent on Input ({0})'.format(self))
 
-        # QtGui.QApplication.restoreOverrideCursor()
+        self.hovered = False
 
-        # self.widget_title_proxy.setZValue(self.z)
+        self.widget_title_proxy.resize(0, 0)
 
         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
-
-        # print 'here'
-
-        self.hovered = False
 
         return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)
 

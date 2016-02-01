@@ -10,6 +10,7 @@ app = QtGui.QApplication(sys.argv)
 
 mainwindow = QtGui.QMainWindow()
 scene = QtGui.QGraphicsScene()
+scene.global_scale = 1.0
 graphicssview_stage = graphicsview_stage.GraphicsViewStage()
 graphicssview_stage.setScene(scene)
 mainwindow.setCentralWidget(graphicssview_stage)
@@ -23,7 +24,7 @@ rect_dst.setFlags(rect_src.ItemIsSelectable | rect_src.ItemIsMovable)
 scene.addItem(rect_src)
 scene.addItem(rect_dst)
 
-connection_line = connection.Connection(rect_src, rect_dst)
+connection_line = connection.Connection(start_item=rect_src, end_item=rect_dst, scene_object=scene)
 
 # print type(connection_line)
 

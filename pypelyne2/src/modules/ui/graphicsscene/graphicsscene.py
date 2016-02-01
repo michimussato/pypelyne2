@@ -4,6 +4,7 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.ui.connection.connection as connection
 # import pypelyne2.src.parser.parse_plugins as parse_plugins
 # import pypelyne2.src.modules.ui.pixmapdraggable.pixmapdraggable as pixmapdraggable
 
@@ -44,8 +45,21 @@ class GraphicsScene(QtGui.QGraphicsScene):
         self.global_scale = 1
 
         self.node_items = []
+        self.connection_items = []
 
         self.item_group = QtGui.QGraphicsItemGroup()
+
+        # self.point = self.addRect(QtCore.QRectF(-1000, -1000, 500, 500))
+
+        # rect_src = QtGui.QGraphicsRectItem(-1000, -1000, 10, 10)
+        # rect_src.setFlags(rect_src.ItemIsSelectable | rect_src.ItemIsMovable)
+        # # rect_dst = rect_src.setRect(20,20,30,30)
+        # rect_dst = QtGui.QGraphicsRectItem(-200, -200, 10, 10)
+        # rect_dst.setFlags(rect_src.ItemIsSelectable | rect_src.ItemIsMovable)
+        #
+        # line = connection.Connection(start_item=rect_src, end_item=rect_dst, scene_object=self)
+        # self.addItem(line)
+        # self.connection_items.append(line)
 
     def dragEnterEvent(self, event):
         # event.accept()

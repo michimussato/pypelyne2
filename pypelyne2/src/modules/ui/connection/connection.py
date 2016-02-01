@@ -6,10 +6,15 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class Connection(QtGui.QGraphicsPathItem):
-    def __init__(self, start_item=None, end_item=None, *args, **kwargs):
+    def __init__(self, start_item=None, end_item=None, scene_object=None, *args, **kwargs):
         super(Connection, self).__init__(*args, **kwargs)
 
         # TODO: apply global scale
+
+        self.scene_object = scene_object
+
+        # print self.scene_object
+        # print self.scene()
 
         self.path_item = None
         self.path_color = None
@@ -18,6 +23,13 @@ class Connection(QtGui.QGraphicsPathItem):
         self.my_end_item = end_item
         self.my_color = QtCore.Qt.black
         self.setZValue(-1.0)
+
+        self.p1 = QtCore.QPointF(self.my_start_item.sceneBoundingRect().center().x(), self.my_start_item.sceneBoundingRect().center().y())
+        self.p2 = None
+        self.p3 = None
+        self.p4 = QtCore.QPointF(self.my_end_item.sceneBoundingRect().center().x(), self.my_end_item.sceneBoundingRect().center().y())
+        self.p5 = None
+        self.p6 = self.p4
 
         self.setAcceptHoverEvents(True)
         self.setAcceptTouchEvents(True)
@@ -57,7 +69,7 @@ class Connection(QtGui.QGraphicsPathItem):
         line = self.get_connection()
 
         pen = self.pen()
-        pen.setWidth(2)
+        pen.setWidth(SETTINGS.LINE_WIDTH*self.scene_object.global_scale)
         painter.setRenderHint(QtGui.QPainter.Antialiasing)
 
         # if not os.path.isdir(self.start_item_live_dir):
@@ -90,22 +102,22 @@ class Connection(QtGui.QGraphicsPathItem):
 
     def get_connection(self):
         # print dir(self.my_start_item)
-        p1 = QtCore.QPointF(self.my_start_item.sceneBoundingRect().center().x(), self.my_start_item.sceneBoundingRect().center().y())
-        p2 = None
-        p3 = None
-        p4 = QtCore.QPointF(self.my_end_item.sceneBoundingRect().center().x(), self.my_end_item.sceneBoundingRect().center().y())
-        p5 = None
-        p6 = p4
+        self.p1 = QtCore.QPointF(self.my_start_item.sceneBoundingRect().center().x(), self.my_start_item.sceneBoundingRect().center().y())
+        # self.p2 = None
+        # self.p3 = None
+        self.p4 = QtCore.QPointF(self.my_end_item.sceneBoundingRect().center().x(), self.my_end_item.sceneBoundingRect().center().y())
+        # self.p5 = None
+        self.p6 = self.p4
 
-        path = QtGui.QPainterPath(p1)
+        path = QtGui.QPainterPath(self.p1)
 
         if SETTINGS.LINE_TYPE == 'BEZIER' or SETTINGS.LINE_TYPE == 'EDGED':
 
             if SETTINGS.LINE_TYPE == 'BEZIER':
 
-                if (p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) < p4.x():
-                    p2 = QtCore.QPointF((p4.x() + p1.x()) / 2 + SETTINGS.LINE_SWITCH_THRESHOLD, p1.y())
-                    p3 = QtCore.QPointF((p4.x() + p1.x()) / 2 - SETTINGS.LINE_SWITCH_THRESHOLD, p4.y())
+                if (self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) < self.p4.x():
+                    self.p2 = QtCore.QPointF((self.p4.x() + self.p1.x()) / 2 + SETTINGS.LINE_SWITCH_THRESHOLD*self.scene_object.global_scale, self.p1.y())
+                    self.p3 = QtCore.QPointF((self.p4.x() + self.p1.x()) / 2 - SETTINGS.LINE_SWITCH_THRESHOLD*self.scene_object.global_scale, self.p4.y())
 
                     # print p2.x()
                     # if p2.x() <= SETTINGS.LINE_SWITCH_THRESHOLD:
@@ -114,49 +126,49 @@ class Connection(QtGui.QGraphicsPathItem):
                     # if p3.x() <= SETTINGS.LINE_SWITCH_THRESHOLD:
                     #     p3.setX(SETTINGS.LINE_SWITCH_THRESHOLD)
 
-                elif (p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) >= p4.x():
-                    p2 = QtCore.QPointF(p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD*2, p1.y())
-                    p3 = QtCore.QPointF(p4.x() - SETTINGS.LINE_SWITCH_THRESHOLD*2, p4.y())
+                elif (self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) >= self.p4.x():
+                    self.p2 = QtCore.QPointF(self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD*2*self.scene_object.global_scale, self.p1.y())
+                    self.p3 = QtCore.QPointF(self.p4.x() - SETTINGS.LINE_SWITCH_THRESHOLD*2*self.scene_object.global_scale, self.p4.y())
 
-                path.cubicTo(p2, p3, p4)
+                path.cubicTo(self.p2, self.p3, self.p4)
 
             elif SETTINGS.LINE_TYPE == 'EDGED':
 
-                if (p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) < p4.x():
-                    p2 = QtCore.QPointF((p4.x() - p1.x()) / 2 + p1.x(), p1.y())
-                    p3 = QtCore.QPointF((p4.x() - p1.x()) / 2 + p1.x(), p4.y())
+                if (self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD*self.scene_object.global_scale) < self.p4.x():
+                    self.p2 = QtCore.QPointF((self.p4.x() - self.p1.x()) / 2 + self.p1.x(), self.p1.y())
+                    self.p3 = QtCore.QPointF((self.p4.x() - self.p1.x()) / 2 + self.p1.x(), self.p4.y())
 
-                    path.lineTo(p2)
+                    path.lineTo(self.p2)
 
-                    path2 = QtGui.QPainterPath(p2)
-                    path2.lineTo(p3)
+                    path2 = QtGui.QPainterPath(self.p2)
+                    path2.lineTo(self.p3)
 
-                    path3 = QtGui.QPainterPath(p3)
-                    path3.lineTo(p4)
+                    path3 = QtGui.QPainterPath(self.p3)
+                    path3.lineTo(self.p4)
 
                     path.connectPath(path2)
                     path.connectPath(path3)
 
-                elif (p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) >= p4.x():
+                elif (self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) >= self.p4.x():
 
-                    p2 = QtCore.QPointF(p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD/2, p1.y())
-                    p3 = QtCore.QPointF(p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD/2, (p1.y() + p6.y())/2)
-                    p4 = QtCore.QPointF(p6.x() - SETTINGS.LINE_SWITCH_THRESHOLD/2, (p1.y() + p6.y())/2)
-                    p5 = QtCore.QPointF(p6.x() - SETTINGS.LINE_SWITCH_THRESHOLD/2, p6.y())
+                    self.p2 = QtCore.QPointF(self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD/2*self.scene_object.global_scale, self.p1.y())
+                    self.p3 = QtCore.QPointF(self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD/2*self.scene_object.global_scale, (self.p1.y() + self.p6.y())/2)
+                    self.p4 = QtCore.QPointF(self.p6.x() - SETTINGS.LINE_SWITCH_THRESHOLD/2*self.scene_object.global_scale, (self.p1.y() + self.p6.y())/2)
+                    self.p5 = QtCore.QPointF(self.p6.x() - SETTINGS.LINE_SWITCH_THRESHOLD/2*self.scene_object.global_scale, self.p6.y())
 
-                    path.lineTo(p2)
+                    path.lineTo(self.p2)
 
-                    path2 = QtGui.QPainterPath(p2)
-                    path2.lineTo(p3)
+                    path2 = QtGui.QPainterPath(self.p2)
+                    path2.lineTo(self.p3)
 
-                    path3 = QtGui.QPainterPath(p3)
-                    path3.lineTo(p4)
+                    path3 = QtGui.QPainterPath(self.p3)
+                    path3.lineTo(self.p4)
 
-                    path4 = QtGui.QPainterPath(p4)
-                    path4.lineTo(p5)
+                    path4 = QtGui.QPainterPath(self.p4)
+                    path4.lineTo(self.p5)
 
-                    path5 = QtGui.QPainterPath(p5)
-                    path5.lineTo(p6)
+                    path5 = QtGui.QPainterPath(self.p5)
+                    path5.lineTo(self.p6)
 
                     path.connectPath(path2)
                     path.connectPath(path3)
@@ -164,11 +176,12 @@ class Connection(QtGui.QGraphicsPathItem):
                     path.connectPath(path5)
 
         elif SETTINGS.LINE_TYPE == 'STRAIGHT':
-            path.lineTo(p4)
+            path.lineTo(self.p4)
 
         self.shape = self.qp.createStroke(path)
 
         return path
 
     def set_connection_color(self):
-        self.path_color_item.setNamedColor(self.my_start_item.output_object.color)
+        if hasattr(self.my_start_item, 'output_object'):
+            self.path_color_item.setNamedColor(self.my_start_item.output_object.color)

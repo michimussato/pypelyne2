@@ -16,7 +16,7 @@ graphicssview_stage.setScene(scene)
 mainwindow.setCentralWidget(graphicssview_stage)
 
 output = output.Output()
-output.setPos(20, 20)
+output.setPos(500, 100)
 
 print type(output)
 

@@ -71,10 +71,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
     def adjust_navigator(self):
         if SETTINGS.ENABLE_NAVIGATOR:
 
-            if self.sceneRect().width()*SETTINGS.NAVIGATOR_MAX_SIZE < self.scene_representation.rect().width():
-                print 'too wide'
-            if self.sceneRect().height()*SETTINGS.NAVIGATOR_MAX_SIZE < self.scene_representation.rect().height():
-                print 'too tall'
+            # if self.sceneRect().width()*SETTINGS.NAVIGATOR_MAX_SIZE < self.scene_representation.rect().width():
+            #     print 'too wide'
+            # if self.sceneRect().height()*SETTINGS.NAVIGATOR_MAX_SIZE < self.scene_representation.rect().height():
+            #     print 'too tall'
 
             # print self.sceneRect().width()
             # print self.sceneRect().height()
@@ -132,9 +132,14 @@ class GraphicsViewStage(graphicsview.GraphicsView):
                     or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
                 self.setDragMode(self.NoDrag)
                 group = self.scene.createItemGroup(self.scene.node_items)
+                # group2 = self.scene.createItemGroup(self.scene.connection_items)
                 self.point.setPos(event_pos_scene)
                 group.translate(-1*delta.x(), -1*delta.y())
+                # group2.translate(0, 0)
+                # group2.translate(-1*delta.x(), -1*delta.y())
+
                 self.scene.destroyItemGroup(group)
+                # self.scene.destroyItemGroup(group2)
                 # self.setDragMode(self.RubberBandDrag)
 
             self.mouse_position_previous = event_pos_scene
