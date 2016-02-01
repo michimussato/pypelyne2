@@ -316,6 +316,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.widget_title_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
         self.widget_elements_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
+        # cpu usage bar is just a placeholder for future "progress"
         self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
         # # self.widget_title.status_layout.insertWidget(0, self.progress_bar)
         self.widget_title.vlayout_performance.addWidget(self.progress_bar)

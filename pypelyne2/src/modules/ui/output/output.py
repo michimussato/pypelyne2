@@ -141,7 +141,7 @@ class Port(QtGui.QGraphicsItem):
         self.set_label()
         self.set_color()
 
-        self.set_label_pos()
+        # self.set_label_pos()
 
     def add_ui_elements(self):
 
@@ -162,6 +162,8 @@ class Port(QtGui.QGraphicsItem):
         self.widget_title.label_title.setText(name or self.uuid)
         self.widget_title.label_title_edit.setText(name or self.uuid)
         self.widget_title.label_output.setText(self.output_object.abbreviation)
+
+        # self.set_label_pos()
 
     def paint(self, painter, option, widget):
         painter.setRenderHint(QtGui.QPainter.Antialiasing)
@@ -187,6 +189,13 @@ class Output(Port):
 
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
+        # self.set_label_pos()
+
+        # self.init_label_pos()
+
+    # def init_label_pos(self):
+    #     self.set_label_pos()
+
     def update_title(self, init=False):
         title = self.widget_title.label_title
         title_edit = self.widget_title.label_title_edit
@@ -205,6 +214,8 @@ class Output(Port):
         self.widget_title_proxy.resize(0, 0)
         self.widget_title_proxy.adjustSize()
 
+        self.set_label_pos()
+
     def set_label_pos(self):
         self.widget_title_proxy.setPos(-self.widget_title_proxy.rect().width()-SETTINGS.OUTPUT_RADIUS/2-SETTINGS.OUTPUT_SPACING,
                                        -self.widget_title_proxy.rect().height()/2)
@@ -214,11 +225,11 @@ class Output(Port):
 
         self.hovered = True
 
-        self.set_label_pos()
-
         QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
 
         self.widget_title.setVisible(True)
+
+        self.set_label_pos()
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
@@ -294,7 +305,6 @@ class Input(Port):
     def output_label(self):
         upstream_node_name = self.output_graphics_item.node_object.widget_title.label_title.text()
         upstream_output_name = self.output_graphics_item.widget_title.label_title.text()
-
         return '{0}.{1}'.format(upstream_node_name, upstream_output_name)
 
     def hoverEnterEvent(self, event):
@@ -304,9 +314,11 @@ class Input(Port):
 
         self.widget_title.label_title.setText(self.output_label)
 
-        self.set_label_pos()
-
         self.widget_title.setVisible(True)
+        
+        self.widget_title_proxy.adjustSize()
+
+        self.set_label_pos()
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
