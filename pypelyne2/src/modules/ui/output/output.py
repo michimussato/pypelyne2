@@ -13,7 +13,6 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 # http://trevorius.com/scrapbook/python/pyqt-multiple-inheritance/
-from pypelyne2.src.modules.ui import pixmapdraggable
 
 
 class QWidgetOutput(QtGui.QWidget):

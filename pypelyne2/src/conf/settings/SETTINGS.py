@@ -12,7 +12,7 @@ import sip as sip
 here = os.path.dirname(os.path.realpath(__file__))
 
 # global logging setting
-logging.basicConfig(level=logging.CRITICAL)
+logging.basicConfig(level=logging.INFO)
 
 logging.info('reading settings file')
 
