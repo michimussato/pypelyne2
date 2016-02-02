@@ -2,7 +2,7 @@ import sys
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
 import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
-import pypelyne2.src.modules.ui.output.output as output
+import pypelyne2.src.modules.ui.portwidget.portwidget as output
 import pypelyne2.src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
 import pypelyne2.src.parser.parse_plugins as parse_plugins
 

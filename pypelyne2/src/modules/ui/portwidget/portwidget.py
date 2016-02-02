@@ -1,122 +1,23 @@
-import os
 import uuid
 import logging
 import random
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
-import PyQt4.uic as uic
 import cPickle
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
+import pypelyne2.src.modules.ui.porthover.porthover as porthover
 import pypelyne2.src.parser.parse_outputs as parse_outputs
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 # http://trevorius.com/scrapbook/python/pyqt-multiple-inheritance/
-
-
-class QWidgetOutput(QtGui.QWidget):
-    def __init__(self, output_object=None):
-        super(QWidgetOutput, self).__init__()
-
-        self.output = output_object
-
-        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-                                          'src',
-                                          'modules',
-                                          'ui',
-                                          'output',
-                                          'output_widget.ui'), self)
-
-        self.palette = QtGui.QPalette()
-
-    def set_palette(self):
-        self.palette.setColor(QtGui.QWidget().backgroundRole(), QtGui.QColor(50, 50, 50, 0))
-        if SETTINGS.TRANSPARENT_OUTPUT_LABEL:
-            self.ui.setPalette(self.palette)
-
-    def wheelEvent(self, event):
-        logging.info('wheelEvent on QWidgetOutput ({0})'.format(self))
-        event.ignore()
-
-
-class QWidgetTitle(QWidgetOutput):
-    def __init__(self, output_object=None):
-        super(QWidgetTitle, self).__init__()
-
-        self.output = output_object
-
-        self.setup_title()
-
-        # self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-        #                                   'src',
-        #                                   'modules',
-        #                                   'ui',
-        #                                   'output',
-        #                                   'output_widget.ui'), self)
-
-    def setup_title(self):
-        self.ui.label_title.setToolTip('shift+left click to change name')
-        self.ui.label_title_edit.setToolTip('enter to submit')
-        self.ui.label_title_edit.setText(self.ui.label_title.text())
-
-        self.ui.label_title_edit.setVisible(False)
-        self.ui.label_title.setVisible(True)
-
-    def mousePressEvent(self, event):
-        logging.info('mousePressEvent on QWidgetTitle ({0})'.format(self))
-        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-
-        if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
-            self.ui.label_title.setVisible(False)
-            self.ui.label_title_edit.setVisible(True)
-            self.ui.label_title_edit.setReadOnly(False)
-            self.ui.label_title_edit.setFocus()
-            self.ui.label_title_edit.selectAll()
-            return
-
-        return QWidgetTitle.mouseMoveEvent(self, event)
-
-
-class QWidgetInput(QWidgetTitle):
-    def __init__(self, output_object=None):
-        super(QWidgetTitle, self).__init__()
-
-        self.output = output_object
-
-        self.set_palette()
-
-        self.setup_title()
-
-    def setup_title(self):
-        self.ui.label_title.setToolTip('change name at output port')
-        # self.ui.label_title_edit.setToolTip('enter to submit')
-        self.ui.label_title_edit.setText(self.ui.label_title.text())
-
-        self.ui.label_title_edit.setVisible(False)
-        self.ui.label_title.setVisible(True)
-
-    def mousePressEvent(self, event):
-        logging.info('mousePressEvent on QWidgetTitle ({0})'.format(self))
-        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-
-        if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
-            return
-        #     self.ui.label_title.setVisible(False)
-        #     self.ui.label_title_edit.setVisible(True)
-        #     self.ui.label_title_edit.setReadOnly(False)
-        #     self.ui.label_title_edit.setFocus()
-        #     self.ui.label_title_edit.selectAll()
-
-        return QWidgetTitle.mouseMoveEvent(self, event)
-
-
 class Port(QtGui.QGraphicsItem):
 
     def __init__(self, node_object=None, output_object=None, port_id=None):
         super(Port, self).__init__()
 
-        self.node_object = node_object
+        self.parent_node = node_object
 
         self.uuid = port_id or str(uuid.uuid4())
 
@@ -135,13 +36,11 @@ class Port(QtGui.QGraphicsItem):
                                   SETTINGS.OUTPUT_RADIUS,
                                   SETTINGS.OUTPUT_RADIUS)
 
-        self.widget_title = QWidgetTitle(self.output_object)
+        self.widget_title = porthover.OutputHover(self.output_object)
         self.widget_title_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
         self.add_ui_elements()
         self.set_label()
         self.set_color()
-
-        # self.set_label_pos()
 
     def add_ui_elements(self):
 
@@ -173,7 +72,10 @@ class Port(QtGui.QGraphicsItem):
 
         painter.setPen(pen)
 
-        painter.setBrush(QtGui.QBrush(self.color_item))
+        if self.hovered:
+            painter.setBrush(QtGui.QBrush(self.color_item.lighter(SETTINGS.LIGHTER_AMOUNT)))
+        else:
+            painter.setBrush(QtGui.QBrush(self.color_item))
 
         painter.drawEllipse(self.rect)
 
@@ -185,16 +87,13 @@ class Output(Port):
 
         self.node_object = node_object
 
+        self.downstream_ports = []
+
+        self.downstream_connections = []
+
         self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
 
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
-
-        # self.set_label_pos()
-
-        # self.init_label_pos()
-
-    # def init_label_pos(self):
-    #     self.set_label_pos()
 
     def update_title(self, init=False):
         title = self.widget_title.label_title
@@ -224,6 +123,11 @@ class Output(Port):
         logging.info('hoverEnterEvent on Output ({0})'.format(self))
 
         self.hovered = True
+        for downstream_port in self.downstream_ports:
+            downstream_port.hovered = True
+
+        for downstream_connection in self.downstream_connections:
+            downstream_connection.hovered = True
 
         QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
 
@@ -237,6 +141,11 @@ class Output(Port):
         logging.info('hoverLeaveEvent on Output ({0})'.format(self))
 
         self.hovered = False
+        for downstream_port in self.downstream_ports:
+            downstream_port.hovered = False
+
+        for downstream_connection in self.downstream_connections:
+            downstream_connection.hovered = False
 
         self.widget_title_proxy.resize(0, 0)
 
@@ -285,17 +194,22 @@ class Output(Port):
 
 class Input(Port):
     # TODO: fix inheritance structure
-    def __init__(self, node_object=None, output_object=None, port_id=None):
+    def __init__(self, node_object=None, output_object=None, port_id=None, start_item=None):
         super(Input, self).__init__(node_object, output_object, port_id)
 
-        self.node_object = node_object
+        self.parent_node = node_object
 
-        self.widget_title = QWidgetInput(self.output_object)
+        self.upstream_port = start_item
+
+        # there can only be one, but maybe we can inherit...
+        self.upstream_connections = []
+
+        self.widget_title = porthover.InputHover(self.output_object)
         self.add_ui_elements()
 
-        self.output_graphics_item = node_object.find_output_graphics_item(port_id)
+        # self.output_graphics_item = node_object.scene.find_output_graphics_item(port_id)
 
-        self.set_label(name=self.output_graphics_item.widget_title.label_title.text())
+        self.set_label(name=self.upstream_port.widget_title.label_title.text())
 
     def set_label_pos(self):
         self.widget_title_proxy.setPos(SETTINGS.OUTPUT_RADIUS/2+SETTINGS.OUTPUT_SPACING,
@@ -303,14 +217,17 @@ class Input(Port):
 
     @property
     def output_label(self):
-        upstream_node_name = self.output_graphics_item.node_object.widget_title.label_title.text()
-        upstream_output_name = self.output_graphics_item.widget_title.label_title.text()
+        upstream_node_name = self.upstream_port.node_object.widget_title.label_title.text()
+        upstream_output_name = self.upstream_port.widget_title.label_title.text()
         return '{0}.{1}'.format(upstream_node_name, upstream_output_name)
 
     def hoverEnterEvent(self, event):
         logging.info('hoverEnterEvent on Input ({0})'.format(self))
 
         self.hovered = True
+        self.upstream_port.hovered = True
+        for upstream_connection in self.upstream_connections:
+            upstream_connection.hovered = True
 
         self.widget_title.label_title.setText(self.output_label)
 
@@ -326,6 +243,9 @@ class Input(Port):
         logging.info('hoverLeaveEvent on Input ({0})'.format(self))
 
         self.hovered = False
+        self.upstream_port.hovered = False
+        for upstream_connection in self.upstream_connections:
+            upstream_connection.hovered = False
 
         self.widget_title_proxy.resize(0, 0)
 

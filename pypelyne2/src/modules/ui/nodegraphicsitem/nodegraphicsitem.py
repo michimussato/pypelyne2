@@ -1,7 +1,7 @@
 import os
 import logging
-import cPickle
-import uuid
+# import cPickle
+# import uuid
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
@@ -10,8 +10,9 @@ import pypelyne2.src.modules.node.node as node
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
-import pypelyne2.src.modules.ui.output.output as output
+import pypelyne2.src.modules.ui.portwidget.portwidget as output
 import pypelyne2.src.modules.ui.connection.connection as connection
+import pypelyne2.src.modules.ui.nodedroparea.nodedroparea as nodedroparea
 
 
 class QLabelCollapseExpand(QtGui.QLabel):
@@ -61,9 +62,6 @@ class QWidgetNode(QtGui.QWidget):
 
         self.palette = QtGui.QPalette()
 
-        # TODO: is this needed?
-        # self.setAcceptDrops(True)
-
     def dragMoveEvent(self, event):
         logging.info('dragMoveEvent on QWidgetNode ({0})'.format(self))
 
@@ -93,8 +91,6 @@ class QWidgetTitle(QWidgetNode):
 
         self.set_palette()
 
-        # self.ui.label_lock_icon.setText('')
-
         self.preview_icon = QLabelGif(self.node)
 
         self.setup_title()
@@ -110,7 +106,7 @@ class QWidgetTitle(QWidgetNode):
         self.ui.vlayout_preview.addWidget(self.preview_icon)
 
     def mousePressEvent(self, event):
-        logging.info('mousePressEvent on QWidgetTitle ({0})'.format(self))
+        logging.info('mousePressEvent on OutputHover ({0})'.format(self))
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
 
         if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
@@ -148,126 +144,6 @@ class QWidgetElements(QWidgetNode):
         return QWidgetNode.mouseMoveEvent(self, event)
 
 
-class QWidgetHeader(QWidgetNode):
-    def __init__(self):
-        super(QWidgetHeader, self).__init__()
-
-        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-                                          'src',
-                                          'modules',
-                                          'ui',
-                                          'nodegraphicsitem',
-                                          'nodegraphicsitem_widget_header.ui'), self)
-
-        self.set_palette()
-
-
-class NodeDropArea(QtGui.QGraphicsRectItem):
-    def __init__(self, node_object):
-        super(NodeDropArea, self).__init__()
-
-        self.node = node_object
-
-        # self.allowed = True
-
-        self.pen = QtGui.QPen(QtGui.QColor(0, 0, 0, 0))
-        self.setPen(self.pen)
-
-        self.brush = QtGui.QBrush()
-        self.setBrush(self.brush)
-
-        self.brush_active = QtGui.QColor(0, 255, 0, 100)
-        self.brush_forbidden = QtGui.QColor(255, 0, 0, 100)
-        self.brush_inactive = QtGui.QColor(255, 0, 0, 0)
-
-        self.setAcceptDrops(True)
-
-        self.set_inactive()
-
-    def set_active(self):
-        self.setBrush(self.brush_active)
-        logging.info('setting drop area active on {0}'.format(self))
-
-    def set_forbidden(self):
-        self.setBrush(self.brush_forbidden)
-        logging.info('setting drop area forbidden on {0}'.format(self))
-
-    def set_inactive(self):
-        self.setBrush(self.brush_inactive)
-        logging.info('setting drop area inactive on {0}'.format(self))
-
-    def dragEnterEvent(self, event):
-
-        logging.info('dragEnterEvent on NodeDropArea ({0})'.format(self))
-        if event.mimeData().hasFormat('output/draggable-pixmap'):
-            self.set_active()
-            logging.info('mimeData of event {0} data has format output/draggable-pixmap'.format(event))
-
-        elif event.mimeData().hasFormat('nodeoutput/draggable-output'):
-
-            data = event.mimeData().data('nodeoutput/draggable-output')
-            data = data.data()
-
-            unpickled_output_object = cPickle.loads(data)
-
-            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.uuid for x in self.node.inputs]:
-                logging.warning('output with uuid {0} {1} is already connected to {2}'.format(unpickled_output_object[u'output_graphicsitem_uuid'],
-                                                                                              unpickled_output_object[u'output_object'],
-                                                                                              self.node))
-                self.set_forbidden()
-
-            elif self.node.hovered:
-                self.set_forbidden()
-            else:
-                self.set_active()
-
-        return QtGui.QGraphicsRectItem.dragEnterEvent(self, event)
-
-    def dragLeaveEvent(self, event):
-        logging.info('dragLeaveEvent on NodeDropArea ({0})'.format(self))
-        self.set_inactive()
-        # self.setAcceptDrops(True)
-
-    def dragMoveEvent(self, event):
-        logging.info('dragMoveEvent on NodeDropArea ({0})'.format(self))
-        # self.setAcceptDrops(False)
-
-    def dropEvent(self, event):
-        logging.info('dropEvent on NodeDropArea ({0})'.format(self))
-        self.set_inactive()
-
-        if event.mimeData().hasFormat('output/draggable-pixmap'):
-            event.accept()
-
-            data = event.mimeData().data('output/draggable-pixmap')
-            data = data.data()
-
-            unpickled_output_object = cPickle.loads(data)
-
-            logging.info('mimeData of event {0} data has format output/draggable-pixmap'.format(event))
-            logging.info('{0}/{1} --> {2}'.format(unpickled_output_object.output,
-                                                  unpickled_output_object.abbreviation,
-                                                  self.node))
-            self.node.add_output(output_object=unpickled_output_object,
-                                 port_id=str(uuid.uuid4()))
-
-        elif event.mimeData().hasFormat('nodeoutput/draggable-output'):
-            event.accept()
-
-            data = event.mimeData().data('nodeoutput/draggable-output')
-            data = data.data()
-
-            unpickled_output_object = cPickle.loads(data)
-
-            # self.scene
-
-            self.node.add_input(output_object=unpickled_output_object[u'output_object'],
-                                port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
-
-        else:
-            return QtGui.QGraphicsRectItem.dropEvent(self, event)
-
-
 class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def __init__(self, position, plugin, scene):
         super(NodeGraphicsItem, self).__init__()
@@ -281,7 +157,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.rect = QtCore.QRectF()
 
-        self.drop_area = NodeDropArea(self)
+        self.drop_area = nodedroparea.NodeDropArea(self)
 
         self.drop_area.setZValue(self.zValue() + 1)
         self.drop_area.setParentItem(self)
@@ -376,27 +252,37 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.scene.addItem(connection_line)
         self.scene.connection_items.append(connection_line)
 
-    def find_output_graphics_item(self, port_id):
-        for node_item in self.scene.node_items:
-            for output_graphics_item in node_item.outputs:
-                # print port_id
-                # print output_graphics_item.uuid
-                if output_graphics_item.uuid == port_id:
-                    # print 'item found'
-                    # print node_item
-                    return output_graphics_item
+        start_item.downstream_connections.append(connection_line)
+        start_item.downstream_ports.append(end_item)
+        end_item.upstream_connections.append(connection_line)
+
+    # def find_output_graphics_item(self, port_id):
+    #     for node_item in self.scene.node_items:
+    #         for output_graphics_item in node_item.outputs:
+    #             # print port_id
+    #             # print output_graphics_item.uuid
+    #             if output_graphics_item.uuid == port_id:
+    #                 # print 'item found'
+    #                 # print node_item
+    #                 return output_graphics_item
 
     def add_input(self, output_object=None, port_id=None, connection=True):
-        port = output.Input(node_object=self,
-                            output_object=output_object,
-                            port_id=port_id)
-        self.inputs.append(port)
-        port.setParentItem(self)
 
-        start_item = self.find_output_graphics_item(port_id=port_id)
+        start_item = self.scene.find_output_graphics_item(port_id=port_id)
+
+        end_item = output.Input(node_object=self,
+                                output_object=output_object,
+                                port_id=port_id,
+                                start_item=start_item)
+
+        self.inputs.append(end_item)
+        end_item.setParentItem(self)
 
         if connection:
-            self.add_connection(start_item=start_item, end_item=port)
+            self.add_connection(start_item=start_item, end_item=end_item)
+
+
+            # port.upstream_output = start_item
 
         self.resize()
 

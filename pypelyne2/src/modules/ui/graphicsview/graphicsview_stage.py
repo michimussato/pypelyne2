@@ -76,14 +76,6 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             # if self.sceneRect().height()*SETTINGS.NAVIGATOR_MAX_SIZE < self.scene_representation.rect().height():
             #     print 'too tall'
 
-            # print self.sceneRect().width()
-            # print self.sceneRect().height()
-            #
-            # print self.scene_representation.rect().width()
-            # print self.scene_representation.rect().height()
-
-            # print self.mapToScene(self.navigator_rect.rect().right(), self.navigator_rect.rect().bottom())
-
             self.screen_representation.setRect(0,
                                                0,
                                                self.viewport().width() * SETTINGS.NAVIGATOR_SCALE,
@@ -132,15 +124,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
                     or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
                 self.setDragMode(self.NoDrag)
                 group = self.scene.createItemGroup(self.scene.node_items)
-                # group2 = self.scene.createItemGroup(self.scene.connection_items)
                 self.point.setPos(event_pos_scene)
                 group.translate(-1*delta.x(), -1*delta.y())
-                # group2.translate(0, 0)
-                # group2.translate(-1*delta.x(), -1*delta.y())
 
                 self.scene.destroyItemGroup(group)
-                # self.scene.destroyItemGroup(group2)
-                # self.setDragMode(self.RubberBandDrag)
 
             self.mouse_position_previous = event_pos_scene
 
@@ -149,27 +136,8 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
             return QtGui.QGraphicsView.mouseMoveEvent(self, event)
 
-    # def mousePressEvent(self, event):
-    #     mouse_modifiers = QtGui.QApplication.mouseButtons()
-    #     keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-    #
-    #     if mouse_modifiers == QtCore.Qt.MidButton \
-    #             or keyboard_modifiers == QtCore.Qt.ControlModifier and mouse_modifiers == QtCore.Qt.LeftButton:
-    #         QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.SizeAllCursor))
-    #
-    #     return QtGui.QGraphicsView.mousePressEvent(self, event)
-    #
-    # def mouseReleaseEvent(self, event):
-    #     QtGui.QApplication.restoreOverrideCursor()
-    # #     if self.dragMode() != self.RubberBandDrag:
-    # #         self.setDragMode(self.RubberBandDrag)
-    #
-    #     return QtGui.QGraphicsView.mousePressEvent(self, event)
-
     def wheelEvent(self, event):
         if self.hasFocus():
-            # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
-
             group = self.scene.createItemGroup(self.scene.node_items)
 
             # absolute pos of mouse cursor in scene
@@ -182,12 +150,10 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             if event.delta() > 0:
                 self.point.setScale(self.point.scale() * (1+SETTINGS.ZOOM_INCREMENT))
                 group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
-                # self.scene.item_group.setScale(group.scale() + SETTINGS.ZOOM_INCREMENT)
                 self.scene.global_scale *= (1+SETTINGS.ZOOM_INCREMENT)
             else:
                 self.point.setScale(self.point.scale() * (1-SETTINGS.ZOOM_INCREMENT))
                 group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
-                # self.scene.item_group.setScale(group.scale() - SETTINGS.ZOOM_INCREMENT)
                 self.scene.global_scale *= (1-SETTINGS.ZOOM_INCREMENT)
 
             self.scene.destroyItemGroup(group)

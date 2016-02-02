@@ -1,5 +1,5 @@
 # import os
-import logging
+# import logging
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
@@ -9,12 +9,7 @@ class Connection(QtGui.QGraphicsPathItem):
     def __init__(self, start_item=None, end_item=None, scene_object=None, *args, **kwargs):
         super(Connection, self).__init__(*args, **kwargs)
 
-        # TODO: apply global scale
-
         self.scene_object = scene_object
-
-        # print self.scene_object
-        # print self.scene()
 
         self.path_item = None
         self.path_color = None
@@ -49,21 +44,15 @@ class Connection(QtGui.QGraphicsPathItem):
 
         self.set_connection_color()
 
-    # def hoverEnterEvent(self, event):
-    #     self.hovered = True
-    #     self.my_start_item.hovered = True
-    #     self.my_end_item.hovered = True
-    #
-    # def hoverLeaveEvent(self, event):
-    #     self.hovered = False
-    #     self.my_start_item.hovered = False
-    #     self.my_end_item.hovered = False
+    def hoverEnterEvent(self, event):
+        self.hovered = True
+        self.my_start_item.hovered = True
+        self.my_end_item.hovered = True
 
-    # def mouseMoveEvent(self, event):
-    #     pass
-
-    # def shape(self):
-    #     return self.shape
+    def hoverLeaveEvent(self, event):
+        self.hovered = False
+        self.my_start_item.hovered = False
+        self.my_end_item.hovered = False
 
     def paint(self, painter, option, widget):
         line = self.get_connection()
@@ -85,20 +74,22 @@ class Connection(QtGui.QGraphicsPathItem):
         #     pen.setColor(self.path_color_item.lighter(150))
         #
         # else:
-        self.setZValue(-2)
-        pen.setColor(self.path_color_item)
+        # self.setZValue(-2)
+
+        if self.hovered:
+            pen.setWidth(SETTINGS.LINE_WIDTH_HOVER*self.scene_object.global_scale)
+            pen.setColor(self.path_color_item.lighter(SETTINGS.LIGHTER_AMOUNT))
+            self.setZValue(2)
+        else:
+            pen.setWidth(SETTINGS.LINE_WIDTH*self.scene_object.global_scale)
+            pen.setColor(self.path_color_item)
+            self.setZValue(-2)
 
         painter.setPen(pen)
 
         self.setPath(line)
 
         painter.drawPath(line)
-
-    # def get_end_item(self):
-    #     return self.my_end_item
-    #
-    # def get_start_item(self):
-    #     return self.my_start_item
 
     def get_connection(self):
         # print dir(self.my_start_item)

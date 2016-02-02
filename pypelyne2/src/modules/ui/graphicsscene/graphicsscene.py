@@ -100,3 +100,13 @@ class GraphicsScene(QtGui.QGraphicsScene):
             logging.info('mimeData of event {0} data has format node/draggable-pixmap'.format(event))
         else:
             return QtGui.QGraphicsScene.dragMoveEvent(self, event)
+
+    def find_output_graphics_item(self, port_id):
+        for node_item in self.node_items:
+            for output_graphics_item in node_item.outputs:
+                # print port_id
+                # print output_graphics_item.uuid
+                if output_graphics_item.uuid == port_id:
+                    # print 'item found'
+                    # print node_item
+                    return output_graphics_item
