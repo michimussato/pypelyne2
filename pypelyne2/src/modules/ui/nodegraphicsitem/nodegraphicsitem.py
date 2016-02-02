@@ -516,7 +516,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
                 movie.setScaledSize(QtCore.QSize(int(round(SETTINGS.PLUGINS_ICON_HEIGHT*2*ratio)),
                                                  SETTINGS.PLUGINS_ICON_HEIGHT*2))
 
-            self.widget_title.preview_icon.setToolTip('keep right click pressed to play gif')
+            self.widget_title.preview_icon.setToolTip('right click to play gif')
             self.widget_title.preview_icon.setMovie(movie)
             self.widget_title.preview_icon.connect(self.widget_title.preview_icon,
                                                    QtCore.SIGNAL('right_mouse_button_pressed'),

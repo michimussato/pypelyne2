@@ -8,8 +8,8 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 logging.info('Python version: {0}'.format(SETTINGS.VERSION_PYTHON))
 logging.info('Qt version:     {0}'.format(SETTINGS.VERSION_QT))
-logging.info('SIP version:  {0}'.format(SETTINGS.VERSION_SIP))
-logging.info('PyQt version: {0}'.format(SETTINGS.VERSION_PYQT))
+logging.info('SIP version:    {0}'.format(SETTINGS.VERSION_SIP))
+logging.info('PyQt version:   {0}'.format(SETTINGS.VERSION_PYQT))
 
 
 app = QtGui.QApplication(sys.argv)
