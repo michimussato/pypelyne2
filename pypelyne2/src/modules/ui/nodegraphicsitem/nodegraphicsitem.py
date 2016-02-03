@@ -27,6 +27,18 @@ class QLabelCollapseExpand(QtGui.QLabel):
             return QtGui.QLabel.mousePressEvent(self, event)
 
 
+class QLabelMaximize(QtGui.QLabel):
+    def __init__(self):
+        super(QLabelMaximize, self).__init__()
+
+    def mousePressEvent(self, event):
+        logging.info('mousePressEvent on QLabelMaximize ({0})'.format(self))
+        if event.button() == QtCore.Qt.RightButton:
+            self.emit(QtCore.SIGNAL('clicked'))
+        else:
+            return QtGui.QLabel.mousePressEvent(self, event)
+
+
 class QLabelGif(QtGui.QLabel):
     def __init__(self, node_object=None):
         super(QLabelGif, self).__init__()
@@ -202,6 +214,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.collapse = QLabelCollapseExpand()
         self.expand = QLabelCollapseExpand()
+        self.maximize = QLabelMaximize()
+        self.minimize = QLabelMaximize()
 
         self.icon = None
         self.arch_icon = None
@@ -223,6 +237,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.add_ui_elements()
         self.setup_expand_collapse()
+        self.setup_maximize()
         self.add_task_menu_items()
         self.add_assignee_menu_items()
         self.add_status_menu_items()
@@ -310,6 +325,35 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         title_edit.setVisible(False)
         title.setVisible(True)
         self.resize()
+
+    def setup_maximize(self):
+        self.maximize.setToolTip('right click to minimize node')
+        self.minimize.setToolTip('right click to maximize node')
+        # self.maximize.setText('hallo')
+        # self.widget_title.hlayout_minimize.addWidget(self.maximize)
+        self.widget_title.hlayout_minimize.addWidget(self.maximize)
+        self.widget_title.hlayout_minimize.addWidget(self.minimize)
+
+        self.maximize.setPixmap(self.compositor.maximize_icon)
+        self.minimize.setPixmap(self.compositor.minimize_icon)
+
+        self.update_maximize_minimize()
+
+        self.maximize.connect(self.maximize, QtCore.SIGNAL('clicked'), self.maximize_node)
+        self.minimize.connect(self.minimize, QtCore.SIGNAL('clicked'), self.minimize_node)
+
+    def update_maximize_minimize(self):
+        pass
+
+    def maximize_node(self):
+        # self.widget_title.vlayout_preview.setVisible(True)
+        self.widget_title_proxy.setVisible(True)
+        # pass
+
+    def minimize_node(self):
+        # self.widget_title.vlayout_preview.setVisible(False)
+        self.widget_title_proxy.setVisible(False)
+        # pass
 
     def setup_expand_collapse(self):
         self.collapse.setToolTip('right click to collapse combo boxes')

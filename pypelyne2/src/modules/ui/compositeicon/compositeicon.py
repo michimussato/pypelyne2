@@ -63,10 +63,13 @@ class CompositeIcon(QtGui.QPixmap):
         # print self.plugin.family
 
         self.lock_icon = QtGui.QPixmap(SETTINGS.ICON_LOCKED).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
-                                                                           QtCore.Qt.SmoothTransformation)
+                                                                            QtCore.Qt.SmoothTransformation)
 
-        self.maximize_icon = QtGui.QPixmap(SETTINGS.ICON_MAXIMIZE).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT,
-                                                                           QtCore.Qt.SmoothTransformation)
+        self.maximize_icon = QtGui.QPixmap(SETTINGS.ICON_MAXIMIZE).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE,
+                                                                                  QtCore.Qt.SmoothTransformation)
+
+        self.minimize_icon = QtGui.QPixmap(SETTINGS.ICON_MINIMIZE).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE,
+                                                                                  QtCore.Qt.SmoothTransformation)
 
         self.expand_icon = QtGui.QPixmap(SETTINGS.ICON_EXPAND).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT*SETTINGS.ICON_SCALE,
                                                                               QtCore.Qt.SmoothTransformation)
@@ -99,6 +102,10 @@ class CompositeIcon(QtGui.QPixmap):
     @property
     def maximize(self):
         return self.maximize_icon
+
+    @property
+    def minimize(self):
+        return self.minimize_icon
 
     @property
     def expand(self):

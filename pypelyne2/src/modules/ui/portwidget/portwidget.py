@@ -73,8 +73,11 @@ class Port(QtGui.QGraphicsItem):
         painter.setPen(pen)
 
         if self.hovered:
+            # print self.zValue()
+            # self.setZValue(100)
             painter.setBrush(QtGui.QBrush(self.color_item.lighter(SETTINGS.LIGHTER_AMOUNT)))
         else:
+            # self.setZValue(-1)
             painter.setBrush(QtGui.QBrush(self.color_item))
 
         painter.drawEllipse(self.rect)

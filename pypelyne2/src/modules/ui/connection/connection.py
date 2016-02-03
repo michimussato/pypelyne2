@@ -79,11 +79,12 @@ class Connection(QtGui.QGraphicsPathItem):
         if self.hovered:
             pen.setWidth(SETTINGS.LINE_WIDTH_HOVER*self.scene_object.global_scale)
             pen.setColor(self.path_color_item.lighter(SETTINGS.LIGHTER_AMOUNT))
-            self.setZValue(2)
+            # self.setZValue(0)
+            # print self.zValue()
         else:
             pen.setWidth(SETTINGS.LINE_WIDTH*self.scene_object.global_scale)
             pen.setColor(self.path_color_item)
-            self.setZValue(-2)
+            # self.setZValue(-1)
 
         painter.setPen(pen)
 

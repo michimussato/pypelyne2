@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>395</width>
-    <height>83</height>
+    <width>468</width>
+    <height>77</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -98,6 +98,13 @@
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <item>
+              <layout class="QHBoxLayout" name="hlayout_minimize">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+              </layout>
+             </item>
+             <item>
               <widget class="QLabel" name="label_lock_icon">
                <property name="text">
                 <string>&lt;lock&gt;</string>
@@ -120,6 +127,18 @@
                   </property>
                  </layout>
                 </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_minimize" native="true">
+               <layout class="QGridLayout" name="gridLayout_5">
+                <property name="margin">
+                 <number>0</number>
+                </property>
+                <property name="spacing">
+                 <number>0</number>
+                </property>
                </layout>
               </widget>
              </item>
