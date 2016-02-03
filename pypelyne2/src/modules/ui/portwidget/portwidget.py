@@ -131,6 +131,9 @@ class Output(Port):
 
         QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
 
+        self.widget_title_proxy.setMaximumHeight(16777215.0)
+        self.widget_title_proxy.setMaximumWidth(16777215.0)
+
         self.widget_title.setVisible(True)
 
         self.set_label_pos()
@@ -147,7 +150,9 @@ class Output(Port):
         for downstream_connection in self.downstream_connections:
             downstream_connection.hovered = False
 
-        self.widget_title_proxy.resize(0, 0)
+        self.widget_title_proxy.setMaximumHeight(0.0)
+        self.widget_title_proxy.setMaximumWidth(0.0)
+        # self.widget_title_proxy.resize(0, 0)
 
         QtGui.QApplication.restoreOverrideCursor()
 
@@ -231,6 +236,9 @@ class Input(Port):
 
         self.widget_title.label_title.setText(self.output_label)
 
+        self.widget_title_proxy.setMaximumHeight(16777215.0)
+        self.widget_title_proxy.setMaximumWidth(16777215.0)
+
         self.widget_title.setVisible(True)
         
         self.widget_title_proxy.adjustSize()
@@ -247,7 +255,9 @@ class Input(Port):
         for upstream_connection in self.upstream_connections:
             upstream_connection.hovered = False
 
-        self.widget_title_proxy.resize(0, 0)
+        self.widget_title_proxy.setMaximumHeight(0.0)
+        self.widget_title_proxy.setMaximumWidth(0.0)
+        # self.widget_title_proxy.resize(0, 0)
 
         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
 
