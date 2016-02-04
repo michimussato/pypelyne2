@@ -155,12 +155,12 @@ class QWidgetElements(QWidgetNode):
 
 
 class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
-    def __init__(self, position, plugin, scene):
+    def __init__(self, position, plugin, scene_object):
         super(NodeGraphicsItem, self).__init__()
 
         reload(SETTINGS)
 
-        self.scene = scene
+        self.scene_object = scene_object
 
         self.plugin = plugin
         self.compositor = compositeicon.CompositeIcon(self.plugin)
@@ -260,10 +260,10 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def add_connection(self, start_item, end_item):
         connection_line = connection.Connection(start_item=start_item,
                                                 end_item=end_item,
-                                                scene_object=self.scene)
+                                                scene_object=self.scene_object)
         self.connections.append(connection_line)
-        self.scene.addItem(connection_line)
-        self.scene.connection_items.append(connection_line)
+        self.scene_object.addItem(connection_line)
+        self.scene_object.connection_items.append(connection_line)
 
         start_item.downstream_connections.append(connection_line)
         start_item.downstream_ports.append(end_item)
@@ -271,7 +271,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
     def add_input(self, output_object=None, port_id=None, create_connection=True):
 
-        start_item = self.scene.find_output_graphics_item(port_id=port_id)
+        start_item = self.scene_object.find_output_graphics_item(port_id=port_id)
 
         end_item = output.Input(node_object=self,
                                 output_object=output_object,
@@ -850,9 +850,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
     def set_task_color(self):
         logging.info('node.set_task_color() ({0})'.format(self))
-        # self.task = self.current_combobox_task
         task_color = self.current_combobox_task_color or self.task_color_default
-        # print task_color
         self.task_color_item.setNamedColor(task_color)
 
     # @staticmethod
@@ -919,3 +917,31 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             label.setVisible(True)
 
         self.resize()
+
+    def delete_node(self):
+        logging.info('node.delete_node() ({0})'.format(self))
+
+        temp_list_copy_inputs = list(self.inputs)
+        temp_list_copy_outputs = list(self.outputs)
+
+        for input_item in temp_list_copy_inputs:
+            input_item.remove_input()
+
+        for output_item in temp_list_copy_outputs:
+            output_item.remove_output()
+
+        del temp_list_copy_inputs
+        del temp_list_copy_outputs
+
+        self.scene_object.node_items.remove(self)
+
+        self.scene_object.removeItem(self)
+
+        print 'items left in scene:'
+        for i in self.scene_object.items():
+            print type(i)
+
+    def keyPressEvent(self, event):
+        logging.info('node.keyPressEvent() ({0})'.format(self))
+        if event.key() == QtCore.Qt.Key_Backspace:
+            self.delete_node()

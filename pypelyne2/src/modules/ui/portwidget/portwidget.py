@@ -220,26 +220,44 @@ class Output(Port):
     def dropEvent(self, event):
         logging.info('dropEvent on {0}'.format(self))
 
+    def remove_output(self):
+        scene = self.scene()
+
+        temp_list_copy = list(self.downstream_ports)
+
+        for downstream_port in temp_list_copy:
+            downstream_port.remove_input()
+
+        self.parent_node.outputs.remove(self)
+
+        del temp_list_copy
+
+        self.parent_node.resize()
+
+        scene.removeItem(self)
+
     def mouseReleaseEvent(self, event):
 
         if self.moved['x'] > SETTINGS.REMOVE_PORT_DISTANCE \
                 or self.moved['x'] < -SETTINGS.REMOVE_PORT_DISTANCE \
                 or self.moved['y'] > SETTINGS.REMOVE_PORT_DISTANCE \
                 or self.moved['y'] < -SETTINGS.REMOVE_PORT_DISTANCE:
-            scene = self.scene()
+            # scene = self.scene()
+            #
+            # temp_list_copy = list(self.downstream_ports)
+            #
+            # for downstream_port in temp_list_copy:
+            #     downstream_port.remove_input()
+            #
+            # self.parent_node.outputs.remove(self)
+            #
+            # del temp_list_copy
+            #
+            # self.parent_node.resize()
+            #
+            # scene.removeItem(self)
 
-            temp_list_copy = list(self.downstream_ports)
-
-            for downstream_port in temp_list_copy:
-                downstream_port.remove_input()
-
-            self.parent_node.outputs.remove(self)
-
-            del temp_list_copy
-
-            self.parent_node.resize()
-
-            scene.removeItem(self)
+            self.remove_output()
 
         else:
             self.moveBy(-self.moved['x'], -self.moved['y'])
@@ -386,6 +404,7 @@ class Input(Port):
             self.upstream_port.hovered = False
             self.upstream_port.downstream_connections.remove(upstream_connection)
             self.parent_node.connections.remove(upstream_connection)
+            scene.connection_items.remove(upstream_connection)
             scene.removeItem(upstream_connection)
 
         self.upstream_port.downstream_ports.remove(self)

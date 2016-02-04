@@ -2,7 +2,6 @@ import os
 import uuid
 import logging
 import random
-# import pypelyne2.src.modules.node.abc_node as abc_node
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.parser.parse_users as parse_users
 import pypelyne2.src.parser.parse_tasks as parse_tasks
