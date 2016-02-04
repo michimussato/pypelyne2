@@ -1,7 +1,5 @@
 import os
 import logging
-# import cPickle
-# import uuid
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
@@ -237,7 +235,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         self.add_ui_elements()
         self.setup_expand_collapse()
-        self.setup_maximize()
+        # self.setup_maximize()
         self.add_task_menu_items()
         self.add_assignee_menu_items()
         self.add_status_menu_items()
@@ -257,7 +255,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
         if SETTINGS.AUTO_GENERATE_RANDOM_INPUTS:
             for i in range(SETTINGS.AUTO_GENERATE_RANDOM_INPUTS_COUNT):
-                self.add_input(connection=False)
+                self.add_input(create_connection=False)
 
     def add_connection(self, start_item, end_item):
         connection_line = connection.Connection(start_item=start_item,
@@ -271,17 +269,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         start_item.downstream_ports.append(end_item)
         end_item.upstream_connections.append(connection_line)
 
-    # def find_output_graphics_item(self, port_id):
-    #     for node_item in self.scene.node_items:
-    #         for output_graphics_item in node_item.outputs:
-    #             # print port_id
-    #             # print output_graphics_item.uuid
-    #             if output_graphics_item.uuid == port_id:
-    #                 # print 'item found'
-    #                 # print node_item
-    #                 return output_graphics_item
-
-    def add_input(self, output_object=None, port_id=None, connection=True):
+    def add_input(self, output_object=None, port_id=None, create_connection=True):
 
         start_item = self.scene.find_output_graphics_item(port_id=port_id)
 
@@ -293,11 +281,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.inputs.append(end_item)
         end_item.setParentItem(self)
 
-        if connection:
+        if create_connection:
             self.add_connection(start_item=start_item, end_item=end_item)
-
-
-            # port.upstream_output = start_item
 
         self.resize()
 
@@ -329,7 +314,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def setup_maximize(self):
         self.maximize.setToolTip('right click to minimize node')
         self.minimize.setToolTip('right click to maximize node')
-        # self.maximize.setText('hallo')
         # self.widget_title.hlayout_minimize.addWidget(self.maximize)
         self.widget_title.hlayout_minimize.addWidget(self.maximize)
         self.widget_title.hlayout_minimize.addWidget(self.minimize)
@@ -618,9 +602,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
             layout_reports_to.addWidget(widget)
 
         else:
-            # print self.current_combobox_deparment_index
             data = combobox_department.itemData(self.current_combobox_deparment_index)
-            # print data.toPyObject()
 
             reports_to_id_list = data.toPyObject()
 
@@ -666,8 +648,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
     def paint(self, painter, option, widget):
 
-        # for i in self.connections:
-        #     print i
+        # print self.uuid, 'connections =', len(self.connections)
 
         painter.setRenderHint(painter.Antialiasing)
 
@@ -703,13 +684,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         painter.setPen(pen)
 
         painter.drawRoundedRect(self.rect, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
-        # painter.drawRoundedRect(self.test, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
-
-        # for i in self.output_list:
-        #     i.setPos(self.boundingRect().width() - i.rect.width(), i.pos().y())
-
-        # self.arrange_outputs()
-        # self.arrange_inputs()
 
     def arrange_outputs(self):
         for output_item in self.outputs:

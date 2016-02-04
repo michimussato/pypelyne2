@@ -31,6 +31,8 @@ class Port(QtGui.QGraphicsItem):
 
         self.hovered = False
 
+        self.moved = {'x': 0.0, 'y': 0.0}
+
         self.rect = QtCore.QRectF(-SETTINGS.OUTPUT_RADIUS/2,
                                   -SETTINGS.OUTPUT_RADIUS/2,
                                   SETTINGS.OUTPUT_RADIUS,
@@ -41,6 +43,11 @@ class Port(QtGui.QGraphicsItem):
         self.add_ui_elements()
         self.set_label()
         self.set_color()
+
+    # def set_opacity(self, opacity=1.0):
+    #     self.setOpacity(opacity)
+    #     for upstream_connection in self.upstream_connections:
+    #         upstream_connection.setOpacity(opacity)
 
     def add_ui_elements(self):
 
@@ -73,11 +80,8 @@ class Port(QtGui.QGraphicsItem):
         painter.setPen(pen)
 
         if self.hovered:
-            # print self.zValue()
-            # self.setZValue(100)
             painter.setBrush(QtGui.QBrush(self.color_item.lighter(SETTINGS.LIGHTER_AMOUNT)))
         else:
-            # self.setZValue(-1)
             painter.setBrush(QtGui.QBrush(self.color_item))
 
         painter.drawEllipse(self.rect)
@@ -155,7 +159,6 @@ class Output(Port):
 
         self.widget_title_proxy.setMaximumHeight(0.0)
         self.widget_title_proxy.setMaximumWidth(0.0)
-        # self.widget_title_proxy.resize(0, 0)
 
         QtGui.QApplication.restoreOverrideCursor()
 
@@ -167,37 +170,87 @@ class Output(Port):
         logging.info('mousePressEvent on Output ({0})'.format(self))
 
     def mouseMoveEvent(self, event):
-        logging.info('mouseMoveEvent on Output {0}'.format(self))
-        # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
-        mime_data = QtCore.QMimeData()
-        mime_data.setObjectName('nodeoutput/draggable-output')
+        if event.buttons() == QtCore.Qt.RightButton:
 
-        objects_dict = dict()
+            pos = event.pos()
 
-        objects_dict['output_object'] = self.output_object
-        objects_dict['output_graphicsitem_uuid'] = self.uuid
+            self.moveBy(pos.x(), pos.y())
 
-        pickled_output_object = cPickle.dumps(objects_dict.copy())
-        mime_data.setData('nodeoutput/draggable-output', pickled_output_object)
+            opacity = max(0, 1-(max(abs(self.moved['x']),
+                                    abs(self.moved['y']))/SETTINGS.REMOVE_PORT_DISTANCE))
 
-        icon = QtGui.QLabel()
+            self.set_opacity(opacity=opacity)
 
-        icon.setPixmap(self.pixmap)
+            self.moved['x'] += pos.x()
+            self.moved['y'] += pos.y()
 
-        drag = QtGui.QDrag(icon)
-        drag.setMimeData(mime_data)
-        drag.setPixmap(self.pixmap)
+        elif event.buttons() == QtCore.Qt.LeftButton:
 
-        if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
-            pass
-        #     print 'moved'
-        # else:
-        #     print 'copied'
+            logging.info('mouseMoveEvent on Output {0}'.format(self))
+            # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
+            mime_data = QtCore.QMimeData()
+            mime_data.setObjectName('nodeoutput/draggable-output')
 
-        return QtGui.QGraphicsItem.mouseMoveEvent(self, event)
+            objects_dict = dict()
+
+            objects_dict['output_object'] = self.output_object
+            objects_dict['output_graphicsitem_uuid'] = self.uuid
+
+            pickled_output_object = cPickle.dumps(objects_dict.copy())
+            mime_data.setData('nodeoutput/draggable-output', pickled_output_object)
+
+            icon = QtGui.QLabel()
+
+            icon.setPixmap(self.pixmap)
+
+            drag = QtGui.QDrag(icon)
+            drag.setMimeData(mime_data)
+            drag.setPixmap(self.pixmap)
+
+            if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
+                pass
+            #     print 'moved'
+            # else:
+            #     print 'copied'
+
+        else:
+
+            return QtGui.QGraphicsItem.mouseMoveEvent(self, event)
 
     def dropEvent(self, event):
         logging.info('dropEvent on {0}'.format(self))
+
+    def mouseReleaseEvent(self, event):
+
+        if self.moved['x'] > SETTINGS.REMOVE_PORT_DISTANCE \
+                or self.moved['x'] < -SETTINGS.REMOVE_PORT_DISTANCE \
+                or self.moved['y'] > SETTINGS.REMOVE_PORT_DISTANCE \
+                or self.moved['y'] < -SETTINGS.REMOVE_PORT_DISTANCE:
+            scene = self.scene()
+
+            temp_list_copy = list(self.downstream_ports)
+
+            for downstream_port in temp_list_copy:
+                downstream_port.remove_input()
+
+            self.parent_node.outputs.remove(self)
+
+            del temp_list_copy
+
+            self.parent_node.resize()
+
+            scene.removeItem(self)
+
+        else:
+            self.moveBy(-self.moved['x'], -self.moved['y'])
+
+        self.moved = {'x': 0.0, 'y': 0.0}
+        self.set_opacity()
+
+    def set_opacity(self, opacity=1.0):
+        self.setOpacity(opacity)
+        for downstream_port in self.downstream_ports:
+            downstream_port.set_opacity(opacity)
 
 
 class Input(Port):
@@ -214,8 +267,6 @@ class Input(Port):
 
         self.widget_title = porthover.InputHover(self.output_object)
         self.add_ui_elements()
-
-        # self.output_graphics_item = node_object.scene.find_output_graphics_item(port_id)
 
         self.set_label(name=self.upstream_port.widget_title.label_title.text())
 
@@ -260,7 +311,6 @@ class Input(Port):
 
         self.widget_title_proxy.setMaximumHeight(0.0)
         self.widget_title_proxy.setMaximumWidth(0.0)
-        # self.widget_title_proxy.resize(0, 0)
 
         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
 
@@ -271,3 +321,97 @@ class Input(Port):
 
     def mouseMoveEvent(self, event):
         logging.info('mouseMoveEvent on Input {0}'.format(self))
+
+    def mouseMoveEvent(self, event):
+
+        if event.buttons() == QtCore.Qt.RightButton:
+
+            pos = event.pos()
+
+            self.moveBy(pos.x(), pos.y())
+
+            opacity = max(0, 1-(max(abs(self.moved['x']),
+                                    abs(self.moved['y']))/SETTINGS.REMOVE_PORT_DISTANCE))
+
+            self.set_opacity(opacity=opacity)
+
+            self.moved['x'] += pos.x()
+            self.moved['y'] += pos.y()
+
+        elif event.buttons() == QtCore.Qt.LeftButton:
+
+            logging.info('mouseMoveEvent on Output {0}'.format(self))
+            # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
+            mime_data = QtCore.QMimeData()
+            mime_data.setObjectName('nodeoutput/draggable-output')
+
+            objects_dict = dict()
+
+            objects_dict['output_object'] = self.output_object
+            objects_dict['output_graphicsitem_uuid'] = self.uuid
+
+            pickled_output_object = cPickle.dumps(objects_dict.copy())
+            mime_data.setData('nodeoutput/draggable-output', pickled_output_object)
+
+            icon = QtGui.QLabel()
+
+            icon.setPixmap(self.pixmap)
+
+            drag = QtGui.QDrag(icon)
+            drag.setMimeData(mime_data)
+            drag.setPixmap(self.pixmap)
+
+            if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
+                pass
+            #     print 'moved'
+            # else:
+            #     print 'copied'
+
+            # QtGui.QApplication.restoreOverrideCursor()
+
+        else:
+
+            return QtGui.QGraphicsItem.mouseMoveEvent(self, event)
+
+    def remove_input(self):
+        # removes this input
+        # removes the connection
+        # removes this input from this node
+        # removes the connection from this node
+
+        scene = self.scene()
+
+        for upstream_connection in self.upstream_connections:
+            scene.removeItem(upstream_connection)
+            self.upstream_port.hovered = False
+            self.upstream_port.downstream_connections.remove(upstream_connection)
+            self.parent_node.connections.remove(upstream_connection)
+            scene.removeItem(upstream_connection)
+
+        self.upstream_port.downstream_ports.remove(self)
+
+        self.parent_node.inputs.remove(self)
+
+        self.parent_node.resize()
+
+        scene.removeItem(self)
+
+    def mouseReleaseEvent(self, event):
+
+        if self.moved['x'] > SETTINGS.REMOVE_PORT_DISTANCE \
+                or self.moved['x'] < -SETTINGS.REMOVE_PORT_DISTANCE \
+                or self.moved['y'] > SETTINGS.REMOVE_PORT_DISTANCE \
+                or self.moved['y'] < -SETTINGS.REMOVE_PORT_DISTANCE:
+
+            self.remove_input()
+
+        else:
+            self.moveBy(-self.moved['x'], -self.moved['y'])
+
+        self.moved = {'x': 0.0, 'y': 0.0}
+        self.set_opacity()
+
+    def set_opacity(self, opacity=1.0):
+        self.setOpacity(opacity)
+        for upstream_connection in self.upstream_connections:
+            upstream_connection.setOpacity(opacity)

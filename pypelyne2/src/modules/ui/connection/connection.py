@@ -1,5 +1,3 @@
-# import os
-# import logging
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
@@ -19,10 +17,12 @@ class Connection(QtGui.QGraphicsPathItem):
         self.my_color = QtCore.Qt.black
         self.setZValue(-1.0)
 
-        self.p1 = QtCore.QPointF(self.my_start_item.sceneBoundingRect().center().x(), self.my_start_item.sceneBoundingRect().center().y())
+        self.p1 = QtCore.QPointF(self.my_start_item.sceneBoundingRect().center().x(),
+                                 self.my_start_item.sceneBoundingRect().center().y())
         self.p2 = None
         self.p3 = None
-        self.p4 = QtCore.QPointF(self.my_end_item.sceneBoundingRect().center().x(), self.my_end_item.sceneBoundingRect().center().y())
+        self.p4 = QtCore.QPointF(self.my_end_item.sceneBoundingRect().center().x(),
+                                 self.my_end_item.sceneBoundingRect().center().y())
         self.p5 = None
         self.p6 = self.p4
 
@@ -48,11 +48,13 @@ class Connection(QtGui.QGraphicsPathItem):
         self.hovered = True
         self.my_start_item.hovered = True
         self.my_end_item.hovered = True
+        self.update()
 
     def hoverLeaveEvent(self, event):
         self.hovered = False
         self.my_start_item.hovered = False
         self.my_end_item.hovered = False
+        self.update()
 
     def paint(self, painter, option, widget):
         line = self.get_connection()
@@ -110,13 +112,6 @@ class Connection(QtGui.QGraphicsPathItem):
                 if (self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) < self.p4.x():
                     self.p2 = QtCore.QPointF((self.p4.x() + self.p1.x()) / 2 + SETTINGS.LINE_SWITCH_THRESHOLD*self.scene_object.global_scale, self.p1.y())
                     self.p3 = QtCore.QPointF((self.p4.x() + self.p1.x()) / 2 - SETTINGS.LINE_SWITCH_THRESHOLD*self.scene_object.global_scale, self.p4.y())
-
-                    # print p2.x()
-                    # if p2.x() <= SETTINGS.LINE_SWITCH_THRESHOLD:
-                    #     p2.setX(SETTINGS.LINE_SWITCH_THRESHOLD)
-                    #
-                    # if p3.x() <= SETTINGS.LINE_SWITCH_THRESHOLD:
-                    #     p3.setX(SETTINGS.LINE_SWITCH_THRESHOLD)
 
                 elif (self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD) >= self.p4.x():
                     self.p2 = QtCore.QPointF(self.p1.x() + SETTINGS.LINE_SWITCH_THRESHOLD*2*self.scene_object.global_scale, self.p1.y())
@@ -177,3 +172,6 @@ class Connection(QtGui.QGraphicsPathItem):
     def set_connection_color(self):
         if hasattr(self.my_start_item, 'output_object'):
             self.path_color_item.setNamedColor(self.my_start_item.output_object.color)
+
+    def shape(self):
+        return self.shape
