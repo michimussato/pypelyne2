@@ -1,4 +1,5 @@
 import os
+import logging
 import PyQt4.QtGui as QtGui
 import PyQt4.uic as uic
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
@@ -11,6 +12,8 @@ class OutputWidget(QtGui.QWidget):
 
         self.mainwindow = mainwindow
 
+        self.output = output
+
         self.processes = []
 
         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
@@ -20,20 +23,20 @@ class OutputWidget(QtGui.QWidget):
                                           'outputwidget',
                                           'outputwidget.ui'), self)
 
-        if output.icon is None:
+        if self.output.icon is None:
             self.icon = QtGui.QPixmap(SETTINGS.OUTPUTS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
         else:
             self.icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS,
-                                                   output.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+                                                   self.output.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
-        self.pixmap = pixmapdraggable.PixmapOutput(output, self.mainwindow)
+        self.pixmap = pixmapdraggable.PixmapOutput(self.output, self.mainwindow)
 
-        self.ui.label.setText('{0} ({1})'.format(output.output, output.abbreviation))
+        self.ui.label.setText('{0} ({1})'.format(self.output.output, self.output.abbreviation))
         self.ui.label.setEnabled(False)
 
         self.ui.pixmaps_layout.addWidget(self.pixmap)
 
-        self.pixmap.setToolTip('drag me onto node to create a new {0} output'.format(output.output))
+        self.pixmap.setToolTip('drag me onto node to create a new {0} output'.format(self.output.output))
 
         # self.pixmap.setEnabled(False)
 
@@ -43,6 +46,25 @@ class OutputWidget(QtGui.QWidget):
         #                                                                  output.release_number))
 
         self.ui.label.setEnabled(True)
+
+        self.set_color_hint()
+
+    def set_color_hint(self):
+        logging.info('outputwidget.set_color_hint() ({0})'.format(self))
+
+        lineedit = self.ui.lineedit_color
+
+        color_value = self.output.color
+
+        lineedit.setText(color_value)
+
+        palette = QtGui.QPalette()
+        color = QtGui.QColor(0, 0, 0, 255)
+        color.setNamedColor(color_value)
+
+        palette.setColor(QtGui.QPalette.Base, color)
+
+        lineedit.setPalette(palette)
 
         # elif plugin.type == 'standalone':
         #     if plugin.architecture_agnostic:
