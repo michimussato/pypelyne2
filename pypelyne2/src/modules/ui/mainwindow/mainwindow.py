@@ -5,6 +5,7 @@ import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plugins
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_resourcebar as dockwidget_resourcebar
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_output_channels as dockwidget_output_channels
+import pypelyne2.src.modules.ui.dockwidget.dockwidget_containers as dockwidget_containers
 
 
 class MainWindow(QtGui.QMainWindow):
@@ -25,13 +26,16 @@ class MainWindow(QtGui.QMainWindow):
         self.dock_widget_plugins = dockwidget_plugins.DockWidgetPlugins(mainwindow=self)
         self.dock_widget_output_channels = dockwidget_output_channels.DockWidgetOutputChannels(mainwindow=self)
         self.resource_bar_widget = dockwidget_resourcebar.DockWidgetResourceBar(mainwindow=self)
+        self.dock_widget_containers = dockwidget_containers.DockWidgetContainers(mainwindow=self)
 
         if SETTINGS.SHOW_PLUGINS:
             self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_plugins)
         if SETTINGS.SHOW_OUTPUT_CHANNELS:
-            self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_output_channels)
+            self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock_widget_output_channels)
         if SETTINGS.SHOW_RESOURCES:
             self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.resource_bar_widget)
+        if SETTINGS.SHOW_CONTAINERS:
+            self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock_widget_containers)
 
         # if SETTINGS.SHOW_PLAYER:
         #     pass

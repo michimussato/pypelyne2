@@ -8,6 +8,26 @@ class ExpandCollapse(QtGui.QPixmap):
         super(ExpandCollapse, self).__init__()
 
 
+class CompositeIconContainer(QtGui.QPixmap):
+    def __init__(self, output=None, *__args):
+        super(CompositeIconContainer, self).__init__(*__args)
+
+        self.container = output
+
+        if self.container.icon is None:
+            icon = QtGui.QPixmap(SETTINGS.CONTAINERS_DEFAULT_ICON)
+        else:
+            icon = QtGui.QPixmap(self.container.icon)
+
+        self._icon = icon.scaledToHeight(SETTINGS.OUTPUTS_ICON_HEIGHT, QtCore.Qt.SmoothTransformation)
+
+        self._pixmap = QtGui.QPixmap(SETTINGS.OUTPUTS_ICON_HEIGHT, SETTINGS.OUTPUTS_ICON_HEIGHT)
+
+    @property
+    def container_icon(self):
+        return self._icon
+
+
 class CompositeIconOutput(QtGui.QPixmap):
     def __init__(self, output=None, *__args):
         super(CompositeIconOutput, self).__init__(*__args)

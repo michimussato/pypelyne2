@@ -7,6 +7,56 @@ import pypelyne2.src.modules.ui.dockwidget.dockwidget_output as dockwidget_outpu
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 
 
+class PixmapContainer(QtGui.QLabel):
+    def __init__(self, container=None, mainwindow=None, *args, **kwargs):
+        super(PixmapContainer, self).__init__(*args, **kwargs)
+
+        self.container = container
+        self.mainwindow = mainwindow
+
+        self.pixmap = compositeicon.CompositeIconContainer(self.container).container_icon
+        # self.pixmap_hovered
+
+        self.setPixmap(self.pixmap)
+
+    def mouseMoveEvent(self, event):
+        logging.info('mouseMoveEvent on {0}'.format(self))
+        # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
+        mime_data = QtCore.QMimeData()
+        mime_data.setObjectName('container/draggable-pixmap')
+
+        pickled_output_object = cPickle.dumps(self.container)
+        mime_data.setData('container/draggable-pixmap', pickled_output_object)
+        # print mime_data.objectName()
+
+        drag = QtGui.QDrag(self)
+        drag.setMimeData(mime_data)
+        drag.setPixmap(self.pixmap)
+        drag.setHotSpot(event.pos())
+
+        if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
+            pass
+        #     print 'moved'
+        # else:
+        #     print 'copied'
+
+        return QtGui.QLabel.mouseMoveEvent(self, event)
+
+    def enterEvent(self, *args, **kwargs):
+        # print 'entered'
+        QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+        # self.setPixmap(self.pixmap_hovered)
+
+        # self.emit(QtCore.SIGNAL('PixmapOutput'))
+
+    def leaveEvent(self, *args, **kwargs):
+        QtGui.QApplication.restoreOverrideCursor()
+        # self.setPixmap(self.pixmap)
+        # print 'left'
+
+        # self.emit(QtCore.SIGNAL('PixmapOutput'))
+
+
 class PixmapOutput(QtGui.QLabel):
     def __init__(self, output=None, mainwindow=None, *args, **kwargs):
         super(PixmapOutput, self).__init__(*args, **kwargs)

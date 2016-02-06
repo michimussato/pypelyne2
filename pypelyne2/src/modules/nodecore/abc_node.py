@@ -13,7 +13,7 @@ class Node(object):
 
     # ???
     """
-    Abstract Node object
+    Abstract NodeCore object
 
     """
     __metaclass__ = abc.ABCMeta

@@ -16,6 +16,9 @@ def parse_outputs():
 
     outputs = [output for output in json_object if output['output_enable']]
 
+    # for output in outputs:
+    #     output['entity_type'] = 'output'
+
     for output in outputs:
         if output[u'icon'] is not None:
             try:

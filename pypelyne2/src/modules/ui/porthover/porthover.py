@@ -73,7 +73,7 @@ class InputHover(OutputHover):
         self.setup_title()
 
     def setup_title(self):
-        self.ui.label_title.setToolTip('change name at output port')
+        self.ui.label_title.setToolTip('change name at source')
         # self.ui.label_title_edit.setToolTip('enter to submit')
         self.ui.label_title_edit.setText(self.ui.label_title.text())
 

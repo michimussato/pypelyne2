@@ -13,6 +13,9 @@ def parse_tasks():
 
     tasks = [task for task in json_object if task['task_enable']]
 
+    # for task in tasks:
+    #     task['entity_type'] = 'task'
+
     return sorted(tasks,
                   key=operator.itemgetter(SETTINGS.SORT_TASKS),
                   reverse=SETTINGS.SORT_TASKS_REVERSE)

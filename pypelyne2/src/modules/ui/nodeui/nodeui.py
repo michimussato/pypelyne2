@@ -1,12 +1,14 @@
 import os
 import logging
+import random
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.node.node as node
+import pypelyne2.src.modules.nodecore.nodecore as nodecore
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
+import pypelyne2.src.parser.parse_plugins as parse_plugins
 import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 import pypelyne2.src.modules.ui.portwidget.portwidget as output
 import pypelyne2.src.modules.ui.connection.connection as connection
@@ -96,8 +98,8 @@ class QWidgetTitle(QWidgetNode):
                                           'src',
                                           'modules',
                                           'ui',
-                                          'nodegraphicsitem',
-                                          'nodegraphicsitem_widget_title.ui'), self)
+                                          'nodeui',
+                                          'nodeui_widget_title.ui'), self)
 
         self.set_palette()
 
@@ -137,8 +139,8 @@ class QWidgetElements(QWidgetNode):
                                           'src',
                                           'modules',
                                           'ui',
-                                          'nodegraphicsitem',
-                                          'nodegraphicsitem_widget_elements.ui'), self)
+                                          'nodeui',
+                                          'nodeui_widget_elements.ui'), self)
 
         self.set_palette()
 
@@ -154,15 +156,15 @@ class QWidgetElements(QWidgetNode):
         return QWidgetNode.mouseMoveEvent(self, event)
 
 
-class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
-    def __init__(self, position, plugin, scene_object):
-        super(NodeGraphicsItem, self).__init__()
+class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
+    def __init__(self, position=QtCore.QPoint(0, 0), plugin=None, scene_object=None):
+        super(NodeUI, self).__init__()
 
         reload(SETTINGS)
 
         self.scene_object = scene_object
 
-        self.plugin = plugin
+        self.plugin = plugin or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x64
         self.compositor = compositeicon.CompositeIcon(self.plugin)
 
         self.rect = QtCore.QRectF()
@@ -186,8 +188,8 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.hovered = False
         self.output_list = []
         self.input_list = []
-        self.outputs = []
-        self.inputs = []
+        # self.outputs = []
+        # self.inputs = []
         self.connections = []
 
         # self._users = []
@@ -301,9 +303,10 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         title_edit.setReadOnly(True)
 
         if init:
-            new_title = self.uuid
+            new_title = self.name_string
         else:
             new_title = title_edit.text()
+            self.name_string = new_title
 
         title.setText(new_title)
         title_edit.setText(new_title)
@@ -628,13 +631,13 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         return self.rect
 
     def hoverEnterEvent(self, event):
-        logging.info('hoverEnterEvent on NodeGraphicsItem ({0})'.format(self))
+        logging.info('hoverEnterEvent on NodeUI ({0})'.format(self))
         self.hovered = True
 
         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
 
     def hoverLeaveEvent(self, event):
-        logging.info('hoverLeaveEvent on NodeGraphicsItem ({0})'.format(self))
+        logging.info('hoverLeaveEvent on NodeUI ({0})'.format(self))
         self.hovered = False
 
         return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)
@@ -849,7 +852,7 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
 
     def set_task_color(self):
         logging.info('node.set_task_color() ({0})'.format(self))
-        task_color = self.current_combobox_task_color or self.task_color_default
+        task_color = self.task_type or self.current_combobox_task_color or self.task_color_default
         self.task_color_item.setNamedColor(task_color)
 
     # @staticmethod

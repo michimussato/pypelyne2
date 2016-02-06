@@ -410,6 +410,10 @@ class Input(Port):
             scene.connection_items.remove(upstream_connection)
             scene.removeItem(upstream_connection)
 
+        # if scene.is_container():
+        #     print scene.child_items
+        #     scene.child_items.remove(self)
+
         self.upstream_port.downstream_ports.remove(self)
 
         self.parent_node.inputs.remove(self)

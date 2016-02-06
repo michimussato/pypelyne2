@@ -3,7 +3,8 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.modules.ui.graphicsview.graphicsview as graphicsview
 import pypelyne2.src.modules.ui.graphicsscene.graphicsscene as graphicsscene
-import pypelyne2.src.modules.ui.container.container as container
+# import pypelyne2.src.modules.ui.container.container as container
+import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
@@ -31,96 +32,21 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.screen_representation = None
         self.scene_representation = None
 
-        # if SETTINGS.ENABLE_NAVIGATOR:
-        self.navigator()
+        self.navigator = navigator.Navigator(scene_object=self.scene_object,
+                                             view_object=self)
 
-        self.container_bar = 20
-        self.container_inputs = container.Inputs(scene_object=self.scene_object,
-                                                 view_object=self)
-        self.container_outputs = container.Outputs(scene_object=self.scene_object,
-                                                   view_object=self)
+        # self.container_inputs = container.Inputs(scene_object=self.scene_object,
+        #                                          view_object=self)
+        # self.container_outputs = container.Outputs(scene_object=self.scene_object,
+        #                                            view_object=self)
 
-    def navigator(self):
-        if SETTINGS.ENABLE_NAVIGATOR:
-            self.screen_representation = QtGui.QGraphicsRectItem(0,
-                                                                 0,
-                                                                 self.scene_object.itemsBoundingRect().width() * SETTINGS.NAVIGATOR_SCALE,
-                                                                 self.scene_object.itemsBoundingRect().height() * SETTINGS.NAVIGATOR_SCALE)
-
-            self.scene_object.addItem(self.screen_representation)
-
-            self.screen_representation.setZValue(1000.0)
-
-            self.scene_representation = QtGui.QGraphicsRectItem(0,
-                                                                0,
-                                                                self.scene_object.itemsBoundingRect().width() * SETTINGS.NAVIGATOR_SCALE,
-                                                                self.scene_object.itemsBoundingRect().height() * SETTINGS.NAVIGATOR_SCALE)
-
-            self.scene_object.addItem(self.scene_representation)
-            self.scene_representation.setZValue(1000.0)
-            self.screen_representation.setParentItem(self.scene_representation)
-
-            color_navigator_rect = QtGui.QColor(SETTINGS.NAVIGATOR_R*255,
-                                                SETTINGS.NAVIGATOR_G*255,
-                                                SETTINGS.NAVIGATOR_B*255,
-                                                SETTINGS.NAVIGATOR_ALPHA*255)
-            color_screen_rect = QtGui.QColor(255-SETTINGS.NAVIGATOR_R*255,
-                                             255-SETTINGS.NAVIGATOR_G*255,
-                                             255-SETTINGS.NAVIGATOR_B*255,
-                                             SETTINGS.NAVIGATOR_ALPHA*255)
-            brush_navigator_rect = QtGui.QBrush(color_screen_rect)
-            brush_screen_rect = QtGui.QBrush(color_navigator_rect)
-            self.screen_representation.setBrush(brush_navigator_rect)
-            self.scene_representation.setBrush(brush_screen_rect)
-
-        else:
-            return
-
-    def adjust_container(self):
-        self.container_inputs.adjust_container()
-        self.container_outputs.adjust_container()
+    # def adjust_container(self):
+    #     # self.container_inputs.adjust_container()
+    #     # self.container_outputs.adjust_container()
+    #     # pass
 
     def adjust_navigator(self):
-        if SETTINGS.ENABLE_NAVIGATOR:
-
-            # if self.sceneRect().width()*SETTINGS.NAVIGATOR_MAX_SIZE < self.scene_representation.rect().width():
-            #     print 'too wide'
-            # if self.sceneRect().height()*SETTINGS.NAVIGATOR_MAX_SIZE < self.scene_representation.rect().height():
-            #     print 'too tall'
-
-            self.screen_representation.setRect(0,
-                                               0,
-                                               self.viewport().width() * SETTINGS.NAVIGATOR_SCALE,
-                                               self.viewport().height() * SETTINGS.NAVIGATOR_SCALE)
-
-            # self.screen_representation.setRect(0,
-            #                                    0,
-            #                                    self.scene.itemsBoundingRect().width() * SETTINGS.NAVIGATOR_SCALE,
-            #                                    self.scene.itemsBoundingRect().height() * SETTINGS.NAVIGATOR_SCALE)
-
-            # magic function:
-            relative_rect = self.mapFromScene(self.scene_object.itemsBoundingRect()).boundingRect()
-            # print relative_rect.topLeft()
-            # print relative_rect.bottomLeft()
-            # print relative_rect.topRight()
-            # print relative_rect.bottomRight()
-
-            self.scene_representation.setRect(relative_rect.x() * SETTINGS.NAVIGATOR_SCALE,
-                                              relative_rect.y() * SETTINGS.NAVIGATOR_SCALE,
-                                              relative_rect.width() * SETTINGS.NAVIGATOR_SCALE,
-                                              relative_rect.height() * SETTINGS.NAVIGATOR_SCALE)
-
-            self.scene_representation.setPos(self.viewport().width() - self.scene_representation.rect().width() - self.scene_representation.rect().topLeft().x(),
-                                             self.viewport().height() - self.scene_representation.rect().height() - self.scene_representation.rect().topLeft().y())
-
-            if self.scene_representation.rect().width()-self.screen_representation.rect().width() > 1.0\
-                    or self.scene_representation.rect().height()-self.screen_representation.rect().height() > 1.0:
-                self.scene_representation.setVisible(True)
-            else:
-                self.scene_representation.setVisible(False)
-
-        else:
-            return
+        self.navigator.adjust_navigator()
 
     def mouseMoveEvent(self, event):
         if self.hasFocus():
@@ -170,7 +96,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
             self.scene_object.destroyItemGroup(group)
 
-            self.adjust_navigator()
+            self.navigator.adjust_navigator()
 
             return QtGui.QGraphicsView.wheelEvent(self, event)
 
@@ -180,6 +106,6 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         self.scene_object.base_rect.setRect(QtCore.QRectF(self.rect()))
 
         self.adjust_navigator()
-        self.adjust_container()
+        # self.adjust_container()
 
         return QtGui.QGraphicsView.resizeEvent(self, event)

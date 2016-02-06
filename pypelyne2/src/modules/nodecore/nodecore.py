@@ -7,28 +7,39 @@ import pypelyne2.src.parser.parse_users as parse_users
 import pypelyne2.src.parser.parse_tasks as parse_tasks
 
 
-class Node(object):
-    def __init__(self, node_id=None):
-        super(Node, self).__init__()
+class NodeCore(object):
+    def __init__(self, node_id=None, name_string=None, task_type=None):
+        super(NodeCore, self).__init__()
         # self.container = False
         self.dirty = False
         self._users = []
         self._tasks = []
+
+        # TODO:
+        self.task_type = task_type
+
         # self._thumbnail_icon = None
-        self.children = []  # nodes living inside as children
-        self.siblings = []
-        self.parents = []  # this node living in what nodes
+        # nodes living inside self as children
+        # self.child_items = []
+        # self.siblings = []
+        # the parent container of self
+        self.parent_container = None
+        # the output ports
         self.outputs = []
+        # the input ports
         self.inputs = []
         self.task = None
         self.tool = None
         self.uuid = node_id or str(uuid.uuid4())
-        self.name = None
+        self.name_string = name_string or self.uuid
         # self.icon = None
-        self.dependenies_req = None
-        self.dependenies_opt = None
-        self.creator = None
-        self.modificators = None
+        # self.dependenies_req = None
+        # self.dependenies_opt = None
+        # self.creator = None
+        # self.modificators = None
+
+    # def is_container(self):
+    #     return bool(self.child_items)
 
     @property
     def get_users(self):

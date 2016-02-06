@@ -1,0 +1,32 @@
+[
+  {
+    "container_enable": true,
+    "type": "character",
+    "icon": null,
+    "color": "#FF0000"
+  },
+  {
+    "container_enable": true,
+    "type": "creature",
+    "icon": null,
+    "color": "#FFFF00"
+  },
+  {
+    "container_enable": true,
+    "type": "location",
+    "icon": null,
+    "color": "#FF00FF"
+  },
+  {
+    "container_enable": true,
+    "type": "shot",
+    "icon": null,
+    "color": "#00FF00"
+  },
+  {
+    "container_enable": true,
+    "type": "prop",
+    "icon": null,
+    "color": "#0000FF"
+  }
+]

@@ -4,8 +4,8 @@ import logging
 import cPickle
 import pypelyne2.src.modules.ui.connection.connection as connection
 import pypelyne2.src.modules.ui.portwidget.portwidget as portwidget
-import pypelyne2.src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
-import pypelyne2.src.modules.node.node as node
+import pypelyne2.src.modules.ui.nodeui.nodegraphicsitem as nodegraphicsitem
+import pypelyne2.src.modules.nodecore.node as node
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
@@ -41,7 +41,6 @@ class Container(QtGui.QGraphicsRectItem):
 
         self.setAcceptHoverEvents(True)
 
-
         self.scene_object = scene_object
         self.view_object = view_object
 
@@ -49,9 +48,25 @@ class Container(QtGui.QGraphicsRectItem):
 
         self.scene_object.addItem(self)
 
+        # self.container_rect = QtGui.QGraphicsRectItem()
+        #
+        # self.scene_object.addItem(self.container_rect)
+
+        # self.adjust_container_size()
+
     def resize(self):
+        # self.adjust_container_size()
         self.adjust_container()
+        # self.container_rect.setRect(1, 0, self.view_object.viewport().width()-10, self.view_object.viewport().height()-10)
+        # self.scene_object.addItem
         # print 'something needs to happen here'
+
+    # def adjust_container_size(self):
+    #     self.setRect(0, 0, self.view_object.viewport().width()-10, self.view_object.viewport().height()-10)
+
+
+
+    # self.setRect(self.view_object.viewport().width()-SETTINGS.CONTAINER_AREA-1, 1, SETTINGS.CONTAINER_AREA, self.view_object.viewport().height()-3)
 
 
 class Inputs(Container):
@@ -62,14 +77,14 @@ class Inputs(Container):
 
         self.outputs = []
 
-        if SETTINGS.AUTO_GENERATE_RANDOM_OUTPUTS:
-
-            for container_input in range(SETTINGS.AUTO_CREATE_CONTAINER_INPUT):
-                node_abstract = node.Node()
-                self.upstream_nodes.append(node_abstract)
-
-                for i in range(SETTINGS.AUTO_GENERATE_RANDOM_OUTPUTS_COUNT):
-                    self.add_output()
+        # if SETTINGS.AUTO_GENERATE_RANDOM_OUTPUTS:
+        #
+        #     for container_input in range(SETTINGS.AUTO_CREATE_CONTAINER_INPUT):
+        #         node_abstract = nodegraphicsitem.NodeUI(QtCore.QPoint(0, 0))
+        #         self.upstream_nodes.append(node_abstract)
+        #
+        #         for i in range(SETTINGS.AUTO_GENERATE_RANDOM_OUTPUTS_COUNT):
+        #             self.add_output()
 
     def adjust_container(self):
         self.setRect(2, 1, SETTINGS.CONTAINER_AREA, self.view_object.viewport().height()-3)
@@ -86,12 +101,6 @@ class Inputs(Container):
         self.outputs.append(port)
         port.setParentItem(self)
         self.resize()
-        # self.outputs_container.setRect(self.viewport().width()-SETTINGS.CONTAINER_AREA-1, 1, SETTINGS.CONTAINER_AREA, self.viewport().height()-3)
-
-
-        # self.scene_object = scene_object
-
-        # self.setRect(0, 0, 20, 20)
 
     # def paint(self, painter, option, widget):
     #     print self.scene_object.sceneRect().height()
@@ -109,6 +118,8 @@ class Outputs(Container):
         super(Outputs, self).__init__(scene_object, view_object)
 
         self.setAcceptDrops(True)
+
+        # self.drop_area = self.scene_object.addRe
 
         self.connections = []
         self.upstream_connections = []
@@ -160,6 +171,7 @@ class Outputs(Container):
                                     start_item=start_item)
 
         self.inputs.append(end_item)
+        # self.scene_object.child_items.append(end_item)
         end_item.setParentItem(self)
 
         if create_connection:

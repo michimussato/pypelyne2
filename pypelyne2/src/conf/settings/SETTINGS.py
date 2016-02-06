@@ -43,6 +43,8 @@ SORT_DEPARTMENTS = 'department'
 SORT_DEPARTMENTS_REVERSE = False
 SORT_ROLES = 'role'
 SORT_ROLES_REVERSE = False
+SORT_CONTAINERS = 'type'
+SORT_CONTAINERS_REVERSE = False
 
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 QSS_ENABLE = False
@@ -58,6 +60,7 @@ ICON_MAXIMIZE = os.path.join(ICONS_DIR, 'maximize.png')
 ICON_MINIMIZE = os.path.join(ICONS_DIR, 'minimize.png')
 ICON_COLLAPSE = os.path.join(ICONS_DIR, 'collapse.png')
 ICON_EXPAND = os.path.join(ICONS_DIR, 'expand.png')
+
 ICON_THUMBNAIL_PLACEHOLDER = [x for x in os.listdir(os.path.join(ICONS_DIR, 'rand_img')) if not x.startswith('.')]
 ICON_THUMBNAIL_DEFAULT = os.path.join(ICONS_DIR, 'no_thumbnail.png')
 ICON_FORMATS = ['.jpeg', '.jpg', '.png', '.gif']
@@ -95,6 +98,12 @@ ROLES_FILE = os.path.join(ROLES_DIR, 'roles.json')
 # Departments module
 DEPARTMENTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'departments')
 DEPARTMENTS_FILE = os.path.join(DEPARTMENTS_DIR, 'departments.json')
+
+# Container module
+CONTAINERS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'containers')
+CONTAINERS_FILE = os.path.join(CONTAINERS_DIR, 'containers.json')
+CONTAINERS_ICONS = os.path.join(CONTAINERS_DIR, '_icons')
+CONTAINERS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'icon_container.png')
 
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
@@ -164,6 +173,7 @@ GRABBER_AUTO_START = False
 SPLASH = True
 SPLASH_ICON = os.path.join(ICONS_DIR, 'pypelyne.png')
 SHOW_PLUGINS = True
+SHOW_CONTAINERS = True
 # SHOW_PLAYER = True
 SHOW_OUTPUT_WINDOWS = True
 TABIFY_OUTPUT_WINDOWS = True
@@ -196,7 +206,7 @@ TOTAL_DSK = int(float(psutil.disk_usage(disks[0].mountpoint).total)/1000/1000/10
 # MP3_ROOT = r'/Users/michaelmussato/Music/mp3'
 # AUDIO_EXTENSIONS = ['.mp3', '.m4a', '.mp4']
 
-# NodeGraphicsItem
+# NodeUI
 NODE_ROUNDNESS = 5
 NODE_CREATE_COLLAPSED = True
 PREVIEW_ROUNDNESS = 7
@@ -210,7 +220,7 @@ OUTPUT_OFFSET = OUTPUT_RADIUS
 # ZOOM_MIN = 0.01
 # ZOOM_MAX = 10.0
 
-# Node
+# NodeCore
 ICON_SCALE = float(0.5)
 AUTO_GENERATE_RANDOM_OUTPUTS = True
 AUTO_GENERATE_RANDOM_OUTPUTS_COUNT = 10
@@ -222,7 +232,7 @@ REMOVE_PORT_DISTANCE = 80
 AUTO_GENERATE_RANDOM_INPUTS = False
 AUTO_GENERATE_RANDOM_INPUTS_COUNT = 10
 
-# Node editor
+# NodeCore editor
 ENABLE_NAVIGATOR = True
 NAVIGATOR_SCALE = 0.1
 NAVIGATOR_R = 1
