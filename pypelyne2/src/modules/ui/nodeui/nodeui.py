@@ -947,3 +947,6 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
         logging.info('node.keyPressEvent() ({0})'.format(self))
         if event.key() == QtCore.Qt.Key_Backspace:
             self.delete_node()
+
+    def mouseDoubleClickEvent(self, event):
+        self.scene_object.view_object.set_container_scene()

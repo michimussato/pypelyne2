@@ -6,7 +6,7 @@ import PyQt4.QtOpenGL as QtOpenGL
 class GraphicsView(QtGui.QGraphicsView):
     def __init__(self):
         super(GraphicsView, self).__init__()
-        self.scene_object = None
+        self.scene_object_containers = None
         self.visible_rect = None
         self.setTransformationAnchor(self.AnchorUnderMouse)
 

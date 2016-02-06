@@ -2,31 +2,31 @@
   {
     "container_enable": true,
     "type": "character",
-    "icon": null,
+    "icon": "character.png",
     "color": "#FF0000"
   },
   {
     "container_enable": true,
     "type": "creature",
-    "icon": null,
+    "icon": "creature.png",
     "color": "#FFFF00"
   },
   {
     "container_enable": true,
     "type": "location",
-    "icon": null,
+    "icon": "location.png",
     "color": "#FF00FF"
   },
   {
     "container_enable": true,
     "type": "shot",
-    "icon": null,
+    "icon": "shot.jpg",
     "color": "#00FF00"
   },
   {
     "container_enable": true,
     "type": "prop",
-    "icon": null,
+    "icon": "prop.png",
     "color": "#0000FF"
   }
 ]

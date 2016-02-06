@@ -4,33 +4,7 @@ import logging
 import cPickle
 import pypelyne2.src.modules.ui.connection.connection as connection
 import pypelyne2.src.modules.ui.portwidget.portwidget as portwidget
-import pypelyne2.src.modules.ui.nodeui.nodegraphicsitem as nodegraphicsitem
-import pypelyne2.src.modules.nodecore.node as node
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-
-
-# class Container(QtGui.QGraphicsRectItem):
-#     def __init__(self, scene_object):
-#         super(Container, self).__init__()
-#
-#         self.scene_object = scene_object
-#
-#         # self.scene_object.setSceneRect(0, 0, 500, 500)
-#
-#         self.inputs = Inputs(self.scene_object)
-#         self.outputs = Outputs(self.scene_object)
-#
-#         # print dir(self.scene_object)
-#         # print self.scene_object.sceneRect()
-#
-#         self.setParentItem(self.inputs)
-#         self.setParentItem(self.outputs)
-#         scene_object.addItem(self.inputs)
-#         scene_object.addItem(self.outputs)
-#
-#     def paint(self, painter, option, widget):
-#     #     self.setRect(0, 0, 20, 50)
-#         self.setRect(self.scene_object.base_rect.rect())
 
 
 class Container(QtGui.QGraphicsRectItem):
@@ -44,29 +18,10 @@ class Container(QtGui.QGraphicsRectItem):
         self.scene_object = scene_object
         self.view_object = view_object
 
-        # self.container_bar = 20
-
         self.scene_object.addItem(self)
 
-        # self.container_rect = QtGui.QGraphicsRectItem()
-        #
-        # self.scene_object.addItem(self.container_rect)
-
-        # self.adjust_container_size()
-
     def resize(self):
-        # self.adjust_container_size()
         self.adjust_container()
-        # self.container_rect.setRect(1, 0, self.view_object.viewport().width()-10, self.view_object.viewport().height()-10)
-        # self.scene_object.addItem
-        # print 'something needs to happen here'
-
-    # def adjust_container_size(self):
-    #     self.setRect(0, 0, self.view_object.viewport().width()-10, self.view_object.viewport().height()-10)
-
-
-
-    # self.setRect(self.view_object.viewport().width()-SETTINGS.CONTAINER_AREA-1, 1, SETTINGS.CONTAINER_AREA, self.view_object.viewport().height()-3)
 
 
 class Inputs(Container):
@@ -102,15 +57,14 @@ class Inputs(Container):
         port.setParentItem(self)
         self.resize()
 
-    # def paint(self, painter, option, widget):
-    #     print self.scene_object.sceneRect().height()
-    #     self.setRect(1, 0, self.bar_width, self.scene_object.sceneRect().height()-10)
-    #
-    #
-    #     pen = QtGui.QPen(QtCore.Qt.SolidLine)
-    #     pen.setColor(QtCore.Qt.black)
-    #     painter.setPen(pen)
-    #     painter.drawRect(self.rect())
+    def paint(self, painter, option, widget):
+        # print self.scene_object.sceneRect().height()
+        self.setRect(1, 0, self.bar_width, self.scene_object.sceneRect().height()-10)
+
+        pen = QtGui.QPen(QtCore.Qt.SolidLine)
+        pen.setColor(QtCore.Qt.black)
+        painter.setPen(pen)
+        painter.drawRect(self.rect())
 
 
 class Outputs(Container):
@@ -119,8 +73,6 @@ class Outputs(Container):
 
         self.setAcceptDrops(True)
 
-        # self.drop_area = self.scene_object.addRe
-
         self.connections = []
         self.upstream_connections = []
         self.inputs = []
@@ -128,8 +80,6 @@ class Outputs(Container):
         self.setToolTip('drop outputs here to create a container output')
 
     def adjust_container(self):
-        # self.inputs_container.setRect(2, 1, SETTINGS.CONTAINER_AREA, self.viewport().height()-3)
-
         self.setRect(self.view_object.viewport().width()-SETTINGS.CONTAINER_AREA-1, 1, SETTINGS.CONTAINER_AREA, self.view_object.viewport().height()-3)
 
         for input_item in self.inputs:
@@ -159,7 +109,6 @@ class Outputs(Container):
             #     self.set_active()
 
         return QtGui.QGraphicsRectItem.dragEnterEvent(self, event)
-        # self.scene_object = scene_object
 
     def add_input(self, output_object=None, port_id=None, create_connection=True):
 
@@ -171,13 +120,11 @@ class Outputs(Container):
                                     start_item=start_item)
 
         self.inputs.append(end_item)
-        # self.scene_object.child_items.append(end_item)
         end_item.setParentItem(self)
 
         if create_connection:
             self.add_connection(start_item=start_item, end_item=end_item)
 
-        # self.resize()
         self.adjust_container()
 
     def add_connection(self, start_item, end_item):
@@ -194,7 +141,6 @@ class Outputs(Container):
 
     def dropEvent(self, event):
         logging.info('dropEvent on {0}'.format(self))
-        # self.set_inactive()
 
         if event.mimeData().hasFormat('nodeoutput/draggable-output'):
             event.accept()
@@ -204,19 +150,8 @@ class Outputs(Container):
 
             unpickled_output_object = cPickle.loads(data)
 
-            # self.scene
-
             self.add_input(output_object=unpickled_output_object[u'output_object'],
                            port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)
-
-    # def paint(self, painter, option, widget):
-    #     print self.scene_object.sceneRect().height()
-    #     self.setRect(70, 0, self.bar_width, self.scene_object.sceneRect().height()-10)
-    #
-    #     pen = QtGui.QPen(QtCore.Qt.SolidLine)
-    #     pen.setColor(QtCore.Qt.black)
-    #     painter.setPen(pen)
-    #     painter.drawRect(self.rect())
