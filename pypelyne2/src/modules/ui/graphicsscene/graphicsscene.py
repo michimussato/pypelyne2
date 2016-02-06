@@ -3,6 +3,7 @@ import logging
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.modules.ui.nodegraphicsitem.nodegraphicsitem as nodegraphicsitem
+# import pypelyne2.src.modules.ui.container.container as container
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
@@ -45,6 +46,8 @@ class GraphicsScene(QtGui.QGraphicsScene):
         self.connection_items = []
 
         self.item_group = QtGui.QGraphicsItemGroup()
+
+        # self.container = container.Inputs(self)
 
     def dragEnterEvent(self, event):
         # event.accept()

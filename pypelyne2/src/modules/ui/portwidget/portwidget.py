@@ -54,6 +54,9 @@ class Port(QtGui.QGraphicsItem):
         self.widget_title_proxy.setWidget(self.widget_title)
         self.widget_title_proxy.setParentItem(self)
 
+        self.widget_title_proxy.setMaximumHeight(0.0)
+        self.widget_title_proxy.setMaximumWidth(0.0)
+
     def set_color(self):
         self.color_item.setNamedColor(self.output_object.color)
 

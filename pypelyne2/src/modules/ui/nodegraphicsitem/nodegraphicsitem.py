@@ -203,9 +203,9 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
         self.widget_elements_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
         # cpu usage bar is just a placeholder for future "progress"
-        self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
+        # self.progress_bar = resourcebarwidget.NodeBarWidget(monitor_item='cpu', maximum=100)
         # # self.widget_title.status_layout.insertWidget(0, self.progress_bar)
-        self.widget_title.vlayout_performance.addWidget(self.progress_bar)
+        # self.widget_title.vlayout_performance.addWidget(self.progress_bar)
         # self.widget_title.vlayout_title.addWidget(self.progress_bar)
         self.widget_title.vlayout_title.insertStretch(-1)
         # self.progress_bar_proxy = QGraphicsProxyWidgetNoWheel()
@@ -708,7 +708,6 @@ class NodeGraphicsItem(node.Node, QtGui.QGraphicsItem):
     def resize(self):
         logging.info('node.resize() ({0})'.format(self))
         self.arrange_outputs()
-        # self.reset_proxy_sizes()
         self.rect.setWidth(self.rect.width())
         self.rect.setHeight(self.rect.height())
         self.reset_proxy_sizes()

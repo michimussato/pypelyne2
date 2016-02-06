@@ -8,14 +8,14 @@ app = QtGui.QApplication(sys.argv)
 scene = graphicsview_stage.GraphicsViewStage()
 scene_container = graphicsview_stage.GraphicsViewStage()
 # rect = QtGui.QRectItem(20,20,20,20)
-rect = scene_container.scene.addRect(20,20,20,20)
+rect = scene_container.scene_object.addRect(20, 20, 20, 20)
 
 # print dir(rect)
 
 widget_proxy = QtGui.QGraphicsProxyWidget()
 widget_proxy.setWidget(scene_container)
 
-scene.scene.addItem(widget_proxy)
+scene.scene_object.addItem(widget_proxy)
 
 scene.show()
 scene.raise_()
