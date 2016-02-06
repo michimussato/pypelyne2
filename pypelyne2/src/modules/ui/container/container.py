@@ -50,7 +50,8 @@ class Container(QtGui.QGraphicsRectItem):
         self.scene_object.addItem(self)
 
     def resize(self):
-        print 'something needs to happen here'
+        self.adjust_container()
+        # print 'something needs to happen here'
 
 
 class Inputs(Container):

@@ -126,8 +126,8 @@ class Output(Port):
         self.set_label_pos()
 
     def set_label_pos(self):
-        self.widget_title_proxy.setPos(-self.widget_title_proxy.rect().width()-SETTINGS.OUTPUT_RADIUS/2-SETTINGS.OUTPUT_SPACING,
-                                       -self.widget_title_proxy.rect().height()/2)
+        self.widget_title_proxy.setPos(SETTINGS.OUTPUT_RADIUS/2+SETTINGS.OUTPUT_SPACING,
+                                       0-SETTINGS.OUTPUT_RADIUS/2)
 
     def hoverEnterEvent(self, event):
         logging.info('hoverEnterEvent on Output ({0})'.format(self))
@@ -292,8 +292,8 @@ class Input(Port):
         self.set_label(name=self.upstream_port.widget_title.label_title.text())
 
     def set_label_pos(self):
-        self.widget_title_proxy.setPos(SETTINGS.OUTPUT_RADIUS/2+SETTINGS.OUTPUT_SPACING,
-                                       -self.widget_title_proxy.rect().height()/2)
+        self.widget_title_proxy.setPos(-self.widget_title_proxy.rect().width()-SETTINGS.OUTPUT_RADIUS/2-SETTINGS.OUTPUT_SPACING,
+                                       0-SETTINGS.OUTPUT_RADIUS/2)
 
     @property
     def output_label(self):
