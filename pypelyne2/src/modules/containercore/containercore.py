@@ -8,6 +8,8 @@ class ContainerCore(object):
 
         self.uuid = container_id or str(uuid.uuid4())
 
+        # self.container = container or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
+
         self.name_string = name_string or self.uuid
 
         # all the nodes contained in self
@@ -16,4 +18,4 @@ class ContainerCore(object):
         # asset, shot, sequence, prop, character etc
         self.container_type = container_type
         self.outputs = []
-        self.outputs = []
+        self.inputs = []

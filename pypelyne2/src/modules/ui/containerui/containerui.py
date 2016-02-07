@@ -67,14 +67,14 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         self.view_object = self.scene_object.view_object
 
-        self.nodes_scene = graphicsscenenodes.GraphicsSceneNodes(view_object=self.view_object)
+        self.nodes_scene = graphicsscenenodes.GraphicsSceneNodes(view_object=self.view_object, container_object=self)
 
         self.navigator_nodes = navigator.Navigator(scene_object=self.nodes_scene,
                                                    view_object=self.scene_object.view_object)
 
         self.container = container or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
 
-        self.rect = QtCore.QRectF(0, 0, 100, 100)
+        self.rect = QtCore.QRectF()
 
         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
 
@@ -86,6 +86,9 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         self.hovered = False
 
+        self.container_output_channels = []
+        self.container_input_channels = []
+
         self.child_nodes = []
         self.output_list = []
         self.input_list = []
@@ -96,6 +99,75 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.widget_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
         self.set_container_color()
+
+        self.text_label = QtGui.QGraphicsTextItem()
+        self.text_label.setParentItem(self)
+
+        self.text_inputs = QtGui.QGraphicsTextItem()
+        self.text_inputs.setParentItem(self)
+
+        self.text_outputs = QtGui.QGraphicsTextItem()
+        self.text_outputs.setParentItem(self)
+
+        self.input_port = QtGui.QGraphicsEllipseItem()
+        self.input_port.setParentItem(self)
+        self.output_port = QtGui.QGraphicsEllipseItem()
+        self.output_port.setParentItem(self)
+        self.rect_port = QtCore.QRectF()
+
+        self.setup_ports()
+
+        self.update_label()
+
+    def setup_ports(self):
+
+        self.rect_port.setRect(-SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
+                               -SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
+                               SETTINGS.CONTAINER_OUTPUT_RADIUS,
+                               SETTINGS.CONTAINER_OUTPUT_RADIUS)
+
+        self.input_port.setRect(self.rect_port)
+        self.input_port.setStartAngle(90*16)
+        self.input_port.setSpanAngle(180*16)
+
+        self.output_port.setRect(self.rect_port)
+        self.output_port.setStartAngle(-90*16)
+        self.output_port.setSpanAngle(180*16)
+
+    def remove_container_output_channel(self, portwidget):
+        self.container_output_channels.remove(portwidget)
+        self.update_label()
+
+    def update_label(self):
+
+        if bool(self.container_output_channels):
+            self.output_port.setBrush(self.container_color_item.lighter(SETTINGS.LIGHTER_AMOUNT))
+            self.output_port.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+        else:
+            self.output_port.setBrush(self.container_color_item.darker(SETTINGS.DARKER_AMOUNT))
+            self.output_port.setCursor(QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
+
+        if bool(self.container_input_channels):
+            self.input_port.setBrush(self.container_color_item.lighter(SETTINGS.LIGHTER_AMOUNT))
+        else:
+            self.input_port.setBrush(self.container_color_item.darker(SETTINGS.DARKER_AMOUNT))
+
+        self.text_label.setPlainText('{0} (name: {1})'.format(self.container.type, self.name_string))
+        self.text_inputs.setPlainText('inputs: {0}'.format(len(self.container_input_channels)))
+        self.text_outputs.setPlainText('outputs: {0}'.format(len(self.container_output_channels)))
+        self.text_inputs.setY(self.text_label.boundingRect().height())
+        self.text_outputs.setY(self.text_label.boundingRect().height() + self.text_inputs.boundingRect().height())
+        # self.text_inputs.setY(self.text_label.boundingRect().height())
+        # for container_output_channel in self.container_output_channels:
+        #     position = QtCore.QPointF(self.boundingRect().width(),
+        #                               (self.container_output_channels.index(container_output_channel)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING)))
+        #
+        #     container_output_channel.setPos(position)
+
+        self.rect.setRect(0, 0, self.text_label.boundingRect().width(), self.childrenBoundingRect().height())
+
+        self.input_port.setPos(0, self.boundingRect().height()/2)
+        self.output_port.setPos(self.boundingRect().width(), self.boundingRect().height()/2)
 
     def add_ui_elements(self):
         self.widget_proxy.setWidget(self.widget)
@@ -166,5 +238,7 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.scene_object.view_object.setScene(self.nodes_scene)
 
         self.nodes_scene.output_area.adjust_container()
+        self.nodes_scene.input_area.adjust_container()
+        self.nodes_scene.label_area.adjust_container()
 
         return QtGui.QGraphicsItem.mouseDoubleClickEvent(self, event)

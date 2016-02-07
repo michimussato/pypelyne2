@@ -4,6 +4,7 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.modules.ui.containerui.containerui as containerui
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class GraphicsSceneContainer(QtGui.QGraphicsScene):
@@ -12,10 +13,11 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
 
         self.view_object = view_object
 
-        self.base_rect = self.addRect(QtCore.QRectF(0, 0, 500, 500), QtGui.QColor(255, 0, 0, 0))
+        self.base_rect = self.addRect(QtCore.QRectF(), QtGui.QColor(255, 0, 0, 0))
 
         self.point = QtGui.QGraphicsRectItem(-10, -10, 20, 20)
-        self.addItem(self.point)
+        if SETTINGS.DISPLAY_TRANSFORM_ANCHOR:
+            self.addItem(self.point)
 
         self.global_scale = 1
 

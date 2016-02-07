@@ -33,6 +33,8 @@ class GraphicsViewStage(graphicsview.GraphicsView):
 
         if scene != self.scene_object_containers:
             scene.output_area.adjust_container()
+            scene.input_area.adjust_container()
+            scene.label_area.adjust_container()
 
     def set_container_scene(self):
         self.setScene(self.scene_object_containers)

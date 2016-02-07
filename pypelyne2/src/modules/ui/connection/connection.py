@@ -26,6 +26,8 @@ class Connection(QtGui.QGraphicsPathItem):
         self.p5 = None
         self.p6 = self.p4
 
+        # self.p0 = QtCore.QPointF(1, 1)
+
         self.setAcceptHoverEvents(True)
         self.setAcceptTouchEvents(True)
 
@@ -58,6 +60,8 @@ class Connection(QtGui.QGraphicsPathItem):
 
     def paint(self, painter, option, widget):
         line = self.get_connection()
+
+        # print self.p1.x(), self.p1.y()
 
         pen = self.pen()
         pen.setWidth(SETTINGS.LINE_WIDTH*self.scene_object.global_scale)

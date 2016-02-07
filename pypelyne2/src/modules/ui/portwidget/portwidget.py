@@ -5,6 +5,7 @@ import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
 import cPickle
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
+# import pypelyne2.src.modules.ui.containerlink.containerlink as containerlink
 import pypelyne2.src.modules.ui.porthover.porthover as porthover
 import pypelyne2.src.parser.parse_outputs as parse_outputs
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
@@ -17,7 +18,7 @@ class Port(QtGui.QGraphicsItem):
     def __init__(self, node_object=None, output_object=None, port_id=None):
         super(Port, self).__init__()
 
-        self.parent_node = node_object
+        self.node_object = node_object
 
         self.uuid = port_id or str(uuid.uuid4())
 
@@ -32,6 +33,9 @@ class Port(QtGui.QGraphicsItem):
         self.hovered = False
 
         self.moved = {'x': 0.0, 'y': 0.0}
+
+        self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
+        self.setCursor(self.drag_cursor)
 
         self.rect = QtCore.QRectF(-SETTINGS.OUTPUT_RADIUS/2,
                                   -SETTINGS.OUTPUT_RADIUS/2,
@@ -101,7 +105,7 @@ class Output(Port):
 
         self.downstream_connections = []
 
-        self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
+
 
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
@@ -139,7 +143,7 @@ class Output(Port):
         for downstream_connection in self.downstream_connections:
             downstream_connection.hovered = True
 
-        QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+        # QtGui.QApplication.setOverrideCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
 
         self.widget_title_proxy.setMaximumHeight(16777215.0)
         self.widget_title_proxy.setMaximumWidth(16777215.0)
@@ -163,7 +167,7 @@ class Output(Port):
         self.widget_title_proxy.setMaximumHeight(0.0)
         self.widget_title_proxy.setMaximumWidth(0.0)
 
-        QtGui.QApplication.restoreOverrideCursor()
+        # QtGui.QApplication.restoreOverrideCursor()
 
         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
 
@@ -217,7 +221,6 @@ class Output(Port):
             #     print 'copied'
 
         else:
-
             return QtGui.QGraphicsItem.mouseMoveEvent(self, event)
 
     def dropEvent(self, event):
@@ -231,11 +234,17 @@ class Output(Port):
         for downstream_port in temp_list_copy:
             downstream_port.remove_input()
 
-        self.parent_node.outputs.remove(self)
+        self.node_object.outputs.remove(self)
 
         del temp_list_copy
 
-        self.parent_node.resize()
+        self.node_object.resize()
+
+        # if isinstance(self.node_object, OutputsDropArea)
+
+        # print type(self.node_object)
+        #
+        # self.node_object.container_object.container_output_channels.remove(self)
 
         scene.removeItem(self)
 
@@ -279,7 +288,7 @@ class Input(Port):
     def __init__(self, node_object=None, output_object=None, port_id=None, start_item=None):
         super(Input, self).__init__(node_object, output_object, port_id)
 
-        self.parent_node = node_object
+        self.node_object = node_object
 
         self.upstream_port = start_item
 
@@ -406,7 +415,7 @@ class Input(Port):
             scene.removeItem(upstream_connection)
             self.upstream_port.hovered = False
             self.upstream_port.downstream_connections.remove(upstream_connection)
-            self.parent_node.connections.remove(upstream_connection)
+            self.node_object.connections.remove(upstream_connection)
             scene.connection_items.remove(upstream_connection)
             scene.removeItem(upstream_connection)
 
@@ -416,9 +425,22 @@ class Input(Port):
 
         self.upstream_port.downstream_ports.remove(self)
 
-        self.parent_node.inputs.remove(self)
+        # print type(self.node_object)
 
-        self.parent_node.resize()
+        # if isinstance(self.parent_node, containerlink.OutputsDropArea):
+
+        try:
+            self.node_object.container_object.remove_container_output_channel(self)
+            # self.node_object.container_object.update_label()
+        except AttributeError, e:
+            print 'Input port parent is node: {0}'.format(e)
+
+        try:
+            self.node_object.inputs.remove(self)
+        except (ValueError, AttributeError), e:
+            print 'Input port parent is container: {0}'.format(e)
+
+        self.node_object.resize()
 
         scene.removeItem(self)
 

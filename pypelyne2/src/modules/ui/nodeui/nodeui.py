@@ -9,7 +9,7 @@ import pypelyne2.src.modules.nodecore.nodecore as nodecore
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.parser.parse_plugins as parse_plugins
-import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
+# import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 import pypelyne2.src.modules.ui.portwidget.portwidget as output
 import pypelyne2.src.modules.ui.connection.connection as connection
 import pypelyne2.src.modules.ui.nodedroparea.nodedroparea as nodedroparea
@@ -913,5 +913,5 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
         if event.key() == QtCore.Qt.Key_Backspace:
             self.delete_node()
 
-    def mouseDoubleClickEvent(self, event):
-        self.scene_object.view_object.set_container_scene()
+    # def mouseDoubleClickEvent(self, event):
+    #     self.scene_object.view_object.set_container_scene()

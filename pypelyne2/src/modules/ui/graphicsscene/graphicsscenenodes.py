@@ -9,15 +9,18 @@ import pypelyne2.src.modules.ui.containerlink.containerlink as containerlink
 
 
 class GraphicsSceneNodes(QtGui.QGraphicsScene):
-    def __init__(self, view_object=None):
+    def __init__(self, view_object=None, container_object=None):
         super(GraphicsSceneNodes, self).__init__(view_object)
 
         self.view_object = view_object
 
-        self.base_rect = self.addRect(QtCore.QRectF(0, 0, 500, 500), QtGui.QColor(255, 0, 0, 0))
+        self.container_object = container_object
+
+        self.base_rect = self.addRect(QtCore.QRectF(), QtGui.QColor(255, 0, 0, 0))
 
         self.point = QtGui.QGraphicsRectItem(-10, -10, 20, 20)
-        self.addItem(self.point)
+        if SETTINGS.DISPLAY_TRANSFORM_ANCHOR:
+            self.addItem(self.point)
 
         self.global_scale = 1
 
@@ -27,9 +30,14 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
         self.navigator = navigator.Navigator(scene_object=self,
                                              view_object=self.view_object)
 
-        self.output_area = containerlink.OutputsDropArea(scene_object=self, view_object=self.view_object)
-
-        # self.container_items = []
+        self.leave_container_button = containerlink.LeaveContainerButton(scene_object=self,
+                                                                         view_object=self.view_object)
+        self.output_area = containerlink.OutputsDropArea(scene_object=self,
+                                                         view_object=self.view_object)
+        self.input_area = containerlink.InputsSourceArea(scene_object=self,
+                                                         view_object=self.view_object)
+        self.label_area = containerlink.ContainerLabel(scene_object=self,
+                                                       view_object=self.view_object)
 
         self.item_group = QtGui.QGraphicsItemGroup()
 

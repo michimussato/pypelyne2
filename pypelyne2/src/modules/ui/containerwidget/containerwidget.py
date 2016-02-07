@@ -35,7 +35,7 @@ class ContainerWidget(QtGui.QWidget):
 
         self.ui.pixmaps_layout.addWidget(self.pixmap)
 
-        self.pixmap.setToolTip('drag me onto node to create a new {0} container'.format(self.container.type))
+        self.pixmap.setToolTip('drag me onto scene to create a new {0} container'.format(self.container.type))
 
         # self.pixmap.setEnabled(False)
 
