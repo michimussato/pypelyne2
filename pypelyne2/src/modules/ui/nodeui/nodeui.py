@@ -13,18 +13,8 @@ import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourceb
 import pypelyne2.src.modules.ui.portwidget.portwidget as output
 import pypelyne2.src.modules.ui.connection.connection as connection
 import pypelyne2.src.modules.ui.nodedroparea.nodedroparea as nodedroparea
-
-
-class QLabelCollapseExpand(QtGui.QLabel):
-    def __init__(self):
-        super(QLabelCollapseExpand, self).__init__()
-
-    def mousePressEvent(self, event):
-        logging.info('mousePressEvent on QLabelCollapseExpand ({0})'.format(self))
-        if event.button() == QtCore.Qt.RightButton:
-            self.emit(QtCore.SIGNAL('clicked'))
-        else:
-            return QtGui.QLabel.mousePressEvent(self, event)
+import pypelyne2.src.modules.ui.labelcollapseexpand.labelcollapseexpand as labelcollapseexpand
+import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
 
 
 class QLabelMaximize(QtGui.QLabel):
@@ -39,34 +29,9 @@ class QLabelMaximize(QtGui.QLabel):
             return QtGui.QLabel.mousePressEvent(self, event)
 
 
-class QLabelGif(QtGui.QLabel):
+class WidgetNode(QtGui.QWidget):
     def __init__(self, node_object=None):
-        super(QLabelGif, self).__init__()
-
-        self.dialog = QtGui.QFileDialog()
-
-        self.node = node_object
-
-    def mousePressEvent(self, event):
-        logging.info('mousePressEvent on QLabelGif ({0})'.format(self))
-        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-        if event.button() == QtCore.Qt.RightButton:
-            if keyboard_modifiers == QtCore.Qt.ShiftModifier:
-                # self.dialog.setFileMode(self.dialog.fileMode())
-                # self.dialog.setFilter(QtCore.QDir.Files | QtCore.QDir.NoDotAndDotDot)
-                dialog = self.dialog.getOpenFileName(self, 'get preview icon', SETTINGS.PYPELYNE2_ROOT)
-                # print ok
-                self.node.update_thumbnail_icon(dialog)
-            else:
-                self.emit(QtCore.SIGNAL('right_mouse_button_pressed'))
-
-        else:
-            return QtGui.QLabel.mousePressEvent(self, event)
-
-
-class QWidgetNode(QtGui.QWidget):
-    def __init__(self, node_object=None):
-        super(QWidgetNode, self).__init__()
+        super(WidgetNode, self).__init__()
 
         self.node = node_object
 
@@ -88,9 +53,9 @@ class QWidgetNode(QtGui.QWidget):
         event.ignore()
 
 
-class QWidgetTitle(QWidgetNode):
+class WidgetTitle(WidgetNode):
     def __init__(self, node_object=None):
-        super(QWidgetTitle, self).__init__()
+        super(WidgetTitle, self).__init__()
 
         self.node = node_object
 
@@ -103,7 +68,7 @@ class QWidgetTitle(QWidgetNode):
 
         self.set_palette()
 
-        self.preview_icon = QLabelGif(self.node)
+        self.preview_icon = labelgif.LabelGif(self.node)
 
         self.setup_title()
 
@@ -128,12 +93,12 @@ class QWidgetTitle(QWidgetNode):
             self.ui.label_title_edit.setFocus()
             self.ui.label_title_edit.selectAll()
 
-        return QWidgetNode.mouseMoveEvent(self, event)
+        return WidgetNode.mouseMoveEvent(self, event)
 
 
-class QWidgetElements(QWidgetNode):
+class WidgetElements(WidgetNode):
     def __init__(self):
-        super(QWidgetElements, self).__init__()
+        super(WidgetElements, self).__init__()
 
         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
                                           'src',
@@ -153,7 +118,7 @@ class QWidgetElements(QWidgetNode):
             event.ignore()
             return
 
-        return QWidgetNode.mouseMoveEvent(self, event)
+        return WidgetNode.mouseMoveEvent(self, event)
 
 
 class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
@@ -198,8 +163,8 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
 
         # self.set_label(self.plugin.abbreviation)
 
-        self.widget_title = QWidgetTitle(self)
-        self.widget_elements = QWidgetElements()
+        self.widget_title = WidgetTitle(self)
+        self.widget_elements = WidgetElements()
 
         self.widget_title_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
         self.widget_elements_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
@@ -212,8 +177,8 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
         self.widget_title.vlayout_title.insertStretch(-1)
         # self.progress_bar_proxy = QGraphicsProxyWidgetNoWheel()
 
-        self.collapse = QLabelCollapseExpand()
-        self.expand = QLabelCollapseExpand()
+        self.collapse = labelcollapseexpand.LabelCollapseExpand()
+        self.expand = labelcollapseexpand.LabelCollapseExpand()
         self.maximize = QLabelMaximize()
         self.minimize = QLabelMaximize()
 

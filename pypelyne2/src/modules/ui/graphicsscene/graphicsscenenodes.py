@@ -5,7 +5,7 @@ import PyQt4.QtCore as QtCore
 import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.ui.container.container as container
+import pypelyne2.src.modules.ui.containerlink.containerlink as containerlink
 
 
 class GraphicsSceneNodes(QtGui.QGraphicsScene):
@@ -27,7 +27,7 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
         self.navigator = navigator.Navigator(scene_object=self,
                                              view_object=self.view_object)
 
-        self.output_area = container.Outputs(scene_object=self, view_object=self.view_object)
+        self.output_area = containerlink.OutputsDropArea(scene_object=self, view_object=self.view_object)
 
         # self.container_items = []
 

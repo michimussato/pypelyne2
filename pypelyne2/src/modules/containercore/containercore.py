@@ -1,5 +1,5 @@
 import uuid
-import logging
+# import logging
 
 
 class ContainerCore(object):
@@ -15,5 +15,5 @@ class ContainerCore(object):
 
         # asset, shot, sequence, prop, character etc
         self.container_type = container_type
-        self.inputs = []
+        self.outputs = []
         self.outputs = []

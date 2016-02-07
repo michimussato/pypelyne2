@@ -5,7 +5,7 @@ import PyQt4.QtGui as QtGui
 # import src.conf.settings.SETTINGS as SETTINGS
 # import src.modules.ui.graphicsscene.graphicsscene as graphicsscene
 import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
-import pypelyne2.src.modules.ui.container.container as container
+import pypelyne2.src.modules.ui.containerlink.container as container
 import pypelyne2.src.modules.ui.mainwindow.mainwindow as mainwindow
 # import pypelyne2.src.parser.parse_plugins as parse_plugins
 
@@ -18,7 +18,7 @@ graphicssview_stage = graphicsview_stage.GraphicsViewStage()
 # graphicssview_stage.setScene(scene)
 # mainwindow.setCentralWidget(graphicssview_stage)
 
-# container = container.Container(scene)
+# container = container.ContainerLink(scene)
 
 # scene.addItem(container)
 

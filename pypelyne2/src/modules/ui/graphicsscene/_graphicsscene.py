@@ -4,7 +4,7 @@ import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
 import pypelyne2.src.modules.nodecore.nodecore as nodecore
-import pypelyne2.src.modules.ui.container.container as container
+import pypelyne2.src.modules.ui.containerlink.container as container
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 

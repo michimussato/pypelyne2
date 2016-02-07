@@ -26,8 +26,7 @@ class ContainerWidget(QtGui.QWidget):
         if self.container.icon is None:
             self.icon = QtGui.QPixmap(SETTINGS.CONTAINERS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
         else:
-            self.icon = QtGui.QPixmap(os.path.join(SETTINGS.CONTAINERS_ICONS,
-                                                   self.container.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+            self.icon = QtGui.QPixmap(self.container.icon).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
         self.pixmap = pixmapdraggable.PixmapContainer(self.container, self.mainwindow)
 

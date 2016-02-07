@@ -26,8 +26,7 @@ class OutputWidget(QtGui.QWidget):
         if self.output.icon is None:
             self.icon = QtGui.QPixmap(SETTINGS.OUTPUTS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
         else:
-            self.icon = QtGui.QPixmap(os.path.join(SETTINGS.PLUGINS_ICONS,
-                                                   self.output.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
+            self.icon = QtGui.QPixmap(self.output.icon).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
         self.pixmap = pixmapdraggable.PixmapOutput(self.output, self.mainwindow)
 

@@ -5,11 +5,12 @@ import cPickle
 import pypelyne2.src.modules.ui.connection.connection as connection
 import pypelyne2.src.modules.ui.portwidget.portwidget as portwidget
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+# import pypelyne2.src.modules.ui.containerui.containerui as containerui
 
 
-class Container(QtGui.QGraphicsRectItem):
+class ContainerLink(QtGui.QGraphicsRectItem):
     def __init__(self, scene_object, view_object):
-        super(Container, self).__init__()
+        super(ContainerLink, self).__init__()
 
         self.setZValue(1000.0)
 
@@ -24,9 +25,9 @@ class Container(QtGui.QGraphicsRectItem):
         self.adjust_container()
 
 
-class Inputs(Container):
+class InputsSourceArea(ContainerLink):
     def __init__(self, scene_object, view_object):
-        super(Inputs, self).__init__(scene_object, view_object)
+        super(InputsSourceArea, self).__init__(scene_object, view_object)
 
         self.upstream_nodes = []
 
@@ -67,24 +68,24 @@ class Inputs(Container):
         painter.drawRect(self.rect())
 
 
-class Outputs(Container):
+class OutputsDropArea(ContainerLink):
     def __init__(self, scene_object, view_object):
-        super(Outputs, self).__init__(scene_object, view_object)
+        super(OutputsDropArea, self).__init__(scene_object, view_object)
 
         self.setAcceptDrops(True)
 
         self.connections = []
         self.upstream_connections = []
-        self.inputs = []
+        self.outputs = []
 
         self.setToolTip('drop outputs here to create a container output')
 
     def adjust_container(self):
         self.setRect(self.view_object.viewport().width()-SETTINGS.CONTAINER_AREA-1, 1, SETTINGS.CONTAINER_AREA, self.view_object.viewport().height()-3)
 
-        for input_item in self.inputs:
-            position = QtCore.QPointF(self.rect().x() + SETTINGS.CONTAINER_AREA/2,
-                                      (self.inputs.index(input_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+SETTINGS.OUTPUT_OFFSET)
+        for input_item in self.outputs:
+            position = QtCore.QPointF(self.rect().x() + SETTINGS.CONTAINER_AREA / 2,
+                                      (self.outputs.index(input_item) * (SETTINGS.OUTPUT_RADIUS + SETTINGS.OUTPUT_SPACING)) + SETTINGS.OUTPUT_OFFSET)
             input_item.setPos(position)
 
     def dragEnterEvent(self, event):
@@ -97,7 +98,7 @@ class Outputs(Container):
 
             unpickled_output_object = cPickle.loads(data)
 
-            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.uuid for x in self.inputs]:
+            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.uuid for x in self.outputs]:
                 logging.warning('output with uuid {0} {1} is already connected to {2}'.format(unpickled_output_object[u'output_graphicsitem_uuid'],
                                                                                               unpickled_output_object[u'output_object'],
                                                                                               self))
@@ -119,7 +120,7 @@ class Outputs(Container):
                                     port_id=port_id,
                                     start_item=start_item)
 
-        self.inputs.append(end_item)
+        self.outputs.append(end_item)
         end_item.setParentItem(self)
 
         if create_connection:

@@ -1,3 +1,4 @@
+import os
 import json
 import logging
 import operator
@@ -15,6 +16,14 @@ def parse_containers():
 
     # for container in containers:
     #     container['entity_type'] = 'container'
+
+    for container in containers:
+        if container[u'icon'] is not None:
+            try:
+                container[u'icon'] = os.path.join(SETTINGS.CONTAINERS_ICONS, container[u'icon'])
+            except Exception, e:
+                logging.error(e)
+                container[u'icon'] = None
 
     return sorted(containers,
                   key=operator.itemgetter(SETTINGS.SORT_CONTAINERS),

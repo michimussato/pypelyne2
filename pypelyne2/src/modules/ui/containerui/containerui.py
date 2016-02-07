@@ -1,5 +1,7 @@
+import os
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
+import PyQt4.uic as uic
 import logging
 import random
 import pypelyne2.src.modules.ui.graphicsscene.graphicsscenenodes as graphicsscenenodes
@@ -7,9 +9,55 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.parser.parse_containers as parse_containers
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
+import pypelyne2.src.modules.containercore.containercore as containercore
+import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
+import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
 
 
-class ContainerUI(QtGui.QGraphicsItem):
+class ContainterUIWidgetTitle(nodeui.WidgetNode):
+    def __init__(self, node_object=None):
+        super(ContainterUIWidgetTitle, self).__init__()
+
+        self.node = node_object
+
+        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+                                          'src',
+                                          'modules',
+                                          'ui',
+                                          'containerui',
+                                          'containerui_widget_title.ui'), self)
+
+        self.set_palette()
+
+        self.preview_icon = labelgif.LabelGif(self.node)
+
+        self.setup_title()
+
+    def setup_title(self):
+        self.ui.label_title.setToolTip('shift+left click to change name')
+        self.ui.label_title_edit.setToolTip('enter to submit')
+        self.ui.label_title_edit.setText(self.ui.label_title.text())
+
+        self.ui.label_title.setVisible(False)
+        self.ui.label_title_edit.setVisible(True)
+
+        self.ui.vlayout_preview.addWidget(self.preview_icon)
+
+    def mousePressEvent(self, event):
+        logging.info('mousePressEvent on OutputHover ({0})'.format(self))
+        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+
+        if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
+            self.ui.label_title.setVisible(False)
+            self.ui.label_title_edit.setVisible(True)
+            self.ui.label_title_edit.setReadOnly(False)
+            self.ui.label_title_edit.setFocus()
+            self.ui.label_title_edit.selectAll()
+
+        return nodeui.WidgetNode.mouseMoveEvent(self, event)
+
+
+class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
     def __init__(self, position=QtCore.QPoint(0, 0), container=None, scene_object=None):
         super(ContainerUI, self).__init__()
 
@@ -45,10 +93,9 @@ class ContainerUI(QtGui.QGraphicsItem):
         self.connections = []
 
         self.widget = QtGui.QWidget()
+        self.widget_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
         self.set_container_color()
-
-        self.widget_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
     def add_ui_elements(self):
         self.widget_proxy.setWidget(self.widget)

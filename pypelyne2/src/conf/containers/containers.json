@@ -28,5 +28,11 @@
     "type": "prop",
     "icon": "prop.png",
     "color": "#0000FF"
+  },
+  {
+    "container_enable": true,
+    "type": "vehicle",
+    "icon": "vehicle.png",
+    "color": "#00FFFF"
   }
 ]
