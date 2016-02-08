@@ -76,7 +76,8 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         super(ContainerUI, self).__init__()
 
         reload(SETTINGS)
-
+        
+        # this is the main scene of the mainwindow. maybe rename
         self.scene_object = scene_object
 
         self.view_object = self.scene_object.view_object
