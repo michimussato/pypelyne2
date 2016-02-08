@@ -12,6 +12,7 @@ import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.modules.containercore.containercore as containercore
 import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
 import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
+import pypelyne2.src.modules.ui.connection.connection as connection
 
 
 class ContainterUIWidgetTitle(nodeui.WidgetNode):
@@ -55,6 +56,19 @@ class ContainterUIWidgetTitle(nodeui.WidgetNode):
             self.ui.label_title_edit.selectAll()
 
         return nodeui.WidgetNode.mouseMoveEvent(self, event)
+
+
+class Output(QtGui.QGraphicsEllipseItem):
+    def __init__(self):
+        super(Output, self).__init__()
+
+        self.setAcceptHoverEvents(True)
+
+        self.setStartAngle(-90*16)
+        self.setSpanAngle(180*16)
+
+    def mousePressEvent(self):
+        print 'hi'
 
 
 class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
@@ -111,7 +125,7 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         self.input_port = QtGui.QGraphicsEllipseItem()
         self.input_port.setParentItem(self)
-        self.output_port = QtGui.QGraphicsEllipseItem()
+        self.output_port = Output()
         self.output_port.setParentItem(self)
         self.rect_port = QtCore.QRectF()
 
@@ -131,8 +145,8 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.input_port.setSpanAngle(180*16)
 
         self.output_port.setRect(self.rect_port)
-        self.output_port.setStartAngle(-90*16)
-        self.output_port.setSpanAngle(180*16)
+        # self.output_port.setStartAngle(-90*16)
+        # self.output_port.setSpanAngle(180*16)
 
     def remove_container_output_channel(self, portwidget):
         self.container_output_channels.remove(portwidget)
