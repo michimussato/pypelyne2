@@ -1,4 +1,5 @@
 import time
+import logging
 import sys
 import Queue
 import datetime
@@ -17,10 +18,7 @@ class Thread(QtCore.QThread):
         self.halt = False
         self.queue = Queue.Queue()
     #     self.connect(self.screengrabber, QtCore.SIGNAL('stop_capture()'), self.foo)
-    #
-    # def foo(self):
-    #     print 'bar'
-        
+
     def run(self):
         fps = 1.0/SETTINGS.FPS
         while not self.halt:
@@ -35,7 +33,7 @@ class Thread(QtCore.QThread):
         # empty the queue here (thread safe)
         with self.queue.mutex:
             self.queue.queue.clear()
-            print 'queue cleared'
+            logging.info('queue cleared')
 
 
 class ScreenGrabber(QtCore.QObject):
@@ -57,19 +55,16 @@ class ScreenGrabber(QtCore.QObject):
         self.previous_image = None
 
     def start_capture(self):
-        # time.sleep(0)
-        # self.capture_count = 0
         if SETTINGS.TEST_MODE:
             self.loop = 0
         self.snap_shots.halt = False
         self.snap_shots.start()
-        # self.start_capture_time = time.time()
-        
+
     def stop_capture(self):
         self.snap_shots.halt = True
         self.emit(QtCore.SIGNAL('stop_capture()'))
         self.snap_shots.quit()
-        print 'stopped'
+        logging.info('stopped')
 
     def capture(self):
         # app.processEvents()
@@ -77,11 +72,11 @@ class ScreenGrabber(QtCore.QObject):
         # if SETTINGS.TEST_MODE:
         #     loop = 0
 
-        print 'caught capture', 'tmp_{}_{}.{}'.format(self.now,
-                                                      str(self.capture_count).zfill(SETTINGS.PADDING),
-                                                      SETTINGS.GRABBER_FORMAT.lower(),
-                                                      SETTINGS.GRABBER_FORMAT)
-        print 'current fps', float(self.capture_count)/(time.time() - self.capture_set)
+        logging.info('caught capture (tmp_{0}_{1}.{2})'.format(self.now,
+                                                               str(self.capture_count).zfill(SETTINGS.PADDING),
+                                                               SETTINGS.GRABBER_FORMAT.lower(),
+                                                               SETTINGS.GRABBER_FORMAT))
+        logging.info('current fps: {0}'.format(float(self.capture_count)/(time.time() - self.capture_set)))
         if not self.snap_shots.queue.empty():
             self.snap_shots.queue.get(0)
 
@@ -107,7 +102,7 @@ class ScreenGrabber(QtCore.QObject):
                 self.capture_count += 1
 
             else:
-                print 'same image'
+                logging.info('same image like previous one. not saved.')
             self.previous_image = new_image
 
             if SETTINGS.TEST_MODE:
@@ -125,7 +120,3 @@ if __name__ == '__main__':
     window.start_capture()
 
     sys.exit(app.exec_())
-
-    # time.sleep(10)
-    #
-    # window.stop_capture()
