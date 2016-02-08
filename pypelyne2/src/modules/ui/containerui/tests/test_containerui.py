@@ -24,7 +24,7 @@ mainwindow = QtGui.QMainWindow()
 graphicssview_stage = graphicsview_stage.GraphicsViewStage()
 
 scene_container = graphicsscenecontainer.GraphicsSceneContainer(view_object=graphicssview_stage)
-container_ui = containerui.ContainerUI(container=parse_containers.get_containers()[0], scene_object=scene_container)
+container_ui = containerui.ContainerUI(container=None, scene_object=scene_container)
 
 scene_node = graphicsscenenodes.GraphicsSceneNodes(view_object=graphicssview_stage, container_object=container_ui)
 
