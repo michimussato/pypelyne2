@@ -54,6 +54,10 @@ class ScreenGrabber(QtCore.QObject):
         self.px2 = None
         self.previous_image = None
 
+        # self.screen = QtCore.QScreenAppliction()
+        #
+        # print dir(self.screen)
+
     def start_capture(self):
         if SETTINGS.TEST_MODE:
             self.loop = 0
@@ -81,6 +85,10 @@ class ScreenGrabber(QtCore.QObject):
             self.snap_shots.queue.get(0)
 
             self.px = QtGui.QPixmap.grabWindow(QtGui.QApplication.desktop().winId())
+
+            # TODO: Can we do multiple screens here?
+            # print dir(QtGui.QApplication.desktop().screen())
+            # print QtGui.QApplication.desktop().screenCount()
 
             if SETTINGS.CURSOR:
 
@@ -115,7 +123,7 @@ class ScreenGrabber(QtCore.QObject):
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
-    
+
     window = ScreenGrabber()
     window.start_capture()
 

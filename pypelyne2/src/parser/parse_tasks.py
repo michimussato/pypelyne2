@@ -6,6 +6,24 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_tasks():
+
+    """Parses the pypelyne2.src.conf.settings.TASKS_FILE file and returns a sorted list of dicts.
+
+    Parameters
+    ----------
+
+
+    Examples
+    --------
+
+
+    Returns
+    -------
+    list
+        a sorted list of container dicts.
+
+    """
+
     logging.info('parsing tasks')
 
     with open(SETTINGS.TASKS_FILE, 'r') as f:
@@ -22,6 +40,20 @@ def parse_tasks():
 
 
 def get_tasks():
+
+    """Get all Task() objects in a list
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+    list
+        list of pypelyne2.src.modules.task.task.Task() objects
+
+    """
+
     task_objects = []
     tasks = parse_tasks()
     for task in tasks:

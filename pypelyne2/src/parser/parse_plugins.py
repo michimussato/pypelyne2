@@ -9,6 +9,26 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_plugins():
+
+    """Parses all json files in pypelyne2.src.conf.settings.PLUGINS_FILES folder and returns a sorted list of dicts.
+    A dict will define if it will be a submitter, an addon or a standalone type plugin object.
+    Standalone can be x32 and/or x64
+
+    Parameters
+    ----------
+
+
+    Examples
+    --------
+
+
+    Returns
+    -------
+    list
+        a sorted list of universal plugin dicts.
+
+    """
+
     plugin_list = []
 
     for plugin_file in SETTINGS.PLUGINS_FILES:
@@ -328,6 +348,21 @@ def parse_plugins():
 
 
 def get_plugins():
+
+    """Get all PlugIn() objects
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+    list
+        list of universal pypelyne2.src.modules.plugin.plugin.PlugIn() objects
+
+    """
+
+
     plugin_objects = []
     plugins = parse_plugins()
     for plugin in plugins:

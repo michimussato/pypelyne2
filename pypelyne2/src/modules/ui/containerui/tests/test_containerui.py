@@ -11,7 +11,7 @@ import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
 import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
 # import pypelyne2.src.modules.ui.nodeui.nodegraphicsitem as nodegraphicsitem
 # import pypelyne2.src.modules.ui.portwidget.portwidget as portwidget
-import pypelyne2.src.parser.parse_containers as parse_containers
+# import pypelyne2.src.parser.parse_containers as parse_containers
 import pypelyne2.src.modules.ui.containerui.containerui as containerui
 import pypelyne2.src.parser.parse_plugins as parse_plugins
 import pypelyne2.src.parser.parse_outputs as parse_outputs
@@ -31,7 +31,7 @@ container_ui = containerui.ContainerUI(container=None, scene_object=scene_contai
 
 node = nodeui.NodeUI(plugin=parse_plugins.get_plugins()[0].x64, scene_object=None)
 
-# it should be possible to add a node from here. it's not yet. probably
+# it should be possible to add a node from here. it's not yet. probably.
 # i think there should be something like container_ui.create_node(plugin=someplugin)
 
 # scene_node.addItem(node)

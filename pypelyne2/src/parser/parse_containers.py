@@ -7,6 +7,24 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_containers():
+
+    """Parses the pypelyne2.src.conf.settings.CONTAINERS_FILE file and returns a sorted list of dicts.
+
+    Parameters
+    ----------
+
+
+    Examples
+    --------
+
+
+    Returns
+    -------
+    list
+        a sorted list of container dicts.
+
+    """
+
     logging.info('parsing containers')
 
     with open(SETTINGS.CONTAINERS_FILE, 'r') as f:
@@ -31,6 +49,20 @@ def parse_containers():
 
 
 def get_containers():
+
+    """Get all Container() objects in a list
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+    list
+        list of pypelyne2.src.modules.container.container.Container() objects
+
+    """
+
     container_objects = []
     containers = parse_containers()
     for container in containers:

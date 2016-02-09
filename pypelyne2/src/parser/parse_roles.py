@@ -6,6 +6,24 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_roles():
+
+    """Parses the pypelyne2.src.conf.settings.SETTINGS.ROLES_FILE file and returns a sorted list of dicts.
+
+    Parameters
+    ----------
+
+
+    Examples
+    --------
+
+
+    Returns
+    -------
+    list
+        a sorted list of role dicts.
+
+    """
+
     logging.info('parsing roles')
 
     with open(SETTINGS.ROLES_FILE, 'r') as f:
@@ -20,11 +38,25 @@ def parse_roles():
 
 
 def get_roles():
+
+    """Get all Role() objects in a list
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+    list
+        list of pypelyne2.src.modules.role.role.Role() objects
+
+    """
+
     role_objects = []
     roles = parse_roles()
     print roles
     for role in roles:
-        new_role_object = class_role.role(role)
+        new_role_object = class_role.Role(role)
         role_objects.append(new_role_object)
 
     return role_objects

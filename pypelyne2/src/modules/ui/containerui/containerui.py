@@ -1,7 +1,7 @@
-import os
+# import os
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
-import PyQt4.uic as uic
+# import PyQt4.uic as uic
 import logging
 import random
 import pypelyne2.src.modules.ui.graphicsscene.graphicsscenenodes as graphicsscenenodes
@@ -10,56 +10,63 @@ import pypelyne2.src.parser.parse_containers as parse_containers
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.modules.containercore.containercore as containercore
-import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
-import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
-import pypelyne2.src.modules.ui.connection.connection as connection
+# import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
+# import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
+# import pypelyne2.src.modules.ui.connection.connection as connection
 
 
-class ContainterUIWidgetTitle(nodeui.WidgetNode):
-    def __init__(self, node_object=None):
-        super(ContainterUIWidgetTitle, self).__init__()
-
-        self.node = node_object
-
-        self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
-                                          'src',
-                                          'modules',
-                                          'ui',
-                                          'containerui',
-                                          'containerui_widget_title.ui'), self)
-
-        self.set_palette()
-
-        self.preview_icon = labelgif.LabelGif(self.node)
-
-        self.setup_title()
-
-    def setup_title(self):
-        self.ui.label_title.setToolTip('shift+left click to change name')
-        self.ui.label_title_edit.setToolTip('enter to submit')
-        self.ui.label_title_edit.setText(self.ui.label_title.text())
-
-        self.ui.label_title.setVisible(False)
-        self.ui.label_title_edit.setVisible(True)
-
-        self.ui.vlayout_preview.addWidget(self.preview_icon)
-
-    def mousePressEvent(self, event):
-        logging.info('mousePressEvent on OutputHover ({0})'.format(self))
-        keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
-
-        if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
-            self.ui.label_title.setVisible(False)
-            self.ui.label_title_edit.setVisible(True)
-            self.ui.label_title_edit.setReadOnly(False)
-            self.ui.label_title_edit.setFocus()
-            self.ui.label_title_edit.selectAll()
-
-        return nodeui.WidgetNode.mouseMoveEvent(self, event)
+# class ContainterUIWidgetTitle(nodeui.WidgetNode):
+#
+#     """Might be used to create a more advanced title to ContainerUI."""
+#
+#     def __init__(self, node_object=None):
+#         super(ContainterUIWidgetTitle, self).__init__()
+#
+#         self.node = node_object
+#
+#         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
+#                                           'src',
+#                                           'modules',
+#                                           'ui',
+#                                           'containerui',
+#                                           'containerui_widget_title.ui'), self)
+#
+#         self.set_palette()
+#
+#         self.preview_icon = labelgif.LabelGif(self.node)
+#
+#         self.setup_title()
+#
+#     def setup_title(self):
+#         self.ui.label_title.setToolTip('shift+left click to change name')
+#         self.ui.label_title_edit.setToolTip('enter to submit')
+#         self.ui.label_title_edit.setText(self.ui.label_title.text())
+#
+#         self.ui.label_title.setVisible(False)
+#         self.ui.label_title_edit.setVisible(True)
+#
+#         self.ui.vlayout_preview.addWidget(self.preview_icon)
+#
+#     def mousePressEvent(self, event):
+#         logging.info('mousePressEvent on OutputHover ({0})'.format(self))
+#         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
+#
+#         if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
+#             self.ui.label_title.setVisible(False)
+#             self.ui.label_title_edit.setVisible(True)
+#             self.ui.label_title_edit.setReadOnly(False)
+#             self.ui.label_title_edit.setFocus()
+#             self.ui.label_title_edit.selectAll()
+#
+#         return nodeui.WidgetNode.mouseMoveEvent(self, event)
 
 
 class Output(QtGui.QGraphicsEllipseItem):
+
+    """The output port of the ContainerUI."""
+
     def __init__(self):
+
         super(Output, self).__init__()
 
         self.setAcceptHoverEvents(True)
@@ -68,16 +75,23 @@ class Output(QtGui.QGraphicsEllipseItem):
         self.setSpanAngle(180*16)
 
     def mousePressEvent(self):
+
         print 'hi'
 
 
 class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
+
+    """This is the actual asset container."""
+
     def __init__(self, position=QtCore.QPoint(0, 0), container=None, scene_object=None):
+
         super(ContainerUI, self).__init__()
 
         reload(SETTINGS)
         
-        # this is the main scene of the mainwindow. maybe rename
+        # this is the main scene of the mainwindow. maybe rename to
+        # something like main_scene or project scene and apply
+        # this name globally
         self.scene_object = scene_object
 
         self.view_object = self.scene_object.view_object
@@ -136,6 +150,8 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
     def setup_ports(self):
 
+        """Adds the input and output area of the ContainerUI."""
+
         self.rect_port.setRect(-SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
                                -SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
                                SETTINGS.CONTAINER_OUTPUT_RADIUS,
@@ -150,10 +166,37 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         # self.output_port.setSpanAngle(180*16)
 
     def remove_container_output_channel(self, portwidget):
+
         self.container_output_channels.remove(portwidget)
         self.update_label()
 
+    def connect_internal(self, output_object, node):
+
+        """Connect output with a node"""
+
+        pass
+
+    def connect(self, destination_container):
+
+        """Connect self to downstream ContainerUI"""
+
+        pass
+
+    def create_node(self, plugin):
+
+        """Create a new node inside self (NodeUI)"""
+
+        pass
+
+    def add_node(self, node):
+
+        """Add an existing node to self (NodeUI)"""
+
+        pass
+
     def update_label(self):
+
+        """updates the labels of the ContainerUI (name, inputs, outputs)"""
 
         if bool(self.container_output_channels):
             self.output_port.setBrush(self.container_color_item.lighter(SETTINGS.LIGHTER_AMOUNT))
@@ -185,6 +228,9 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.output_port.setPos(self.boundingRect().width(), self.boundingRect().height()/2)
 
     def add_ui_elements(self):
+
+        """Adds the title widget. Not currently in use."""
+
         self.widget_proxy.setWidget(self.widget)
         self.widget_proxy.setParentItem(self)
 
@@ -228,11 +274,17 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         painter.drawRoundedRect(self.rect, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
 
     def set_container_color(self):
+
+        """Set the container color based on container_object.color"""
+
         logging.info('ContainerUI.set_container_color() ({0})'.format(self))
         container_color = self.container.color
         self.container_color_item.setNamedColor(container_color)
 
     def boundingRect(self):
+
+        """Needed to be reimplemented"""
+
         return self.rect
 
     def hoverEnterEvent(self, event):

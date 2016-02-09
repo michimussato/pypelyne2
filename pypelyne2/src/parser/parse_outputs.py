@@ -1,14 +1,30 @@
 import os
 import json
 import logging
-
 import operator
-
 import pypelyne2.src.modules.output.output as class_output
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_outputs():
+
+    """Parses the pypelyne2.src.conf.settings.OUTPUTS_FILE file and returns a sorted list of dicts.
+
+    Parameters
+    ----------
+
+
+    Examples
+    --------
+
+
+    Returns
+    -------
+    list
+        a sorted list of output dicts.
+
+    """
+
     logging.info('parsing outputs')
 
     with open(SETTINGS.OUTPUTS_FILE, 'r') as f:
@@ -33,6 +49,20 @@ def parse_outputs():
 
 
 def get_outputs():
+
+    """Get all Output() objects in a list
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+    list
+        list of pypelyne2.src.modules.output.output.Output() objects
+
+    """
+
     output_objects = []
     outputs = parse_outputs()
     for output in outputs:

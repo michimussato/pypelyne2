@@ -6,6 +6,24 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_departments():
+
+    """Parses the SETTINGS.DEPARTMENTS_FILE file and returns a sorted list of dicts.
+
+    Parameters
+    ----------
+
+
+    Examples
+    --------
+
+
+    Returns
+    -------
+    list
+        a sorted list of department dicts.
+
+    """
+
     logging.info('parsing departments')
 
     with open(SETTINGS.DEPARTMENTS_FILE, 'r') as f:
@@ -20,6 +38,20 @@ def parse_departments():
 
 
 def get_departments():
+
+    """Get all Departments() objects in a list
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+    list
+        list of pypelyne2.src.modules.department.department.Department() objects
+
+    """
+
     department_objects = []
     departments = parse_departments()
     print departments

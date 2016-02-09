@@ -7,6 +7,24 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 def parse_users():
+
+    """Parses all json files in pypelyne2.src.conf.settings.USERS_FILES folder and returns a sorted list of dicts.
+
+    Parameters
+    ----------
+
+
+    Examples
+    --------
+
+
+    Returns
+    -------
+    list
+        a sorted list of user dicts.
+
+    """
+
     user_list = []
 
     for user_file in SETTINGS.USERS_FILES:
@@ -23,6 +41,20 @@ def parse_users():
 
 
 def get_users():
+
+    """Get all User() objects in a list
+
+    Parameters
+    ----------
+
+
+    Returns
+    -------
+    list
+        list of pypelyne2.src.modules.user.user.User() objects
+
+    """
+
     user_objects = []
     users = parse_users()
     for user in users:
