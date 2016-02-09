@@ -29,12 +29,12 @@ container_ui = containerui.ContainerUI(container=None, scene_object=scene_contai
 # not necessary. container creates its own scene if it didn't exist
 # scene_node = graphicsscenenodes.GraphicsSceneNodes(view_object=graphicssview_stage, container_object=container_ui)
 
-node = nodeui.NodeUI(plugin=parse_plugins.get_plugins()[0].x64, scene_object=scene_node)
+node = nodeui.NodeUI(plugin=parse_plugins.get_plugins()[0].x64, scene_object=None)
 
 # it should be possible to add a node from here. it's not yet. probably
 # i think there should be something like container_ui.create_node(plugin=someplugin)
 
-scene_node.addItem(node)
+# scene_node.addItem(node)
 node.add_output(output_object=parse_outputs.get_outputs()[0], port_id=str(uuid.uuid4()))
 
 graphicssview_stage.setScene(scene_container)
