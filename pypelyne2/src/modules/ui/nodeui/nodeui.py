@@ -368,13 +368,14 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
 
     def update_thumbnail_icon(self, path):
         path = str(path)
-        self.preview_icon_path = path
-        self.set_thumbnail_icon()
+        # self.preview_icon_path = path
+        self.set_thumbnail_icon(path)
 
-    def set_thumbnail_icon(self):
+    def set_thumbnail_icon(self, icon_path=None):
 
-        thumbnail_dict = self.get_thumbnail_icon
+        thumbnail_dict = self.get_thumbnail_icon(icon_path=icon_path)
 
+        # img_pixmap = QtGui.QPixmap(thumbnail_dict[u'thumbnail'])
         img_pixmap = QtGui.QPixmap(thumbnail_dict[u'thumbnail'])
         pixmap_width = img_pixmap.width()
         pixmap_height = img_pixmap.height()

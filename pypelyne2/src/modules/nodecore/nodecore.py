@@ -30,6 +30,8 @@ class NodeCore(object):
         self.inputs = []
         self.task = None
         self.tool = None
+        # if self.uuid is None:
+
         self.uuid = node_id or str(uuid.uuid4())
         self.name_string = name_string or self.uuid
         # self.icon = None
@@ -57,24 +59,36 @@ class NodeCore(object):
             self._tasks = parse_tasks.get_tasks()
         return self._tasks
 
-    @property
-    def get_thumbnail_icon(self):
+    def get_thumbnail_icon(self, icon_path=None):
 
         thumbnail_dict = {}
 
-        thumbnail = self.preview_icon_path or SETTINGS.ICON_THUMBNAIL_DEFAULT
+        if icon_path is None or os.path.splitext(icon_path)[1] not in SETTINGS.ICON_FORMATS:
+            logging.info('using default thumbnail')
+            # thumbnail = self.plugin.icon
+            thumbnail_dict[u'thumbnail'] = self.plugin.icon
+            thumbnail_dict[u'extension'] = None
+            self.preview_icon_path = None
+        else:
+            try:
+                # thumbnail = icon_path
+                self.preview_icon_path = icon_path
+                extension = os.path.splitext(self.preview_icon_path)[1]
+                thumbnail_dict[u'thumbnail'] = self.preview_icon_path
+                thumbnail_dict[u'extension'] = extension
+            except IndexError, e:
+                logging.info('no thumbnail for node found: {0}'.format(e))
+                # thumbnail = self.plugin.icon
+                # extension = None
+                thumbnail_dict[u'thumbnail'] = self.plugin.icon
+                thumbnail_dict[u'extension'] = None
+                self.preview_icon_path = None
+            # finally:
+            #
+            #     # if extension not in SETTINGS.ICON_FORMATS:
+            #     #     logging.warning('bad thumbnail: {0} (using default)'.format(self.preview_icon_path))
+            #     #     # thumbnail = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
-        try:
-            thumbnail = self.preview_icon_path or os.path.join(SETTINGS.ICONS_DIR, 'rand_img', random.choice(SETTINGS.ICON_THUMBNAIL_PLACEHOLDER))
-        except IndexError, e:
-            logging.info('no thumbnail for node found: {0}'.format(e))
-        finally:
-            extension = os.path.splitext(thumbnail)[1]
-            if extension not in SETTINGS.ICON_FORMATS:
-                logging.warning('bad thumbnail: {0} (using default)'.format(thumbnail))
-                thumbnail = SETTINGS.ICON_THUMBNAIL_DEFAULT
 
-        thumbnail_dict[u'thumbnail'] = thumbnail
-        thumbnail_dict[u'extension'] = extension
 
         return thumbnail_dict

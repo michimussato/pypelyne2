@@ -1,7 +1,9 @@
 import cPickle
 import logging
+import random
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
+import pypelyne2.src.parser.parse_plugins as parse_plugins
 import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
@@ -63,16 +65,33 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
 
             logging.info('{0} dropped onto canvas (drop event accepted)'.format(unpickled_plugin_object))
 
-            node_graphics_item = nodeui.NodeUI(position=pos, plugin=unpickled_plugin_object, scene_object=self)
-            if SETTINGS.NODE_CREATE_COLLAPSED:
-                node_graphics_item.expand_layout()
-            node_graphics_item.setScale(self.global_scale)
-            self.addItem(node_graphics_item)
-            node_graphics_item.setParentItem(self.base_rect)
-            self.node_items.append(node_graphics_item)
+            self.create_node(position=pos, plugin=unpickled_plugin_object)
+
+            # node_graphics_item = nodeui.NodeUI(position=pos, plugin=unpickled_plugin_object, scene_object=self)
+            # if SETTINGS.NODE_CREATE_COLLAPSED:
+            #     node_graphics_item.expand_layout()
+            # node_graphics_item.setScale(self.global_scale)
+            # self.addItem(node_graphics_item)
+            # node_graphics_item.setParentItem(self.base_rect)
+            # self.node_items.append(node_graphics_item)
 
         else:
             return QtGui.QGraphicsScene.dropEvent(self, event)
+
+    def create_node(self, position=QtCore.QPoint(0, 0), plugin=None):
+
+        plugin = plugin or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x32
+        # plugin = plugin or parse_plugins.get_plugins()[0].x32
+
+        node_graphics_item = nodeui.NodeUI(position=position, plugin=plugin, scene_object=self)
+        if SETTINGS.NODE_CREATE_COLLAPSED:
+            node_graphics_item.expand_layout()
+        node_graphics_item.setScale(self.global_scale)
+        self.addItem(node_graphics_item)
+        node_graphics_item.setParentItem(self.base_rect)
+        self.node_items.append(node_graphics_item)
+
+        self.container_object.update_label()
 
     def dragMoveEvent(self, event):
         logging.info('dragMoveEvent on {0}'.format(self))
