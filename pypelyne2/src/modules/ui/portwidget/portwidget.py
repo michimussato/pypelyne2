@@ -1,11 +1,10 @@
-import uuid
 import logging
 import random
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
 import cPickle
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
-# import pypelyne2.src.modules.ui.containerlink.containerlink as containerlink
+import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
 import pypelyne2.src.modules.ui.porthover.porthover as porthover
 import pypelyne2.src.parser.parse_outputs as parse_outputs
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
@@ -13,14 +12,14 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 # http://trevorius.com/scrapbook/python/pyqt-multiple-inheritance/
-class Port(QtGui.QGraphicsItem):
+class Port(uuidobject.UuidObject, QtGui.QGraphicsItem):
 
     def __init__(self, node_object=None, output_object=None, port_id=None):
-        super(Port, self).__init__()
+        super(Port, self).__init__(object_type='port', object_id=port_id)
 
         self.node_object = node_object
 
-        self.uuid = port_id or str(uuid.uuid4())
+        # self.uuid = port_id or str(uuid.uuid4())
 
         self.setAcceptsHoverEvents(True)
 
@@ -72,8 +71,8 @@ class Port(QtGui.QGraphicsItem):
         self.widget_title.label_lock_icon.setPixmap(self.pixmap)
 
         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
-        self.widget_title.label_title.setText(name or self.uuid)
-        self.widget_title.label_title_edit.setText(name or self.uuid)
+        self.widget_title.label_title.setText(name or self.object_id)
+        self.widget_title.label_title_edit.setText(name or self.object_id)
         self.widget_title.label_output.setText(self.output_object.abbreviation)
 
         # self.set_label_pos()
@@ -116,7 +115,7 @@ class Output(Port):
         title_edit.setReadOnly(True)
 
         if init:
-            new_title = self.uuid
+            new_title = self.object_id
         else:
             new_title = title_edit.text()
 
@@ -201,7 +200,7 @@ class Output(Port):
             objects_dict = dict()
 
             objects_dict['output_object'] = self.output_object
-            objects_dict['output_graphicsitem_uuid'] = self.uuid
+            objects_dict['output_graphicsitem_uuid'] = self.object_id
 
             pickled_output_object = cPickle.dumps(objects_dict.copy())
             mime_data.setData('nodeoutput/draggable-output', pickled_output_object)
@@ -378,7 +377,7 @@ class Input(Port):
             objects_dict = dict()
 
             objects_dict['output_object'] = self.output_object
-            objects_dict['output_graphicsitem_uuid'] = self.uuid
+            objects_dict['output_graphicsitem_uuid'] = self.object_id
 
             pickled_output_object = cPickle.dumps(objects_dict.copy())
             mime_data.setData('nodeoutput/draggable-output', pickled_output_object)

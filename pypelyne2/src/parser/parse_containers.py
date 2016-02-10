@@ -1,3 +1,9 @@
+"""A pypi demonstration vehicle.
+
+.. moduleauthor:: Andrew Carter <andrew@invalid.com>
+
+"""
+
 import os
 import json
 import logging
@@ -10,19 +16,8 @@ def parse_containers():
 
     """Parses the pypelyne2.src.conf.settings.CONTAINERS_FILE file and returns a sorted list of dicts.
 
-    Parameters
-    ----------
-
-
-    Examples
-    --------
-
-
-    Returns
-    -------
-    list
-        a sorted list of container dicts.
-
+    :returns: list -- a sorted list of container dicts.
+    
     """
 
     logging.info('parsing containers')
@@ -52,14 +47,7 @@ def get_containers():
 
     """Get all Container() objects in a list
 
-    Parameters
-    ----------
-
-
-    Returns
-    -------
-    list
-        list of pypelyne2.src.modules.container.container.Container() objects
+    :returns: list -- of pypelyne2.src.modules.container.container.Container() objects
 
     """
 

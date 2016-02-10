@@ -104,5 +104,5 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
     def find_output_graphics_item(self, port_id):
         for node_item in self.node_items:
             for output_graphics_item in node_item.outputs:
-                if output_graphics_item.uuid == port_id:
+                if output_graphics_item.object_id == port_id:
                     return output_graphics_item

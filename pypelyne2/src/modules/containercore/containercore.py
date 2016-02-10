@@ -1,16 +1,11 @@
-import uuid
-# import logging
+import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
 
 
-class ContainerCore(object):
+class ContainerCore(uuidobject.UuidObject):
     def __init__(self, container_type=None, container_id=None, name_string=None):
-        super(ContainerCore, self).__init__()
+        super(ContainerCore, self).__init__(object_type='container', object_id=container_id)
 
-        self.uuid = container_id or str(uuid.uuid4())
-
-        # self.container = container or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
-
-        self.name_string = name_string or self.uuid
+        self.name_string = name_string or self.object_id
 
         # all the nodes contained in self
         self.child_items = []

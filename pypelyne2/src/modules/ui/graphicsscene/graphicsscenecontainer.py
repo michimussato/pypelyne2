@@ -23,7 +23,7 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
 
         self.global_scale = 1
 
-        self.container_items = []
+        self.node_items = []
         self.connection_items = []
 
         self.navigator = navigator.Navigator(scene_object=self,
@@ -78,7 +78,7 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
 
         container_item.setScale(self.global_scale)
         self.addItem(container_item)
-        self.container_items.append(container_item)
+        self.node_items.append(container_item)
         self.addItem(container_item)
 
     def dragMoveEvent(self, event):
@@ -90,7 +90,7 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
             return QtGui.QGraphicsScene.dragMoveEvent(self, event)
 
     def find_output_graphics_item(self, port_id):
-        for node_item in self.container_items:
+        for node_item in self.node_items:
             for output_graphics_item in node_item.outputs:
                 if output_graphics_item.uuid == port_id:
                     return output_graphics_item
@@ -100,5 +100,5 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
         self.hide_containers()
 
     def hide_containers(self):
-        for container in self.container_items:
+        for container in self.node_items:
             container.setVisible(False)

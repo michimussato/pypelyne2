@@ -1,15 +1,16 @@
 import os
-import uuid
+# import uuid
 import logging
-import random
+# import random
+import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.parser.parse_users as parse_users
 import pypelyne2.src.parser.parse_tasks as parse_tasks
 
 
-class NodeCore(object):
+class NodeCore(uuidobject.UuidObject):
     def __init__(self, node_id=None, name_string=None, task_type=None):
-        super(NodeCore, self).__init__()
+        super(NodeCore, self).__init__(object_type='node', object_id=node_id)
         # self.container = False
         self.dirty = False
         self._users = []
@@ -32,8 +33,8 @@ class NodeCore(object):
         self.tool = None
         # if self.uuid is None:
 
-        self.uuid = node_id or str(uuid.uuid4())
-        self.name_string = name_string or self.uuid
+        # self.uuid = node_id or str(uuid.uuid4())
+        self.name_string = name_string or self.object_id
         # self.icon = None
         # self.dependenies_req = None
         # self.dependenies_opt = None

@@ -125,6 +125,8 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
     def __init__(self, position=QtCore.QPoint(0, 0), plugin=None, scene_object=None):
         super(NodeUI, self).__init__()
 
+        # TODO: maybe add a shortcut/button to references?
+
         reload(SETTINGS)
 
         self.scene_object = scene_object
@@ -432,6 +434,7 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
 
             brush = QtGui.QBrush(img_pixmap)
             painter = QtGui.QPainter()
+            # painter.setRenderHint(painter.HighQualityAntialiasing)
             painter.begin(new_pixmap)
             painter.setBrush(brush)
             painter.drawRoundedRect(rect, SETTINGS.PREVIEW_ROUNDNESS, SETTINGS.PREVIEW_ROUNDNESS)
