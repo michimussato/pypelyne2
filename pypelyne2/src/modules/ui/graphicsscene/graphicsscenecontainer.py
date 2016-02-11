@@ -10,8 +10,10 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class GraphicsSceneContainer(QtGui.QGraphicsScene):
-    def __init__(self, view_object=None):
+    def __init__(self, puppeteer, view_object=None):
         super(GraphicsSceneContainer, self).__init__(view_object)
+
+        self.puppeteer = puppeteer
 
         self.view_object = view_object
 
@@ -57,29 +59,10 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
 
             logging.info('{0} dropped onto canvas (drop event accepted)'.format(unpickled_container_object))
 
-            self.create_container(position=pos, container=unpickled_container_object)
-
-            # container_item = containerui.ContainerUI(position=pos, container=unpickled_container_object, scene_object=self)
-            #
-            # container_item.setScale(self.global_scale)
-            # self.addItem(container_item)
-            # self.node_items.append(container_item)
-            # self.addItem(container_item)
+            self.puppeteer.create_container(scene=self, container=unpickled_container_object, position=pos)
 
         else:
             return QtGui.QGraphicsScene.dropEvent(self, event)
-
-    def create_container(self, position=QtCore.QPoint(0, 0), container=None):
-
-        # pos = position or QtCore.QPoint(0, 0)
-        container_object = container or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
-
-        container_item = containerui.ContainerUI(position=position, container=container_object, scene_object=self)
-
-        container_item.setScale(self.global_scale)
-        self.addItem(container_item)
-        self.node_items.append(container_item)
-        self.addItem(container_item)
 
     def dragMoveEvent(self, event):
         logging.info('dragMoveEvent on {0}'.format(self))
@@ -89,11 +72,11 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
         else:
             return QtGui.QGraphicsScene.dragMoveEvent(self, event)
 
-    def find_output_graphics_item(self, port_id):
-        for node_item in self.node_items:
-            for output_graphics_item in node_item.outputs:
-                if output_graphics_item.uuid == port_id:
-                    return output_graphics_item
+    # def find_output_graphics_item(self, port_id):
+    #     for node_item in self.node_items:
+    #         for output_graphics_item in node_item.outputs:
+    #             if output_graphics_item.uuid == port_id:
+    #                 return output_graphics_item
 
     def expand_container(self, container_item):
         # print self.node_items

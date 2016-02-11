@@ -122,8 +122,10 @@ class WidgetElements(WidgetNode):
 
 
 class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
-    def __init__(self, position=QtCore.QPoint(0, 0), plugin=None, scene_object=None):
+    def __init__(self, puppeteer, position=QtCore.QPoint(0, 0), plugin=None, scene_object=None):
         super(NodeUI, self).__init__()
+
+        self.puppeteer = puppeteer
 
         # TODO: maybe add a shortcut/button to references?
 
@@ -240,7 +242,8 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
 
     def add_input(self, output_object=None, port_id=None, create_connection=True):
 
-        start_item = self.scene_object.find_output_graphics_item(port_id=port_id)
+        start_item = self.puppeteer.find_output_graphics_item(scene=self.scene_object, port_id=port_id)
+        # start_item = self.scene_object.find_output_graphics_item(port_id=port_id)
 
         end_item = output.Input(node_object=self,
                                 output_object=output_object,

@@ -11,8 +11,10 @@ import pypelyne2.src.modules.ui.containerlink.containerlink as containerlink
 
 
 class GraphicsSceneNodes(QtGui.QGraphicsScene):
-    def __init__(self, view_object=None, container_object=None):
+    def __init__(self, puppeteer, view_object=None, container_object=None):
         super(GraphicsSceneNodes, self).__init__(view_object)
+
+        self.puppeteer = puppeteer
 
         self.view_object = view_object
 
@@ -34,7 +36,8 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
 
         self.leave_container_button = containerlink.LeaveContainerButton(scene_object=self,
                                                                          view_object=self.view_object)
-        self.output_area = containerlink.OutputsDropArea(scene_object=self,
+        self.output_area = containerlink.OutputsDropArea(puppeteer=self.puppeteer,
+                                                         scene_object=self,
                                                          view_object=self.view_object)
         self.input_area = containerlink.InputsSourceArea(scene_object=self,
                                                          view_object=self.view_object)
@@ -65,7 +68,9 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
 
             logging.info('{0} dropped onto canvas (drop event accepted)'.format(unpickled_plugin_object))
 
-            self.create_node(position=pos, plugin=unpickled_plugin_object)
+            self.puppeteer.create_node(scene=self, plugin=unpickled_plugin_object, position=pos)
+
+            # self.create_node(position=pos, plugin=unpickled_plugin_object)
 
             # node_graphics_item = nodeui.NodeUI(position=pos, plugin=unpickled_plugin_object, scene_object=self)
             # if SETTINGS.NODE_CREATE_COLLAPSED:
@@ -78,21 +83,6 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
         else:
             return QtGui.QGraphicsScene.dropEvent(self, event)
 
-    def create_node(self, position=QtCore.QPoint(0, 0), plugin=None):
-
-        plugin = plugin or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x32
-        # plugin = plugin or parse_plugins.get_plugins()[0].x32
-
-        node_graphics_item = nodeui.NodeUI(position=position, plugin=plugin, scene_object=self)
-        if SETTINGS.NODE_CREATE_COLLAPSED:
-            node_graphics_item.expand_layout()
-        node_graphics_item.setScale(self.global_scale)
-        self.addItem(node_graphics_item)
-        node_graphics_item.setParentItem(self.base_rect)
-        self.node_items.append(node_graphics_item)
-
-        self.container_object.update_label()
-
     def dragMoveEvent(self, event):
         logging.info('dragMoveEvent on {0}'.format(self))
         if event.mimeData().hasFormat('node/draggable-pixmap'):
@@ -101,8 +91,8 @@ class GraphicsSceneNodes(QtGui.QGraphicsScene):
         else:
             return QtGui.QGraphicsScene.dragMoveEvent(self, event)
 
-    def find_output_graphics_item(self, port_id):
-        for node_item in self.node_items:
-            for output_graphics_item in node_item.outputs:
-                if output_graphics_item.object_id == port_id:
-                    return output_graphics_item
+    # def find_output_graphics_item(self, port_id):
+    #     for node_item in self.node_items:
+    #         for output_graphics_item in node_item.outputs:
+    #             if output_graphics_item.object_id == port_id:
+    #                 return output_graphics_item

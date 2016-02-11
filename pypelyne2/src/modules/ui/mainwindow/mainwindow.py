@@ -6,11 +6,14 @@ import pypelyne2.src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plug
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_resourcebar as dockwidget_resourcebar
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_output_channels as dockwidget_output_channels
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_containers as dockwidget_containers
+import pypelyne2.src.modules.puppeteer.puppeteer as puppeteer
 
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
+
+        self.puppeteer = puppeteer.Puppeteer()
 
         if SETTINGS.SPLASH:
             self.splash = None
@@ -21,7 +24,7 @@ class MainWindow(QtGui.QMainWindow):
         self.setAnimated(SETTINGS.DOCK_ANIMATED)
         self.setDockNestingEnabled(SETTINGS.DOCK_NESTING)
 
-        self.graphicssview_stage = graphicsview_stage.GraphicsViewStage()
+        self.graphicssview_stage = graphicsview_stage.GraphicsViewStage(puppeteer=self.puppeteer)
 
         self.dock_widget_plugins = dockwidget_plugins.DockWidgetPlugins(mainwindow=self)
         self.dock_widget_output_channels = dockwidget_output_channels.DockWidgetOutputChannels(mainwindow=self)

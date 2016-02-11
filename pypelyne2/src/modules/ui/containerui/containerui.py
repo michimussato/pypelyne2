@@ -83,11 +83,13 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
     """This is the actual asset container."""
 
-    def __init__(self, position=QtCore.QPoint(0, 0), container=None, scene_object=None):
+    def __init__(self, puppeteer, position=QtCore.QPoint(0, 0), container=None, scene_object=None):
 
         super(ContainerUI, self).__init__()
 
         reload(SETTINGS)
+
+        self.puppeteer = puppeteer
         
         # this is the main scene of the mainwindow. maybe rename to
         # something like main_scene or project scene and apply
@@ -96,7 +98,7 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         self.view_object = self.scene_object.view_object
 
-        self.nodes_scene = graphicsscenenodes.GraphicsSceneNodes(view_object=self.view_object, container_object=self)
+        self.nodes_scene = graphicsscenenodes.GraphicsSceneNodes(puppeteer=self.puppeteer, view_object=self.view_object, container_object=self)
 
         self.navigator_nodes = navigator.Navigator(scene_object=self.nodes_scene,
                                                    view_object=self.scene_object.view_object)

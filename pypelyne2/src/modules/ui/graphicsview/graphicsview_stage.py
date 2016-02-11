@@ -7,9 +7,13 @@ import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class GraphicsViewStage(graphicsview.GraphicsView):
-    def __init__(self):
+    def __init__(self, puppeteer):
         super(GraphicsViewStage, self).__init__()
-        self.scene_object_containers = graphicsscenecontainer.GraphicsSceneContainer(self)
+
+        self.puppeteer = puppeteer
+
+        self.scene_object_containers = graphicsscenecontainer.GraphicsSceneContainer(puppeteer=self.puppeteer,
+                                                                                     view_object=self)
 
         self.set_container_scene()
 

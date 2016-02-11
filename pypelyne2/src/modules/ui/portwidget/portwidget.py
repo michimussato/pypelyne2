@@ -297,6 +297,8 @@ class Input(Port):
         self.widget_title = porthover.InputHover(self.output_object)
         self.add_ui_elements()
 
+        print self.upstream_port.widget_title.label_title.text()
+
         self.set_label(name=self.upstream_port.widget_title.label_title.text())
 
     def set_label_pos(self):

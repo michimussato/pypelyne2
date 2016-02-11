@@ -108,8 +108,10 @@ class InputsSourceArea(ContainerLink):
 
 
 class OutputsDropArea(ContainerLink):
-    def __init__(self, scene_object, view_object):
+    def __init__(self, puppeteer, scene_object, view_object):
         super(OutputsDropArea, self).__init__(scene_object, view_object)
+
+        self.puppeteer = puppeteer
 
         self.setAcceptDrops(True)
 
@@ -156,7 +158,8 @@ class OutputsDropArea(ContainerLink):
 
     def add_input(self, output_object=None, port_id=None, create_connection=True):
 
-        start_item = self.scene_object.find_output_graphics_item(port_id=port_id)
+        start_item = self.puppeteer.find_output_graphics_item(scene=self.scene_object, port_id=port_id)
+        # start_item = self.scene_object.find_output_graphics_item(port_id=port_id)
 
         end_item = portwidget.Input(node_object=self,
                                     output_object=output_object,
