@@ -24,11 +24,23 @@ class DockWidgetPlugins(dockwidget.DockWidget):
 
         for plugin in self.plugins:
             if plugin.family_enable:
-                if SETTINGS.DISPLAY_ONLY_AVAILABLE and plugin.executable_x32 is None and plugin.executable_x64 is None:
-                    pass
-                else:
-                    plugin_widget = pluginwidget.PluginWidget(plugin=plugin, mainwindow=mainwindow)
-                    self.layout_plugins.addWidget(plugin_widget)
+                # print plugin.family
+                # print dir(plugin)
+                if hasattr(plugin, 'executable'):
+                    # this is needed for arch agnostic plugins
+                    if SETTINGS.DISPLAY_ONLY_AVAILABLE and plugin.executable is None:
+                        pass
+                    else:
+                        plugin_widget = pluginwidget.PluginWidget(plugin=plugin, mainwindow=mainwindow)
+                        self.layout_plugins.addWidget(plugin_widget)
+
+                elif hasattr(plugin, 'executable_x32') and hasattr(plugin, 'executable_x64'):
+                    # this is needed for arch aware plugins
+                    if SETTINGS.DISPLAY_ONLY_AVAILABLE and plugin.executable_x32 is None and plugin.executable_x64 is None:
+                        pass
+                    else:
+                        plugin_widget = pluginwidget.PluginWidget(plugin=plugin, mainwindow=mainwindow)
+                        self.layout_plugins.addWidget(plugin_widget)
 
         widget.setLayout(self.layout_plugins)
 

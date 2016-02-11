@@ -22,6 +22,10 @@ class PlugIn(object):
 
         Note
         ----
+        We're using d to set __dict__. We also keeping an unmodified copy
+        of d in a private variable _parsed_json_original. It can be
+        accessed by calling using the property plugin_dict which in turn returns
+        a 1 to 1 copy of d.
 
 
         Parameters
@@ -32,7 +36,28 @@ class PlugIn(object):
         """
 
         super(PlugIn, self).__init__()
+
         self.__dict__ = d.copy()
+
+        self._parsed_json_original = d.copy()
+
+    @property
+    def plugin_dict(self):
+
+        """plugin_dict
+
+        Note
+        ----
+
+
+        Returns
+        -------
+        dict
+            unmodified copy of the original d
+
+        """
+
+        return self._parsed_json_original.copy()
 
     @property
     def x32(self):
@@ -50,7 +75,7 @@ class PlugIn(object):
 
         """
 
-        dict_x32 = self.__dict__
+        dict_x32 = self.plugin_dict
         dict_x32[u'executable'] = dict_x32[u'executable_x32']
         dict_x32[u'flags'] = dict_x32[u'flags_x32']
         dict_x32[u'label'] = dict_x32[u'label_x32']
@@ -73,7 +98,7 @@ class PlugIn(object):
 
         """
 
-        dict_x64 = self.__dict__
+        dict_x64 = self.plugin_dict
         dict_x64[u'executable'] = dict_x64[u'executable_x64']
         dict_x64[u'flags'] = dict_x64[u'flags_x64']
         dict_x64[u'label'] = dict_x64[u'label_x64']
@@ -96,7 +121,7 @@ class PlugIn(object):
 
         """
 
-        dict_agnostic = self.__dict__
+        dict_agnostic = self.plugin_dict
         # dict_agnostic[u'executable'] = dict_agnostic[u'executable_x64']
         # dict_agnostic[u'flags'] = dict_agnostic[u'flags_x64']
         # dict_agnostic[u'label'] = dict_agnostic[u'label_x64']
@@ -113,7 +138,7 @@ class PlugIn(object):
         object
             Assembles a submitter object version of self and returns the new object."""
 
-        dict_submitter = self.__dict__
+        dict_submitter = self.plugin_dict
         dict_submitter[u'executable'] = dict_submitter[u'executable']
         dict_submitter[u'flags'] = dict_submitter[u'flags']
         dict_submitter[u'label'] = dict_submitter[u'label']

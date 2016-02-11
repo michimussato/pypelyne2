@@ -14,14 +14,14 @@ class PluginWidget(QtGui.QWidget):
 
         self.processes = []
 
-        # self.drag_cursor = QtGui.QCursor(QtCore.Qt.OpenHandCursor)
-
         self.ui = uic.loadUi(os.path.join(SETTINGS.PYPELYNE2_ROOT,
                                           'src',
                                           'modules',
                                           'ui',
                                           'pluginwidget',
                                           'pluginwidget.ui'), self)
+
+        self.ui.label.setEnabled(False)
 
         if plugin.icon is None:
             self.icon = QtGui.QPixmap(SETTINGS.PLUGINS_DEFAULT_ICON).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
@@ -30,20 +30,21 @@ class PluginWidget(QtGui.QWidget):
                                                    plugin.icon)).scaledToHeight(SETTINGS.PLUGINS_ICON_HEIGHT)
 
         if plugin.type == 'submitter':
-            # self.ui.label.setCursor(self.drag_cursor)
             self.pixmap = pixmapdraggable.PixmapDragAndDrop(plugin.submitter, self.mainwindow)
 
             self.pixmap.setToolTip('{0} {1} is not available'.format(plugin.family,
                                                                      plugin.release_number))
 
             self.ui.label.setText('{0} {1}'.format(plugin.family, plugin.release_number))
-            self.ui.label.setEnabled(False)
 
             self.ui.pixmaps_layout.addWidget(self.pixmap)
 
             self.pixmap.setEnabled(False)
 
             if plugin.executable is not None:
+
+                self.pixmap.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+
                 self.pixmap.setEnabled(True)
                 self.pixmap.setToolTip('drag to create {0} {1} node.'.format(plugin.family,
                                                                              plugin.release_number))
@@ -62,13 +63,15 @@ class PluginWidget(QtGui.QWidget):
                                                                          plugin.release_number))
 
                 self.ui.label.setText('{0} {1}'.format(plugin.family, plugin.release_number))
-                self.ui.label.setEnabled(False)
 
                 self.ui.pixmaps_layout.addWidget(self.pixmap)
 
                 self.pixmap.setEnabled(False)
 
                 if plugin.executable is not None:
+
+                    self.pixmap.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+
                     if plugin.nodeable:
                         self.pixmap.setEnabled(True)
                         self.pixmap.setToolTip('double click to launch. '
@@ -83,7 +86,6 @@ class PluginWidget(QtGui.QWidget):
 
             else:
                 if plugin.nodeable:
-                    # self.ui.label.setCursor(self.drag_cursor)
                     self.pixmap_x32 = pixmapdraggable.PixmapFullFeature(plugin.x32, self.mainwindow)
                     self.pixmap_x64 = pixmapdraggable.PixmapFullFeature(plugin.x64, self.mainwindow)
 
@@ -99,7 +101,6 @@ class PluginWidget(QtGui.QWidget):
                                                                                  'x64'))
 
                 self.ui.label.setText('{0} {1}'.format(plugin.family, plugin.release_number))
-                self.ui.label.setEnabled(False)
 
                 self.ui.pixmaps_layout.addWidget(self.pixmap_x32)
                 self.ui.pixmaps_layout.addWidget(self.pixmap_x64)
@@ -108,18 +109,31 @@ class PluginWidget(QtGui.QWidget):
                 self.pixmap_x64.setEnabled(False)
 
                 if SETTINGS.DISPLAY_X32:
-                    if plugin.executable_x32 is not None:
+
+                    plugin_x32 = plugin.x32
+
+                    if plugin_x32.executable is not None:
+
+                        self.pixmap_x32.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+
                         if plugin.nodeable:
+
+                            self.pixmap_x32.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+
                             self.pixmap_x32.setEnabled(True)
+                            # print plugin_x32.executable
+                            # print dir(plugin_x32)
+                            # print plugin_x32.architecture
                             self.pixmap_x32.setToolTip('double click to launch. '
-                                                       'drag to create {0} {1} {2} node.'.format(plugin.family,
-                                                                                                 plugin.release_number,
-                                                                                                 plugin.architecture))
+                                                       'drag to create {0} {1} {2} node.'.format(plugin_x32.family,
+                                                                                                 plugin_x32.release_number,
+                                                                                                 plugin_x32.architecture))
                         else:
+
                             self.pixmap_x32.setEnabled(True)
-                            self.pixmap_x32.setToolTip('double click to launch {0} {1} {2}.'.format(plugin.family,
-                                                                                                    plugin.release_number,
-                                                                                                    plugin.architecture))
+                            self.pixmap_x32.setToolTip('double click to launch {0} {1} {2}.'.format(plugin_x32.family,
+                                                                                                    plugin_x32.release_number,
+                                                                                                    plugin_x32.architecture))
 
                         self.ui.label.setEnabled(True)
                     else:
@@ -128,18 +142,28 @@ class PluginWidget(QtGui.QWidget):
                     self.pixmap_x32.setVisible(False)
 
                 if SETTINGS.DISPLAY_X64:
-                    if plugin.executable_x64 is not None:
+
+                    plugin_x64 = plugin.x64
+
+                    if plugin_x64.executable is not None:
+
+                        self.pixmap_x64.setCursor(QtGui.QCursor(QtCore.Qt.ArrowCursor))
+
                         if plugin.nodeable:
+
+                            self.pixmap_x64.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
+
                             self.pixmap_x64.setEnabled(True)
                             self.pixmap_x64.setToolTip('double click to launch. '
-                                                       'drag to create {0} {1} {2} node.'.format(plugin.family,
-                                                                                                 plugin.release_number,
-                                                                                                 plugin.architecture))
+                                                       'drag to create {0} {1} {2} node.'.format(plugin_x64.family,
+                                                                                                 plugin_x64.release_number,
+                                                                                                 plugin_x64.architecture))
                         else:
+
                             self.pixmap_x64.setEnabled(True)
-                            self.pixmap_x64.setToolTip('double click to launch {0} {1} {2}.'.format(plugin.family,
-                                                                                                    plugin.release_number,
-                                                                                                    plugin.architecture))
+                            self.pixmap_x64.setToolTip('double click to launch {0} {1} {2}.'.format(plugin_x64.family,
+                                                                                                    plugin_x64.release_number,
+                                                                                                    plugin_x64.architecture))
 
                         self.ui.label.setEnabled(True)
                     else:

@@ -34,7 +34,7 @@
             "project_workspace_parent_directory_level": 1,
             "project_file_flag": null,
             "executable_x32": null,
-            "flags_x32": [],
+            "flags_x32": ["--nukex", "-V", "2"],
             "executable_x64": "/Applications/Nuke7.0v8/Nuke7.0v8.app/Nuke7.0v8",
             "flags_x64": ["--nukex", "-V", "2"]
           }

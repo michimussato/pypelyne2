@@ -133,7 +133,7 @@ OUTPUTS_ICON_HEIGHT = PLUGINS_ICON_HEIGHT
 
 # dockwidget_plugins module
 DISPLAY_ONLY_AVAILABLE = False
-DISPLAY_X32 = False
+DISPLAY_X32 = True
 DISPLAY_X64 = True
 
 # Task module
