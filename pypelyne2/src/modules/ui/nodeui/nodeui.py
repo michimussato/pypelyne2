@@ -892,33 +892,34 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
 
         self.resize()
 
-    def delete_node(self):
-        logging.info('node.delete_node() ({0})'.format(self))
-
-        temp_list_copy_inputs = list(self.inputs)
-        temp_list_copy_outputs = list(self.outputs)
-
-        for input_item in temp_list_copy_inputs:
-            input_item.remove_input()
-
-        for output_item in temp_list_copy_outputs:
-            output_item.remove_output()
-
-        del temp_list_copy_inputs
-        del temp_list_copy_outputs
-
-        self.scene_object.node_items.remove(self)
-
-        self.scene_object.removeItem(self)
-
-        print 'items left in scene:'
-        for i in self.scene_object.items():
-            print type(i)
+    # def delete_node(self):
+    #     logging.info('node.delete_node() ({0})'.format(self))
+    #
+    #     temp_list_copy_inputs = list(self.inputs)
+    #     temp_list_copy_outputs = list(self.outputs)
+    #
+    #     for input_item in temp_list_copy_inputs:
+    #         input_item.remove_input()
+    #
+    #     for output_item in temp_list_copy_outputs:
+    #         output_item.remove_output()
+    #
+    #     del temp_list_copy_inputs
+    #     del temp_list_copy_outputs
+    #
+    #     self.scene_object.node_items.remove(self)
+    #
+    #     self.scene_object.removeItem(self)
+    #
+    #     print 'items left in scene:'
+    #     for i in self.scene_object.items():
+    #         print type(i)
 
     def keyPressEvent(self, event):
         logging.info('node.keyPressEvent() ({0})'.format(self))
         if event.key() == QtCore.Qt.Key_Backspace:
-            self.delete_node()
+            self.puppeteer.delete_node(node=self)
+            # self.delete_node()
 
     # def mouseDoubleClickEvent(self, event):
     #     self.scene_object.view_object.set_container_scene()

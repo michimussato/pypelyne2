@@ -143,7 +143,7 @@ class OutputsDropArea(ContainerLink):
 
             unpickled_output_object = cPickle.loads(data)
 
-            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.uuid for x in self.container_object.container_output_channels]:
+            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.object_id for x in self.container_object.container_output_channels]:
                 logging.warning('output with uuid {0} {1} is already connected to {2}'.format(unpickled_output_object[u'output_graphicsitem_uuid'],
                                                                                               unpickled_output_object[u'output_object'],
                                                                                               self))

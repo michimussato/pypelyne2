@@ -1,3 +1,4 @@
+import logging
 import random
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.parser.parse_containers as parse_containers
@@ -73,11 +74,36 @@ class Puppeteer(object):
         return node_item
 
     @staticmethod
+    def delete_node(node):
+        logging.info('node.delete_node() ({0})'.format(node))
+
+        temp_list_copy_inputs = list(node.inputs)
+        temp_list_copy_outputs = list(node.outputs)
+
+        for input_item in temp_list_copy_inputs:
+            input_item.remove_input()
+
+        for output_item in temp_list_copy_outputs:
+            output_item.remove_output()
+
+        del temp_list_copy_inputs
+        del temp_list_copy_outputs
+
+        node.scene_object.node_items.remove(node)
+
+        node.scene_object.removeItem(node)
+
+        print 'items left in scene:'
+        for i in node.scene_object.items():
+            print type(i)
+
+    @staticmethod
     def find_output_graphics_item(scene, port_id):
+        logging.info('looking for port with id {0}'.format(port_id))
         # does it make sense to do this scene dependent?
         for node_item in scene.node_items:
             for output_graphics_item in node_item.outputs:
                 if output_graphics_item.object_id == port_id:
+                    logging.info('output_graphics_item of port_id {0} found: {1}'.format(port_id, output_graphics_item))
                     return output_graphics_item
-                else:
-                    return None
+            logging.warning('output_graphics_item of port_id {0} not found'.format(port_id))

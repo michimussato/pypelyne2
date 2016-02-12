@@ -52,7 +52,7 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
             unpickled_output_object = cPickle.loads(data)
 
-            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.uuid for x in self.node.inputs]:
+            if unpickled_output_object[u'output_graphicsitem_uuid'] in [x.object_id for x in self.node.inputs]:
                 logging.warning('output with uuid {0} {1} is already connected to {2}'.format(unpickled_output_object[u'output_graphicsitem_uuid'],
                                                                                               unpickled_output_object[u'output_object'],
                                                                                               self.node))
