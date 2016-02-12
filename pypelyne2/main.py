@@ -1,7 +1,13 @@
-import logging
 import sys
 import os
+import logging
 import PyQt4.QtGui as QtGui
+
+
+here = os.path.dirname(os.path.realpath(__file__))
+sys.path.append(os.path.dirname(here))
+
+
 import pypelyne2.src.modules.ui.mainwindow.mainwindow as mainwindow
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
