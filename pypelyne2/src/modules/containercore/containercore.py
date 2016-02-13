@@ -10,6 +10,8 @@ class ContainerCore(uuidobject.UuidObject):
         # all the nodes contained in self
         self.child_items = []
 
+        self.connections = []
+
         # asset, shot, sequence, prop, character etc
         self.container_type = container_type
         self.outputs = []

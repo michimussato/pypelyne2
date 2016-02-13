@@ -5,8 +5,10 @@ import PyQt4.QtGui as QtGui
 
 
 class NodeDropArea(QtGui.QGraphicsRectItem):
-    def __init__(self, node_object):
+    def __init__(self, puppeteer, node_object):
         super(NodeDropArea, self).__init__()
+
+        self.puppeteer = puppeteer
 
         self.node = node_object
 
@@ -21,6 +23,11 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
         self.brush_active = QtGui.QColor(0, 255, 0, 100)
         self.brush_forbidden = QtGui.QColor(255, 0, 0, 100)
         self.brush_inactive = QtGui.QColor(255, 0, 0, 0)
+
+        # self.drop_area = nodedroparea.NodeDropArea(self)
+
+        self.setZValue(self.node.zValue() + 1)
+        self.setParentItem(self.node)
 
         self.setAcceptDrops(True)
 
@@ -101,10 +108,14 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
             unpickled_output_object = cPickle.loads(data)
 
+            print unpickled_output_object
+
             # self.scene
 
-            self.node.add_input(output_object=unpickled_output_object[u'output_object'],
-                                port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
+            self.puppeteer.add_input(scene=self.node.scene_object,
+                                     node=self.node,
+                                     output_object=unpickled_output_object[u'output_object'],
+                                     port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)

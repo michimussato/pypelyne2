@@ -5,6 +5,8 @@ import pypelyne2.src.parser.parse_containers as parse_containers
 import pypelyne2.src.parser.parse_plugins as parse_plugins
 import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
 import pypelyne2.src.modules.ui.containerui.containerui as containerui
+import pypelyne2.src.modules.ui.connection.connection as connection
+import pypelyne2.src.modules.ui.portwidget.portwidget as output
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
@@ -46,6 +48,7 @@ class Puppeteer(object):
         self.node_connections = []
 
     def create_container(self, scene, container=None, position=QtCore.QPoint(0, 0)):
+        logging.info('puppeteer.create_container() ({0})'.format(scene))
 
         container_object = container or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
 
@@ -57,7 +60,15 @@ class Puppeteer(object):
 
         return container_item
 
+    def delete_container(self, container):
+        logging.info('puppeteer.delete_container() ({0})'.format(None))
+
+        container.scene_object.removeItem(container)
+
+        # pass
+
     def create_node(self, scene, plugin=None, position=QtCore.QPoint(0, 0)):
+        logging.info('puppeteer.create_node() ({0})'.format(scene))
 
         plugin = plugin or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x32
 
@@ -73,9 +84,54 @@ class Puppeteer(object):
 
         return node_item
 
+    def add_input(self, scene, node, output_object=None, port_id=None, create_connection=True):
+
+        start_item = self.find_output_graphics_item(scene=scene, port_id=port_id)
+
+        end_item = output.Input(node_object=scene,
+                                output_object=output_object,
+                                port_id=port_id,
+                                start_item=start_item)
+
+        node.inputs.append(end_item)
+        end_item.setParentItem(node)
+
+        if create_connection:
+            self.add_connection(scene=scene, node=node, start_item=start_item, end_item=end_item)
+
+        node.resize()
+
+    def add_input_container(self, scene, port_id=None, end_item=None):
+
+        start_item = self.find_output_graphics_item(scene=scene, port_id=port_id)
+        self.add_connection_container(scene=scene, start_item=start_item, end_item=end_item)
+
+    @staticmethod
+    def add_connection_container(scene, start_item, end_item):
+
+        connection_line = connection.Connection(start_item=start_item,
+                                                end_item=end_item,
+                                                scene_object=scene)
+
+        scene.addItem(connection_line)
+
+    @staticmethod
+    def add_connection(scene, node, start_item, end_item):
+        connection_line = connection.Connection(start_item=start_item,
+                                                end_item=end_item,
+                                                scene_object=scene)
+
+        node.connections.append(connection_line)
+        scene.addItem(connection_line)
+        scene.connection_items.append(connection_line)
+
+        start_item.downstream_connections.append(connection_line)
+        start_item.downstream_ports.append(end_item)
+        end_item.upstream_connections.append(connection_line)
+
     @staticmethod
     def delete_node(node):
-        logging.info('node.delete_node() ({0})'.format(node))
+        logging.info('puppeteer.delete_node() ({0})'.format(node))
 
         temp_list_copy_inputs = list(node.inputs)
         temp_list_copy_outputs = list(node.outputs)
@@ -105,5 +161,7 @@ class Puppeteer(object):
             for output_graphics_item in node_item.outputs:
                 if output_graphics_item.object_id == port_id:
                     logging.info('output_graphics_item of port_id {0} found: {1}'.format(port_id, output_graphics_item))
+                    # print 'output_graphics_item of port_id {0} found: {1}'.format(port_id, output_graphics_item)
                     return output_graphics_item
             logging.warning('output_graphics_item of port_id {0} not found'.format(port_id))
+            # print 'output_graphics_item of port_id {0} not found'.format(port_id)

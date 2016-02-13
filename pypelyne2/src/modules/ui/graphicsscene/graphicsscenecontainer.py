@@ -1,10 +1,10 @@
 import cPickle
 import logging
-import random
+# import random
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-import pypelyne2.src.parser.parse_containers as parse_containers
-import pypelyne2.src.modules.ui.containerui.containerui as containerui
+# import pypelyne2.src.parser.parse_containers as parse_containers
+# import pypelyne2.src.modules.ui.containerui.containerui as containerui
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
@@ -78,10 +78,10 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
     #             if output_graphics_item.uuid == port_id:
     #                 return output_graphics_item
 
-    def expand_container(self, container_item):
-        # print self.node_items
-        self.hide_containers()
-
-    def hide_containers(self):
-        for container in self.node_items:
-            container.setVisible(False)
+    # def expand_container(self, container_item):
+    #     # print self.node_items
+    #     self.hide_containers()
+    #
+    # def hide_containers(self):
+    #     for container in self.node_items:
+    #         container.setVisible(False)

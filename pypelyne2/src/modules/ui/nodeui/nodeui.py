@@ -83,7 +83,7 @@ class WidgetTitle(WidgetNode):
         self.ui.vlayout_preview.addWidget(self.preview_icon)
 
     def mousePressEvent(self, event):
-        logging.info('mousePressEvent on OutputHover ({0})'.format(self))
+        logging.info('mousePressEvent on WidgetTitle ({0})'.format(self))
         keyboard_modifiers = QtGui.QApplication.keyboardModifiers()
 
         if keyboard_modifiers == QtCore.Qt.ShiftModifier and event.button() == QtCore.Qt.LeftButton:
@@ -92,6 +92,8 @@ class WidgetTitle(WidgetNode):
             self.ui.label_title_edit.setReadOnly(False)
             self.ui.label_title_edit.setFocus()
             self.ui.label_title_edit.selectAll()
+
+        # else:
 
         return WidgetNode.mouseMoveEvent(self, event)
 
@@ -138,10 +140,10 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
 
         self.rect = QtCore.QRectF()
 
-        self.drop_area = nodedroparea.NodeDropArea(self)
+        self.drop_area = nodedroparea.NodeDropArea(node_object=self, puppeteer=self.puppeteer)
 
-        self.drop_area.setZValue(self.zValue() + 1)
-        self.drop_area.setParentItem(self)
+        # self.drop_area.setZValue(self.zValue() + 1)
+        # self.drop_area.setParentItem(self)
 
         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
         self.gradient = QtGui.QLinearGradient(self.rect.topLeft(), self.rect.bottomLeft())
@@ -228,35 +230,35 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
             for i in range(SETTINGS.AUTO_GENERATE_RANDOM_INPUTS_COUNT):
                 self.add_input(create_connection=False)
 
-    def add_connection(self, start_item, end_item):
-        connection_line = connection.Connection(start_item=start_item,
-                                                end_item=end_item,
-                                                scene_object=self.scene_object)
-        self.connections.append(connection_line)
-        self.scene_object.addItem(connection_line)
-        self.scene_object.connection_items.append(connection_line)
+    # def add_connection(self, start_item, end_item):
+    #     connection_line = connection.Connection(start_item=start_item,
+    #                                             end_item=end_item,
+    #                                             scene_object=self.scene_object)
+    #     self.connections.append(connection_line)
+    #     self.scene_object.addItem(connection_line)
+    #     self.scene_object.connection_items.append(connection_line)
+    #
+    #     start_item.downstream_connections.append(connection_line)
+    #     start_item.downstream_ports.append(end_item)
+    #     end_item.upstream_connections.append(connection_line)
 
-        start_item.downstream_connections.append(connection_line)
-        start_item.downstream_ports.append(end_item)
-        end_item.upstream_connections.append(connection_line)
-
-    def add_input(self, output_object=None, port_id=None, create_connection=True):
-
-        start_item = self.puppeteer.find_output_graphics_item(scene=self.scene_object, port_id=port_id)
-        # start_item = self.scene_object.find_output_graphics_item(port_id=port_id)
-
-        end_item = output.Input(node_object=self,
-                                output_object=output_object,
-                                port_id=port_id,
-                                start_item=start_item)
-
-        self.inputs.append(end_item)
-        end_item.setParentItem(self)
-
-        if create_connection:
-            self.add_connection(start_item=start_item, end_item=end_item)
-
-        self.resize()
+    # def add_input(self, output_object=None, port_id=None, create_connection=True):
+    #
+    #     start_item = self.puppeteer.find_output_graphics_item(scene=self.scene_object, port_id=port_id)
+    #     # start_item = self.scene_object.find_output_graphics_item(port_id=port_id)
+    #
+    #     end_item = output.Input(node_object=self,
+    #                             output_object=output_object,
+    #                             port_id=port_id,
+    #                             start_item=start_item)
+    #
+    #     self.inputs.append(end_item)
+    #     end_item.setParentItem(self)
+    #
+    #     if create_connection:
+    #         self.puppeteer.add_connection(scene=self.scene_object, node=self, start_item=start_item, end_item=end_item)
+    #
+    #     self.resize()
 
     def add_output(self, output_object=None, port_id=None):
         port = output.Output(node_object=self,
@@ -920,6 +922,8 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
         if event.key() == QtCore.Qt.Key_Backspace:
             self.puppeteer.delete_node(node=self)
             # self.delete_node()
+
+        # return QtGui.QGraphicsRectItem().keyPressEvent(event)
 
     # def mouseDoubleClickEvent(self, event):
     #     self.scene_object.view_object.set_container_scene()

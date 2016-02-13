@@ -4,12 +4,16 @@ import PyQt4.QtGui as QtGui
 # import PyQt4.uic as uic
 import logging
 import random
+import cPickle
+import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
 import pypelyne2.src.modules.ui.graphicsscene.graphicsscenenodes as graphicsscenenodes
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.parser.parse_containers as parse_containers
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.modules.containercore.containercore as containercore
+import pypelyne2.src.modules.ui.containerdroparea.containerdroparea as containerdroparea
+import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 # import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
 # import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
 # import pypelyne2.src.modules.ui.connection.connection as connection
@@ -61,22 +65,115 @@ import pypelyne2.src.modules.containercore.containercore as containercore
 #         return nodeui.WidgetNode.mouseMoveEvent(self, event)
 
 
-class Output(QtGui.QGraphicsEllipseItem):
+class Input(uuidobject.UuidObject, QtGui.QGraphicsEllipseItem):
 
     """The output port of the ContainerUI."""
 
-    def __init__(self):
+    def __init__(self, container=None):
+
+        super(Input, self).__init__()
+
+        self.container = container
+
+        self.container_object = self.container.container
+
+        self.pixmap = compositeicon.CompositeIconOutput(self.container_object).output_icon
+
+        self.setParentItem(self.container)
+
+        self.setAcceptHoverEvents(True)
+
+        self.setStartAngle(90*16)
+        self.setSpanAngle(180*16)
+
+        self.setToolTip(self.object_id)
+
+        self.setRect(-SETTINGS.CONTAINER_PORT_RADIUS/2,
+                     -SETTINGS.CONTAINER_PORT_RADIUS/2,
+                     SETTINGS.CONTAINER_PORT_RADIUS,
+                     SETTINGS.CONTAINER_PORT_RADIUS)
+
+
+class Output(uuidobject.UuidObject, QtGui.QGraphicsEllipseItem):
+
+    """The output port of the ContainerUI."""
+
+    def __init__(self, container=None):
 
         super(Output, self).__init__()
+
+        self.container = container
+
+        self.container_object = self.container.container
+
+        self.pixmap = compositeicon.CompositeIconOutput(self.container_object).output_icon
+
+        self.setParentItem(self.container)
 
         self.setAcceptHoverEvents(True)
 
         self.setStartAngle(-90*16)
         self.setSpanAngle(180*16)
 
-    def mousePressEvent(self):
+        self.setToolTip(self.object_id)
 
-        print 'hi'
+        self.setRect(-SETTINGS.CONTAINER_PORT_RADIUS/2*SETTINGS.CONTAINER_OUTPUT_MULT,
+                     -SETTINGS.CONTAINER_PORT_RADIUS/2*SETTINGS.CONTAINER_OUTPUT_MULT,
+                     SETTINGS.CONTAINER_PORT_RADIUS*SETTINGS.CONTAINER_OUTPUT_MULT,
+                     SETTINGS.CONTAINER_PORT_RADIUS*SETTINGS.CONTAINER_OUTPUT_MULT)
+
+    def mousePressEvent(self, event):
+        logging.info('mousePressEvent on ContainerOutput ({0})'.format(self))
+
+    def mouseMoveEvent(self, event):
+        # if event.buttons() == QtCore.Qt.RightButton:
+        #
+        #     pos = event.pos()
+        #
+        #     self.moveBy(pos.x(), pos.y())
+        #
+        #     opacity = max(0, 1-(max(abs(self.moved['x']),
+        #                             abs(self.moved['y']))/SETTINGS.REMOVE_PORT_DISTANCE))
+        #
+        #     self.set_opacity(opacity=opacity)
+        #
+        #     self.moved['x'] += pos.x()
+        #     self.moved['y'] += pos.y()
+
+        if event.buttons() == QtCore.Qt.LeftButton:
+
+            logging.info('mouseMoveEvent on ContainerOutput {0}'.format(self))
+            # http://stackoverflow.com/questions/14395799/pyqt4-drag-and-drop
+            mime_data = QtCore.QMimeData()
+            mime_data.setObjectName('containeroutput/draggable-output')
+
+            objects_dict = dict()
+
+            objects_dict[u'output_graphicsitem_uuid'] = self.object_id
+            # objects_dict[u'node'] = self
+
+            pickled_container_object = cPickle.dumps(objects_dict.copy())
+            mime_data.setData('containeroutput/draggable-output', pickled_container_object)
+
+            icon = QtGui.QLabel()
+
+            icon.setPixmap(self.pixmap)
+
+            drag = QtGui.QDrag(icon)
+            drag.setMimeData(mime_data)
+            drag.setPixmap(self.pixmap)
+
+            if drag.exec_(QtCore.Qt.CopyAction | QtCore.Qt.MoveAction) == QtCore.Qt.MoveAction:
+                pass
+            #     print 'moved'
+            # else:
+            #     print 'copied'
+
+        else:
+            return QtGui.QGraphicsItem.mouseMoveEvent(self, event)
+
+    def dropEvent(self, event):
+        logging.info('dropEvent on {0}'.format(self))
 
 
 class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
@@ -98,7 +195,8 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         self.view_object = self.scene_object.view_object
 
-        self.nodes_scene = graphicsscenenodes.GraphicsSceneNodes(puppeteer=self.puppeteer, view_object=self.view_object, container_object=self)
+        self.nodes_scene = graphicsscenenodes.GraphicsSceneNodes(puppeteer=self.puppeteer,
+                                                                 view_object=self.view_object, container_object=self)
 
         self.navigator_nodes = navigator.Navigator(scene_object=self.nodes_scene,
                                                    view_object=self.scene_object.view_object)
@@ -106,6 +204,9 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.container = container or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
 
         self.rect = QtCore.QRectF()
+
+        self.drop_area = containerdroparea.ContainerDropArea(puppeteer=self.puppeteer,
+                                                             container_object=self)
 
         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
 
@@ -124,7 +225,7 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.output_list = []
         self.input_list = []
 
-        self.connections = []
+        # self.connections = []
 
         self.widget = QtGui.QWidget()
         self.widget_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
@@ -140,32 +241,35 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.text_outputs = QtGui.QGraphicsTextItem()
         self.text_outputs.setParentItem(self)
 
-        self.input_port = QtGui.QGraphicsEllipseItem()
-        self.input_port.setParentItem(self)
-        self.output_port = Output()
-        self.output_port.setParentItem(self)
-        self.rect_port = QtCore.QRectF()
+        self.input_port = Input(container=self)
+        self.inputs = []
+        # self.input_port.setParentItem(self)
+        # self.input_port.setToolTip()
+        self.output_port = Output(container=self)
+        self.outputs = [self.output_port]
+        # self.output_port.setParentItem(self)
+        # self.rect_port = QtCore.QRectF()
 
-        self.setup_ports()
+        # self.setup_ports()
 
         self.update_label()
 
-    def setup_ports(self):
-
-        """Adds the input and output area of the ContainerUI."""
-
-        self.rect_port.setRect(-SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
-                               -SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
-                               SETTINGS.CONTAINER_OUTPUT_RADIUS,
-                               SETTINGS.CONTAINER_OUTPUT_RADIUS)
-
-        self.input_port.setRect(self.rect_port)
-        self.input_port.setStartAngle(90*16)
-        self.input_port.setSpanAngle(180*16)
-
-        self.output_port.setRect(self.rect_port)
-        # self.output_port.setStartAngle(-90*16)
-        # self.output_port.setSpanAngle(180*16)
+    # def setup_ports(self):
+    #
+    #     """Adds the input and output area of the ContainerUI."""
+    #
+    #     self.rect_port.setRect(-SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
+    #                            -SETTINGS.CONTAINER_OUTPUT_RADIUS/2,
+    #                            SETTINGS.CONTAINER_OUTPUT_RADIUS,
+    #                            SETTINGS.CONTAINER_OUTPUT_RADIUS)
+    #
+    #     self.input_port.setRect(self.rect_port)
+    #     # self.input_port.setStartAngle(90*16)
+    #     # self.input_port.setSpanAngle(180*16)
+    #
+    #     self.output_port.setRect(self.rect_port)
+    #     # self.output_port.setStartAngle(-90*16)
+    #     # self.output_port.setSpanAngle(180*16)
 
     def remove_container_output_channel(self, portwidget):
 
@@ -224,10 +328,21 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         #
         #     container_output_channel.setPos(position)
 
+        self.resize()
+
+    def resize(self):
+
         self.rect.setRect(0, 0, self.text_label.boundingRect().width(), self.childrenBoundingRect().height())
 
         self.input_port.setPos(0, self.boundingRect().height()/2)
         self.output_port.setPos(self.boundingRect().width(), self.boundingRect().height()/2)
+
+        self.drop_area.setRect(self.boundingRect())
+
+        print self.drop_area.rect()
+
+    # def boundingRect(self):
+    #     return self.rect
 
     def add_ui_elements(self):
 
@@ -275,6 +390,8 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         painter.drawRoundedRect(self.rect, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
 
+        # self.resize()
+
     def set_container_color(self):
 
         """Set the container color based on container_object.color"""
@@ -311,3 +428,8 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.nodes_scene.label_area.adjust_container()
 
         return QtGui.QGraphicsItem.mouseDoubleClickEvent(self, event)
+
+    def keyPressEvent(self, event):
+        logging.info('container.keyPressEvent() ({0})'.format(self))
+        if event.key() == QtCore.Qt.Key_Backspace:
+            self.puppeteer.delete_container(container=self)
