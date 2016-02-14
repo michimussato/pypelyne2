@@ -10,7 +10,7 @@ interface
 ![overview](/pypelyne2/doc/gitimg/overview.png)
 
 ## youtube
-[![Youtube]](https://www.youtube.com/watch?v=-2KhSFLMGUs)
+[Youtube](https://www.youtube.com/watch?v=-2KhSFLMGUs)
 
 ## my demo reel
 [![Reel](/pypelyne2/doc/gitimg/reel.png)](https://www.dropbox.com/s/lrhukj3f9l35c7a/MussatoMichael_DemoReel.mov?dl=0)
