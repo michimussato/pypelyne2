@@ -36,6 +36,9 @@ def parse_outputs():
     #     output['entity_type'] = 'output'
 
     for output in outputs:
+        # output[u'node_id_source'] = None
+        output[u'version_id_list'] = set()
+        # output[u'version_id_live'] = None
         if output[u'icon'] is not None:
             try:
                 output[u'icon'] = os.path.join(SETTINGS.OUTPUTS_ICONS, output[u'icon'])
