@@ -1,5 +1,7 @@
 # import pypelyne2.src.modules.api.abc_plugin as plugin
 # http://www.sphinx-doc.org/en/stable/ext/example_numpy.html#example-numpy
+import logging
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 # class PlugIn(plugin.PlugIn):
@@ -75,12 +77,28 @@ class PlugIn(object):
 
         """
 
-        dict_x32 = self.plugin_dict
-        dict_x32[u'executable'] = dict_x32[u'executable_x32']
-        dict_x32[u'flags'] = dict_x32[u'flags_x32']
-        dict_x32[u'label'] = dict_x32[u'label_x32']
-        dict_x32[u'architecture'] = 'x32'
-        return PlugIn(dict_x32)
+        # this try/except statement is only here for testing
+        # i.e. test_containerui collects a random plugin
+        # if this plugin has no executable_x32, it'll
+        # error. to prevent this, it tries to get the
+        # x64 equivalent. this is not supposed to happen
+        # if pypelyne is human controlled.
+
+        try:
+
+            dict_x32 = self.plugin_dict
+            dict_x32[u'executable'] = dict_x32[u'executable_x32']
+            dict_x32[u'flags'] = dict_x32[u'flags_x32']
+            dict_x32[u'label'] = dict_x32[u'label_x32']
+            dict_x32[u'architecture'] = 'x32'
+
+            return PlugIn(dict_x32)
+
+        except KeyError, e:
+
+            logging.warning('are we in testing mode? ({0})'.format(e))
+
+            self.x64
 
     @property
     def x64(self):
@@ -98,12 +116,21 @@ class PlugIn(object):
 
         """
 
-        dict_x64 = self.plugin_dict
-        dict_x64[u'executable'] = dict_x64[u'executable_x64']
-        dict_x64[u'flags'] = dict_x64[u'flags_x64']
-        dict_x64[u'label'] = dict_x64[u'label_x64']
-        dict_x64[u'architecture'] = 'x64'
-        return PlugIn(dict_x64)
+        try:
+
+            dict_x64 = self.plugin_dict
+            dict_x64[u'executable'] = dict_x64[u'executable_x64']
+            dict_x64[u'flags'] = dict_x64[u'flags_x64']
+            dict_x64[u'label'] = dict_x64[u'label_x64']
+            dict_x64[u'architecture'] = 'x64'
+
+            return PlugIn(dict_x64)
+
+        except KeyError, e:
+
+            logging.warning('are we in testing mode? ({0})'.format(e))
+
+            self.agnostic
 
     @property
     def agnostic(self):

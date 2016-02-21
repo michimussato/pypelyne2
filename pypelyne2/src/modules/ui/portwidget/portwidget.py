@@ -6,28 +6,43 @@ import cPickle
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
 import pypelyne2.src.modules.ui.porthover.porthover as porthover
-import pypelyne2.src.parser.parse_outputs as parse_outputs
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.parser.parse_outputs as parse_outputs
 
 
 # http://trevorius.com/scrapbook/python/pyqt-multiple-inheritance/
 class Port(uuidobject.UuidObject, QtGui.QGraphicsItem):
 
-    def __init__(self, node_object=None, output_object=None, port_id=None):
+    def __init__(self,
+                 puppeteer,
+                 node_object=None,
+                 output_object=None,
+                 port_id=None):
         super(Port, self).__init__(object_type='port', object_id=port_id)
 
         self.node_object = node_object
 
-        # self.uuid = port_id or str(uuid.uuid4())
+        # self.scene = scene
+
+        self.puppeteer = puppeteer
 
         self.setAcceptsHoverEvents(True)
 
         self.color_item = QtGui.QColor(255, 0, 0)
 
+        # self.output_object = output_object
+
+        # print dir(self.output_object)
+
+        # print 'output_object =', output_object
+        # print dir(output_object)
+        #
+        # print 'here'
+
         self.output_object = output_object or parse_outputs.get_outputs()[random.randint(0, len(parse_outputs.get_outputs())-1)]
 
-        self.pixmap = compositeicon.CompositeIconOutput(self.output_object).output_icon
+        self.pixmap = compositeicon.CompositeIconOutput(output=self.output_object).output_icon
 
         self.hovered = False
 
@@ -92,19 +107,26 @@ class Port(uuidobject.UuidObject, QtGui.QGraphicsItem):
 
         painter.drawEllipse(self.rect)
 
+    # @property
+    # def sorter(self):
+    #     sort_attr = getattr(self.output_object, SETTINGS.SORT_OUTPUTS)
+    #     print 'sort_attr', sort_attr
+    #     return SETTINGS.SORT_OUTPUTS
+
 
 class Output(Port):
 
-    def __init__(self, node_object=None, output_object=None, port_id=None):
-        super(Output, self).__init__(node_object, output_object, port_id)
+    def __init__(self, puppeteer, node_object=None, output_object=None, port_id=None):
+        super(Output, self).__init__(puppeteer=puppeteer,
+                                     node_object=node_object,
+                                     output_object=output_object,
+                                     port_id=port_id)
 
         self.node_object = node_object
 
         self.downstream_ports = []
 
         self.downstream_connections = []
-
-
 
         self.widget_title.label_title_edit.returnPressed.connect(self.update_title)
 
@@ -284,10 +306,11 @@ class Output(Port):
 
 class Input(Port):
     # TODO: fix inheritance structure
-    def __init__(self, node_object=None, output_object=None, port_id=None, start_item=None):
-        super(Input, self).__init__(node_object, output_object, port_id)
+    def __init__(self, puppeteer, node_object=None, output_object=None, port_id=None, start_item=None):
 
-        self.node_object = node_object
+        super(Input, self).__init__(puppeteer=puppeteer,
+                                    output_object=output_object,
+                                    port_id=port_id)
 
         self.upstream_port = start_item
 
@@ -297,7 +320,11 @@ class Input(Port):
         self.widget_title = porthover.InputHover(self.output_object)
         self.add_ui_elements()
 
-        print self.upstream_port.widget_title.label_title.text()
+        self.node_object = node_object
+
+        self.setParentItem(self.node_object)
+
+        # print self.upstream_port.widget_title.label_title.text()
 
         self.set_label(name=self.upstream_port.widget_title.label_title.text())
 
@@ -325,7 +352,7 @@ class Input(Port):
         self.widget_title_proxy.setMaximumWidth(16777215.0)
 
         self.widget_title.setVisible(True)
-        
+
         self.widget_title_proxy.adjustSize()
 
         self.set_label_pos()
@@ -464,3 +491,83 @@ class Input(Port):
         self.setOpacity(opacity)
         for upstream_connection in self.upstream_connections:
             upstream_connection.setOpacity(opacity)
+
+
+# class AssetInput(Port):
+#     def __init__(self, puppeteer, container=None, node_object=None, output_object=None, port_id=None, start_item=None):
+#
+#         super(AssetInput, self).__init__(puppeteer=puppeteer,
+#                                          output_object=output_object,
+#                                          port_id=port_id)
+#
+#         self.container = container
+#
+#         self.upstream_port = start_item
+#
+#         # there can only be one, but maybe we can inherit...
+#         self.upstream_connections = []
+#
+#         self.widget_title = porthover.InputHover(self.output_object)
+#         self.add_ui_elements()
+#
+#         self.node_object = node_object
+#
+#         self.setParentItem(self.node_object)
+#
+#         self.set_label(name='{0}.{1}.{2}'.format(self.container.object_id,
+#                                                  self.node_object,
+#                                                  self.output_object))
+#
+#     def set_label_pos(self):
+#         self.widget_title_proxy.setPos(SETTINGS.OUTPUT_RADIUS/2+SETTINGS.OUTPUT_SPACING,
+#                                        0-SETTINGS.OUTPUT_RADIUS/2)
+#
+#     @property
+#     def output_label(self):
+#
+#         # print dir()
+#         # print dir(self.node_object)
+#         # print dir(self.output_object)
+#
+#         # upstream_node_name = self.upstream_port.node_object.widget_title.label_title.text()
+#         # upstream_output_name = self.upstream_port.widget_title.label_title.text()
+#         # return '{0}.{1}'.format(upstream_node_name, upstream_output_name)
+#         return '{0}.{1}.{2}'.format(self.container.object_id,
+#                                     self.node_object,
+#                                     self.output_object)
+#
+#     def hoverEnterEvent(self, event):
+#         logging.info('hoverEnterEvent on Input ({0})'.format(self))
+#
+#         self.hovered = True
+#         self.upstream_port.hovered = True
+#         for upstream_connection in self.upstream_connections:
+#             upstream_connection.hovered = True
+#
+#         self.widget_title.label_title.setText(self.output_label)
+#
+#         self.widget_title_proxy.setMaximumHeight(16777215.0)
+#         self.widget_title_proxy.setMaximumWidth(16777215.0)
+#
+#         self.widget_title.setVisible(True)
+#
+#         self.widget_title_proxy.adjustSize()
+#
+#         self.set_label_pos()
+#
+#         return QtGui.QGraphicsItem.hoverEnterEvent(self, event)
+#
+#     def hoverLeaveEvent(self, event):
+#         logging.info('hoverLeaveEvent on Input ({0})'.format(self))
+#
+#         self.hovered = False
+#         self.upstream_port.hovered = False
+#         for upstream_connection in self.upstream_connections:
+#             upstream_connection.hovered = False
+#
+#         self.widget_title_proxy.setMaximumHeight(0.0)
+#         self.widget_title_proxy.setMaximumWidth(0.0)
+#
+#         self.widget_title.setVisible(SETTINGS.DISPLAY_OUTPUT_NAME)
+#
+#         return QtGui.QGraphicsItem.hoverLeaveEvent(self, event)

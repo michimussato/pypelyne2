@@ -29,7 +29,7 @@ class CompositeIconContainer(QtGui.QPixmap):
 
 
 class CompositeIconOutput(QtGui.QPixmap):
-    def __init__(self, output=None, *__args):
+    def __init__(self, output, *__args):
         super(CompositeIconOutput, self).__init__(*__args)
 
         self.output = output

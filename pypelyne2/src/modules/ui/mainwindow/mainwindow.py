@@ -26,26 +26,23 @@ class MainWindow(QtGui.QMainWindow):
 
         self.graphicssview_stage = graphicsview_stage.GraphicsViewStage(puppeteer=self.puppeteer)
 
+        self.puppeteer.set_main_scene(scene=self.graphicssview_stage.scene_object_containers)
+
         self.dock_widget_plugins = dockwidget_plugins.DockWidgetPlugins(mainwindow=self)
         self.dock_widget_output_channels = dockwidget_output_channels.DockWidgetOutputChannels(mainwindow=self)
         self.resource_bar_widget = dockwidget_resourcebar.DockWidgetResourceBar(mainwindow=self)
         self.dock_widget_containers = dockwidget_containers.DockWidgetContainers(mainwindow=self)
 
-        if SETTINGS.SHOW_PLUGINS:
-            self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_plugins)
-        if SETTINGS.SHOW_OUTPUT_CHANNELS:
-            self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock_widget_output_channels)
+        if SETTINGS.SHOW_CONTAINERS:
+            self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.dock_widget_containers)
         if SETTINGS.SHOW_RESOURCES:
             self.addDockWidget(QtCore.Qt.LeftDockWidgetArea, self.resource_bar_widget)
-        if SETTINGS.SHOW_CONTAINERS:
-            self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock_widget_containers)
-
-        # if SETTINGS.SHOW_PLAYER:
-        #     pass
+        if SETTINGS.SHOW_PLUGINS:
+            self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock_widget_plugins)
+        if SETTINGS.SHOW_OUTPUT_CHANNELS:
+            self.addDockWidget(QtCore.Qt.RightDockWidgetArea, self.dock_widget_output_channels)
 
         self.setCentralWidget(self.graphicssview_stage)
-
-        # self.graphicssview_stage.scene.addRect(QtCore.QRectF(0, 0, 512, 512), QtCore.Qt.red)
 
         if SETTINGS.SPLASH:
             self.splash.finish(self.splash)
@@ -54,15 +51,3 @@ class MainWindow(QtGui.QMainWindow):
         self.splash = QtGui.QSplashScreen(QtGui.QPixmap(SETTINGS.SPLASH_ICON), QtCore.Qt.WindowStaysOnTopHint)
         self.splash.setMask(self.splash.mask())
         self.splash.show()
-
-    # def resizeEvent(self, event):
-    #     print event
-    #     # self.graphicssview_stage.setScen
-    #     self.graphicssview_stage.setSceneRect(0, 0, self.graphicssview_stage.width(), self.graphicssview_stage.height())
-    #     # print self.graphicssview_stage.sceneRect().width()
-    #     # print self.graphicssview_stage.sceneRect().height()
-    #
-    #     print self.graphicssview_stage.rect()
-    #
-    #     # self.graphicssview_stage.scene.setSceneRect(self.graphicssview_stage.rect())
-    #     self.graphicssview_stage.scene.base_rect.setRect(QtCore.QRectF(self.graphicssview_stage.rect()))

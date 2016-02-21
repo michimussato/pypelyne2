@@ -1,22 +1,13 @@
-# import os
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
-# import PyQt4.uic as uic
 import logging
-import random
 import cPickle
 import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
-import pypelyne2.src.modules.ui.graphicsscene.graphicsscenenodes as graphicsscenenodes
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.parser.parse_containers as parse_containers
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.modules.containercore.containercore as containercore
-import pypelyne2.src.modules.ui.containerdroparea.containerdroparea as containerdroparea
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
-# import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
-# import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
-# import pypelyne2.src.modules.ui.connection.connection as connection
 
 
 # class ContainterUIWidgetTitle(nodeui.WidgetNode):
@@ -77,9 +68,13 @@ class Input(uuidobject.UuidObject, QtGui.QGraphicsEllipseItem):
 
         self.container_object = self.container.container
 
+        # self.upstream_containers = []
+
         self.pixmap = compositeicon.CompositeIconOutput(self.container_object).output_icon
 
         self.setParentItem(self.container)
+
+        self.inputs = []
 
         self.setAcceptHoverEvents(True)
 
@@ -109,6 +104,9 @@ class Output(uuidobject.UuidObject, QtGui.QGraphicsEllipseItem):
         self.pixmap = compositeicon.CompositeIconOutput(self.container_object).output_icon
 
         self.setParentItem(self.container)
+
+        # self.outputs = []
+        self.outputs = set()
 
         self.setAcceptHoverEvents(True)
 
@@ -180,33 +178,20 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
     """This is the actual asset container."""
 
-    def __init__(self, puppeteer, position=QtCore.QPoint(0, 0), container=None, scene_object=None):
+    def __init__(self, puppeteer, container_object, main_scene, position=QtCore.QPoint(0, 0)):
 
-        super(ContainerUI, self).__init__()
+        super(ContainerUI, self).__init__(puppeteer=puppeteer,
+                                          container_object=container_object,
+                                          main_scene=main_scene)
 
         reload(SETTINGS)
 
-        self.puppeteer = puppeteer
-        
-        # this is the main scene of the mainwindow. maybe rename to
-        # something like main_scene or project scene and apply
-        # this name globally
-        self.scene_object = scene_object
-
-        self.view_object = self.scene_object.view_object
-
-        self.nodes_scene = graphicsscenenodes.GraphicsSceneNodes(puppeteer=self.puppeteer,
-                                                                 view_object=self.view_object, container_object=self)
-
-        self.navigator_nodes = navigator.Navigator(scene_object=self.nodes_scene,
-                                                   view_object=self.scene_object.view_object)
-
-        self.container = container or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
+        self.navigator_nodes = navigator.Navigator(scene_object=self.container_scene,
+                                                   view_object=self.main_scene.view_object)
 
         self.rect = QtCore.QRectF()
 
-        self.drop_area = containerdroparea.ContainerDropArea(puppeteer=self.puppeteer,
-                                                             container_object=self)
+        # self.upstream_containers = []
 
         self.setFlags(self.ItemIsSelectable | self.ItemIsMovable)
 
@@ -218,15 +203,6 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         self.hovered = False
 
-        self.container_output_channels = []
-        self.container_input_channels = []
-
-        self.child_nodes = []
-        self.output_list = []
-        self.input_list = []
-
-        # self.connections = []
-
         self.widget = QtGui.QWidget()
         self.widget_proxy = qgraphicsproxywidgetnowheel.QGraphicsProxyWidgetNoWheel()
 
@@ -235,6 +211,9 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.text_label = QtGui.QGraphicsTextItem()
         self.text_label.setParentItem(self)
 
+        self.text_connected_containers = QtGui.QGraphicsTextItem()
+        self.text_connected_containers.setParentItem(self)
+
         self.text_inputs = QtGui.QGraphicsTextItem()
         self.text_inputs.setParentItem(self)
 
@@ -242,11 +221,11 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
         self.text_outputs.setParentItem(self)
 
         self.input_port = Input(container=self)
-        self.inputs = []
+        # self.inputs = []
         # self.input_port.setParentItem(self)
         # self.input_port.setToolTip()
         self.output_port = Output(container=self)
-        self.outputs = [self.output_port]
+        self.outputs.append(self.output_port)
         # self.output_port.setParentItem(self)
         # self.rect_port = QtCore.QRectF()
 
@@ -288,11 +267,11 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         pass
 
-    def create_node(self, plugin):
-
-        """Create a new node inside self (NodeUI)"""
-
-        pass
+    # def create_node(self, plugin):
+    #
+    #     """Create a new node inside self (NodeUI)"""
+    #
+    #     pass
 
     def add_node(self, node):
 
@@ -300,27 +279,75 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         pass
 
+    # def update_inputs_source_area(self):
+    #
+    #     self.container_scene.output_area.inputs
+    #
+    #     for upstream_container in self.upstream_containers:
+    #         # print upstream_container.output_port
+    #         # for output in upstream_container.output_port.outputs:
+    #         #     print dir(output)
+    #         # print upstream_container.container_scene.output_area.inputs
+    #         for input_item in upstream_container.container_scene.output_area.inputs:
+    #
+    #             print dir(input_item)
+    #
+    #             self.puppeteer.create_asset_input(container=self,
+    #                                               start_port_id=input_item.object_id)
+    #
+    #             # self.container_scene.input_area.add_output(input_item.output_object, input_item.object_id)
+    #
+    #             # add_output
+    #
+    #         # print upstream_container.output_port.outputs
+    #
+    #     # print self.inputs
+    #
+    #     # print 'herereere'
+    #     # for upstream_container in self.upstream_containers:
+    #     #     print upstream_container
+    #     #     print upstream_container.output_port.outputs
+    #
+    #     # print 'herereere', self.input_port.inputs
+    #     # for input in self.outputs:
+
+
     def update_label(self):
+
+        # print 'container inputs  =', self.input_port.inputs
+        # print 'container outputs =', self.output_port.outputs
 
         """updates the labels of the ContainerUI (name, inputs, outputs)"""
 
-        if bool(self.container_output_channels):
+        if bool(self.output_port.outputs):
             self.output_port.setBrush(self.container_color_item.lighter(SETTINGS.LIGHTER_AMOUNT))
             self.output_port.setCursor(QtGui.QCursor(QtCore.Qt.OpenHandCursor))
         else:
             self.output_port.setBrush(self.container_color_item.darker(SETTINGS.DARKER_AMOUNT))
             self.output_port.setCursor(QtGui.QCursor(QtCore.Qt.ForbiddenCursor))
 
-        if bool(self.container_input_channels):
+        if bool(self.input_port.inputs):
             self.input_port.setBrush(self.container_color_item.lighter(SETTINGS.LIGHTER_AMOUNT))
         else:
             self.input_port.setBrush(self.container_color_item.darker(SETTINGS.DARKER_AMOUNT))
 
         self.text_label.setPlainText('{0} (name: {1})'.format(self.container.type, self.name_string))
-        self.text_inputs.setPlainText('inputs: {0}'.format(len(self.container_input_channels)))
-        self.text_outputs.setPlainText('outputs: {0}'.format(len(self.container_output_channels)))
-        self.text_inputs.setY(self.text_label.boundingRect().height())
-        self.text_outputs.setY(self.text_label.boundingRect().height() + self.text_inputs.boundingRect().height())
+        self.text_connected_containers.setPlainText('upstream containers: {0}'.format(len(self.upstream_containers)))
+
+        length = 0
+
+        for upstream_container in self.upstream_containers:
+
+            length += len(upstream_container.output_port.outputs)
+
+            # for output in upstream_container.output_port.outputs:
+            #     le
+
+        self.text_inputs.setPlainText('inputs: {0}'.format(length))
+        self.text_outputs.setPlainText('outputs: {0}'.format(len(self.output_port.outputs)))
+        self.text_connected_containers.setY(self.text_label.boundingRect().height())
+        self.text_inputs.setY(self.text_label.boundingRect().height() + self.text_connected_containers.boundingRect().height())
+        self.text_outputs.setY(self.text_label.boundingRect().height() + self.text_connected_containers.boundingRect().height() + self.text_inputs.boundingRect().height())
         # self.text_inputs.setY(self.text_label.boundingRect().height())
         # for container_output_channel in self.container_output_channels:
         #     position = QtCore.QPointF(self.boundingRect().width(),
@@ -339,7 +366,7 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
 
         self.drop_area.setRect(self.boundingRect())
 
-        print self.drop_area.rect()
+        # print self.drop_area.rect()
 
     # def boundingRect(self):
     #     return self.rect
@@ -421,11 +448,11 @@ class ContainerUI(containercore.ContainerCore, QtGui.QGraphicsItem):
     def mouseDoubleClickEvent(self, event):
         logging.info('mouseDoubleClickEvent on ContainerUI ({0})'.format(self))
 
-        self.scene_object.view_object.setScene(self.nodes_scene)
+        self.main_scene.view_object.setScene(self.container_scene)
 
-        self.nodes_scene.output_area.adjust_container()
-        self.nodes_scene.input_area.adjust_container()
-        self.nodes_scene.label_area.adjust_container()
+        self.container_scene.output_area.resize()
+        self.container_scene.input_area.adjust_container()
+        self.container_scene.label_area.adjust_container()
 
         return QtGui.QGraphicsItem.mouseDoubleClickEvent(self, event)
 

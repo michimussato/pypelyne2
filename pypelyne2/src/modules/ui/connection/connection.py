@@ -9,6 +9,8 @@ class Connection(QtGui.QGraphicsPathItem):
 
         self.scene_object = scene_object
 
+        self.scene_object.addItem(self)
+
         self.path_item = None
         self.path_color = None
         self.node_output = False

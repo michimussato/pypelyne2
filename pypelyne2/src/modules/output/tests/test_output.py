@@ -17,3 +17,7 @@ class OutputTester(unittest.TestCase):
 
         for attribute in self.attributes:
             print '%s = %s' % (attribute, getattr(self.outputs[1], attribute))
+
+    def test_all_outputs(self):
+        for i in self.outputs:
+            print i.icon

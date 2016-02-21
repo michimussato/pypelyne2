@@ -1,10 +1,7 @@
 import cPickle
 import logging
-# import random
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
-# import pypelyne2.src.parser.parse_containers as parse_containers
-# import pypelyne2.src.modules.ui.containerui.containerui as containerui
 import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
@@ -59,7 +56,11 @@ class GraphicsSceneContainer(QtGui.QGraphicsScene):
 
             logging.info('{0} dropped onto canvas (drop event accepted)'.format(unpickled_container_object))
 
-            self.puppeteer.create_container(scene=self, container=unpickled_container_object, position=pos)
+            # print self
+
+            self.puppeteer.create_container(scene=self,
+                                            container_object=unpickled_container_object,
+                                            position=pos)
 
         else:
             return QtGui.QGraphicsScene.dropEvent(self, event)

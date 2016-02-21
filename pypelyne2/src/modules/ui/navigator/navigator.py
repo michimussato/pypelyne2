@@ -32,14 +32,18 @@ class Navigator(QtGui.QGraphicsItem):
                                                 SETTINGS.NAVIGATOR_G*255,
                                                 SETTINGS.NAVIGATOR_B*255,
                                                 SETTINGS.NAVIGATOR_ALPHA*255)
+
             color_screen_rect = QtGui.QColor(255-SETTINGS.NAVIGATOR_R*255,
                                              255-SETTINGS.NAVIGATOR_G*255,
                                              255-SETTINGS.NAVIGATOR_B*255,
                                              SETTINGS.NAVIGATOR_ALPHA*255)
+
             brush_navigator_rect = QtGui.QBrush(color_screen_rect)
             brush_screen_rect = QtGui.QBrush(color_navigator_rect)
             self.screen_representation.setBrush(brush_navigator_rect)
             self.scene_representation.setBrush(brush_screen_rect)
+
+            self.adjust_navigator()
 
         else:
             return

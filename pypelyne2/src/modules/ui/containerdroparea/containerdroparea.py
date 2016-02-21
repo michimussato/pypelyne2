@@ -1,16 +1,15 @@
-import uuid
 import cPickle
 import logging
 import PyQt4.QtGui as QtGui
 
 
 class ContainerDropArea(QtGui.QGraphicsRectItem):
-    def __init__(self, puppeteer, container_object):
+    def __init__(self, puppeteer, container_core):
         super(ContainerDropArea, self).__init__()
 
         self.puppeteer = puppeteer
 
-        self.container = container_object
+        self.container = container_core
 
         # self.allowed = True
 
@@ -110,15 +109,14 @@ class ContainerDropArea(QtGui.QGraphicsRectItem):
 
             unpickled_output_object = cPickle.loads(data)
 
-            print unpickled_output_object[u'output_graphicsitem_uuid']
-            print self.container.output_port.object_id
-            print dir(unpickled_output_object)
+            new_input = self.puppeteer.add_input_container(scene=self.container.main_scene,
+                                                           port_id=unpickled_output_object[u'output_graphicsitem_uuid'],
+                                                           end_item=self.container.input_port)
 
-            # self.scene
-
-            self.puppeteer.add_input_container(scene=self.container.scene_object,
-                                               port_id=unpickled_output_object[u'output_graphicsitem_uuid'],
-                                               end_item=self.container.input_port)
+            if new_input != 0:
+                new_connection = self.puppeteer.add_connection_container(start_port_id=unpickled_output_object[u'output_graphicsitem_uuid'],
+                                                                         end_item=self.container.input_port,
+                                                                         scene=self.container.main_scene)
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)

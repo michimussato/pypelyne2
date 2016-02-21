@@ -97,8 +97,9 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
             logging.info('{0}/{1} --> {2}'.format(unpickled_output_object.output,
                                                   unpickled_output_object.abbreviation,
                                                   self.node))
-            self.node.add_output(output_object=unpickled_output_object,
-                                 port_id=str(uuid.uuid4()))
+
+            new_output = self.puppeteer.create_output(node=self.node,
+                                                      output_object=unpickled_output_object)
 
         elif event.mimeData().hasFormat('nodeoutput/draggable-output'):
             event.accept()
@@ -108,14 +109,19 @@ class NodeDropArea(QtGui.QGraphicsRectItem):
 
             unpickled_output_object = cPickle.loads(data)
 
-            print unpickled_output_object
+            # start_item = self.puppeteer.find_output_graphics_item(scene=self.scene(),
+            #                                                       port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
 
-            # self.scene
+            new_input = self.puppeteer.create_input(scene=self.scene(),
+                                                    node=self.node,
+                                                    output_object=unpickled_output_object[u'output_object'],
+                                                    start_port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
 
-            self.puppeteer.add_input(scene=self.node.scene_object,
-                                     node=self.node,
-                                     output_object=unpickled_output_object[u'output_object'],
-                                     port_id=unpickled_output_object[u'output_graphicsitem_uuid'])
+            if new_input != 0:
+
+                new_connection = self.puppeteer.add_connection(scene=self.scene(),
+                                                               start_port_id=unpickled_output_object[u'output_graphicsitem_uuid'],
+                                                               end_item=new_input)
 
         else:
             return QtGui.QGraphicsRectItem.dropEvent(self, event)

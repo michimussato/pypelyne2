@@ -1,6 +1,7 @@
 import os
 import logging
 import random
+import operator
 import PyQt4.QtGui as QtGui
 import PyQt4.QtCore as QtCore
 import PyQt4.uic as uic
@@ -10,8 +11,8 @@ import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidget
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.parser.parse_plugins as parse_plugins
 # import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
-import pypelyne2.src.modules.ui.portwidget.portwidget as output
-import pypelyne2.src.modules.ui.connection.connection as connection
+# import pypelyne2.src.modules.ui.portwidget.portwidget as output
+# import pypelyne2.src.modules.ui.connection.connection as connection
 import pypelyne2.src.modules.ui.nodedroparea.nodedroparea as nodedroparea
 import pypelyne2.src.modules.ui.labelcollapseexpand.labelcollapseexpand as labelcollapseexpand
 import pypelyne2.src.modules.ui.labelgif.labelgif as labelgif
@@ -134,6 +135,8 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
         reload(SETTINGS)
 
         self.scene_object = scene_object
+
+        # print '...', self.scene_object
 
         self.plugin = plugin or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x64
         self.compositor = compositeicon.CompositeIcon(self.plugin)
@@ -260,13 +263,13 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
     #
     #     self.resize()
 
-    def add_output(self, output_object=None, port_id=None):
-        port = output.Output(node_object=self,
-                             output_object=output_object,
-                             port_id=port_id)
-        self.outputs.append(port)
-        port.setParentItem(self)
-        self.resize()
+    # def add_output(self, output_object=None, port_id=None):
+    #     port = output.Output(node_object=self,
+    #                          output_object=output_object,
+    #                          port_id=port_id)
+    #     self.outputs.append(port)
+    #     port.setParentItem(self)
+    #     self.resize()
 
     def update_title(self, init=False):
         title = self.widget_title.label_title
@@ -663,7 +666,9 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
         painter.drawRoundedRect(self.rect, SETTINGS.NODE_ROUNDNESS, SETTINGS.NODE_ROUNDNESS)
 
     def arrange_outputs(self):
+
         for output_item in self.outputs:
+
             if self.widget_elements.widget_comboboxes.isVisible():
                 position = QtCore.QPointF(self.boundingRect().width(),
                                           (self.outputs.index(output_item)*(SETTINGS.OUTPUT_RADIUS+SETTINGS.OUTPUT_SPACING))+self.widget_title.height())

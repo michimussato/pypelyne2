@@ -36,9 +36,9 @@ class GraphicsViewStage(graphicsview.GraphicsView):
         scene = self.scene()
 
         if scene != self.scene_object_containers:
-            scene.output_area.adjust_container()
-            scene.input_area.adjust_container()
-            scene.label_area.adjust_container()
+            scene.output_area.resize()
+            scene.input_area.resize()
+            scene.label_area.resize()
 
     def set_container_scene(self):
         self.setScene(self.scene_object_containers)
@@ -108,6 +108,7 @@ class GraphicsViewStage(graphicsview.GraphicsView):
             return QtGui.QGraphicsView.wheelEvent(self, event)
 
     def resizeEvent(self, event):
+
         logging.info('resizeEvent on {0}'.format(self))
         self.setSceneRect(0, 0, self.width(), self.height())
         self.scene().base_rect.setRect(QtCore.QRectF(self.rect()))

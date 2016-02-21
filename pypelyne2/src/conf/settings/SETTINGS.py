@@ -46,6 +46,11 @@ SORT_ROLES_REVERSE = False
 SORT_CONTAINERS = 'type'
 SORT_CONTAINERS_REVERSE = False
 
+SORT_NODE_PORTS_PRIMARY = 'output_object.output'
+# SORT_NODE_PORTS_SECONDARY = 'node_object.object_id'
+SORT_NODE_PORTS_REVERSE = False
+# SORT_NODE_PORTS_USE_SECONDARY = True
+
 PYPELYNE2_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(here)))
 QSS_ENABLE = False
 QSS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'qss')
