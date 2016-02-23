@@ -84,7 +84,14 @@ class ScreenGrabber(QtCore.QObject):
         if not self.snap_shots.queue.empty():
             self.snap_shots.queue.get(0)
 
-            self.px = QtGui.QPixmap.grabWindow(QtGui.QApplication.desktop().winId())
+            # http://www.qtforum.org/article/26719/how-to-screen-capture-of-secondary-screen-and-display.html
+
+            screen = QtGui.QApplication.desktop()
+            window_id = screen.winId()
+
+            self.px = QtGui.QPixmap.grabWindow(window_id, 0, 0, screen.width(), screen.height())
+
+            # self.px = QtGui.QPixmap.grabWindow(QtGui.QApplication.desktop().winId())
 
             # TODO: Can we do multiple screens here?
             # print dir(QtGui.QApplication.desktop().screen())
