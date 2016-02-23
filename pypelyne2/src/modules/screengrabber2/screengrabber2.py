@@ -89,18 +89,15 @@ class ScreenGrabber(QtCore.QObject):
             screen = QtGui.QApplication.desktop()
             window_id = screen.winId()
 
-            self.px = QtGui.QPixmap.grabWindow(window_id, 0, 0, screen.width(), screen.height())
-
-            # self.px = QtGui.QPixmap.grabWindow(QtGui.QApplication.desktop().winId())
-
-            # TODO: Can we do multiple screens here?
-            # print dir(QtGui.QApplication.desktop().screen())
-            # print QtGui.QApplication.desktop().screenCount()
+            self.px = QtGui.QPixmap.grabWindow(window_id, screen.x(), screen.y(), screen.width(), screen.height())
 
             if SETTINGS.CURSOR:
 
                 painter = QtGui.QPainter(self.px)
-                painter.drawPixmap(QtGui.QCursor.pos(), self.arrow)
+
+                cursor_point = QtCore.QPoint(QtGui.QCursor.pos().x()-screen.x(), QtGui.QCursor.pos().y()-screen.y())
+
+                painter.drawPixmap(cursor_point, self.arrow)
 
             new_image = self.px.scaled(self.px.size()*SETTINGS.SCALE_FACTOR,
                                        QtCore.Qt.KeepAspectRatio,
