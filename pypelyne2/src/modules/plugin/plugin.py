@@ -1,7 +1,7 @@
 # import pypelyne2.src.modules.api.abc_plugin as plugin
 # http://www.sphinx-doc.org/en/stable/ext/example_numpy.html#example-numpy
 import logging
-import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+# import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 # class PlugIn(plugin.PlugIn):
@@ -77,15 +77,7 @@ class PlugIn(object):
 
         """
 
-        # this try/except statement is only here for testing
-        # i.e. test_containerui collects a random plugin
-        # if this plugin has no executable_x32, it'll
-        # error. to prevent this, it tries to get the
-        # x64 equivalent. this is not supposed to happen
-        # if pypelyne is human controlled.
-
-        try:
-
+        if self.plugin_dict[u'type'] == 'standalone' and not self.plugin_dict[u'architecture_agnostic']:
             dict_x32 = self.plugin_dict
             dict_x32[u'executable'] = dict_x32[u'executable_x32']
             dict_x32[u'flags'] = dict_x32[u'flags_x32']
@@ -94,11 +86,13 @@ class PlugIn(object):
 
             return PlugIn(dict_x32)
 
-        except KeyError, e:
+        else:
 
-            logging.warning('are we in testing mode? ({0})'.format(e))
+            logging.warning('plugin {0} has no x32 represention ({1}/{2})'.format(self,
+                                                                                  self.plugin_dict[u'label'],
+                                                                                  self.plugin_dict[u'type']))
 
-            self.x64
+            return None
 
     @property
     def x64(self):
@@ -115,9 +109,7 @@ class PlugIn(object):
             Assembles a 64bits object version of self and returns the new object.
 
         """
-
-        try:
-
+        if self.plugin_dict[u'type'] == 'standalone' and not self.plugin_dict[u'architecture_agnostic']:
             dict_x64 = self.plugin_dict
             dict_x64[u'executable'] = dict_x64[u'executable_x64']
             dict_x64[u'flags'] = dict_x64[u'flags_x64']
@@ -126,11 +118,41 @@ class PlugIn(object):
 
             return PlugIn(dict_x64)
 
-        except KeyError, e:
+        else:
 
-            logging.warning('are we in testing mode? ({0})'.format(e))
+            logging.warning('plugin {0} has no x64 represention ({1}/{2})'.format(self,
+                                                                                  self.plugin_dict[u'label'],
+                                                                                  self.plugin_dict[u'type']))
 
-            self.agnostic
+            return None
+
+    @property
+    def rand_arch(self):
+
+        if self.plugin_dict[u'type'] == 'standalone':
+
+            if 'executable_x32' in self.plugin_dict or 'executable_x64' in self.plugin_dict:
+
+                dict_rand_arch = self.plugin_dict
+                if dict_rand_arch[u'executable_x32'] is not None:
+                    self.x32
+
+                elif dict_rand_arch[u'executable_x64'] is not None:
+                    self.x64
+
+                # return PlugIn(dict_rand_arch)
+
+            # else:
+            #
+            #     logging.error('plugin {0} has neither executable_x32 nor executable_x64 key'.format(self))
+
+        else:
+
+            logging.warning('plugin {0} has no rand_arch represention ({1}/{2})'.format(self,
+                                                                                        self.plugin_dict[u'label'],
+                                                                                        self.plugin_dict[u'type']))
+
+            return None
 
     @property
     def agnostic(self):
@@ -148,12 +170,31 @@ class PlugIn(object):
 
         """
 
-        dict_agnostic = self.plugin_dict
-        # dict_agnostic[u'executable'] = dict_agnostic[u'executable_x64']
-        # dict_agnostic[u'flags'] = dict_agnostic[u'flags_x64']
-        # dict_agnostic[u'label'] = dict_agnostic[u'label_x64']
-        dict_agnostic[u'architecture'] = None
-        return PlugIn(dict_agnostic)
+        # print 'blabla'
+
+        if 'architecture_agnostic' in self.plugin_dict and self.plugin_dict[u'architecture_agnostic']:
+
+            # if self.plugin_dict[u'architecture_agnostic']:
+
+            dict_agnostic = self.plugin_dict
+            # dict_agnostic[u'executable'] = dict_agnostic[u'executable_x64']
+            # dict_agnostic[u'flags'] = dict_agnostic[u'flags_x64']
+            # dict_agnostic[u'label'] = dict_agnostic[u'label_x64']
+            dict_agnostic[u'architecture'] = None
+
+            # print 'blabla'
+
+            return PlugIn(dict_agnostic)
+
+        else:
+
+            # print self.plugin_dict
+
+            logging.warning('plugin {0} has no agnostic represention ({1}/{2})'.format(self,
+                                                                                       self.plugin_dict[u'label'],
+                                                                                       self.plugin_dict[u'type']))
+
+            return None
 
     @property
     def submitter(self):
@@ -165,9 +206,21 @@ class PlugIn(object):
         object
             Assembles a submitter object version of self and returns the new object."""
 
-        dict_submitter = self.plugin_dict
-        dict_submitter[u'executable'] = dict_submitter[u'executable']
-        dict_submitter[u'flags'] = dict_submitter[u'flags']
-        dict_submitter[u'label'] = dict_submitter[u'label']
-        dict_submitter[u'architecture'] = None
-        return PlugIn(dict_submitter)
+        if self.plugin_dict[u'type'] == 'submitter':
+
+            dict_submitter = self.plugin_dict
+            # print dict_submitter
+            dict_submitter[u'executable'] = dict_submitter[u'executable']
+            dict_submitter[u'flags'] = dict_submitter[u'flags']
+            dict_submitter[u'label'] = dict_submitter[u'label']
+            dict_submitter[u'architecture'] = None
+
+            return PlugIn(dict_submitter)
+
+        else:
+
+            logging.warning('plugin {0} has no submitter represention ({1}/{2})'.format(self,
+                                                                                        self.plugin_dict[u'label'],
+                                                                                        self.plugin_dict[u'type']))
+
+            return None

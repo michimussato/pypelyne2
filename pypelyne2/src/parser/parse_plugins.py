@@ -132,6 +132,9 @@ def parse_plugins():
                             plugin_dict[u'executable'] = executable
                         else:
                             plugin_dict[u'executable'] = None
+
+                        # plugin_dict[u'executable_x32'] = plugin_dict[u'executable']
+                        # plugin_dict[u'executable_x64'] = plugin_dict[u'executable']
                         # if executable_x64 in executable_list:
                         #     plugin_dict[u'executable_x64'] = executable_x64
                         # else:
@@ -218,14 +221,17 @@ def parse_plugins():
                                 release[u'architecture_agnostic']
                             plugin_dict[u'architecture_fallback'] = \
                                 architecture_fallback
-                            plugin_dict[u'label'] = \
-                                label_x32
-                            plugin_dict[u'label'] = \
-                                label_x64
+                            # plugin_dict[u'label'] = \
+                            #     label_x32
+                            # plugin_dict[u'label'] = \
+                            #     label_x64
+                            plugin_dict[u'label'] = label
                             plugin_dict[u'project_directories'] = \
                                 project_directories_list
                             plugin_dict[u'flags'] = \
                                 platform_item[SETTINGS.OPERATING_SYSTEM][u'flags']
+                            # plugin_dict[u'flags_x32'] = None
+                            # plugin_dict[u'flags_x64'] = None
                             # plugin_dict[u'flags_x64'] = \
                             #     platform_item[SETTINGS.OPERATING_SYSTEM][u'flags_x64']
                             plugin_dict[u'project_workspace_flag'] = \
@@ -236,6 +242,8 @@ def parse_plugins():
                                 platform_item[SETTINGS.OPERATING_SYSTEM][u'project_file_flag']
                             # if executable_x32 in executable_list:
                             plugin_dict[u'executable'] = executable
+                            # plugin_dict[u'executable_x32'] = None
+                            # plugin_dict[u'executable_x64'] = None
                             # else:
                             #     plugin_dict[u'executable_x32'] = None
                             # if executable_x64 in executable_list:
@@ -251,13 +259,13 @@ def parse_plugins():
                     elif SETTINGS.ARCHITECTURE == 'x32':
                         architecture_fallback = False
 
-                    label_x32 = str(plugin_object[u'vendor'] + ' ' +
-                                    plugin_object[u'family'] + ' ' +
-                                    release[u'release_number'] +
+                    label = str(plugin_object[u'vendor'] + ' ' +
+                                plugin_object[u'family'] + ' ' +
+                                release[u'release_number'])
+
+                    label_x32 = str(label +
                                     ' (%s)' % SETTINGS.ARCHITECTURES[SETTINGS.ARCHITECTURES.index('x32')])
-                    label_x64 = str(plugin_object[u'vendor'] + ' ' +
-                                    plugin_object[u'family'] + ' ' +
-                                    release[u'release_number'] +
+                    label_x64 = str(label +
                                     ' (%s)' % SETTINGS.ARCHITECTURES[SETTINGS.ARCHITECTURES.index('x64')])
 
                     project_directories_list = []
@@ -315,6 +323,8 @@ def parse_plugins():
                                 release[u'architecture_agnostic']
                             plugin_dict[u'architecture_fallback'] = \
                                 architecture_fallback
+                            plugin_dict[u'label'] = \
+                                label
                             plugin_dict[u'label_x32'] = \
                                 label_x32
                             plugin_dict[u'label_x64'] = \

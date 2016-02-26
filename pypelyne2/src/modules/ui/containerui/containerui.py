@@ -1,13 +1,15 @@
+import logging
+
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
-import logging
 import cPickle
-import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
-import pypelyne2.src.modules.ui.navigator.navigator as navigator
 import pypelyne2.src.modules.containercore.containercore as containercore
+import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
+import pypelyne2.src.modules.ui.navigator.navigator as navigator
+import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 
 
 # class ContainterUIWidgetTitle(nodeui.WidgetNode):

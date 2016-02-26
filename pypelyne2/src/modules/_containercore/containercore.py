@@ -1,4 +1,4 @@
-import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
+import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
 
 
 class ContainerCore(uuidobject.UuidObject):
