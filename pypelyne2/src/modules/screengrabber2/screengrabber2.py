@@ -103,11 +103,11 @@ class ScreenGrabber(QtCore.QObject):
                                        QtCore.Qt.KeepAspectRatio,
                                        QtCore.Qt.SmoothTransformation).toImage()
 
-            if not new_image == self.previous_image or not SETTINGS.ENABLE_SKIP_GAPS:
+            if not new_image == self.previous_image or not SETTINGS.ENABLE_SKIP_IDENTICAL:
 
-                new_image.save('tmp_{}_{}.{}'.format(self.now,
-                                                     str(self.capture_count).zfill(SETTINGS.PADDING),
-                                                     SETTINGS.GRABBER_FORMAT).lower(),
+                new_image.save('tmp_{0}_{1}.{2}'.format(self.now,
+                                                        str(self.capture_count).zfill(SETTINGS.PADDING),
+                                                        SETTINGS.GRABBER_FORMAT).lower(),
                                format=SETTINGS.GRABBER_FORMAT,
                                quality=SETTINGS.GRABBER_QUALITY)
 

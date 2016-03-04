@@ -159,8 +159,8 @@ SERVER_IP = ip
 SERVER_PORT = 5678
 
 # ScreenGrabber module
-FPS = 5
-CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_reddot.png')
+FPS = 10
+CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_hollowarrow.png')
 CURSOR = True
 CURSOR_SIZE = 30
 PADDING = 6
@@ -171,7 +171,7 @@ GRABBER_QUALITY = -1
 TEST_MODE = False
 TEST_LOOP = False
 TEST_TIME = 10
-ENABLE_SKIP_GAPS = True
+ENABLE_SKIP_IDENTICAL = False
 GRABBER_AUTO_START = False
 
 # MainWindow
