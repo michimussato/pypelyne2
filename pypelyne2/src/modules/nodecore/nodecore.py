@@ -1,11 +1,10 @@
-import os
-# import uuid
 import logging
-# import random
-import pypelyne2.src.modules.uuidobject.uuidobject as uuidobject
+import os
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.parser.parse_users as parse_users
+import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
 import pypelyne2.src.parser.parse_tasks as parse_tasks
+import pypelyne2.src.parser.parse_users as parse_users
 
 
 class NodeCore(uuidobject.UuidObject):

@@ -1,18 +1,43 @@
 import logging
+
+# global logging setting
+logging.basicConfig(level=logging.INFO)
+
 import socket
 import sys
 import os
 import platform
-import psutil
-import PyQt4.QtGui as QtGui
-import PyQt4.QtCore as QtCore
-import sip as sip
+
+VERSION_PYTHON = platform.python_version()
+# VERSION_QT = QtCore.QT_VERSION_STR
+# VERSION_PYQT = QtCore.PYQT_VERSION_STR
+# VERSION_SIP = sip.SIP_VERSION_STR
+
+try:
+    import psutil
+except ImportError, e:
+    logging.critical(e)
+try:
+    # VERSION_QT = None
+    # VERSION_PYQT = None
+    import PyQt4.QtGui as QtGui
+    import PyQt4.QtCore as QtCore
+    VERSION_QT = QtCore.QT_VERSION_STR
+    VERSION_PYQT = QtCore.PYQT_VERSION_STR
+except ImportError, e:
+    logging.critical(e)
+    VERSION_QT = e
+    VERSION_PYQT = e
+try:
+    import sip
+    VERSION_SIP = sip.SIP_VERSION_STR
+except ImportError, e:
+    logging.critical(e)
+    VERSION_SIP = e
 
 
 here = os.path.dirname(os.path.realpath(__file__))
 
-# global logging setting
-logging.basicConfig(level=logging.INFO)
 
 logging.info('reading settings file')
 
@@ -26,10 +51,6 @@ if sys.maxsize <= 2**32:
 elif sys.maxsize > 2**32:
     ARCHITECTURE = ARCHITECTURES[1]
 
-VERSION_PYTHON = platform.python_version()
-VERSION_QT = QtCore.QT_VERSION_STR
-VERSION_PYQT = QtCore.PYQT_VERSION_STR
-VERSION_SIP = sip.SIP_VERSION_STR
 
 SORT_PLUGINS = 'family'
 SORT_PLUGINS_REVERSE = False
@@ -159,8 +180,13 @@ SERVER_IP = ip
 SERVER_PORT = 5678
 
 # ScreenGrabber module
+<<<<<<< HEAD
 FPS = 10
 CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_hollowarrow.png')
+=======
+FPS = 2
+CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_reddot.png')
+>>>>>>> 4cadfcb1b265153bcb279172ffe27c27fd51b8e0
 CURSOR = True
 CURSOR_SIZE = 30
 PADDING = 6
@@ -189,10 +215,13 @@ SHOW_OUTPUT_CHANNELS = True
 ENABLE_CPU = True
 ENABLE_MEM = True
 ENABLE_DSK = True
-COLOR_LOW = QtGui.QColor(100, 255, 100)
-COLOR_MID = QtGui.QColor(255, 180, 100)
-COLOR_HIGH = QtGui.QColor(255, 100, 100)
-COLOR_TEXT = QtGui.QColor(0, 0, 0)
+try:
+    COLOR_LOW = QtGui.QColor(100, 255, 100)
+    COLOR_MID = QtGui.QColor(255, 180, 100)
+    COLOR_HIGH = QtGui.QColor(255, 100, 100)
+    COLOR_TEXT = QtGui.QColor(0, 0, 0)
+except Exception, e:
+    print e
 THRESHOLD_MID = 0.7
 THRESHOLD_HIGH = 0.9
 SECTION_COUNT = 10

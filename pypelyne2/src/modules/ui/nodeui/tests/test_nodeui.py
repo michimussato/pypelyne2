@@ -22,7 +22,7 @@ mainwindow.setCentralWidget(graphicssview_stage)
 plugins = parse_plugins.get_plugins()
 
 for attribute in dir(plugins[0]):
-    print '%s = %s' % (attribute, getattr(plugins[1].x64, attribute))
+    print '%s = %s' % (attribute, getattr(plugins[1].rand_arck, attribute))
 
 # node_graphics_item_x32 = nodeui.NodeUI(puppeteer=puppeteer)
 # node_graphics_item_x64 = nodegraphicsitem.NodeUI(position=QtCore.QPoint(10, 10), plugin=plugins[2].x64)

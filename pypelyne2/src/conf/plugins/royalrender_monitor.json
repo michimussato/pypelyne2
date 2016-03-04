@@ -1,0 +1,50 @@
+{
+  "family_enable": true,
+  "type": "standalone",
+  "nodeable": false,
+  "family": "RoyalRender Control",
+  "vendor": "Holger Schoenberger",
+  "abbreviation": null,
+  "releases": [
+    {
+      "release_number": "7.0.29",
+      "icon": "icon_holgerschoenberger_royalrendercontrol_7029.png",
+      "release_extension": null,
+      "project_template": null,
+      "project_workspace_template": null,
+      "project_directories": [],
+      "default_outputs": [],
+      "architecture_agnostic": true,
+      "architecture_fallback": true,
+      "platforms": [
+        {
+          "windows": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable": null,
+            "flags": []
+          }
+        },
+        {
+          "darwin": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable": "/Applications/rrFolder/bin/mac/rrControl.app/Contents/MacOS/rrControl",
+            "flags": []
+          }
+        },
+        {
+          "linux": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable": null,
+            "flags": []
+          }
+        }
+      ]
+    }
+  ]
+}
