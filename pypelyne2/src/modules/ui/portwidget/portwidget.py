@@ -1,16 +1,16 @@
+import cPickle
 import logging
 import random
 
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
-import cPickle
+import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
 
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
+import pypelyne2.src.modules.core.parser.parse_outputs as parse_outputs
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.ui.porthover.porthover as porthover
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
-import pypelyne2.src.parser.parse_outputs as parse_outputs
 
 
 # http://trevorius.com/scrapbook/python/pyqt-multiple-inheritance/
@@ -42,7 +42,8 @@ class Port(uuidobject.UuidObject, QtGui.QGraphicsItem):
         #
         # print 'here'
 
-        self.output_object = output_object or parse_outputs.get_outputs()[random.randint(0, len(parse_outputs.get_outputs())-1)]
+        self.output_object = output_object or parse_outputs.get_outputs()[random.randint(0, len(
+            parse_outputs.get_outputs()) - 1)]
 
         self.pixmap = compositeicon.CompositeIconOutput(output=self.output_object).output_icon
 

@@ -1,6 +1,6 @@
 # import unittest
 # import random
-import pypelyne2.src.parser.parse_plugins as parse_plugins
+import pypelyne2.src.modules.core.parser.parse_plugins as parse_plugins
 
 
 # class PluginTester(unittest.TestCase):

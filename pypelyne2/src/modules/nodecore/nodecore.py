@@ -1,10 +1,11 @@
 import logging
 import os
 
-import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
-import pypelyne2.src.parser.parse_tasks as parse_tasks
 import pypelyne2.src.parser.parse_users as parse_users
+
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.parse_tasks as parse_tasks
 
 
 class NodeCore(uuidobject.UuidObject):

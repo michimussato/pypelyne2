@@ -1,9 +1,10 @@
-import os
 import json
 import logging
 import operator
-import pypelyne2.src.modules.output.output as class_output
+import os
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.output.output as class_output
 
 
 def parse_outputs():

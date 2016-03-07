@@ -1,8 +1,9 @@
 import sys
-import PyQt4.QtGui as QtGui
-import pypelyne2.src.modules.ui.containerwidget.containerwidget as containerwidget
-import pypelyne2.src.parser.parse_containers as parse_containers
 
+import PyQt4.QtGui as QtGui
+
+import pypelyne2.src.modules.core.parser.parse_containers as parse_containers
+import pypelyne2.src.modules.ui.containerwidget.containerwidget as containerwidget
 
 containers = parse_containers.get_containers()
 print dir(containers[0])

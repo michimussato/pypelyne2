@@ -1,6 +1,7 @@
 import random
+
 import pypelyne2.src.modules.core.entities.entity as entity
-import pypelyne2.src.parser.parse_outputs as parse_outputs
+import pypelyne2.src.modules.core.parser.parse_outputs as parse_outputs
 
 
 class EntityTaskOutput(entity.Entity):
@@ -18,7 +19,8 @@ class EntityTaskOutput(entity.Entity):
         # str: 'uuid'
         self.entity_task_output_published = str()
 
-        self.entity_task_output_object = output_object or parse_outputs.get_outputs()[random.randint(0, len(parse_outputs.get_outputs())-1)].rand_arch
+        self.entity_task_output_object = output_object or parse_outputs.get_outputs()[random.randint(0, len(
+            parse_outputs.get_outputs()) - 1)].rand_arch
 
 
 

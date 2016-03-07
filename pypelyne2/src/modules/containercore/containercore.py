@@ -1,9 +1,10 @@
 import random
 
 import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
+
+import pypelyne2.src.modules.core.parser.parse_containers as parse_containers
 import pypelyne2.src.modules.ui.containerdroparea.containerdroparea as containerdroparea
 import pypelyne2.src.modules.ui.graphicsscene.graphicsscenenodes as graphicsscenenodes
-import pypelyne2.src.parser.parse_containers as parse_containers
 
 
 class ContainerCore(uuidobject.UuidObject):
@@ -29,7 +30,8 @@ class ContainerCore(uuidobject.UuidObject):
                                                                      view_object=self.view_object,
                                                                      container_object=self)
 
-        self.container = container_object or parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
+        self.container = container_object or parse_containers.get_containers()[random.randint(0, len(
+            parse_containers.get_containers()) - 1)]
 
         self.drop_area = containerdroparea.ContainerDropArea(puppeteer=self.puppeteer,
                                                              container_core=self)

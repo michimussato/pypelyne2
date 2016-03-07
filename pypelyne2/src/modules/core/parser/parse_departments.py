@@ -1,8 +1,9 @@
 import json
 import logging
 import operator
-import pypelyne2.src.modules.department.department as class_department
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.department.department as class_department
 
 
 def parse_departments():

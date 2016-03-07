@@ -1,8 +1,9 @@
 import sys
-import PyQt4.QtGui as QtGui
-import pypelyne2.src.modules.ui.outputwidget.outputwidget as outputwidget
-import pypelyne2.src.parser.parse_outputs as parse_outputs
 
+import PyQt4.QtGui as QtGui
+
+import pypelyne2.src.modules.core.parser.parse_outputs as parse_outputs
+import pypelyne2.src.modules.ui.outputwidget.outputwidget as outputwidget
 
 outputs = parse_outputs.get_outputs()
 print dir(outputs[0])

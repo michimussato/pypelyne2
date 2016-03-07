@@ -1,11 +1,10 @@
-import os
 import json
 import logging
-
 import operator
+import os
 
-import pypelyne2.src.modules.plugin.plugin as class_plugin
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.plugin.plugin as class_plugin
 
 
 def parse_plugins():

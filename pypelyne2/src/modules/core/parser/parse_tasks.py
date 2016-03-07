@@ -1,8 +1,9 @@
 import json
 import logging
 import operator
-import pypelyne2.src.modules.task.task as class_task
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.task.task as class_task
 
 
 def parse_tasks():

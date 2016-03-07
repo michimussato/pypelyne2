@@ -1,15 +1,17 @@
-import os
 import logging
+import os
 import random
-import operator
-import PyQt4.QtGui as QtGui
+
 import PyQt4.QtCore as QtCore
+import PyQt4.QtGui as QtGui
 import PyQt4.uic as uic
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.parse_plugins as parse_plugins
 import pypelyne2.src.modules.nodecore.nodecore as nodecore
-import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
-import pypelyne2.src.parser.parse_plugins as parse_plugins
+import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
+
 # import pypelyne2.src.modules.ui.resourcebarwidget.resourcebarwidget as resourcebarwidget
 # import pypelyne2.src.modules.ui.portwidget.portwidget as output
 # import pypelyne2.src.modules.ui.connection.connection as connection
@@ -138,7 +140,7 @@ class NodeUI(nodecore.NodeCore, QtGui.QGraphicsItem):
 
         # print '...', self.scene_object
 
-        self.plugin = plugin or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x64
+        self.plugin = plugin or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins()) - 1)].x64
         self.compositor = compositeicon.CompositeIcon(self.plugin)
 
         self.rect = QtCore.QRectF()

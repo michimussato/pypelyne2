@@ -1,6 +1,6 @@
 import unittest
-import random
-import pypelyne2.src.parser.parse_outputs as parse_outputs
+
+import pypelyne2.src.modules.core.parser.parse_outputs as parse_outputs
 
 
 class OutputTester(unittest.TestCase):

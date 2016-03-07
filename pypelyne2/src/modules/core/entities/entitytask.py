@@ -1,6 +1,7 @@
 import random
-import pypelyne2.src.parser.parse_plugins as parse_plugins
+
 import pypelyne2.src.modules.core.entities.entity as entity
+import pypelyne2.src.modules.core.parser.parse_plugins as parse_plugins
 
 
 class EntityTask(entity.Entity):
@@ -22,4 +23,5 @@ class EntityTask(entity.Entity):
         #  {task: uuid, outputs: [uuid, uuid, uuid]}]
         self.entity_task_inputs = set()
 
-        self.entity_task_plugin = plugin_object or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x32
+        self.entity_task_plugin = plugin_object or parse_plugins.get_plugins()[random.randint(0, len(
+            parse_plugins.get_plugins()) - 1)].x32

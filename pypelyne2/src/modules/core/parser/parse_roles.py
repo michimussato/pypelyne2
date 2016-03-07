@@ -1,8 +1,9 @@
 import json
 import logging
 import operator
-import pypelyne2.src.modules.role.role as class_role
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.role.role as class_role
 
 
 def parse_roles():

@@ -1,15 +1,17 @@
 import logging
-import random
 import operator
+import random
+
 import PyQt4.QtCore as QtCore
 import pypelyne2.src.parser.parse_containers as parse_containers
-import pypelyne2.src.parser.parse_plugins as parse_plugins
 import pypelyne2.src.parser.parse_outputs as parse_outputs
-import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
-import pypelyne2.src.modules.ui.containerui.containerui as containerui
-import pypelyne2.src.modules.ui.connection.connection as connection
-import pypelyne2.src.modules.ui.portwidget.portwidget as portwidget
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.parse_plugins as parse_plugins
+import pypelyne2.src.modules.ui.connection.connection as connection
+import pypelyne2.src.modules.ui.containerui.containerui as containerui
+import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui
+import pypelyne2.src.modules.ui.portwidget.portwidget as portwidget
 
 
 class Puppeteer(object):
@@ -64,7 +66,8 @@ class Puppeteer(object):
         logging.info('puppeteer.create_container() ({0})'.format(scene))
 
         if container_object == 'random':
-            container_object = parse_containers.get_containers()[random.randint(0, len(parse_containers.get_containers())-1)]
+            container_object = parse_containers.get_containers()[random.randint(0, len(
+                parse_containers.get_containers()) - 1)]
 
         container_item = containerui.ContainerUI(puppeteer=self,
                                                  position=position,
@@ -93,7 +96,7 @@ class Puppeteer(object):
 
         if plugin_object == 'random':
 
-            plugin_object = parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].x32
+            plugin_object = parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins()) - 1)].x32
 
         node_item = nodeui.NodeUI(puppeteer=self,
                                   position=position,
@@ -116,7 +119,7 @@ class Puppeteer(object):
         """Adds a new output to node"""
 
         if output_object == 'random':
-            output_object = parse_outputs.get_outputs()[random.randint(0, len(parse_outputs.get_outputs())-1)]
+            output_object = parse_outputs.get_outputs()[random.randint(0, len(parse_outputs.get_outputs()) - 1)]
 
         output = portwidget.Output(puppeteer=self,
                                    output_object=output_object,

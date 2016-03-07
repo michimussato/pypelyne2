@@ -1,9 +1,10 @@
-import os
 import json
 import logging
 import operator
-import pypelyne2.src.modules.user.user as class_user
+import os
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.user.user as class_user
 
 
 def parse_users():
