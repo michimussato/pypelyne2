@@ -1,7 +1,7 @@
 import random
 
 import pypelyne2.src.modules.core.entities.entity as entity
-import pypelyne2.src.modules.core.parser.parse_plugins as parse_plugins
+import pypelyne2.src.modules.core.parser.plugin.parse_plugins as parse_plugins
 
 
 class EntityTask(entity.Entity):
@@ -13,7 +13,8 @@ class EntityTask(entity.Entity):
 
         # the plugin associated with the task
         # self.entity_task_plugin = None
-        self.entity_task_plugin = plugin_object or parse_plugins.get_plugins()[random.randint(0, len(parse_plugins.get_plugins())-1)].rand_arch
+        self.entity_task_plugin = plugin_object or parse_plugins.get_plugins()[random.randint(0, len(
+            parse_plugins.get_plugins()) - 1)].rand_arch
 
         # the outputs belonging to this task
         self.entity_task_outputs = set()

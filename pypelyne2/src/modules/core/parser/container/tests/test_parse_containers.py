@@ -1,4 +1,4 @@
-import pypelyne2.src.modules.core.parser.parse_containers as parse_containers
+import pypelyne2.src.modules.core.parser.container.parse_containers as parse_containers
 
 
 containers = parse_containers.get_containers()

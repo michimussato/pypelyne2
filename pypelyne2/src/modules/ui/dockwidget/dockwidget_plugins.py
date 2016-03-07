@@ -2,7 +2,7 @@ import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
 
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.core.parser.parse_plugins as parse_plugins
+import pypelyne2.src.modules.core.parser.plugin.parse_plugins as parse_plugins
 import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
 import pypelyne2.src.modules.ui.pluginwidget.pluginwidget as pluginwidget
 

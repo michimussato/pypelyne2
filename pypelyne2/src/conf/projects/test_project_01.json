@@ -1,0 +1,53 @@
+{
+  "project_id": null,
+  "project_code": null,
+  "project_name": null,
+  "project_abbreviation": null,
+  "project_due": null,
+  "project_type": null,
+  "project_output": {
+    "format": {
+      "file_format": null,
+      "encoding": null,
+      "fps": null,
+      "resolution": {
+        "width": null,
+        "height": null
+      },
+      "aspect_ratio": null,
+      "pixel_aspect_ratio": null
+    }
+  },
+  "client": {
+    "company": null,
+    "address": {
+      "street": null,
+      "street_number": null,
+      "postcode": null,
+      "country": null,
+      "website": null,
+      "email": null,
+      "phone": null
+    },
+    "contacts": [
+      {
+        "name": null,
+        "role": null,
+        "contact_details": [
+          {
+            "type": "skype",
+            "value": "skype name"
+          },
+          {
+            "type": "phone",
+            "value": "0041 76 543 21 09"
+          },
+          {
+            "type": "email",
+            "value": "mail@bla"
+          }
+        ]
+      }
+    ]
+  }
+}

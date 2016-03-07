@@ -1,38 +1,38 @@
 [
   {
     "container_enable": true,
-    "type": "character",
-    "icon": "character.png",
-    "color": "#FF0000"
+    "container_type": "character",
+    "container_icon": "character.png",
+    "container_color": "#FF0000"
   },
   {
     "container_enable": true,
-    "type": "creature",
-    "icon": "creature.png",
-    "color": "#FFFF00"
+    "container_type": "creature",
+    "container_icon": "creature.png",
+    "container_color": "#FFFF00"
   },
   {
     "container_enable": true,
-    "type": "location",
-    "icon": "location.png",
-    "color": "#FF00FF"
+    "container_type": "location",
+    "container_icon": "location.png",
+    "container_color": "#FF00FF"
   },
   {
     "container_enable": true,
-    "type": "shot",
-    "icon": "shot.jpg",
-    "color": "#00FF00"
+    "container_type": "shot",
+    "container_icon": "shot.jpg",
+    "container_color": "#00FF00"
   },
   {
     "container_enable": true,
-    "type": "prop",
-    "icon": "prop.png",
-    "color": "#0000FF"
+    "container_type": "prop",
+    "container_icon": "prop.png",
+    "container_color": "#0000FF"
   },
   {
     "container_enable": true,
-    "type": "vehicle",
-    "icon": "vehicle.png",
-    "color": "#00FFFF"
+    "container_type": "vehicle",
+    "container_icon": "vehicle.png",
+    "container_color": "#00FFFF"
   }
 ]

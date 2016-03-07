@@ -2,9 +2,8 @@ import json
 import logging
 import operator
 import os
-
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.core.parser.user.user as class_user
+import pypelyne2.src.modules.core.entities.user as class_user
 
 
 def parse_users():
@@ -60,6 +59,7 @@ def get_users():
     users = parse_users()
     for user in users:
         new_user_object = class_user.User(user)
+        # print dir(new_user_object)
         user_objects.append(new_user_object)
 
     return user_objects

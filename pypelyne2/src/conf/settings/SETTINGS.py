@@ -62,10 +62,12 @@ SORT_USERS = 'name_login'
 SORT_USERS_REVERSE = False
 SORT_DEPARTMENTS = 'department'
 SORT_DEPARTMENTS_REVERSE = False
-SORT_ROLES = 'role'
+SORT_ROLES = 'role_name'
 SORT_ROLES_REVERSE = False
-SORT_CONTAINERS = 'type'
+SORT_CONTAINERS = 'container_type'
 SORT_CONTAINERS_REVERSE = False
+SORT_PROJECTS = 'project_code'
+SORT_PROJECTS_REVERSE = False
 
 SORT_NODE_PORTS_PRIMARY = 'output_object.output'
 # SORT_NODE_PORTS_SECONDARY = 'node_object.object_id'
@@ -130,6 +132,10 @@ CONTAINERS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'containers')
 CONTAINERS_FILE = os.path.join(CONTAINERS_DIR, 'containers.json')
 CONTAINERS_ICONS = os.path.join(CONTAINERS_DIR, '_icons')
 CONTAINERS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'icon_container.png')
+
+# Projects module
+PROJECTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'projects')
+PROJECTS_FILES = [x for x in os.listdir(PROJECTS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
 
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')

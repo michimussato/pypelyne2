@@ -1,15 +1,10 @@
-"""A pypi demonstration vehicle.
-
-.. moduleauthor:: Andrew Carter <andrew@invalid.com>
-
-"""
-
-import os
 import json
 import logging
 import operator
-import pypelyne2.src.modules.container.container as class_container
+import os
+
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
+import pypelyne2.src.modules.core.parser.container.container as class_container
 
 
 def parse_containers():
@@ -25,18 +20,18 @@ def parse_containers():
     with open(SETTINGS.CONTAINERS_FILE, 'r') as f:
         json_object = json.load(f)
 
-    containers = [container for container in json_object if container['container_enable']]
+    containers = [container for container in json_object if container[u'container_enable']]
 
     # for container in containers:
     #     container['entity_type'] = 'container'
 
     for container in containers:
-        if container[u'icon'] is not None:
+        if container[u'container_icon'] is not None:
             try:
-                container[u'icon'] = os.path.join(SETTINGS.CONTAINERS_ICONS, container[u'icon'])
+                container[u'container_icon'] = os.path.join(SETTINGS.CONTAINERS_ICONS, container[u'container_icon'])
             except Exception, e:
                 logging.error(e)
-                container[u'icon'] = None
+                container[u'container_icon'] = None
 
     return sorted(containers,
                   key=operator.itemgetter(SETTINGS.SORT_CONTAINERS),

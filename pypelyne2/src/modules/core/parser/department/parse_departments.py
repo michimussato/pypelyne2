@@ -55,7 +55,7 @@ def get_departments():
 
     department_objects = []
     departments = parse_departments()
-    print departments
+    # print departments
     for department in departments:
         new_department_object = class_department.Department(department)
         department_objects.append(new_department_object)

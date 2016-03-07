@@ -3,10 +3,13 @@ import uuid
 
 class Entity(object):
     def __init__(self, entity_uuid=None):
-        super(Entity, self).__init__()
+
+        # super(Entity, self).__init__()
         # the unique uuid of the entity (static once created)
         # str: 'uuid'
         self.entity_uuid = entity_uuid or str(uuid.uuid4())
+
+        # print self.entity_uuid
 
         # the name of the entity (not necessarily unique, not static)
         # str: string

@@ -2,7 +2,7 @@ import sys
 
 import PyQt4.QtGui as QtGui
 
-import pypelyne2.src.modules.core.parser.parse_plugins as parse_plugins
+import pypelyne2.src.modules.core.parser.plugin.parse_plugins as parse_plugins
 import pypelyne2.src.modules.ui.pluginwidget.pluginwidget as pluginwidget
 
 plugins = parse_plugins.get_plugins()

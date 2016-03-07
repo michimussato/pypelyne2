@@ -1,37 +1,37 @@
 [
   {
     "role_enable": true,
-    "id": "4a2a13fa-30c2-4498-8e8d-902fc3ef363f",
-    "role": "Head"
+    "role_id": "4a2a13fa-30c2-4498-8e8d-902fc3ef363f",
+    "role_name": "Head"
   },
   {
     "role_enable": true,
-    "id": "4c86f3c5-ff3f-4499-9435-725b8216449c",
-    "role": "Lead"
+    "role_id": "4c86f3c5-ff3f-4499-9435-725b8216449c",
+    "role_name": "Lead"
   },
   {
     "role_enable": true,
-    "id": "e1c33945-2fa6-4b18-b39b-b29c26301c03",
-    "role": "Senior Artist"
+    "role_id": "e1c33945-2fa6-4b18-b39b-b29c26301c03",
+    "role_name": "Senior Artist"
   },
   {
     "role_enable": true,
-    "id": "99cb0fad-cb01-40cc-ab4e-960a90523d3e",
-    "role": "Artist"
+    "role_id": "99cb0fad-cb01-40cc-ab4e-960a90523d3e",
+    "role_name": "Artist"
   },
   {
     "role_enable": true,
-    "id": "f6448cfd-497c-4b68-81f5-1d305c7df39c",
-    "role": "Junior Artist"
+    "role_id": "f6448cfd-497c-4b68-81f5-1d305c7df39c",
+    "role_name": "Junior Artist"
   },
   {
     "role_enable": true,
-    "id": "276b79eb-dbe6-45c2-82ec-3f73efcecf0f",
-    "role": "Trainee"
+    "role_id": "276b79eb-dbe6-45c2-82ec-3f73efcecf0f",
+    "role_name": "Trainee"
   },
   {
     "role_enable": true,
-    "id": "757ac2b7-fcb9-4e19-81f6-bee1729d93bd",
-    "role": "Consultant"
+    "role_id": "757ac2b7-fcb9-4e19-81f6-bee1729d93bd",
+    "role_name": "Consultant"
   }
 ]

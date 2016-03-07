@@ -1,7 +1,7 @@
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
 
-import pypelyne2.src.modules.core.parser.parse_outputs as parse_outputs
+import pypelyne2.src.modules.core.parser.output.parse_outputs as parse_outputs
 import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
 import pypelyne2.src.modules.ui.outputwidget.outputwidget as outputwidget
 

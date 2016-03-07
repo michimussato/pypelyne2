@@ -5,6 +5,29 @@ class EntityProject(entity.Entity):
     def __init__(self):
         super(EntityProject, self).__init__()
 
+        # a project should have the following information
+        #
+        # - project id/uuid
+        # - project codename
+        # - project abbreviation
+        # - client
+        # - due
+        # - progress
+        # - type
+        #   - feature
+        #   - short
+        #   - spot
+        #   - print
+        # - output
+        #   - format
+        #     - encoding
+        #     - fps
+        #     - height
+        #     - width
+        #     - aspect ratio
+        #     - pixel aspect ratio
+        #       - anamorphic
+
         # overrides of base classes
         self.entity_type = 'project'
 

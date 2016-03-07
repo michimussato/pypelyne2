@@ -1,4 +1,7 @@
-class User(object):
+import pypelyne2.src.modules.core.entities.entity as entity
+
+
+class User(entity.Entity):
 
     """Documentation for class Task(object)."""
 
@@ -10,8 +13,12 @@ class User(object):
             d (dict): dictionary with the attributes for self
         """
 
-        super(User, self).__init__()
+        # self.entity_uuid = None
+
+        super(User, self).__init__(entity_uuid='12342134123')
         self.__dict__ = d
+
+        # print self.entity_uuid
 
     @property
     def project_roles(self):
