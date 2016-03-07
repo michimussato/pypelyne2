@@ -83,15 +83,24 @@ class EntityPypelyne(object):
 
                 raise Exception, 'unknown argument'
 
+        if isinstance(self, VERSION):
 
+            version = self.version(entity_uuid=kwargs['entity_uuid'])
+            container = version.container()
 
-        version = self.version(entity_uuid=kwargs['entity_uuid'])
-        output = self.output(entity_uuid=kwargs['entity_name'])
-        task = self.task(entity_uuid=kwargs['entity_object'])
+        elif isinstance(self, OUTPUT):
 
-        container = version.container()
-        container = output.container()
-        container = task.container()
+            output = self.output(entity_uuid=kwargs['entity_name'])
+            container = output.container()
+
+        elif isinstance(self, TASK):
+
+            task = self.task(entity_uuid=kwargs['entity_object'])
+            container = task.container()
+
+        else:
+
+            raise Exception, 'object has no method "container()"'
 
         # return False if argument or self is project
         # return False if argument or self is container
