@@ -1,12 +1,7 @@
 import json
 import logging
 import operator
-<<<<<<< HEAD:pypelyne2/src/modules/core/parser/parse_plugins.py
 import os
-
-=======
-import pypelyne2.src.modules.plugin.plugin as class_plugin
->>>>>>> bf3e58274751f3e3535d49e64c09577de24094de:pypelyne2/src/parser/parse_plugins.py
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.modules.core.parser.plugin.plugin as class_plugin
 

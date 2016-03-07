@@ -23,9 +23,4 @@ class EntityTask(entity.Entity):
         # [{task: uuid, outputs: [uuid, uuid, uuid]},
         #  {task: uuid, outputs: [uuid, uuid, uuid]}]
         self.entity_task_inputs = set()
-<<<<<<< HEAD
 
-        self.entity_task_plugin = plugin_object or parse_plugins.get_plugins()[random.randint(0, len(
-            parse_plugins.get_plugins()) - 1)].x32
-=======
->>>>>>> bf3e58274751f3e3535d49e64c09577de24094de
