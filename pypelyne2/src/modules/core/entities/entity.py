@@ -1,4 +1,6 @@
 import uuid
+import logging
+import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
 class Entity(object):
@@ -7,9 +9,14 @@ class Entity(object):
         # super(Entity, self).__init__()
         # the unique uuid of the entity (static once created)
         # str: 'uuid'
-        self.entity_uuid = entity_uuid or str(uuid.uuid4())
+        try:
+            uuid_obj = uuid.UUID(entity_uuid, version=4)
+        except Exception, e:
+            uuid_obj = uuid.uuid4()
+            # print 'not valid uuid, creating random. {0}'.format(e)
+            logging.info('not a valid uuid, creating a new one. {0}'.format(e))
 
-        # print self.entity_uuid
+        self.entity_uuid = uuid_obj
 
         # the name of the entity (not necessarily unique, not static)
         # str: string
@@ -17,7 +24,7 @@ class Entity(object):
 
         # the type of the entity (task node, container node, output)
         # str: string (container, task, output, version)
-        self.entity_type = str()
+        self.entity_type = None
 
         # where does the entity live on disk
         # str: string (path)

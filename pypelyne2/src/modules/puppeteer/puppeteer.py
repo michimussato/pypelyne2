@@ -7,7 +7,7 @@ import pypelyne2.src.parser.parse_containers as parse_containers
 import pypelyne2.src.parser.parse_outputs as parse_outputs
 
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.core.parser.plugin.parse_plugins as parse_plugins
+import pypelyne2.src.modules.core.parser.resources.plugin.parse_plugins as parse_plugins
 import pypelyne2.src.modules.ui.connection.connection as connection
 import pypelyne2.src.modules.ui.containerui.containerui as containerui
 import pypelyne2.src.modules.ui.nodeui.nodeui as nodeui

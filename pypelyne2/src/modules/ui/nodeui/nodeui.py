@@ -7,7 +7,7 @@ import PyQt4.QtGui as QtGui
 import PyQt4.uic as uic
 
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.core.parser.plugin.parse_plugins as parse_plugins
+import pypelyne2.src.modules.core.parser.resources.plugin.parse_plugins as parse_plugins
 import pypelyne2.src.modules.nodecore.nodecore as nodecore
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel
