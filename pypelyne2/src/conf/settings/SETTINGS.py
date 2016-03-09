@@ -186,7 +186,7 @@ SERVER_IP = ip
 SERVER_PORT = 5678
 
 # ScreenGrabber module
-FPS = 10
+FPS = 3
 CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_hollowarrow.png')
 CURSOR = True
 CURSOR_SIZE = 30
