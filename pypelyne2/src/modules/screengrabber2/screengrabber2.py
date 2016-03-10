@@ -49,6 +49,7 @@ class ScreenGrabber(QtCore.QObject):
             self.loop = 0
         # self.start_capture_time = None
         self.capture_set = time.time()
+        self.fps = SETTINGS.FPS
         self.previous_px = None
         self.px = None
         self.px2 = None
@@ -62,6 +63,10 @@ class ScreenGrabber(QtCore.QObject):
         if SETTINGS.TEST_MODE:
             self.loop = 0
         self.snap_shots.halt = False
+        if self.capture_count == 0:
+            logging.info('starting capture')
+        else:
+            logging.info('continuing capture')
         self.snap_shots.start()
 
     def stop_capture(self):
@@ -76,11 +81,21 @@ class ScreenGrabber(QtCore.QObject):
         # if SETTINGS.TEST_MODE:
         #     loop = 0
 
+        # self.fps =
+
+        if time.time() == self.capture_set:
+
+            self.capture_count += 1
+
+            return
+
         logging.info('caught capture (tmp_{0}_{1}.{2})'.format(self.now,
-                                                               str(self.capture_count).zfill(SETTINGS.PADDING),
+                                                               str(self.capture_count+1).zfill(SETTINGS.PADDING),
                                                                SETTINGS.GRABBER_FORMAT.lower(),
                                                                SETTINGS.GRABBER_FORMAT))
-        logging.info('current fps: {0}'.format(float(self.capture_count)/(time.time() - self.capture_set)))
+
+        logging.info('current fps: {0}'.format(self.fps))
+
         if not self.snap_shots.queue.empty():
             self.snap_shots.queue.get(0)
 
@@ -105,13 +120,42 @@ class ScreenGrabber(QtCore.QObject):
 
             if not new_image == self.previous_image or not SETTINGS.ENABLE_SKIP_IDENTICAL:
 
+                if SETTINGS.TEXT_OVERLAY:
+
+                    painter = QtGui.QPainter()
+
+                    painter.begin(new_image)
+
+                    # https://doc.qt.io/archives/qtjambi-4.5.2_01/com/trolltech/qt/gui/QPainter.CompositionMode.html
+                    # painter.setCompositionMode(painter.CompositionMode_SourceIn)
+                    # painter.setCompositionMode(painter.CompositionMode_Difference)
+
+                    if bool(SETTINGS.TEXT_OVERLAY_COMPOSITION_MODE):
+
+                        painter.setCompositionMode(SETTINGS.TEXT_OVERLAY_COMPOSITION_MODE)
+
+                    painter.setPen(SETTINGS.TEXT_OVERLAY_COLOR)
+
+                    font = QtGui.QFont()
+
+                    # font.setStyleStrategy(font.ForceOutline)
+
+                    font.setFamily(SETTINGS.TEXT_OVERLAY_FONT)
+
+                    font.setPointSize(SETTINGS.TEXT_OVERLAY_SIZE)
+                    painter.setFont(font)
+
+                    painter.drawText(QtCore.QRectF(0, 0, new_image.width(), new_image.height()),
+                                     QtCore.Qt.AlignLeft,
+                                     str('recording@{0}/{1}fps'.format(round(self.fps, 2), SETTINGS.FPS)))
+
+                    painter.end()
+
                 new_image.save('tmp_{0}_{1}.{2}'.format(self.now,
-                                                        str(self.capture_count).zfill(SETTINGS.PADDING),
+                                                        str(self.capture_count+1).zfill(SETTINGS.PADDING),
                                                         SETTINGS.GRABBER_FORMAT).lower(),
                                format=SETTINGS.GRABBER_FORMAT,
                                quality=SETTINGS.GRABBER_QUALITY)
-
-                self.capture_count += 1
 
             else:
                 logging.info('same image like previous one. not saved.')
@@ -122,7 +166,12 @@ class ScreenGrabber(QtCore.QObject):
                 if self.loop == SETTINGS.TEST_TIME * SETTINGS.FPS:
                     self.stop_capture()
                     if SETTINGS.TEST_LOOP:
+
                         self.start_capture()
+
+            self.capture_count += 1
+
+            self.fps = float(self.capture_count)/(time.time() - self.capture_set)
 
 
 if __name__ == '__main__':
