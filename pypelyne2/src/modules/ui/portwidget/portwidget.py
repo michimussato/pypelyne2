@@ -4,10 +4,10 @@ import random
 
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
-import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
+import pypelyne2.src.core.entities.uuidobject as uuidobject
+import pypelyne2.src.modules.core.parser.output.parse_outputs as parse_outputs
 
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
-import pypelyne2.src.modules.core.parser.output.parse_outputs as parse_outputs
 import pypelyne2.src.modules.ui.compositeicon.compositeicon as compositeicon
 import pypelyne2.src.modules.ui.porthover.porthover as porthover
 import pypelyne2.src.modules.ui.qgraphicsproxywidgetnowheel.qgraphicsproxywidgetnowheel as qgraphicsproxywidgetnowheel

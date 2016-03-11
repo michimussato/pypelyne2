@@ -1,8 +1,8 @@
 import random
 
-import pypelyne2.src.modules.core.entities.uuidobject as uuidobject
-
+import pypelyne2.src.core.entities.uuidobject as uuidobject
 import pypelyne2.src.modules.core.parser.container.parse_containers as parse_containers
+
 import pypelyne2.src.modules.ui.containerdroparea.containerdroparea as containerdroparea
 import pypelyne2.src.modules.ui.graphicsscene.graphicsscenenodes as graphicsscenenodes
 

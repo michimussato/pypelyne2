@@ -1,7 +1,7 @@
 import PyQt4.QtCore as QtCore
 import PyQt4.QtGui as QtGui
+import pypelyne2.src.core.parser.container.parse_containers as parse_containers
 
-import pypelyne2.src.modules.core.parser.container.parse_containers as parse_containers
 import pypelyne2.src.modules.ui.containerwidget.containerwidget as containerwidget
 import pypelyne2.src.modules.ui.dockwidget.dockwidget as dockwidget
 

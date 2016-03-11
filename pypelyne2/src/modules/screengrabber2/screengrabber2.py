@@ -106,6 +106,8 @@ class ScreenGrabber(QtCore.QObject):
 
             self.px = QtGui.QPixmap.grabWindow(window_id, screen.x(), screen.y(), screen.width(), screen.height())
 
+            screen_rect = self.px.rect()
+
             if SETTINGS.CURSOR:
 
                 painter = QtGui.QPainter(self.px)
@@ -126,6 +128,24 @@ class ScreenGrabber(QtCore.QObject):
 
                     painter.begin(new_image)
 
+                    ###############
+                    # box
+
+                    pen_rects = QtGui.QPen(QtGui.QColor(255, 0, 0, 255))
+                    brush_rects = QtGui.QBrush(QtGui.QColor(128, 128, 128, 100))
+
+                    painter.setPen(pen_rects)
+                    painter.setBrush(brush_rects)
+
+                    mask_rect = QtCore.QRect()
+
+                    mask_rect_height = 200
+
+                    mask_rect.setRect(0, screen_rect.height()*SETTINGS.SCALE_FACTOR-mask_rect_height, screen_rect.width()*SETTINGS.SCALE_FACTOR-1, mask_rect_height-1)
+
+                    painter.drawRect(mask_rect)
+                    ###############
+
                     # https://doc.qt.io/archives/qtjambi-4.5.2_01/com/trolltech/qt/gui/QPainter.CompositionMode.html
                     # painter.setCompositionMode(painter.CompositionMode_SourceIn)
                     # painter.setCompositionMode(painter.CompositionMode_Difference)
@@ -145,9 +165,10 @@ class ScreenGrabber(QtCore.QObject):
                     font.setPointSize(SETTINGS.TEXT_OVERLAY_SIZE)
                     painter.setFont(font)
 
-                    painter.drawText(QtCore.QRectF(0, 0, new_image.width(), new_image.height()),
-                                     QtCore.Qt.AlignLeft,
-                                     str('recording@{0}/{1}fps'.format(round(self.fps, 2), SETTINGS.FPS)))
+                    text_fps = painter.drawText(QtCore.QRectF(0, 0, new_image.width(), new_image.height()),
+                                                QtCore.Qt.AlignLeft,
+                                                str('recording@{0}/{1}fps'.format(round(self.fps, 2), SETTINGS.FPS)))
+
 
                     painter.end()
 

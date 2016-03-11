@@ -186,12 +186,12 @@ SERVER_IP = ip
 SERVER_PORT = 5678
 
 # ScreenGrabber module
-FPS = float(0.25)
+FPS = float(1)
 CURSOR_ICON = os.path.join(ICONS_DIR, 'cursor_hollowarrow.png')
 CURSOR = True
 CURSOR_SIZE = 30
 PADDING = 6
-SCALE_FACTOR = float(1)
+SCALE_FACTOR = float(0.5)
 GRABBER_FORMAT = 'PNG'
 # min 0, max 100, default -1
 GRABBER_QUALITY = -1
@@ -203,7 +203,7 @@ GRABBER_AUTO_START = False
 TEXT_OVERLAY = True
 TEXT_OVERLAY_COLOR = QtGui.QColor(0, 255, 0, 255)
 TEXT_OVERLAY_SIZE = 12
-TEXT_OVERLAY_FONT = 'Arial'
+TEXT_OVERLAY_FONT = ['Arial', 'Verdana'][1]
 # TEXT_OVERLAY_COMPOSITION_MODE = QtGui.QPainter().CompositionMode_Difference  # or None
 TEXT_OVERLAY_COMPOSITION_MODE = None
 
