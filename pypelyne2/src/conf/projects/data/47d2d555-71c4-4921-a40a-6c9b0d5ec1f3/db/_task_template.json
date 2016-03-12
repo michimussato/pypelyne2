@@ -1,0 +1,25 @@
+{
+  "entity_inherited": {
+    "entity_uuid": "1aa5a307-882f-45ed-ba1f-12f6e5b7bed2",
+    "entity_type": "task",
+    "parent": "3636d2db-a946-4d32-9311-ba51dc29abb2" (uuid of container),
+    "tags": []
+  },
+  "entity_specific": {
+    "outputs": [] (all outputs. is this needed?),
+    "outputs_incoming": [] (basically this tasks inputs),
+    "locked": true or false,
+    "timetracker": [
+      {
+        "user": user,
+        "start": datetime,
+        "stop": datetime
+      },
+      {
+        "user": user,
+        "start": datetime,
+        "stop": datetime
+      }
+    ]
+  }
+}

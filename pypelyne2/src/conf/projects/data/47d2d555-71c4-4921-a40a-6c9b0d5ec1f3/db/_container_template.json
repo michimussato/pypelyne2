@@ -1,0 +1,8 @@
+{
+  "entity_inherited": {
+    "entity_uuid": "3636d2db-a946-4d32-9311-ba51dc29abb2",
+    "entity_type": "container",
+    "parent": "47d2d555-71c4-4921-a40a-6c9b0d5ec1f3" (uuid of project),
+    "tags": []
+  }
+}

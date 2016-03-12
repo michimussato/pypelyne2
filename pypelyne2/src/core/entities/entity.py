@@ -39,6 +39,9 @@ class Entity(object):
         #        {index or uuid: index or uuid, date: date, user: uuid, comment: 'some explanation'}]
         self.entity_modifications = []
 
+        # all entities can be tagged
+        self.entity_tags = set()
+
     # @property
     # def modifications(self):
     #     return self.entity_modifications

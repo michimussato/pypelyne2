@@ -6,3 +6,17 @@
   "live_path": null,
   "live_version":null
 }
+
+
+
+
+{
+  "entity_uuid": "12c5dc42-1372-492b-97b4-833119804004",
+  "entity_type": "output",
+  "parent": "fb109135-a82b-4350-9f55-c34dac2703af",
+  "children": [],
+  "entity_specific": {
+    "live_version": "35a2db69-20e2-471c-a6c8-007d4da08388",
+    "live_uuid": "35a2db69-20e2-471c-a6c8-007d4da08388"
+  }
+}

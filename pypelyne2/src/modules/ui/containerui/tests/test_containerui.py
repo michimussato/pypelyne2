@@ -1,7 +1,7 @@
 import sys
 import PyQt4.QtGui as QtGui
 import pypelyne2.src.modules.ui.graphicsview.graphicsview_stage as graphicsview_stage
-import pypelyne2.src.modules.puppeteer.puppeteer as puppeteer
+import pypelyne2.src.modules._puppeteer.puppeteer as puppeteer
 
 
 app = QtGui.QApplication(sys.argv)

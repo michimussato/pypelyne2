@@ -1,0 +1,19 @@
+{
+  "entity_inherited": {
+    "entity_uuid": "35a2db69-20e2-471c-a6c8-007d4da08388",
+    "entity_type": "version",
+    "parent": "f40a6b41-9337-42d9-bbdd-1964fcc7d366",
+    "tags": []
+  },
+  "entity_specific": {
+    "snapshot": "some_maya_project.ma" (full snapshot/copy of the task used to create this version. psd or flw or ...),
+    "published": false (has this version ever been published?),
+    "comments": [
+      {
+        "user": uuid of user,
+        "date": date of comment,
+        "text": comment
+      }
+    ] (simple communication system. version based)
+  }
+}

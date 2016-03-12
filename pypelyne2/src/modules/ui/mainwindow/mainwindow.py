@@ -6,7 +6,7 @@ import pypelyne2.src.modules.ui.dockwidget.dockwidget_plugins as dockwidget_plug
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_resourcebar as dockwidget_resourcebar
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_output_channels as dockwidget_output_channels
 import pypelyne2.src.modules.ui.dockwidget.dockwidget_containers as dockwidget_containers
-import pypelyne2.src.modules.puppeteer.puppeteer as puppeteer
+import pypelyne2.src.modules._puppeteer.puppeteer as puppeteer
 
 
 class MainWindow(QtGui.QMainWindow):

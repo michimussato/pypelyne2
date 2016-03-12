@@ -1,7 +1,11 @@
 {
   "entity_uuid": "35a2db69-20e2-471c-a6c8-007d4da08388",
   "entity_type": "version",
-  "children": [],
   "parent": "f40a6b41-9337-42d9-bbdd-1964fcc7d366",
-  "snapshot": "some_maya_project.ma"
+  "children": [],
+  "entity_specific": {
+    "snapshot": "some_maya_project.ma",
+    "published": false,
+    "comments": []
+  }
 }
