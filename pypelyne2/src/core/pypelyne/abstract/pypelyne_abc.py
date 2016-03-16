@@ -12,7 +12,8 @@ class Pypelyne(object):
                      project_type=None,
                      project_fps=None,
                      project_resolution=None,
-                     project_due_by=None):
+                     project_due_by=None,
+                     project_uuid=None):
         """
         :param project_status: str()
         :param project_client: str()
@@ -27,12 +28,23 @@ class Pypelyne(object):
         pass
 
     @abc.abstractmethod
+    def set_project(self,
+                    project):
+        """
+
+        :param project:
+        :return:
+        """
+
+
+    @abc.abstractmethod
     def load_entities(self,
                       project):
         """
         :param project: Project()
 
-        load all entities of a project."""
+        load all entities of a project.
+        """
         pass
 
     @abc.abstractmethod

@@ -1,7 +1,8 @@
 # import pypelyne2.src.modules.core.entities.entity as entity
+import pypelyne2.src.core.pypelyne.abstract.pypelyne_abc as pypelyne_abc
 
 
-class Pypelyne(object):
+class Pypelyne(pypelyne_abc.Pypelyne):
     def __init__(self):
         super(Pypelyne, self).__init__()
 
