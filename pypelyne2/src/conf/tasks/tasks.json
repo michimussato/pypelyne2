@@ -1,120 +1,140 @@
 [
   {
     "task_enable": true,
+    "identifier": "52e4bc66-24ba-4066-87dc-53b6c810560d",
     "task": "modelling",
     "abbreviation": "MDL",
     "color": "#FFC6C6"
   },
   {
     "task_enable": true,
+    "identifier": "f80a4147-d3ed-464b-85e4-5b00268f013e",
     "task": "uv layout",
     "abbreviation": "UVL",
     "color": "#CAC1FF"
   },
   {
     "task_enable": true,
+    "identifier": "e3dd0232-6db2-41d2-8360-1bc2604e1a0b",
     "task": "camera",
     "abbreviation": "CAM",
     "color": "#C4C7FF"
   },
   {
     "task_enable": true,
+    "identifier": "288515eb-69bc-45eb-8264-a153a28e0348",
     "task": "lighting",
     "abbreviation": "LIT",
     "color": "#F5BEFF"
   },
   {
     "task_enable": true,
+    "identifier": "fe5c5e32-aae2-4294-b5c2-6abda3cf0c5d",
     "task": "shading",
     "abbreviation": "SHD",
     "color": "#C7B4FF"
   },
   {
     "task_enable": true,
+    "identifier": "24198775-1a7d-47fc-ba22-e52fda54c77c",
     "task": "animation",
     "abbreviation": "ANM",
     "color": "#C6FFC6"
   },
   {
     "task_enable": true,
+    "identifier": "03903bfb-8cba-4d5c-a17f-94277ad273d1",
     "task": "simulation",
     "abbreviation": "SIM",
     "color": "#FFEFC7"
   },
   {
     "task_enable": true,
+    "identifier": "837969d8-aeee-428a-b2a5-1f0aa69a65f6",
     "task": "rendering",
     "abbreviation": "RND",
     "color": "#BCFFED"
   },
   {
     "task_enable": true,
+    "identifier": "4010648c-96f1-4480-8a6f-38c70037f8f2",
     "task": "texturing",
     "abbreviation": "TEX",
     "color": "#B9D7FF"
   },
   {
     "task_enable": true,
+    "identifier": "1b2d995c-a04c-4298-9d2a-7ca4f3bcb42c",
     "task": "sculpting",
     "abbreviation": "SPT",
     "color": "#E6FFBE"
   },
   {
     "task_enable": true,
+    "identifier": "225a6426-6fe6-4be3-9349-6cc3af1d7c57",
     "task": "rigging",
     "abbreviation": "RIG",
     "color": "#FFFCB0"
   },
   {
     "task_enable": true,
+    "identifier": "3f5d8945-de1b-49d6-ad0c-8e4e5dac9dea",
     "task": "compositing",
     "abbreviation": "CMP",
     "color": "#C4FFD6"
   },
   {
     "task_enable": true,
+    "identifier": "c6851746-4ca5-49d0-a203-2cd76fe2737e",
     "task": "fur and hair",
     "abbreviation": "FUR",
     "color": "#FFBEE9"
   },
   {
     "task_enable": true,
+    "identifier": "383a2e0f-32ed-4c7e-9837-a7ff2d1c2b69",
     "task": "cutting",
     "abbreviation": "CUT",
     "color": "#BBE0F9"
   },
   {
     "task_enable": true,
+    "identifier": "1670d5ca-1cfc-47d6-b846-cc70c2a35c61",
     "task": "tracking",
     "abbreviation": "TRK",
     "color": "#C8FFD0"
   },
   {
     "task_enable": true,
+    "identifier": "2cdb6357-4009-4293-bcd0-a8cee943a2a8",
     "task": "skinning",
     "abbreviation": "SKN",
     "color": "#BFFDF9"
   },
   {
     "task_enable": true,
+    "identifier": "276207f3-909d-4e0f-9851-2d60ed054d29",
     "task": "file reader",
     "abbreviation": "FRD",
     "color": "#D9D9D9"
   },
   {
     "task_enable": true,
+    "identifier": "da0d2910-92a1-4df8-b556-d74b10585363",
     "task": "motion graphics",
     "abbreviation": "MOG",
     "color": "#FFC1D7"
   },
   {
     "task_enable": true,
+    "identifier": "baaeceac-a70d-4d25-bf41-c447279f2770",
     "task": "tutorial",
     "abbreviation": "TUT",
     "color": "#333333"
   },
   {
     "task_enable": true,
+    "identifier": "0eeda395-a39c-4fcb-b39e-f573f9579ffa",
     "task": "matte painting",
     "abbreviation": "MTP",
     "color": "#ABC1D7"

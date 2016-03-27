@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "2.6.9",
+      "identifier": "7e8709ca-1f00-4ca9-81ae-649f8fdae425",
       "icon": "icon_blenderfoundation_blender_269.png",
       "release_extension": ".blend",
       "project_template": "null_blenderfoundation_blender_269.blend",

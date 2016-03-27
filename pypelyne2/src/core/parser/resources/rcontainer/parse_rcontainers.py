@@ -46,10 +46,10 @@ def get_rcontainers():
 
     """
 
-    container_objects = []
+    container_objects = set()
     containers = parse_rcontainers()
     for container in containers:
         new_container_object = rcontainer.RContainer(container)
-        container_objects.append(new_container_object)
+        container_objects.add(new_container_object)
 
     return container_objects

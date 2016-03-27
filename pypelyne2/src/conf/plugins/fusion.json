@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "7",
+      "identifier": "fa8a938f-b0e2-42f8-ba6d-a3e56809cbb2",
       "icon": "icon_blackmagicdesign_fusion_7.png",
       "release_extension": ".comp",
       "project_template": "null_blackmagicdesign_fusion7.comp",

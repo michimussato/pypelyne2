@@ -1,0 +1,14 @@
+{
+  "identifier": "fce5c6c1-0b1f-4725-8480-12c21b644dcd",
+  "entity_type": "task",
+  "entity_name": "task_01_01_02",
+  "thumbnail": "68158.jpg",
+  "entity_specific": {
+    "parent": "3636d2db-a946-4d32-9311-ba51dc29abb2",
+    "rtask": "03903bfb-8cba-4d5c-a17f-94277ad273d1",
+    "rplugin": "b44f2e11-928c-46ef-9ca7-e7f7b2124805",
+    "rplugin_arch": "x64",
+    "outputs": [],
+    "outputs_incoming": []
+  }
+}

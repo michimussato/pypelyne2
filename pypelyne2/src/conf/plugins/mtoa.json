@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "1.2.2.0",
+      "identifier": "8650dfc7-03fe-4b90-bfbc-4992fd41df17",
       "icon": "icon_solidangle_arnold_0.png",
       "release_extension": null,
       "project_template": null,

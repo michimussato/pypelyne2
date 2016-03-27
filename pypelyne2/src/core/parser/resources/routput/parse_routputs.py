@@ -67,10 +67,10 @@ def get_routputs():
 
     """
 
-    output_objects = []
+    output_objects = set()
     outputs = parse_routputs()
     for output in outputs:
         new_output_object = routput.ROutput(output)
-        output_objects.append(new_output_object)
+        output_objects.add(new_output_object)
 
     return output_objects

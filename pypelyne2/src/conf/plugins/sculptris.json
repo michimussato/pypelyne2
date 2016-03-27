@@ -8,7 +8,8 @@
   "releases": [
     {
       "release_number": "6",
-      "icon": null,
+      "identifier": "",
+      "icon": "icon_pixologic_sculptis_6.png",
       "release_extension": ".sc1",
       "project_template": "null_pixologic_sculptris_6.sc1",
       "project_workspace_template": null,

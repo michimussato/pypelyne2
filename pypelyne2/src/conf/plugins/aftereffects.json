@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "CS6",
+      "identifier": "7f8bd93e-d6ee-4d1d-aeac-9f66850c5d86",
       "icon": null,
       "release_extension": ".aep",
       "project_template": "null_adobe_aftereffects_CS6.aep",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "CC12",
+      "identifier": "62423e52-b76d-441a-835a-08cd7bb0171f",
       "icon": "icon_adobe_aftereffects_CC12.png",
       "release_extension": ".aep",
       "project_template": "null_adobe_aftereffects_CC.aep",

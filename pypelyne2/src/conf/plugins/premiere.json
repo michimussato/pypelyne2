@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "CS6",
+      "identifier": "c5188976-fb26-4e6e-a1ce-5656970e46e1",
       "icon": null,
       "release_extension": ".prproj",
       "project_template": "null_adobe_premiere_CS6.prproj",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "CC12",
+      "identifier": "202fe51c-9690-487c-8960-bbba69659533",
       "icon": "icon_adobe_premiere_CC12.png",
       "release_extension": ".prproj",
       "project_template": "null_adobe_premiere_CC12.prproj",

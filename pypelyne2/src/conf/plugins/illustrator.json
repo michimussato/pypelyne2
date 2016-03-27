@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "CS6",
+      "identifier": "598f9b23-2451-4511-b798-b170e9b6539c",
       "icon": null,
       "release_extension": ".ai",
       "project_template": null,
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "CC12",
+      "identifier": "3e6c0ef3-8b14-4593-9457-36a05776379e",
       "icon": "icon_adobe_illustrator_CC12.png",
       "release_extension": ".ai",
       "project_template": null,

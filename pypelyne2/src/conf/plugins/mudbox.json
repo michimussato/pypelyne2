@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "2013",
+      "identifier": "8ae7138d-c701-4ed8-8779-e2e47d886b52",
       "icon": "icon_autodesk_mudbox_2013.png",
       "release_extension": ".mud",
       "project_template": "null_autodesk_mudbox_2013.mud",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "2015",
+      "identifier": "4a1d54ba-6c32-4863-80c3-54f9455bc8b2",
       "icon": "icon_autodesk_mudbox_2015.png",
       "release_extension": ".mud",
       "project_template": "null_autodesk_mudbox_2015.mud",

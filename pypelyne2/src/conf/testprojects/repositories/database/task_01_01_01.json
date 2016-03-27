@@ -1,0 +1,14 @@
+{
+  "identifier": "542985cc-2732-44c2-ac96-0eb9c6054517",
+  "entity_type": "task",
+  "entity_name": "task_01_01_01",
+  "thumbnail": "kraftverteilung-saegen-1-170x142_Pic_360x142.jpg",
+  "entity_specific": {
+    "parent": "3636d2db-a946-4d32-9311-ba51dc29abb2",
+    "rtask": "288515eb-69bc-45eb-8264-a153a28e0348",
+    "rplugin": "b900136e-ec09-4ef0-885d-4668a26000af",
+    "rplugin_arch": "x64",
+    "outputs": [],
+    "outputs_incoming": []
+  }
+}

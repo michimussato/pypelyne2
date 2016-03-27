@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "4",
+      "identifier": "19faaa94-f78a-433a-9129-a1b6008623bd",
       "icon": "icon_lightmap_hdrlightstudio_4.png",
       "release_extension": null,
       "project_template": null,

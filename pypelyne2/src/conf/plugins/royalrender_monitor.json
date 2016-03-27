@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "7.0.29",
+      "identifier": "6f7d5431-f646-4b39-8434-550e58cb158c",
       "icon": "icon_holgerschoenberger_royalrendercontrol_7029.png",
       "release_extension": null,
       "project_template": null,

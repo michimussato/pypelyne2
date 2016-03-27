@@ -3,36 +3,42 @@
     "container_enable": true,
     "container_type": "character",
     "container_icon": "character.png",
-    "container_color": "#FF0000"
+    "container_color": "#FF0000",
+    "identifier": "c329c957-c42f-422d-b8d5-db8686b0fac5"
   },
   {
     "container_enable": true,
     "container_type": "creature",
     "container_icon": "creature.png",
-    "container_color": "#FFFF00"
+    "container_color": "#FFFF00",
+    "identifier": "6f704bb9-b55e-48a3-a29f-faf408cfd8f5"
   },
   {
     "container_enable": true,
     "container_type": "location",
     "container_icon": "location.png",
-    "container_color": "#FF00FF"
+    "container_color": "#FF00FF",
+    "identifier": "1bb576d4-b8a8-4189-9759-2fc4fabd378a"
   },
   {
     "container_enable": true,
     "container_type": "shot",
     "container_icon": "shot.jpg",
-    "container_color": "#00FF00"
+    "container_color": "#00FF00",
+    "identifier": "a990cddd-7d18-48d1-addf-5781b62ea8a0"
   },
   {
     "container_enable": true,
     "container_type": "prop",
     "container_icon": "prop.png",
-    "container_color": "#0000FF"
+    "container_color": "#0000FF",
+    "identifier": "45e9f4ac-5868-42c4-ac1c-609cb5c94309"
   },
   {
     "container_enable": true,
     "container_type": "vehicle",
     "container_icon": "vehicle.png",
-    "container_color": "#00FFFF"
+    "container_color": "#00FFFF",
+    "identifier": "94da1347-bfa0-4ae3-b470-601fb7705594"
   }
 ]

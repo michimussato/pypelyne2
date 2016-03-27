@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "2013",
+      "identifier": "b900136e-ec09-4ef0-885d-4668a26000af",
       "icon": "icon_autodesk_maya_2013.png",
       "release_extension": ".ma",
       "project_template": "null_autodesk_maya2013.ma",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "2014",
+      "identifier": "89803c88-bd14-4f14-98ae-36681ec674a8",
       "icon": "icon_autodesk_maya_2014.png",
       "release_extension": ".ma",
       "project_template": "null_autodesk_maya2014.ma",
@@ -100,6 +102,7 @@
     },
     {
       "release_number": "2014 (Guerilla Games)",
+      "identifier": "86b85596-c21c-4893-8599-5f9e975f83d1",
       "icon": null,
       "release_extension": ".ma",
       "project_template": "null_autodesk_maya2014.ma",
@@ -147,6 +150,7 @@
     },
     {
       "release_number": "2015",
+      "identifier": "269aacff-3f0d-400a-b2b4-204a3b6640ad",
       "icon": "icon_autodesk_maya_2015.png",
       "release_extension": ".ma",
       "project_template": null,

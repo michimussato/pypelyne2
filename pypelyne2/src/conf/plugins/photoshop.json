@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "CS6",
+      "identifier": "af23d457-52f2-40c5-a011-27dbfb1ca9ee",
       "icon": null,
       "release_extension": ".psd",
       "project_template": "null_adobe_photoshop_CS6.psd",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "CC12",
+      "identifier": "b4daafcc-cdc4-451b-8b88-4eb2dc1ea010",
       "icon": "icon_adobe_photoshop_CC12.png",
       "release_extension": ".psd",
       "project_template": "null_adobe_photoshop_CC12.psd",

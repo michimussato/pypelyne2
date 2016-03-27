@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "2.08.01",
+      "identifier": "59173117-c3b7-47c6-b19e-cd7fd1d46789",
       "icon": "icon_headus_uvlayout_20801.png",
       "release_extension": ".uvl",
       "project_template": null,

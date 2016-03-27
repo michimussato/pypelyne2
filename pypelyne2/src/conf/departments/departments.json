@@ -1,42 +1,42 @@
 [
   {
     "department_enable": true,
-    "id": "05febf4a-8586-499f-93b7-8af37c2fccdd", 
+    "identifier": "05febf4a-8586-499f-93b7-8af37c2fccdd",
     "department": "Concept"
   },
   {
     "department_enable": true,
-    "id": "a5b4cfd1-6aca-4e08-bf79-6a49738d1846",
+    "identifier": "a5b4cfd1-6aca-4e08-bf79-6a49738d1846",
     "department": "Modelling"
   },
   {
     "department_enable": true,
-    "id": "4965874d-10aa-4b8a-a50c-611ab4c0689d",
+    "identifier": "4965874d-10aa-4b8a-a50c-611ab4c0689d",
     "department": "Texturing"
   },
   {
     "department_enable": true,
-    "id": "1a8e743f-3e7e-4c82-8049-dac02fa51962",
+    "identifier": "1a8e743f-3e7e-4c82-8049-dac02fa51962",
     "department": "Layout"
   },
   {
     "department_enable": true,
-    "id": "09da04d1-5ebe-4634-ac5f-cae344a82790",
+    "identifier": "09da04d1-5ebe-4634-ac5f-cae344a82790",
     "department": "Animation"
   },
   {
     "department_enable": true,
-    "id": "2ed6e13d-a2fd-422f-9e45-9c2f012fba0e",
+    "identifier": "2ed6e13d-a2fd-422f-9e45-9c2f012fba0e",
     "department": "Lighting"
   },
   {
     "department_enable": true,
-    "id": "f7512556-0b5a-421e-af41-8799831bc720",
+    "identifier": "f7512556-0b5a-421e-af41-8799831bc720",
     "department": "Rendering"
   },
   {
     "department_enable": true,
-    "id": "c256b482-2fc6-4b57-b89e-56206880cd97",
+    "identifier": "c256b482-2fc6-4b57-b89e-56206880cd97",
     "department": "Effects"
   }
 ]

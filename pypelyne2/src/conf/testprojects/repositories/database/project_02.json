@@ -1,0 +1,64 @@
+{
+  "identifier": "e3dfd1e5-f411-4cd4-97a2-53af38830493",
+  "entity_type": "project",
+  "entity_name": "project_02",
+  "thumbnail": "new-avengers-movie-poster.jpg",
+  "entity_specific": {
+    "project_code": null,
+    "project_name": null,
+    "project_abbreviation": null,
+    "project_due": null,
+    "project_type": null,
+    "environment": {
+      "live_data_override": null,
+      "output_data_override": null,
+      "work_data_override": null,
+      "snapshot_data_override": null
+    },
+    "project_output": {
+      "format": {
+        "file_format": null,
+        "encoding": null,
+        "fps": null,
+        "resolution": {
+          "width": null,
+          "height": null
+        },
+        "aspect_ratio": null,
+        "pixel_aspect_ratio": null
+      }
+    },
+    "client": {
+      "company": null,
+      "address": {
+        "street": null,
+        "street_number": null,
+        "postcode": null,
+        "country": null,
+        "website": null,
+        "email": null,
+        "phone": null
+      },
+      "contacts": [
+        {
+          "name": null,
+          "role": null,
+          "contact_details": [
+            {
+              "type": "skype",
+              "value": "skype name"
+            },
+            {
+              "type": "phone",
+              "value": "0041 76 543 21 09"
+            },
+            {
+              "type": "email",
+              "value": "mail@bla"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

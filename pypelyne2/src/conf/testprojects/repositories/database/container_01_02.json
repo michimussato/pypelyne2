@@ -1,0 +1,10 @@
+{
+  "identifier": "5fadc12a-8a30-4f5d-81d2-149ffe91417f",
+  "entity_type": "container",
+  "entity_name": "container_01_02",
+  "thumbnail": "magical-sword-5047.jpg",
+  "entity_specific": {
+    "parent": "47d2d555-71c4-4921-a40a-6c9b0d5ec1f3",
+    "rcontainer": "45e9f4ac-5868-42c4-ac1c-609cb5c94309"
+  }
+}

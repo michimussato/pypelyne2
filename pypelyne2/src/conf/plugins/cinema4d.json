@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "R 13",
+      "identifier": "76877f06-c2b0-455d-a9f5-61c5a58c9ce2",
       "icon": null,
       "release_extension": ".c4d",
       "project_template": null,
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "R 14",
+      "identifier": "1f3de833-2cff-4a63-8421-b322bb037cb4",
       "icon": null,
       "release_extension": ".c4d",
       "project_template": null,
@@ -100,6 +102,7 @@
     },
     {
       "release_number": "R 15",
+      "identifier": "5af04049-e413-4360-935a-aed2d2cc4b35",
       "icon": "icon_maxon_cinema4d_r15.png",
       "release_extension": ".c4d",
       "project_template": "null_maxon_cinema4d_r15.c4d",
@@ -146,6 +149,7 @@
     },
     {
       "release_number": "R 16",
+      "identifier": "7a74f6d0-b4c0-418d-b3db-b1bbe2376668",
       "icon": null,
       "release_extension": ".c4d",
       "project_template": null,

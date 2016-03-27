@@ -8,6 +8,8 @@ import sys
 import os
 import platform
 
+import pypelyne2.src.conf.environment.ENVIRONMENT as ENVIRONMENT
+
 VERSION_PYTHON = platform.python_version()
 # VERSION_QT = QtCore.QT_VERSION_STR
 # VERSION_PYQT = QtCore.PYQT_VERSION_STR
@@ -39,7 +41,7 @@ except ImportError, e:
 here = os.path.dirname(os.path.realpath(__file__))
 
 
-logging.info('reading settings file')
+logging.info('loading settings from {0}'.format(__file__))
 
 # system information
 platform_os = platform.system()
@@ -50,6 +52,22 @@ if sys.maxsize <= 2**32:
     ARCHITECTURE = ARCHITECTURES[0]
 elif sys.maxsize > 2**32:
     ARCHITECTURE = ARCHITECTURES[1]
+
+
+def setup_environment():
+    logging.info('setting up environment...')
+    for environment in ENVIRONMENT.ENVIRONMENT:
+        key = str(environment.keys()[0])
+        value = environment[key][OPERATING_SYSTEM]
+        # os.environ[key] = environment[key]
+        # print key
+        # print value
+        os.environ[key] = value
+        logging.info('{0}={1} appended to environment.'.format(key, value))
+    logging.info('environment ready.')
+
+
+setup_environment()
 
 
 SORT_PLUGINS = 'family'
@@ -134,8 +152,13 @@ CONTAINERS_ICONS = os.path.join(CONTAINERS_DIR, '_icons')
 CONTAINERS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'icon_container.png')
 
 # Projects module
-PROJECTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'projects')
-PROJECTS_FILES = [x for x in os.listdir(PROJECTS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+# PROJECTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'projects')
+# PROJECTS_DIR = os.environ[u'P_PROJECTS']
+# PROJECTS_FILES = [x for x in os.listdir(PROJECTS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+DATABASE_DIR = os.environ[u'P_DATABASE']
+DATABASE_FILES = [x for x in os.listdir(DATABASE_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+WORKDATA_DIR_DEFAULT = os.environ[u'P_WORK_DATA_DEFAULT']
+# WORKDATA_DIR_DEFAULT = os.environ[u'P_WORK_DATA_DEFAULT']
 
 # Plugin module
 PLUGINS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'plugins')
@@ -293,3 +316,6 @@ LINE_TYPE = 'BEZIER'
 LINE_SWITCH_THRESHOLD = 80
 LINE_WIDTH = 3.0
 LINE_WIDTH_HOVER = 5.0
+
+
+logging.info('settings loaded.')

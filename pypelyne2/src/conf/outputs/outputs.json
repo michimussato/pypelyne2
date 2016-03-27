@@ -5,7 +5,8 @@
     "abbreviation": "MDL",
     "color": "#B38B8B",
     "icon": "mesh.png",
-    "formats": []
+    "formats": [],
+    "identifier": "debbbde9-6c48-4cb5-bd7f-c4d1c2dc0712"
   },
   {
     "output_enable": true,
@@ -13,7 +14,8 @@
     "abbreviation": "SEQ",
     "color": "#93A477",
     "icon": "sequence.png",
-    "formats": []
+    "formats": [],
+    "identifier": "32b8b445-36b0-43e6-a7a9-dffb28e74f39"
   },
   {
     "output_enable": true,
@@ -21,7 +23,8 @@
     "abbreviation": "PLB",
     "color": "#B3B3B3",
     "icon": "playblast.png",
-    "formats": []
+    "formats": [],
+    "identifier": "bbe0eaf1-551a-4ef4-b5e7-f462f63eea20"
   },
   {
     "output_enable": true,
@@ -29,7 +32,8 @@
     "abbreviation": "CAM",
     "color": "#898BB3",
     "icon": "camera.png",
-    "formats": []
+    "formats": [],
+    "identifier": "26d2fbde-2296-40b6-b8ae-30837b019615"
   },
   {
     "output_enable": true,
@@ -37,7 +41,8 @@
     "abbreviation": "TEX",
     "color": "#8297B3",
     "icon": "texture.jpg",
-    "formats": []
+    "formats": [],
+    "identifier": "f6681892-35a7-42c8-a559-08a1a36de293"
   },
   {
     "output_enable": true,
@@ -45,7 +50,8 @@
     "abbreviation": "CCH",
     "color": "#B3A78B",
     "icon": "cache.png",
-    "formats": []
+    "formats": [],
+    "identifier": "53d628ad-aed9-44c9-b712-97225e336d0b"
   },
   {
     "output_enable": true,
@@ -53,7 +59,8 @@
     "abbreviation": "SHD",
     "color": "#8C7FB2",
     "icon": "shader.png",
-    "formats": []
+    "formats": [],
+    "identifier": "d438fec3-adb6-45a5-bc57-583dcdad68a4"
   },
   {
     "output_enable": true,
@@ -61,7 +68,8 @@
     "abbreviation": "RIG",
     "color": "#B3B17B",
     "icon": "rig.jpg",
-    "formats": []
+    "formats": [],
+    "identifier": "391e058b-ec03-47bd-9b15-d52b13c5ff93"
   },
   {
     "output_enable": true,
@@ -69,7 +77,8 @@
     "abbreviation": "FUR",
     "color": "#B286A4",
     "icon": "fur.png",
-    "formats": []
+    "formats": [],
+    "identifier": "45dbeea1-76b2-4b0f-9a51-b2afa0769642"
   },
   {
     "output_enable": true,
@@ -77,7 +86,8 @@
     "abbreviation": "ABC",
     "color": "#7FA9A7",
     "icon": "alembic.png",
-    "formats": []
+    "formats": [],
+    "identifier": "d2da3dc0-56b2-4aed-89a5-3cebe5f5f215"
   },
   {
     "output_enable": true,
@@ -85,7 +95,8 @@
     "abbreviation": "LIT",
     "color": "#77A483",
     "icon": "light.png",
-    "formats": []
+    "formats": [],
+    "identifier": "51b90d67-56c0-4b58-a6f2-6965be907c3d"
   },
   {
     "output_enable": true,
@@ -93,7 +104,8 @@
     "abbreviation": "ZBR",
     "color": "#79A491",
     "icon": "zbrush.png",
-    "formats": []
+    "formats": [],
+    "identifier": "01a5b504-257c-46d9-8a02-e47431998b3a"
   },
   {
     "output_enable": true,
@@ -101,6 +113,7 @@
     "abbreviation": "SCR",
     "color": "#9279A4",
     "icon": "script.png",
-    "formats": []
+    "formats": [],
+    "identifier": "2b6d9b79-336f-44a6-bbc1-49079be12b33"
   }
 ]

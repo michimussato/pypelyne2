@@ -1,10 +1,7 @@
-# import pypelyne2.src.modules.api.abc_plugin as plugin
 # http://www.sphinx-doc.org/en/stable/ext/example_numpy.html#example-numpy
 import logging
-# import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 
 
-# class Plugin(plugin.Plugin):
 class RPlugin(object):
 
     """Documentation for class Plugin(object)

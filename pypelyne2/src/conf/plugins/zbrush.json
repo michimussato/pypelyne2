@@ -8,7 +8,8 @@
   "releases": [
     {
       "release_number": "4R5",
-      "icon": null,
+      "identifier": "ce73d6d0-a0c4-47b3-9124-fb3ee86d2589",
+      "icon": "icon_pixologic_zbrush_4.png",
       "release_extension": ".zpr",
       "project_template": "null_pixologic_zbrush_4r5.zpr",
       "project_workspace_template": null,
@@ -54,7 +55,8 @@
     },
     {
       "release_number": "4R6",
-      "icon": null,
+      "identifier": "c956d77a-1704-4d68-84e7-71e24b0dacb0",
+      "icon": "icon_pixologic_zbrush_4.png",
       "release_extension": ".zpr",
       "project_template": "null_pixologic_zbrush_4r6.ZPR",
       "project_workspace_template": null,

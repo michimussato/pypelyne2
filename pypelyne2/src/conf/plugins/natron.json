@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "2.0.0-RC2",
+      "identifier": "f4fe80a3-4f46-41dc-a6ca-4d347eb3c317",
       "icon": "icon_inria_natron_200.png",
       "release_extension": ".ntp",
       "project_template": null,

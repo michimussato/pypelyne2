@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "7.0v8",
+      "identifier": "b44f2e11-928c-46ef-9ca7-e7f7b2124805",
       "icon": "icon_thefoundry_nuke_708.png",
       "release_extension": ".nk",
       "project_template": "null_thefoundry_nuke_708.nk",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "8.0v3",
+      "identifier": "62cb1875-91bd-41b9-a309-98d41562f111",
       "icon": null,
       "release_extension": ".nk",
       "project_template": null,

@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "2.9.9",
+      "identifier": "3aaa031c-4eac-436c-abfb-d9624c475c40",
       "icon": "icon_kritaorg_krita_299.png",
       "release_extension": ".kra",
       "project_template": null,

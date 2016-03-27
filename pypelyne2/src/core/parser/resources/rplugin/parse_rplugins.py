@@ -2,7 +2,7 @@ import json
 import logging
 import operator
 import os
-
+import uuid
 import pypelyne2.src.conf.settings.SETTINGS as SETTINGS
 import pypelyne2.src.core.resources.rplugin as rplugin
 
@@ -40,6 +40,19 @@ def parse_rplugins():
 
         for release in plugin_object[u'releases']:
             logging.info('checking system for release: {0}'.format(release[u'release_number']))
+
+            # print release[u'identifier']
+
+            if u'identifier' in release:
+                print release[u'identifier']
+            else:
+                logging.warning('plugin file {0} ({1}) is missing an identifier. assigning a random one.'.format(plugin_file, release[u'release_number']))
+                release[u'identifier'] = uuid.uuid4()
+
+            # print release[u'identifier']
+
+            plugin_dict[u'identifier'] = \
+                release[u'identifier']
 
             if plugin_object[u'type'] == 'submitter':
 
@@ -80,6 +93,8 @@ def parse_rplugins():
                             plugin_object[u'abbreviation']
                         plugin_dict[u'release_number'] = \
                             release[u'release_number']
+                        # plugin_dict[u'identifier'] = \
+                        #     release[u'identifier']
                         if release[u'icon'] is None:
                             plugin_dict[u'icon'] = release[u'icon']
                         else:
@@ -297,10 +312,10 @@ def get_rplugins():
 
     """
 
-    plugin_objects = []
+    plugin_objects = set()
     plugins = parse_rplugins()
     for plugin in plugins:
         new_plugin_object = rplugin.RPlugin(plugin)
-        plugin_objects.append(new_plugin_object)
+        plugin_objects.add(new_plugin_object)
 
     return plugin_objects

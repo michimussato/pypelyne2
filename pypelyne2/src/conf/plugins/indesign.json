@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "CS6",
+      "identifier": "3d9597d8-6ce0-411e-aa0d-cf31c7ab4414",
       "icon": null,
       "release_extension": ".indd",
       "project_template": "null_adobe_indesign_CS6.indd",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "CC12",
+      "identifier": "384e46e2-e283-45f6-99da-93f597ae8755",
       "icon": "icon_adobe_indesign_CC12.png",
       "release_extension": ".indd",
       "project_template": "null_adobe_indesign_CC12.indd",

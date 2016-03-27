@@ -8,6 +8,7 @@
   "releases": [
     {
       "release_number": "6.0.0.0055",
+      "identifier": "78ea9181-47b7-40fe-a917-cd7ad5ab231d",
       "icon": null,
       "release_extension": ".flw",
       "project_template": "null_nextlimit_realflow_6000055.flw",
@@ -54,6 +55,7 @@
     },
     {
       "release_number": "7.0.1.0131",
+      "identifier": "1dc6547d-74fe-4d18-ac83-3f499f9b1666",
       "icon": null,
       "release_extension": ".flw",
       "project_template": "null_nextlimit_realflow_7010131.flw",

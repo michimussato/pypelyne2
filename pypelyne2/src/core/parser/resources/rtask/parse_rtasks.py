@@ -55,10 +55,10 @@ def get_rtasks():
 
     """
 
-    task_objects = []
+    task_objects = set()
     tasks = parse_rtasks()
     for task in tasks:
         new_task_object = rtask.RTask(task)
-        task_objects.append(new_task_object)
+        task_objects.add(new_task_object)
 
     return task_objects

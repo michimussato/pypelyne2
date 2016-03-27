@@ -7,6 +7,7 @@
   "releases": [
     {
       "release_number": "5.2",
+      "identifier": "0f81e49a-551f-408d-bb22-17fba428ad73",
       "icon": "icon_thinkbox_deadlinesubmitter_52.png",
       "project_directories": [],
       "default_outputs": [],
@@ -33,6 +34,7 @@
     },
     {
       "release_number": "7.2",
+      "identifier": "b3485feb-e604-450a-a563-b0ec09173419",
       "icon": "icon_thinkbox_deadlinesubmitter_52.png",
       "project_directories": [],
       "default_outputs": [],
