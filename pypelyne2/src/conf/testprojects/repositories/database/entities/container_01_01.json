@@ -1,10 +1,11 @@
 {
   "identifier": "3636d2db-a946-4d32-9311-ba51dc29abb2",
+  "project": "47d2d555-71c4-4921-a40a-6c9b0d5ec1f3",
   "entity_type": "container",
   "entity_name": "container_01_01",
   "thumbnail": "0A6CEC9D000005DC-3265510-image-a-94_1444335409466.jpg",
   "entity_specific": {
-    "parent": "47d2d555-71c4-4921-a40a-6c9b0d5ec1f3",
+    "parent": null,
     "rcontainer": "c329c957-c42f-422d-b8d5-db8686b0fac5"
   }
 }

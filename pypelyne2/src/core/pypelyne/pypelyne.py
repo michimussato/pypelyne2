@@ -1,6 +1,7 @@
 import pypelyne2.src.core.entities.entitycontainer as entitycontainer
 import pypelyne2.src.core.entities.entityproject as entityproject
 import pypelyne2.src.core.entities.entitytask as entitytask
+import pypelyne2.src.core.parser.projects.parse_projects as parse_projects
 import pypelyne2.src.core.parser.entities.parse_entities as parse_entities
 import pypelyne2.src.core.parser.resources.rcontainer.parse_rcontainers as parse_rcontainers
 import pypelyne2.src.core.parser.resources.routput.parse_routputs as parse_routputs
@@ -18,28 +19,53 @@ class Pypelyne(object):
         self.rtasks = parse_rtasks.get_rtasks()
         self.routputs = parse_routputs.get_routputs()
 
+        self.projects = parse_projects.get_projects()
+
         self.entities = parse_entities.get_entities(rplugins=self.rplugins,
                                                     rcontainers=self.rcontainers,
                                                     rtasks=self.rtasks,
                                                     routputs=self.routputs)
 
-    @property
-    def projects(self):
-        projects = set()
-        if bool(len(self.entities)):
-            for entity in self.entities:
-                if isinstance(entity, entityproject.EntityProject):
-                    projects.add(entity)
+    # @property
+    # def projects(self):
+    #     projects = set()
+    #     if bool(len(self.entities)):
+    #         for entity in self.entities:
+    #             if isinstance(entity, entityproject.EntityProject):
+    #                 projects.add(entity)
+    #
+    #     return projects
 
-        return projects
-
-    @property
-    def containers(self):
+    # @property
+    def containers(self, **kwargs):
         containers = set()
         if bool(len(self.entities)):
             for entity in self.entities:
-                if isinstance(entity, entitycontainer.EntityContainer):
+                # print 'HHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
+                # print dir(entity)
+
+
+                # print kwargs
+
+                if not bool(kwargs):
+                    if 'project' in kwargs:
+
+                        print entity.project
+                        print kwargs[u'project']
+
+                        # if entity.project == kwargs[u'project']:
+                        if entity.project == kwargs[u'project']:
+                            # print entity
+                            containers.add(entity)
+                    else:
+                        continue
+                else:
                     containers.add(entity)
+
+                    # entity[u'project']
+
+                    # if isinstance(entity, entitycontainer.EntityContainer):
+                    # containers.add(entity)
 
         return containers
 

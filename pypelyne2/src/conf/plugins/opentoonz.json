@@ -1,0 +1,57 @@
+{
+  "family_enable": true,
+  "type": "standalone",
+  "nodeable": true,
+  "family": "OpenToonz",
+  "vendor": "Toonz",
+  "abbreviation": "TNZ",
+  "releases": [
+    {
+      "release_number": "1.0",
+      "identifier": "74a42f37-087b-4738-9b6f-a133887a654b",
+      "icon": null,
+      "release_extension": ".tnz",
+      "project_template": null,
+      "project_workspace_template": null,
+      "project_directories": [],
+      "default_outputs": [],
+      "architecture_agnostic": false,
+      "architecture_fallback": true,
+      "platforms": [
+        {
+          "windows": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": "C:\\Program Files\\OpenToonz 1.0\\OpenToonz_1.0.exe",
+            "flags_x64": []
+          }
+        },
+        {
+          "darwin": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": null,
+            "flags_x64": []
+          }
+        },
+        {
+          "linux": {
+            "project_workspace_flag": null,
+            "project_workspace_parent_directory_level": 0,
+            "project_file_flag": null,
+            "executable_x32": null,
+            "flags_x32": [],
+            "executable_x64": null,
+            "flags_x64": []
+          }
+        }
+      ]
+    }
+  ]
+}

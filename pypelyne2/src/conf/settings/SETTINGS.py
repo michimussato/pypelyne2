@@ -155,8 +155,12 @@ CONTAINERS_DEFAULT_ICON = os.path.join(ICONS_DIR, 'icon_container.png')
 # PROJECTS_DIR = os.path.join(PYPELYNE2_ROOT, 'src', 'conf', 'projects')
 # PROJECTS_DIR = os.environ[u'P_PROJECTS']
 # PROJECTS_FILES = [x for x in os.listdir(PROJECTS_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
-DATABASE_DIR = os.environ[u'P_DATABASE']
-DATABASE_FILES = [x for x in os.listdir(DATABASE_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+# DATABASE_DIR = os.environ[u'P_DATABASE']
+DATABASE_DIR_PROJECTS = os.environ[u'P_DATABASE_PROJECTS']
+DATABASE_DIR_ENTITIES = os.environ[u'P_DATABASE_ENTITIES']
+# DATABASE_FILES = [x for x in os.listdir(DATABASE_DIR) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+DATABASE_FILES_PROJECTS = [x for x in os.listdir(DATABASE_DIR_PROJECTS) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
+DATABASE_FILES_ENTITIES = [x for x in os.listdir(DATABASE_DIR_ENTITIES) if not x.startswith('_') and not os.path.isdir(x) and x.endswith('.json')]
 WORKDATA_DIR_DEFAULT = os.environ[u'P_WORK_DATA_DEFAULT']
 # WORKDATA_DIR_DEFAULT = os.environ[u'P_WORK_DATA_DEFAULT']
 
