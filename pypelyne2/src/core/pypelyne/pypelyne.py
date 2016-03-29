@@ -1,6 +1,10 @@
+import logging
+import uuid
+import pypelyne2.src.core.entities.entity as entity
 import pypelyne2.src.core.entities.entitycontainer as entitycontainer
 import pypelyne2.src.core.entities.entityproject as entityproject
 import pypelyne2.src.core.entities.entitytask as entitytask
+import pypelyne2.src.core.entities.entityoutput as entityoutput
 import pypelyne2.src.core.parser.projects.parse_projects as parse_projects
 import pypelyne2.src.core.parser.entities.parse_entities as parse_entities
 import pypelyne2.src.core.parser.resources.rcontainer.parse_rcontainers as parse_rcontainers
@@ -14,200 +18,239 @@ class Pypelyne(object):
     def __init__(self):
         super(Pypelyne, self).__init__()
 
-        self.rplugins = parse_rplugins.get_rplugins()
-        self.rcontainers = parse_rcontainers.get_rcontainers()
-        self.rtasks = parse_rtasks.get_rtasks()
-        self.routputs = parse_routputs.get_routputs()
+        self._rplugins = None
+        self._rcontainers = None
+        self._rtasks = None
+        self._routputs = None
+        self._projects = None
+        self._entities = None
 
-        self.projects = parse_projects.get_projects()
+    @property
+    def rplugins(self):
 
-        self.entities = parse_entities.get_entities(rplugins=self.rplugins,
-                                                    rcontainers=self.rcontainers,
-                                                    rtasks=self.rtasks,
-                                                    routputs=self.routputs)
+        if self._rplugins is None:
 
-    # @property
-    # def projects(self):
-    #     projects = set()
-    #     if bool(len(self.entities)):
-    #         for entity in self.entities:
-    #             if isinstance(entity, entityproject.EntityProject):
-    #                 projects.add(entity)
-    #
-    #     return projects
+            self._rplugins = parse_rplugins.get_rplugins()
 
-    # @property
-    def containers(self, **kwargs):
+        return self._rplugins
+
+    @property
+    def rcontainers(self):
+
+        if self._rcontainers is None:
+            self._rcontainers = parse_rcontainers.get_rcontainers()
+
+        return self._rcontainers
+
+    @property
+    def rtasks(self):
+
+        if self._rtasks is None:
+            self._rtasks = parse_rtasks.get_rtasks()
+
+        return self._rtasks
+
+    @property
+    def routputs(self):
+
+        if self._routputs is None:
+            self._routputs = parse_routputs.get_routputs()
+
+        return self._routputs
+
+    @property
+    def projects(self):
+
+        if self._projects is None:
+            self._projects = parse_projects.get_projects()
+
+        return self._projects
+
+    @property
+    def entities(self):
+
+        if self._entities is None:
+            self._entities = parse_entities.get_entities(rplugins=self.rplugins,
+                                                         rcontainers=self.rcontainers,
+                                                         rtasks=self.rtasks,
+                                                         routputs=self.routputs)
+
+        return self._entities
+
+    def reload_resources(self):
+
+        """If we need to reparse the resources, we can simply set
+        everything in here to None so that the properties will
+        do a fresh parse. we don't want this behaviour upon every
+        single call of those properties. only on request."""
+
+        self._rplugins = None
+        self._rcontainers = None
+        self._rtasks = None
+        self._routputs = None
+
+    def reload_entities(self):
+
+        self._entities = None
+
+    def reload_projects(self):
+
+        self._projects = None
+
+    def reload_all(self):
+
+        self.reload_projects()
+        self.reload_entities()
+        self.reload_resources()
+
+    def reload(self):
+
+        self.reload_all()
+
+    def get_projects(self):
+
+        return self.projects
+
+    def objectify_uuid(self, identifier):
+
+        """takes an uuid identifer
+            :returns: the Entity with that identifier"""
+
+        objectified = None
+
+        for item in self.projects | self.entities:
+
+            if str(item.identifier) == str(identifier):
+                objectified = item
+
+                continue
+
+        return objectified
+
+    def set_project_object(self, entity_item):
+
+        """the entities come with an attribute project_identifier which is a uuid string.
+        depending on this we want to assign a EntityProject object directly using
+        the new attribute project_object if it does not exist on the entity_item yet"""
+
+        if 'project_object' not in entity_item.__dict__:
+
+            for project_item in self.projects:
+
+                if str(project_item.identifier) == str(entity_item.project_identifier):
+
+                    setattr(entity_item, 'project_object', project_item)
+
+                    return
+
+    def get_entities(self, projects=None, entity_types=['container',
+                                                        'task',
+                                                        'output',
+                                                        'version',
+                                                        'publish',
+                                                        'live']):
+
+        """takes an optional list of project uuid identifers or EntityProject entities or a combination
+        if an identifier is supplied, we get its corresponding object first with objectify_uuid
+        also takes a list of entity type filters. shortcut for all is ['all']
+            :returns: a list of dicts in the format of
+            [{project: EntityProject, entities: set([Entity, Entity, Entity])},
+             {project: EntityProject, entities: set([Entity, Entity, Entity])}]"""
+
+        projects_list = list()
+
+        projects = projects or self.projects
+
+        for project_item in list(projects):
+
+            entities_dict = dict()
+            project_entities = set()
+
+            for entity_item in self.entities:
+
+                self.set_project_object(entity_item=entity_item)
+
+                if not isinstance(project_item, entityproject.EntityProject):
+
+                    """if project_item is not an EntityProject but an uuid string
+                    assign the project object that relates to this uuid"""
+
+                    project_item = self.objectify_uuid(str(project_item))
+
+                if entity_item.project_object == project_item:
+
+                    if 'all' in entity_types or 'container' in entity_types:
+
+                        if isinstance(entity_item, entitycontainer.EntityContainer):
+                            project_entities.add(entity_item)
+
+                    if 'all' in entity_types or 'task' in entity_types:
+
+                        if isinstance(entity_item, entitytask.EntityTask):
+                            project_entities.add(entity_item)
+
+                    if 'all' in entity_types or 'output' in entity_types:
+
+                        pass
+
+                    if 'all' in entity_types or 'version' in entity_types:
+
+                        pass
+
+                    if 'all' in entity_types or 'publish' in entity_types:
+
+                        pass
+
+                    if 'all' in entity_types or 'live' in entity_types:
+
+                        pass
+
+                entities_dict['project'] = project_item
+                entities_dict['entities'] = project_entities
+
+            projects_list.append(entities_dict.copy())
+
+        return projects_list
+
+    def get_containers(self, projects=None):
+
+        """takes an optional list of project identifers or a project objects or a combination
+        :returns: a set container entities"""
+
         containers = set()
-        if bool(len(self.entities)):
-            for entity in self.entities:
-                # print 'HHHHHHHHHHHHHHHHHHHHHHHHHHHHH'
-                # print dir(entity)
 
+        for entity_item in self.get_entities(projects):
 
-                # print kwargs
+            if isinstance(entity_item, entitycontainer.EntityContainer):
 
-                if not bool(kwargs):
-                    if 'project' in kwargs:
-
-                        print entity.project
-                        print kwargs[u'project']
-
-                        # if entity.project == kwargs[u'project']:
-                        if entity.project == kwargs[u'project']:
-                            # print entity
-                            containers.add(entity)
-                    else:
-                        continue
-                else:
-                    containers.add(entity)
-
-                    # entity[u'project']
-
-                    # if isinstance(entity, entitycontainer.EntityContainer):
-                    # containers.add(entity)
+                containers.add(entity_item)
 
         return containers
 
-    @property
-    def tasks(self):
+    def get_tasks(self, projects=None):
+
+        """takes an optional list of project identifers or a project objects or a combination
+            :returns: a set of task entities"""
+
         tasks = set()
-        if bool(len(self.entities)):
-            for entity in self.entities:
-                if isinstance(entity, entitytask.EntityTask):
-                    tasks.add(entity)
+
+        for entity_item in self.get_entities(projects):
+
+            if isinstance(entity_item, entitytask.EntityTask):
+                tasks.add(entity_item)
 
         return tasks
 
-    #     self.project_entities = set()
-    #
-    #     self.container_entities = set()
-    #     self.task_entities = set()
-    #     self.output_entities = set()
-    #
-    #     self.entity_kwargs = set(['entity_uuid', 'entity_name', 'entity_object'])
-    #
-    #     # overrides of base classes
-    #     # self.entity_type = 'puppeteer'
-    #
-    # @property
-    # def loaded_entities(self):
-    #
-    #     return self.container_entities | self.task_entities | self.output_entities
-    #
-    # def load_project(self):
-    #
-    #     # self.container_entities.clear()
-    #     # self.task_entities.clear()
-    #     # self.output_entities.clear()
-    #
-    #     pass
-    #
-    # def get_item(self, entity_uuid=None, entity_name=None, entity_object=None):
-    #
-    #     if entity_uuid:
-    #
-    #         entity_name = self.get_entity_name(entity_uuid)
-    #
-    #
-    #
-    #     # elif entity_name:
-    #     #
-    #     #     entity_uuid = self.get_entity_uuid(entity_name)
-    #
-    #     elif entity_object:
-    #
-    #         pass
-    #
-    # def get_projects(self, project_status=None, project_client=None, project_name_pattern=None, project_type=None, project_fps=None, project_resolution=None, project_due_by=None):
-    #
-    #     pass
-    #
-    # def project(self, **kwargs):
-    #
-    #     entity_uuid=None, entity_name=None, entity_object=None
-    #
-    #     # http://pythontips.com/2013/08/04/args-and-kwargs-in-python-explained/
-    #
-    #     version = self.version(entity_uuid='0000-0000-00000000')
-    #     output = self.output(entity_uuid='0000-0000-00000000')
-    #     task = self.task(entity_uuid='0000-0000-00000000')
-    #     container = self.container(entity_uuid='0000-0000-00000000')
-    #
-    #     project = version.project()
-    #     project = output.project()
-    #     project = task.project()
-    #     project = container.project()
-    #
-    #     return False if argument or self is project
-    #
-    #     return project of argument or of self
-    #
-    # def container(self, **kwargs):
-    #
-    #     if len(kwargs) > 1:
-    #
-    #         raise Exception, 'maximum one argument allowed'
-    #
-    #         # return None  # max(len(kwargs)) is 1
-    #
-    #     if kwargs is not None:
-    #
-    #         if kwargs[0] not in self.entity_kwargs:
-    #
-    #             raise Exception, 'unknown argument'
-    #
-    #     if isinstance(self, VERSION):
-    #
-    #         version = self.version(entity_uuid=kwargs['entity_uuid'])
-    #         container = version.container()
-    #
-    #     elif isinstance(self, OUTPUT):
-    #
-    #         output = self.output(entity_uuid=kwargs['entity_name'])
-    #         container = output.container()
-    #
-    #     elif isinstance(self, TASK):
-    #
-    #         task = self.task(entity_uuid=kwargs['entity_object'])
-    #         container = task.container()
-    #
-    #     else:
-    #
-    #         raise Exception, 'object has no method "container()"'
-    #
-    #     # return False if argument or self is project
-    #     # return False if argument or self is container
-    #
-    #     return container
-    #
-    # def task(self, entity_uuid=None, entity_name=None, entity_object=None):
-    #
-    #     version = self.version(entity_uuid='0000-0000-00000000')
-    #     output = self.output(entity_uuid='0000-0000-00000000')
-    #
-    #     task = version.task()
-    #     task = output.task()
-    #
-    #     return False if argument or self is project
-    #     return False if argument or self is container
-    #     return False if argument or self is task
-    #
-    #     return task of argument or of self
-    #
-    # def output(self, entity_uuid=None, entity_name=None, entity_object=None):
-    #
-    #     version = self.version(entity_uuid='0000-0000-00000000')
-    #
-    #     output = version.output()
-    #
-    #     return False if argument or self is project
-    #     return False if argument or self is container
-    #     return False if argument or self is task
-    #     return False if argument or self is output
-    #
-    #     return output of argument or of self
-    #
-    # # def version(self, entity_uuid=None, entity_name=None, entity_object=None):
-    # #
-    # #     return version of argument or of self
+    def get_outputs(self, projects=None):
+
+        """takes an optional list of project identifers or a project objects or a combination
+            :returns: a set of output entities"""
+
+        outputs = set()
+
+        for entity_item in self.get_entities(projects):
+
+            if isinstance(entity_item, entityoutput.EntityOutput):
+                outputs.add(entity_item)
+
+        return outputs

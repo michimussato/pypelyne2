@@ -41,15 +41,10 @@ def parse_rplugins():
         for release in plugin_object[u'releases']:
             logging.info('checking system for release: {0}'.format(release[u'release_number']))
 
-            # print release[u'identifier']
-
-            if u'identifier' in release:
-                print release[u'identifier']
-            else:
-                logging.warning('plugin file {0} ({1}) is missing an identifier. assigning a random one.'.format(plugin_file, release[u'release_number']))
+            if u'identifier' not in release:
+                logging.warning('plugin file {0} ({1}) is missing an identifier. assigning a random one.'.format(plugin_file,
+                                                                                                                 release[u'release_number']))
                 release[u'identifier'] = uuid.uuid4()
-
-            # print release[u'identifier']
 
             plugin_dict[u'identifier'] = \
                 release[u'identifier']
